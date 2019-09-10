@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">ProyectoFinal</string>
+    <string name="app_name">Brainmher</string>
+    <string name="list_patient">Lista de pacientes</string>
+    <string name="health_professional">Profesional de la saud</string>
 </resources>
