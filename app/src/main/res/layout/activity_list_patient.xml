@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -27,7 +27,7 @@
                 android:gravity="center"
                 android:text="@string/list_patient"
                 android:textColor="@color/white"
-                android:textSize="20dp"
+                android:textSize="@dimen/ToolbarTextViewSize"
 
                 />
         </LinearLayout>
@@ -41,29 +41,19 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_marginStart="250dp"
-        android:layout_marginTop="400dp"
-        android:layout_marginEnd="250dp"
-        android:layout_marginBottom="400dp"
         android:color="@android:color/black"
         android:indeterminateOnly="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/toolbar"
-        app:layout_constraintHorizontal_bias="0.144"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.724" />
+         />
 
        //Fragment list patient for health professional
     <fragment
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/fragmentList"
-        android:name=""
+        android:name="com.jonathan.proyectofinal.fragments.ListPatientsFragment"
         tools:layout="@layout/fragment_patients"
         android:drawSelectorOnTop="false"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_below="@+id/toolbar"
         />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
