@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.jonathan.proyectofinal.R;
 
-public class ListPatient extends AppCompatActivity {
+public class PatientsList extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

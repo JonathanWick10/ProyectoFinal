@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.ListPatient">
+    tools:context=".ui.PatientsList">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -45,12 +45,12 @@
         android:indeterminateOnly="true"
          />
 
-       //Fragment list patient for health professional
+       <!--Fragment list patient for health professional-->
     <fragment
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/fragmentList"
-        android:name="com.jonathan.proyectofinal.fragments.ListPatientsFragment"
+        android:name="com.jonathan.proyectofinal.fragments.PatientsListFragment"
         tools:layout="@layout/fragment_patients"
         android:drawSelectorOnTop="false"
         android:layout_below="@+id/toolbar"

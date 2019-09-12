@@ -16,7 +16,7 @@ import butterknife.BindArray;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ListPatientsFragment extends Fragment {
+public class PatientsListFragment extends Fragment {
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
