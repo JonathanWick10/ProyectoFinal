@@ -54,16 +54,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.724" />
 
-    <!--   //Fragment list patient for health professional
+       //Fragment list patient for health professional
     <fragment
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/fragmentList"
         android:name=""
-        tools:layout="@layout/fragment_"
+        tools:layout="@layout/fragment_patients"
         android:drawSelectorOnTop="false"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         />
--->
+
 </androidx.constraintlayout.widget.ConstraintLayout>
