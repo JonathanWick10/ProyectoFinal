@@ -1,4 +1,53 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="ToolbarTextViewSize">20sp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <!-- dimenciones de 10 -->
+    <dimen name="dos"> 2dp</dimen>
+    <dimen name="diez"> 10dp</dimen>
+    <dimen name="veitene"> 20dp</dimen>
+    <dimen name="Treinta"> 30dp</dimen>
+    <dimen name="cuarenta"> 40dp</dimen>
+    <dimen name="cincuenta"> 50dp</dimen>
+    <dimen name="secenta"> 60dp</dimen>
+    <dimen name="setenta"> 70dp</dimen>
+    <dimen name="ochenta"> 80dp</dimen>
+    <dimen name="noventa"> 90dp</dimen>
+    <dimen name="cien"> 100dp</dimen>
+    <dimen name="cienCuenta"> 140dp</dimen>
+    <dimen name="docientos"> 200dp</dimen>
+    <!-- dimenciones de 5  -->
+    <dimen name="cinco"> 5dp</dimen>
+    <dimen name="quince"> 15dp</dimen>
+    <dimen name="venticinco"> 25dp</dimen>
+    <dimen name="treintaycinco"> 35dp</dimen>
+    <dimen name="cuarentaycinco"> 45dp</dimen>
+    <dimen name="cincuentaycinco"> 55dp</dimen>
+    <dimen name="sesentaycinco"> 65dp</dimen>
+    <dimen name="setentaycinco"> 75dp</dimen>
+    <dimen name="ochentaycinco"> 85dp</dimen>
+    <dimen name="noventaycinco"> 95dp</dimen>
+
+    <!-- dimenciones para texto -->
+    <!-- dimenciones de 10 -->
+    <dimen name="dieztext"> 10sp</dimen>
+    <dimen name="veitenetext"> 20sp</dimen>
+    <dimen name="Treintatext"> 30sp</dimen>
+    <dimen name="cuarentatext"> 40sp</dimen>
+    <dimen name="cincuentatext"> 50sp</dimen>
+    <dimen name="secentatext"> 60sp</dimen>
+    <dimen name="setentatext"> 70sp</dimen>
+    <dimen name="ochentatext"> 80sp</dimen>
+    <dimen name="noventatext"> 90sp</dimen>
+    <dimen name="cientext"> 100sp</dimen>
+    <!-- dimenciones de 5  -->
+    <dimen name="cincotext"> 5sp</dimen>
+    <dimen name="quincetext"> 15sp</dimen>
+    <dimen name="venticincotext"> 25sp</dimen>
+    <dimen name="treintaycincotext"> 35sp</dimen>
+    <dimen name="cuarentaycincotext"> 45sp</dimen>
+    <dimen name="cincuentaycincotext"> 55sp</dimen>
+    <dimen name="sesentaycincotext"> 65sp</dimen>
+    <dimen name="setentaycincotext"> 75sp</dimen>
+    <dimen name="ochentaycincotext"> 85sp</dimen>
+    <dimen name="noventaycincotext"> 95sp</dimen>
 </resources>
