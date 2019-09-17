@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:background="@color/grayLight"
+    android:padding="7dp">
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="85dp"
+    android:orientation="horizontal"
+    android:layout_gravity="center_vertical"
+    app:cardCornerRadius="15dp"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="2dp"
+        android:layout_gravity="center_vertical">
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginVertical="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="8dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/avatar_patient"
+            />
+
+        <TextView
+            android:id="@+id/tvPatientName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/imageView1"
+            android:layout_toLeftOf="@id/btn_delete"
+            android:textSize="14sp"
+            android:text="default"
+            android:singleLine="true"
+            android:maxLength="70"
+            android:ellipsize="marquee"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_marginTop="17dp"/>
+
+        <TextView
+            android:id="@+id/tvPatientId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-1dp"
+            android:layout_toRightOf="@id/imageView1"
+            android:layout_below="@+id/tvPatientName"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:text="default"
+            />
+
+        <ImageView
+            android:id="@+id/btn_delete"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="12dp"
+            android:src="@drawable/ic_delete"
+            android:layout_gravity="center"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+
+            />
+    </RelativeLayout>
+
+
+
+
+</androidx.cardview.widget.CardView>
+</LinearLayout>
