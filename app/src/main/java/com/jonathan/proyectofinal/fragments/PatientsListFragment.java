@@ -24,6 +24,7 @@ public class PatientsListFragment extends Fragment {
 
     private PatientsAdapter adapter;
 
+
     public PatientsListFragment() {
     }
 
