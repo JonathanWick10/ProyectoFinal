@@ -11,16 +11,31 @@ import androidx.fragment.app.Fragment;
 
 import com.jonathan.proyectofinal.R;
 
-public class ListFragment extends Fragment {
-    public ListFragment() {
+public class ManageFragment extends Fragment {
+
+    private static final String TAG = "ManageFragment";
+
+    //vars
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
     }
 
-    public ListFragment(int contentLayoutId) { super(contentLayoutId); }
+    public ManageFragment() {
+    }
+
+    public ManageFragment(int contentLayoutId) {
+        super(contentLayoutId);
+    }
+
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.listview_list_patients,container,false);
+        View view = inflater.inflate(R.layout.fragment_cu_manage, container, false);
         return view;
     }
+
 }

@@ -36,7 +36,7 @@
             android:id="@+id/tvPatientName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/imageView1"
+            android:layout_toRightOf="@id/imagePatient"
             android:layout_toLeftOf="@id/btn_delete"
             android:textSize="14sp"
             android:text="default"
@@ -52,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="-1dp"
-            android:layout_toRightOf="@id/imageView1"
+            android:layout_toRightOf="@id/imagePatient"
             android:layout_below="@+id/tvPatientName"
             android:textSize="14sp"
             android:textColor="@color/black"
@@ -68,7 +68,6 @@
             android:layout_gravity="center"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-
             />
     </RelativeLayout>
 

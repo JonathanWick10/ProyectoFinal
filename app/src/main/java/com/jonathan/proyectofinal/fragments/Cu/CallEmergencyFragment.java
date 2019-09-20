@@ -11,11 +11,12 @@ import androidx.fragment.app.Fragment;
 
 import com.jonathan.proyectofinal.R;
 
-public class ListFragment extends Fragment {
-    public ListFragment() {
+public class CallEmergencyFragment extends Fragment {
+
+    public CallEmergencyFragment() {
     }
 
-    public ListFragment(int contentLayoutId) { super(contentLayoutId); }
+    public CallEmergencyFragment(int contentLayoutId) { super(contentLayoutId); }
 
     @Nullable
     @Override

@@ -5,6 +5,31 @@
     android:layout_height="match_parent"
     tools:context=".fragments.Cu.EmergencyFragment">
 
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/Call_Emergency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Emergency_Contacts" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/Nearby_Hosp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Nearby_hospitals" />
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </androidx.viewpager.widget.ViewPager>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -1,17 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.Cu.HomeFragment">
+    android:id="@+id/fragmentHome"
+    tools:context=".fragments.Cu.HomeFragment"
+    android:background="@color/grayLight"
+    android:padding="6dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Bienvenido al Inicio"
-        ></TextView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:id="@+id/cv_1"
+        app:cardCornerRadius="15dp">
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/heart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/ochentaycinco"
+                    android:background="@color/grayLight"
+                    android:drawableTop="@drawable/ic_launcher_background"
+                    android:text="@string/my_care"></Button>
+
+                <Button
+                    android:id="@+id/manage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/ochentaycinco"
+                    android:layout_marginLeft="60dp"
+                    android:layout_toRightOf="@+id/heart"
+                    android:background="@color/grayLight"
+                    android:drawableTop="@drawable/ic_launcher_background"
+                    android:text="@string/Manage"></Button>
+
+                <Button
+                    android:id="@+id/diary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/cuarenta"
+                    android:layout_below="@id/manage"
+                    android:layout_marginTop="60dp"
+                    android:background="@color/grayLight"
+                    android:drawableTop="@drawable/ic_launcher_background"
+                    android:text="@string/Diary"></Button>
+
+                <Button
+                    android:id="@+id/test"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/cuarenta"
+                    android:layout_below="@id/manage"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginTop="60dp"
+                    android:layout_toRightOf="@id/diary"
+                    android:background="@color/grayLight"
+                    android:drawableTop="@drawable/ic_launcher_background"
+                    android:text="@string/Test"></Button>
+
+            </RelativeLayout>
+        </ScrollView>
+
+    </androidx.cardview.widget.CardView>
 
 </FrameLayout>

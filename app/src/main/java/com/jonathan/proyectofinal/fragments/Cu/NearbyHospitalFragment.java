@@ -11,11 +11,11 @@ import androidx.fragment.app.Fragment;
 
 import com.jonathan.proyectofinal.R;
 
-public class ListFragment extends Fragment {
-    public ListFragment() {
+public class NearbyHospitalFragment extends Fragment {
+    public NearbyHospitalFragment() {
     }
 
-    public ListFragment(int contentLayoutId) { super(contentLayoutId); }
+    public NearbyHospitalFragment(int contentLayoutId) { super(contentLayoutId); }
 
     @Nullable
     @Override
