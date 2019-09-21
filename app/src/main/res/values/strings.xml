@@ -7,11 +7,12 @@
     <string name="Test">Test</string>
     <string name="Diary">Agenda</string>
     <string name="Manage">Gestionar</string>
-    <string name="Emergency_Contacts">Constactos de Emergencia</string>
+    <string name="Emergency_Contacts">Contactos de Emergencia</string>
     <string name="Nearby_hospitals">Hospitales Cercanos</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    //Tab
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
 
 
 </resources>

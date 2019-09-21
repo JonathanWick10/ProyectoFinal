@@ -1,4 +1,4 @@
-package com.jonathan.proyectofinal.fragments.Cu;
+package com.jonathan.proyectofinal.fragments.cu;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,16 +11,17 @@ import androidx.fragment.app.Fragment;
 
 import com.jonathan.proyectofinal.R;
 
-public class ListFragment extends Fragment {
-    public ListFragment() {
+public class CallEmergencyFragment extends Fragment {
+
+    public CallEmergencyFragment() {
     }
 
-    public ListFragment(int contentLayoutId) { super(contentLayoutId); }
+    public CallEmergencyFragment(int contentLayoutId) { super(contentLayoutId); }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.listview_list_patients,container,false);
+        View view = inflater.inflate(R.layout.fragment_cu_call,container,false);
         return view;
     }
 }

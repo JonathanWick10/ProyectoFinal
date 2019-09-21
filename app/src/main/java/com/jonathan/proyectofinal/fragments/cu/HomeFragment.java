@@ -1,4 +1,4 @@
-package com.jonathan.proyectofinal.fragments.Cu;
+package com.jonathan.proyectofinal.fragments.cu;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -10,17 +10,14 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.jonathan.proyectofinal.R;
 
 public class HomeFragment extends Fragment implements View.OnClickListener{
 
-    private static final String TAG = "HomeFragment";
-
     Button btn_heart,btn_manage, btn_diary, btn_test;
-    Fragment activ=null;
-    FragmentTransaction transaction;
+
+    private IMainCarer mIMainCarer;
 
     public HomeFragment() {
     }
@@ -46,19 +43,22 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     public void onClick(View view){
         switch (view.getId()){
             case R.id.heart:
-                HeartFragment fragment = new HeartFragment();
-                transaction = getChildFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragmentHome, fragment);
+                mIMainCarer.inflateFragment(getString(R.string.my_care));
                 break;
             case R.id.manage:
-                transaction = getChildFragmentManager().beginTransaction();
+                mIMainCarer.inflateFragment(getString(R.string.Manage));
                 break;
             case R.id.diary:
-
+                mIMainCarer.inflateFragment(getString(R.string.Diary));
                 break;
             case R.id.test:
-
+                mIMainCarer.inflateFragment(getString(R.string.Test));
                 break;
         }
+    }
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mIMainCarer = (IMainCarer) getActivity();
     }
 }

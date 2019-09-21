@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/fragmentHome"
-    tools:context=".fragments.Cu.HomeFragment"
+    tools:context=".fragments.cu.HomeFragment"
     android:background="@color/grayLight"
     android:padding="6dp">
 
