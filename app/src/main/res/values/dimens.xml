@@ -26,6 +26,12 @@
     <dimen name="setentaycinco"> 75dp</dimen>
     <dimen name="ochentaycinco"> 85dp</dimen>
     <dimen name="noventaycinco"> 95dp</dimen>
+    <dimen name="sizeIconPatient"> 30dp</dimen>
+
+
+
+
+
 
     <!-- dimenciones para texto -->
     <!-- dimenciones de 10 -->
