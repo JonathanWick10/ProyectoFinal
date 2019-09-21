@@ -1,15 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.Cu.EmergencyFragment">
+    tools:context=".fragments.cu.EmergencyFragment">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Bienvenido a las Emergencias"
-        ></TextView>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
+        <androidx.cardview.widget.CardView
+            android:id="@+id/Card"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_alignParentStart="true">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_weight="2">
+                    <Button
+                        android:id="@+id/btn_emergency"
+                        android:text="@string/Emergency_Contacts"
+                        android:gravity="center"
+                        android:textSize="18dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"></Button>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/btn_hospital"
+                        android:text="@string/Nearby_hospitals"
+                        android:gravity="center"
+                        android:textSize="18dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"></Button>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+            <FrameLayout
+                android:id="@+id/fragmentTab"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/Card"
+                android:layout_alignParentBottom="true">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="jjj"></TextView>
+            </FrameLayout>
+        </RelativeLayout>
 </FrameLayout>

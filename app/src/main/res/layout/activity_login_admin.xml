@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.loginAdmin">
 
     <RelativeLayout
@@ -30,7 +31,7 @@
                 android:layout_marginBottom="@dimen/quince"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/app_name" />
+                android:hint="@string/admin_user_name" />
 
             <EditText
                 android:id="@+id/login_admin_edt_pass"
@@ -38,14 +39,16 @@
                 android:layout_marginBottom="@dimen/quince"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/app_name" />
+                android:hint="@string/admin_pass" />
 
             <Button
                 android:id="@+id/login_admin_btn_enter"
-                 android:layout_marginTop="@dimen/Treinta"
+                android:layout_marginTop="@dimen/Treinta"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/app_name" />
+                android:background="@color/Azul"
+                android:text="@string/admin_enter"
+                />
 
         </LinearLayout>
 

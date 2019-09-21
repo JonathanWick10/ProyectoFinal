@@ -3,4 +3,23 @@
     <string name="list_patient">Lista de pacientes</string>
     <string name="health_professional">Profesional de la saud</string>
     <string name="required">Required field</string>
+    <string name="name_patient">Name patient</string>
+    <string name="admin_id">ID</string>
+    <string name="admin_place">Place</string>
+    <string name="admin_profession">Profession</string>
+    <string name="my_care">Mi cuidado</string>
+    <string name="Test">Test</string>
+    <string name="Diary">Agenda</string>
+    <string name="Manage">Gestionar</string>
+    <string name="Emergency_Contacts">Contactos de Emergencia</string>
+    <string name="Nearby_hospitals">Hospitales Cercanos</string>
+
+    //Tab
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="admin_user_name">Name user</string>
+    <string name="admin_enter">Enter</string>
+    <string name="admin_pass">Password</string>
+
+
 </resources>
