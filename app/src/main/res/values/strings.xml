@@ -3,4 +3,16 @@
     <string name="list_patient">Lista de pacientes</string>
     <string name="health_professional">Profesional de la saud</string>
     <string name="required">Required field</string>
+    <string name="my_care">Mi cuidado</string>
+    <string name="Test">Test</string>
+    <string name="Diary">Agenda</string>
+    <string name="Manage">Gestionar</string>
+    <string name="Emergency_Contacts">Contactos de Emergencia</string>
+    <string name="Nearby_hospitals">Hospitales Cercanos</string>
+
+    //Tab
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+
+
 </resources>
