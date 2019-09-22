@@ -4,8 +4,10 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="@dimen/diez"
-    app:cardElevation="@dimen/cinco">
+    app:cardCornerRadius="@dimen/cinco"
+    app:cardUseCompatPadding="true"
+    app:cardElevation="@dimen/cinco"
+    >
 
 
     <LinearLayout

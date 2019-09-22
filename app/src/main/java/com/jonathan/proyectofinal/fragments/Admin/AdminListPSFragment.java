@@ -44,13 +44,13 @@ public class AdminListPSFragment extends Fragment {
     private void reference() {
         recyclerView = view.findViewById(R.id.admin_rv_list);
         List<String> list= new ArrayList<>();
-        list.add("1");
-        list.add("2");
-        list.add("3");
-        list.add("4");
-        list.add("5");
-        list.add("6");
-        list.add("7");
+        list.add("Data 1");
+        list.add("Data 2");
+        list.add("Data 3");
+        list.add("Data 4");
+        list.add("Data 5");
+        list.add("Data 6");
+        list.add("Data 7");
         recyclerView.setAdapter(new AdminListPSAdapter(list,adapterI));
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

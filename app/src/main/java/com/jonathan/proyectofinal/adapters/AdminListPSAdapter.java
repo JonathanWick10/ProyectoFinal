@@ -48,7 +48,6 @@ public class AdminListPSAdapter extends RecyclerView.Adapter<AdminListPSAdapter.
     @Override
     public void onBindViewHolder(@NonNull AdminListPSAdapter.Holder holder, final int position) {
         //setear
-        holder.photo.setImageResource(R.drawable.ic_launcher_background);
         holder.name.setText(list.get(position));
         holder.id.setText(list.get(position));
         holder.delete.setOnClickListener(new View.OnClickListener() {
