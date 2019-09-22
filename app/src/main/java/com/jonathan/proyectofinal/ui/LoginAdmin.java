@@ -2,16 +2,16 @@ package com.jonathan.proyectofinal.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.QuickContactBadge;
 import android.widget.Toast;
 
 import com.jonathan.proyectofinal.R;
 
-public class loginAdmin extends AppCompatActivity {
+public class LoginAdmin extends AppCompatActivity {
 
     private EditText name,pass;
     private Button enter;
@@ -45,7 +45,13 @@ public class loginAdmin extends AppCompatActivity {
                         pass.setError(null);
                     }
                 }else{
-                    Toast.makeText(loginAdmin.this, "Funciona jeje ", Toast.LENGTH_SHORT).show();
+                   if (nameTxt.equals("123") && passTxt.equals("123")){
+
+                       startActivity(new Intent(LoginAdmin.this, AdminHome.class));
+
+                   }else {
+                       Toast.makeText(LoginAdmin.this, getString(R.string.datos_incorrectos), Toast.LENGTH_SHORT).show();
+                   }
                 }
             }
         });

@@ -5,14 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.ListPSAdmin">
+    tools:context=".ui.AdminHome">
 
-     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/admin_rv_list"
-        tools:listitem="@layout/list_ps_admin_plantilla">
+   <FrameLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:id="@+id/admin_home_frm_contenedor"/>
 
-    </androidx.recyclerview.widget.RecyclerView>
 
 </LinearLayout>
