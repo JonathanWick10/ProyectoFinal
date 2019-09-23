@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Brainmher</string>
     <string name="list_patient">Lista de pacientes</string>
@@ -27,16 +28,16 @@
     <string name="alert">Alert</string>
     <string name="message_delete">sure to eliminate</string>
     <string name="delete">Delete</string>
-    
-    //Strings for Collections
-    <string name="collection_administrators">Colección de administradores creada...</string>
-    <string name="collection_healthcare_profeional">Colección de profesionales de la salud creada...</string>
-    <string name="collection_carers">Colección de Cuidadores creada...</string>
-    <string name="collection_patients">Colección de pacientes creada...</string>
-    <string name="collection_terapies">Colección de terapias creada...</string>
-    <string name="collection_notications">Colección de notificaciones creada...</string>
-    <string name="creation_failed">Fallo la Creación</string>
-    <string name="create_collections">Crear coleciones</string>
-    <string name="create">Crear</string>
 
+    //Strings for Collections
+    <string name="collection_administrators">Administrators collection created...</string>
+    <string name="collection_healthcare_profeional">Healthcare profeional collection created...</string>
+    <string name="collection_carers">Carers collection created...</string>
+    <string name="collection_patients">Patients colletion created...</string>
+    <string name="collection_terapies">Terapies collection created...</string>
+    <string name="collection_notications">Notications collection created...</string>
+    <string name="creation_failed">Creation Failed</string>
+    <string name="create_collections">Crear coleciones</string>
+    <string name="create">Create</string>
+    
 </resources>
