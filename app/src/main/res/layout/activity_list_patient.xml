@@ -50,7 +50,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/fragmentList"
-        android:name="com.jonathan.proyectofinal.fragments.PatientsListFragment"
+        android:name="com.jonathan.proyectofinal.fragments.hp.PatientsListFragment"
         tools:layout="@layout/fragment_patients"
         android:drawSelectorOnTop="false"
         android:layout_below="@+id/toolbar"

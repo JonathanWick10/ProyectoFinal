@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/fragmentHome"
-    tools:context=".fragments.cu.HomeFragment"
+    tools:context=".fragments.carer.HomeFragment"
     android:background="@color/grayLight"
     android:padding="6dp">
 
@@ -20,6 +20,11 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+            <FrameLayout
+                android:id="@+id/containerHome"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -71,6 +76,7 @@
                     android:text="@string/Test"></Button>
 
             </RelativeLayout>
+            </FrameLayout>
         </ScrollView>
 
     </androidx.cardview.widget.CardView>

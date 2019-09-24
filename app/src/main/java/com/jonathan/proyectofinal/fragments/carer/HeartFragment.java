@@ -1,4 +1,4 @@
-package com.jonathan.proyectofinal.fragments.cu;
+package com.jonathan.proyectofinal.fragments.carer;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,31 +11,21 @@ import androidx.fragment.app.Fragment;
 
 import com.jonathan.proyectofinal.R;
 
-public class ManageFragment extends Fragment {
+public class HeartFragment extends Fragment {
 
-    private static final String TAG = "ManageFragment";
+    private static final String TAG = "HeartFragment";
 
-    //vars
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public HeartFragment() {
     }
 
-    public ManageFragment() {
-    }
-
-    public ManageFragment(int contentLayoutId) {
+    public HeartFragment(int contentLayoutId) {
         super(contentLayoutId);
     }
-
-
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_cu_manage, container, false);
-        return view;
+        View view = inflater.inflate(R.layout.fragment_cu_heart,container,false);
+    return view;
     }
-
 }

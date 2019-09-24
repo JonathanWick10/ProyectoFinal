@@ -1,4 +1,4 @@
-package com.jonathan.proyectofinal.fragments.cu;
+package com.jonathan.proyectofinal.fragments.carer;
 
 import android.content.Context;
 import android.os.Bundle;

@@ -1,4 +1,4 @@
-package com.jonathan.proyectofinal.fragments;
+package com.jonathan.proyectofinal.fragments.hp;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

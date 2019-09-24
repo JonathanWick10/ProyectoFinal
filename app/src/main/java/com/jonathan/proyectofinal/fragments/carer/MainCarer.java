@@ -1,4 +1,4 @@
-package com.jonathan.proyectofinal.fragments.cu;
+package com.jonathan.proyectofinal.fragments.carer;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,14 +7,13 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.jonathan.proyectofinal.R;
 
 public class MainCarer extends AppCompatActivity implements IMainCarer{
 
-    Fragment pass = null;
+    Fragment active = null, change = null;
     FragmentTransaction transaction;
 
     @Override
@@ -51,49 +50,50 @@ public class MainCarer extends AppCompatActivity implements IMainCarer{
                 public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                     switch (menuItem.getItemId()){
                         case R.id.Home:
-                            pass = new HomeFragment();
+                            active = new HomeFragment();
                             break;
                         case R.id.List:
-                            pass = new ListFragment();
+                            active = new ListFragment();
                             break;
                         case R.id.Emergency:
-                            pass = new EmergencyFragment();
+                            active = new EmergencyFragment();
                             break;
                         case R.id.Information:
-                            pass = new InformationFragment();
+                            active = new InformationFragment();
                             break;
                     }
-                    getSupportFragmentManager().beginTransaction().replace(R.id.content_carer,pass).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.content_carer,active).commit();
                     return true;
                 }
             };
 
     @Override
     public void inflateFragment(String fragmentTag) {
+        transaction = getSupportFragmentManager().beginTransaction();
         // Listen to the Button Call for other Fragments in different Views
         if(fragmentTag.equals(getString(R.string.my_care))){
-            HeartFragment fragment = new HeartFragment();
-            doFragmentTransaction(fragment,fragmentTag, true);
+            change = new HeartFragment();
+            transaction.replace(R.id.containerHome,change).commit();
         }
         else if(fragmentTag.equals(getString(R.string.Manage))){
-            ManageFragment fragment = new ManageFragment();
-            doFragmentTransaction(fragment,fragmentTag, true);
+            change = new ManageFragment();
+            transaction.replace(R.id.containerHome,change).commit();
         }
         if(fragmentTag.equals(getString(R.string.Diary))){
-            DiaryFragment fragment = new DiaryFragment();
-            doFragmentTransaction(fragment,fragmentTag, true);
+            change = new DiaryFragment();
+            transaction.replace(R.id.containerHome,change).commit();
         }
         else if(fragmentTag.equals(getString(R.string.Test))){
-            TestFragment fragment = new TestFragment();
-            doFragmentTransaction(fragment,fragmentTag, true);
+            change = new TestFragment();
+            transaction.replace(R.id.containerHome,change).commit();
         }
         else if(fragmentTag.equals(getString(R.string.Nearby_hospitals))){
-            NearbyHospitalFragment fragment = new NearbyHospitalFragment();
-            doFragmentTransaction(fragment,fragmentTag, true);
+            change = new NearbyHospitalFragment();
+            transaction.replace(R.id.fragmentTab,change).commit();
         }
         else if(fragmentTag.equals(getString(R.string.Emergency_Contacts))){
-            CallEmergencyFragment fragment = new CallEmergencyFragment();
-            doFragmentTransaction(fragment,fragmentTag, true);
+            change = new CallEmergencyFragment();
+            transaction.replace(R.id.fragmentTab,change).commit();
         }
     }
 }

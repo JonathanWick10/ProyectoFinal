@@ -1,4 +1,5 @@
-package com.jonathan.proyectofinal.fragments.cu;
+package com.jonathan.proyectofinal.fragments.carer;
+
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,16 +12,17 @@ import androidx.fragment.app.Fragment;
 
 import com.jonathan.proyectofinal.R;
 
-public class ListFragment extends Fragment {
-    public ListFragment() {
+public class NearbyHospitalFragment extends Fragment {
+    public NearbyHospitalFragment() {
     }
 
-    public ListFragment(int contentLayoutId) { super(contentLayoutId); }
+    public NearbyHospitalFragment(int contentLayoutId) { super(contentLayoutId); }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.listview_list_patients,container,false);
+        View view = inflater.inflate(R.layout.fragment_cu_hospital,container,false);
         return view;
     }
+
 }
