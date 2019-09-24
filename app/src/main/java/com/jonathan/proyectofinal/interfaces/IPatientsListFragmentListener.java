@@ -4,7 +4,7 @@ import com.jonathan.proyectofinal.data.Patient;
 
 import java.util.List;
 
-public interface PatientsListFragmentListener {
+public interface IPatientsListFragmentListener {
 
 
         void addAllToList(List<Patient> patients);

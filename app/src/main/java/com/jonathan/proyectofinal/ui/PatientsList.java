@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.fragments.hp.PatientsListFragment;
-import com.jonathan.proyectofinal.interfaces.PatientsListFragmentListener;
+import com.jonathan.proyectofinal.interfaces.IPatientsListFragmentListener;
 
 public class PatientsList extends AppCompatActivity {
 
-    private PatientsListFragmentListener fragmentListener;
+    private IPatientsListFragmentListener fragmentListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +20,6 @@ public class PatientsList extends AppCompatActivity {
 
         PatientsListFragment fragment = (PatientsListFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentList);
         fragment.setRetainInstance(true);
-        fragmentListener = (PatientsListFragmentListener) fragment;
+        fragmentListener = (IPatientsListFragmentListener) fragment;
     }
 }

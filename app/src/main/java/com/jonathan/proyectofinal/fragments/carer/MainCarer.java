@@ -10,8 +10,9 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.jonathan.proyectofinal.R;
+import com.jonathan.proyectofinal.interfaces.IMainCarer;
 
-public class MainCarer extends AppCompatActivity implements IMainCarer{
+public class MainCarer extends AppCompatActivity implements IMainCarer {
 
     Fragment active = null, change = null;
     FragmentTransaction transaction;
