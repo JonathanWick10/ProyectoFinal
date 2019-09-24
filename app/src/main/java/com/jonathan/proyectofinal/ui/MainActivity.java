@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        //region Logic event OnClick
         btnCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -39,5 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 btnCreate.setEnabled(true);
             }
         });
+        //endregion
+
     }
 }

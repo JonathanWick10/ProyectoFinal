@@ -11,9 +11,7 @@ import android.widget.Toast;
 
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.adapters.AdminListPSAdapter;
-import com.jonathan.proyectofinal.fragments.Admin.AdminListPSFragment;
-
-import java.util.List;
+import com.jonathan.proyectofinal.fragments.admin.AdminListPSFragment;
 
 public class AdminHome extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.jonathan.proyectofinal.fragments.Admin;
+package com.jonathan.proyectofinal.fragments.admin;
 
 
 import android.os.Bundle;
@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.adapters.AdminListPSAdapter;
