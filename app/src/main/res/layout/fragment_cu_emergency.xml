@@ -1,60 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragments.carer.EmergencyFragment">
+    android:layout_height="match_parent">
 
-        <RelativeLayout
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/flexbox"
+        android:layout_width="match_parent"
+        android:background="@android:color/white"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentStart="true">
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <LinearLayout
-                android:id="@+id/liner"
+            android:id="@+id/callemergency"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:text="Seller"
+                android:textSize="15sp"
+                android:textColor="@color/gray"
+                android:id="@+id/tvcall"
+                android:layout_height="wrap_content" />
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:layout_alignParentStart="true">
-
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:layout_weight="2">
-                    <Button
-                        android:id="@+id/btn_emergency"
-                        android:text="@string/Emergency_Contacts"
-                        android:gravity="center"
-                        android:textSize="18dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"></Button>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_weight="1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <Button
-                        android:id="@+id/btn_hospital"
-                        android:text="@string/Nearby_hospitals"
-                        android:gravity="center"
-                        android:textSize="18dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"></Button>
-                </LinearLayout>
-            </LinearLayout>
-            <FrameLayout
-                android:id="@+id/fragmentTab"
+                android:layout_gravity="bottom"
+                android:id="@+id/view1"
+                android:background="@color/colorPrimary"
+                android:layout_height="2dp"/>
+        </FrameLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:id="@+id/nearbyhospital"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:text="Buyer"
+                android:id="@+id/tvhospital"
+                android:textColor="@color/gray"
+                android:textSize="15sp"
+                android:layout_height="wrap_content" />
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@id/liner">
-            </FrameLayout>
-        </RelativeLayout>
+                android:visibility="invisible"
+                android:layout_gravity="bottom"
+                android:background="@color/colorPrimary"
+                android:id="@+id/view2"
+                android:layout_height="2dp"/>
+        </FrameLayout>
+    </com.google.android.flexbox.FlexboxLayout>
+
+    <!--THIS IS CONTAINER-->
+    <FrameLayout
+        android:layout_below="@id/flexbox"
+        android:layout_width="match_parent"
+        android:id="@+id/containerpage"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+
 </FrameLayout>
