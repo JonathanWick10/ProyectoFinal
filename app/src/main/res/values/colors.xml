@@ -36,7 +36,7 @@
     <color name="blueDark">#005cb2</color>
 
     <color name="blueLight">#039be5</color>
-    <color name="AzulClaroOscuro">#006db3</color>
+    <color name="cobaltBlue">#006db3</color>
 
     <color name="cyan">#00acc1</color>
     <color name="cyanDark">#007c91</color>
@@ -48,7 +48,7 @@
     <color name="greenDark">#00701a</color>
 
     <color name="greenLight">#7cb342</color>
-    <color name="VerdeClaroOscuro">#4b830d</color>
+    <color name="greenPine">#4b830d</color>
 
     <color name="lima">#c0ca33</color>
     <color name="limaDark">#8c9900</color>
