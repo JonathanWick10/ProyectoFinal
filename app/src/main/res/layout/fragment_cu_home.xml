@@ -23,6 +23,7 @@
 
             <FrameLayout
                 android:id="@+id/containerHome"
+                android:padding="6dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 

@@ -62,7 +62,7 @@ public class PatientsAdapter extends RecyclerView.Adapter<PatientsAdapter.Patien
     public void onBindViewHolder(PatientViewHolder holder, final int position) {
 
         Patient patientholder=listPatients.get(position);
-        holder.name.setText(patientholder.getName());
+        holder.name.setText(patientholder.getFirstName());
         holder.id.setText(patientholder.getAge());   //Review (long)
        // holder.imagePatient.setImageResource(patientholder.id);
         holder.imageDelete.setOnClickListener(new View.OnClickListener(){
