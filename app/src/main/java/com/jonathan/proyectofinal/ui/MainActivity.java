@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.database.CollectionCreation;
 
@@ -20,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnCreate;
     @BindView(R.id.list_collections)
     ListView listView;
-
+FirebaseAnalytics firebaseAnalytics;
     CollectionCreation collectionCreation = new CollectionCreation();
 
     @Override
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
+        firebaseAnalytics= FirebaseAnalytics.getInstance(this);
         //region Logic event OnClick
         btnCreate.setOnClickListener(new View.OnClickListener() {
             @Override
