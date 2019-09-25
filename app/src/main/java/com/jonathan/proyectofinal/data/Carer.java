@@ -1,11 +1,13 @@
 package com.jonathan.proyectofinal.data;
 
-public class Patient {
+public class Carer {
+
     private String patientId;
     private String firstName;
     private String lastName;
     private String identificationType;
     private Long identification;
+    private String profession;
     private String gender;
     private String birthday;
     private Long phoneNumber;
@@ -15,23 +17,19 @@ public class Patient {
     private String email;
     private String nativeCity;
     private String actualCity;
-    private Long familyPhoneNumber;
     private String address;
-    private String dateDiagnostic;
-    private String diagnostic;
-    private String observations;
-    private String emergencyNumber;
+    private String employmentPlace;
 
-
-    public Patient() {
+    public Carer() {
     }
 
-    public Patient(String patientId, String firstName, String lastName, String identificationType, Long identification, String gender, String birthday, Long phoneNumber, Integer age, String userName, String password, String email, String nativeCity, String actualCity, Long familyPhoneNumber, String address, String dateDiagnostic, String diagnostic, String observations, String emergencyNumber) {
+    public Carer(String patientId, String firstName, String lastName, String identificationType, Long identification, String profession, String gender, String birthday, Long phoneNumber, Integer age, String userName, String password, String email, String nativeCity, String actualCity, String address, String employmentPlace) {
         this.patientId = patientId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.identificationType = identificationType;
         this.identification = identification;
+        this.profession = profession;
         this.gender = gender;
         this.birthday = birthday;
         this.phoneNumber = phoneNumber;
@@ -41,12 +39,8 @@ public class Patient {
         this.email = email;
         this.nativeCity = nativeCity;
         this.actualCity = actualCity;
-        this.familyPhoneNumber = familyPhoneNumber;
         this.address = address;
-        this.dateDiagnostic = dateDiagnostic;
-        this.diagnostic = diagnostic;
-        this.observations = observations;
-        this.emergencyNumber = emergencyNumber;
+        this.employmentPlace = employmentPlace;
     }
 
     public String getPatientId() {
@@ -87,6 +81,14 @@ public class Patient {
 
     public void setIdentification(Long identification) {
         this.identification = identification;
+    }
+
+    public String getProfession() {
+        return profession;
+    }
+
+    public void setProfession(String profession) {
+        this.profession = profession;
     }
 
     public String getGender() {
@@ -161,14 +163,6 @@ public class Patient {
         this.actualCity = actualCity;
     }
 
-    public Long getFamilyPhoneNumber() {
-        return familyPhoneNumber;
-    }
-
-    public void setFamilyPhoneNumber(Long familyPhoneNumber) {
-        this.familyPhoneNumber = familyPhoneNumber;
-    }
-
     public String getAddress() {
         return address;
     }
@@ -177,46 +171,23 @@ public class Patient {
         this.address = address;
     }
 
-    public String getDateDiagnostic() {
-        return dateDiagnostic;
+    public String getEmploymentPlace() {
+        return employmentPlace;
     }
 
-    public void setDateDiagnostic(String dateDiagnostic) {
-        this.dateDiagnostic = dateDiagnostic;
-    }
-
-    public String getDiagnostic() {
-        return diagnostic;
-    }
-
-    public void setDiagnostic(String diagnostic) {
-        this.diagnostic = diagnostic;
-    }
-
-    public String getObservations() {
-        return observations;
-    }
-
-    public void setObservations(String observations) {
-        this.observations = observations;
-    }
-
-    public String getEmergencyNumber() {
-        return emergencyNumber;
-    }
-
-    public void setEmergencyNumber(String emergencyNumber) {
-        this.emergencyNumber = emergencyNumber;
+    public void setEmploymentPlace(String employmentPlace) {
+        this.employmentPlace = employmentPlace;
     }
 
     @Override
     public String toString() {
-        return "Patient{" +
+        return "Carer{" +
                 "patientId='" + patientId + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", identificationType='" + identificationType + '\'' +
                 ", identification=" + identification +
+                ", profession='" + profession + '\'' +
                 ", gender='" + gender + '\'' +
                 ", birthday='" + birthday + '\'' +
                 ", phoneNumber=" + phoneNumber +
@@ -226,12 +197,8 @@ public class Patient {
                 ", email='" + email + '\'' +
                 ", nativeCity='" + nativeCity + '\'' +
                 ", actualCity='" + actualCity + '\'' +
-                ", familyPhoneNumber=" + familyPhoneNumber +
                 ", address='" + address + '\'' +
-                ", dateDiagnostic='" + dateDiagnostic + '\'' +
-                ", diagnostic='" + diagnostic + '\'' +
-                ", observations='" + observations + '\'' +
-                ", emergencyNumber='" + emergencyNumber + '\'' +
+                ", employmentPlace='" + employmentPlace + '\'' +
                 '}';
     }
 }
