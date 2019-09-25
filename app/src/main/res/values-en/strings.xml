@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Brainmher</string>
     <string name="list_patient">Lista de pacientes</string>
-    <string name="health_professional">Profesional de la saud</string>
+    <string name="health_professional">Profesional de la salud</string>
     <string name="required">Required field</string>
     <string name="name_patient">Name patient</string>
     <string name="admin_id">ID</string>
