@@ -1,7 +1,8 @@
 package com.jonathan.proyectofinal.data;
 
+import java.util.Map;
+
 public class Patient {
-    private String patientId;
     private String firstName;
     private String lastName;
     private String identificationType;
@@ -21,13 +22,17 @@ public class Patient {
     private String diagnostic;
     private String observations;
     private String emergencyNumber;
+    Map<String,String> assigns;
 
 
     public Patient() {
     }
 
-    public Patient(String patientId, String firstName, String lastName, String identificationType, Long identification, String gender, String birthday, Long phoneNumber, Integer age, String userName, String password, String email, String nativeCity, String actualCity, Long familyPhoneNumber, String address, String dateDiagnostic, String diagnostic, String observations, String emergencyNumber) {
-        this.patientId = patientId;
+    public Patient(String firstName, String lastName, String identificationType, Long identification,
+                   String gender, String birthday, Long phoneNumber, Integer age, String userName,
+                   String password, String email, String nativeCity, String actualCity,
+                   Long familyPhoneNumber, String address, String dateDiagnostic, String diagnostic,
+                   String observations, String emergencyNumber, Map<String,String> assigns) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.identificationType = identificationType;
@@ -47,14 +52,7 @@ public class Patient {
         this.diagnostic = diagnostic;
         this.observations = observations;
         this.emergencyNumber = emergencyNumber;
-    }
-
-    public String getPatientId() {
-        return patientId;
-    }
-
-    public void setPatientId(String patientId) {
-        this.patientId = patientId;
+        this.assigns = assigns;
     }
 
     public String getFirstName() {
@@ -209,10 +207,17 @@ public class Patient {
         this.emergencyNumber = emergencyNumber;
     }
 
+    public Map<String, String> getAssigns() {
+        return assigns;
+    }
+
+    public void setAssigns(Map<String, String> assigns) {
+        this.assigns = assigns;
+    }
+
     @Override
     public String toString() {
         return "Patient{" +
-                "patientId='" + patientId + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", identificationType='" + identificationType + '\'' +

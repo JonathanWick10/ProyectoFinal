@@ -19,7 +19,7 @@ import java.util.Map;
 
 public class CollectionCreation {
 
-    // We create the instance to firestore
+    // Create the instance to firestore
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     List<String> listMnsj = new ArrayList<>();
@@ -34,6 +34,7 @@ public class CollectionCreation {
         // (#1 Adminds, #2 Healthcare profesional, #3 Carers, #4 Patients,
         // #5 Terapies, #6 Notifications)
 
+        //region Create collection Adminds
         db.collection(Constants.Adminds).document(Constants.Example).set(example)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -48,7 +49,9 @@ public class CollectionCreation {
                         listMnsj.add(context.getResources().getString(R.string.creation_failed));
                     }
                 });
+        //endregion
 
+        //region Create collection Healthcare Profesional
         db.collection(Constants.HealthcareProfesional).document(Constants.Example).set(example)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -63,7 +66,9 @@ public class CollectionCreation {
                         listMnsj.add(context.getResources().getString(R.string.creation_failed));
                     }
                 });
+        //endregion
 
+        //region Create collection Carers
         db.collection(Constants.Carers).document(Constants.Example).set(example)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -78,7 +83,9 @@ public class CollectionCreation {
                         listMnsj.add(context.getResources().getString(R.string.creation_failed));
                     }
                 });
+        //endregion
 
+        //region Create collection Pacients
         db.collection(Constants.Patients).document(Constants.Example).set(example)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -93,7 +100,9 @@ public class CollectionCreation {
                         listMnsj.add(context.getResources().getString(R.string.creation_failed));
                     }
                 });
+        //endregion
 
+        //region Create collection Terapies
         db.collection(Constants.Terapies).document(Constants.Example).set(example)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -108,7 +117,9 @@ public class CollectionCreation {
                         listMnsj.add(context.getResources().getString(R.string.creation_failed));
                     }
                 });
+        //endregion
 
+        //region Create collection Notifications
         db.collection(Constants.Notifications).document(Constants.Example).set(example)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -123,6 +134,7 @@ public class CollectionCreation {
                         listMnsj.add(context.getResources().getString(R.string.creation_failed));
                     }
                 });
+        //endregion
 
         return listMnsj;
     }
