@@ -19,9 +19,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_gravity="center"
-                android:text="Seller"
+                android:text="@string/emergency_contacts"
+                android:padding="4dp"
                 android:textSize="15sp"
                 android:textColor="@color/gray"
+                android:gravity="center"
                 android:id="@+id/tvcall"
                 android:layout_height="wrap_content" />
             <View
@@ -38,7 +40,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_gravity="center"
-                android:text="Buyer"
+                android:gravity="center"
+                android:text="@string/nearby_hospitals"
+                android:padding="4dp"
                 android:id="@+id/tvhospital"
                 android:textColor="@color/gray"
                 android:textSize="15sp"
@@ -55,6 +59,7 @@
 
     <!--THIS IS CONTAINER-->
     <FrameLayout
+        android:padding="4dp"
         android:layout_below="@id/flexbox"
         android:layout_width="match_parent"
         android:id="@+id/containerpage"

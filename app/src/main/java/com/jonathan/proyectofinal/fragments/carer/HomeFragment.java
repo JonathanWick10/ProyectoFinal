@@ -49,13 +49,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 mIMainCarer.inflateFragment(getString(R.string.my_care));
                 break;
             case R.id.manage:
-                mIMainCarer.inflateFragment(getString(R.string.Manage));
+                mIMainCarer.inflateFragment(getString(R.string.manage));
                 break;
             case R.id.diary:
-                mIMainCarer.inflateFragment(getString(R.string.Diary));
+                mIMainCarer.inflateFragment(getString(R.string.diary));
                 break;
             case R.id.test:
-                mIMainCarer.inflateFragment(getString(R.string.Test));
+                mIMainCarer.inflateFragment(getString(R.string.test));
                 break;
         }
     }

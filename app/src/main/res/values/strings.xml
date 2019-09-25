@@ -8,9 +8,9 @@
     <string name="admin_place">Place</string>
     <string name="admin_profession">Profession</string>
     <string name="my_care">Mi cuidado</string>
-    <string name="Test">Test</string>
-    <string name="Diary">Agenda</string>
-    <string name="Manage">Gestionar</string>
+    <string name="test">Test</string>
+    <string name="diary">Agenda</string>
+    <string name="manage">Gestionar</string>
     <string name="emergency_contacts">Contactos de Emergencia</string>
     <string name="nearby_hospitals">Hospitales Cercanos</string>
 

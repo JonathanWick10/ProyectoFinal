@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnCreate;
     @BindView(R.id.list_collections)
     ListView listView;
-FirebaseAnalytics firebaseAnalytics;
+    FirebaseAnalytics firebaseAnalytics;
     CollectionCreation collectionCreation = new CollectionCreation();
 
     @Override

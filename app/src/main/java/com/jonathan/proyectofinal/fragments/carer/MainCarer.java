@@ -29,18 +29,14 @@ public class MainCarer extends AppCompatActivity implements IMainCarer {
 
     private void init(){
         //Star to the first Fragment
-        String fragmentTag = "";
         HomeFragment fragment =new HomeFragment();
-        doFragmentTransaction(fragment,fragmentTag, true);
+        doFragmentTransaction(fragment, true);
     }
 
-    private void doFragmentTransaction(Fragment fragment, String Tag,boolean b){
+    private void doFragmentTransaction(Fragment fragment, boolean b){
         //Possibility of changing the Fragment
         transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.content_carer,fragment);
-        if (b){
-            transaction.addToBackStack(Tag);
-        }
         transaction.commit();
     }
 
@@ -76,15 +72,15 @@ public class MainCarer extends AppCompatActivity implements IMainCarer {
             change = new HeartFragment();
             transaction.replace(R.id.containerHome,change).commit();
         }
-        else if(fragmentTag.equals(getString(R.string.Manage))){
+        else if(fragmentTag.equals(getString(R.string.manage))){
             change = new ManageFragment();
             transaction.replace(R.id.containerHome,change).commit();
         }
-        if(fragmentTag.equals(getString(R.string.Diary))){
+        if(fragmentTag.equals(getString(R.string.diary))){
             change = new DiaryFragment();
             transaction.replace(R.id.containerHome,change).commit();
         }
-        else if(fragmentTag.equals(getString(R.string.Test))){
+        else if(fragmentTag.equals(getString(R.string.test))){
             change = new TestFragment();
             transaction.replace(R.id.containerHome,change).commit();
         }

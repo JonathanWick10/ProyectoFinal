@@ -49,7 +49,7 @@
                     android:layout_toRightOf="@+id/heart"
                     android:background="@color/grayLight"
                     android:drawableTop="@drawable/ic_launcher_background"
-                    android:text="@string/Manage"></Button>
+                    android:text="@string/manage"></Button>
 
                 <Button
                     android:id="@+id/diary"
@@ -60,7 +60,7 @@
                     android:layout_marginTop="60dp"
                     android:background="@color/grayLight"
                     android:drawableTop="@drawable/ic_launcher_background"
-                    android:text="@string/Diary"></Button>
+                    android:text="@string/diary"></Button>
 
                 <Button
                     android:id="@+id/test"
@@ -73,7 +73,7 @@
                     android:layout_toRightOf="@id/diary"
                     android:background="@color/grayLight"
                     android:drawableTop="@drawable/ic_launcher_background"
-                    android:text="@string/Test"></Button>
+                    android:text="@string/test"></Button>
 
             </RelativeLayout>
             </FrameLayout>
