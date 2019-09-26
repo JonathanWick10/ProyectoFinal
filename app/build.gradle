@@ -32,7 +32,7 @@ dependencies {
 
     //dependencies for Firebase
     implementation 'com.google.firebase:firebase-core:16.0.4'
-        //dependencies for Firestore
+    //dependencies for Firestore
     implementation 'com.google.firebase:firebase-firestore:21.1.0'
 
     //dependencies for Butterknife
@@ -43,7 +43,7 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview-selection:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'com.google.android.material:material:1.1.0-alpha10'
     implementation 'androidx.navigation:navigation-fragment:2.1.0'
     implementation 'androidx.navigation:navigation-ui:2.1.0'
 

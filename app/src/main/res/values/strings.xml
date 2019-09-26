@@ -17,9 +17,9 @@
     //Tab
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
-    <string name="admin_user_name">Name user</string>
-    <string name="admin_enter">Enter</string>
-    <string name="admin_pass">Password</string>
+    <string name="admin_user_name">Nombre de usuario</string>
+    <string name="admin_enter">Ingresar</string>
+    <string name="admin_pass">Contraseña</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -27,7 +27,7 @@
     <string name="alert">Alert</string>
     <string name="message_delete">sure to eliminate</string>
     <string name="delete">Delete</string>
-    
+
     //Strings for Collections
     <string name="collection_administrators">Colección de administradores creada...</string>
     <string name="collection_healthcare_profeional">Colección de profesionales de la salud creada...</string>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.LoginAdmin">
 
     <RelativeLayout
@@ -16,39 +16,65 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@mipmap/ic_launcher"
-                android:layout_marginBottom="@dimen/Treinta" />
+                android:layout_marginBottom="@dimen/Treinta"
+                android:src="@mipmap/ic_imagotipo" />
 
-            <EditText
-                android:id="@+id/login_admin_edt_name"
-                android:layout_marginTop="@dimen/quince"
-                android:layout_marginBottom="@dimen/quince"
+            <!-- caja de texto para nombre de usuario -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/admin_user_name" />
-
-            <EditText
-                android:id="@+id/login_admin_edt_pass"
                 android:layout_marginTop="@dimen/quince"
-                android:layout_marginBottom="@dimen/quince"
+                android:hint="@string/admin_user_name"
+                app:endIconMode="clear_text">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/login_admin_edt_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="40"
+                    style="@style/StyleTextInputEditText"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- caja de texto para contraseña de usuario -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/admin_pass" />
+                android:layout_marginTop="@dimen/quince"
+                android:hint="@string/admin_pass"
+                app:endIconMode="password_toggle">
 
-            <Button
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/login_admin_edt_pass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    style="@style/StyleTextInputEditText"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- botón para inicio de sesión -->
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/login_admin_btn_enter"
-                android:layout_marginTop="@dimen/Treinta"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/blue"
+                android:layout_marginTop="@dimen/veitene"
                 android:text="@string/admin_enter"
-                />
+                app:cornerRadius="@dimen/veitene"
+                app:rippleColor="@color/colorAccentLight"
+                android:padding="@dimen/quince"
+                android:textStyle="bold"/>
 
         </LinearLayout>
 

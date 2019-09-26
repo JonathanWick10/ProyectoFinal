@@ -14,7 +14,7 @@ import com.jonathan.proyectofinal.interfaces.IMainCarer;
 
 public class MainCarer extends AppCompatActivity implements IMainCarer {
 
-    Fragment active = null, change = null;
+    Fragment change = null;
     FragmentTransaction transaction;
 
     @Override
@@ -36,6 +36,7 @@ public class MainCarer extends AppCompatActivity implements IMainCarer {
     private void doFragmentTransaction(Fragment fragment, boolean b){
         //Possibility of changing the Fragment
         transaction = getSupportFragmentManager().beginTransaction();
+        transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
         transaction.replace(R.id.content_carer,fragment);
         transaction.commit();
     }
@@ -47,19 +48,27 @@ public class MainCarer extends AppCompatActivity implements IMainCarer {
                 public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                     switch (menuItem.getItemId()){
                         case R.id.Home:
-                            active = new HomeFragment();
+                            //active = new HomeFragment();
+                            HomeFragment homeFragment = new HomeFragment();
+                            doFragmentTransaction(homeFragment, true);
                             break;
                         case R.id.List:
-                            active = new ListFragment();
+                            //active = new ListFragment();
+                            ListFragment listFragment = new ListFragment();
+                            doFragmentTransaction(listFragment, true);
                             break;
                         case R.id.Emergency:
-                            active = new EmergencyFragment();
+                            //active = new EmergencyFragment();
+                            EmergencyFragment emergencyFragment = new EmergencyFragment();
+                            doFragmentTransaction(emergencyFragment, true);
                             break;
                         case R.id.Information:
-                            active = new InformationFragment();
+                            //active = new InformationFragment();
+                            InformationFragment informationFragment = new InformationFragment();
+                            doFragmentTransaction(informationFragment, true);
                             break;
                     }
-                    getSupportFragmentManager().beginTransaction().replace(R.id.content_carer,active).commit();
+                    //getSupportFragmentManager().beginTransaction().replace(R.id.content_carer,active).commit();
                     return true;
                 }
             };

@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <!-- colores de app-->
+    <color name="colorPrimary">#2B96D9</color>
+    <color name="colorPrimaryLight">#6dc6ff</color>
+    <color name="colorPrimaryDark">#0068a7</color>
+    <color name="colorAccent">#35e4b3</color>
+    <color name="colorAccentLight">#78ffe5</color>
+    <color name="colorAccentDark">#00b183</color>
 
     <!-- colores basicos -->
     <color name="white">#FFFFFF</color>
