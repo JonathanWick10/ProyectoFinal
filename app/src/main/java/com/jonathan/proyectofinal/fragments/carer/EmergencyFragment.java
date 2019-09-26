@@ -48,17 +48,17 @@ public class EmergencyFragment extends Fragment {
         nearbyhospital = view.findViewById(R.id.nearbyhospital);
         tabs = view.findViewById(R.id.flexbox);
         viewPager = view.findViewById(R.id.containerpage);
-        SetUpViewPager(viewPager,tabs);
+        CallEmergencyFragment fragment = new CallEmergencyFragment();
+        SetUpViewPager(viewPager,tabs,fragment);
         return view;
     }
 
-    private void SetUpViewPager(ViewPager viewPager, TabLayout tabs) {
-        EmergencyFragment fragment = new EmergencyFragment();
+    private void SetUpViewPager(ViewPager viewPager, TabLayout tabs, Fragment fragment) {
         if (fragment != null) {
             adapter = new Adapter(getActivity().getSupportFragmentManager());
+            tabs.setupWithViewPager(viewPager);
+            viewPager.setAdapter(adapter);
         }
-        tabs.setupWithViewPager(viewPager);
-        viewPager.setAdapter(adapter);
     }
     public class Adapter extends FragmentPagerAdapter{
 
@@ -84,9 +84,11 @@ public class EmergencyFragment extends Fragment {
             switch (position){
                 case 0:
                     text1 = getString(R.string.emergency_contacts);
+                    mIMainCarer.inflateFragment(getString(R.string.emergency_contacts));
                     return text1;
                 case 1:
                     text2 = getString(R.string.nearby_hospitals);
+                    mIMainCarer.inflateFragment(getString(R.string.nearby_hospitals));
                     return text2;
             }
             return null;
@@ -97,5 +99,11 @@ public class EmergencyFragment extends Fragment {
             // Show 2 total pages.
             return 2;
         }
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mIMainCarer = (IMainCarer) getActivity();
     }
 }
