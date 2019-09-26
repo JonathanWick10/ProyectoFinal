@@ -19,11 +19,7 @@ import java.util.List;
 public class PatientsAdapter extends RecyclerView.Adapter<PatientsAdapter.PatientViewHolder> {
 
     List<Patient> listPatients;
-
-
-
     interDelete clickDelete;
-
 
     private Context context;
     private IOnPatientClickListener onPatientClickListener;
@@ -31,12 +27,11 @@ public class PatientsAdapter extends RecyclerView.Adapter<PatientsAdapter.Patien
     public interface interDelete{
         void clickItem(Patient item);
     }
-
-    public PatientsAdapter(List<Patient> listPatients, interDelete clickDelete) {
+/*    public PatientsAdapter(List<Patient> listPatients, interDelete clickDelete) {
         this.listPatients = listPatients;
         this.clickDelete = clickDelete;
     }
-
+*/
     public PatientsAdapter(Context context, IOnPatientClickListener onPatientClickListener) {
         this.context = context;
         this.onPatientClickListener = onPatientClickListener;
