@@ -58,6 +58,8 @@ public class EmergencyFragment extends Fragment {
             adapter = new Adapter(getActivity().getSupportFragmentManager());
             tabs.setupWithViewPager(viewPager);
             viewPager.setAdapter(adapter);
+            tabs.getTabAt(0).setIcon(R.drawable.ic_loyalty);
+            tabs.getTabAt(1).setIcon(R.drawable.ic_hospital);
         }
     }
     public class Adapter extends FragmentPagerAdapter{

@@ -9,14 +9,18 @@
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity">
 
-
-    <Button
+    <!-- botón para la creación de categorías -->
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/button_create"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryDark"
         android:text="@string/create_collections"
-        android:textColor="@color/white"></Button>
+        app:cornerRadius="@dimen/veitene"
+        app:rippleColor="@color/colorAccentLight"
+        android:padding="@dimen/quince"
+        android:textStyle="bold"/>
 
     <ListView
         android:id="@+id/list_collections"
