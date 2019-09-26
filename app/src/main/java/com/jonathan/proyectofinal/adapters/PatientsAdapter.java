@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.data.Patient;
+import com.jonathan.proyectofinal.interfaces.IOnPatientClickListener;
 
 import java.util.List;
 
@@ -20,7 +21,12 @@ public class PatientsAdapter extends RecyclerView.Adapter<PatientsAdapter.Patien
     List<Patient> listPatients;
 
 
+
     interDelete clickDelete;
+
+
+    private Context context;
+    private IOnPatientClickListener onPatientClickListener;
 
     public interface interDelete{
         void clickItem(Patient item);
@@ -29,6 +35,11 @@ public class PatientsAdapter extends RecyclerView.Adapter<PatientsAdapter.Patien
     public PatientsAdapter(List<Patient> listPatients, interDelete clickDelete) {
         this.listPatients = listPatients;
         this.clickDelete = clickDelete;
+    }
+
+    public PatientsAdapter(Context context, IOnPatientClickListener onPatientClickListener) {
+        this.context = context;
+        this.onPatientClickListener = onPatientClickListener;
     }
 
     public  static class PatientViewHolder extends RecyclerView.ViewHolder{
@@ -75,6 +86,11 @@ public class PatientsAdapter extends RecyclerView.Adapter<PatientsAdapter.Patien
             }
         });
 
+    }
+    public  void addAll(List<Patient> patients){
+        listPatients.clear();
+        listPatients.addAll(patients);
+        notifyDataSetChanged();
     }
 
     @Override
