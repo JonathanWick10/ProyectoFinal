@@ -5,22 +5,36 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewOverlay;
+import android.widget.Adapter;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.ViewPager;
 
+import com.google.android.material.tabs.TabItem;
+import com.google.android.material.tabs.TabLayout;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.interfaces.IMainCarer;
 
 public class EmergencyFragment extends Fragment {
 
+    FragmentTransaction transaction;
+
+    TabLayout tabs;
+    TabItem callemergency, nearbyhospital;
+    ViewPager viewPager;
+    Adapter adapter;
+    String text1,text2;
+
     private IMainCarer mIMainCarer;
-    FrameLayout callemergency,nearbyhospital;
-    View view1,view2;
-    TextView tvcall, tvhospital;
+
     public EmergencyFragment() {
     }
 
@@ -32,70 +46,56 @@ public class EmergencyFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_cu_emergency,container,false);
         callemergency = view.findViewById(R.id.callemergency);
         nearbyhospital = view.findViewById(R.id.nearbyhospital);
-        view1 = view.findViewById(R.id.view1);
-        view2 = view.findViewById(R.id.view2);
-        tvcall = view.findViewById(R.id.tvcall);
-        tvhospital = view.findViewById(R.id.tvhospital);
-        callemergency.setOnClickListener(clik);
-        nearbyhospital.setOnClickListener(clik);
-
-        //LOAD PAGE FOR FIRST
-        loadPage(new CallEmergencyFragment());
-        tvcall.setTextColor(getActivity().getResources().getColor(R.color.colorPrimary));
+        tabs = view.findViewById(R.id.flexbox);
+        viewPager = view.findViewById(R.id.containerpage);
+        SetUpViewPager(viewPager,tabs);
         return view;
     }
 
-    //ONCLICK LISTENER
-    public View.OnClickListener clik = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            switch (view.getId()) {
-                case R.id.callemergency:
-                    //ONSELLER CLICK
-                    //LOAD SELLER FRAGMENT CLASS
-                    loadPage(new CallEmergencyFragment());
-
-                    //WHEN CLICK TEXT COLOR CHANGED
-                    tvcall.setTextColor(getActivity().getResources().getColor(R.color.colorPrimary));
-                    tvhospital.setTextColor(getActivity().getResources().getColor(R.color.gray));
-
-                    //VIEW VISIBILITY WHEN CLICKED
-                    view1.setVisibility(View.VISIBLE);
-                    view2.setVisibility(View.INVISIBLE);
-                    mIMainCarer.inflateFragment(getString(R.string.emergency_contacts));
-                    break;
-                case R.id.nearbyhospital:
-                    loadPage(new NearbyHospitalFragment());
-
-                    //WHEN CLICK TEXT COLOR CHANGED
-                    tvcall.setTextColor(getActivity().getResources().getColor(R.color.gray));
-                    tvhospital.setTextColor(getActivity().getResources().getColor(R.color.colorPrimary));
-
-                    //VIEW VISIBILITY WHEN CLICKED
-                    view1.setVisibility(View.INVISIBLE);
-                    view2.setVisibility(View.VISIBLE);
-                    mIMainCarer.inflateFragment(getString(R.string.nearby_hospitals));
-                    break;
-            }
-        }
-    };
-
-        @Override
-        public void onAttach(Context context) {
-            super.onAttach(context);
-            mIMainCarer = (IMainCarer) getActivity();
-        }
-
-    //LOAD PAGE FRAGMENT METHOD
-    private boolean loadPage(Fragment fragment) {
-
+    private void SetUpViewPager(ViewPager viewPager, TabLayout tabs) {
+        EmergencyFragment fragment = new EmergencyFragment();
         if (fragment != null) {
-            getActivity().getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.containerpage, fragment)
-                    .commit();
-            return true;
+            adapter = new Adapter(getActivity().getSupportFragmentManager());
         }
-        return false;
+        tabs.setupWithViewPager(viewPager);
+        viewPager.setAdapter(adapter);
+    }
+    public class Adapter extends FragmentPagerAdapter{
+
+        public Adapter(FragmentManager fm) { super(fm);}
+
+        @Override
+        public Fragment getItem(int position) {
+
+            switch (position){
+                case 0:
+                    CallEmergencyFragment callEmergencyFragment = new CallEmergencyFragment();
+                    return callEmergencyFragment;
+                case 1:
+                    NearbyHospitalFragment nearbyHospitalFragment = new NearbyHospitalFragment();
+                    return nearbyHospitalFragment;
+            }
+            return null;
+        }
+
+        @Nullable
+        @Override
+        public CharSequence getPageTitle(int position) {
+            switch (position){
+                case 0:
+                    text1 = getString(R.string.emergency_contacts);
+                    return text1;
+                case 1:
+                    text2 = getString(R.string.nearby_hospitals);
+                    return text2;
+            }
+            return null;
+        }
+
+        @Override
+        public int getCount() {
+            // Show 2 total pages.
+            return 2;
+        }
     }
 }
