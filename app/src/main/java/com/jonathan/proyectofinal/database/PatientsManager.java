@@ -11,6 +11,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.jonathan.proyectofinal.data.Carer;
+import com.jonathan.proyectofinal.data.HealthcareProfessional;
 import com.jonathan.proyectofinal.data.Patient;
 import com.jonathan.proyectofinal.tools.Constants;
 
@@ -75,7 +76,7 @@ public class PatientsManager {
     //region Read Patients for Carer
     public List<Patient> listForCarer(Carer carer) {
         collectionReferencePatients
-                .whereEqualTo("id", carer.getIdentification().toString())
+                .whereEqualTo("assigns.id", carer.getIdentification().toString())
                 .orderBy("firstName")
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -100,9 +101,9 @@ public class PatientsManager {
     //endregion
 
     //region Read Patients for Healthcarer profesional
-    public List<Patient> listForHP() {
+    public List<Patient> listForHP(HealthcareProfessional healthcareProfessional) {
         collectionReferencePatients
-                //.whereEqualTo("id", carer.getIdentification().toString())
+                .whereEqualTo("id", healthcareProfessional.getIdentification().toString())
                 .orderBy("firstName")
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
