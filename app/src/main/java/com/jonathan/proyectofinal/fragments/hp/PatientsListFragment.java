@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.jonathan.proyectofinal.R;
@@ -28,7 +29,10 @@ public class PatientsListFragment extends Fragment implements IPatientsListFragm
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
 
+    LinearLayoutManager linearLayoutManager;
+
     private PatientsAdapter adapter;
+    private View view;
 
 
     public PatientsListFragment() {
@@ -37,20 +41,29 @@ public class PatientsListFragment extends Fragment implements IPatientsListFragm
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_patients, container, false);
+
+        view = inflater.inflate(R.layout.fragment_patients, container, false);
+        reference();
+
+        return view;
+    }
+
+    private void reference() {
+        linearLayoutManager=new LinearLayoutManager(getActivity());
         ButterKnife.bind(this, view);
         initRecyclerView();
         initAdapter();
-        return view;
     }
+
     private void initAdapter() {
         if (adapter == null){
             adapter = new PatientsAdapter(getActivity().getApplicationContext(), this);
         }
     }
     private void initRecyclerView() {
-        //recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setHasFixedSize(true);
     }
 
     public void onItemClick(Patient patient) {
