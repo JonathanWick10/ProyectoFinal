@@ -29,7 +29,7 @@ public class LoadBrainmher extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(LoadBrainmher .this, MainCarer.class);
+                Intent intent = new Intent(LoadBrainmher .this, LoginAdmin.class);
                 startActivity(intent);
                 finish();
             };
