@@ -39,5 +39,7 @@
     <string name="creation_failed">Creation Failed</string>
     <string name="create_collections">Crear coleciones</string>
     <string name="create">Create</string>
-    
+
+    <string name="lst_ps_name">Health professional</string>
+    <string name="crud_ps">New P.S.</string>
 </resources>

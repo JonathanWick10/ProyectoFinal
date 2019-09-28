@@ -38,5 +38,17 @@
     <string name="creation_failed">Fallo la Creación</string>
     <string name="create_collections">Crear coleciones</string>
     <string name="create">Crear</string>
+    <string name="lst_ps_name">Profesional de la salud</string>
+    <string name="crud_ps">Nuevo P.S.</string>
+    <string name="lastname_ps">Lastname</string>
+    <string name="name_ps">Name</string>
+    <string name="documet_ps">Document</string>
+    <string name="profession_ps">Profession</string>
+    <string name="admin_ps_famale">Female</string>
+    <string name="admin_ps_male">Male</string>
+    <string name="date_birth_ps">Date of birth</string>
+    <string name="admin_ps_age">Age</string>
+    <string name="admin_ps_telephone">Telephone</string>
+    <string name="admin_ps_city">City</string>
 
 </resources>
