@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.jonathan.proyectofinal">
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_isotipo"
@@ -9,10 +9,12 @@
         android:roundIcon="@mipmap/ic_isotipo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".fragments.carer.MainCarer"/>
-        <activity android:name=".ui.AdminHome"></activity>
+        <activity android:name=".ui.HealthProfessionalActivity"></activity>
+        <activity android:name=".fragments.carer.MainCarer" />
+        <activity android:name=".ui.AdminHome" />
         <activity android:name=".ui.PatientsList" />
         <activity android:name=".ui.LoginAdmin">
+
             <!-- cambiar al login -->
         </activity>
         <activity android:name=".ui.LoadBrainmher">
@@ -25,5 +27,6 @@
         <activity android:name=".ui.MainActivity" />
     </application>
 
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>
