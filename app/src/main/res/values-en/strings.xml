@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Brainmher</string>
+    <string name="patient">Patient</string>
+    <string name="carer">Carer</string>
     <string name="list_patient">Lista de pacientes</string>
     <string name="health_professional">Profesional de la salud</string>
     <string name="required">Required field</string>
@@ -12,8 +14,10 @@
     <string name="test">Test</string>
     <string name="diary">Agenda</string>
     <string name="manage">Gestionar</string>
-    <string name="emergency_contacts">Contactos de Emergencia</string>
-    <string name="nearby_hospitals">Hospitales Cercanos</string>
+    <string name="emergency_contacts">Contactos</string>
+    <string name="nearby_hospitals">Hospitales</string>
+    <string name="phases_ea">Fases de la E.A.</string>
+    <string name="general_information">Info General</string>
 
     //Tab
     <string name="tab_text_1">Tab 1</string>

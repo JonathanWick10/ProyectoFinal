@@ -1,4 +1,4 @@
-package com.jonathan.proyectofinal.fragments.carer;
+package com.jonathan.proyectofinal.ui;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +10,18 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.jonathan.proyectofinal.R;
+import com.jonathan.proyectofinal.fragments.carer.CallEmergencyFragment;
+import com.jonathan.proyectofinal.fragments.carer.DiaryFragment;
+import com.jonathan.proyectofinal.fragments.carer.EmergencyFragment;
+import com.jonathan.proyectofinal.fragments.carer.GeneralInformationFragment;
+import com.jonathan.proyectofinal.fragments.carer.HeartFragment;
+import com.jonathan.proyectofinal.fragments.carer.HomeFragment;
+import com.jonathan.proyectofinal.fragments.carer.InformationFragment;
+import com.jonathan.proyectofinal.fragments.carer.ListFragment;
+import com.jonathan.proyectofinal.fragments.carer.ManageFragment;
+import com.jonathan.proyectofinal.fragments.carer.NearbyHospitalFragment;
+import com.jonathan.proyectofinal.fragments.carer.PhasesEAFragment;
+import com.jonathan.proyectofinal.fragments.carer.TestFragment;
 import com.jonathan.proyectofinal.interfaces.IMainCarer;
 
 public class MainCarer extends AppCompatActivity implements IMainCarer {
@@ -100,6 +112,14 @@ public class MainCarer extends AppCompatActivity implements IMainCarer {
         else if(fragmentTag.equals(getString(R.string.emergency_contacts))){
             change = new CallEmergencyFragment();
             transaction.replace(R.id.containerpage,change).commit();
+        }
+        else if(fragmentTag.equals(getString(R.string.phases_ea))){
+            change = new PhasesEAFragment();
+            transaction.replace(R.id.viewpager,change).commit();
+        }
+        else if(fragmentTag.equals(getString(R.string.general_information))){
+            change = new GeneralInformationFragment();
+            transaction.replace(R.id.viewpager,change).commit();
         }
     }
 }

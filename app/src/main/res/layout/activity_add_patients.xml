@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.AddPatients">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_lb_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="@dimen/marginLeftAddPatients"
+            android:text="Nombre"
+            android:textColor="@color/black"
+            android:textSize="@dimen/quincetext"
+            android:layout_marginTop="26dp"/>
+
+        <EditText
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/heightEditTextAddPatients"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="@dimen/marginLeftEditTextAddPatients"
+            android:layout_marginRight="@dimen/marginLeftAddPatients"
+            android:layout_toRightOf="@+id/tv_lb_name"
+            android:text="Nombre"
+            android:paddingHorizontal="@dimen/paddingHorizontalEditTextAddPatients"
+            android:background="@color/white"
+            android:textColor="@color/black"
+            android:textSize="@dimen/quincetext"
+            android:layout_marginTop="16dp"/>
+
+        <TextView
+            android:id="@+id/tv_lb_lastname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="@dimen/marginLeftAddPatients"
+            android:layout_below="@+id/tv_lb_name"
+            android:textColor="@color/black"
+            android:text="Apellido"
+            android:textSize="@dimen/quincetext"
+            android:layout_marginTop="@dimen/marginTopAddPatients"/>
+        <EditText
+            android:id="@+id/tv_lastname"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/heightEditTextAddPatients"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="@dimen/marginLeftEditTextAddPatients"
+            android:layout_marginRight="@dimen/marginLeftAddPatients"
+            android:layout_below="@+id/tv_name"
+            android:layout_toRightOf="@+id/tv_lb_name"
+            android:text="Apellido"
+            android:paddingHorizontal="@dimen/paddingHorizontalEditTextAddPatients"
+            android:textColor="@color/black"
+            android:textSize="@dimen/quincetext"
+            android:background="@color/white"
+            android:layout_marginTop="@dimen/marginTopEditTextAddPatients"/>
+
+
+
+        <TextView
+            android:id="@+id/tv_lb_identification_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="@dimen/marginLeftAddPatients"
+            android:layout_below="@+id/tv_lb_lastname"
+            android:textColor="@color/black"
+            android:text="Tipo de identificación"
+            android:textSize="@dimen/quincetext"
+            android:layout_marginTop="@dimen/marginTopAddPatients"/>
+        <EditText
+            android:id="@+id/tv_identification_type"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/heightEditTextAddPatients"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="@dimen/marginLeftEditTextAddPatients"
+            android:layout_marginRight="@dimen/marginLeftAddPatients"
+            android:layout_below="@+id/tv_lastname"
+            android:layout_toRightOf="@+id/tv_lb_name"
+            android:text="Tipo de identificación"
+            android:paddingHorizontal="@dimen/paddingHorizontalEditTextAddPatients"
+            android:textColor="@color/black"
+            android:textSize="@dimen/quincetext"
+            android:background="@color/white"
+            android:layout_marginTop="@dimen/marginTopEditTextAddPatients"/>
+
+        <TextView
+            android:id="@+id/tv_lb_identification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="@dimen/marginLeftAddPatients"
+            android:layout_below="@+id/tv_lb_identification_type"
+            android:textColor="@color/black"
+            android:text="Identificación"
+            android:textSize="@dimen/quincetext"
+            android:layout_marginTop="@dimen/marginTopAddPatients"/>
+        <EditText
+            android:id="@+id/tv_identification"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/heightEditTextAddPatients"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="@dimen/marginLeftEditTextAddPatients"
+            android:layout_marginRight="@dimen/marginLeftAddPatients"
+            android:layout_toRightOf="@+id/tv_lb_name"
+            android:paddingHorizontal="@dimen/paddingHorizontalEditTextAddPatients"
+            android:textColor="@color/black"
+            android:textSize="@dimen/quincetext"
+            android:background="@color/white"
+            android:layout_marginTop="@dimen/marginTopEditTextAddPatients"
+            android:layout_below="@+id/tv_identification_type"
+            android:text="Identificación"
+            />
+
+        <TextView
+            android:id="@+id/tv_lb_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="@dimen/marginLeftAddPatients"
+            android:textColor="@color/black"
+            android:textSize="@dimen/quincetext"
+            android:layout_marginTop="@dimen/marginTopAddPatients"
+            android:layout_below="@+id/tv_lb_identification"
+            android:text="Genero"/>
+        <EditText
+            android:id="@+id/tv_gender"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/heightEditTextAddPatients"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="@dimen/marginLeftEditTextAddPatients"
+            android:layout_marginRight="@dimen/marginLeftAddPatients"
+            android:layout_toRightOf="@+id/tv_lb_name"
+            android:paddingHorizontal="@dimen/paddingHorizontalEditTextAddPatients"
+            android:textColor="@color/black"
+            android:textSize="@dimen/quincetext"
+            android:background="@color/white"
+            android:layout_marginTop="@dimen/marginTopEditTextAddPatients"
+            android:layout_below="@+id/tv_identification"
+            android:text="Genero"
+            />
+
+    </RelativeLayout>
+
+
+</FrameLayout>

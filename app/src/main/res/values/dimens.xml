@@ -55,4 +55,12 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="appbar_padding">16dp</dimen>
     <dimen name="appbar_padding_top">8dp</dimen>
+    <dimen name="marginLeftAddPatients">10dp</dimen>
+    <dimen name="marginTopAddPatients">28dp</dimen>
+
+    <dimen name="marginTopEditTextAddPatients">8dp</dimen>
+    <dimen name="marginLeftEditTextAddPatients">110dp</dimen>
+    <dimen name="paddingHorizontalEditTextAddPatients">8dp</dimen>
+    <dimen name="heightEditTextAddPatients">40dp</dimen>
 </resources>
+

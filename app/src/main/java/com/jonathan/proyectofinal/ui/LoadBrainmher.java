@@ -9,7 +9,6 @@ import android.os.Handler;
 import android.view.WindowManager;
 
 import com.jonathan.proyectofinal.R;
-import com.jonathan.proyectofinal.fragments.carer.MainCarer;
 
 public class LoadBrainmher extends AppCompatActivity {
 
