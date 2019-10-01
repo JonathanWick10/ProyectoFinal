@@ -3,15 +3,40 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:text="INFORMACIÓN"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="35dp"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:fontFamily="sans-serif-smallcaps"
-        ></TextView>
+        android:layout_height="match_parent">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/ps_tabs_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/ps_tab_info_patient"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Monday"
+                android:layout_alignParentStart="true"
+                />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/ps_tab_info_carer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tuesday" />
+
+        </com.google.android.material.tabs.TabLayout>
+
+        <androidx.viewpager.widget.ViewPager
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="4dp"
+            android:layout_below="@id/ps_tabs_info"
+            android:id="@+id/containerPageInformationPS"
+            android:layout_alignParentBottom="true"
+            />
+
+    </RelativeLayout>
 
 </FrameLayout>

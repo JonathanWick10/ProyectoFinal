@@ -15,11 +15,14 @@ import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.fragments.hp.GraphPSFragment;
+import com.jonathan.proyectofinal.fragments.hp.InformationCarerPSFragment;
 import com.jonathan.proyectofinal.fragments.hp.InformationPSFragment;
+import com.jonathan.proyectofinal.fragments.hp.InformationPatientPSFragment;
 import com.jonathan.proyectofinal.fragments.hp.NotificationPSFragment;
 import com.jonathan.proyectofinal.fragments.hp.TherapyPSFragment;
+import com.jonathan.proyectofinal.interfaces.IMainCarer;
 
-public class HealthProfessionalActivity extends AppCompatActivity {
+public class HealthProfessionalActivity extends AppCompatActivity implements IMainCarer {
 
     Fragment change = null;
     FragmentTransaction transaction;
@@ -30,17 +33,15 @@ public class HealthProfessionalActivity extends AppCompatActivity {
         init();
         setContentView(R.layout.activity_health_professional);
 
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar2);
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar_health_professional);
         setSupportActionBar(myToolbar);
         BottomNavigationView navigationView = findViewById(R.id.navigation_health_professional);
         navigationView.setOnNavigationItemSelectedListener(navListener);
     }
 
     private void init() {
-
         InformationPSFragment fragment = new InformationPSFragment();
         doFragmentTransaction(fragment, true);
-
 
     }
 
@@ -106,7 +107,7 @@ public class HealthProfessionalActivity extends AppCompatActivity {
         }
     };
 
-/*
+
     @Override
     public void inflateFragment(String fragmentTag) {
         transaction = getSupportFragmentManager().beginTransaction();
@@ -119,5 +120,5 @@ public class HealthProfessionalActivity extends AppCompatActivity {
             change = new InformationCarerPSFragment();
             transaction.replace(R.id.containerPageInformationPS,change).commit();
         }
-    }*/
+    }
 }
