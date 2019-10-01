@@ -2,6 +2,7 @@ package com.jonathan.proyectofinal.ui;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -28,6 +29,9 @@ public class HealthProfessionalActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         init();
         setContentView(R.layout.activity_health_professional);
+
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar2);
+        setSupportActionBar(myToolbar);
         BottomNavigationView navigationView = findViewById(R.id.navigation_health_professional);
         navigationView.setOnNavigationItemSelectedListener(navListener);
     }
