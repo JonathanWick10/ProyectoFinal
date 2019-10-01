@@ -20,6 +20,7 @@
         android:layout_height="wrap_content"
         app:menu="@menu/menu_health_professional"
         android:layout_alignParentBottom="true"
+        style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
         />
 
 </RelativeLayout>
