@@ -5,17 +5,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewOverlay;
-import android.widget.Adapter;
-import android.widget.FrameLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabItem;
@@ -24,8 +19,6 @@ import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.interfaces.IMainCarer;
 
 public class EmergencyFragment extends Fragment {
-
-    FragmentTransaction transaction;
 
     TabLayout tabs;
     TabItem callemergency, nearbyhospital;
