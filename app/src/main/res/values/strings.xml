@@ -54,5 +54,11 @@
     <string name="admin_ps_age">Age</string>
     <string name="admin_ps_telephone">Telephone</string>
     <string name="admin_ps_city">City</string>
+    <string name="admin_til_user">User</string>
+    <string name="admin_til_pass">Password</string>
+    <string name="admin_til_confin_pass">Confirm Password</string>
+    <string name="admin_til_confin_email">Email</string>
+    <string name="admin_til_workplace">Workplace</string>
+    <string name="admin_til_saveps">Save</string>
 
 </resources>

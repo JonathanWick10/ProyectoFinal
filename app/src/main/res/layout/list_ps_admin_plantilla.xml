@@ -127,6 +127,8 @@
 
     </LinearLayout>
 
+
+
     <!-- Puedes utilizar para lista completa -->
   <!--  <LinearLayout
         android:padding="@dimen/diez"

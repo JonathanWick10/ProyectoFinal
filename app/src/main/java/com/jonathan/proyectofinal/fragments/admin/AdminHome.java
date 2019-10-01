@@ -16,6 +16,7 @@ import com.jonathan.proyectofinal.adapters.AdminListPSAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class AdminHome extends AppCompatActivity {
 
@@ -28,14 +29,31 @@ public class AdminHome extends AppCompatActivity {
         fragmentMethos();
 
     }
+
+
     // Administrador de fragmentos
     private void fragmentMethos() {
         // obligatorios
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.admin_home_frm_contenedor,new AdminListPSFragment(alertDelete()));  // remplaza un fragmento de contenedor
+        fragmentTransaction.replace(R.id.admin_home_frm_contenedor,new AdminListPSFragment(alertDelete(), addPsSalud()));  // remplaza un fragmento de contenedor
         fragmentTransaction.commit();
     }
+
+    private AdminListPSFragment.AdminListPSFragmentI addPsSalud(){
+        AdminListPSFragment.AdminListPSFragmentI professionalI = new AdminListPSFragment.AdminListPSFragmentI() {
+            @Override
+            public void onclickAddPs() {
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.admin_home_frm_contenedor,new AdminAddHealthProfessional());
+                fragmentTransaction.commit();
+            }
+        };
+
+        return professionalI;
+    }
+
 
     // Interfas para generar alerta de eliminar
     private AdminListPSAdapter.AdminListPSAdapterI  alertDelete() {

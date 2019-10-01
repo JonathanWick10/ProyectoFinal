@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.BindView;
+import butterknife.OnClick;
 
 
 /**
@@ -31,18 +32,20 @@ public class AdminListPSFragment extends Fragment {
     private View view;
     private RecyclerView recyclerView ;
     private AdminListPSAdapter.AdminListPSAdapterI adapterI;
+    private AdminListPSFragmentI listPSFragmentI;
 
-    public AdminListPSFragment (AdminListPSAdapter.AdminListPSAdapterI adapterI){
+    public AdminListPSFragment (AdminListPSAdapter.AdminListPSAdapterI adapterI, AdminListPSFragmentI listPSFragmentI){
         this.adapterI = adapterI;
+        this.listPSFragmentI = listPSFragmentI;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_admin_home, container, false);
+
+        ButterKnife.bind(this, view);
+
         reference();
-
-
-
         return view;
     }
 
@@ -60,6 +63,16 @@ public class AdminListPSFragment extends Fragment {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
+    }
+
+    @OnClick(R.id.admin_fab_add)
+    public void addPs(View view){
+
+        listPSFragmentI.onclickAddPs();
+    }
+
+    public interface AdminListPSFragmentI{
+        void onclickAddPs();
     }
 
 }
