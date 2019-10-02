@@ -63,4 +63,25 @@
     <string name="admin_til_workplace">Workplace</string>
     <string name="admin_til_saveps">Save</string>
 
+    <string name="first_name">Nombres</string>
+    <string name="last_name">Apellidos</string>
+    <string name="identification_type">Tipo de identificación</string>
+    <string name="identification">Identificación</string>
+    <string name="gender">Genero</string>
+    <string name="birthday">Fecha de nacimiento</string>
+    <string name="phone_number">Número telefonico</string>
+    <string name="age">Edad</string>
+    <string name="user_name">Usuario</string>
+    <string name="password">Contraseña</string>
+    <string name="email">Correo</string>
+    <string name="native_city">Ciudad de nacimiento</string>
+    <string name="actual_city">Ciudad actual</string>
+    <string name="family_phone_number">Número telefonico familiar</string>
+    <string name="address">Dirección</string>
+    <string name="date_diagnostic">Fecha de diagnostico</string>
+    <string name="diagnostic">Diagnostico</string>
+    <string name="observations">Observaciones</string>
+    <string name="emergency_number">Número de emergencia</string>
+
+
 </resources>

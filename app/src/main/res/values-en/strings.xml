@@ -63,4 +63,24 @@
     <string name="admin_til_confin_email">Email</string>
     <string name="admin_til_workplace">Workplace</string>
     <string name="admin_til_saveps">Save</string>
+
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="identification_type">Identification type</string>
+    <string name="identification">Identification</string>
+    <string name="gender">Gender</string>
+    <string name="birthday">Birthday</string>
+    <string name="phone_number">Phone number</string>
+    <string name="age">Age</string>
+    <string name="user_name">User name</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="native_city">Native city</string>
+    <string name="actual_city">Actual city</string>
+    <string name="family_phone_number">Family phone number</string>
+    <string name="address">Address</string>
+    <string name="date_diagnostic">Date diagnostic</string>
+    <string name="diagnostic">Diagnostic</string>
+    <string name="observations">Observations</string>
+    <string name="emergency_number">Emergency number</string>
 </resources>
