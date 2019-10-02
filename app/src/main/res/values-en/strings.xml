@@ -64,11 +64,14 @@
     <string name="admin_til_workplace">Workplace</string>
     <string name="admin_til_saveps">Save</string>
 
+    <string name="add_patient">Add User</string>
     <string name="first_name">First name</string>
     <string name="last_name">Last name</string>
     <string name="identification_type">Identification type</string>
     <string name="identification">Identification</string>
     <string name="gender">Gender</string>
+    <string name="female">Female</string>
+    <string name="male">Male</string>
     <string name="birthday">Birthday</string>
     <string name="phone_number">Phone number</string>
     <string name="age">Age</string>

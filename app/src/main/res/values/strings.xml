@@ -63,11 +63,14 @@
     <string name="admin_til_workplace">Workplace</string>
     <string name="admin_til_saveps">Save</string>
 
+    <string name="add_patient">Agregar Paciente</string>
     <string name="first_name">Nombres</string>
     <string name="last_name">Apellidos</string>
     <string name="identification_type">Tipo de identificación</string>
     <string name="identification">Identificación</string>
-    <string name="gender">Genero</string>
+    <string name="gender">Género</string>
+    <string name="female">Femenino</string>
+    <string name="male">Masculino</string>
     <string name="birthday">Fecha de nacimiento</string>
     <string name="phone_number">Número telefonico</string>
     <string name="age">Edad</string>
