@@ -9,8 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="@dimen/ten"
-        >
+        android:padding="@dimen/ten">
 
         <ImageView
             android:id="@+id/admin_createps_img_ps"
@@ -20,12 +19,12 @@
             android:src="@drawable/avatar_patient"/>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/StyleTextInputLayotTextBoxForms"
             android:id="@+id/admin_createps_til_name"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
-
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
             <com.google.android.material.textfield.TextInputEditText
+                style="@style/StyleTextInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/name_ps"
@@ -33,44 +32,47 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            style="@style/StyleTextInputLayotTextBoxForms"
             android:id="@+id/admin_createps_til_lastname"
-            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-            app:boxBackgroundColor="@color/white">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
             <com.google.android.material.textfield.TextInputEditText
+                style="@style/StyleTextInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/lastname_ps"
                 android:inputType="text"/>
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!--
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/admin_createps_sp_document"/>
+            -->
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/StyleTextInputLayotTextBoxForms"
             android:id="@+id/admin_createps_til_documet"
-            app:boxStrokeColor="@color/colorPrimaryDark"
-            >
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
             <com.google.android.material.textfield.TextInputEditText
+                style="@style/StyleTextInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/documet_ps"
-                android:inputType="number"
-                />
+                android:inputType="number"/>
         </com.google.android.material.textfield.TextInputLayout>
 
 
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/StyleTextInputLayotTextBoxForms"
             android:id="@+id/admin_create_add_til_confin_pass"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <EditText
+            android:layout_height="match_parent"
+            app:endIconMode="password_toggle">
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/StyleTextInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/admin_til_confin_pass"
@@ -78,11 +80,12 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/StyleTextInputLayotTextBoxForms"
             android:id="@+id/admin_createps_til_profession"
-            >
-            <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/StyleTextInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/profession_ps"
@@ -97,6 +100,7 @@
             android:id="@+id/admin_createps_rg_gender">
 
             <RadioButton
+                style="@style/StyleRadioButtonForms"
                 android:id="@+id/admin_createps_rdbtn_f"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -104,6 +108,7 @@
                 android:text="@string/admin_ps_famale" />
 
             <RadioButton
+                style="@style/StyleRadioButtonForms"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -138,11 +143,14 @@
                 android:layout_height="wrap_content"
                 android:text="@string/admin_ps_age"/>
         </LinearLayout>
+
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/StyleTextInputLayotTextBoxForms"
+            android:id="@+id/admin_createps_til_telephone"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/admin_createps_til_telephone">
-            <EditText
+            android:layout_height="match_parent">
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/StyleTextInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/admin_ps_telephone"
@@ -151,10 +159,12 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/StyleTextInputLayotTextBoxForms"
+            android:id="@+id/admin_createps_til_city"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/admin_createps_til_city">
-            <EditText
+            android:layout_height="match_parent">
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/StyleTextInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/admin_ps_city"
@@ -163,10 +173,12 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/StyleTextInputLayotTextBoxForms"
+            android:id="@+id/admin_create_add_til_user"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/admin_create_add_til_user">
-            <EditText
+            android:layout_height="match_parent">
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/StyleTextInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/admin_til_user"
@@ -175,22 +187,26 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/StyleTextInputLayotTextBoxForms"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/admin_create_add_til_pass">
-            <EditText
+            android:id="@+id/admin_create_add_til_pass"
+            app:endIconMode="password_toggle">
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/StyleTextInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/admin_til_pass"
-                android:inputType="textPassword"
-                />
+                android:inputType="textPassword"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/StyleTextInputLayotTextBoxForms"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/admin_create_add_til_email">
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/StyleTextInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/admin_til_confin_email"
@@ -199,24 +215,24 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/StyleTextInputLayotTextBoxForms"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/admin_create_add_workplace">
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/StyleTextInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="@string/admin_til_workplace"
-                android:inputType="textEmailAddress"
-                />
+                android:hint="@string/admin_til_workplace"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
+            style="@style/StylePrimaryColoredButton"
             android:id="@+id/admin_createps_btn_save"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:text="@string/admin_til_saveps"
-            style="@style/StylePrimaryColoredButton"
-            />
+            android:layout_gravity="left"/>
         <!-- pais, departamento, municipio, zona, foto .  -->
 
 

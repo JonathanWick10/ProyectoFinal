@@ -17,20 +17,51 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <!-- Estilo por defecto para toda caja de texto -->
+    <!-- Estilos estándar para layout de cajas de texto (Login)-->
+    <style name="StyleTextViewTitles">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Estilos estándar para botones -->
+    <style name="StylePrimaryColoredButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <!--<item name="colorButtonNormal">@color/colorPrimaryDark</item>
+        <item name="colorControlHighlight">@color/colorPrimary</item>-->
+        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="cornerRadius">20dp</item>
+        <item name="rippleColor">@color/colorAccent</item>
+        <item name="android:textStyle">bold</item>
+        <item name="iconPadding">15dp</item>
+    </style>
+
+    <!-- Estilos estándar para layout de cajas de texto (Login)-->
+    <style name="StyleTextInputLayotTextBoxLogin" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+    </style>
+
+    <!-- Estilos estándar para layout de cajas de texto (Formularios)-->
+    <style name="StyleTextInputLayotTextBoxForms" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
+        <item name="boxBackgroundColor">@color/white</item>
+        <item name="android:layout_margin">10dp</item>
+    </style>
+
+    <!-- Estilos estándar para layout de listas desplegables (Formularios)-->
+    <style name="StyleTextInputLayotDropDownForms" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu">
+        <item name="boxBackgroundColor">@color/white</item>
+    </style>
+
+    <!-- Estilos estándar para cajas de texto -->
     <style name="StyleTextInputEditText">
         <item name="android:textStyle">bold</item>
         <item name="android:maxLines">1</item>
     </style>
 
-    <!-- Estilo por defecto para botones -->
-    <style name="StylePrimaryColoredButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
-        <item name="colorButtonNormal">@color/colorPrimaryDark</item>
-        <item name="colorControlHighlight">@color/colorPrimary</item>
-        <item name="cornerRadius">20dp</item>
-        <item name="rippleColor">@color/colorAccent</item>
+    <!-- Estilos estándar para radio botones -->
+    <style name="StyleRadioButtonForms" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:layout_weight">1</item>
         <item name="android:textStyle">bold</item>
-        <item name="iconPadding">15dp</item>
+        <item name="android:textColor">@color/gray</item>
     </style>
 
 </resources>

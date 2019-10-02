@@ -28,7 +28,7 @@
 
             <!-- caja de texto para nombre de usuario -->
             <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                style="@style/StyleTextInputLayotTextBoxLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/fifty"
@@ -36,6 +36,7 @@
                 app:endIconMode="clear_text">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    style="@style/StyleTextInputEditText"
                     android:id="@+id/login_admin_edt_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -45,7 +46,7 @@
 
             <!-- caja de texto para contraseña de usuario -->
             <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                style="@style/StyleTextInputLayotTextBoxLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/fifteen"
@@ -53,18 +54,18 @@
                 app:endIconMode="password_toggle">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    style="@style/StyleTextInputEditText"
                     android:id="@+id/login_admin_edt_pass"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPassword"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"/>
+                    android:inputType="textPassword"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- botón para inicio de sesión -->
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/login_admin_btn_enter"
                 style="@style/StylePrimaryColoredButton"
+                android:id="@+id/login_admin_btn_enter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/twenty"

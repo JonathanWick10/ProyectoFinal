@@ -22,12 +22,18 @@ import com.jonathan.proyectofinal.fragments.admin.AdminListPSFragment;
 import com.jonathan.proyectofinal.fragments.hp.PatientsListFragment;
 import com.jonathan.proyectofinal.interfaces.IPatientsListFragmentListener;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 import java.util.List;
 
 public class PatientsList extends AppCompatActivity {
 
-    private BottomAppBar babHProfessional;
-    private FloatingActionButton fabHProfessional;
+    @BindView(R.id.babHProfessional)
+    BottomAppBar bottomAppBar;
+    @BindView(R.id.fabHProfessional)
+    FloatingActionButton floatingActionButton;
     private boolean isFabTapped = false;
     private IPatientsListFragmentListener fragmentListener;
 
@@ -36,6 +42,7 @@ public class PatientsList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_patient);
+        ButterKnife.bind(this);
 
         //region Fragment PatientsList
         /*
@@ -45,44 +52,32 @@ public class PatientsList extends AppCompatActivity {
         */
         //endregion
 
-        reference();
-
-        if (savedInstanceState == null){
+        if (savedInstanceState == null) {
             handleFrame(new PatientsListFragment());
         }
-
-        handleFab();
     }
 
-    private void handleFab() {
-        fabHProfessional.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                isFabTapped = !isFabTapped;
-                if (isFabTapped){
-                    babHProfessional.setFabAlignmentMode(BottomAppBar.FAB_ALIGNMENT_MODE_END);
-                    handleFrame(new AddPatients());
-                    fabHProfessional.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_go_back));
-                } else {
-                    babHProfessional.setFabAlignmentMode(BottomAppBar.FAB_ALIGNMENT_MODE_CENTER);
-                    handleFrame(new PatientsListFragment());
-                    fabHProfessional.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_person_add));
-                }
-            }
-        });
+    //Método para gestión del click en floating action button
+    @OnClick(R.id.fabHProfessional)
+    void handleFab() {
+        isFabTapped = !isFabTapped;
+        if (isFabTapped) {
+            bottomAppBar.setFabAlignmentMode(BottomAppBar.FAB_ALIGNMENT_MODE_END);
+            handleFrame(new AddPatients());
+            floatingActionButton.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_go_back));
+        } else {
+            bottomAppBar.setFabAlignmentMode(BottomAppBar.FAB_ALIGNMENT_MODE_CENTER);
+            handleFrame(new PatientsListFragment());
+            floatingActionButton.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_person_add));
+        }
     }
 
-    private void reference() {
-        babHProfessional = findViewById(R.id.babHProfessional);
-        setSupportActionBar(babHProfessional);
-        fabHProfessional = findViewById(R.id.fabHProfessional);
+    public void fragmentClick(Patient patient) {
+        Toast.makeText(this, "seleccionó paciente", Toast.LENGTH_LONG).show();
     }
 
-    public void fragmentClick(Patient patient){
-        Toast.makeText(this,"seleccionó paciente",Toast.LENGTH_LONG).show();
-    }
-
-    private void handleFrame(Fragment fragment){
+    //Administrador de fragmentos
+    private void handleFrame(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);

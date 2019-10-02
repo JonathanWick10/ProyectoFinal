@@ -17,19 +17,19 @@
             android:padding="@dimen/sixteen">
 
             <TextView
+                style="@style/StyleTextViewTitles"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/add_patient"
-                android:gravity="center"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="@dimen/twentyText"></TextView>
+                android:text="@string/add_patient"></TextView>
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/StyleTextInputLayotTextBoxForms"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/edit_name_patient">
+                android:layout_height="wrap_content">
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/StyleTextInputEditText"
+                    android:id="@+id/edit_name_patient"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/first_name"
@@ -37,30 +37,48 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/StyleTextInputLayotTextBoxForms"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/edit_last_name_patient">
-                <EditText
+                android:hint="@string/last_name">
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/StyleTextInputEditText"
+                    android:id="@+id/edit_last_name_patient"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/last_name"
                     android:inputType="text"/>
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!--
             <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/spinner_id_type_patient"/>
+                -->
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/StyleTextInputLayotDropDownForms"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/edit_identification_patient">
-                <EditText
+                android:hint="@string/identification_type">
+                <AutoCompleteTextView
+                    style="@style/StyleTextInputEditText"
+                    android:id="@+id/edit_identification_type_patient"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/StyleTextInputLayotTextBoxForms"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/identification">
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/StyleTextInputEditText"
+                    android:id="@+id/edit_identification_patient"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/identification"
-                    android:inputType="text"/>
+                    android:inputType="number"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -75,147 +93,169 @@
                 android:id="@+id/rg_gender_patient">
 
                 <RadioButton
+                    style="@style/StyleRadioButtonForms"
                     android:id="@+id/rb_female_patient"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/female" />
+                    android:text="@string/female"/>
 
                 <RadioButton
+                    style="@style/StyleRadioButtonForms"
                     android:id="@+id/rb_male_patient"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:text="@string/male"/>
             </RadioGroup>
 
-
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/StyleTextInputLayotTextBoxForms"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/edit_birthday_patients">
-                <EditText
+                android:hint="@string/birthday">
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/StyleTextInputEditText"
+                    android:id="@+id/edit_birthday_patients"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="@string/birthday"
                     android:inputType="date" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/StyleTextInputLayotTextBoxForms"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/edit_phone_patient">
-                <EditText
+                android:hint="@string/phone_number">
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/StyleTextInputEditText"
+                    android:id="@+id/edit_phone_patient"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/phone_number"
                     android:inputType="number"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/StyleTextInputLayotTextBoxForms"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/edit_native_city_patient">
-                <EditText
+                android:hint="@string/native_city">
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/StyleTextInputEditText"
+                    android:id="@+id/edit_native_city_patient"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/native_city"
                     android:inputType="text" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/StyleTextInputLayotTextBoxForms"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/edit_actual_city_patient">
-                <EditText
+                android:hint="@string/actual_city">
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/StyleTextInputEditText"
+                    android:id="@+id/edit_actual_city_patient"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/actual_city"
                     android:inputType="text" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/StyleTextInputLayotTextBoxForms"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/edit_address_patient">
-                <EditText
+                android:hint="@string/address">
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/StyleTextInputEditText"
+                    android:id="@+id/edit_address_patient"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="@string/address"
                     android:inputType="text"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/StyleTextInputLayotTextBoxForms"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/edit_email_patient">
-                <EditText
+                android:hint="@string/email">
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/StyleTextInputEditText"
+                    android:id="@+id/edit_email_patient"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="@string/email"
                     android:inputType="textEmailAddress"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/StyleTextInputLayotTextBoxForms"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/edit_user_patient">
-                <EditText
+                android:hint="@string/user_name">
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/StyleTextInputEditText"
+                    android:id="@+id/edit_user_patient"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="@string/user_name"
                     android:inputType="text"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/StyleTextInputLayotTextBoxForms"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/edit_password_patient">
-                <EditText
+                app:endIconMode="password_toggle"
+                android:hint="@string/password">
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/StyleTextInputEditText"
+                    android:id="@+id/edit_password_patient"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="@string/password"
                     android:inputType="textPassword"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/StyleTextInputLayotTextBoxForms"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/edit_diagnostic_patient">
-                <EditText
+                android:hint="@string/diagnostic">
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/StyleTextInputEditText"
+                    android:id="@+id/edit_diagnostic_patient"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="@string/diagnostic"
                     android:inputType="text"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/StyleTextInputLayotTextBoxForms"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/edit_date_diagnostic_patient">
-                <EditText
+                android:hint="@string/date_diagnostic">
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/StyleTextInputEditText"
+                    android:id="@+id/edit_date_diagnostic_patient"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="@string/date_diagnostic"
                     android:inputType="date"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/StyleTextInputLayotTextBoxForms"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/edit_observation_patient">
-                <EditText
+                android:hint="@string/observations">
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/StyleTextInputEditText"
+                    android:id="@+id/edit_observation_patient"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="@string/observations"
                     android:inputType="text"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/admin_createps_btn_save"
-                android:layout_width="wrap_content"
-                android:layout_gravity="center"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="left"
                 android:text="@string/admin_til_saveps"
                 style="@style/StylePrimaryColoredButton"/>
             <!-- pais, departamento, municipio, zona, foto .  -->

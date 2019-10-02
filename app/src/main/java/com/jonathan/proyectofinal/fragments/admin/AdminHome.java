@@ -23,11 +23,11 @@ import butterknife.OnClick;
 
 public class AdminHome extends AppCompatActivity {
 
-   @BindView(R.id.babAdmin)
-   BottomAppBar bottomAppBar;
-   @BindView(R.id.admin_fab)
-   FloatingActionButton floatingActionButton;
-   private boolean isFabTapped = false;
+    @BindView(R.id.babAdmin)
+    BottomAppBar bottomAppBar;
+    @BindView(R.id.fabAdmin)
+    FloatingActionButton floatingActionButton;
+    private boolean isFabTapped = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,17 +35,48 @@ public class AdminHome extends AppCompatActivity {
         setContentView(R.layout.activity_admin_home);
         ButterKnife.bind(this);
 
-        if (savedInstanceState == null){
+        if (savedInstanceState == null) {
             handleFrame(new AdminListPSFragment(alertDelete()));
         }
-
-        handleFab();
     }
 
+    // Interfas para generar alerta de eliminar
+    private AdminListPSAdapter.AdminListPSAdapterI alertDelete() {
+        AdminListPSAdapter.AdminListPSAdapterI psAdapterI = new AdminListPSAdapter.AdminListPSAdapterI() {
+            @Override
+            public void btnEliminar(String pojo) {
+                AlertDialog.Builder alerta = new AlertDialog.Builder(AdminHome.this);
+                alerta.setTitle(getString(R.string.alert));
+                alerta.setMessage(getString(R.string.message_delete) + " - " + pojo);
+                alerta.setPositiveButton(getString(R.string.delete), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(AdminHome.this, "Caiste prro", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                alerta.show();
+            }
+        };
+        return psAdapterI;
+    }
+
+    //Método para gestión del click en floating action button
+    @OnClick(R.id.fabAdmin)
+    public void handleFab() {
+        isFabTapped = !isFabTapped;
+        if (isFabTapped) {
+            bottomAppBar.setFabAlignmentMode(BottomAppBar.FAB_ALIGNMENT_MODE_END);
+            handleFrame(new AdminAddHealthProfessional());
+            floatingActionButton.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_go_back));
+        } else {
+            bottomAppBar.setFabAlignmentMode(BottomAppBar.FAB_ALIGNMENT_MODE_CENTER);
+            handleFrame(new AdminListPSFragment(alertDelete()));
+            floatingActionButton.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_person_add));
+        }
+    }
 
     // Administrador de fragmentos
     private void handleFrame(Fragment fragment) {
-        // obligatorios
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
@@ -66,45 +97,5 @@ public class AdminHome extends AppCompatActivity {
 
         return professionalI;
     }*/
-
-
-    // Interfas para generar alerta de eliminar
-    private AdminListPSAdapter.AdminListPSAdapterI  alertDelete() {
-        AdminListPSAdapter.AdminListPSAdapterI psAdapterI = new AdminListPSAdapter.AdminListPSAdapterI() {
-            @Override
-            public void btnEliminar(String pojo) {
-                AlertDialog.Builder alerta = new AlertDialog.Builder(AdminHome.this);
-                alerta.setTitle(getString(R.string.alert));
-                alerta.setMessage(getString(R.string.message_delete)+" - "+pojo);
-                alerta.setPositiveButton(getString(R.string.delete), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(AdminHome.this, "Caiste prro", Toast.LENGTH_SHORT).show();
-                    }
-                });
-                alerta.show();
-            }
-        };
-        return psAdapterI;
-    }
-    //@OnClick(R.id.admin_fab)
-    public void handleFab() {
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                isFabTapped = !isFabTapped;
-                if (isFabTapped){
-                    bottomAppBar.setFabAlignmentMode(BottomAppBar.FAB_ALIGNMENT_MODE_END);
-                    handleFrame(new AdminAddHealthProfessional());
-                    floatingActionButton.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_go_back));
-                } else {
-                    bottomAppBar.setFabAlignmentMode(BottomAppBar.FAB_ALIGNMENT_MODE_CENTER);
-                    handleFrame(new AdminListPSFragment(alertDelete()));
-                    floatingActionButton.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_person_add));
-                }
-            }
-        });
-    }
-
 
 }

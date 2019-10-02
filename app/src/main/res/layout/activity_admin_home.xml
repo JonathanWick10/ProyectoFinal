@@ -25,7 +25,7 @@
         app:hideOnScroll="true"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/admin_fab"
+        android:id="@+id/fabAdmin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_person_add"
