@@ -1,4 +1,4 @@
-package com.jonathan.proyectofinal.ui;
+package com.jonathan.proyectofinal.fragments;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
