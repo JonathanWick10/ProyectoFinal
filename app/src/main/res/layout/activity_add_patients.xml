@@ -211,12 +211,12 @@
                     android:inputType="text"/>
             </com.google.android.material.textfield.TextInputLayout>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/admin_createps_btn_save"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/admin_til_saveps"
-                android:background="@color/colorPrimaryDark"/>
+                style="@style/StylePrimaryColoredButton"/>
             <!-- pais, departamento, municipio, zona, foto .  -->
 
 

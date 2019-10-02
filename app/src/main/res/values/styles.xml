@@ -23,4 +23,14 @@
         <item name="android:maxLines">1</item>
     </style>
 
+    <!-- Estilo por defecto para botones -->
+    <style name="StylePrimaryColoredButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="colorButtonNormal">@color/colorPrimaryDark</item>
+        <item name="colorControlHighlight">@color/colorPrimary</item>
+        <item name="cornerRadius">20dp</item>
+        <item name="rippleColor">@color/colorAccent</item>
+        <item name="android:textStyle">bold</item>
+        <item name="iconPadding">15dp</item>
+    </style>
+
 </resources>

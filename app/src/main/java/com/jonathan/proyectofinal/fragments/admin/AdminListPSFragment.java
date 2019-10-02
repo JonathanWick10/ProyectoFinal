@@ -32,11 +32,11 @@ public class AdminListPSFragment extends Fragment {
     private View view;
     private RecyclerView recyclerView ;
     private AdminListPSAdapter.AdminListPSAdapterI adapterI;
-    private AdminListPSFragmentI listPSFragmentI;
 
-    public AdminListPSFragment (AdminListPSAdapter.AdminListPSAdapterI adapterI, AdminListPSFragmentI listPSFragmentI){
+
+    public AdminListPSFragment (AdminListPSAdapter.AdminListPSAdapterI adapterI){
         this.adapterI = adapterI;
-        this.listPSFragmentI = listPSFragmentI;
+
     }
 
     @Override
@@ -64,14 +64,14 @@ public class AdminListPSFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
     }
-
+ /*
     @OnClick(R.id.admin_fab_add)
     public void addPs(View view){
 
         listPSFragmentI.onclickAddPs();
     }
-
-    public interface AdminListPSFragmentI{
+*/
+   public interface AdminListPSFragmentI{
         void onclickAddPs();
     }
 

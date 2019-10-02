@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.admin.AdminHome">
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,26 +23,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/admin_createps_til_name"
-            >
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/name_ps"
-                android:inputType="text" />
+                android:inputType="text"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/admin_createps_til_lastname"
-            >
-            <EditText
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+            app:boxBackgroundColor="@color/white">
+            <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/lastname_ps"
-                android:inputType="text"
-                />
+                android:inputType="text"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <Spinner
@@ -53,13 +54,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/admin_createps_til_documet"
+            app:boxStrokeColor="@color/colorPrimaryDark"
             >
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/documet_ps"
                 android:inputType="number"
-
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -209,12 +210,12 @@
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/admin_createps_btn_save"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/admin_til_saveps"
-            android:background="@color/colorPrimaryDark"
+            style="@style/StylePrimaryColoredButton"
             />
         <!-- pais, departamento, municipio, zona, foto .  -->
 
