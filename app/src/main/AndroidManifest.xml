@@ -9,27 +9,22 @@
         android:roundIcon="@mipmap/ic_isotipo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.HealthProfessionalActivity">
-
-        </activity>
+        <activity android:name=".ui.HealthProfessionalActivity"></activity>
         <activity android:name=".ui.MainCarer" />
-        <activity android:name=".fragments.admin.AdminHome" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".fragments.admin.AdminHome" />
+        <activity android:name=".ui.PatientsList" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
-        <activity android:name=".ui.PatientsList" />
         <activity android:name=".ui.LoginAdmin">
 
             <!-- cambiar al login -->
         </activity>
-        <activity android:name=".ui.LoadBrainmher">
-
-        </activity>
-        <activity android:name=".ui.MainActivity" />
-    </application>
+        <activity android:name=".ui.LoadBrainmher"></activity>
+        <activity android:name=".ui.MainActivity" /></application>
 
     <uses-permission android:name="android.permission.INTERNET" />
 

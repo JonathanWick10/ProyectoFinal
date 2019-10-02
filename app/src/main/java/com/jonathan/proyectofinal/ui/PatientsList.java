@@ -16,6 +16,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.data.Patient;
+import com.jonathan.proyectofinal.fragments.AddPatients;
 import com.jonathan.proyectofinal.fragments.admin.AdminAddHealthProfessional;
 import com.jonathan.proyectofinal.fragments.admin.AdminListPSFragment;
 import com.jonathan.proyectofinal.fragments.hp.PatientsListFragment;
@@ -60,7 +61,7 @@ public class PatientsList extends AppCompatActivity {
                 isFabTapped = !isFabTapped;
                 if (isFabTapped){
                     babHProfessional.setFabAlignmentMode(BottomAppBar.FAB_ALIGNMENT_MODE_END);
-                    handleFrame(new AdminAddHealthProfessional());
+                    handleFrame(new AddPatients());
                     fabHProfessional.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_go_back));
                 } else {
                     babHProfessional.setFabAlignmentMode(BottomAppBar.FAB_ALIGNMENT_MODE_CENTER);
