@@ -32,17 +32,10 @@ public class MainCarer extends AppCompatActivity implements IMainCarer {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        init(); //Star to the first Fragment
         setContentView(R.layout.activity_main_carer);
         //Function to read the items of BottomNavigation
         BottomNavigationView navigationView = findViewById(R.id.navigation_carer);
         navigationView.setOnNavigationItemSelectedListener(navListener);
-    }
-
-    private void init(){
-        //Star to the first Fragment
-        HomeFragment fragment =new HomeFragment();
-        doFragmentTransaction(fragment, true);
     }
 
     private void doFragmentTransaction(Fragment fragment, boolean b){
