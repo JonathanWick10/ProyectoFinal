@@ -4,9 +4,9 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="@dimen/cinco"
+    app:cardCornerRadius="@dimen/five"
     app:cardUseCompatPadding="true"
-    app:cardElevation="@dimen/cinco"
+    app:cardElevation="@dimen/five"
     >
 
 
@@ -14,10 +14,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:padding="@dimen/diez"
+        android:padding="@dimen/ten"
         >
         <LinearLayout
-            android:layout_width="@dimen/docientos"
+            android:layout_width="@dimen/twoHundred"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             >
@@ -25,7 +25,7 @@
             <ImageView
                 android:id="@+id/admin_imagev_photops"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/noventa"
+                android:layout_height="@dimen/ninety"
                 android:src="@drawable/avatar_patient" />
         </LinearLayout>
         <LinearLayout
@@ -33,7 +33,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:padding="@dimen/cinco">
+            android:padding="@dimen/five">
 
 
 
@@ -42,9 +42,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:paddingLeft="@dimen/diez"
+                    android:paddingLeft="@dimen/ten"
                     android:text="@string/admin_user_name"
-                    android:textSize="@dimen/quincetext"
+                    android:textSize="@dimen/fifteenText"
                     android:textStyle="bold" />
 
             <LinearLayout
@@ -55,8 +55,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/admin_id"
-                    android:paddingLeft="@dimen/diez"
-                    android:textSize="@dimen/quincetext" />
+                    android:paddingLeft="@dimen/ten"
+                    android:textSize="@dimen/fifteenText" />
 
                 <TextView
                     android:id="@+id/admin_txtv_idps"
@@ -65,7 +65,7 @@
                     android:layout_weight="1"
                     android:text="@string/admin_enter"
                     android:textAlignment="center"
-                    android:textSize="@dimen/quincetext" />
+                    android:textSize="@dimen/fifteenText" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -75,8 +75,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/admin_place"
-                    android:paddingLeft="@dimen/diez"
-                    android:textSize="@dimen/quincetext" />
+                    android:paddingLeft="@dimen/ten"
+                    android:textSize="@dimen/fifteenText" />
 
                 <TextView
                     android:id="@+id/admin_txtv_placeps"
@@ -85,7 +85,7 @@
                     android:layout_weight="1"
                     android:text="@string/admin_enter"
                     android:textAlignment="center"
-                    android:textSize="@dimen/quincetext" />
+                    android:textSize="@dimen/fifteenText" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -95,8 +95,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/admin_profession"
-                    android:paddingLeft="@dimen/diez"
-                    android:textSize="@dimen/quincetext" />
+                    android:paddingLeft="@dimen/ten"
+                    android:textSize="@dimen/fifteenText" />
 
                 <TextView
                     android:id="@+id/admin_txtv_profesionps"
@@ -105,14 +105,14 @@
                     android:layout_weight="1"
                     android:text="@string/admin_enter"
                     android:textAlignment="center"
-                    android:textSize="@dimen/quincetext" />
+                    android:textSize="@dimen/fifteenText" />
             </LinearLayout>
 
 
 
         </LinearLayout>
         <LinearLayout
-            android:layout_width="@dimen/docientos"
+            android:layout_width="@dimen/twoHundred"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             >
@@ -120,7 +120,7 @@
             <ImageView
                 android:id="@+id/admin_imgv_delete"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/noventa"
+                android:layout_height="@dimen/ninety"
                 android:src="@drawable/ic_delete" />
         </LinearLayout>
 

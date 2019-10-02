@@ -17,9 +17,9 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryDark"
         android:text="@string/create_collections"
-        app:cornerRadius="@dimen/veitene"
+        app:cornerRadius="@dimen/twenty"
         app:rippleColor="@color/colorAccentLight"
-        android:padding="@dimen/quince"
+        android:padding="@dimen/fifteen"
         android:textStyle="bold"/>
 
     <ListView

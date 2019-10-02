@@ -1,60 +1,61 @@
 <resources>
-    <dimen name="ToolbarTextViewSize">20sp</dimen>
-    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="toolbarTextViewSize">20sp</dimen>
+    <dimen name="fabMargin">16dp</dimen>
     <!-- dimenciones de 10 -->
-    <dimen name="dos">2dp</dimen>
-    <dimen name="diez">10dp</dimen>
-    <dimen name="veitene">20dp</dimen>
-    <dimen name="Treinta">30dp</dimen>
-    <dimen name="cuarenta">40dp</dimen>
-    <dimen name="cincuenta">50dp</dimen>
-    <dimen name="secenta">60dp</dimen>
-    <dimen name="setenta">70dp</dimen>
-    <dimen name="ochenta">80dp</dimen>
-    <dimen name="noventa">90dp</dimen>
-    <dimen name="cien">100dp</dimen>
-    <dimen name="cienCuenta">140dp</dimen>
-    <dimen name="docientos">200dp</dimen>
+    <dimen name="two">2dp</dimen>
+    <dimen name="ten">10dp</dimen>
+    <dimen name="sixteen">16dp</dimen>
+    <dimen name="twenty">20dp</dimen>
+    <dimen name="thirty">30dp</dimen>
+    <dimen name="forty">40dp</dimen>
+    <dimen name="fifty">50dp</dimen>
+    <dimen name="sixty">60dp</dimen>
+    <dimen name="seventy">70dp</dimen>
+    <dimen name="eighty">80dp</dimen>
+    <dimen name="ninety">90dp</dimen>
+    <dimen name="oneHundred">100dp</dimen>
+    <dimen name="oneHundredForty">140dp</dimen>
+    <dimen name="twoHundred">200dp</dimen>
     <!-- dimenciones de 5  -->
-    <dimen name="cinco">5dp</dimen>
-    <dimen name="quince">15dp</dimen>
-    <dimen name="venticinco">25dp</dimen>
-    <dimen name="treintaycinco">35dp</dimen>
-    <dimen name="cuarentaycinco">45dp</dimen>
-    <dimen name="cincuentaycinco">55dp</dimen>
-    <dimen name="sesentaycinco">65dp</dimen>
-    <dimen name="setentaycinco">75dp</dimen>
-    <dimen name="ochentaycinco">85dp</dimen>
-    <dimen name="noventaycinco">95dp</dimen>
+    <dimen name="five">5dp</dimen>
+    <dimen name="fifteen">15dp</dimen>
+    <dimen name="twentyFive">25dp</dimen>
+    <dimen name="thirtyFive">35dp</dimen>
+    <dimen name="fortyFive">45dp</dimen>
+    <dimen name="fiftyFive">55dp</dimen>
+    <dimen name="sixtyFive">65dp</dimen>
+    <dimen name="seventyFive">75dp</dimen>
+    <dimen name="eightyFive">85dp</dimen>
+    <dimen name="ninetyFive">95dp</dimen>
 
     <!-- dimenciones para texto -->
     <!-- dimenciones de 10 -->
-    <dimen name="dieztext">10sp</dimen>
-    <dimen name="veitenetext">20sp</dimen>
-    <dimen name="Treintatext">30sp</dimen>
-    <dimen name="cuarentatext">40sp</dimen>
-    <dimen name="cincuentatext">50sp</dimen>
-    <dimen name="secentatext">60sp</dimen>
-    <dimen name="setentatext">70sp</dimen>
-    <dimen name="ochentatext">80sp</dimen>
-    <dimen name="noventatext">90sp</dimen>
-    <dimen name="cientext">100sp</dimen>
+    <dimen name="tenText">10sp</dimen>
+    <dimen name="twentyText">20sp</dimen>
+    <dimen name="thirtyText">30sp</dimen>
+    <dimen name="fortyText">40sp</dimen>
+    <dimen name="fiftyText">50sp</dimen>
+    <dimen name="sixtyText">60sp</dimen>
+    <dimen name="seventyText">70sp</dimen>
+    <dimen name="eightyText">80sp</dimen>
+    <dimen name="nineText">90sp</dimen>
+    <dimen name="oneHundredText">100sp</dimen>
     <!-- dimenciones de 5  -->
-    <dimen name="cincotext">5sp</dimen>
-    <dimen name="quincetext">15sp</dimen>
-    <dimen name="venticincotext">25sp</dimen>
-    <dimen name="treintaycincotext">35sp</dimen>
-    <dimen name="cuarentaycincotext">45sp</dimen>
-    <dimen name="cincuentaycincotext">55sp</dimen>
-    <dimen name="sesentaycincotext">65sp</dimen>
-    <dimen name="setentaycincotext">75sp</dimen>
-    <dimen name="ochentaycincotext">85sp</dimen>
-    <dimen name="noventaycincotext">95sp</dimen>
+    <dimen name="fiveText">5sp</dimen>
+    <dimen name="fifteenText">15sp</dimen>
+    <dimen name="twentyFiveText">25sp</dimen>
+    <dimen name="thirtyFiveText">35sp</dimen>
+    <dimen name="fortyFiveText">45sp</dimen>
+    <dimen name="fiftyFiveText">55sp</dimen>
+    <dimen name="sixtyFiveText">65sp</dimen>
+    <dimen name="seventyFiveText">75sp</dimen>
+    <dimen name="eightyFiveText">85sp</dimen>
+    <dimen name="ninetyFiveText">95sp</dimen>
     <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="appbar_padding">16dp</dimen>
-    <dimen name="appbar_padding_top">8dp</dimen>
+
+    <dimen name="activityVerticalMargin">16dp</dimen>
+    <dimen name="appbarPadding">16dp</dimen>
+    <dimen name="appbarPaddingTop">8dp</dimen>
     <dimen name="marginLeftAddPatients">10dp</dimen>
     <dimen name="marginTopAddPatients">28dp</dimen>
 

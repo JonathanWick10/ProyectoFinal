@@ -8,13 +8,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="@dimen/diez"
+        android:padding="@dimen/ten"
         >
 
         <ImageView
             android:id="@+id/admin_createps_img_ps"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/cien"
+            android:layout_height="@dimen/oneHundred"
             android:layout_gravity="center"
             android:src="@drawable/avatar_patient"/>
 
