@@ -6,149 +6,216 @@
     android:layout_height="match_parent"
     tools:context=".ui.AddPatients">
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tv_lb_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="@dimen/marginLeftAddPatients"
-            android:text="Nombre"
-            android:textColor="@color/black"
-            android:textSize="@dimen/quincetext"
-            android:layout_marginTop="26dp"/>
-
-        <EditText
-            android:id="@+id/tv_name"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/heightEditTextAddPatients"
-            android:layout_alignParentRight="true"
-            android:layout_marginLeft="@dimen/marginLeftEditTextAddPatients"
-            android:layout_marginRight="@dimen/marginLeftAddPatients"
-            android:layout_toRightOf="@+id/tv_lb_name"
-            android:text="Nombre"
-            android:paddingHorizontal="@dimen/paddingHorizontalEditTextAddPatients"
-            android:background="@color/white"
-            android:textColor="@color/black"
-            android:textSize="@dimen/quincetext"
-            android:layout_marginTop="16dp"/>
-
-        <TextView
-            android:id="@+id/tv_lb_lastname"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="@dimen/marginLeftAddPatients"
-            android:layout_below="@+id/tv_lb_name"
-            android:textColor="@color/black"
-            android:text="Apellido"
-            android:textSize="@dimen/quincetext"
-            android:layout_marginTop="@dimen/marginTopAddPatients"/>
-        <EditText
-            android:id="@+id/tv_lastname"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/heightEditTextAddPatients"
-            android:layout_alignParentRight="true"
-            android:layout_marginLeft="@dimen/marginLeftEditTextAddPatients"
-            android:layout_marginRight="@dimen/marginLeftAddPatients"
-            android:layout_below="@+id/tv_name"
-            android:layout_toRightOf="@+id/tv_lb_name"
-            android:text="Apellido"
-            android:paddingHorizontal="@dimen/paddingHorizontalEditTextAddPatients"
-            android:textColor="@color/black"
-            android:textSize="@dimen/quincetext"
-            android:background="@color/white"
-            android:layout_marginTop="@dimen/marginTopEditTextAddPatients"/>
+            android:orientation="vertical"
+            android:padding="@dimen/diez">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/admin_createps_til_name">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/name_ps"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/admin_createps_til_lastname">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/lastname_ps"
+                    android:inputType="text"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/admin_createps_sp_document"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/admin_createps_til_documet"
+                >
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/documet_ps"
+                    android:inputType="number"
+
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/admin_create_add_til_confin_pass"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/admin_til_confin_pass"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/admin_createps_til_profession"
+                >
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/profession_ps"
+                    android:inputType="text"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <RadioGroup
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/admin_createps_rg_gender">
+
+                <RadioButton
+                    android:id="@+id/admin_createps_rdbtn_f"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/admin_ps_famale" />
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/admin_ps_male"/>
+            </RadioGroup>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/admin_createps_til_date_birth">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/date_birth_ps"
+                    android:inputType="date" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/admin_ps_age"/>
+                <TextView
+                    android:id="@+id/admin_createps_tv_age"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/admin_ps_age"/>
+            </LinearLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/admin_createps_til_telephone">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/admin_ps_telephone"
+                    android:inputType="number"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/admin_createps_til_city">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/admin_ps_city"
+                    android:inputType="text"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/admin_create_add_til_user">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/admin_til_user"
+                    android:inputType="text"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/admin_create_add_til_pass">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/admin_til_pass"
+                    android:inputType="textPassword"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/admin_create_add_til_email">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/admin_til_confin_email"
+                    android:inputType="textEmailAddress"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/admin_create_add_workplace">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/admin_til_workplace"
+                    android:inputType="textEmailAddress"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/admin_createps_btn_save"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/admin_til_saveps"
+                android:background="@color/colorPrimaryDark"
+                />
+            <!-- pais, departamento, municipio, zona, foto .  -->
 
 
 
-        <TextView
-            android:id="@+id/tv_lb_identification_type"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="@dimen/marginLeftAddPatients"
-            android:layout_below="@+id/tv_lb_lastname"
-            android:textColor="@color/black"
-            android:text="Tipo de identificación"
-            android:textSize="@dimen/quincetext"
-            android:layout_marginTop="@dimen/marginTopAddPatients"/>
-        <EditText
-            android:id="@+id/tv_identification_type"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/heightEditTextAddPatients"
-            android:layout_alignParentRight="true"
-            android:layout_marginLeft="@dimen/marginLeftEditTextAddPatients"
-            android:layout_marginRight="@dimen/marginLeftAddPatients"
-            android:layout_below="@+id/tv_lastname"
-            android:layout_toRightOf="@+id/tv_lb_name"
-            android:text="Tipo de identificación"
-            android:paddingHorizontal="@dimen/paddingHorizontalEditTextAddPatients"
-            android:textColor="@color/black"
-            android:textSize="@dimen/quincetext"
-            android:background="@color/white"
-            android:layout_marginTop="@dimen/marginTopEditTextAddPatients"/>
-
-        <TextView
-            android:id="@+id/tv_lb_identification"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="@dimen/marginLeftAddPatients"
-            android:layout_below="@+id/tv_lb_identification_type"
-            android:textColor="@color/black"
-            android:text="Identificación"
-            android:textSize="@dimen/quincetext"
-            android:layout_marginTop="@dimen/marginTopAddPatients"/>
-        <EditText
-            android:id="@+id/tv_identification"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/heightEditTextAddPatients"
-            android:layout_alignParentRight="true"
-            android:layout_marginLeft="@dimen/marginLeftEditTextAddPatients"
-            android:layout_marginRight="@dimen/marginLeftAddPatients"
-            android:layout_toRightOf="@+id/tv_lb_name"
-            android:paddingHorizontal="@dimen/paddingHorizontalEditTextAddPatients"
-            android:textColor="@color/black"
-            android:textSize="@dimen/quincetext"
-            android:background="@color/white"
-            android:layout_marginTop="@dimen/marginTopEditTextAddPatients"
-            android:layout_below="@+id/tv_identification_type"
-            android:text="Identificación"
-            />
-
-        <TextView
-            android:id="@+id/tv_lb_gender"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="@dimen/marginLeftAddPatients"
-            android:textColor="@color/black"
-            android:textSize="@dimen/quincetext"
-            android:layout_marginTop="@dimen/marginTopAddPatients"
-            android:layout_below="@+id/tv_lb_identification"
-            android:text="Genero"/>
-        <EditText
-            android:id="@+id/tv_gender"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/heightEditTextAddPatients"
-            android:layout_alignParentRight="true"
-            android:layout_marginLeft="@dimen/marginLeftEditTextAddPatients"
-            android:layout_marginRight="@dimen/marginLeftAddPatients"
-            android:layout_toRightOf="@+id/tv_lb_name"
-            android:paddingHorizontal="@dimen/paddingHorizontalEditTextAddPatients"
-            android:textColor="@color/black"
-            android:textSize="@dimen/quincetext"
-            android:background="@color/white"
-            android:layout_marginTop="@dimen/marginTopEditTextAddPatients"
-            android:layout_below="@+id/tv_identification"
-            android:text="Genero"
-            />
-
-    </RelativeLayout>
-
-
+        </LinearLayout>
+    </ScrollView>
 </FrameLayout>

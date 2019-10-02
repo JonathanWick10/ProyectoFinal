@@ -42,10 +42,12 @@
     <string name="creation_failed">Fallo la Creación</string>
     <string name="create_collections">Crear coleciones</string>
     <string name="create">Crear</string>
+
+    //Strings Admin Add HP
     <string name="lst_ps_name">Profesional de la salud</string>
     <string name="crud_ps">Nuevo P.S.</string>
-    <string name="lastname_ps">Lastname</string>
-    <string name="name_ps">Name</string>
+    <string name="lastname_ps">Apellidos</string>
+    <string name="name_ps">Nombres</string>
     <string name="documet_ps">Document</string>
     <string name="profession_ps">Profession</string>
     <string name="admin_ps_famale">Female</string>
