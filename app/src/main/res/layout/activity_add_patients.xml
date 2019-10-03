@@ -134,6 +134,18 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/StyleTextInputLayotDropDownForms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/department">
+                <AutoCompleteTextView
+                    style="@style/StyleTextInputEditText"
+                    android:id="@+id/edit_department_patient"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
                 style="@style/StyleTextInputLayotTextBoxForms"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -216,6 +228,20 @@
                 style="@style/StyleTextInputLayotTextBoxForms"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                app:endIconMode="password_toggle"
+                android:hint="@string/confirm_password">
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/StyleTextInputEditText"
+                    android:id="@+id/edit_confirm_password_patient"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="textPassword"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/StyleTextInputLayotTextBoxForms"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:hint="@string/diagnostic">
                 <com.google.android.material.textfield.TextInputEditText
                     style="@style/StyleTextInputEditText"
@@ -252,11 +278,11 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/admin_createps_btn_save"
+                android:id="@+id/button_create_patient"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
-                android:text="@string/admin_til_saveps"
+                android:text="@string/save"
                 style="@style/StylePrimaryColoredButton"/>
             <!-- pais, departamento, municipio, zona, foto .  -->
 

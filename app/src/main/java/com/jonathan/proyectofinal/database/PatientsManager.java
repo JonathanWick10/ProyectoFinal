@@ -26,7 +26,7 @@ public class PatientsManager {
     // Create the instance to firestore
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference collectionReferencePatients = db.collection(Constants.Patients);
-    private boolean flag = false;
+    private boolean flag = true;
     List<Patient> patientList = new ArrayList<>();
     Patient patientM = new Patient();
     //endregion
@@ -43,6 +43,7 @@ public class PatientsManager {
                     @Override
                     public void onSuccess(Void aVoid) {
                         flag = true;
+                        Log.d("Message",String.valueOf(flag));
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -103,7 +104,7 @@ public class PatientsManager {
     //region Read Patients for Healthcarer profesional
     public List<Patient> listForHP(HealthcareProfessional healthcareProfessional) {
         collectionReferencePatients
-                .whereEqualTo("id", healthcareProfessional.getIdentification().toString())
+                .whereEqualTo("assigns.id", healthcareProfessional.getIdentification())
                 .orderBy("firstName")
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -197,7 +198,7 @@ public class PatientsManager {
     //region Assign Patient
     public boolean assignPatient(Patient patient, String id) {
         patientM = patientByID(patient.getIdentification().toString());
-        Map<String, String> ids = patientM.getAssigns();
+        Map<String, Object> ids = patientM.getAssigns();
         ids.put("id", id);
         flag = createPatient(patientM);
         return flag;

@@ -76,7 +76,9 @@
     <string name="age">Edad</string>
     <string name="user_name">Usuario</string>
     <string name="password">Contraseña</string>
+    <string name="confirm_password">Confirmar contraseña</string>
     <string name="email">Correo</string>
+    <string name="department">Deparmento</string>
     <string name="native_city">Ciudad de nacimiento</string>
     <string name="actual_city">Ciudad actual</string>
     <string name="family_phone_number">Número telefonico familiar</string>
@@ -85,6 +87,11 @@
     <string name="diagnostic">Diagnostico</string>
     <string name="observations">Observaciones</string>
     <string name="emergency_number">Número de emergencia</string>
-
+    <string name="citizenship_card">Cédula de ciudadania</string>
+    <string name="foreign_identity_card">Cédula extranjera</string>
+    <string name="passport">Pasaporte</string>
+    <string name="save">Guardar</string>
+    <string name="was_saved_succesfully">Se guardó exitosamente</string>
+    <string name="not_saved">No guardo</string>
 
 </resources>

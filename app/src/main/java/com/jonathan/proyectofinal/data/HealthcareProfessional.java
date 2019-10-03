@@ -5,7 +5,7 @@ public class HealthcareProfessional {
     private String firstName;
     private String lastName;
     private String identificationType;
-    private Long identification;
+    private String identification;
     private String gender;
     private String birthday;
     private Long phoneNumber;
@@ -22,7 +22,7 @@ public class HealthcareProfessional {
     }
 
     public HealthcareProfessional(String firstName, String lastName, String identificationType,
-                                  Long identification, String gender, String birthday, Long phoneNumber,
+                                  String identification, String gender, String birthday, Long phoneNumber,
                                   Integer age, String userName, String password, String email,
                                   String nativeCity, String actualCity, String address, String employment_place) {
         this.firstName = firstName;
@@ -66,11 +66,11 @@ public class HealthcareProfessional {
         this.identificationType = identificationType;
     }
 
-    public Long getIdentification() {
+    public String getIdentification() {
         return identification;
     }
 
-    public void setIdentification(Long identification) {
+    public void setIdentification(String identification) {
         this.identification = identification;
     }
 

@@ -77,7 +77,9 @@
     <string name="age">Age</string>
     <string name="user_name">User name</string>
     <string name="password">Password</string>
+    <string name="confirm_password">Confirm password</string>
     <string name="email">Email</string>
+    <string name="department">Deparment</string>
     <string name="native_city">Native city</string>
     <string name="actual_city">Actual city</string>
     <string name="family_phone_number">Family phone number</string>
@@ -86,4 +88,11 @@
     <string name="diagnostic">Diagnostic</string>
     <string name="observations">Observations</string>
     <string name="emergency_number">Emergency number</string>
+    <string name="citizenship_card">Citizenship card</string>
+    <string name="foreign_identity_card">Foreign Identity Card</string>
+    <string name="passport">Passport</string>
+    <string name="save">Save</string>
+    <string name="was_saved_succesfully">Was Saved Succesfully</string>
+    <string name="not_saved">Not saved</string>
+
 </resources>

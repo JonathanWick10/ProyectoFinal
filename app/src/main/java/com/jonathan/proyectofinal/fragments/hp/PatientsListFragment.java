@@ -13,7 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.adapters.PatientsAdapter;
+import com.jonathan.proyectofinal.data.HealthcareProfessional;
 import com.jonathan.proyectofinal.data.Patient;
+import com.jonathan.proyectofinal.database.PatientsManager;
 import com.jonathan.proyectofinal.interfaces.IOnPatientClickListener;
 import com.jonathan.proyectofinal.interfaces.IPatientsListFragmentListener;
 import com.jonathan.proyectofinal.ui.PatientsList;
@@ -72,7 +74,10 @@ public class PatientsListFragment extends Fragment implements IPatientsListFragm
     }
 
     public void addAllToList(List<Patient> patients) {
-        adapter.addAll(patients);
+        /*PatientsManager patientsManager = new PatientsManager();
+        HealthcareProfessional patient2 = new HealthcareProfessional();
+        patient2.setIdentification("1061755715");*/
+        adapter.addAll(/*patientsManager.listForHP(patient2)*/patients);
     }
 
 

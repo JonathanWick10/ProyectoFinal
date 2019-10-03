@@ -3,36 +3,40 @@ package com.jonathan.proyectofinal.data;
 import java.util.Map;
 
 public class Patient {
+    //region Variables
     private String firstName;
     private String lastName;
     private String identificationType;
-    private Long identification;
+    private String identification;
     private String gender;
     private String birthday;
-    private Long phoneNumber;
+    private long phoneNumber;
+    private String deparment;
     private Integer age;
     private String userName;
     private String password;
+    private String confirmPassword;
     private String email;
     private String nativeCity;
     private String actualCity;
-    private Long familyPhoneNumber;
+    private long familyPhoneNumber;
     private String address;
     private String dateDiagnostic;
     private String diagnostic;
     private String observations;
     private String emergencyNumber;
-    Map<String,String> assigns;
+    Map<String,Object> assigns;
+    //endregion
 
-
+    //region Builders
     public Patient() {
     }
 
-    public Patient(String firstName, String lastName, String identificationType, Long identification,
-                   String gender, String birthday, Long phoneNumber, Integer age, String userName,
-                   String password, String email, String nativeCity, String actualCity,
-                   Long familyPhoneNumber, String address, String dateDiagnostic, String diagnostic,
-                   String observations, String emergencyNumber, Map<String,String> assigns) {
+    public Patient(String firstName, String lastName, String identificationType, String identification,
+                   String gender, String birthday, long phoneNumber, String deparment, Integer age, String userName,
+                   String password, String confirmPassword, String email, String nativeCity, String actualCity,
+                   long familyPhoneNumber, String address, String dateDiagnostic, String diagnostic,
+                   String observations, String emergencyNumber, Map<String,Object> assigns) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.identificationType = identificationType;
@@ -40,9 +44,11 @@ public class Patient {
         this.gender = gender;
         this.birthday = birthday;
         this.phoneNumber = phoneNumber;
+        this.deparment = deparment;
         this.age = age;
         this.userName = userName;
         this.password = password;
+        this.confirmPassword = confirmPassword;
         this.email = email;
         this.nativeCity = nativeCity;
         this.actualCity = actualCity;
@@ -54,7 +60,9 @@ public class Patient {
         this.emergencyNumber = emergencyNumber;
         this.assigns = assigns;
     }
+    //endregion
 
+    //region Getters and Setters
     public String getFirstName() {
         return firstName;
     }
@@ -79,11 +87,11 @@ public class Patient {
         this.identificationType = identificationType;
     }
 
-    public Long getIdentification() {
+    public String getIdentification() {
         return identification;
     }
 
-    public void setIdentification(Long identification) {
+    public void setIdentification(String identification) {
         this.identification = identification;
     }
 
@@ -103,12 +111,20 @@ public class Patient {
         this.birthday = birthday;
     }
 
-    public Long getPhoneNumber() {
+    public long getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(Long phoneNumber) {
+    public void setPhoneNumber(long phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getDeparment() {
+        return deparment;
+    }
+
+    public void setDeparment(String deparment) {
+        this.deparment = deparment;
     }
 
     public Integer getAge() {
@@ -135,6 +151,14 @@ public class Patient {
         this.password = password;
     }
 
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -159,11 +183,11 @@ public class Patient {
         this.actualCity = actualCity;
     }
 
-    public Long getFamilyPhoneNumber() {
+    public long getFamilyPhoneNumber() {
         return familyPhoneNumber;
     }
 
-    public void setFamilyPhoneNumber(Long familyPhoneNumber) {
+    public void setFamilyPhoneNumber(long familyPhoneNumber) {
         this.familyPhoneNumber = familyPhoneNumber;
     }
 
@@ -207,14 +231,16 @@ public class Patient {
         this.emergencyNumber = emergencyNumber;
     }
 
-    public Map<String, String> getAssigns() {
+    public Map<String, Object> getAssigns() {
         return assigns;
     }
 
-    public void setAssigns(Map<String, String> assigns) {
+    public void setAssigns(Map<String, Object> assigns) {
         this.assigns = assigns;
     }
+    //endregion
 
+    //region toString
     @Override
     public String toString() {
         return "Patient{" +
@@ -239,4 +265,5 @@ public class Patient {
                 ", emergencyNumber='" + emergencyNumber + '\'' +
                 '}';
     }
+    //endregion
 }
