@@ -6,7 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +23,7 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.data.Patient;
+import com.jonathan.proyectofinal.database.ImageManager;
 import com.jonathan.proyectofinal.database.PatientsManager;
 import com.jonathan.proyectofinal.ui.PatientsList;
 
@@ -28,11 +32,14 @@ import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AddPatients extends Fragment {
     public AddPatients() {
     }
     //region Variables
+    @BindView(R.id.profile_image)
+    CircleImageView profileImage;
     @BindView(R.id.edit_name_patient)
     TextInputEditText editName;
     @BindView(R.id.edit_last_name_patient)
@@ -77,6 +84,8 @@ public class AddPatients extends Fragment {
     MaterialButton btnSave;
     //Instance Patient
     Patient patient = new Patient();
+    //Uri of the Image
+    Uri uriImage;
     //endregion
 
     @Nullable
@@ -86,7 +95,22 @@ public class AddPatients extends Fragment {
         ButterKnife.bind(this, view);
         dropdownMenu(view);
         logicButtonSave();
+        logicImageProfile();
         return view;
+    }
+
+    private void logicImageProfile() {
+        profileImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Intent to tour the gallery
+                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                // Accept all kinds of images
+                intent.setType("image/*");
+                //If you have several types of viewers, it will ask which one to start with
+                startActivityForResult(intent.createChooser(intent,getResources().getString(R.string.select_photo)),10);
+            }
+        });
     }
 
     private void logicButtonSave() {
@@ -95,6 +119,8 @@ public class AddPatients extends Fragment {
             public void onClick(View view) {
                 setPojoPatients();
                 PatientsManager patientsManager = new PatientsManager();//Instance PatientsManager
+                ImageManager imageManager = new ImageManager();//Instance ImageManager
+                imageManager.uploadImageToStorage(uriImage,patient);
                 boolean rta = patientsManager.createPatient(patient);
                 if (rta){
                     Toast.makeText(getActivity(), getResources().getString(R.string.was_saved_succesfully), Toast.LENGTH_SHORT).show();
@@ -151,4 +177,10 @@ public class AddPatients extends Fragment {
         autoCompletDepartment.setAdapter(adapter2);
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+       uriImage = data.getData();
+       profileImage.setImageURI(uriImage);
+    }
 }

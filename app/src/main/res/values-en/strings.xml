@@ -98,5 +98,6 @@
     <string name="save">Save</string>
     <string name="was_saved_succesfully">Was Saved Succesfully</string>
     <string name="not_saved">Not saved</string>
+    <string name="select_photo">Select Image</string>
 
 </resources>
