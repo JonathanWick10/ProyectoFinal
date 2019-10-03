@@ -6,12 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".ui.MainCarer">
 
-    <FrameLayout
+    <fragment
         android:id="@+id/content_carer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/navigation_carer"
-        android:layout_alignParentStart="true"></FrameLayout>
+        android:layout_alignParentStart="true"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/mobile_navigation"></fragment>
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

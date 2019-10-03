@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/home">
+    <fragment
+        android:id="@+id/home"
+        android:name="com.jonathan.proyectofinal.fragments.carer.HomeFragment"
+        android:label="fragment_cu_home"
+        tools:layout="@layout/fragment_cu_home" />
+    <fragment
+        android:id="@+id/list"
+        android:name="com.jonathan.proyectofinal.fragments.carer.ListFragment"
+        android:label="listview_list_patients"
+        tools:layout="@layout/listview_list_patients" />
+    <fragment
+        android:id="@+id/emergency"
+        android:name="com.jonathan.proyectofinal.fragments.carer.EmergencyFragment"
+        android:label="fragment_cu_emergency"
+        tools:layout="@layout/fragment_cu_emergency" />
+    <fragment
+        android:id="@+id/information"
+        android:name="com.jonathan.proyectofinal.fragments.carer.InformationFragment"
+        android:label="fragment_cu_information"
+        tools:layout="@layout/fragment_cu_information" />
+</navigation>

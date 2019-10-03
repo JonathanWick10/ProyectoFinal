@@ -31,11 +31,9 @@ public class EmergencyFragment extends Fragment {
     public EmergencyFragment() {
     }
 
-    public EmergencyFragment(int contentLayoutId) { super(contentLayoutId); }
-
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_cu_emergency,container,false);
         callemergency = view.findViewById(R.id.callemergency);
         nearbyhospital = view.findViewById(R.id.nearbyhospital);

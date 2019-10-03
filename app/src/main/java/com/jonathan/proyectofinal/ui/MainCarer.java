@@ -1,23 +1,21 @@
 package com.jonathan.proyectofinal.ui;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
-import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.fragments.carer.CallEmergencyFragment;
 import com.jonathan.proyectofinal.fragments.carer.DiaryFragment;
-import com.jonathan.proyectofinal.fragments.carer.EmergencyFragment;
 import com.jonathan.proyectofinal.fragments.carer.GeneralInformationFragment;
 import com.jonathan.proyectofinal.fragments.carer.HeartFragment;
-import com.jonathan.proyectofinal.fragments.carer.HomeFragment;
-import com.jonathan.proyectofinal.fragments.carer.InformationFragment;
-import com.jonathan.proyectofinal.fragments.carer.ListFragment;
 import com.jonathan.proyectofinal.fragments.carer.ManageFragment;
 import com.jonathan.proyectofinal.fragments.carer.NearbyHospitalFragment;
 import com.jonathan.proyectofinal.fragments.carer.PhasesEAFragment;
@@ -35,48 +33,9 @@ public class MainCarer extends AppCompatActivity implements IMainCarer {
         setContentView(R.layout.activity_main_carer);
         //Function to read the items of BottomNavigation
         BottomNavigationView navigationView = findViewById(R.id.navigation_carer);
-        navigationView.setOnNavigationItemSelectedListener(navListener);
+        NavController navController = Navigation.findNavController(this, R.id.content_carer);
+        NavigationUI.setupWithNavController(navigationView, navController);
     }
-
-    private void doFragmentTransaction(Fragment fragment, boolean b){
-        //Possibility of changing the Fragment
-        transaction = getSupportFragmentManager().beginTransaction();
-        transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
-        transaction.replace(R.id.content_carer,fragment);
-        transaction.commit();
-    }
-
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
-            //Listener the BottomNavigation
-            new BottomNavigationView.OnNavigationItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                    switch (menuItem.getItemId()){
-                        case R.id.Home:
-                            //active = new HomeFragment();
-                            HomeFragment homeFragment = new HomeFragment();
-                            doFragmentTransaction(homeFragment, true);
-                            return true;
-                        case R.id.List:
-                            //active = new ListFragment();
-                            ListFragment listFragment = new ListFragment();
-                            doFragmentTransaction(listFragment, true);
-                            return true;
-                        case R.id.Emergency:
-                            //active = new EmergencyFragment();
-                            EmergencyFragment emergencyFragment = new EmergencyFragment();
-                            doFragmentTransaction(emergencyFragment, true);
-                            return true;
-                        case R.id.Information:
-                            //active = new InformationFragment();
-                            InformationFragment informationFragment = new InformationFragment();
-                            doFragmentTransaction(informationFragment, true);
-                            return true;
-                    }
-                    //getSupportFragmentManager().beginTransaction().replace(R.id.content_carer,active).commit();
-                    return false;
-                }
-            };
 
     @Override
     public void inflateFragment(String fragmentTag) {
