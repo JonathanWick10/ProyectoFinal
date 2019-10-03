@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.DialogInterface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -21,7 +22,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class AdminHome extends AppCompatActivity {
+public class AdminHome extends AppCompatActivity implements AdminAddHealthProfessional.OnFragmentInteractionListener {
 
     @BindView(R.id.babAdmin)
     BottomAppBar bottomAppBar;
@@ -82,6 +83,11 @@ public class AdminHome extends AppCompatActivity {
         fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
         fragmentTransaction.replace(R.id.admin_home_frm_contenedor, fragment);  // remplaza un fragmento de contenedor
         fragmentTransaction.commit();
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 
     /*private AdminListPSFragment.AdminListPSFragmentI addPsSalud(){

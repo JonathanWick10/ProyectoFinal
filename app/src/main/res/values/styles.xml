@@ -17,7 +17,7 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <!-- Estilos estándar para layout de cajas de texto (Login)-->
+    <!-- Estilo estándar para layout de cajas de texto (Login)-->
     <style name="StyleTextViewTitles">
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/colorPrimaryDark</item>
@@ -25,7 +25,7 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <!-- Estilos estándar para botones -->
+    <!-- Estilo estándar para botones -->
     <style name="StylePrimaryColoredButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <!--<item name="colorButtonNormal">@color/colorPrimaryDark</item>
         <item name="colorControlHighlight">@color/colorPrimary</item>-->
@@ -36,32 +36,40 @@
         <item name="iconPadding">15dp</item>
     </style>
 
-    <!-- Estilos estándar para layout de cajas de texto (Login)-->
+    <!-- Estilo estándar para layout de cajas de texto (Login)-->
     <style name="StyleTextInputLayotTextBoxLogin" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="endIconTint">@color/colorPrimary</item>
     </style>
 
-    <!-- Estilos estándar para layout de cajas de texto (Formularios)-->
+    <!-- Estilo estándar para layout de cajas de texto (Formularios)-->
     <style name="StyleTextInputLayotTextBoxForms" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
-        <item name="boxBackgroundColor">@color/white</item>
+        <item name="endIconTint">@color/colorPrimary</item>
+        <item name="boxBackgroundColor">@color/colorBackround</item>
         <item name="android:layout_margin">10dp</item>
     </style>
 
-    <!-- Estilos estándar para layout de listas desplegables (Formularios)-->
+    <!-- Estilo estándar para layout de listas desplegables (Formularios)-->
     <style name="StyleTextInputLayotDropDownForms" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu">
-        <item name="boxBackgroundColor">@color/white</item>
+        <item name="boxBackgroundColor">@color/colorBackround</item>
     </style>
 
-    <!-- Estilos estándar para cajas de texto -->
+    <!-- Estilo estándar para cajas de texto -->
     <style name="StyleTextInputEditText">
         <item name="android:textStyle">bold</item>
         <item name="android:maxLines">1</item>
     </style>
 
-    <!-- Estilos estándar para radio botones -->
+    <!-- Estilo estándar para radio botones -->
     <style name="StyleRadioButtonForms" parent="Widget.AppCompat.CompoundButton.RadioButton">
         <item name="android:layout_weight">1</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/gray</item>
+    </style>
+
+    <!-- Estilo estándar para imagen botone de calendario -->
+    <style name="StyleImageButtonCalendar" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="android:background">@color/colorBackround</item>
+        <item name="android:src">@drawable/ic_calendar</item>
     </style>
 
 </resources>

@@ -8,6 +8,7 @@
     <color name="colorAccent">#35e4b3</color>
     <color name="colorAccentLight">#78ffe5</color>
     <color name="colorAccentDark">#00b183</color>
+    <color name="colorBackround">#fafafa</color>
 
     <!-- colores basicos -->
     <color name="white">#FFFFFF</color>

@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -28,7 +29,7 @@ import butterknife.OnClick;
 
 import java.util.List;
 
-public class PatientsList extends AppCompatActivity {
+public class PatientsList extends AppCompatActivity implements AddPatients.OnFragmentInteractionListener {
 
     @BindView(R.id.babHProfessional)
     BottomAppBar bottomAppBar;
@@ -83,5 +84,10 @@ public class PatientsList extends AppCompatActivity {
         fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
         fragmentTransaction.replace(R.id.fragmentHProfessional, fragment);  // remplaza un fragmento de contenedor
         fragmentTransaction.commit();
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }

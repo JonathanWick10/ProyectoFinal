@@ -36,7 +36,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore:21.1.0'
     //dependencies for Storage
     implementation 'com.google.firebase:firebase-storage:16.0.4'
-    implementation 'com.google.firebase:firebase-auth:16.0.5'
+    implementation 'com.google.firebase:firebase-auth:17.0.0'
 
     //dependencies for Butterknife
     annotationProcessor "com.jakewharton:butterknife-compiler:8.1.0"

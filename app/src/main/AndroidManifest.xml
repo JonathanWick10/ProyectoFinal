@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_isotipo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.HealthProfessionalActivity"></activity>
+        <activity android:name=".ui.HealthProfessionalActivity"/>
         <activity android:name=".ui.MainCarer" />
         <activity android:name=".fragments.admin.AdminHome" />
         <activity android:name=".ui.PatientsList" >

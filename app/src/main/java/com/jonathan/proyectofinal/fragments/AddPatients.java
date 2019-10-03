@@ -1,10 +1,6 @@
 package com.jonathan.proyectofinal.fragments;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -15,9 +11,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDialogFragment;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
@@ -25,7 +29,7 @@ import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.data.Patient;
 import com.jonathan.proyectofinal.database.ImageManager;
 import com.jonathan.proyectofinal.database.PatientsManager;
-import com.jonathan.proyectofinal.ui.PatientsList;
+import com.jonathan.proyectofinal.fragments.general.DatePickerFragment;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -54,8 +58,10 @@ public class AddPatients extends Fragment {
     RadioButton rbFemale;
     @BindView(R.id.rb_male_patient)
     RadioButton rbMale;
-    @BindView(R.id.edit_birthday_patients)
-    TextInputEditText editBirthday;
+    @BindView(R.id.hp_iv_date_birth)
+    ImageView ibCalendar;
+    @BindView(R.id.hp_createps_til_date_birth)
+    TextInputEditText dateOfBirthET;
     @BindView(R.id.edit_phone_patient)
     TextInputEditText editPhone;
     @BindView(R.id.edit_department_patient)
@@ -86,7 +92,14 @@ public class AddPatients extends Fragment {
     Patient patient = new Patient();
     //Uri of the Image
     Uri uriImage;
+    //Variables for datepicker
+    String selectedDate;
+    public static final int REQUEST_CODE = 11;
+    private OnFragmentInteractionListener mListener;
     //endregion
+
+
+
 
     @Nullable
     @Override
@@ -96,6 +109,7 @@ public class AddPatients extends Fragment {
         dropdownMenu(view);
         logicButtonSave();
         logicImageProfile();
+        logicButtonCalendar(view);
         return view;
     }
 
@@ -145,7 +159,7 @@ public class AddPatients extends Fragment {
         String seleccionRG = rb.getText().toString();
         //endregion
         patient.setGender(seleccionRG);
-        patient.setBirthday(editBirthday.getText().toString());
+        patient.setBirthday(dateOfBirthET.getText().toString());
         patient.setPhoneNumber(Long.parseLong(editPhone.getText().toString()));
         patient.setDeparment(autoCompletDepartment.getText().toString());
         patient.setNativeCity(editNativeCity.getText().toString());
@@ -162,6 +176,24 @@ public class AddPatients extends Fragment {
         assigns.put("id", "1061755715");
         patient.setAssigns(assigns);
         //endregion
+    }
+
+    private void logicButtonCalendar(View view) {
+        // Obtener el administrador de fragmentos para que podamos iniciar desde el fragmento
+        final FragmentManager fm = ((AppCompatActivity)getActivity()).getSupportFragmentManager();
+
+        // Usando un escuchador onclick en TextInputEditText para mostrar datePicker
+        ibCalendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Crea el datePickerFragment
+                AppCompatDialogFragment newFragment = new DatePickerFragment();
+                // Establece el targetFragment para recibir los resultados, especificando el código de solicitud
+                newFragment.setTargetFragment(AddPatients.this, REQUEST_CODE);
+                // Muestra el widget
+                newFragment.show(fm, "datePicker");
+            }
+        });
     }
 
     private void dropdownMenu(View view) {
@@ -182,5 +214,33 @@ public class AddPatients extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
        uriImage = data.getData();
        profileImage.setImageURI(uriImage);
+
+        // Verifica los resultados
+        if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK){
+            // Obtener la fecha de la cadena
+            selectedDate = data.getStringExtra("selectedDate");
+            // Establece el valor de editText
+            dateOfBirthET.setText(selectedDate);
+        }
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        try {
+            mListener = (OnFragmentInteractionListener) context;
+        } catch (ClassCastException e){
+            throw new ClassCastException(context.toString() + e + " must implement OnFragmentInteractionListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+
+    public interface OnFragmentInteractionListener{
+        public void onFragmentInteraction(Uri uri);
     }
 }
