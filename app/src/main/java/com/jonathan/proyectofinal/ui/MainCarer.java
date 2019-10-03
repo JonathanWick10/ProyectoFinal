@@ -56,25 +56,25 @@ public class MainCarer extends AppCompatActivity implements IMainCarer {
                             //active = new HomeFragment();
                             HomeFragment homeFragment = new HomeFragment();
                             doFragmentTransaction(homeFragment, true);
-                            break;
+                            return true;
                         case R.id.List:
                             //active = new ListFragment();
                             ListFragment listFragment = new ListFragment();
                             doFragmentTransaction(listFragment, true);
-                            break;
+                            return true;
                         case R.id.Emergency:
                             //active = new EmergencyFragment();
                             EmergencyFragment emergencyFragment = new EmergencyFragment();
                             doFragmentTransaction(emergencyFragment, true);
-                            break;
+                            return true;
                         case R.id.Information:
                             //active = new InformationFragment();
                             InformationFragment informationFragment = new InformationFragment();
                             doFragmentTransaction(informationFragment, true);
-                            break;
+                            return true;
                     }
                     //getSupportFragmentManager().beginTransaction().replace(R.id.content_carer,active).commit();
-                    return true;
+                    return false;
                 }
             };
 

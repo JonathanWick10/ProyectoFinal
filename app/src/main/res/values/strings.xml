@@ -17,6 +17,10 @@
     <string name="nearby_hospitals">Hospitales</string>
     <string name="phases_ea">Fases de la E.A.</string>
     <string name="general_information">Info General</string>
+    <string name="home">Home</string>
+    <string name="list">Lista</string>
+    <string name="emergency">Emergencias</string>
+    <string name="info">Info</string>
 
     //Tab
     <string name="tab_text_1">Tab 1</string>
