@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -21,7 +19,6 @@ import com.jonathan.proyectofinal.interfaces.IMainCarer;
 public class EmergencyFragment extends Fragment {
 
     TabLayout tabs;
-    TabItem callemergency, nearbyhospital;
     ViewPager viewPager;
     Adapter adapter;
     String text1,text2;
@@ -35,8 +32,6 @@ public class EmergencyFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_cu_emergency,container,false);
-        callemergency = view.findViewById(R.id.callemergency);
-        nearbyhospital = view.findViewById(R.id.nearbyhospital);
         tabs = view.findViewById(R.id.flexbox);
         viewPager = view.findViewById(R.id.containerpage);
         CallEmergencyFragment fragment = new CallEmergencyFragment();
@@ -46,7 +41,7 @@ public class EmergencyFragment extends Fragment {
 
     private void SetUpViewPager(ViewPager viewPager, TabLayout tabs, Fragment fragment) {
         if (fragment != null) {
-            adapter = new Adapter(getActivity().getSupportFragmentManager());
+            adapter = new Adapter(getChildFragmentManager());
             tabs.setupWithViewPager(viewPager);
             viewPager.setAdapter(adapter);
             tabs.getTabAt(0).setIcon(R.drawable.ic_loyalty);
