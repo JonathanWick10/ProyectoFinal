@@ -51,7 +51,7 @@ public class InformationPSFragment extends Fragment {
     private void SetUpViewPager(ViewPager viewPager, TabLayout tabs, Fragment fragment) {
 
         if (fragment != null) {
-            adapter = new Adapter(getActivity().getSupportFragmentManager());
+            adapter = new Adapter(getChildFragmentManager());
             tabs.setupWithViewPager(viewPager);
             viewPager.setAdapter(adapter);
             tabs.getTabAt(0);

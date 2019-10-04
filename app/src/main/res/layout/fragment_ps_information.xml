@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/ps_tabs_info"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            >
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/ps_tab_info_patient"
@@ -36,11 +36,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="4dp"
-            android:layout_below="@id/ps_tabs_info"
             android:id="@+id/containerPageInformationPS"
-            android:layout_alignParentBottom="true"
+            android:layout_below="@id/ps_tabs_info"
             />
 
     </RelativeLayout>
-    </FrameLayout>
-</RelativeLayout>
+
+</FrameLayout>

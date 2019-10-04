@@ -2,6 +2,8 @@
     <string name="app_name">Brainmher</string>
     <string name="patient">Paciente</string>
     <string name="carer">Cuidador</string>
+    <string name="cognitive">Cognitiva</string>
+    <string name="motor">Motriz</string>
     <string name="list_patient">Lista de pacientes</string>
     <string name="health_professional">Profesional de la salud</string>
     <string name="required">Required field</string>
