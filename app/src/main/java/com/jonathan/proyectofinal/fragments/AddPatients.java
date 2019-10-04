@@ -88,6 +88,10 @@ public class AddPatients extends Fragment {
     TextInputEditText editObservation;
     @BindView(R.id.button_create_patient)
     MaterialButton btnSave;
+    String nameSring,lastNameString,typeIDString, idString, birthDayString, deparmentString, nativeCityString,
+    actualCityString, addressString, emailString, userString, passwordString, confirmPasswordString,
+    diagnosticString, dateDiagnosticString,observationString;
+    long phonLong;
     //Instance Patient
     Patient patient = new Patient();
     //Uri of the Image
@@ -97,6 +101,7 @@ public class AddPatients extends Fragment {
     String selectedDate;
     public static final int REQUEST_CODE = 11;
     private OnFragmentInteractionListener mListener;
+    boolean flag = true;
     //endregion
 
     @Nullable
@@ -129,51 +134,87 @@ public class AddPatients extends Fragment {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setPojoPatients();
-                PatientsManager patientsManager = new PatientsManager();//Instance PatientsManager
-                ImageManager imageManager = new ImageManager();//Instance ImageManager
-                imageManager.uploadImageToStorage(uriImage,patient);
-                boolean rta = patientsManager.createPatient(patient);
-                if (rta){
-                    Toast.makeText(getActivity(), getResources().getString(R.string.was_saved_succesfully), Toast.LENGTH_SHORT).show();
-                }else {
-                    Toast.makeText(getActivity(), getResources().getString(R.string.not_saved), Toast.LENGTH_SHORT).show();
+                boolean flag2 = setPojoPatients();
+                if (flag2) {
+                    PatientsManager patientsManager = new PatientsManager();//Instance PatientsManager
+                    ImageManager imageManager = new ImageManager();//Instance ImageManager
+                    imageManager.uploadImageToStorage(uriImage, patient);
+                    boolean rta = patientsManager.createPatient(patient);
+                    if (rta) {
+                        Toast.makeText(getActivity(), getResources().getString(R.string.was_saved_succesfully), Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getActivity(), getResources().getString(R.string.not_saved), Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    Toast.makeText(getActivity(), getResources().getString(R.string.complete_field_please), Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
 
-    private void setPojoPatients() {
-        //region Set data to Pojo Patients
-        patient.setFirstName(editName.getText().toString());
-        patient.setLastName(editLastName.getText().toString());
-        patient.setIdentificationType(autoCompletIdType.getText().toString());
-        patient.setIdentification(editIdentification.getText().toString());
+    private boolean setPojoPatients() {
+        //region get text of form
+        nameSring = editName.getText().toString();
+        lastNameString = editLastName.getText().toString();
+        typeIDString = autoCompletIdType.getText().toString();
+        idString = editIdentification.getText().toString();
         //region Obtiene la selección del RadioGroup
         int radioButtonId = rgGender.getCheckedRadioButtonId();
         View radioButton = rgGender.findViewById(radioButtonId);
         int indice = rgGender.indexOfChild(radioButton);
         RadioButton rb = (RadioButton)  rgGender.getChildAt(indice);
+        //endregion
         String seleccionRG = rb.getText().toString();
+        birthDayString = dateOfBirthET.getText().toString();
+        phonLong = Long.parseLong(editPhone.getText().toString());
+        deparmentString = autoCompletDepartment.getText().toString();
+        nativeCityString = editNativeCity.getText().toString();
+        actualCityString = editActualCity.getText().toString();
+        addressString = editaddress.getText().toString();
+        emailString = editEmail.getText().toString();
+        userString = editUser.getText().toString();
+        passwordString = editPassword.getText().toString();
+        confirmPasswordString = editConfirmPassword.getText().toString();
+        diagnosticString = editDiagnostic.getText().toString();
+        dateDiagnosticString = editDateDiagnostic.getText().toString();
+        observationString = editObservation.getText().toString();
         //endregion
-        patient.setGender(seleccionRG);
-        patient.setBirthday(dateOfBirthET.getText().toString());
-        patient.setPhoneNumber(Long.parseLong(editPhone.getText().toString()));
-        patient.setDeparment(autoCompletDepartment.getText().toString());
-        patient.setNativeCity(editNativeCity.getText().toString());
-        patient.setActualCity(editActualCity.getText().toString());
-        patient.setAddress(editaddress.getText().toString());
-        patient.setEmail(editEmail.getText().toString());
-        patient.setUserName(editUser.getText().toString());
-        patient.setPassword(editPassword.getText().toString());
-        patient.setConfirmPassword(editConfirmPassword.getText().toString());
-        patient.setDiagnostic(editDiagnostic.getText().toString());
-        patient.setDateDiagnostic(editDateDiagnostic.getText().toString());
-        patient.setObservations(editObservation.getText().toString());
-        Map<String, Object> assigns = new HashMap<>();
-        assigns.put("id", "1061755715");
-        patient.setAssigns(assigns);
+
+        //region conditional for fields is empty
+        if (!nameSring.isEmpty()&&!lastNameString.isEmpty()&&!typeIDString.isEmpty()&&!idString.isEmpty()&&
+        !seleccionRG.isEmpty()&&!birthDayString.isEmpty()&&phonLong>0&&!deparmentString.isEmpty()
+        &&!nativeCityString.isEmpty()&&!actualCityString.isEmpty()&&!addressString.isEmpty()&&!emailString.isEmpty()
+        &&!userString.isEmpty()&&!passwordString.isEmpty()&&!confirmPasswordString.isEmpty()&&!diagnosticString.isEmpty()
+        &&!dateDiagnosticString.isEmpty()&&!observationString.isEmpty()) {
+            //region Set data to Pojo Patients
+            patient.setFirstName(nameSring);
+            patient.setLastName(lastNameString);
+            patient.setIdentificationType(typeIDString);
+            patient.setIdentification(idString);
+            patient.setGender(seleccionRG);
+            patient.setBirthday(birthDayString);
+            patient.setPhoneNumber(phonLong);
+            patient.setDeparment(deparmentString);
+            patient.setNativeCity(nativeCityString);
+            patient.setActualCity(actualCityString);
+            patient.setAddress(addressString);
+            patient.setEmail(emailString);
+            patient.setUserName(userString);
+            patient.setPassword(passwordString);
+            patient.setConfirmPassword(confirmPasswordString);
+            patient.setDiagnostic(diagnosticString);
+            patient.setDateDiagnostic(dateDiagnosticString);
+            patient.setObservations(observationString);
+            Map<String, Object> assigns = new HashMap<>();
+            assigns.put("id", "1061755715");
+            patient.setAssigns(assigns);
+            //endregion
+        }else{
+            flag = false;
+        }
         //endregion
+
+        return flag;
     }
 
     private void logicButtonCalendar(View view) {

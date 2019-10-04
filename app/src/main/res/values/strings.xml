@@ -100,4 +100,5 @@
     <string name="was_saved_succesfully">Se guardó exitosamente</string>
     <string name="not_saved">No guardo</string>
     <string name="select_photo">Seleccione la Imagen</string>
+    <string name="complete_field_please">Complete los campos, por favor!</string>
 </resources>

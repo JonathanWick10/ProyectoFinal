@@ -101,5 +101,5 @@
     <string name="was_saved_succesfully">Was Saved Succesfully</string>
     <string name="not_saved">Not saved</string>
     <string name="select_photo">Select Image</string>
-
+    <string name="complete_field_please">Complete the fields, please!</string>
 </resources>
