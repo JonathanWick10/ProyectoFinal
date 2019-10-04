@@ -17,6 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_marginVertical="20dp"
         >
 
     <TextView
@@ -86,19 +87,18 @@
                 >
 
                 <TextView
-                    android:text="Edad: "
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18dp"
                     android:layout_gravity="center"
-                    android:gravity="center"
-                    android:textStyle="bold"
                     android:fontFamily="sans-serif-thin"
-                    ></TextView>
+                    android:gravity="center"
+                    android:text="@string/age"
+                    android:textSize="18dp"
+                    android:textStyle="bold"></TextView>
 
                 <TextView
                     android:id="@+id/tv_ps_agePatient"
-                    android:text="18 años"
+                    android:text=" :18 años"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="18dp"
@@ -119,7 +119,7 @@
                 >
 
                 <TextView
-                    android:text="Género: "
+                    android:text="@string/gender"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="18dp"
@@ -131,7 +131,7 @@
 
                 <TextView
                     android:id="@+id/tv_ps_genderPatient"
-                    android:text="Masculino"
+                    android:text=": Masculino"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="18dp"
@@ -152,7 +152,7 @@
                 >
 
                 <TextView
-                    android:text="Ciudad de Origen: "
+                    android:text="@string/native_city"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="18dp"
@@ -163,8 +163,8 @@
                     ></TextView>
 
                 <TextView
-                    android:id="@+id/tv_ps_hometownPatient"
-                    android:text="Cali"
+                    android:id="@+id/tv_ps_nativeCityPatient"
+                    android:text=": Cali"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="18dp"
@@ -185,7 +185,7 @@
                 >
 
                 <TextView
-                    android:text="Ciudad Actual: "
+                    android:text="@string/actual_city"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="18dp"
@@ -197,7 +197,7 @@
 
                 <TextView
                     android:id="@+id/tv_ps_currentcityPatient"
-                    android:text="Popayán"
+                    android:text=": Popayán"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="18dp"
@@ -218,7 +218,7 @@
                 >
 
                 <TextView
-                    android:text="Teléfono del acudiente: "
+                    android:text="@string/family_phone_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="18dp"
@@ -251,7 +251,7 @@
                 >
 
                 <TextView
-                    android:text="Dirección: "
+                    android:text="@string/address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="18dp"
@@ -263,7 +263,73 @@
 
                 <TextView
                     android:id="@+id/tv_ps_addressPatient"
-                    android:text="cll 45 n l"
+                    android:text=": cll 45 n l"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-thin"
+                    ></TextView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="10dp"
+                android:paddingHorizontal="10dp"
+                >
+
+                <TextView
+                    android:text="@string/diagnostic"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-thin"
+                    ></TextView>
+
+                <TextView
+                    android:id="@+id/tv_ps_diagnosis"
+                    android:text=": hola klk "
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-thin"
+                    ></TextView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="10dp"
+                android:paddingHorizontal="10dp"
+                >
+
+                <TextView
+                    android:text="@string/date_diagnostic"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-thin"
+                    ></TextView>
+
+                <TextView
+                    android:id="@+id/tv_ps_diagnosisdate"
+                    android:text=": 855"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="18dp"
