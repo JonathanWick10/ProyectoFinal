@@ -92,14 +92,12 @@ public class AddPatients extends Fragment {
     Patient patient = new Patient();
     //Uri of the Image
     Uri uriImage;
+    public static final int REQUEST_CODE2 = 10;
     //Variables for datepicker
     String selectedDate;
     public static final int REQUEST_CODE = 11;
     private OnFragmentInteractionListener mListener;
     //endregion
-
-
-
 
     @Nullable
     @Override
@@ -122,7 +120,7 @@ public class AddPatients extends Fragment {
                 // Accept all kinds of images
                 intent.setType("image/*");
                 //If you have several types of viewers, it will ask which one to start with
-                startActivityForResult(intent.createChooser(intent,getResources().getString(R.string.select_photo)),10);
+                startActivityForResult(intent.createChooser(intent,getResources().getString(R.string.select_photo)),REQUEST_CODE2);
             }
         });
     }
@@ -212,8 +210,6 @@ public class AddPatients extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-       uriImage = data.getData();
-       profileImage.setImageURI(uriImage);
 
         // Verifica los resultados
         if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK){
@@ -221,6 +217,9 @@ public class AddPatients extends Fragment {
             selectedDate = data.getStringExtra("selectedDate");
             // Establece el valor de editText
             dateOfBirthET.setText(selectedDate);
+        }else if (requestCode == REQUEST_CODE2 && resultCode == Activity.RESULT_OK){
+            uriImage = data.getData();
+            profileImage.setImageURI(uriImage);
         }
     }
 
