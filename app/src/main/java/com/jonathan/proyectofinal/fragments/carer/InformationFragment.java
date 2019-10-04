@@ -47,8 +47,8 @@ public class InformationFragment extends Fragment{
             adapt = new Adapter(getChildFragmentManager());
             tab.setupWithViewPager(viewPag);
             viewPag.setAdapter(adapt);
-            tab.getTabAt(0).setIcon(R.drawable.ic_loyalty);
-            tab.getTabAt(1).setIcon(R.drawable.ic_hospital);
+            tab.getTabAt(0).setIcon(R.drawable.question_answer);
+            tab.getTabAt(1).setIcon(R.drawable.ic_description);
         }
     }
 
