@@ -8,37 +8,34 @@ public class HealthcareProfessional {
     private String identification;
     private String gender;
     private String birthday;
+    private String nativeCity;
     private Long phoneNumber;
-    private Integer age;
+    private String address;
+    private String actualCity;
+    private String email;
     private String userName;
     private String password;
-    private String email;
-    private String nativeCity;
-    private String actualCity;
-    private String address;
+    private String profession;
     private String employment_place;
 
     public HealthcareProfessional() {
     }
 
-    public HealthcareProfessional(String firstName, String lastName, String identificationType,
-                                  String identification, String gender, String birthday, Long phoneNumber,
-                                  Integer age, String userName, String password, String email,
-                                  String nativeCity, String actualCity, String address, String employment_place) {
+    public HealthcareProfessional(String firstName, String lastName, String identificationType, String identification, String gender, String birthday, String nativeCity, Long phoneNumber, String address, String actualCity, String email, String userName, String password, String profession, String employment_place) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.identificationType = identificationType;
         this.identification = identification;
         this.gender = gender;
         this.birthday = birthday;
+        this.nativeCity = nativeCity;
         this.phoneNumber = phoneNumber;
-        this.age = age;
+        this.address = address;
+        this.actualCity = actualCity;
+        this.email = email;
         this.userName = userName;
         this.password = password;
-        this.email = email;
-        this.nativeCity = nativeCity;
-        this.actualCity = actualCity;
-        this.address = address;
+        this.profession = profession;
         this.employment_place = employment_place;
     }
 
@@ -90,6 +87,14 @@ public class HealthcareProfessional {
         this.birthday = birthday;
     }
 
+    public String getNativeCity() {
+        return nativeCity;
+    }
+
+    public void setNativeCity(String nativeCity) {
+        this.nativeCity = nativeCity;
+    }
+
     public Long getPhoneNumber() {
         return phoneNumber;
     }
@@ -98,12 +103,28 @@ public class HealthcareProfessional {
         this.phoneNumber = phoneNumber;
     }
 
-    public Integer getAge() {
-        return age;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getActualCity() {
+        return actualCity;
+    }
+
+    public void setActualCity(String actualCity) {
+        this.actualCity = actualCity;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getUserName() {
@@ -122,36 +143,12 @@ public class HealthcareProfessional {
         this.password = password;
     }
 
-    public String getEmail() {
-        return email;
+    public String getProfession() {
+        return profession;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getNativeCity() {
-        return nativeCity;
-    }
-
-    public void setNativeCity(String nativeCity) {
-        this.nativeCity = nativeCity;
-    }
-
-    public String getActualCity() {
-        return actualCity;
-    }
-
-    public void setActualCity(String actualCity) {
-        this.actualCity = actualCity;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
+    public void setProfession(String profession) {
+        this.profession = profession;
     }
 
     public String getEmployment_place() {
@@ -168,17 +165,17 @@ public class HealthcareProfessional {
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", identificationType='" + identificationType + '\'' +
-                ", identification=" + identification +
+                ", identification='" + identification + '\'' +
                 ", gender='" + gender + '\'' +
                 ", birthday='" + birthday + '\'' +
+                ", nativeCity='" + nativeCity + '\'' +
                 ", phoneNumber=" + phoneNumber +
-                ", age=" + age +
+                ", address='" + address + '\'' +
+                ", actualCity='" + actualCity + '\'' +
+                ", email='" + email + '\'' +
                 ", userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", nativeCity='" + nativeCity + '\'' +
-                ", actualCity='" + actualCity + '\'' +
-                ", address='" + address + '\'' +
+                ", profession='" + profession + '\'' +
                 ", employment_place='" + employment_place + '\'' +
                 '}';
     }
