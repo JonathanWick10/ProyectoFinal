@@ -99,12 +99,12 @@ public class AddPatients extends Fragment {
     //Uri of the Image
     Uri uriImage;
     public static final int REQUEST_CODE2 = 10;
-    // Variables for datepicker date of birth
+    //Variables for datepicker
     String selectedDate;
     public static final int REQUEST_CODE = 11;
-    // Variables for datepicker date of diagnosis
-    public static final int REQUEST_CODE1 = 12;
-    // Variables for all datepickers
+    //Variable for all datepicker date of diagnosis
+    public  static final int REQUEST_CODE1 = 12;
+    //Variables for all datepicker
     private OnFragmentInteractionListener mListener;
     boolean flag = true;
     //endregion
@@ -118,7 +118,6 @@ public class AddPatients extends Fragment {
         logicButtonSave();
         logicImageProfile();
         logicButtonCalendar(view);
-        logicButtonDateDiagnosis(view);
         return view;
     }
 
@@ -227,40 +226,21 @@ public class AddPatients extends Fragment {
         // Get the fragment manager so they can start from the fragment
         final FragmentManager fm = ((AppCompatActivity)getActivity()).getSupportFragmentManager();
 
-        // Using an onclick listener in TextInputEditText to display datePicker
+        // Usando un escuchador onclick en TextInputEditText para mostrar datePicker
         ibCalendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Create the datePickerFragment
+                // Crea el datePickerFragment
                 AppCompatDialogFragment newFragment = new DatePickerFragment();
-                // Set the targetFragment to receive the results, specifying the request code
+                // Establece el targetFragment para recibir los resultados, especificando el código de solicitud
                 newFragment.setTargetFragment(AddPatients.this, REQUEST_CODE);
-                // Show the widget
-                newFragment.show(fm, "datePicker");
-            }
-        });
-    }
-
-    private void logicButtonDateDiagnosis(View view) {
-        // Get the fragment manager so they can start from the fragment
-        final FragmentManager fm = ((AppCompatActivity)getActivity()).getSupportFragmentManager();
-
-        // Using an onclick listener in TextInputEditText to display datePicker
-        ivDateDiagnosis.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Create the datePickerFragment
-                AppCompatDialogFragment newFragment = new DatePickerFragment();
-                // Set the targetFragment to receive the results, specifying the request code
-                newFragment.setTargetFragment(AddPatients.this, REQUEST_CODE1);
-                // Show the widget
+                // Muestra el widget
                 newFragment.show(fm, "datePicker");
             }
         });
     }
 
     private void dropdownMenu(View view) {
-        // Filling drop-down list for document type
         String typeId1 = getResources().getString(R.string.citizenship_card);
         String typeId2 = getResources().getString(R.string.foreign_identity_card);
         String typeId3 = getResources().getString(R.string.passport);
@@ -279,6 +259,7 @@ public class AddPatients extends Fragment {
 
         if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK){
             selectedDate = data.getStringExtra("selectedDate");
+            // Establece el valor de editText
             dateOfBirthET.setText(selectedDate);
         } else if (requestCode == REQUEST_CODE1 && resultCode == Activity.RESULT_OK){
             selectedDate = data.getStringExtra("selectedDate");

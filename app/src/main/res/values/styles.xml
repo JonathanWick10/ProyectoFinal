@@ -17,7 +17,7 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <!-- Standard style for text box layout (Login) -->
+    <!-- Standard style for text view layout (Login) -->
     <style name="StyleTextViewTitles">
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/colorPrimaryDark</item>
