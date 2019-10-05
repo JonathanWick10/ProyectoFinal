@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewPropertyAnimator;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
@@ -20,12 +21,14 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.fragments.general.DatePickerFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,6 +40,8 @@ public class AdminAddHealthProfessional extends Fragment{
     ImageView ibCalendar;
     @BindView(R.id.admin_createps_til_date_birth)
     TextInputEditText dateOfBirthET;
+    @BindView(R.id.admin_createps_btn_save)
+    MaterialButton btnSave;
     String selectedDate;
     public static final int REQUEST_CODE = 11;
     private OnFragmentInteractionListener mListener;
@@ -70,26 +75,31 @@ public class AdminAddHealthProfessional extends Fragment{
     }
 
     private void logicButtonCalendar(View view) {
-        // Obtener el administrador de fragmentos para que podamos iniciar desde el fragmento
+        // Get the fragment manager so they can start from the fragment
         final FragmentManager fm = ((AppCompatActivity)getActivity()).getSupportFragmentManager();
 
-        // Usando un escuchador onclick en TextInputEditText para mostrar datePicker
+        // Using an onclick listener in TextInputEditText to display datePicker
         ibCalendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Crea el datePickerFragment
+                // Create the datePickerFragment
                 AppCompatDialogFragment newFragment = new DatePickerFragment();
-                // Establece el targetFragment para recibir los resultados, especificando el código de solicitud
+                // Set the targetFragment to receive the results, specifying the request code
                 newFragment.setTargetFragment(AdminAddHealthProfessional.this, REQUEST_CODE);
-                // Muestra el widget
+                // Show the widget
                 newFragment.show(fm, "datePicker");
             }
         });
     }
 
+    @OnClick(R.id.admin_createps_btn_save)
+    public void logicButtonSave(View view){
+
+    }
+
     private void dropdownMenu(View view) {
-        // Llenado de lista desplegable para tipo de documento
-        String[] documentos = new String[] {"Cédula de ciudadania", "Cédula de etranjeria"};
+        // Filling drop-down list for document type
+        String[] documentos = new String[] {String.valueOf(R.string.citizenship_card), String.valueOf(R.string.foreign_identity_card)};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), R.layout.dropdown_menu_popup_item, documentos);
         AutoCompleteTextView tipoIdentificacion = view.findViewById(R.id.admin_identification_type_patient);
         tipoIdentificacion.setAdapter(adapter);
@@ -97,11 +107,8 @@ public class AdminAddHealthProfessional extends Fragment{
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        // Verifica los resultados
         if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK){
-            // Obtener la fecha de la cadena
             selectedDate = data.getStringExtra("selectedDate");
-            // Establece el valor de editText
             dateOfBirthET.setText(selectedDate);
         }
     }

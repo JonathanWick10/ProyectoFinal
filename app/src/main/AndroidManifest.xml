@@ -16,14 +16,13 @@
         <activity android:name=".fragments.admin.AdminHome" >
         </activity>
         <activity android:name=".ui.PatientsList" >
-
-        </activity>
-        <activity android:name=".ui.LoginAdmin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".ui.LoginAdmin">
 
             <!-- cambiar al login -->
         </activity>

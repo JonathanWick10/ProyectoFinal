@@ -84,6 +84,8 @@ public class AddPatients extends Fragment {
     TextInputEditText editDiagnostic;
     @BindView(R.id.edit_date_diagnostic_patient)
     TextInputEditText editDateDiagnostic;
+    @BindView(R.id.edit_iv_date_diagnosis)
+    ImageView ivDateDiagnosis;
     @BindView(R.id.edit_observation_patient)
     TextInputEditText editObservation;
     @BindView(R.id.button_create_patient)
@@ -97,9 +99,12 @@ public class AddPatients extends Fragment {
     //Uri of the Image
     Uri uriImage;
     public static final int REQUEST_CODE2 = 10;
-    //Variables for datepicker
+    // Variables for datepicker date of birth
     String selectedDate;
     public static final int REQUEST_CODE = 11;
+    // Variables for datepicker date of diagnosis
+    public static final int REQUEST_CODE1 = 12;
+    // Variables for all datepickers
     private OnFragmentInteractionListener mListener;
     boolean flag = true;
     //endregion
@@ -113,6 +118,7 @@ public class AddPatients extends Fragment {
         logicButtonSave();
         logicImageProfile();
         logicButtonCalendar(view);
+        logicButtonDateDiagnosis(view);
         return view;
     }
 
@@ -218,24 +224,43 @@ public class AddPatients extends Fragment {
     }
 
     private void logicButtonCalendar(View view) {
-        // Obtener el administrador de fragmentos para que podamos iniciar desde el fragmento
+        // Get the fragment manager so they can start from the fragment
         final FragmentManager fm = ((AppCompatActivity)getActivity()).getSupportFragmentManager();
 
-        // Usando un escuchador onclick en TextInputEditText para mostrar datePicker
+        // Using an onclick listener in TextInputEditText to display datePicker
         ibCalendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Crea el datePickerFragment
+                // Create the datePickerFragment
                 AppCompatDialogFragment newFragment = new DatePickerFragment();
-                // Establece el targetFragment para recibir los resultados, especificando el código de solicitud
+                // Set the targetFragment to receive the results, specifying the request code
                 newFragment.setTargetFragment(AddPatients.this, REQUEST_CODE);
-                // Muestra el widget
+                // Show the widget
+                newFragment.show(fm, "datePicker");
+            }
+        });
+    }
+
+    private void logicButtonDateDiagnosis(View view) {
+        // Get the fragment manager so they can start from the fragment
+        final FragmentManager fm = ((AppCompatActivity)getActivity()).getSupportFragmentManager();
+
+        // Using an onclick listener in TextInputEditText to display datePicker
+        ivDateDiagnosis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Create the datePickerFragment
+                AppCompatDialogFragment newFragment = new DatePickerFragment();
+                // Set the targetFragment to receive the results, specifying the request code
+                newFragment.setTargetFragment(AddPatients.this, REQUEST_CODE1);
+                // Show the widget
                 newFragment.show(fm, "datePicker");
             }
         });
     }
 
     private void dropdownMenu(View view) {
+        // Filling drop-down list for document type
         String typeId1 = getResources().getString(R.string.citizenship_card);
         String typeId2 = getResources().getString(R.string.foreign_identity_card);
         String typeId3 = getResources().getString(R.string.passport);
@@ -252,13 +277,13 @@ public class AddPatients extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        // Verifica los resultados
         if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK){
-            // Obtener la fecha de la cadena
             selectedDate = data.getStringExtra("selectedDate");
-            // Establece el valor de editText
             dateOfBirthET.setText(selectedDate);
-        }else if (requestCode == REQUEST_CODE2 && resultCode == Activity.RESULT_OK){
+        } else if (requestCode == REQUEST_CODE1 && resultCode == Activity.RESULT_OK){
+            selectedDate = data.getStringExtra("selectedDate");
+            editDateDiagnostic.setText(selectedDate);
+        } else if (requestCode == REQUEST_CODE2 && resultCode == Activity.RESULT_OK){
             uriImage = data.getData();
             profileImage.setImageURI(uriImage);
         }

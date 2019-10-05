@@ -12,17 +12,22 @@
         android:orientation="vertical"
         android:padding="@dimen/ten">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/admin_createps_img_ps"
             android:layout_width="match_parent"
             android:layout_height="@dimen/oneHundred"
             android:layout_gravity="center"
-            android:src="@drawable/avatar_patient" />
+            android:src="@drawable/avatar_patient"
+            app:civ_border_width="2dp"
+            app:civ_circle_background_color="@color/colorAccent"
+            app:civ_border_color="#8BC34A"/>
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/StyleTextInputLayotTextBoxForms"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:endIconMode="clear_text"
+            app:startIconDrawable="@drawable/ic_face_black">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/admin_createps_til_name"
@@ -36,7 +41,9 @@
         <com.google.android.material.textfield.TextInputLayout
             style="@style/StyleTextInputLayotTextBoxForms"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            app:endIconMode="clear_text"
+            app:startIconDrawable="@drawable/ic_face_black">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/admin_createps_til_lastname"
@@ -51,7 +58,8 @@
             style="@style/StyleTextInputLayotDropDownForms"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/identification_type">
+            android:hint="@string/identification_type"
+            app:startIconDrawable="@drawable/ic_identification_black">
 
             <AutoCompleteTextView
                 android:id="@+id/admin_identification_type_patient"
@@ -63,7 +71,9 @@
         <com.google.android.material.textfield.TextInputLayout
             style="@style/StyleTextInputLayotTextBoxForms"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:endIconMode="clear_text"
+            app:startIconDrawable="@drawable/ic_identification_black">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/admin_createps_til_documet"
@@ -75,67 +85,56 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/StyleTextInputLayotTextBoxForms"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:endIconMode="password_toggle">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/admin_create_add_til_confirm_pass"
-                style="@style/StyleTextInputEditText"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="@string/admin_til_confin_pass"
-                android:inputType="textPassword" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/StyleTextInputLayotTextBoxForms"
+        <LinearLayout
+            style="@style/StyleLinearLayoutGenderForms"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/admin_createps_til_profession"
-                style="@style/StyleTextInputEditText"
-                android:layout_width="match_parent"
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="@string/profession_ps"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
+                app:startIconDrawable="@drawable/ic_wc_black">
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                style="@style/StyleLabelGenderForms"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/gender"/>
+        </LinearLayout>
 
         <RadioGroup
             android:id="@+id/admin_createps_rg_gender"
+            style="@style/StyleRadioGroupForms"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content">
 
             <RadioButton
                 android:id="@+id/admin_createps_rdbtn_f"
                 style="@style/StyleRadioButtonForms"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="@string/admin_ps_famale" />
 
             <RadioButton
                 style="@style/StyleRadioButtonForms"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="@string/admin_ps_male" />
         </RadioGroup>
 
         <LinearLayout
+            style="@style/StyleLinearLayoutBirthDateForms"
             android:layout_width="match_parent"
-            android:layout_height="75dp"
-            android:layout_gravity="center_vertical"
-            android:orientation="horizontal">
+            android:layout_height="75dp">
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/StyleTextInputLayotTextBoxForms"
-                android:layout_width="305dp"
-                android:layout_height="match_parent">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:endIconMode="clear_text"
+                app:startIconDrawable="@drawable/ic_calendar_black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/admin_createps_til_date_birth"
@@ -146,40 +145,19 @@
                     android:hint="@string/date_birth_ps" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/admin_iv_date_birth"
-                style="@style/StyleImageButtonCalendar"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
-                android:clickable="true"></ImageView>
-
+                style="@style/StyleCircleImageViewCalendarForms"
+                android:layout_width="85dp"
+                android:layout_height="85dp" />
         </LinearLayout>
-
-        <!--
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/admin_ps_age" />
-
-            <TextView
-                android:id="@+id/admin_createps_tv_age"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/admin_ps_age" />
-        </LinearLayout>
-        -->
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/StyleTextInputLayotTextBoxForms"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            app:endIconMode="clear_text"
+            app:startIconDrawable="@drawable/ic_phone_black">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/admin_createps_til_telephone"
@@ -193,7 +171,9 @@
         <com.google.android.material.textfield.TextInputLayout
             style="@style/StyleTextInputLayotTextBoxForms"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            app:endIconMode="clear_text"
+            app:startIconDrawable="@drawable/ic_location_city_black">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/admin_createps_til_city"
@@ -207,7 +187,25 @@
         <com.google.android.material.textfield.TextInputLayout
             style="@style/StyleTextInputLayotTextBoxForms"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            app:endIconMode="clear_text"
+            app:startIconDrawable="@drawable/ic_mail_black">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/admin_create_add_til_email"
+                style="@style/StyleTextInputEditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/admin_til_confin_email"
+                android:inputType="textEmailAddress" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/StyleTextInputLayotTextBoxForms"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:endIconMode="clear_text"
+            app:startIconDrawable="@drawable/ic_user_black">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/admin_create_add_til_user"
@@ -222,7 +220,8 @@
             style="@style/StyleTextInputLayotTextBoxForms"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:endIconMode="password_toggle">
+            app:endIconMode="password_toggle"
+            app:startIconDrawable="@drawable/ic_key_black">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/admin_create_add_til_pass"
@@ -236,21 +235,41 @@
         <com.google.android.material.textfield.TextInputLayout
             style="@style/StyleTextInputLayotTextBoxForms"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            app:endIconMode="password_toggle"
+            app:startIconDrawable="@drawable/ic_key_black">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/admin_create_add_til_email"
+                android:id="@+id/admin_create_add_til_confirm_pass"
                 style="@style/StyleTextInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="@string/admin_til_confin_email"
-                android:inputType="textEmailAddress" />
+                android:hint="@string/admin_til_confin_pass"
+                android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/StyleTextInputLayotTextBoxForms"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            app:endIconMode="clear_text"
+            app:startIconDrawable="@drawable/ic_work_black">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/admin_createps_til_profession"
+                style="@style/StyleTextInputEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/profession_ps"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/StyleTextInputLayotTextBoxForms"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:endIconMode="clear_text"
+            app:startIconDrawable="@drawable/ic_local_convenience_store_black">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/admin_create_add_workplace"
@@ -263,9 +282,10 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/admin_createps_btn_save"
             style="@style/StylePrimaryColoredButton"
-            android:layout_width="300dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
+            android:layout_marginLeft="@dimen/ten"
             android:text="@string/admin_til_saveps" />
         <!-- pais, departamento, municipio, zona, foto .  -->
 
