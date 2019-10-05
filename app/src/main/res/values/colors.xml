@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- colores de app-->
+    <!-- colors for app-->
     <color name="colorPrimary">#2B96D9</color>
     <color name="colorPrimaryLight">#6dc6ff</color>
     <color name="colorPrimaryDark">#0068a7</color>
@@ -10,7 +10,7 @@
     <color name="colorAccentDark">#00b183</color>
     <color name="colorBackround">#fafafa</color>
 
-    <!-- colores basicos -->
+    <!-- basic colors -->
     <color name="white">#FFFFFF</color>
     <color name="black">#202020</color>
     <color name="blackDark">#000000</color>
@@ -21,7 +21,7 @@
     <color name="transparent">#90000000</color>
     <color name="transparentLight">#50000000</color>
 
-    <!-- colores de material desing en el espectro de 600-->
+    <!-- colors of material desing in the 600 spectrum -->
     <color name="red">#e53935</color>
     <color name="redDark">#ab000d</color>
 

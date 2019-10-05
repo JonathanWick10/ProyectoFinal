@@ -99,7 +99,7 @@ public class AdminAddHealthProfessional extends Fragment{
 
     private void dropdownMenu(View view) {
         // Filling drop-down list for document type
-        String[] documentos = new String[] {String.valueOf(R.string.citizenship_card), String.valueOf(R.string.foreign_identity_card)};
+        String[] documentos = new String[] {getResources().getString(R.string.citizenship_card), getResources().getString(R.string.foreign_identity_card), getResources().getString(R.string.passport)};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), R.layout.dropdown_menu_popup_item, documentos);
         AutoCompleteTextView tipoIdentificacion = view.findViewById(R.id.admin_identification_type_patient);
         tipoIdentificacion.setAdapter(adapter);

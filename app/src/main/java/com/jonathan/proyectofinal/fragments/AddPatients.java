@@ -92,14 +92,13 @@ public class AddPatients extends Fragment {
     MaterialButton btnSave;
     String nameSring,lastNameString,typeIDString, idString, birthDayString, deparmentString, nativeCityString,
     actualCityString, addressString, emailString, userString, passwordString, confirmPasswordString,
-    diagnosticString, dateDiagnosticString,observationString;
-    long phonLong;
+    diagnosticString, dateDiagnosticString,observationString, seleccionRG, phoneString;
     //Instance Patient
     Patient patient = new Patient();
     //Uri of the Image
     Uri uriImage;
     public static final int REQUEST_CODE2 = 10;
-    //Variables for datepicker
+    //Variable for datepicker date of birth
     String selectedDate;
     public static final int REQUEST_CODE = 11;
     //Variable for all datepicker date of diagnosis
@@ -118,6 +117,7 @@ public class AddPatients extends Fragment {
         logicButtonSave();
         logicImageProfile();
         logicButtonCalendar(view);
+        logicButtonDateDiagnosis(view);
         return view;
     }
 
@@ -163,15 +163,17 @@ public class AddPatients extends Fragment {
         lastNameString = editLastName.getText().toString();
         typeIDString = autoCompletIdType.getText().toString();
         idString = editIdentification.getText().toString();
-        //region Obtiene la selección del RadioGroup
-        int radioButtonId = rgGender.getCheckedRadioButtonId();
-        View radioButton = rgGender.findViewById(radioButtonId);
-        int indice = rgGender.indexOfChild(radioButton);
-        RadioButton rb = (RadioButton)  rgGender.getChildAt(indice);
+        //region Get the selection of RadioGroup
+        if (rgGender.getCheckedRadioButtonId() != -1) {
+            int radioButtonId = rgGender.getCheckedRadioButtonId();
+            View radioButton = rgGender.findViewById(radioButtonId);
+            int indice = rgGender.indexOfChild(radioButton);
+            RadioButton rb = (RadioButton)  rgGender.getChildAt(indice);
+            seleccionRG = rb.getText().toString();
+        }
         //endregion
-        String seleccionRG = rb.getText().toString();
         birthDayString = dateOfBirthET.getText().toString();
-        phonLong = Long.parseLong(editPhone.getText().toString());
+        phoneString = editPhone.getText().toString();
         deparmentString = autoCompletDepartment.getText().toString();
         nativeCityString = editNativeCity.getText().toString();
         actualCityString = editActualCity.getText().toString();
@@ -187,7 +189,7 @@ public class AddPatients extends Fragment {
 
         //region conditional for fields is empty
         if (!nameSring.isEmpty()&&!lastNameString.isEmpty()&&!typeIDString.isEmpty()&&!idString.isEmpty()&&
-        !seleccionRG.isEmpty()&&!birthDayString.isEmpty()&&phonLong>0&&!deparmentString.isEmpty()
+        !seleccionRG.isEmpty()&&!birthDayString.isEmpty()&&!phoneString.isEmpty()&&!deparmentString.isEmpty()
         &&!nativeCityString.isEmpty()&&!actualCityString.isEmpty()&&!addressString.isEmpty()&&!emailString.isEmpty()
         &&!userString.isEmpty()&&!passwordString.isEmpty()&&!confirmPasswordString.isEmpty()&&!diagnosticString.isEmpty()
         &&!dateDiagnosticString.isEmpty()&&!observationString.isEmpty()) {
@@ -198,7 +200,7 @@ public class AddPatients extends Fragment {
             patient.setIdentification(idString);
             patient.setGender(seleccionRG);
             patient.setBirthday(birthDayString);
-            patient.setPhoneNumber(phonLong);
+            patient.setPhoneNumber(Long.parseLong(phoneString));
             patient.setDeparment(deparmentString);
             patient.setNativeCity(nativeCityString);
             patient.setActualCity(actualCityString);
@@ -226,15 +228,33 @@ public class AddPatients extends Fragment {
         // Get the fragment manager so they can start from the fragment
         final FragmentManager fm = ((AppCompatActivity)getActivity()).getSupportFragmentManager();
 
-        // Usando un escuchador onclick en TextInputEditText para mostrar datePicker
+        // Using an onclick listener in TextInputEditText to display datePicker
         ibCalendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Crea el datePickerFragment
+                // Create the datePickerFragment
                 AppCompatDialogFragment newFragment = new DatePickerFragment();
-                // Establece el targetFragment para recibir los resultados, especificando el código de solicitud
+                // Set the targetFragment to receive the results, specifying the request code
                 newFragment.setTargetFragment(AddPatients.this, REQUEST_CODE);
-                // Muestra el widget
+                // Show the widget
+                newFragment.show(fm, "datePicker");
+            }
+        });
+    }
+
+    private void logicButtonDateDiagnosis(View view) {
+        // Get the snippet manager so they can start from the snippet
+        final FragmentManager fm = ((AppCompatActivity)getActivity()).getSupportFragmentManager();
+
+        // Using an onclick listener in TextInputEditText to display datePicker
+        ivDateDiagnosis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Create the datePickerFragment
+                AppCompatDialogFragment newFragment = new DatePickerFragment();
+                // Set the targetFragment to receive the results, specifying the request code
+                newFragment.setTargetFragment(AddPatients.this, REQUEST_CODE1);
+                // Show the widget
                 newFragment.show(fm, "datePicker");
             }
         });

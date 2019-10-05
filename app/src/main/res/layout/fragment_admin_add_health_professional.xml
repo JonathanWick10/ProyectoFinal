@@ -27,7 +27,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:endIconMode="clear_text"
-            app:startIconDrawable="@drawable/ic_face_black">
+            app:startIconDrawable="@drawable/ic_face_black"
+            app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/admin_createps_til_name"
@@ -43,7 +44,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:endIconMode="clear_text"
-            app:startIconDrawable="@drawable/ic_face_black">
+            app:startIconDrawable="@drawable/ic_face_black"
+            app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/admin_createps_til_lastname"
@@ -59,13 +61,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/identification_type"
-            app:startIconDrawable="@drawable/ic_identification_black">
+            app:startIconDrawable="@drawable/ic_identification_black"
+            app:errorEnabled="true">
 
             <AutoCompleteTextView
                 android:id="@+id/admin_identification_type_patient"
                 style="@style/StyleTextInputEditText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:enabled="false"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -73,7 +77,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:endIconMode="clear_text"
-            app:startIconDrawable="@drawable/ic_identification_black">
+            app:startIconDrawable="@drawable/ic_identification_black"
+            app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/admin_createps_til_documet"
@@ -93,7 +98,8 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:startIconDrawable="@drawable/ic_wc_black">
+                app:startIconDrawable="@drawable/ic_wc_black"
+                app:errorEnabled="true">
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -134,7 +140,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 app:endIconMode="clear_text"
-                app:startIconDrawable="@drawable/ic_calendar_black">
+                app:startIconDrawable="@drawable/ic_calendar_black"
+                app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/admin_createps_til_date_birth"
@@ -156,8 +163,25 @@
             style="@style/StyleTextInputLayotTextBoxForms"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:hint="@string/native_city"
             app:endIconMode="clear_text"
-            app:startIconDrawable="@drawable/ic_phone_black">
+            app:startIconDrawable="@drawable/ic_nature_people_black">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/admin_createps_til_native_city"
+                style="@style/StyleTextInputEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/StyleTextInputLayotTextBoxForms"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:endIconMode="clear_text"
+            app:startIconDrawable="@drawable/ic_phone_black"
+            app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/admin_createps_til_telephone"
@@ -173,7 +197,25 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:endIconMode="clear_text"
-            app:startIconDrawable="@drawable/ic_location_city_black">
+            app:startIconDrawable="@drawable/ic_home_black_24dp"
+            app:errorEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/admin_createps_address"
+                style="@style/StyleTextInputEditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/address"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/StyleTextInputLayotTextBoxForms"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:endIconMode="clear_text"
+            app:startIconDrawable="@drawable/ic_location_city_black"
+            app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/admin_createps_til_city"
@@ -189,7 +231,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:endIconMode="clear_text"
-            app:startIconDrawable="@drawable/ic_mail_black">
+            app:startIconDrawable="@drawable/ic_mail_black"
+            app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/admin_create_add_til_email"
@@ -205,7 +248,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:endIconMode="clear_text"
-            app:startIconDrawable="@drawable/ic_user_black">
+            app:startIconDrawable="@drawable/ic_user_black"
+            app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/admin_create_add_til_user"
@@ -221,7 +265,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:endIconMode="password_toggle"
-            app:startIconDrawable="@drawable/ic_key_black">
+            app:startIconDrawable="@drawable/ic_key_black"
+            app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/admin_create_add_til_pass"
@@ -237,7 +282,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:endIconMode="password_toggle"
-            app:startIconDrawable="@drawable/ic_key_black">
+            app:startIconDrawable="@drawable/ic_key_black"
+            app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/admin_create_add_til_confirm_pass"
@@ -253,7 +299,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:endIconMode="clear_text"
-            app:startIconDrawable="@drawable/ic_work_black">
+            app:startIconDrawable="@drawable/ic_work_black"
+            app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/admin_createps_til_profession"
@@ -269,7 +316,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:endIconMode="clear_text"
-            app:startIconDrawable="@drawable/ic_local_convenience_store_black">
+            app:startIconDrawable="@drawable/ic_local_convenience_store_black"
+            app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/admin_create_add_workplace"
