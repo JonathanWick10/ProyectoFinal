@@ -33,15 +33,17 @@ public class Login extends AppCompatActivity {
                 String passTxt = pass.getText().toString();
                 if(nameTxt.isEmpty() || passTxt.isEmpty()){
                     if(nameTxt.isEmpty()){
-                        name.requestFocus();
-                        name.setError(getString(R.string.required));
+                      //  name.requestFocus();
+                       // name.setError(getString(R.string.required));
+                        Toast.makeText(Login.this,"CAMPO REQUERIDO", Toast.LENGTH_SHORT).show();
 
                     }else {
                         name.setError(null);
                     }
                     if(passTxt.isEmpty()){
-                        pass.requestFocus();
-                        pass.setError(getString(R.string.required));
+                      //  pass.requestFocus();
+                       // pass.setError(getString(R.string.required));
+                        Toast.makeText(Login.this,"CAMPO REQUERIDO", Toast.LENGTH_SHORT).show();
                     }else {
                         pass.setError(null);
                     }
