@@ -12,14 +12,14 @@ import android.widget.Toast;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.fragments.admin.AdminHome;
 
-public class LoginAdmin extends AppCompatActivity {
+public class Login extends AppCompatActivity {
 
     private EditText name,pass;
     private Button enter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_admin);
+        setContentView(R.layout.activity_login);
 
     reference();
     validations();
@@ -48,10 +48,10 @@ public class LoginAdmin extends AppCompatActivity {
                 }else{
                    if (nameTxt.equals("123") && passTxt.equals("123")){
 
-                       startActivity(new Intent(LoginAdmin.this, AdminHome.class));
+                       startActivity(new Intent(Login.this, AdminHome.class));
 
                    }else {
-                       Toast.makeText(LoginAdmin.this, getString(R.string.datos_incorrectos), Toast.LENGTH_SHORT).show();
+                       Toast.makeText(Login.this, getString(R.string.datos_incorrectos), Toast.LENGTH_SHORT).show();
                    }
                 }
             }
