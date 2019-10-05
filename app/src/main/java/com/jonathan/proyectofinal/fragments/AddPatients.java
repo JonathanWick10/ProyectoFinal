@@ -92,8 +92,7 @@ public class AddPatients extends Fragment {
     MaterialButton btnSave;
     String nameSring,lastNameString,typeIDString, idString, birthDayString, deparmentString, nativeCityString,
     actualCityString, addressString, emailString, userString, passwordString, confirmPasswordString,
-    diagnosticString, dateDiagnosticString,observationString;
-    long phonLong;
+    diagnosticString, dateDiagnosticString,observationString, seleccionRG, phoneString;
     //Instance Patient
     Patient patient = new Patient();
     //Uri of the Image
@@ -163,15 +162,17 @@ public class AddPatients extends Fragment {
         lastNameString = editLastName.getText().toString();
         typeIDString = autoCompletIdType.getText().toString();
         idString = editIdentification.getText().toString();
-        //region Obtiene la selección del RadioGroup
-        int radioButtonId = rgGender.getCheckedRadioButtonId();
-        View radioButton = rgGender.findViewById(radioButtonId);
-        int indice = rgGender.indexOfChild(radioButton);
-        RadioButton rb = (RadioButton)  rgGender.getChildAt(indice);
+        //region Get the selection of RadioGroup
+        if (rgGender.getCheckedRadioButtonId() != -1) {
+            int radioButtonId = rgGender.getCheckedRadioButtonId();
+            View radioButton = rgGender.findViewById(radioButtonId);
+            int indice = rgGender.indexOfChild(radioButton);
+            RadioButton rb = (RadioButton)  rgGender.getChildAt(indice);
+            seleccionRG = rb.getText().toString();
+        }
         //endregion
-        String seleccionRG = rb.getText().toString();
         birthDayString = dateOfBirthET.getText().toString();
-        phonLong = Long.parseLong(editPhone.getText().toString());
+        phoneString = editPhone.getText().toString();
         deparmentString = autoCompletDepartment.getText().toString();
         nativeCityString = editNativeCity.getText().toString();
         actualCityString = editActualCity.getText().toString();
@@ -187,7 +188,7 @@ public class AddPatients extends Fragment {
 
         //region conditional for fields is empty
         if (!nameSring.isEmpty()&&!lastNameString.isEmpty()&&!typeIDString.isEmpty()&&!idString.isEmpty()&&
-        !seleccionRG.isEmpty()&&!birthDayString.isEmpty()&&phonLong>0&&!deparmentString.isEmpty()
+        !seleccionRG.isEmpty()&&!birthDayString.isEmpty()&&!phoneString.isEmpty()&&!deparmentString.isEmpty()
         &&!nativeCityString.isEmpty()&&!actualCityString.isEmpty()&&!addressString.isEmpty()&&!emailString.isEmpty()
         &&!userString.isEmpty()&&!passwordString.isEmpty()&&!confirmPasswordString.isEmpty()&&!diagnosticString.isEmpty()
         &&!dateDiagnosticString.isEmpty()&&!observationString.isEmpty()) {
@@ -198,7 +199,7 @@ public class AddPatients extends Fragment {
             patient.setIdentification(idString);
             patient.setGender(seleccionRG);
             patient.setBirthday(birthDayString);
-            patient.setPhoneNumber(phonLong);
+            patient.setPhoneNumber(Long.parseLong(phoneString));
             patient.setDeparment(deparmentString);
             patient.setNativeCity(nativeCityString);
             patient.setActualCity(actualCityString);
