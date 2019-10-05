@@ -42,7 +42,7 @@
 
 
     <!-- Standard style for text box layout (Forms) -->
-    <style name="StyleTextInputLayotTextBoxForms" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">"
+    <style name="StyleTextInputLayotTextBoxForms" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
         <item name="endIconTint">@color/colorPrimary</item>
         <item name="boxBackgroundColor">@color/colorBackround</item>
         <item name="android:layout_margin">10dp</item>

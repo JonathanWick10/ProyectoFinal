@@ -98,7 +98,7 @@ public class AddPatients extends Fragment {
     //Uri of the Image
     Uri uriImage;
     public static final int REQUEST_CODE2 = 10;
-    //Variables for datepicker
+    //Variable for datepicker date of birth
     String selectedDate;
     public static final int REQUEST_CODE = 11;
     //Variable for all datepicker date of diagnosis
@@ -117,6 +117,7 @@ public class AddPatients extends Fragment {
         logicButtonSave();
         logicImageProfile();
         logicButtonCalendar(view);
+        logicButtonDateDiagnosis(view);
         return view;
     }
 
@@ -227,15 +228,33 @@ public class AddPatients extends Fragment {
         // Get the fragment manager so they can start from the fragment
         final FragmentManager fm = ((AppCompatActivity)getActivity()).getSupportFragmentManager();
 
-        // Usando un escuchador onclick en TextInputEditText para mostrar datePicker
+        // Using an onclick listener in TextInputEditText to display datePicker
         ibCalendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Crea el datePickerFragment
+                // Create the datePickerFragment
                 AppCompatDialogFragment newFragment = new DatePickerFragment();
-                // Establece el targetFragment para recibir los resultados, especificando el código de solicitud
+                // Set the targetFragment to receive the results, specifying the request code
                 newFragment.setTargetFragment(AddPatients.this, REQUEST_CODE);
-                // Muestra el widget
+                // Show the widget
+                newFragment.show(fm, "datePicker");
+            }
+        });
+    }
+
+    private void logicButtonDateDiagnosis(View view) {
+        // Get the snippet manager so they can start from the snippet
+        final FragmentManager fm = ((AppCompatActivity)getActivity()).getSupportFragmentManager();
+
+        // Using an onclick listener in TextInputEditText to display datePicker
+        ivDateDiagnosis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Create the datePickerFragment
+                AppCompatDialogFragment newFragment = new DatePickerFragment();
+                // Set the targetFragment to receive the results, specifying the request code
+                newFragment.setTargetFragment(AddPatients.this, REQUEST_CODE1);
+                // Show the widget
                 newFragment.show(fm, "datePicker");
             }
         });
