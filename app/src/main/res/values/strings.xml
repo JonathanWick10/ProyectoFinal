@@ -6,7 +6,7 @@
     <string name="motor">Motriz</string>
     <string name="list_patient">Lista de pacientes</string>
     <string name="health_professional">Profesional de la salud</string>
-    <string name="required">Required field</string>
+    <string name="required">Todos los campos son requeridos</string>
     <string name="name_patient">Name patient</string>
     <string name="admin_id">ID</string>
     <string name="admin_place">Place</string>
