@@ -17,6 +17,7 @@ import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.adapters.AdminListPSAdapter;
+import com.jonathan.proyectofinal.fragments.games.Memorama;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -71,7 +72,8 @@ public class AdminHome extends AppCompatActivity implements AdminAddHealthProfes
             floatingActionButton.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_go_back));
         } else {
             bottomAppBar.setFabAlignmentMode(BottomAppBar.FAB_ALIGNMENT_MODE_CENTER);
-            handleFrame(new AdminListPSFragment(alertDelete()));
+           // handleFrame(new AdminListPSFragment(alertDelete()));
+            handleFrame(new Memorama());
             floatingActionButton.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_person_add));
         }
     }
@@ -84,6 +86,8 @@ public class AdminHome extends AppCompatActivity implements AdminAddHealthProfes
         fragmentTransaction.replace(R.id.admin_home_frm_contenedor, fragment);  // remplaza un fragmento de contenedor
         fragmentTransaction.commit();
     }
+
+
 
     @Override
     public void onFragmentInteraction(Uri uri) {
