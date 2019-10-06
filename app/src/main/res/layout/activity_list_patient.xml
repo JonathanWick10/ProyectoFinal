@@ -20,16 +20,10 @@
 
     </androidx.appcompat.widget.Toolbar>
     -->
-
-       <!--Fragment list patient for health professional-->
-    <fragment
+    <FrameLayout
         android:id="@+id/fragmentHProfessional"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:name="com.jonathan.proyectofinal.fragments.hp.PatientsListFragment"
-        tools:layout="@layout/fragment_patients"
-        android:drawSelectorOnTop="false"
-        />
+        android:layout_height="match_parent"/>
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/babHProfessional"

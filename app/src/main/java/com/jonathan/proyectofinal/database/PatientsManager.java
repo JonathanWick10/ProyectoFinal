@@ -102,9 +102,9 @@ public class PatientsManager {
     //endregion
 
     //region Read Patients for Healthcarer profesional
-    public List<Patient> listForHP(HealthcareProfessional healthcareProfessional) {
+    public List<Patient> listForHP(String healthcareProfessional) {
         collectionReferencePatients
-                .whereEqualTo("assigns.id", healthcareProfessional.getIdentification())
+                .whereEqualTo("assigns.id", healthcareProfessional)
                 .orderBy("firstName")
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {

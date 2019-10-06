@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,7 +19,8 @@ import java.util.List;
 
 public class PatientsAdapter extends RecyclerView.Adapter<PatientsAdapter.PatientViewHolder> {
 
-    List<Patient> listPatients;
+    //region Código Carolina
+    /*List<Patient> listPatients;
     interDelete clickDelete;
 
     private Context context;
@@ -27,11 +29,10 @@ public class PatientsAdapter extends RecyclerView.Adapter<PatientsAdapter.Patien
     public interface interDelete{
         void clickItem(Patient item);
     }
-/*    public PatientsAdapter(List<Patient> listPatients, interDelete clickDelete) {
+   public PatientsAdapter(List<Patient> listPatients, interDelete clickDelete) {
         this.listPatients = listPatients;
         this.clickDelete = clickDelete;
     }
-*/
     public PatientsAdapter(Context context, IOnPatientClickListener onPatientClickListener) {
         this.context = context;
         this.onPatientClickListener = onPatientClickListener;
@@ -68,8 +69,7 @@ public class PatientsAdapter extends RecyclerView.Adapter<PatientsAdapter.Patien
     public void onBindViewHolder(PatientViewHolder holder, final int position) {
 
         Patient patientholder=listPatients.get(position);
-        holder.name.setText(patientholder.getFirstName());
-        holder.id.setText(patientholder.getAge());   //Review (long)
+        holder.name.setText(patientholder.getFirstName()); //Review (long)
        // holder.imagePatient.setImageResource(patientholder.id);
         holder.imageDelete.setOnClickListener(new View.OnClickListener(){
 
@@ -91,10 +91,96 @@ public class PatientsAdapter extends RecyclerView.Adapter<PatientsAdapter.Patien
     @Override
     public int getItemCount() {
         return listPatients.size();
+    }*/
+    //endregion
+
+    //region Variables
+    List<Patient> patientList;
+    Context context;
+    ISelectionPatient iSelectionPatient;
+    IDeletePatient iDeletePatient;
+    //endregion
+
+    //region Builder
+    public PatientsAdapter(List<Patient> patientList, Context context, ISelectionPatient iSelectionPatient, IDeletePatient iDeletePatient) {
+        this.patientList = patientList;
+        this.context = context;
+        this.iSelectionPatient = iSelectionPatient;
+        this.iDeletePatient = iDeletePatient;
+    }
+    //endregion
+
+    //region Overwritten methods of RecyclerView
+    @NonNull
+    @Override
+    public PatientViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.listview_list_patients, parent, false);
+        return new PatientViewHolder(view);
     }
 
-
+    @Override
+    public void onBindViewHolder(@NonNull PatientViewHolder holder, final int position) {
+        //set data
+        holder.setData(patientList.get(position));
+        //events onclick
+        holder.layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                iSelectionPatient.clickItem(patientList.get(position));
+            }
+        });
+        holder.delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                iDeletePatient.clickdelete(patientList.get(position));
+            }
+        });
     }
+
+    @Override
+    public int getItemCount() {
+        return patientList.size();
+    }
+    //endregion
+
+    //region ViewHolder of Recycler
+    public class PatientViewHolder extends RecyclerView.ViewHolder {
+
+        ImageView photo, delete;
+        TextView name, identification;
+        Patient item;
+        View layout;
+
+        //Reference to views
+        public PatientViewHolder(@NonNull View itemView) {
+            super(itemView);
+            layout = itemView;
+            photo = itemView.findViewById(R.id.imagePatient);
+            delete = itemView.findViewById(R.id.btn_delete);
+            name = itemView.findViewById(R.id.tvPatientName);
+            identification = itemView.findViewById(R.id.tvPatientId);
+        }
+
+        //Set data to views
+        public void setData(Patient item) {
+            this.item = item;
+            name.setText(item.getFirstName());
+            identification.setText(item.getIdentification());
+        }
+    }
+    //endregion
+
+    //region Interfaces
+    public interface ISelectionPatient {
+        void clickItem(Patient patient);
+    }
+
+    public interface IDeletePatient {
+        void clickdelete(Patient patient);
+    }
+    //endregion
+
+}
 
 
 
