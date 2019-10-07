@@ -17,4 +17,5 @@
             android:scaleType="fitXY"
             android:src="@drawable/avatar_patient"/>
 
+
 </androidx.cardview.widget.CardView>
