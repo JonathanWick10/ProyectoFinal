@@ -1,15 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".fragments.carer.GeneralInformationFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/textview"
+    <Button
+        android:id="@+id/q1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text=""/>
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:clickable="true"
+        android:textAllCaps="false"
+        android:drawableRight="@drawable/down_black"
+        android:enabled="true"
+        android:text="Pregunta"></Button>
+    <com.codesgood.views.JustifiedTextView
+        android:id="@+id/a1"
+        android:layout_below="@+id/q1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:text="Respuesta"/>
 
-</FrameLayout>
+    <Button
+        android:id="@+id/q2"
+        android:textAllCaps="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/a1"
+        android:background="@color/white"
+        android:clickable="true"
+        android:drawableRight="@drawable/down_black"
+        android:enabled="true"
+        android:text="Pregunta"></Button>
+    <com.codesgood.views.JustifiedTextView
+        android:id="@+id/a2"
+        android:layout_below="@+id/q2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:text="Respuesta"/>
+
+    <Button
+        android:id="@+id/q3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/a2"
+        android:background="@color/white"
+        android:clickable="true"
+        android:textAllCaps="false"
+        android:drawableRight="@drawable/down_black"
+        android:enabled="true"
+        android:text="Pregunta"></Button>
+    <com.codesgood.views.JustifiedTextView
+        android:id="@+id/a3"
+        android:layout_below="@+id/q3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:text="Respuesta"/>
+
+</RelativeLayout>

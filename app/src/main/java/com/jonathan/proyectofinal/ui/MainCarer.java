@@ -8,6 +8,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -46,8 +47,10 @@ public class MainCarer extends AppCompatActivity implements IMainCarer {
             transaction.replace(R.id.containerHome,change).commit();
         }
         else if(fragmentTag.equals(getString(R.string.manage))){
-            change = new ManageFragment();
-            transaction.replace(R.id.containerHome,change).commit();
+            Intent intent = new Intent(MainCarer.this,PatientsList.class);
+            startActivity(intent);
+            //change = new ManageFragment();
+            //transaction.replace(R.id.containerHome,change).commit();
         }
         if(fragmentTag.equals(getString(R.string.diary))){
             change = new DiaryFragment();
