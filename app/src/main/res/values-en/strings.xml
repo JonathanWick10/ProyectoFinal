@@ -8,6 +8,10 @@
     <string name="list_patient">Lista de pacientes</string>
     <string name="health_professional">Profesional de la salud</string>
     <string name="required">Required field</string>
+    <string name="email_required">Email is required</string>
+    <string name="password_required">Password is required</string>
+    <string name="auth_fail">Authentication failed</string>
+    <string name="success_regis">Registered successfully</string>
     <string name="name_patient">Name patient</string>
     <string name="admin_id">ID</string>
     <string name="admin_place">Place</string>

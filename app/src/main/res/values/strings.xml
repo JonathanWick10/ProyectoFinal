@@ -7,6 +7,10 @@
     <string name="list_patient">Lista de pacientes</string>
     <string name="health_professional">Profesional de la salud</string>
     <string name="required">Todos los campos son requeridos</string>
+    <string name="email_required">Correo electrónico obligatorio</string>
+    <string name="password_required">Contraseña obligatoria</string>
+    <string name="auth_fail">Error en la autenticación</string>
+    <string name="success_regis">Registrado correctamente</string>
     <string name="name_patient">Name patient</string>
     <string name="admin_id">ID</string>
     <string name="admin_place">Place</string>

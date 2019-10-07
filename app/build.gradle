@@ -36,7 +36,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore:21.1.0'
     //dependencies for Storage
     implementation 'com.google.firebase:firebase-storage:16.0.4'
-    implementation 'com.google.firebase:firebase-auth:17.0.0'
+    implementation 'com.google.firebase:firebase-auth:19.0.0'
+    implementation 'com.firebaseui:firebase-ui-auth:4.3.1'
 
     //dependencies for Butterknife
     annotationProcessor "com.jakewharton:butterknife-compiler:8.1.0"
@@ -59,5 +60,8 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
     //
     implementation 'com.squareup.picasso:picasso:2.71828'
+
+    //dependencie for Login with Google
+    implementation 'com.google.android.gms:play-services-auth:17.0.0'
 
 }
