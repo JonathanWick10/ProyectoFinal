@@ -204,4 +204,52 @@
         se encontrará con la sección de “Mi cuidado”, la que brindará todo el conocimiento sobre dicho síndrome y las formas
         de evitarlo.
     </string>
+
+    <string name="qp1">Phase 1:</string>
+    <string name="qp2">Phase 2:</string>
+    <string name="qp3">Phase 3:</string>
+
+    <string name="ap1">\n
+        <b>¿Cómo es la primera fase del alzheimer?</b>\n\n
+
+        Normalmente esta fase no se diagnostica porque los síntomas no son demasiado evidentes. Los olvidos y descuidos que
+        empiezan a aparecer son achacados a la edad o a un acontecimiento reciente (fallecimiento de alguien cercano,
+        enfermedad, hospitalización...) y la familia y el propio paciente intentan disculpar y hasta encubrir, estas conductas.
+        Normalmente no hay percepción de enfermedad, por lo que la familia no ve necesidad de consultar a un médico.\n\n
+
+        <b>¿Cuales son los sintomas de la primera fase?</b>\n\n
+
+        \u25CF Pérdida de memoria: el paciente tiene dificultad para retener nueva información; se da cuenta de sus olvidos, por lo que
+        puede manifestar ansiedad o depresión, al no ser consciente de lo que le ocurre.\n
+        \u25CF Pérdida de vocabulario: dificultad para expresarse, porque no encuentra la palabra adecuada (y la cambia por otra),
+        es más lento y menos fluido hablando, hace pausas porque no le sale el ‘’nombre de las cosas’’…\n
+        \u25CF Dificultad para realizar tareas cotidianas: conducir, cocinar, hacer la compra...\n
+        \u25CF Tendencia a perderse: no sabe dónde está, se desorienta con facilidad…\n
+        \u25CF Cambio de personalidad: cambios de carácter o humor, sin causa aparente. El enfermo está más irritable, menos comunicativo,
+        distinto de antes...\n\n
+        En esta fase el paciente es independiente y autónomo para su propio cuidado: aseo, vestido, movilidad.\n\n
+
+        <b>¿Cómo debe cuidarse a un paciente en fase 1?</b>\n\n
+
+        El objetivo es mantener el bienestar psíquico, la salud y dignidad del paciente hasta el final. Esto puede lograrse:\n\n
+        \u25CF Potenciando su autonomía: que haga por sí mismo cuanto le sea posible para que no olvide sus rutinas, se mantenga útil y
+        su autoestima no decaiga.\n
+        \u25CF Ayudando al paciente o realizando por él las actividades que no pueda realizar por sí mismo.\n
+        \u25CF Evitando cualquier complicación previsible.\n\n
+
+        <b>¿Cuidados específicos de la primera fase?</b>\n\n
+
+        \u25CF Evita que esté solo y que salga solo de casa (por si se desorienta).\n
+        \u25CF Vigila su estado de salud general: vista, oído, dientes, movilidad, tensión arterial, azúcar...\n
+        \u25CF Potencia el ejercicio físico (que realice paseos diarios, siempre acompañado).\n
+        \u25CF Intenta que realice actividades o tareas que estimulen su mente y lo mantengan mentalmente activo.\n
+        \u25CF Proporciónale una alimentación equilibrada y variada, rica en fibra y proteínas, vigilando que beba toda el agua necesaria.\n
+        \u25CF Oriéntalo en el espacio y en el tiempo por medio de calendarios y relojes bien visibles, recordándole el día de la semana y
+        del mes en que está.\n
+        \u25CF Intenta mantener las rutinas, haciéndole ver cuándo es la hora de comer y dormir, salir a dar un paseo, etc.\n
+        \u25CF Comunícate con el enfermo de forma eficaz: frases cortas y sencillas, sin discutir, con paciencia…
+    </string>
+    <string name="ap2">Fase 2:</string>
+    <string name="ap3">Fase 3:</string>
+
 </resources>

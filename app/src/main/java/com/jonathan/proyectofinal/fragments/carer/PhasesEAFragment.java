@@ -1,10 +1,13 @@
 package com.jonathan.proyectofinal.fragments.carer;
 
 
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,32 +47,39 @@ public class PhasesEAFragment extends Fragment implements View.OnClickListener {
         return view;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.qf1:
                 if(a1.getVisibility() == v.VISIBLE){ //si es Visible lo pones Gone
+                    a1.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a1.setVisibility(v.GONE);
                     q1.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
                 }else{ // si no es Visible, lo pones
+                    a1.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a1.setVisibility(v.VISIBLE);
                     q1.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.up),null);
                 }
                 break;
             case R.id.qf2:
                 if(a2.getVisibility() == v.VISIBLE){ //si es Visible lo pones Gone
+                    a2.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a2.setVisibility(v.GONE);
                     q2.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
                 }else{ // si no es Visible, lo pones
+                    a2.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a2.setVisibility(v.VISIBLE);
                     q2.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.up),null);
                 }
                 break;
             case R.id.qf3:
                 if(a3.getVisibility() == v.VISIBLE){ //si es Visible lo pones Gone
+                    a2.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a3.setVisibility(v.GONE);
                     q3.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
                 }else{ // si no es Visible, lo pones
+                    a2.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a3.setVisibility(v.VISIBLE);
                     q3.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.up),null);
                 }

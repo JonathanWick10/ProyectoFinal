@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.carer.PhasesEAFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
     <!-- TODO: Update blank fragment layout -->
     <Button
@@ -13,16 +20,22 @@
         android:background="@color/white"
         android:clickable="true"
         android:textAllCaps="false"
+        android:padding="4dp"
+        android:gravity="left"
+        android:textSize="20dp"
         android:drawableRight="@drawable/down_black"
         android:enabled="true"
-        android:text="Pregunta"></Button>
-    <com.codesgood.views.JustifiedTextView
+        android:text="@string/qp1"></Button>
+    <TextView
         android:id="@+id/af1"
         android:layout_below="@+id/qf1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        android:padding="8dp"
         android:visibility="gone"
-        android:text="Respuesta"/>
+        android:text="@string/ap1"/>
 
     <Button
         android:id="@+id/qf2"
@@ -34,14 +47,20 @@
         android:clickable="true"
         android:drawableRight="@drawable/down_black"
         android:enabled="true"
-        android:text="Pregunta"></Button>
-    <com.codesgood.views.JustifiedTextView
+        android:padding="4dp"
+        android:gravity="left"
+        android:textSize="20dp"
+        android:text="@string/qp2"></Button>
+    <TextView
         android:id="@+id/af2"
         android:layout_below="@+id/qf2"
         android:layout_width="match_parent"
+        android:textColor="@color/black"
         android:visibility="gone"
+        android:textSize="18dp"
+        android:padding="8dp"
         android:layout_height="wrap_content"
-        android:text="Respuesta"/>
+        android:text="@string/ap2"/>
 
     <Button
         android:id="@+id/qf3"
@@ -53,13 +72,22 @@
         android:clickable="true"
         android:drawableRight="@drawable/down_black"
         android:enabled="true"
-        android:text="Pregunta"></Button>
-    <com.codesgood.views.JustifiedTextView
+        android:padding="4dp"
+        android:gravity="left"
+        android:textSize="20dp"
+        android:text="@string/qp3"></Button>
+    <TextView
         android:id="@+id/af3"
+        android:textAllCaps="false"
         android:layout_below="@+id/qf3"
         android:layout_width="match_parent"
+        android:textColor="@color/black"
         android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:padding="8dp"
         android:visibility="gone"
-        android:text="Respuesta"/>
+        android:text="@string/ap3"/>
+        </RelativeLayout>
+    </ScrollView>
 
-</RelativeLayout>
+</FrameLayout>
