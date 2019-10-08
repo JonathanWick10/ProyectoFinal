@@ -2,6 +2,8 @@ package com.jonathan.proyectofinal.data;
 
 public class HealthcareProfessional {
 
+    //region Variables
+    private String hpUID;
     private String firstName;
     private String lastName;
     private String identificationType;
@@ -17,11 +19,19 @@ public class HealthcareProfessional {
     private String password;
     private String profession;
     private String employment_place;
+    private String rol;
+    //endregion
 
+    //region Builders
     public HealthcareProfessional() {
     }
 
-    public HealthcareProfessional(String firstName, String lastName, String identificationType, String identification, String gender, String birthday, String nativeCity, Long phoneNumber, String address, String actualCity, String email, String userName, String password, String profession, String employment_place) {
+    public HealthcareProfessional(String hpUID, String firstName, String lastName, String identificationType,
+                                  String identification, String gender, String birthday,
+                                  String nativeCity, Long phoneNumber, String address,
+                                  String actualCity, String email, String userName, String password,
+                                  String profession, String employment_place, String rol) {
+        this.hpUID = hpUID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.identificationType = identificationType;
@@ -37,6 +47,17 @@ public class HealthcareProfessional {
         this.password = password;
         this.profession = profession;
         this.employment_place = employment_place;
+        this.rol = rol;
+    }
+    //endregion
+
+    //region Getters and Setters
+    public String getHpUID() {
+        return hpUID;
+    }
+
+    public void setHpUID(String hpUID) {
+        this.hpUID = hpUID;
     }
 
     public String getFirstName() {
@@ -159,6 +180,16 @@ public class HealthcareProfessional {
         this.employment_place = employment_place;
     }
 
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+    //endregion
+
+    //region toStingn
     @Override
     public String toString() {
         return "HealthcareProfessional{" +
@@ -179,4 +210,5 @@ public class HealthcareProfessional {
                 ", employment_place='" + employment_place + '\'' +
                 '}';
     }
+    //endregion
 }

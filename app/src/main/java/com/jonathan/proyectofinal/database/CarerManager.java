@@ -4,14 +4,20 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.jonathan.proyectofinal.data.Carer;
 import com.jonathan.proyectofinal.tools.Constants;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class CarerManager {
@@ -21,10 +27,12 @@ public class CarerManager {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference collectionReferencePatients = db.collection(Constants.Carers);
     private boolean flag = false;
+    List<Carer> carersList = new ArrayList<>();
+    Carer carer = new Carer();
     //endregion
 
     //region Create Carer
-    public boolean createPatient(Carer carer){
+    public boolean createCarer(Carer carer) {
 
         // Create a new object with a key and value as an example
         Map<String, Object> example = new HashMap<>();
@@ -43,20 +51,47 @@ public class CarerManager {
                         flag = false;
                         Log.d("Message", e.toString());
                     }
+                })
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            flag = true;
+                        }
+                    }
                 });
 
         return flag;
     }
     //endregion
 
-    //region Read Patients for Carer
+    //region Read Carer for Carer
     //endregion
 
-    //region Read Patients for Healthcarer profesional
+    //region Read Carer for Healthcarer profesional
     //endregion
 
-    //region Update Patient by ID
-    public boolean updatePatient(Carer carer){
+    //region Read Carer by UID
+    public Carer carertByUID(String uID) {
+
+        collectionReferencePatients.whereEqualTo("carerUId", uID)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        carersList = new ArrayList<Carer>();
+                        for (QueryDocumentSnapshot documentSnapshopt :
+                                queryDocumentSnapshots) {
+                            carer = documentSnapshopt.toObject(Carer.class);
+                        }
+                    }
+                });
+        return carer;
+    }
+    //endregion
+
+    //region Update Carer by ID
+    public boolean updateCarer(Carer carer) {
 
         collectionReferencePatients.document(carer.getIdentification().toString()).set(carer)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -77,8 +112,8 @@ public class CarerManager {
     }
     //endregion
 
-    //region Delete Patient by ID
-    public boolean deletePetient(Carer carer){
+    //region Delete Carer by ID
+    public boolean deleteCarer(Carer carer) {
 
         collectionReferencePatients.document(carer.getIdentification().toString()).delete()
                 .addOnSuccessListener(new OnSuccessListener<Void>() {

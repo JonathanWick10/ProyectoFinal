@@ -33,6 +33,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.jonathan.proyectofinal.R;
+import com.jonathan.proyectofinal.data.Carer;
+import com.jonathan.proyectofinal.database.CarerManager;
 import com.jonathan.proyectofinal.database.LoginManager;
 import com.jonathan.proyectofinal.fragments.admin.AdminHome;
 
@@ -62,12 +64,17 @@ public class Login extends AppCompatActivity {
     private int GOOGLE_SIGN_IN=1;
 
     List<AuthUI.IdpConfig> providers;
+    private FirebaseAuth firebaseAuth;
+    FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+       // reference();
+        firebaseAuth = FirebaseAuth.getInstance();
+        user = firebaseAuth.getCurrentUser();
 
         pass.addTextChangedListener(new TextWatcher() {
             @Override

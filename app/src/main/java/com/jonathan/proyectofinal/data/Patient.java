@@ -4,6 +4,7 @@ import java.util.Map;
 
 public class Patient {
     //region Variables
+    private String patientUID;
     private String firstName;
     private String lastName;
     private String identificationType;
@@ -24,6 +25,7 @@ public class Patient {
     private String diagnostic;
     private String observations;
     private String emergencyNumber;
+    private String rol;
     Map<String,Object> assigns;
     //endregion
 
@@ -31,11 +33,12 @@ public class Patient {
     public Patient() {
     }
 
-    public Patient(String firstName, String lastName, String identificationType, String identification,
+    public Patient(String patientUID, String firstName, String lastName, String identificationType, String identification,
                    String gender, String birthday, long phoneNumber, String deparment, String userName,
                    String password, String confirmPassword, String email, String nativeCity, String actualCity,
                    long familyPhoneNumber, String address, String dateDiagnostic, String diagnostic,
-                   String observations, String emergencyNumber, Map<String,Object> assigns) {
+                   String observations, String emergencyNumber, String rol, Map<String,Object> assigns) {
+        this.patientUID = patientUID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.identificationType = identificationType;
@@ -56,11 +59,20 @@ public class Patient {
         this.diagnostic = diagnostic;
         this.observations = observations;
         this.emergencyNumber = emergencyNumber;
+        this.rol = rol;
         this.assigns = assigns;
     }
     //endregion
 
     //region Getters and Setters
+    public String getPatientUID() {
+        return patientUID;
+    }
+
+    public void setPatientUID(String patientUID) {
+        this.patientUID = patientUID;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -81,9 +93,7 @@ public class Patient {
         return identificationType;
     }
 
-    public void setIdentificationType(String identificationType) {
-        this.identificationType = identificationType;
-    }
+    public void setIdentificationType(String identificationType) { this.identificationType = identificationType;}
 
     public String getIdentification() {
         return identification;
@@ -145,9 +155,7 @@ public class Patient {
         return confirmPassword;
     }
 
-    public void setConfirmPassword(String confirmPassword) {
-        this.confirmPassword = confirmPassword;
-    }
+    public void setConfirmPassword(String confirmPassword) { this.confirmPassword = confirmPassword;}
 
     public String getEmail() {
         return email;
@@ -177,9 +185,7 @@ public class Patient {
         return familyPhoneNumber;
     }
 
-    public void setFamilyPhoneNumber(long familyPhoneNumber) {
-        this.familyPhoneNumber = familyPhoneNumber;
-    }
+    public void setFamilyPhoneNumber(long familyPhoneNumber) { this.familyPhoneNumber = familyPhoneNumber;}
 
     public String getAddress() {
         return address;
@@ -217,9 +223,11 @@ public class Patient {
         return emergencyNumber;
     }
 
-    public void setEmergencyNumber(String emergencyNumber) {
-        this.emergencyNumber = emergencyNumber;
-    }
+    public void setEmergencyNumber(String emergencyNumber) { this.emergencyNumber = emergencyNumber; }
+
+    public String getRol() { return rol; }
+
+    public void setRol(String rol) { this.rol = rol;}
 
     public Map<String, Object> getAssigns() {
         return assigns;

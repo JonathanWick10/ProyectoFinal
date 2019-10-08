@@ -145,7 +145,25 @@ public class PatientsManager {
                 });
         return patientM;
     }
+    //endregion
 
+    //region Read Patient by UID
+    public Patient patientByUID(String uID) {
+
+        collectionReferencePatients.whereEqualTo("patientUID", uID)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        patientList = new ArrayList<Patient>();
+                        for (QueryDocumentSnapshot documentSnapshopt :
+                                queryDocumentSnapshots) {
+                            patientM = documentSnapshopt.toObject(Patient.class);
+                        }
+                    }
+                });
+        return patientM;
+    }
     //endregion
 
     //region Update Patient by ID

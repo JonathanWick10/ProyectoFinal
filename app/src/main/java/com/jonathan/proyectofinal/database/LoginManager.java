@@ -17,6 +17,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.jonathan.proyectofinal.data.Admin;
+import com.jonathan.proyectofinal.data.Carer;
+import com.jonathan.proyectofinal.data.HealthcareProfessional;
+import com.jonathan.proyectofinal.data.Patient;
+import com.google.firebase.auth.FirebaseUser;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.fragments.admin.AdminHome;
 import com.jonathan.proyectofinal.ui.Login;
@@ -25,9 +30,22 @@ import java.util.concurrent.Executor;
 
 public class LoginManager {
 
+    //region Variables
     private FirebaseAuth firebaseAuth=FirebaseAuth.getInstance();
     private FirebaseUser user = firebaseAuth.getCurrentUser();
     private GoogleSignInClient googleSignInClient;
+
+    //Instance Managers
+    AdminManager adminManager = new AdminManager();
+    HPManager hpManager = new HPManager();
+    CarerManager carerManager = new CarerManager();
+    PatientsManager patientsManager = new PatientsManager();
+    //Instance Pojo
+    Admin admin = new Admin();
+    HealthcareProfessional hp = new HealthcareProfessional();
+    Carer carer = new Carer();
+    Patient patient = new Patient();
+    //endregion
 
     public void emailPasswordLogin (final Context context, String email, String password){
 
@@ -37,7 +55,8 @@ public class LoginManager {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-
+                            user = firebaseAuth.getCurrentUser();
+                            String jona = findRole(user.getUid());
                             context.startActivity(new Intent(context, AdminHome.class));
 
                         } else {
@@ -88,5 +107,25 @@ public class LoginManager {
 
         googleSignInClient = GoogleSignIn.getClient(context, gso);
     }
+
+    //region Find role
+    public String findRole(String uID){
+        String role="";
+        admin = adminManager.admintByUID(uID);
+        hp = hpManager.hpByUID(uID);
+        carer = carerManager.carertByUID(uID);
+        patient = patientsManager.patientByUID(uID);
+        if(admin.getRol()!= null){
+            role = admin.getRol();
+        }else if (hp.getRol()!= null){
+            role = hp.getRol();
+        }else if (carer.getRol()!= null){
+            role = carer.getRol();
+        }else if (patient.getRol()!= null){
+            role = patient.getRol();
+        }
+        return role;
+    }
+    //endregion
 
 }
