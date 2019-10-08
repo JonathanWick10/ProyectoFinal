@@ -72,8 +72,8 @@ public class AdminHome extends AppCompatActivity implements AdminAddHealthProfes
             floatingActionButton.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_go_back));
         } else {
             bottomAppBar.setFabAlignmentMode(BottomAppBar.FAB_ALIGNMENT_MODE_CENTER);
-           // handleFrame(new AdminListPSFragment(alertDelete()));
-            handleFrame(new Memorama());
+             handleFrame(new AdminListPSFragment(alertDelete()));
+            //handleFrame(new Memorama());
             floatingActionButton.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_person_add));
         }
     }

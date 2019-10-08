@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.common.util.DataUtils;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.adapters.PatientsAdapter;
 import com.jonathan.proyectofinal.data.HealthcareProfessional;
@@ -74,6 +75,8 @@ public class PatientsListFragment extends Fragment {
             public void clickItem(Patient patient) {
                 Toast.makeText(getActivity(), patient.getIdentification()+" / "+patient.getFirstName(), Toast.LENGTH_SHORT).show();
                 Intent goPatient =new Intent(getActivity(), HealthProfessionalActivity.class);
+                String patientUID= patient.getPatientUID();
+                goPatient.putExtra("patientUID", patientUID);
                 startActivity(goPatient);
             }
         };
