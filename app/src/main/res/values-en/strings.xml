@@ -219,37 +219,119 @@
 
         <b>¿Cuales son los sintomas de la primera fase?</b>\n\n
 
-        \u25CF Pérdida de memoria: el paciente tiene dificultad para retener nueva información; se da cuenta de sus olvidos, por lo que
-        puede manifestar ansiedad o depresión, al no ser consciente de lo que le ocurre.\n
-        \u25CF Pérdida de vocabulario: dificultad para expresarse, porque no encuentra la palabra adecuada (y la cambia por otra),
-        es más lento y menos fluido hablando, hace pausas porque no le sale el ‘’nombre de las cosas’’…\n
-        \u25CF Dificultad para realizar tareas cotidianas: conducir, cocinar, hacer la compra...\n
-        \u25CF Tendencia a perderse: no sabe dónde está, se desorienta con facilidad…\n
-        \u25CF Cambio de personalidad: cambios de carácter o humor, sin causa aparente. El enfermo está más irritable, menos comunicativo,
-        distinto de antes...\n\n
+        <li>Pérdida de memoria: el paciente tiene dificultad para retener nueva información; se da cuenta de sus olvidos, por lo que
+        puede manifestar ansiedad o depresión, al no ser consciente de lo que le ocurre.\n</li>
+        <li>Pérdida de vocabulario: dificultad para expresarse, porque no encuentra la palabra adecuada (y la cambia por otra),
+        es más lento y menos fluido hablando, hace pausas porque no le sale el ‘’nombre de las cosas’’…\n</li>
+        <li>Dificultad para realizar tareas cotidianas: conducir, cocinar, hacer la compra...\n</li>
+        <li>Tendencia a perderse: no sabe dónde está, se desorienta con facilidad…\n</li>
+        <li>Cambio de personalidad: cambios de carácter o humor, sin causa aparente. El enfermo está más irritable, menos comunicativo,
+        distinto de antes...\n\n</li>
         En esta fase el paciente es independiente y autónomo para su propio cuidado: aseo, vestido, movilidad.\n\n
 
         <b>¿Cómo debe cuidarse a un paciente en fase 1?</b>\n\n
 
         El objetivo es mantener el bienestar psíquico, la salud y dignidad del paciente hasta el final. Esto puede lograrse:\n\n
-        \u25CF Potenciando su autonomía: que haga por sí mismo cuanto le sea posible para que no olvide sus rutinas, se mantenga útil y
-        su autoestima no decaiga.\n
-        \u25CF Ayudando al paciente o realizando por él las actividades que no pueda realizar por sí mismo.\n
-        \u25CF Evitando cualquier complicación previsible.\n\n
+        <li>Potenciando su autonomía: que haga por sí mismo cuanto le sea posible para que no olvide sus rutinas, se mantenga útil y
+        su autoestima no decaiga.\n</li>
+        <li>Ayudando al paciente o realizando por él las actividades que no pueda realizar por sí mismo.\n</li>
+        <li>Evitando cualquier complicación previsible.\n\n</li>
 
         <b>¿Cuidados específicos de la primera fase?</b>\n\n
 
-        \u25CF Evita que esté solo y que salga solo de casa (por si se desorienta).\n
-        \u25CF Vigila su estado de salud general: vista, oído, dientes, movilidad, tensión arterial, azúcar...\n
-        \u25CF Potencia el ejercicio físico (que realice paseos diarios, siempre acompañado).\n
-        \u25CF Intenta que realice actividades o tareas que estimulen su mente y lo mantengan mentalmente activo.\n
-        \u25CF Proporciónale una alimentación equilibrada y variada, rica en fibra y proteínas, vigilando que beba toda el agua necesaria.\n
-        \u25CF Oriéntalo en el espacio y en el tiempo por medio de calendarios y relojes bien visibles, recordándole el día de la semana y
-        del mes en que está.\n
-        \u25CF Intenta mantener las rutinas, haciéndole ver cuándo es la hora de comer y dormir, salir a dar un paseo, etc.\n
-        \u25CF Comunícate con el enfermo de forma eficaz: frases cortas y sencillas, sin discutir, con paciencia…
+        <li>Evita que esté solo y que salga solo de casa (por si se desorienta).\n</li>
+        <li>Vigila su estado de salud general: vista, oído, dientes, movilidad, tensión arterial, azúcar...\n</li>
+        <li>Potencia el ejercicio físico (que realice paseos diarios, siempre acompañado).\n</li>
+        <li>Intenta que realice actividades o tareas que estimulen su mente y lo mantengan mentalmente activo.\n</li>
+        <li>Proporciónale una alimentación equilibrada y variada, rica en fibra y proteínas, vigilando que beba toda el agua necesaria.\n</li>
+        <li>Oriéntalo en el espacio y en el tiempo por medio de calendarios y relojes bien visibles, recordándole el día de la semana y
+        del mes en que está.\n</li>
+        <li>Intenta mantener las rutinas, haciéndole ver cuándo es la hora de comer y dormir, salir a dar un paseo, etc.\n</li>
+        <li>Comunícate con el enfermo de forma eficaz: frases cortas y sencillas, sin discutir, con paciencia…</li>
     </string>
-    <string name="ap2">Fase 2:</string>
-    <string name="ap3">Fase 3:</string>
+    <string name="ap2">\n
+        <b>¿Qué síntomas se observan en la segunda fase?\n\n</b>
+
+        En la segunda fase de la enfermedad los síntomas de la fase anterior se hacen tan evidentes que no se pueden ocultar ni encubrir.
+        El paciente se hace ya dependiente de su familia, aunque puede seguir realizando tareas, como asearse, vestirse, comer..., siempre con supervisión.\n
+
+        En general, en la segunda fase se observa:\n\n
+
+        <li>Olvido de sucesos recientes: llega a confundir a personas próximas como hijos, cónyuge, etc.</li>\n
+        <li>Pérdida de dicción: repite palabras o frases sin sentido. Puede leer pero no es capaz de entender lo que lee porque no sabe interpretar el mensaje.</li>\n
+        <li>Olvido de rutinas: vestirse, hacer la cama, poner la mesa...</li>\n
+        <li>Desorientación: deambula continuamente ya que no sabe dónde está y busca su casa, su calle... Puede perderse con facilidad.</li>\n
+        <li>Reacciones desmesuradas tanto de sumisión como de enfado; puede sufrir alucinaciones, sobre todo nocturnas.</li>\n\n
+        Cuando la fase 2 ya está avanzadaaparece alteración de la marcha, pérdida de hábitos higiénicos, e incapacidad para vestirse y comer sólo.\n\n
+
+        <b>¿Qué alteraciones suele tener el enfermo en la 2 fase?</b>\n\n
+
+        Normalmente se diagnostica alzhéimer en esta fase moderada (fase II), observándose diversas alteraciones:\n\n
+
+        <li>A nivel cognitivo: suele tener cuadros de amnesia, afasia (pérdida de la capacidad para hablar), apraxia (pérdida de la capacidad de movimiento)
+        o agnosia (pérdida de la capacidad de reconocer los objetos).\n</li>
+        <li>A nivel funcional: se dan alteraciones de las actividades encaminadas a realizar los actos básicos de la vida. Estamos ante una pérdida
+        progresiva de la independencia.\n</li>
+        <li>Alteraciones psíquicas y del comportamiento: surgen ansiedad, depresión, alucinaciones, agresividad, vagabundeo, insomnio, etc.
+        Todos ellos, trastornos que causan gran ansiedad familiar.\n\n</li>
+
+        <b>¿Cómo debe actuar la familia en la segunda fase?</b>\n\n
+
+        Como la segunda fase ya supone una pérdida progresiva de la independencia del afectado, la familia debería informarse sobre las ofertas de
+        apoyo disponibles, como:\n\n
+
+        <li>Asociaciones de familiares: informan, ayudan y aconsejan a las familias que ya notan el agotamiento físico y psíquico, sobre todo el cuidador
+        principal. Tienen servicios como asistencia social, ayuda a domicilio, voluntariado y grupos de apoyo para que los cuidadores se ayuden entre sí.\n</li>
+
+        <li>Centros de Día: cuidan y mantienen activo al paciente unas horas al día, permitiendo al cuidador conservar unas condiciones laborales y sociales
+        que impidan su aislamiento y agotamiento físico y mental.\n</li>
+
+        <li>Talleres de Estimulación Física y Cognitiva: mantienen la actividad física y mental del paciente, por lo que pueden retrasar los síntomas de la
+        demencia severa.\n\n</li>
+
+        También es importante en esta fase la implicación familiar: motivar a toda la familia para que apoye activamente al cuidador principal,
+        sustituyéndolo en sus tareas cuando pueda.\n\n
+
+        <b>¿Qué capacidades se conservan (y cuales no) en la segunda fase (leve - moderada)?</b>\n\n
+
+        En este momento de la enfermedad ya no se dispone:\n\n
+
+        <li>Del pensamiento complejo y estructurado del adulto</li>\n
+        <li>Del razonamiento abstracto\n</li>
+        <li>No hay capacidad para generar hipótesis</li>\n
+        <li>No se puede deducir, ni inducir\n\n</li>
+
+        Pero sí se posee capacidad para la realización de operaciones concretas, como:\n\n
+
+        <li>Relaciones de orden: como cerca y lejos, encima y debajo, dentro y fuera.</li>\n
+        <li>Operaciones concretas con conjuntos: como son clasificaciones, correspondencias y agrupaciones.</li>
+
+    </string>
+    <string name="ap3">\n
+        <b>¿Cómo suele ser la tercera y ultima fase de Alzheimer?\n\n</b>
+
+        En esta etapa la dependencia es total y se produce la falta de autonomía del paciente. Apenas se mueve, no sale de casa y su actividad se resume,
+        como mucho, en ir de la cama a la silla y viceversa. Al final, el paciente ya permanece encamado, proceso que culmina con su fallecimiento.\n\n
+
+        <b>¿Cuáles son los síntomas de la tercera fase?\n\n</b>
+
+        <li>Desorientación completa: no conoce a nadie, aunque percibe a su cuidador</li>\n
+        <li>Pérdida del habla: ni articula ni parece entender, pero es receptivo al afecto</li>\n
+        <li>Apatía y pasividad: no quiere realizar ninguna actividad</li>\n
+        <li>Incontinencia: no controla sus esfínteres</li>\n
+        <li>Problemas de deglución: le cuesta trabajo masticar y tragar</li>\n
+        <li>Somnolencia: está adormecido la mayor parte del día</li>\n
+        <li>Problemas de encamamiento: aparecen las complicaciones derivadas de la inmovilidad: escaras, neumonía, atrofia muscular, rigidez...\n\n</li>
+
+        <b>¿Cómo debe actuar la familia en la tercera fase?\n\n</b>
+
+        Es importante liberar a la familia de la angustia que supone cuidar a una persona con un deterioro tan evidente, por lo que se debe contar con
+        el adecuado apoyo sanitario y social (asociación, familia, amigos, etc.). El cuidador principal necesita ser escuchado, por lo que debe
+        facilitársele el que hable de sus sentimientos y del temor que suele aquejarle: la muerte del paciente. Cuando el cuidador principal
+        se encuentre ya al límite de sus fuerzas físicas y psíquicas, puede contar con ayuda domiciliaria, además de ingresar al paciente en una
+        residencia de forma temporal o definitiva, para que pueda descansar y recuperarse. El resto de la familia debe apoyar en todo momento las
+        decisiones del cuidador principal, implicarse en los cuidados del paciente y cuidar al cuidador principal dándole tiempo libre, apoyándolo y
+        escuchándolo.
+    </string>
 
 </resources>
