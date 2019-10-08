@@ -9,20 +9,15 @@
         android:roundIcon="@mipmap/ic_isotipo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.HealthProfessionalActivity">
-
-        </activity>
-        <activity android:name=".ui.MainCarer" >
-        </activity>
-        <activity android:name=".fragments.admin.AdminHome" >
-
-        </activity>
-        <activity android:name=".ui.PatientsList" >
+        <activity android:name=".ui.MainPatient">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".ui.PatientsList" >
+
         </activity>
         <activity android:name=".ui.Login">
 
