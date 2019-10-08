@@ -76,7 +76,10 @@ public class PatientsListFragment extends Fragment {
                 Toast.makeText(getActivity(), patient.getIdentification()+" / "+patient.getFirstName(), Toast.LENGTH_SHORT).show();
                 Intent goPatient =new Intent(getActivity(), HealthProfessionalActivity.class);
                 String patientUID= patient.getPatientUID();
+                String patientIdentification= patient.getIdentification();
                 goPatient.putExtra("patientUID", patientUID);
+                goPatient.putExtra("patientIdentification", patientIdentification);
+
                 startActivity(goPatient);
             }
         };

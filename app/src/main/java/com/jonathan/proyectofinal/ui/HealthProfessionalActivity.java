@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.jonathan.proyectofinal.R;
@@ -33,12 +34,15 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
 
     Fragment change = null;
     FragmentTransaction transaction;
+  //  String patientUID = "";
+  String patientIdentification = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //init();
         setContentView(R.layout.activity_health_professional);
+
         //region ScreenOrientationPortrait
         //Screen orientation portrait
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -46,13 +50,18 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
 //endregion
-
+//region toolbar
         Toolbar myToolbar = findViewById(R.id.toolbar_health_professional);
         setSupportActionBar(myToolbar);
+        //endregion
         BottomNavigationView navigationView = findViewById(R.id.navigation_health_professional);
         //navigationView.setOnNavigationItemSelectedListener(navListener);
         NavController navController = Navigation.findNavController(this, R.id.content_health_professional);
         NavigationUI.setupWithNavController(navigationView, navController);
+       //patientUID= getIntent().getExtras().getString("patientUID");
+      //  Toast.makeText(this, "patientUID:"+patientUID, Toast.LENGTH_LONG).show();
+        patientIdentification=getIntent().getExtras().getString("patientIdentification");
+        Toast.makeText(this, "patientIdentification:  "+patientIdentification, Toast.LENGTH_LONG).show();
     }
 
 
