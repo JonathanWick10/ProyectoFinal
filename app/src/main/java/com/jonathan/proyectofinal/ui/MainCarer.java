@@ -9,7 +9,9 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.view.WindowManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.jonathan.proyectofinal.R;
@@ -32,6 +34,13 @@ public class MainCarer extends AppCompatActivity implements IMainCarer {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_carer);
+        //region ScreenOrientationPortrait
+        //forzar portrait orientation
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        //Mantener la pantalla despierta
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
+//endregion
         //Function to read the items of BottomNavigation
         BottomNavigationView navigationView = findViewById(R.id.navigation_carer);
         NavController navController = Navigation.findNavController(this, R.id.content_carer);

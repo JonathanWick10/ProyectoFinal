@@ -1,6 +1,7 @@
 package com.jonathan.proyectofinal.fragments.hp;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +23,7 @@ import com.jonathan.proyectofinal.database.PatientsManager;
 import com.jonathan.proyectofinal.fragments.admin.AdminHome;
 import com.jonathan.proyectofinal.interfaces.IOnPatientClickListener;
 import com.jonathan.proyectofinal.interfaces.IPatientsListFragmentListener;
+import com.jonathan.proyectofinal.ui.HealthProfessionalActivity;
 import com.jonathan.proyectofinal.ui.PatientsList;
 
 import java.util.ArrayList;
@@ -71,6 +73,8 @@ public class PatientsListFragment extends Fragment {
             @Override
             public void clickItem(Patient patient) {
                 Toast.makeText(getActivity(), patient.getIdentification()+" / "+patient.getFirstName(), Toast.LENGTH_SHORT).show();
+                Intent goPatient =new Intent(getActivity(), HealthProfessionalActivity.class);
+                startActivity(goPatient);
             }
         };
     }

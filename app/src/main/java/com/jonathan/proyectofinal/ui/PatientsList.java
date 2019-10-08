@@ -7,9 +7,11 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.google.android.material.bottomappbar.BottomAppBar;
@@ -44,6 +46,14 @@ public class PatientsList extends AppCompatActivity implements AddPatients.OnFra
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_patient);
         ButterKnife.bind(this);
+
+        //region ScreenOrientationPortrait
+        //forzar portrait orientation
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        //Mantener la pantalla despierta
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
+//endregion
 
         //region Fragment PatientsList
         /*
