@@ -110,4 +110,25 @@
     <!-- Strings for module patient -->
     <string name="menu_memorizame">Memorizame</string>
     <string name="menu_notifications">Notifications</string>
+
+    <!-- Information general and Specific -->
+
+    <string name="q1">¿Qué es?</string>
+    <string name="q2">¿Qué síntomas de deterioro cognitivo se observan en las diferentes fases?</string>
+    <string name="q3">¿Qué avances hay en el tratamiento de la enfermedad de Alzheimer?</string>
+    <string name="q4">¿Qué otro déficit puede presentar una persona que padece Alzheimer?</string>
+    <string name="q5">¿Se pueden tratar los síntomas de la enfermedad?</string>
+    <string name="q6">Enterarse que un familiar padece Alzheimer y querer saber ¿Cómo actuar?</string>
+    <string name="q7">¿Qué paso deben seguir los familiares después de que uno de sus integrantes es diagnosticado con Alzheimer?</string>
+    <string name="q8">¿Cómo evitar accidentes o sustos?</string>
+    <string name="q9">¿Qué es el síndrome del Cuidador?</string>
+    <string name="a1">Notifications</string>
+    <string name="a2">Memorizame</string>
+    <string name="a3">Notifications</string>
+    <string name="a4">Notifications</string>
+    <string name="a5">Memorizame</string>
+    <string name="a6">Notifications</string>
+    <string name="a7">Notifications</string>
+    <string name="a8">Memorizame</string>
+    <string name="a9">Notifications</string>
 </resources>

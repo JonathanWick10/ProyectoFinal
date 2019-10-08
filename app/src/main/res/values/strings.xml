@@ -109,4 +109,98 @@
     <!-- Strings for module patient -->
     <string name="menu_memorizame">Memorizame</string>
     <string name="menu_notifications">Notificaciones</string>
+
+    <!-- Information general and Specific -->
+
+    <string name="q1">¿Qué es?</string>
+    <string name="q2">¿Qué síntomas de deterioro cognitivo se observan en las diferentes fases?</string>
+    <string name="q3">¿Qué avances hay en el tratamiento de la enfermedad de Alzheimer?</string>
+    <string name="q4">¿Qué otro déficit puede presentar una persona que padece Alzheimer?</string>
+    <string name="q5">¿Se pueden tratar los síntomas de la enfermedad?</string>
+    <string name="q6">Enterarse que un familiar padece Alzheimer y querer saber ¿Cómo actuar?</string>
+    <string name="q7">¿Qué paso deben seguir los familiares después de que uno de sus integrantes es diagnosticado con Alzheimer?</string>
+    <string name="q8">¿Cómo evitar accidentes o sustos?</string>
+    <string name="q9">¿Qué es el síndrome del Cuidador?</string>
+    <string name="a1">Es una enfermedad asociada a las edades avanzadas que sólo afecta al cerebro,
+        sin relación con ningún otro órgano del cuerpo. El Alzheimer es una demencia degenerativa primaria que tiene
+        lugar de forma lenta y progresiva, de la que se desconocen las causas que desencadenan el proceso.
+        Provoca una alteración de la función neuronal, ya que en el hipocampo (zona del lóbulo temporal)
+        se produce el depósito de una proteína anormal llamada amiloide.</string>
+    <string name="a2">\u25CF Primera fase: Una pérdida del pensamiento maduro adulto. Se pierden las estructuras simbólicas.\n
+        \u25CF Segunda fase: Una pérdida de la conceptuación y dimensión del mundo real. Aparece la amnesia con:\n
+        \u25BA Afasia: pérdida del lenguaje (capacidad de hablar).\n
+        \u25BA Apraxia: perdida de la secuencia motora (no coordina bien los movimientos).\n
+        \u25BA Agnosia: perdida de la capacidad de reconocimiento de los objetos.\n
+        \u25CF Tercera fase: Es el periodo de las grandes pérdidas, pero no son absolutas.
+        En él se mantienen la afectividad, el ritmo y la capacidad de imitación.
+    </string>
+    <string name="a3">En estos momentos, las perspectivas terapéuticas farmacológicas son inciertas.
+        Aunque se está ensayando con terapias que impiden que la proteína amiloide se deposite en el cerebro
+        (deposito que provoca el daño neuronal en los pacientes de Alzheimer), la mayoría de los ensayos realizados
+        no han tenido éxito, por lo que no se puede esperar la comercialización de un fármaco en los próximos años.
+    </string>
+    <string name="a4">Déficit de memoria, mayor irritabilidad y dificultad para expresarse, son déficits presentes en todas
+        las personas que padecen Alzheimer, sumando déficit a medida que el Alzheimer avanza se encuentras algunos como,
+        perdida de la orientación espacial (no reconocen donde se encuentran), falta de iniciativa,
+        imposibilidad para planificar una labor sencilla, comportamiento anormal, agresividad, percepción e interpretación
+        anormal de las cosas, alucinaciones, entre otros.
+    </string>
+    <string name="a5">El método aplicado para tratar estos síntomas es, tranquilizantes, antidepresivos o antipsicóticos,
+        los cuales pretenden aliviar las alteraciones emocionales (como la ansiedad o la depresión), y a veces,
+        alteraciónes de la percepción de los estímulos externos (alucinaciones, ilusiones, dimensionamiento, etc.)
+    </string>
+    <string name="a6">\u25CF La familia tiene que analizar sus recursos económicos, las circunstancias concretas de los miembros
+        que la conforman y el grado de solidaridad de estos, para saber cuándo y cuántos familiares se van a implicar
+        en la atención de la persona que padece Alzheimer.\n
+        \u25CF El siguiente paso es informarse, organizarse y planificar.\n
+        La familia debe ser consciente de que se verá afectada por la enfermedad del paciente, aparecerán sentimientos
+        de inquietud, miedo, rechazo y demás. Conviene tener serenidad para encontrar la mejor solución para todos
+        sus miembros, debido a que, una vez aceptado el problema dentro de la familia, aparecerá la figura del cuidador
+        principal.
+    </string>
+    <string name="a7">Si la persona no reconoce o confunde a una persona o su nombre, intenta hablar de manera clara
+        razonable y calmada, para que este recuerde evitando entrar en una discusión.\n
+        \u25CF Primordialmente hay que asumir responsabilidades nuevas, ser prevenido y estar alerta,
+        debido a que habrá empeoramiento en la salud de este, debe evitarse caídas y tener un control fundamental
+        en la alimentación que se le brinda a la persona que fue diagnosticada con Alzheimer.\n
+    \u25CF La autonomía de la persona diagnosticada debe mantenerse al máximo, dándole la posibilidad de decidir
+        por sí mismo y sobre todo evitando inmovilizarlo.\n
+    \u25CF La estimulación es fundamental para que la persona pueda realizar actividades cotidianas, crucialmente sin
+        forzar ni protegerlo de estas, estas actividades varían de acuerdo a la anulación de sus capacidades
+        motrices y cognitivas.\n
+    \u25CF Debido a que la persona que padece Alzheimer suele responder mal a las órdenes, es sugerido negociar con él,
+        debido a que una sugerencia es tomada como una charla normal, si este de igual forma reacciona negativamente,
+        se sugiere aprovechar las pérdidas de memoria, dejando pasar algo de tiempo y de esta manera, se pueda solicitar
+        lo dicho o pedido anteriormente.\n
+        Otro método para persuadir el rechazo a dicha sugerencia, es cambiar el tema, de tal forma que se evita la
+        discusión con él.\n
+    \u25CF Ante situaciones como, agresividad, insomnio, inquietud, depresión profunda u otros, recurre al médico.\n
+    \u25CF La paciencia y el cariño son fundamentales, los problemas no son causa de quien es diagnosticado con Alzheimer,
+        sino de la enfermedad, enfermedad la cual tiene como única víctima a quien la padece. Aprender aceptar el Alzheimer
+        y sus consecuencias es primordial, de esta manera se conlleva mejor a la persona.\n
+    \u25CF El que sufre de esta enfermedad es el reflejo de quien lo cuida, así que todo lo que se le demuestre a este,
+        de esta misma manera él lo siente, un ejemplo es que, si a él se le transmiten nervios, el siente nervios,
+        de igual forma la serenidad, alegría, cariño, etc. Una persona que padece Alzheimer sabe reconocer fácilmente
+        estos estados emocionales, y la mejor forma de mostrarle la confianza, el cariño o seguridad es mediante una
+        caricia.
+    </string>
+    <string name="a8">\u25CF La identificación de la persona que padece Alzheimer es muy importante, debido a que,
+        si se perdiera u olvidara como volver a casa, tendría datos básicos para que cualquier persona lo pueda ayudar,
+        datos como, Nombre, Dirección y Teléfono serán los que debe portar, una opción muy factible, es una manilla
+        con dichos datos y para los familiares, una foto con su aspecto más reciente, para encontrar a la persona de
+        manera rápida.\n
+        \u25CF Es importante tener números de emergencia como, hospitales, policía, bomberos y el cerrajero
+        (por si llegara a quedarse encerrado y olvidar como salir).\n
+        \u25CF Una luz encendida en las noches es de gran importancia, ya que ayuda al paciente a orientarse,
+        además de evitar tropezones, debido a necesidades fisiológicas que causan la ida al baño o la presencia
+        de insomnio, es conveniente acompañarlo en estos momentos, recordándole que es hora de dormir.\n
+        \u25CF Es recomendable evitar el exceso de estímulos y actividades, además de evitar reuniones con mucha
+        gente o reuniones prolongadas, evitando ruidos extraños o situaciones extrañas para la persona que presenta Alzheimer.
+    </string>
+    <string name="a9">Es un conjunto de alteraciones, físicas, emocionales, psíquicas y sociales que el cuidador principal
+        suele presentar al transcurrir cierto tiempo desempeñando este papel. Estas alteraciones afectan todos los ámbitos
+        de vida del cuidador. Si necesita más conocimiento sobre el síndrome, en la ventana principal “Home” de esta app
+        se encontrará con la sección de “Mi cuidado”, la que brindará todo el conocimiento sobre dicho síndrome y las formas
+        de evitarlo.
+    </string>
 </resources>
