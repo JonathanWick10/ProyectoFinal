@@ -10,10 +10,12 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.WindowManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.jonathan.proyectofinal.R;
@@ -37,6 +39,13 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
         super.onCreate(savedInstanceState);
         //init();
         setContentView(R.layout.activity_health_professional);
+        //region ScreenOrientationPortrait
+        //Screen orientation portrait
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        //Keep screen on
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
+//endregion
 
         Toolbar myToolbar = findViewById(R.id.toolbar_health_professional);
         setSupportActionBar(myToolbar);

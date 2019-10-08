@@ -2,8 +2,10 @@ package com.jonathan.proyectofinal.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -30,6 +32,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         firebaseAnalytics= FirebaseAnalytics.getInstance(this);
+
+        //region ScreenOrientationPortrait
+        //Screen orientation portrait
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        //Keep screen on
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
+//endregion
         //region Logic event OnClick
         btnCreate.setOnClickListener(new View.OnClickListener() {
             @Override

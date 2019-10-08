@@ -48,9 +48,9 @@ public class PatientsList extends AppCompatActivity implements AddPatients.OnFra
         ButterKnife.bind(this);
 
         //region ScreenOrientationPortrait
-        //forzar portrait orientation
+        //Screen orientation portrait
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        //Mantener la pantalla despierta
+        //Keep screen on
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
 //endregion

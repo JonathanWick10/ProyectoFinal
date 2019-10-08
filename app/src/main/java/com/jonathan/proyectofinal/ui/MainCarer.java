@@ -35,9 +35,9 @@ public class MainCarer extends AppCompatActivity implements IMainCarer {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_carer);
         //region ScreenOrientationPortrait
-        //forzar portrait orientation
+        //Screen orientation portrait
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        //Mantener la pantalla despierta
+        //Keep screen on
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
 //endregion
