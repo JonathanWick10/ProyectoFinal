@@ -25,6 +25,8 @@
 
             <!-- cambiar al login -->
         </activity>
+        <activity android:name=".ui.HealthProfessionalActivity">
+        </activity>
         <activity android:name=".ui.LoadBrainmher"></activity>
         <activity android:name=".ui.MainActivity" /></application>
 

@@ -18,7 +18,9 @@ import butterknife.ButterKnife;
 public class InformationPatientPSFragment extends Fragment {
 
     @BindView(R.id.tv_ps_agePatient)
-    TextView tv_ps_age_patient;
+    TextView carolina;
+    @BindView(R.id.tv_ps_genderPatient)
+    TextView caroObarato;
     String agePatient="";
 
     public InformationPatientPSFragment() {
@@ -37,12 +39,13 @@ public class InformationPatientPSFragment extends Fragment {
     }
 
 
-    private void initDatas() {
+    public void initDatas() {
        agePatient="25";
 
 
    // HELP ME!!!!!
-       tv_ps_age_patient.setText(": " +agePatient+" años");
+        carolina.setText(": " +agePatient+" años");
+        caroObarato.setText("jonathan");
 
     }
 
