@@ -63,19 +63,6 @@
                     android:drawableTop="@drawable/ic_launcher_background"
                     android:text="@string/diary"></Button>
 
-                <Button
-                    android:id="@+id/test"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/forty"
-                    android:layout_below="@id/manage"
-                    android:layout_marginLeft="60dp"
-                    android:layout_marginTop="60dp"
-                    android:layout_toRightOf="@id/diary"
-                    android:background="@color/grayLight"
-                    android:drawableTop="@drawable/ic_launcher_background"
-                    android:text="@string/test"></Button>
-
             </RelativeLayout>
             </FrameLayout>
         </ScrollView>

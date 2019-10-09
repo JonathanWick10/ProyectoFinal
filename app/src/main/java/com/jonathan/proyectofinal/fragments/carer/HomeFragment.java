@@ -18,7 +18,7 @@ import com.jonathan.proyectofinal.interfaces.IMainCarer;
 
 public class HomeFragment extends Fragment implements View.OnClickListener{
 
-    Button btn_heart,btn_manage, btn_diary, btn_test;
+    Button btn_heart,btn_manage, btn_diary;
 
     private IMainCarer mIMainCarer;
 
@@ -36,11 +36,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         btn_heart = view.findViewById(R.id.heart);
         btn_manage = view.findViewById(R.id.manage);
         btn_diary = view.findViewById(R.id.diary);
-        btn_test = view.findViewById(R.id.test);
         btn_heart.setOnClickListener(this);
         btn_manage.setOnClickListener(this);
         btn_diary.setOnClickListener(this);
-        btn_test.setOnClickListener(this);
         return view;
     }
     public void onClick(View view){
@@ -53,9 +51,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 break;
             case R.id.diary:
                 mIMainCarer.inflateFragment(getString(R.string.diary));
-                break;
-            case R.id.test:
-                mIMainCarer.inflateFragment(getString(R.string.test));
                 break;
         }
     }

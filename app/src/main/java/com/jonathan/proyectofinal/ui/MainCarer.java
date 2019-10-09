@@ -65,10 +65,6 @@ public class MainCarer extends AppCompatActivity implements IMainCarer {
             change = new DiaryFragment();
             transaction.replace(R.id.containerHome,change).commit();
         }
-        else if(fragmentTag.equals(getString(R.string.test))){
-            change = new TestFragment();
-            transaction.replace(R.id.containerHome,change).commit();
-        }
         else if(fragmentTag.equals(getString(R.string.nearby_hospitals))){
             change = new NearbyHospitalFragment();
             transaction.replace(R.id.containerpage,change).commit();

@@ -75,11 +75,11 @@ public class PhasesEAFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.qf3:
                 if(a3.getVisibility() == v.VISIBLE){ //si es Visible lo pones Gone
-                    a2.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
+                    a3.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a3.setVisibility(v.GONE);
                     q3.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
                 }else{ // si no es Visible, lo pones
-                    a2.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
+                    a3.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a3.setVisibility(v.VISIBLE);
                     q3.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.up),null);
                 }

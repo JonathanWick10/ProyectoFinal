@@ -10,10 +10,10 @@
         android:label="fragment_cu_home"
         tools:layout="@layout/fragment_cu_home" />
     <fragment
-        android:id="@+id/list"
-        android:name="com.jonathan.proyectofinal.fragments.carer.ListFragment"
-        android:label="listview_list_patients"
-        tools:layout="@layout/listview_list_patients" />
+        android:id="@+id/test"
+        android:name="com.jonathan.proyectofinal.fragments.carer.TestFragment"
+        android:label="fragment_cu_test"
+        tools:layout="@layout/fragment_cu_test" />
     <fragment
         android:id="@+id/emergency"
         android:name="com.jonathan.proyectofinal.fragments.carer.EmergencyFragment"

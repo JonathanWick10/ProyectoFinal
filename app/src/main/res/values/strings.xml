@@ -306,14 +306,15 @@
         <li>Operaciones concretas con conjuntos: como son clasificaciones, correspondencias y agrupaciones.</li>
 
     </string>
-    <string name="ap3">\n
-        <b>¿Cómo suele ser la tercera y ultima fase de Alzheimer?\n\n</b>
+    <string name="ap3">\n<div>
+        <a><b>¿Cómo suele ser la tercera y ultima fase de Alzheimer?\n\n</b></a>
 
-        En esta etapa la dependencia es total y se produce la falta de autonomía del paciente. Apenas se mueve, no sale de casa y su actividad se resume,
+        <p>En esta etapa la dependencia es total y se produce la falta de autonomía del paciente. Apenas se mueve, no sale de casa y su actividad se resume,
         como mucho, en ir de la cama a la silla y viceversa. Al final, el paciente ya permanece encamado, proceso que culmina con su fallecimiento.\n\n
+         </p>
+        <a><b>¿Cuáles son los síntomas de la tercera fase?\n\n</b></a>
 
-        <b>¿Cuáles son los síntomas de la tercera fase?\n\n</b>
-
+        <p>
         <li>Desorientación completa: no conoce a nadie, aunque percibe a su cuidador</li>\n
         <li>Pérdida del habla: ni articula ni parece entender, pero es receptivo al afecto</li>\n
         <li>Apatía y pasividad: no quiere realizar ninguna actividad</li>\n
@@ -321,9 +322,11 @@
         <li>Problemas de deglución: le cuesta trabajo masticar y tragar</li>\n
         <li>Somnolencia: está adormecido la mayor parte del día</li>\n
         <li>Problemas de encamamiento: aparecen las complicaciones derivadas de la inmovilidad: escaras, neumonía, atrofia muscular, rigidez...\n\n</li>
+        </p>
 
-        <b>¿Cómo debe actuar la familia en la tercera fase?\n\n</b>
+        <a><b>¿Cómo debe actuar la familia en la tercera fase?\n\n</b></a>
 
+        <p>
         Es importante liberar a la familia de la angustia que supone cuidar a una persona con un deterioro tan evidente, por lo que se debe contar con
         el adecuado apoyo sanitario y social (asociación, familia, amigos, etc.). El cuidador principal necesita ser escuchado, por lo que debe
         facilitársele el que hable de sus sentimientos y del temor que suele aquejarle: la muerte del paciente. Cuando el cuidador principal
@@ -331,6 +334,8 @@
         residencia de forma temporal o definitiva, para que pueda descansar y recuperarse. El resto de la familia debe apoyar en todo momento las
         decisiones del cuidador principal, implicarse en los cuidados del paciente y cuidar al cuidador principal dándole tiempo libre, apoyándolo y
         escuchándolo.
+        </p>
+    </div>
     </string>
 
 </resources>
