@@ -46,6 +46,13 @@ public class InformationPatientPSFragment extends Fragment {
     String addressPatient="";
     String diagnosis="";
     String diagnosisDate="";
+    String identificationType="";
+    String identification="";
+    String birthday="";
+    long phoneNumber=0;
+    String email="";
+    String observations="";
+    String emergencyNumber="";
 
     public InformationPatientPSFragment() {
     }
@@ -74,6 +81,13 @@ public class InformationPatientPSFragment extends Fragment {
        diagnosisDate="15 - 10 - 2014";
        firstName="Carolina";
        lastName="Valencia";
+       identificationType="Cedula de ciudadania";
+       identification="00000000";
+       birthday="15 - 10 - 1993";
+       phoneNumber=5728369;
+       email="abcdes@gmail.com";
+       observations="Paciente con";
+       emergencyNumber="123";
 
 
         tvAgePatient.setText(": " +agePatient+" años");
