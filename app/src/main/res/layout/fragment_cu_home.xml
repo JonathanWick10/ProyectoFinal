@@ -10,7 +10,7 @@
     android:background="@color/grayLight"
     android:padding="6dp">
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
@@ -32,6 +32,10 @@
                 android:layout_height="match_parent"
                 android:gravity="center">
 
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
                 <Button
                     android:id="@+id/heart"
                     android:layout_width="wrap_content"
@@ -40,33 +44,42 @@
                     android:background="@color/grayLight"
                     android:drawableTop="@drawable/ic_launcher_background"
                     android:text="@string/my_care"></Button>
+                </com.google.android.material.card.MaterialCardView>
 
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card2"
+                    android:layout_width="wrap_content"
+                    android:layout_below="@+id/card1"
+                    android:layout_height="wrap_content">
                 <Button
                     android:id="@+id/manage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/eightyFive"
-                    android:layout_marginLeft="60dp"
-                    android:layout_toRightOf="@+id/heart"
                     android:background="@color/grayLight"
                     android:drawableTop="@drawable/ic_launcher_background"
                     android:text="@string/manage"></Button>
+                </com.google.android.material.card.MaterialCardView>
 
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card3"
+                    android:layout_below="@+id/card1"
+                    android:layout_toRightOf="@id/card2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
                 <Button
                     android:id="@+id/diary"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/eightyFive"
-                    android:layout_below="@id/manage"
-                    android:layout_marginTop="60dp"
                     android:background="@color/grayLight"
                     android:drawableTop="@drawable/ic_launcher_background"
                     android:text="@string/diary"></Button>
+                </com.google.android.material.card.MaterialCardView>
 
             </RelativeLayout>
             </FrameLayout>
         </ScrollView>
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
 </FrameLayout>
