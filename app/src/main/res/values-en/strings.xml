@@ -89,7 +89,7 @@
     <string name="password">Password</string>
     <string name="confirm_password">Confirm password</string>
     <string name="email">Email</string>
-    <string name="department">Deparment</string>
+    <string name="department">Department</string>
     <string name="native_city">Native city</string>
     <string name="actual_city">Actual city</string>
     <string name="family_phone_number">Family phone number</string>

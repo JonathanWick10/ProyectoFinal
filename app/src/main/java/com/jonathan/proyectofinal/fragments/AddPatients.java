@@ -90,7 +90,7 @@ public class AddPatients extends Fragment {
     TextInputEditText editObservation;
     @BindView(R.id.button_create_patient)
     MaterialButton btnSave;
-    String nameSring,lastNameString,typeIDString, idString, birthDayString, deparmentString, nativeCityString,
+    String nameSring,lastNameString,typeIDString, idString, birthDayString, departmentString, nativeCityString,
     actualCityString, addressString, emailString, userString, passwordString, confirmPasswordString,
     diagnosticString, dateDiagnosticString,observationString, seleccionRG, phoneString;
     //Instance Patient
@@ -174,7 +174,7 @@ public class AddPatients extends Fragment {
         //endregion
         birthDayString = dateOfBirthET.getText().toString();
         phoneString = editPhone.getText().toString();
-        deparmentString = autoCompletDepartment.getText().toString();
+        departmentString = autoCompletDepartment.getText().toString();
         nativeCityString = editNativeCity.getText().toString();
         actualCityString = editActualCity.getText().toString();
         addressString = editaddress.getText().toString();
@@ -189,7 +189,7 @@ public class AddPatients extends Fragment {
 
         //region conditional for fields is empty
         if (!nameSring.isEmpty()&&!lastNameString.isEmpty()&&!typeIDString.isEmpty()&&!idString.isEmpty()&&
-        !seleccionRG.isEmpty()&&!birthDayString.isEmpty()&&!phoneString.isEmpty()&&!deparmentString.isEmpty()
+        !seleccionRG.isEmpty()&&!birthDayString.isEmpty()&&!phoneString.isEmpty()&&!departmentString.isEmpty()
         &&!nativeCityString.isEmpty()&&!actualCityString.isEmpty()&&!addressString.isEmpty()&&!emailString.isEmpty()
         &&!userString.isEmpty()&&!passwordString.isEmpty()&&!confirmPasswordString.isEmpty()&&!diagnosticString.isEmpty()
         &&!dateDiagnosticString.isEmpty()&&!observationString.isEmpty()) {
@@ -201,7 +201,7 @@ public class AddPatients extends Fragment {
             patient.setGender(seleccionRG);
             patient.setBirthday(birthDayString);
             patient.setPhoneNumber(Long.parseLong(phoneString));
-            patient.setDeparment(deparmentString);
+            patient.setDepartment(departmentString);
             patient.setNativeCity(nativeCityString);
             patient.setActualCity(actualCityString);
             patient.setAddress(addressString);

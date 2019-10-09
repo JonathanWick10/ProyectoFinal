@@ -17,11 +17,35 @@ import butterknife.ButterKnife;
 
 public class InformationPatientPSFragment extends Fragment {
 
+    @BindView(R.id.tv_ps_patientName)
+    TextView tvPatientName;
     @BindView(R.id.tv_ps_agePatient)
-    TextView carolina;
+    TextView tvAgePatient;
     @BindView(R.id.tv_ps_genderPatient)
-    TextView caroObarato;
+    TextView tvGenderPatient;
+    @BindView(R.id.tv_ps_nativeCityPatient)
+    TextView tvNativeCityPatient;
+    @BindView(R.id.tv_ps_currentcityPatient)
+    TextView tvCurrentCityPatient;
+    @BindView(R.id.tv_ps_guestPhonePatient)
+    TextView tvGuestPhonePatient;
+    @BindView(R.id.tv_ps_addressPatient)
+    TextView tvAddressPatient;
+    @BindView(R.id.tv_ps_diagnosis)
+    TextView tvDiagnosis;
+    @BindView(R.id.tv_ps_diagnosisdate)
+    TextView tvDiagnosisDate;
+
+    String firstName="";
+    String lastName="";
     String agePatient="";
+    String genderPatient="";
+    String nativeCityPatient="";
+    String currentCityPatient="";
+    String guestPhonePatient="";
+    String addressPatient="";
+    String diagnosis="";
+    String diagnosisDate="";
 
     public InformationPatientPSFragment() {
     }
@@ -41,11 +65,26 @@ public class InformationPatientPSFragment extends Fragment {
 
     public void initDatas() {
        agePatient="25";
+       genderPatient="Femenino";
+       nativeCityPatient="Cali";
+       currentCityPatient="Popayán";
+       guestPhonePatient="312 252 1155";
+       addressPatient="Calle 7N";
+       diagnosis="El paciente tiene Alzheimer";
+       diagnosisDate="15 - 10 - 2014";
+       firstName="Carolina";
+       lastName="Valencia";
 
 
-   // HELP ME!!!!!
-        carolina.setText(": " +agePatient+" años");
-        caroObarato.setText("jonathan");
+        tvAgePatient.setText(": " +agePatient+" años");
+        tvGenderPatient.setText(": " +genderPatient);
+        tvNativeCityPatient.setText(": " +nativeCityPatient);
+        tvCurrentCityPatient.setText(": " +currentCityPatient);
+        tvGuestPhonePatient.setText(": " +guestPhonePatient);
+        tvAddressPatient.setText(": " +addressPatient);
+        tvDiagnosis.setText(": " +diagnosis);
+        tvDiagnosisDate.setText(": " +diagnosisDate);
+        tvPatientName.setText(firstName+" "+lastName);
 
     }
 

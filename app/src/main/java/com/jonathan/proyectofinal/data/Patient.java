@@ -12,7 +12,7 @@ public class Patient {
     private String gender;
     private String birthday;
     private long phoneNumber;
-    private String deparment;
+    private String department;
     private String userName;
     private String password;
     private String confirmPassword;
@@ -34,7 +34,7 @@ public class Patient {
     }
 
     public Patient(String patientUID, String firstName, String lastName, String identificationType, String identification,
-                   String gender, String birthday, long phoneNumber, String deparment, String userName,
+                   String gender, String birthday, long phoneNumber, String department, String userName,
                    String password, String confirmPassword, String email, String nativeCity, String actualCity,
                    long familyPhoneNumber, String address, String dateDiagnostic, String diagnostic,
                    String observations, String emergencyNumber, String rol, Map<String,Object> assigns) {
@@ -46,7 +46,7 @@ public class Patient {
         this.gender = gender;
         this.birthday = birthday;
         this.phoneNumber = phoneNumber;
-        this.deparment = deparment;
+        this.department = department;
         this.userName = userName;
         this.password = password;
         this.confirmPassword = confirmPassword;
@@ -127,12 +127,12 @@ public class Patient {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getDeparment() {
-        return deparment;
+    public String getDepartment() {
+        return department;
     }
 
-    public void setDeparment(String deparment) {
-        this.deparment = deparment;
+    public void setDepartment(String department) {
+        this.department = department;
     }
 
     public String getUserName() {
