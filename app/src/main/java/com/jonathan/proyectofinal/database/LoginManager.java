@@ -98,6 +98,19 @@ public class LoginManager {
         return loggedIn;
     }
 
+    public GoogleSignInClient googleClientSettings(Context context){
+
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(context.getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+        googleSignInClient = GoogleSignIn.getClient(context, gso);
+
+        return googleSignInClient;
+    }
+
+
+
     public void loginwithGoogle(final Context context){
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
