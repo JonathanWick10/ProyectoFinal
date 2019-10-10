@@ -9,9 +9,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.github.mikephil.charting.charts.LineChart;
 import com.jonathan.proyectofinal.R;
 
 public class GraphPSFragment extends Fragment {
+
+    private LineChart lineChart;
+
+    private View view;
 
     public GraphPSFragment() {
     }
@@ -19,7 +24,14 @@ public class GraphPSFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_ps_graph, container, false);
+
+        view = inflater.inflate(R.layout.fragment_ps_graph, container, false);
+        lineChart = (LineChart)view.findViewById(R.id.graph1);
+        reference();
+        return view;
+    }
+
+    private void reference() {
     }
 
 }
