@@ -50,7 +50,7 @@ public class HeartFragment extends Fragment {
             tabs.setupWithViewPager(viewPag);
             viewPag.setAdapter(adapt);
             tabs.getTabAt(0).setIcon(R.drawable.ic_info);
-            tabs.getTabAt(1).setIcon(R.drawable.ic_exercise);
+            tabs.getTabAt(1).setIcon(R.drawable.ic_accessibility_black);
             tabs.getTabAt(2).setIcon(R.drawable.ic_description);
         }
     }
