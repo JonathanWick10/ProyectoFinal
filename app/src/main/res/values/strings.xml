@@ -341,4 +341,15 @@
     </div>
     </string>
 
+    <!-- Strings for module patients -->
+    <string name="tab_cognitive_exercises">Ejercicios Cognitivos</string>
+    <string name="tab_motor_exercises">Ejercicios Motrices</string>
+    <string name="tab_family_questions">Familia</string>
+    <string name="tab_home_questions">Hogar</string>
+    <string name="tab_places_questions">Lugares</string>
+    <string name="tab_pets_questions">Mascotas</string>
+    <string name="tab_medicaments">Medicamentos</string>
+    <string name="tab_therapies">Terapias</string>
+    <string name="lbl_progress">Progreso:</string>
+
 </resources>

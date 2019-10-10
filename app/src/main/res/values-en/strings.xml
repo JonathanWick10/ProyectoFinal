@@ -337,4 +337,14 @@
         escuchándolo.
     </string>
 
+    <string name="tab_cognitive_exercises">Cognitive Exercises</string>
+    <string name="tab_motor_exercises">Motor Exercises</string>
+    <string name="tab_family_questions">Family</string>
+    <string name="tab_home_questions">Home</string>
+    <string name="tab_places_questions">Places</string>
+    <string name="tab_pets_questions">Pets</string>
+    <string name="tab_medicaments">Medicaments</string>
+    <string name="tab_therapies">Therapies</string>
+    <string name="lbl_progress">Progress:</string>
+
 </resources>
