@@ -113,4 +113,10 @@
         <item name="elevation">1dp</item>
     </style>
 
+    <!-- Strandard style for text in tabs -->
+    <style name="StyleTextTabs">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>
