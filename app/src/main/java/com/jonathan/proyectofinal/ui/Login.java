@@ -3,10 +3,14 @@ package com.jonathan.proyectofinal.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -43,6 +47,8 @@ import com.jonathan.proyectofinal.database.CarerManager;
 import com.jonathan.proyectofinal.database.LoginManager;
 import com.jonathan.proyectofinal.fragments.admin.AdminHome;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import butterknife.BindView;
@@ -84,8 +90,7 @@ public class Login extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         //Keep screen on
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-
-//endregion
+        //endregion
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
         loginInstance().googleClientSettings(this);
@@ -181,21 +186,19 @@ public class Login extends AppCompatActivity {
 
         if (requestCode == GOOGLE_SIGN_IN){
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
-            // handleSignInResult(result);
             if(result.isSuccess()){
-                //firebaseAuthwithGoogle(result.getSignInAccount());
                 AuthCredential credential= GoogleAuthProvider.getCredential(result.getSignInAccount().getIdToken(), null);
                 firebaseAuth.signInWithCredential(credential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(!task.isSuccessful()){
-                            Toast.makeText(Login.this, "xxxxxx", Toast.LENGTH_LONG).show();
+                            Toast.makeText(Login.this, getString(R.string.auth_fail), Toast.LENGTH_LONG).show();
                         }
                     }
                 });
                 goMainProfil();
             }else {
-                Toast.makeText(Login.this,"No se puede iniciar sesión", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Login.this,getString(R.string.auth_fail), Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -250,5 +253,26 @@ public class Login extends AppCompatActivity {
                 break;
         }
     }
+
+    /*
+
+    private void prinKeyHash() {
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo("com.jonathan.proyectofinal", PackageManager.GET_SIGNATURES);
+
+            for (Signature signature : info.signatures)
+            {
+                MessageDigest messageDigest = MessageDigest.getInstance("SHA");
+                messageDigest.update(signature.toByteArray());
+                Log.e("KeyHash", Base64.encodeToString(messageDigest.digest(), Base64.DEFAULT));
+            }
+        } catch (PackageManager.NameNotFoundException e)
+        {
+            e.printStackTrace();
+        }catch (NoSuchAlgorithmException e){
+            e.printStackTrace();
+        }
+
+    }*/
 
 }

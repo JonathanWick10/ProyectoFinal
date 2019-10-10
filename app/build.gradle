@@ -64,4 +64,8 @@ dependencies {
     //dependencie for Login with Google
     implementation 'com.google.android.gms:play-services-auth:17.0.0'
 
+    //dependencie for Login with Facebook
+    implementation 'com.facebook.android:facebook-login:[5,6)'
+
+
 }
