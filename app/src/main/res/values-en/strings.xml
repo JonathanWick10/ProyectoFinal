@@ -28,6 +28,9 @@
     <string name="list">Lista</string>
     <string name="emergency">Emergencias</string>
     <string name="info">Info</string>
+    <string name="information_carer">Info.</string>
+    <string name="exercise_carer">Exercise.</string>
+    <string name="advice_carer">Advice.</string>
 
     //Tab
     <string name="tab_text_1">Tab 1</string>

@@ -81,5 +81,17 @@ public class MainCarer extends AppCompatActivity implements IMainCarer {
             change = new GeneralInformationFragment();
             transaction.replace(R.id.viewpager,change).commit();
         }
+        else if(fragmentTag.equals(getString(R.string.information_carer))){
+            change = new PhasesEAFragment();
+            transaction.replace(R.id.viewpagerh,change).commit();
+        }
+        else if(fragmentTag.equals(getString(R.string.exercise_carer))){
+            change = new GeneralInformationFragment();
+            transaction.replace(R.id.viewpagerh,change).commit();
+        }
+        else if(fragmentTag.equals(getString(R.string.advice_carer))){
+            change = new CallEmergencyFragment();
+            transaction.replace(R.id.viewpagerh,change).commit();
+        }
     }
 }
