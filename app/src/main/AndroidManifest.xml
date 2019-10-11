@@ -31,13 +31,13 @@
             />
 
         <activity android:name=".ui.MainCarer">
+        </activity>
+        <activity android:name=".ui.MainPatient">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".ui.MainPatient">
         </activity>
         <activity android:name=".ui.PatientsList" >
         </activity>

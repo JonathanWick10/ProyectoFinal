@@ -118,5 +118,36 @@
         <item name="android:textSize">15sp</item>
         <item name="android:textStyle">bold</item>
     </style>
+    
+    <!-- Standard style for card view -->
+    <style name="StyleCardView" parent="Widget.MaterialComponents.CardView">
+        <item name="android:layout_margin">@dimen/ten</item>
+        <item name="cardCornerRadius">@dimen/twenty</item>
+        <item name="cardElevation">@dimen/elevarionSix</item>
+        <item name="rippleColor">@color/colorAccent</item>
+    </style>
+
+    <!-- Standard style for card view titles -->
+    <style name="StyleCardViewTitles">
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">@dimen/twentyOneText</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Standard style for card view subtitles -->
+    <style name="StyleCardViewSubTitles">
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">@dimen/seventeenText</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Standard style for card view descriptions -->
+    <style name="StyleCardViewDescriptions">
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">@dimen/fifteenText</item>
+    </style>
 
 </resources>

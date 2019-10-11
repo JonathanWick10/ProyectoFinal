@@ -74,9 +74,10 @@
     <dimen name="elevationTwentyFour">24dp</dimen>
 
     <!-- Dimens for cardview -->
-    <dimen name="twentyOne">21sp</dimen>
-    <dimen name="seventeen">17sp</dimen>
+    <dimen name="twentyOneText">21sp</dimen>
+    <dimen name="seventeenText">17sp</dimen>
     <dimen name="oneHundredNinetyFour">194dp</dimen>
+    <dimen name="oneHundredAndEighty">180dp</dimen>
     
 </resources>
 
