@@ -8,7 +8,7 @@
 
     <item
         android:id="@+id/memorizame_patient"
-        android:icon="@drawable/ic_favorite_black"
+        android:icon="@drawable/ic_brain_black"
         android:title="@string/menu_memorizame"></item>
 
     <item

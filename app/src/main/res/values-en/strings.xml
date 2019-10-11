@@ -347,7 +347,11 @@
     <string name="tab_pets_questions">Pets</string>
     <string name="tab_medicaments">Medicaments</string>
     <string name="tab_therapies">Therapies</string>
+    <string name="lbl_level">Level:</string>
     <string name="lbl_progress">Progress:</string>
+    <string name="lbl_statement">Statement:</string>
+    <string name="lbl_description">Description:</string>
+    <string name="lbl_rate">Rate this activity</string>
 
     <!-- String Test Alzheimer -->
     <string name="tq1">

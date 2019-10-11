@@ -72,6 +72,11 @@
     <dimen name="elevationEight">8dp</dimen>
     <dimen name="elevationTwelve">12dp</dimen>
     <dimen name="elevationTwentyFour">24dp</dimen>
+
+    <!-- Dimens for cardview -->
+    <dimen name="twentyOne">21sp</dimen>
+    <dimen name="seventeen">17sp</dimen>
+    <dimen name="oneHundredNinetyFour">194dp</dimen>
     
 </resources>
 

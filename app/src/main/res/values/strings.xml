@@ -352,7 +352,11 @@
     <string name="tab_pets_questions">Mascotas</string>
     <string name="tab_medicaments">Medicamentos</string>
     <string name="tab_therapies">Terapias</string>
+    <string name="lbl_level">Nivel:</string>
     <string name="lbl_progress">Progreso:</string>
+    <string name="lbl_statement">Estado:</string>
+    <string name="lbl_description">Descripción:</string>
+    <string name="lbl_rate">Califica esta actividad</string>
 
     <!-- String Test Alzheimer -->
     <string name="tq1">
