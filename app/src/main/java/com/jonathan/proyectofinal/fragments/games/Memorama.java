@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.adapters.MemoramaAdapter;
 import com.jonathan.proyectofinal.data.MemoramaEntity;
+import com.jonathan.proyectofinal.fragments.patient.HomePFragment;
 import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Entity;
@@ -31,6 +32,9 @@ public class Memorama extends Fragment {
     @BindView(R.id.memorama_rv)
     public RecyclerView cartas;
 
+    public static Memorama newInstance() {
+        return new Memorama();
+    }
 
     private View view;
     @Override

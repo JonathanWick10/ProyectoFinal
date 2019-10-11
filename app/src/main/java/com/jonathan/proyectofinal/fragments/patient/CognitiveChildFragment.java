@@ -1,6 +1,9 @@
 package com.jonathan.proyectofinal.fragments.patient;
 
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -22,8 +25,11 @@ import android.widget.Toast;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.api.Distribution;
 import com.jonathan.proyectofinal.R;
+import com.jonathan.proyectofinal.fragments.games.Memorama;
+import com.jonathan.proyectofinal.interfaces.IComunicateFragment;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -35,6 +41,10 @@ public class CognitiveChildFragment extends Fragment {
     CardView cardActivity;
     RatingBar ratingBar;
     TextView ratingTxt;
+
+    IComunicateFragment interfaceComunicateFragments;
+    View vista;
+    Activity activity;
 
     /*
     private static final String ARGUMENT_POSITION = "argument_position";
@@ -52,7 +62,9 @@ public class CognitiveChildFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cognitive_child, container, false);
+        vista = inflater.inflate(R.layout.fragment_cognitive_child, container, false);
+        return vista;
+        //return inflater.inflate(R.layout.fragment_cognitive_child, container, false);
 
     }
 
@@ -94,12 +106,14 @@ public class CognitiveChildFragment extends Fragment {
         int position =getArguments().getInt(ARGUMENT_POSITION, -1);
         textView.setText(position == 0 ? R.string.do_not_stop_believing : R.string.a8);
         */
+
         expandableView = view.findViewById(R.id.expandableView);
         btnExpand = view.findViewById(R.id.btnExpand);
-        cardActivity = view.findViewById(R.id.cardActivity);
         ratingBar = view.findViewById(R.id.ratingBar);
         ratingTxt = view.findViewById(R.id.data_rating);
+        cardActivity = view.findViewById(R.id.cardActivity);
         ratingBar.setOnRatingBarChangeListener(mOnRatingChangeListener);
+
 
         btnExpand.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,6 +127,14 @@ public class CognitiveChildFragment extends Fragment {
                     expandableView.setVisibility(View.GONE);
                     btnExpand.setBackgroundResource(R.drawable.ic_keyboard_arrow_down_black);
                 }
+            }
+        });
+
+
+        cardActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                interfaceComunicateFragments.inicarJuego();
             }
         });
 
@@ -148,5 +170,14 @@ public class CognitiveChildFragment extends Fragment {
             }
         });
         */
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof Activity){
+            activity = (Activity) context;
+            interfaceComunicateFragments = (IComunicateFragment) activity;
+        }
     }
 }

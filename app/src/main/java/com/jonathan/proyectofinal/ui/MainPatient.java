@@ -9,17 +9,21 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.jonathan.proyectofinal.R;
+import com.jonathan.proyectofinal.fragments.games.Memorama;
+import com.jonathan.proyectofinal.fragments.patient.HomeChildFragment;
 import com.jonathan.proyectofinal.fragments.patient.HomePFragment;
 import com.jonathan.proyectofinal.fragments.patient.MemorizamePFragment;
 import com.jonathan.proyectofinal.fragments.patient.NotificationsPFragment;
+import com.jonathan.proyectofinal.interfaces.IComunicateFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainPatient extends AppCompatActivity {
+public class MainPatient extends AppCompatActivity implements IComunicateFragment {
 
     private ViewPager viewPager;
     private BottomNavigationView navigation;
@@ -60,6 +64,13 @@ public class MainPatient extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
+    // METODO PROVISIONAL CON INTERFAZ PARA REDIRECCIONAR AL JUEGO
+    @Override
+    public void inicarJuego() {
+        //Toast.makeText(this, "Iniciar juego desde actividad", Toast.LENGTH_SHORT).show();
+        viewPager.setCurrentItem(3);
+    }
+
     private static class PatientFragmentPageAdapter extends FragmentPagerAdapter {
 
         public PatientFragmentPageAdapter(FragmentManager fm) {
@@ -75,13 +86,17 @@ public class MainPatient extends AppCompatActivity {
                     return MemorizamePFragment.newInstance();
                 case 2:
                     return NotificationsPFragment.newInstance();
+                    // OPCION PROVISIONAL PARA REDIRECCIONAR AL JUEGO
+                case 3:
+                    return Memorama.newInstance();
             }
             return null;
         }
 
+        // CANTIDAD PROVISIONAL PARA REDIRECCIONAR AL JUEGO
         @Override
         public int getCount() {
-            return 3;
+            return 4;
         }
     }
 

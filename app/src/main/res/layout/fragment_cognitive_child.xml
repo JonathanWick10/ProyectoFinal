@@ -13,7 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:strokeColor="@color/colorPrimaryLight"
-        app:strokeWidth="@dimen/two">
+        app:strokeWidth="@dimen/two"
+        android:clickable="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -73,10 +74,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:visibility="gone"
                 android:layout_marginLeft="@dimen/sixteen"
                 android:layout_marginRight="@dimen/sixteen"
                 android:layout_marginBottom="@dimen/sixteen">
-                <!--android:visibility="gone"-->
 
                 <View
                     android:layout_width="match_parent"
@@ -169,7 +170,7 @@
                 <androidx.appcompat.widget.AppCompatRatingBar
                     android:id="@+id/ratingBar"
                     android:layout_width="@dimen/oneHundredAndEighty"
-                    android:layout_height="match_parent"
+                    android:layout_height="@dimen/forty"
                     android:layout_weight="1"
                     android:layout_gravity="center_vertical"
                     android:numStars="4"
