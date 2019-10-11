@@ -72,14 +72,14 @@ public class GraphPSFragment extends Fragment {
         axis.setValueFormatter(new IndexAxisValueFormatter(days));
     }
     private void axisLeft(YAxis axis){
-        axis.setSpaceTop(100);
+        axis.setAxisMaximum(100);
         axis.setAxisMinimum(0);
     }
     private void axisRight(YAxis axis){
         axis.setEnabled(false);
     }
     public void createCharts(){
-        lineChart=(LineChart)getSameChart(lineChart,"Gráfica1", Color.RED,Color.WHITE,3000);
+        lineChart=(LineChart)getSameChart(lineChart,"Gráfica1", Color.RED,Color.WHITE,2500);
         lineChart.setDrawGridBackground(true);
         lineChart.setData(getLineData());
         lineChart.invalidate();
@@ -91,7 +91,6 @@ public class GraphPSFragment extends Fragment {
 private DataSet getData(DataSet dataSet){
         dataSet.setValueTextSize(15);
         dataSet.setValueTextSize(Color.WHITE);
-
         return dataSet;
 }
 
