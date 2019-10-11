@@ -31,17 +31,17 @@
             />
 
         <activity android:name=".ui.MainCarer">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".ui.MainPatient">
         </activity>
         <activity android:name=".ui.PatientsList" >
         </activity>
         <activity android:name=".ui.Login">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
             <!-- cambiar al login -->
         </activity>

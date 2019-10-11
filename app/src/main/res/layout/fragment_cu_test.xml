@@ -343,6 +343,513 @@
                         android:text="@string/of_point" />
                 </LinearLayout>
 
+                <TableLayout
+                    android:id="@+id/table"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/test_title"
+                    android:visibility="gone"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center">
+
+                    <TableRow
+                        android:layout_marginTop="@dimen/ten"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:gravity="center">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Dominios"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/grayDark" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="-4dp"
+                                android:layout_marginRight="10dp"
+                                android:text="E.A. "
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/grayDark" />
+
+                        <TextView
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="D.C.L."
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/grayDark" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="Normal"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/grayDark" />
+                    </TableRow>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/grayDark"/>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:paddingTop="6dp"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/txtUnoc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="F.V.S" />
+
+                        <TextView
+                            android:id="@+id/txtUnod"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="-10dp"
+                            android:layout_marginRight="10dp"
+                            android:text="6.47" />
+
+                        <TextView
+                            android:id="@+id/txtUnoe"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="4dp"
+                            android:text="7.77" />
+
+                        <TextView
+                            android:id="@+id/txtUnof"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="9.04" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/txtDosc"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="F.V.F." />
+
+                        <TextView
+                            android:id="@+id/txtDosd"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="5.94"
+                            android:layout_marginLeft="-10dp"
+                            android:layout_marginRight="10dp" />
+
+                        <TextView
+                            android:id="@+id/txtDose"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="7.54"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="4dp"/>
+
+                        <TextView
+                            android:id="@+id/txtDosf"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="8.56" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/txtTresc"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="D.D." />
+
+                        <TextView
+                            android:id="@+id/txtTresd"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="5.94"
+                            android:layout_marginLeft="-10dp"
+                            android:layout_marginRight="10dp"/>
+
+                        <TextView
+                            android:id="@+id/txtTrese"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="7.62"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="4dp"/>
+
+                        <TextView
+                            android:id="@+id/txtTresf"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="8.44" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="4dp"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/txtCuatroc"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="D.O." />
+
+                        <TextView
+                            android:id="@+id/txtCuatrod"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="5.29"
+                            android:layout_marginLeft="-9dp"
+                            android:layout_marginRight="10dp"/>
+
+                        <TextView
+                            android:id="@+id/txtCuatroe"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="7.58"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="4dp" />
+
+                        <TextView
+                            android:id="@+id/txtCuatrof"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="8.32" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/txtCincoc"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="F.V.N.P." />
+
+                        <TextView
+                            android:id="@+id/txtCincod"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="5.21"
+                            android:layout_marginLeft="-9dp"
+                            android:layout_marginRight="10dp"/>
+
+                        <TextView
+                            android:id="@+id/txtCincoe"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="6.73"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="4dp" />
+
+                        <TextView
+                            android:id="@+id/txtCincof"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="8.28" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/txtSeisc"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="D.N.P" />
+
+                        <TextView
+                            android:id="@+id/txtSeisd"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="5.59"
+                            android:layout_marginLeft="-9dp"
+                            android:layout_marginRight="10dp"/>
+
+                        <TextView
+                            android:id="@+id/txtSeise"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="7.38"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="4dp"/>
+
+                        <TextView
+                            android:id="@+id/txtSeisf"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="8.60" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/txtSietec"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="R.I.U.L.P." />
+
+                        <TextView
+                            android:id="@+id/txtSieted"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="6.09"
+                            android:layout_marginLeft="-9dp"
+                            android:layout_marginRight="10dp"/>
+
+                        <TextView
+                            android:id="@+id/txtSietee"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="7.81"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="4dp"/>
+
+                        <TextView
+                            android:id="@+id/txtSietef"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="8.56" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/txtOchoc"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="R.I.D.U.P." />
+
+                        <TextView
+                            android:id="@+id/txtOchod"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="6.04"
+                            android:layout_marginLeft="-9dp"
+                            android:layout_marginRight="10dp" />
+
+                        <TextView
+                            android:id="@+id/txtOchoe"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="7.32"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="4dp"/>
+
+                        <TextView
+                            android:id="@+id/txtOchof"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="8.05" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/txtNuevec"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="R.D.L.P." />
+
+                        <TextView
+                            android:id="@+id/txtNueved"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="4.63"
+                            android:layout_marginLeft="-9dp"
+                            android:layout_marginRight="10dp"/>
+
+                        <TextView
+                            android:id="@+id/txtNuevee"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="6.40"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="4dp"/>
+
+                        <TextView
+                            android:id="@+id/txtNuevef"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="7.20" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/txtDiezc"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="R.D.D.U.P." />
+
+                        <TextView
+                            android:id="@+id/txtDiezd"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="5.03"
+                            android:layout_marginLeft="-9dp"
+                            android:layout_marginRight="10dp" />
+
+                        <TextView
+                            android:id="@+id/txtDieze"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="6.96"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="4dp"/>
+
+                        <TextView
+                            android:id="@+id/txtDiezf"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="7.56" />
+
+                    </TableRow>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/grayDark"/>
+
+                    <TableRow
+                        android:layout_marginTop="@dimen/ten"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:gravity="center"
+                        android:paddingBottom="10dp">
+
+                        <TextView
+                            android:id="@+id/txtOncec"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Ponderado." />
+
+                        <TextView
+                            android:id="@+id/txtOnced"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="56.23"
+                            android:textColor="@color/redDark"
+                            android:layout_marginLeft="-9dp"
+                            android:layout_marginRight="10dp" />
+
+                        <TextView
+                            android:id="@+id/txtOncee"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="73.11"
+                            android:textColor="@color/yellowDark"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="4dp"/>
+
+                        <TextView
+                            android:id="@+id/txtOncef"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="82.61"
+                            android:textColor="@color/blueDark" />
+                    </TableRow>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/grayDark" />
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingTop="3dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="Puntuación."
+                            android:textStyle="bold"
+                            android:textColor="@color/grayDark"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            android:id="@+id/txtDiferencia"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_span="10"
+                            android:gravity="end"
+                            android:text="00.0/100.0"
+                            android:textColor="@color/grayDark"
+                            android:textSize="20sp" />
+                    </TableRow>
+                </TableLayout>
+
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
 

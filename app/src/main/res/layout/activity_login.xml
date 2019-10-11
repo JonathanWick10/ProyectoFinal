@@ -81,7 +81,7 @@
 
             <com.google.android.gms.common.SignInButton
                 android:id="@+id/btn_login_google"
-                android:layout_width="112dp"
+                android:layout_width="116dp"
                 android:layout_height="wrap_content"></com.google.android.gms.common.SignInButton>
 
             <com.facebook.login.widget.LoginButton
