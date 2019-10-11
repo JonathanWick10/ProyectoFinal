@@ -887,10 +887,9 @@
                 android:textColor="@color/blueDark"
                 android:textSize="@dimen/tenText" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
+                style="@style/StylePrimaryColoredButton"
                 android:id="@+id/btnStar"
-                android:background="@color/blueLight"
-                android:textColor="@color/white"
                 android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -902,10 +901,9 @@
                 android:layout_toEndOf="@+id/progressBarCircle"
                 android:text="@string/start" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
+                style="@style/StylePrimaryColoredButton"
                 android:id="@+id/btnEnd"
-                android:background="@color/blueLight"
-                android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"

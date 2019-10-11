@@ -150,4 +150,14 @@
         <item name="android:textSize">@dimen/fifteenText</item>
     </style>
 
+    <!-- Standard style for subtitles with background in cardview -->
+    <style name="StyleSubsCardView">
+        <item name="android:layout_gravity">bottom</item>
+        <item name="android:background">#6c000000</item>
+        <item name="android:textColor">@color/colorBackround</item>
+        <item name="android:textSize">@dimen/twentyText</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:padding">@dimen/ten</item>
+    </style>
+
 </resources>

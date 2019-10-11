@@ -17,7 +17,7 @@
     <string name="name_patient">Name patient</string>
     <string name="admin_id">ID</string>
     <string name="admin_place">Place</string>
-    <string name="admin_profession">Profession</string>
+    <string name="admin_profession">Profesión</string>
     <string name="my_care">Mi cuidado</string>
     <string name="test">Test</string>
     <string name="diary">Agenda</string>
@@ -25,12 +25,12 @@
     <string name="emergency_contacts">Contactos</string>
     <string name="nearby_hospitals">Hospitales</string>
     <string name="phases_ea">Fases E.A.</string>
-    <string name="general_information">Info General</string>
-    <string name="home">Home</string>
+    <string name="general_information">Info. General</string>
+    <string name="home">Inicio</string>
     <string name="list">Lista</string>
     <string name="emergency">Emergencias</string>
-    <string name="info">Info</string>
-    <string name="information_carer">Info.</string>
+    <string name="info">Información</string>
+    <string name="information_carer">Información.</string>
     <string name="exercise_carer">Ejercicios.</string>
     <string name="advice_carer">Avisos.</string>
 

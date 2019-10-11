@@ -45,7 +45,7 @@ public class EmergencyFragment extends Fragment {
             tabs.setupWithViewPager(viewPager);
             viewPager.setAdapter(adapter);
             tabs.getTabAt(0).setIcon(R.drawable.ic_loyalty);
-            tabs.getTabAt(1).setIcon(R.drawable.ic_hospital);
+            tabs.getTabAt(1).setIcon(R.drawable.ic_local_convenience_store_black);
         }
     }
     public class Adapter extends FragmentPagerAdapter{
