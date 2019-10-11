@@ -347,4 +347,126 @@
     <string name="tab_therapies">Therapies</string>
     <string name="lbl_progress">Progress:</string>
 
+    <!-- String Test Alzheimer -->
+    <string name="tq1">
+        <b>1. Fluidez verbal semántica</b>
+    </string>
+    <string name="test1">\n\n
+        Durante 30 seg. debe decir nombres de frutas.
+    </string>
+    <string name="tq2">
+        <b>2. Fluidez verbal fonológica</b>
+    </string>
+    <string name="test2">\n\n
+        Nombrar palabras que empiecen con la letra "f" en 30 seg.
+    </string>
+    <string name="tq3">
+        <b>3. Denominación a definiciones</b>
+    </string>
+    <string name="test3">
+        ¿Donde ponen los huevos los pajaros?\n
+        ¿Que alimento producen las abejas?\n
+        ¿Dónde se conservan fríos los alimentos?\n
+        ¿Con que objeto puede verse a sí mismo?\n
+        ¿Con que se abren las botellas de cerveza?\n
+        ¿Dónde se compran los medicamentos?\n
+        ¿Como se llama el animal que tiene un cuello muy largo?\n
+        ¿Dónde miramos la fecha?\n
+        ¿Dónde se apoya la cabeza en la almohada?\n
+        ¿Con que barres el suelo?
+    </string>
+    <string name="tq4">
+        <b>4. Denominación de objetos</b>
+    </string>
+    <string name="test4">
+        Indique:\n
+        \n
+        Botón.\n            Hombro.\n
+        Ojal.\n             Codo.\n
+        Manga.\n            Muñeca.\n
+        Cuello.\n           Ceja.\n
+        Bolsillo.\n         Parpado.
+    </string>
+    <string name="tq5">
+        <b>5. Fluidez verbal de nombres propios</b>
+    </string>
+    <string name="test5">\n\n
+        Nombre 5 deportistas de este país\n
+        Nombre de 5 actores o actrices.
+    </string>
+    <string name="tq6">
+        <b>6. Denominación de nombres propios</b>
+    </string>
+    <string name="test6">
+        ¿Como se llama?\n
+        \n
+        ¿El Papa actual?\n
+        ¿El presidente de Estados Unidos?\n
+        ¿El presidente de Colombia?\n
+        ¿El líder opositor del presidente?\n
+        ¿La Reina de Inglaterra?\n
+        ¿El piloto Colombiano que gano la formula 1?\n
+        ¿El primer ministro de Colombia?\n
+        ¿El presidente de Ecuador?\n
+        ¿El presidente de Venezuela?
+        ¿El presidente de Brasil?
+    </string>
+    <string name="tq7">
+        <b>7. Recuerdo inmediato de una lista de palabras</b>
+    </string>
+    <string name="test7">
+        Recuerde de esta lista:\n
+        \n
+        Arroz\n             Bombilla\n
+        Café\n              Tomate\n
+        Queso\n             Jabón\n
+        Fosforos\n          Salmon\n
+        Sal\n               Cerveza
+    </string>
+    <string name="tq8">
+        <b>8. Recuerdo inmediato de los datos de una persona</b>
+    </string>
+    <string name="test8">
+        Voy a presentar un amigo...\n
+        \n
+        Se llama Alberto.\n
+        Vive en París.\n
+        Tiene 41 años.\n
+        Tiene 3 hijos.\n
+        Trabaja en un banco.\n
+        Su padre era militar.\n
+        Su comida favorita es el espageti.\n
+        Su afición preferida es coleccionar sellos.\n
+        Le gusta jugar tenis.\n
+        No tiene coche, pero conduce moto.\n
+        \n
+        ¿Que recuerda de mi amigo?
+    </string>
+    <string name="tq9">
+        <b>9. Recuerdo demorado de la lista de palabras</b>
+    </string>
+    <string name="test9">\n\n
+        ¿Cuantas cosas recuerda de la lista de utencilios?
+    </string>
+    <string name="tq10">
+        <b>10. Recuerdo demorado de los datos de una persona</b>
+    </string>
+    <string name="test10">
+        ¿Como se llama mi amigo?\n
+        ¿Dónde vive?\n
+        ¿Cuántos años tiene?\n
+        ¿Cuántos hijos tiene?\n
+        ¿En que trabaja?\n
+        ¿Que profesión tenía su padre?\n
+        ¿Cuál es su comida favorita?\n
+        ¿Cuál es su afición preferida?\n
+        ¿Que deporte practica?\n
+        ¿Que vehículo conduce?\n
+    </string>
+    <string name="time">00:00:30</string>
+    <string name="start">Iniciar</string>
+    <string name="end">Terminar</string>
+    <string name="qualification">Puntaje: </string>
+    <string name="point">00</string>
+    <string name="of_point">/10</string>
 </resources>
