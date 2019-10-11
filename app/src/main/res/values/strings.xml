@@ -1,5 +1,5 @@
 <resources>
-    <string name="facebook_app_id">2387695014825265</string> <string name="fb_login_protocol_scheme">fb2387695014825265</string>
+    <string name="facebook_app_id" translatable="false">2387695014825265</string> <string name="fb_login_protocol_scheme" translatable="false">fb2387695014825265</string>
 
     <string name="app_name">Brainmher</string>
     <string name="patient">Paciente</string>

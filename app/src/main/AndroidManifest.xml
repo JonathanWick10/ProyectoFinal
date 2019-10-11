@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.jonathan.proyectofinal">
 
     <application
@@ -9,25 +10,47 @@
         android:roundIcon="@mipmap/ic_isotipo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.MainCarer">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="@string/fb_login_protocol_scheme"
+                     />
             </intent-filter>
+        </activity>
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            tools:replace="android:value"
+            android:value="@string/facebook_app_id"
+            />
+
+        <activity android:name=".ui.MainCarer">
         </activity>
         <activity android:name=".ui.MainPatient">
         </activity>
         <activity android:name=".ui.PatientsList" >
         </activity>
         <activity android:name=".ui.Login">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
             <!-- cambiar al login -->
         </activity>
         <activity android:name=".ui.HealthProfessionalActivity">
         </activity>
         <activity android:name=".ui.LoadBrainmher"></activity>
-        <activity android:name=".ui.MainActivity" /></application>
+        <activity android:name=".ui.MainActivity" />
+
+    </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
