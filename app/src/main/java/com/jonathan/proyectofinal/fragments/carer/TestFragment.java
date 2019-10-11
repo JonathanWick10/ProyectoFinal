@@ -209,13 +209,13 @@ public class TestFragment extends Fragment implements View.OnClickListener {
                     point1 = Integer.parseInt(point.getText().toString());
                     point.getText().clear();
                     if (point1 < 7.77){
-                        toneD.setTextColor(getResources().getColorStateList(R.color.blueDark));
+                        toneD.setTextColor(getResources().getColorStateList(R.color.redDark));
                     }
                     if (point1 > 7.76 && point1 < 9.04){
-                        toneE.setTextColor(getResources().getColorStateList(R.color.blueDark));
+                        toneE.setTextColor(getResources().getColorStateList(R.color.yellowDark));
                     }
                     if (point1 > 9.04 && point1 <= 10){
-                        toneF.setTextColor(getResources().getColorStateList(R.color.blueDark));
+                        toneF.setTextColor(getResources().getColorStateList(R.color.greenDark));
                     }
                     tq1.setVisibility(v.GONE);
                     tq2.setVisibility(v.VISIBLE);
@@ -227,13 +227,13 @@ public class TestFragment extends Fragment implements View.OnClickListener {
                 else if(tq2.getVisibility() == v.VISIBLE && points != null && !points.isEmpty()){ //si es Visible lo pones Gone
                     point2 = Integer.parseInt(point.getText().toString());
                     if (point2 < 7.54){
-                        ttwoD.setTextColor(getResources().getColorStateList(R.color.blueDark));
+                        ttwoD.setTextColor(getResources().getColorStateList(R.color.redDark));
                     }
                     if (point2 > 7.53 && point2 < 8.56){
-                        ttwoE.setTextColor(getResources().getColorStateList(R.color.blueDark));
+                        ttwoE.setTextColor(getResources().getColorStateList(R.color.yellowDark));
                     }
                     if (point2 > 8.55 && point2 <= 10){
-                        ttwoF.setTextColor(getResources().getColorStateList(R.color.blueDark));
+                        ttwoF.setTextColor(getResources().getColorStateList(R.color.greenDark));
                     }
                     point.getText().clear();
                     tq2.setVisibility(v.GONE);
@@ -246,13 +246,13 @@ public class TestFragment extends Fragment implements View.OnClickListener {
                 else if(tq3.getVisibility() == v.VISIBLE && points != null && !points.isEmpty()){ //si es Visible lo pones Gone
                     point3 = Integer.parseInt(point.getText().toString());
                     if (point3 < 7.62){
-                        tthreD.setTextColor(getResources().getColorStateList(R.color.blueDark));
+                        tthreD.setTextColor(getResources().getColorStateList(R.color.redDark));
                     }
                     if (point3 > 7.61 && point3 < 8.44){
-                        tthreE.setTextColor(getResources().getColorStateList(R.color.blueDark));
+                        tthreE.setTextColor(getResources().getColorStateList(R.color.yellowDark));
                     }
                     if (point3 > 8.43 && point3 <= 10){
-                        tthreF.setTextColor(getResources().getColorStateList(R.color.blueDark));
+                        tthreF.setTextColor(getResources().getColorStateList(R.color.greenDark));
                     }
                     point.getText().clear();
                     tq3.setVisibility(v.GONE);
@@ -265,13 +265,13 @@ public class TestFragment extends Fragment implements View.OnClickListener {
                 else if(tq4.getVisibility() == v.VISIBLE && points != null && !points.isEmpty()){ //si es Visible lo pones Gone
                     point4 = Integer.parseInt(point.getText().toString());
                     if (point4 < 7.58){
-                        tfourD.setTextColor(getResources().getColorStateList(R.color.blueDark));
+                        tfourD.setTextColor(getResources().getColorStateList(R.color.redDark));
                     }
                     if (point4 > 7.57 && point4 < 8.32){
-                        tfourE.setTextColor(getResources().getColorStateList(R.color.blueDark));
+                        tfourE.setTextColor(getResources().getColorStateList(R.color.yellowDark));
                     }
                     if (point4 > 8.31 && point4 <= 10){
-                        tfourF.setTextColor(getResources().getColorStateList(R.color.blueDark));
+                        tfourF.setTextColor(getResources().getColorStateList(R.color.greenDark));
                     }
                     point.getText().clear();
                     tq4.setVisibility(v.GONE);
@@ -284,13 +284,13 @@ public class TestFragment extends Fragment implements View.OnClickListener {
                 else if(tq5.getVisibility() == v.VISIBLE && points != null && !points.isEmpty()){ //si es Visible lo pones Gone
                     point5 = Integer.parseInt(point.getText().toString());
                     if (point5 < 6.73){
-                        tfiveD.setTextColor(getResources().getColorStateList(R.color.blueDark));
+                        tfiveD.setTextColor(getResources().getColorStateList(R.color.redDark));
                     }
                     if (point5 > 6.72 && point5 < 8.28){
-                        tfiveE.setTextColor(getResources().getColorStateList(R.color.blueDark));
+                        tfiveE.setTextColor(getResources().getColorStateList(R.color.yellowDark));
                     }
                     if (point5 > 8.27 && point5 <= 10){
-                        tfiveF.setTextColor(getResources().getColorStateList(R.color.blueDark));
+                        tfiveF.setTextColor(getResources().getColorStateList(R.color.greenDark));
                     }
                     point.getText().clear();
                     tq5.setVisibility(v.GONE);
@@ -303,13 +303,13 @@ public class TestFragment extends Fragment implements View.OnClickListener {
                 else if(tq6.getVisibility() == v.VISIBLE && points != null && !points.isEmpty()){ //si es Visible lo pones Gone
                     point6 = Integer.parseInt(point.getText().toString());
                     if (point6 < 7.38){
-                        tsixD.setTextColor(getResources().getColorStateList(R.color.blueDark));
+                        tsixD.setTextColor(getResources().getColorStateList(R.color.redDark));
                     }
                     if (point6 > 7.37 && point6 < 8.60){
-                        tsixE.setTextColor(getResources().getColorStateList(R.color.blueDark));
+                        tsixE.setTextColor(getResources().getColorStateList(R.color.yellowDark));
                     }
                     if (point6 > 8.59 && point6 <= 10){
-                        tsixF.setTextColor(getResources().getColorStateList(R.color.blueDark));
+                        tsixF.setTextColor(getResources().getColorStateList(R.color.greenDark));
                     }
                     point.getText().clear();
                     tq6.setVisibility(v.GONE);
@@ -322,13 +322,13 @@ public class TestFragment extends Fragment implements View.OnClickListener {
                 else if(tq7.getVisibility() == v.VISIBLE && points != null && !points.isEmpty()){ //si es Visible lo pones Gone
                     point7 = Integer.parseInt(point.getText().toString());
                     if (point7 < 7.81){
-                        tsevenD.setTextColor(getResources().getColorStateList(R.color.blueDark));
+                        tsevenD.setTextColor(getResources().getColorStateList(R.color.redDark));
                     }
                     if (point7 > 7.80 && point7 < 8.56){
-                        tsevenE.setTextColor(getResources().getColorStateList(R.color.blueDark));
+                        tsevenE.setTextColor(getResources().getColorStateList(R.color.yellowDark));
                     }
                     if (point7 > 8.55 && point7 <= 10){
-                        tsevenF.setTextColor(getResources().getColorStateList(R.color.blueDark));
+                        tsevenF.setTextColor(getResources().getColorStateList(R.color.greenDark));
                     }
                     point.getText().clear();
                     tq7.setVisibility(v.GONE);
@@ -341,13 +341,13 @@ public class TestFragment extends Fragment implements View.OnClickListener {
                 else if(tq8.getVisibility() == v.VISIBLE && points != null && !points.isEmpty()){ //si es Visible lo pones Gone
                     point8 = Integer.parseInt(point.getText().toString());
                     if (point8 < 7.32){
-                        teigthD.setTextColor(getResources().getColorStateList(R.color.blueDark));
+                        teigthD.setTextColor(getResources().getColorStateList(R.color.redDark));
                     }
                     if (point8 > 7.31 && point8 < 8.05){
-                        teigthE.setTextColor(getResources().getColorStateList(R.color.blueDark));
+                        teigthE.setTextColor(getResources().getColorStateList(R.color.yellowDark));
                     }
                     if (point8 > 8.04 && point8 <= 10){
-                        teigthF.setTextColor(getResources().getColorStateList(R.color.blueDark));
+                        teigthF.setTextColor(getResources().getColorStateList(R.color.greenDark));
                     }
                     point.getText().clear();
                     tq8.setVisibility(v.GONE);
@@ -360,13 +360,13 @@ public class TestFragment extends Fragment implements View.OnClickListener {
                 else if(tq9.getVisibility() == v.VISIBLE && points != null && !points.isEmpty()){ //si es Visible lo pones Gone
                     point9 = Integer.parseInt(point.getText().toString());
                     if (point9 < 6.40){
-                        tnineD.setTextColor(getResources().getColorStateList(R.color.blueDark));
+                        tnineD.setTextColor(getResources().getColorStateList(R.color.redDark));
                     }
                     if (point9 > 6.39 && point9 < 7.20){
-                        tnineE.setTextColor(getResources().getColorStateList(R.color.blueDark));
+                        tnineE.setTextColor(getResources().getColorStateList(R.color.yellowDark));
                     }
                     if (point9 > 7.19 && point9 <= 10){
-                        tnineF.setTextColor(getResources().getColorStateList(R.color.blueDark));
+                        tnineF.setTextColor(getResources().getColorStateList(R.color.greenDark));
                     }
                     point.getText().clear();
                     tq9.setVisibility(v.GONE);
@@ -379,13 +379,13 @@ public class TestFragment extends Fragment implements View.OnClickListener {
                 else if(tq10.getVisibility() == v.VISIBLE && points != null && !points.isEmpty()){ //si es Visible lo pones Gone
                     point10 = Integer.parseInt(point.getText().toString());
                     if (point10 < 6.96){
-                        ttentD.setTextColor(getResources().getColorStateList(R.color.blueDark));
+                        ttentD.setTextColor(getResources().getColorStateList(R.color.redDark));
                     }
                     if (point10 > 6.95 && point10 < 7.56){
-                        ttenE.setTextColor(getResources().getColorStateList(R.color.blueDark));
+                        ttenE.setTextColor(getResources().getColorStateList(R.color.yellowDark));
                     }
                     if (point10 > 7.55 && point10 <= 10){
-                        ttenF.setTextColor(getResources().getColorStateList(R.color.blueDark));
+                        ttenF.setTextColor(getResources().getColorStateList(R.color.greenDark));
                     }
                     point.getText().clear();
                     tq10.setVisibility(v.GONE);
