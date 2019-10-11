@@ -1,28 +1,227 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.patient.CognitiveChildFragment">
 
 
     <com.google.android.material.card.MaterialCardView
         style="@style/Widget.MaterialComponents.CardView"
+        android:id="@+id/cardActivity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/ten"
         android:layout_marginTop="@dimen/ten"
         android:layout_marginRight="@dimen/ten"
-        app:rippleColor="@color/colorAccent"
-        app:cardCornerRadius="@dimen/twenty"
-        app:strokeColor="@color/colorPrimaryLight"
-        app:strokeWidth="@dimen/two"
         android:checkable="true"
+        android:focusable="true"
+        app:cardCornerRadius="@dimen/twenty"
+        app:cardElevation="@dimen/elevarionSix"
         app:checkedIcon="@drawable/ic_favorite_black"
         app:checkedIconTint="@color/white"
+        app:rippleColor="@color/colorAccent"
         app:shapeAppearance="@style/StyleBottonNavigation"
-        app:cardElevation="@dimen/ten">
+        app:strokeColor="@color/colorPrimaryLight"
+        app:strokeWidth="@dimen/two">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/iv_game_miniature"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/oneHundredNinetyFour"
+                android:src="@drawable/cards" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="@dimen/five">
+
+                <TextView
+                    android:id="@+id/lbl_activity_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingLeft="@dimen/sixteen"
+                    android:paddingTop="@dimen/ten"
+                    android:paddingBottom="@dimen/five"
+                    android:text="Memorama"
+                    android:textSize="@dimen/twentyOne"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingLeft="@dimen/sixteen"
+                    android:paddingBottom="@dimen/five"
+                    android:text="@string/lbl_description"
+                    android:textSize="@dimen/seventeen"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/admin_txtv_idps"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingLeft="@dimen/sixteen"
+                    android:paddingBottom="@dimen/five"
+                    android:text="Juego de cartas para estumilar la memoria."
+                    android:textSize="@dimen/fifteenText"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal">
+                    <Button
+                        android:id="@+id/btnExpand"
+                        android:layout_width="@dimen/sixty"
+                        android:layout_height="@dimen/sixty"
+                        android:background="@drawable/ic_keyboard_arrow_down_black"
+                        android:backgroundTint="@color/colorPrimary"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/expandableView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="@dimen/sixteen">
+                <!--android:visibility="gone"-->
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@android:color/darker_gray"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/sixteen">
+
+                    <TextView
+                        android:id="@+id/lbl_level"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/lbl_level"
+                        android:textSize="@dimen/fifteen"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/data_level"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingLeft="@dimen/sixteen"
+                        android:paddingBottom="@dimen/five"
+                        android:textSize="@dimen/fifteen"
+                        android:text="3/5"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/five">
+
+                    <TextView
+                        android:id="@+id/lbl_progress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/lbl_progress"
+                        android:textSize="@dimen/fifteenText"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/data_progress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingLeft="@dimen/sixteen"
+                        android:paddingBottom="@dimen/five"
+                        android:textSize="@dimen/fifteenText"
+                        android:text="60%"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/five">
+
+                    <TextView
+                        android:id="@+id/lbl_statement"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/lbl_statement"
+                        android:textSize="@dimen/fifteenText"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/data_statement"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingLeft="@dimen/sixteen"
+                        android:textSize="@dimen/fifteenText"
+                        android:text="Incompleto"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@android:color/darker_gray" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/sixteen"
+                    android:textSize="@dimen/fifteen"
+                    android:text="@string/lbl_rate" />
+
+                <androidx.appcompat.widget.AppCompatRatingBar
+                    android:id="@+id/ratingBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:numStars="4"
+                    android:stepSize="1"
+                    android:layout_gravity="end"/>
+
+                <TextView
+                    android:id="@+id/data_rating"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:textSize="@dimen/fifteenText"
+                    android:textColor="@color/colorPrimaryDark"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <!--
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -81,49 +280,6 @@
                         android:textSize="@dimen/fifteenText" />
                 </LinearLayout>
 
-
-                <!--
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/admin_place"
-                        android:paddingLeft="@dimen/ten"
-                        android:textSize="@dimen/fifteenText" />
-
-                    <TextView
-                        android:id="@+id/admin_txtv_placeps"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/admin_enter"
-                        android:textAlignment="center"
-                        android:textSize="@dimen/fifteenText" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/admin_profession"
-                        android:paddingLeft="@dimen/ten"
-                        android:textSize="@dimen/fifteenText" />
-
-                    <TextView
-                        android:id="@+id/admin_txtv_profesionps"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/admin_enter"
-                        android:textAlignment="center"
-                        android:textSize="@dimen/fifteenText" />
-                </LinearLayout>
-                -->
                 <Button
                     style="@style/Widget.AppCompat.Button.Borderless"
                     android:id="@+id/action_button_2"
@@ -146,9 +302,9 @@
                     android:layout_height="@dimen/ninety"
                     android:src="@drawable/ic_casino_black" />
             </LinearLayout>
-
-
         </LinearLayout>
+        -->
+
 
         <!-- CARDS DE PRUEBA
         <LinearLayout
@@ -237,8 +393,6 @@
                     android:textAlignment="center"/>
 
             </LinearLayout>
-
-
         </LinearLayout>
         FIN CARDS DE PRUEBA -->
     </com.google.android.material.card.MaterialCardView>
