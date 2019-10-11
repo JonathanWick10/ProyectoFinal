@@ -59,7 +59,7 @@ public class GraphPSFragment extends Fragment {
                 return chart;
     }
 
-    private ArrayList<Entry>getLineEntry(){
+    private ArrayList<Entry>getLineEntries(){
         ArrayList<Entry>entries=new ArrayList<>();
         for (int i=0;i<scores.length;i++)
             entries.add(new Entry(i,scores[i]));
@@ -79,9 +79,9 @@ public class GraphPSFragment extends Fragment {
         axis.setEnabled(false);
     }
     public void createCharts(){
-        lineChart=(LineChart)getSameChart(lineChart,"Gráfica1", Color.RED,Color.BLUE,3000);
+        lineChart=(LineChart)getSameChart(lineChart,"Gráfica1", Color.RED,Color.WHITE,3000);
         lineChart.setDrawGridBackground(true);
-        //lineChart.setData(getLineData());
+        lineChart.setData(getLineData());
         lineChart.invalidate();
         axisX(lineChart.getXAxis());
         axisLeft(lineChart.getAxisLeft());
@@ -97,9 +97,8 @@ private DataSet getData(DataSet dataSet){
 
     private LineData getLineData(){
 
-        LineDataSet lineDataSet=(LineDataSet)lineChart.getData().getDataSetByIndex(0);
+        LineDataSet lineDataSet=(LineDataSet)getData(new LineDataSet(getLineEntries(),""));
         LineData lineData= new LineData(lineDataSet);
-        lineDataSet.setValues(getLineEntry());
         return lineData;
     }
 
