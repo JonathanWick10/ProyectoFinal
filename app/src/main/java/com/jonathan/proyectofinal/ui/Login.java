@@ -80,7 +80,7 @@ public class Login extends AppCompatActivity {
     @BindView(R.id.btn_login_google)
     SignInButton btnLoginGoogle;
     @BindView(R.id.btn_login_facebook)
-    LoginButton btnLoginFacebook;
+    Button btnLoginFacebook;
 
     private GoogleSignInClient googleSignInClient;
     private int GOOGLE_SIGN_IN=1;
@@ -108,6 +108,7 @@ public class Login extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
         loginInstance().googleClientSettings(this);
+        callbackManager=CallbackManager.Factory.create();
 
         pass.addTextChangedListener(new TextWatcher() {
             @Override
@@ -154,76 +155,10 @@ public class Login extends AppCompatActivity {
             }
         };
 
-        loginFB();
-
-    }
-
-    private void loginFB() {
-
-        callbackManager = CallbackManager.Factory.create();
-        Button loginButtonFB = findViewById(R.id.btn_login_facebook);
-
-
-
-        loginButtonFB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                com.facebook.login.LoginManager.getInstance().logInWithReadPermissions(Login.this, Arrays.asList("email", "public_profile"));
-                com.facebook.login.LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-                    @Override
-                    public void onSuccess(LoginResult loginResult) {
-                        Log.d(TAG, "facebook:onSuccess:" + loginResult);
-                        handleFacebookAccessToken(loginResult.getAccessToken());
-                        // Toast.makeText(MainActivity.this,"LOGUIN CORRECTO", Toast.LENGTH_SHORT).show();
-                        // simpleProgressBar.setVisibility(View.INVISIBLE);
-                    }
-
-                    @Override
-                    public void onCancel() {
-                        Toast.makeText(Login.this,"LOGUIN CANCELADO", Toast.LENGTH_SHORT).show();
-                        // ...
-                    }
-
-                    @Override
-                    public void onError(FacebookException error) {
-
-                        Toast.makeText(Login.this,"ERROOOOOOOOOR", Toast.LENGTH_SHORT).show();
-                        // ...
-                    }
-                });
-            }
-        });
-    }
-
-    private void handleFacebookAccessToken(AccessToken token) {
-        Log.d(TAG, "handleFacebookAccessToken:" + token);
-
-        AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
-        firebaseAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "signInWithCredential:success");
-                            FirebaseUser user = firebaseAuth.getCurrentUser();
-                          //  updateUI();
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "signInWithCredential:failure", task.getException());
-                            Toast.makeText(Login.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                       //     updateUI();
-                        }
-
-                        // ...
-                    }
-                });
     }
 
     private void goMainProfil() {
-       // startActivity(new Intent(Login.this, Logi.class));
+        startActivity(new Intent(Login.this, MainPatient.class));
         Toast.makeText(this, "LOGUEEEEEADOOOO", Toast.LENGTH_SHORT).show();
     }
 
@@ -258,6 +193,39 @@ public class Login extends AppCompatActivity {
 
     }
 
+    private void googleLogin(){
+        Intent intent = loginInstance().googleClientSettings(this).getSignInIntent();
+        startActivityForResult(intent, GOOGLE_SIGN_IN);
+    }
+
+    private void facebookLogin() {
+
+        com.facebook.login.LoginManager.getInstance().logInWithReadPermissions(Login.this, Arrays.asList("email", "public_profile"));
+        com.facebook.login.LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                Log.d(TAG, "facebook:onSuccess:" + loginResult);
+                loginInstance().handleFacebookAccessToken(loginResult.getAccessToken(), Login.this);
+                // Toast.makeText(MainActivity.this,"LOGUIN CORRECTO", Toast.LENGTH_SHORT).show();
+                // simpleProgressBar.setVisibility(View.INVISIBLE);
+            }
+
+            @Override
+            public void onCancel() {
+                Toast.makeText(Login.this,"LOGUIN CANCELADO", Toast.LENGTH_SHORT).show();
+                // ...
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+
+                Toast.makeText(Login.this,"ERROOOOOOOOOR", Toast.LENGTH_SHORT).show();
+                // ...
+            }
+        });
+
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -267,15 +235,7 @@ public class Login extends AppCompatActivity {
         if (requestCode == GOOGLE_SIGN_IN){
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             if(result.isSuccess()){
-                AuthCredential credential= GoogleAuthProvider.getCredential(result.getSignInAccount().getIdToken(), null);
-                firebaseAuth.signInWithCredential(credential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(!task.isSuccessful()){
-                            Toast.makeText(Login.this, getString(R.string.auth_fail), Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
+                loginInstance().handleGoogleAccessToken(result, Login.this);
                 goMainProfil();
             }else {
                 Toast.makeText(Login.this,getString(R.string.auth_fail), Toast.LENGTH_SHORT).show();
@@ -328,34 +288,12 @@ public class Login extends AppCompatActivity {
                 register();
                 break;
             case R.id.btn_login_google:
-                Intent intent = loginInstance().googleClientSettings(this).getSignInIntent();
-                startActivityForResult(intent, GOOGLE_SIGN_IN);
+                googleLogin();
                 break;
             case R.id.btn_login_facebook:
-                loginFB();
+                facebookLogin();
                 break;
         }
     }
-
-    /*
-
-    private void prinKeyHash() {
-        try {
-            PackageInfo info = getPackageManager().getPackageInfo("com.jonathan.proyectofinal", PackageManager.GET_SIGNATURES);
-
-            for (Signature signature : info.signatures)
-            {
-                MessageDigest messageDigest = MessageDigest.getInstance("SHA");
-                messageDigest.update(signature.toByteArray());
-                Log.e("KeyHash", Base64.encodeToString(messageDigest.digest(), Base64.DEFAULT));
-            }
-        } catch (PackageManager.NameNotFoundException e)
-        {
-            e.printStackTrace();
-        }catch (NoSuchAlgorithmException e){
-            e.printStackTrace();
-        }
-
-    }*/
 
 }
