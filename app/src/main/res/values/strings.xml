@@ -1,5 +1,6 @@
 <resources>
-    <string name="facebook_app_id" translatable="false">2387695014825265</string> <string name="fb_login_protocol_scheme" translatable="false">fb2387695014825265</string>
+    <string name="facebook_app_id" translatable="false">2387695014825265</string>
+    <string name="fb_login_protocol_scheme" translatable="false">fb2387695014825265</string>
 
     <string name="app_name">Brainmher</string>
     <string name="patient">Paciente</string>
@@ -480,4 +481,299 @@
     <string name="qualification">Puntaje: </string>
     <string name="point">00</string>
     <string name="of_point">/10</string>
+
+    <!-- String Information Carer -->
+    <string name="qc1">¿Qué alteraciones físicas suele padecer el cuidador principal?</string>
+    <string name="ac1">
+        Los cuidadores principales suelen ver incrementadas las enfermedades propias de la edad (en el caso de que sea avanzada) por el esfuerzo
+        y sobrecarga física que supone el cuidado de un enfermo. Las barreras arquitectónicas (puertas y pasillos estrechos, escaleras, camas bajas...)
+        y la necesidad de mover, transportar o acompañar los movimientos del enfermo, pueden provocar la aparición o aumento de problemas musculares y
+        de huesos (como dolores de espalda).\n
+
+        El sistema inmunológico también suele verse afectado. El agotamiento de las defensas hace que seamos más proclives a padecer procesos infecciosos
+        como gripes, laringitis... Por ello, muchos cuidadores principales acaban teniendo que recurrir a la ayuda de un número considerable de fármacos.
+    </string>
+    <string name="qc2">¿Qué alteraciones psicológicas conlleva el síndrome del cuidador?</string>
+    <string name="ac2">
+        La gran carga emocional suele provocar fatiga, agotamiento y cansancio. La aceptación de la enfermedad coloca al cuidador ante un sentimiento de
+        pérdida lento y progresivo: se pierde a un ser querido, que deja de reconocernos y nosotros a él (ya no es la persona que fue).\n
+
+        El cuidador principal también se enfrenta a sentimientos contradictorios: deseos de que termine esa situación pero, al mismo tiempo,
+        no querer perder al ser querido.\n
+
+        Probablemente sentirá enfado, irritabilidad y frustración, que suele acompañarse de grandes sentimientos de culpa. Si esos sentimientos no
+        son reconducidos le provocarán ansiedad, que puede a su vez derivar en síntomas cardiovasculares, palpitaciones, desmayos, alteraciones en la
+        tensión arterial, trastornos respiratorios, diarreas, náuseas, vómitos…\n
+
+        Si esta situación persiste, pueden producir efectos crónicos en forma de: insomnio, sudoración, tensión muscular, fatiga, gran dificultad para
+        pensar y encontrar soluciones eficaces a los problemas.\n
+
+        Por ello, es muy importante que el cuidador principal se sienta apoyado por su entorno cercano, que encuentre apoyo para no descuidar su salud
+        ni su vida social, acudiendo al especialista medico ante el inicio de cualquiera de los síntomas descritos. El papel activo de la familia de
+        cuidador y cuidado es fundamental para ayudar a evitar que caiga en este síndrome.
+    </string>
+    <string name="qc3">¿El síndrome del cuidador también influye en la vida social?</string>
+    <string name="ac3">
+        Sí, ya que se produce un aislamiento social al combinarse el estado emocional depresivo/ansioso con el malestar físico. El cuidador irá
+        prescindiendo de participar en actos sociales, actividades lúdicas, etc., con lo cual perderá gran cantidad de amistades.\n
+
+        Por ello, es importante (desde el círculo más cercano) animar al cuidador a que se distraiga y se de algún respiro, que no abandone
+        completamente su vida social y realice actividades de ocio que puedan relajar y enriquecer su vida.\n
+    </string>
+    <string name="qc4">¿Qué consecuencias tiene el síndrome del cuidador?</string>
+    <string name="ac4">
+        Las consecuencias podrían resumirse en 4: frustración, insatisfacción por la vida, depresión y enfermedad. Para evitarlas, conviene
+        entre todos dar apoyo y soporte a los cuidadores y a sus familiares.
+    </string>
+    <string name="qc5">¿Qué puede hacer la familia para ayudar a una persona con el síndrome del cuidador?</string>
+    <string name="ac5">
+        Toda la familia del cuidador debe intentar:\n
+        \n
+        <li>Reconocer el problema lo antes posible y buscar ayuda (dentro de la familia, profesionales, asociaciones...).</li>\n
+        <li>Aceptar el problema y lo que de él se deriva; hablar del problema disminuye la ansiedad).</li>\n
+        <li>Prestar su apoyo y ánimo incondicional al cuidador: animarle a que salga, que se distraiga, que descanse, reemplazarle
+        en sus tareas durante el tiempo necesario para que desconecte y pueda hacer su vida, etc.</li>
+    </string>
+    <string name="qc6">¿Qué perfil debe tener el cuidador principal?</string>
+    <string name="ac6">
+        Hay muchos perfiles posibles, desde hijos/as hasta parejas o familiares políticos, que asumen ese rol de cuidadores. Generalizando,
+        podríamos decir que, con frecuencia, suele ser una mujer de unos sesenta años. Sea el perfil que sea, normalmente esta persona estará
+        expuesta a una sobrecarga física y psíquica que hará que pase de llevarlo bien a sentirse extenuada, por lo que es necesario que quien
+        realiza la función cuidadora no se olvide de cuidarse a sí mismo/a y se sienta apoyada por su familia y entorno cercano.
+    </string>
+    <string name="qc7">¿Qué implica ser el cuidador principal?</string>
+    <string name="ac7">
+        La decisión de ser cuidador principal desencadena una serie de consecuencias:\n
+        \n
+        <li>La relación con el resto de la familia cambia completamente: comienza una tarea dura, fatigosa, difícil y sin descanso.</li>\n
+        <li>Sentimiento de responsabilidad: La persona asume el cuidado principal porque se ve en el deber de hacerlo por el afecto o cariño hacia
+        el enfermo y las relaciones previas existentes. Aun así, ese sentimiento de responsabilidad puede ir más allá del que resulta razonable.</li>\n
+        <li>Síndrome del cuidador principal: El cuidador principal suele sufrir alteraciones múltiples a nivel físico, psíquico y social que afectarán
+        a todos los ámbitos de su vida, tanto familiar como personal.</li>
+    </string>
+    <string name="qc8">¿Cuáles son las ventajas de que exista un cuidador principal en la familia?</string>
+    <string name="ac8">
+        <li>Resuelve la necesidad de una persona que organice y coordine los cuidados y atención que necesita el paciente.\n</li>
+        <li>Permite a los distintos profesionales sanitarios o sociales disponer de un interlocutor estable y disponible con el que cooperar.\n</li>
+        <li>El cuidador funciona además como coordinador y garantía de que se van a cumplir las prescripciones de tratamiento y cuidados, además de como
+        fuente de información sobre la evolución y situación de los pacientes.</li>
+    </string>
+    <string name="qc9">¿Cuáles son los puntos débiles de que exista un cuidador ptincipal en la familia?</string>
+    <string name="ac9">
+        <li>Si no existe acuerdo en la familia sobre quién debe ser el cuidador principal pueden surgir conflictos entre familiares o incluso
+        entre cuidadores.\n</li>
+        <li>También puede ser problemático si los demás cuidadores no se sienten implicados y se desentienden de la colaboración en los cuidados o
+        del apoyo que necesite el cuidador principal.\n</li>
+        <li>Otro problema puede ser que el resto de cuidadores familiares considere que el cuidador principal no realiza adecuadamente los cuidados,
+        generándose conflictos que pueden requerir asesoramiento o mediación profesional.</li>
+    </string>
+    <string name="qc10">¿Cómo debe actuar el cuidador en la segunda fase?</string>
+    <string name="ac10">
+        Debe cuidar su salud, acudiendo al médico y a la familia ante síntomas como insomnio, depresión, agotamiento, etc. e intentar mantener sus relaciones
+        afectivas y familiares, permitiéndose expresar todos aquellos sentimientos que le agobian.
+    </string>
+    <string name="qc11">¿En qué medida es conveniente sentirse apoyado (por un familiar o profesional)?</string>
+    <string name="ac11">
+        Es muy importante que el cuidador reciba apoyo familiar o profesional en las distintas fases de la enfermedad, para así evitar sentimientos de
+        soledad, pena, incertidumbre, impotencia…\n
+        Cuando el cuidador observe cambios en su estado de ánimo o en su comportamiento habitual con el paciente es necesario que acuda a un profesional
+        de la salud para que le guíe en la toma de decisiones. Las Asociaciones de Familiares de Enfermos de Alzhéimer también pueden resultar de gran
+        ayuda y apoyo para el cuidador principal.
+    </string>
+    <string name="qc12">¿Qué actividades de ocio son favorables para el cuidador?</string>
+    <string name="ac12">
+        El ocio debe atender particularmente a cada persona y adaptarse a sus gustos e intereses:\n
+        \n
+        <li>Las actividades deben ser vehículo de tu creatividad y emociones y deben despertar y mantener tu interés.\n</li>
+        <li>Las actividades deben conjugar diversas experiencias: diversidad de materiales, situaciones, lugares y relaciones.\n</li>
+        <li>Las actividades debes realizarlas preferentemente en grupo para favorecer el contacto y las relaciones con los demás, la comunicación, etc.\n</li>
+        <li>Las actividades deben facilitar nuestra participación, fomentando que cada participante mantenga un papel activo, obtenga una mayor conciencia
+        de su cuerpo, de las sensaciones...</li>
+    </string>
+    <string name="qc13">¿Es normal que, como cuidador/a tenga ansiedad?</string>
+    <string name="ac13">
+        Ante determinadas situaciones la ansiedad es una respuesta normal. El problema es que, si se prolonga en el tiempo, puede convertirse en un
+        miedo constante que suele acabar en un estado depresivo.\n
+        La ansiedad continua y no controlada puede además desembocar en alteraciones físicas y dolores reales, que no están ocasionadas por alteraciones
+        de los órganos sino por la sobrecarga emocional. Entre estos síntomas físicos destacan: síntomas cardiovasculares, palpitaciones, desmayos,
+        alteraciones en la tensión arterial, trastornos respiratorios, diarreas, náuseas, vómitos. Ante cualquiera de estos síntomas o si pensamos
+        que estamos empezando a padecer episodios de ansiedad, conviene acudir al médico.
+    </string>
+    <string name="qc14">¿Como puedo afrontar el cuidar a un familiar con quien tenia una mala relación?</string>
+    <string name="ac14">
+        Se debe tratar de pensar en los sentimientos de afecto que nos vincularon con la persona enferma antes del deterioro de las relaciones.
+        Sea como fuere, hay que cuidar a los pacientes como debe tratarse a cualquier ser humano en similares circunstancias.
+        \n
+        Si no es posible superar los problemas de relación con el paciente, se puede recurrir a la búsqueda de una solución institucional que evite
+        el desamparo de esa persona (agencias o servicios públicos o privados).
+    </string>
+    <string name="qc15">¿Como puedo superar el sentimiento de culpa, tras elingreso de mi familiar a una residencia?</string>
+    <string name="ac15">
+        El ingreso en una residencia supone, muchas veces, la prestación de un mejor cuidado y mayor seguridad y comodidad para el paciente.
+        Aunque nuestro familiar esté en una residencia, podremos mantener con él contacto y prestarle atenciones cuando queramos, así como supervisar
+        los cuidados prestados por el centro residencial.
+        \n
+        Si se actúa persiguiendo el beneficio del paciente, la culpabilidad tiende a superarse tan pronto como se comprueban los beneficios para el
+        paciente. Si no fuese así, pueden ser razones subjetivas de otro tipo las que generan un sufrimiento psíquico, que puede requerir una ayuda
+        profesional.
+    </string>
+    <string name="qc16">¿Puede el paciente rechazar que alguien desconocido entre en su casa para ayudar a cuidarlo?</string>
+    <string name="ac16">
+        Los cambios siempre suelen alterar y contrariar al enfermo de alzhéimer. Para que no exista ese rechazo se debe crear la necesidad en el paciente,
+        para que así vea que esta persona viene a satisfacer dicha necesidad.
+        \n
+        Es muy importante que la persona conozca la enfermedad y tenga experiencia en el trato y cuidado de personas con demencias. También es positivo
+        establecer un vínculo afectivo entre el paciente y cuidador.
+    </string>
+    <string name="qc17">¿Es positivo participar en las reuniones de asociaciones de familiares de enfermos de Alzhéimer?</string>
+    <string name="ac17">
+        La asistencia a estos grupos permite conocer a personas que tienen problemas similares, que se hacen preguntas parecidas y que tienen que
+        resolver los mismos problemas. En ellos, podemos compartir emociones, sentimientos comunes y dudas, por lo que nos ayudará a resolver los
+        problemas diarios del cuidador.
+        \n
+        Además, nos hace sentirnos apoyados en las dificultades diarias y también en los momentos difíciles de la enfermedad, atenuando el aislamiento
+        y la soledad que puede padecer el cuidador.
+        \n
+        Buscar un grupo de apoyo al cuidador sirve de ayuda a nivel psicológico y emocional (el cuidador se siente más apoyado, comparte sus
+        pensamientos, se relaciona con más personas…) y a nivel operativo (se pueden resolver dudas e inquietudes y aprender mucho compartiendo
+        experiencias con personas en la misma situación).
+    </string>
+    <string name="qc18">¿Cuáles son los beneficios de acudir a reuniones de familiares?</string>
+    <string name="ac18">
+        Los beneficios de acudir a las reuniones de un grupo de familiares, son múltiples y variados, ya que permiten:\n
+        \n
+        <li>Encontrar información (sobre la enfermedad, recursos sociales y sanitarios disponibles, etc) y compartir con normalidad experiencias relacionadas
+        con los cuidados, o dudas y temores sobre el futuro.\n</li>
+        <li>Crear un lugar de encuentro donde poder compartir conocimientos y sentimientos.\n</li>
+        <li>Recibir apoyo, soporte emocional y comprensión de otras personas que están en la misma situación.</li>
+    </string>
+    <string name="qc19">El cuidado de mi familiar me está afectando psicologicamente y no puedo mas ¿Qué puedo hacer?</string>
+    <string name="ac19">
+        El cuidado de un dependiente puede producir alteraciones en nuestro equilibrio psicológico y estado de ánimo -ansiedad o depresión-.\n
+        En esos casos, es necesario acudir a un profesional: un psicólogo, que te oriente en las conductas que puedes modificar y te enseñe prácticas
+        reductoras de estrés.\n
+        También puede ser de ayuda acudir a asociaciones de familiares de afectados de alzhéimer, donde poder compartir estos sentimientos y recibir
+        apoyo de personas en una situación similar. Puedes encontrar un listado de las Asociaciones que existen en España en el apartado "Asociaciones"
+        de esta app.
+    </string>
+    <string name="qc20">Cuáles son los síntomas más frecuentes relacionados con la función cuidadora</string>
+    <string name="ac20">
+        Pueden detectarse síntomas de diversos tipos:\n
+        \n
+        <li>Físicos: dolor de cabeza, problemas digestivos o de alimentación, sensación de cansancio o agotamiento, taquicardias, hipertensión...</li>\n
+        <li>Psíquicos: depresión, ansiedad, problemas de conducta alimentaria, problemas de sueño, irritabilidad, consumo inadecuado de substancias
+        (incluidos psicofármacos), abandono del autocuidado...</li>\n
+        <li>Síntomas que afectan a la vida laboral o social: problemas para conciliar la función cuidadora con otras funciones, no preservar un
+        espacio personal básico, tendencia a la soledad y al aislamiento, pérdida de rendimiento...</li>
+    </string>
+    <string name="qc21">¿Cómo puedo saber si tengo el síndrome del cuidador (burn-out)?</string>
+    <string name="ac21">
+        Cuando no se previenen o resuelven los problemas de ansiedad o desánimo, estos sentimientos pueden volverse crónicos, llegando a la situación
+        de sentirse quemado (síndrome de burn-out).
+        \n
+        El síndrome se reconoce por el agotamiento emocional, el trato despersonalizado a la persona cuidada, los sentimientos de insatisfacción intensos
+        y de falta de logros y reconocimiento, el pesimismo y la tendencia al abandono y el desánimo.
+    </string>
+    <string name="qc22">¿Que cambios indican que tengo el síndrome del cuidador?</string>
+    <string name="ac22">
+        <li>Insomnio: dificultad para conciliar el sueño o todo el contrario (demasiado sueño).</li>
+        <li>Fatiga crónica.</li>
+        <li>Aislamiento: tendencia a abandonarse, a apartarse de las relaciones sociales, incluso de las familiares.</li>
+        <li>Problemas físicos: palpitaciones, tensiones, molestias digestivas...</li>
+        <li>Problemas con el apetito: aumento o disminución.</li>
+        <li>Dificultad para incluir a la familia en decisiones y relaciones: suele acarrear alteraciones de la pareja, discusiones, pérdida de intimidad,
+            problemas de relación sexual…</li>
+        <li>Dificultad para solucionar diversos tipos de nerviosismo, depresión...</li>
+    </string>
+    <string name="qc23">¿Cómo puedo evitar el síndrome del cuidador?</string>
+    <string name="ac23">
+        <li>Descansa lo suficiente.</li>\n
+        <li>Dedícate tiempo.</li>\n
+        <li>Realiza actividades que te gusten.</li>\n
+        <li>Conserva a tus amigos o relaciones para no aislarte. Comenta con ellos tus problemas y diviértete.</li>\n
+        <li>Conserva tu salud y una buena apariencia física.</li>\n
+        <li>Comunícate con las Asociaciones de Familiares de la zona donde vives; en Galicia puedes contactar con FAGAL (Federación de Asociaciones
+        Gallegas de Familiares de Enfermos de Alzheimer).</li>\n
+        <li>Encuentra tiempo libre para descansar, hacer la compra, conservar actividades de ocio o estar sólo.</li>\n
+        <li>Pide la ayuda de otras personas (familiares, amigos, vecinos, ayuda a domicilio, etc.) y no la rechaces si te la ofrecen. Es un paso difícil,
+        pero es decisivo para poder continuar.</li>
+    </string>
+    <string name="qc24">Si padezco síndrome del cuidador ¿Qué puedo hacer para mejorar mi estado?</string>
+    <string name="ac24">
+        <li>Vuelve a incorporar en tu vida intereses, actividades, contactos, amistades…que hayas ido abandonando. Haz una lista de actividades que te
+        gustaría realizar y comienza por las más sencillas. Gradualmente podrás incorporar más para que el disfrute personal sea una parte natural de
+        tu día a día.\n</li>
+        <li>Aunque la vida te parezca cargada de pena, cansancio, frustración y tristeza, no pierdas la capacidad de reír, amar o sentir alegría.\n</li>
+        <li>La risa ayuda a nuestra cordura en momentos de dificultad. No te sientas mal por reírte de los errores que comete una persona confusa.
+        Probablemente ella también se reirá, aunque no sepa lo que te hace gracia.\n</li>
+        <li>Anímate a hacer cosas, a participar, realizarte, relacionarte...</li>
+    </string>
+    <string name="qc25">¿Debo ir preparándome mentalmente para la muerte de mi familiar?</string>
+    <string name="ac25">
+        La muerte es algo inevitable, pero que no debe obsesionarnos. Es positivo que, en vida del enfermo, le expresemos nuestros sentimientos de afecto
+        y le pidamos perdón -si es necesario- por algo dicho o hecho, aún cuando no pueda entendernos. Vivir una relación limpia día a día, aprender a
+        perdonar y a perdonarnos -mientras podemos- nos permitirá luego poder vivir un duelo más sereno, sin mortificarnos por situaciones que ya no
+        podremos resolver.
+    </string>
+    <string name="qc26">¿Cómo puedo superar la muerte del familiar al que cuidaba?</string>
+    <string name="ac26">
+        La tristeza es algo normal y hay que manifestarla: mostrar los sentimientos de pérdida (llorar sin miedo) es necesario para poder ir superando
+        la situación. Tras la pérdida, pueden aparecer sentimientos de culpa, rabia, arrepentimiento por cosas dichas o no dichas…Para superarlos,
+        debemos aprender a perdonarnos a nosotros mismos y no culparnos.
+        \n
+        También es probable que sintamos un dolor y una pena profunda (que puede provocar aislamiento, depresión…), pero a medida que pase el tiempo,
+        nos daremos cuenta de que esa pena es compatible con una vida normal (podemos y debemos seguir viviendo) y, poco a poco, el tiempo hará que
+        volvamos a tener nuevas ilusiones y mirar con esperanza el futuro.
+    </string>
+
+    <!-- String Warnings Carer -->
+    <string name="qa1">Te puedes equivocar.</string>
+    <string name="aa1">
+        Concédete el derecho a cometer errores y a experimentar sentimientos negativos (todos somos humanos, así que no te mortifiques).
+    </string>
+    <string name="qa2">No te pares.</string>
+    <string name="aa2">
+        Busca toda la información que puedas a través de profesionales, asociaciones de familiares y conocidos. Así, podras resolver todas tus dudas
+        y solucionar los problemas que se presentan.
+    </string>
+    <string name="qa3">No pierdas el sentido del humor.</string>
+    <string name="aa3">
+        Muchas veces recurrir al humor y reírse de las situaciones, te ayudará a desdramatizarlas y llevarlas mejor.
+    </string>
+    <string name="qa4">Déjate ayudar.</string>
+    <string name="aa4">
+        No rechaces la ayuda que te ofrecen familiares, vecinos o amigos. Es mejor aceptar ayuda y delegar algunas responsabilidades para mitigar
+        la sobrecarga que supone ser el cuidador principal.
+    </string>
+    <string name="qa5">Anticipate.</string>
+    <string name="aa5">
+        Sé precavido, informate y anticípate en la medida de lo posible a problemas previsibles. Conoce cómo va a ir evolucionando la enfermedad,
+        hará que sepas reaccionar ante los primeros síntomas de cambio.
+    </string>
+    <string name="qa6">Cuídate tú.</string>
+    <string name="aa6">
+        Si no cuidas tu propia salud y bienestar, no podrás cuidar adecuadamente a tu familiar enfermo. Intenta descansar y desconectar todo lo que puedas.
+    </string>
+    <string name="qa7">No pierdas la paciencia.</string>
+    <string name="aa7">
+        Cuando esperas una respuesta no seas impaciente ni te sientas frustrada porque no sea lo que esperas. Cuando las cosas no salen como tenías previsto,
+        no te desesperes e intenta tomártelo con humor, sin perderlos nervios.
+    </string>
+    <string name="qa8">Desestrésate.</string>
+    <string name="aa8">
+        Para salir de situaciones agobiantes, distráete con algo sencillo y que te guste. Recupera hobbies (pintar, manualidades, lectura, deportes, tocar
+        algun instrumento, etc..), realiza ejercicios de respiración y relajación, escucha musica, etc...
+    </string>
+    <string name="qa9">No te olvides de tus propias necesidades.</string>
+    <string name="aa9">
+        Intenta hacer un especio para ti cada día, para hacer algo que te guste o te haga sentir realizad@. Intenta reservar un rato para tu propia vida
+        social, para no perder la relación con tus amig@s o entorno; sal a tomar un café, dar un paseo, hacer compras con aquellas personas con quién
+        solias hacerlo antes.
+    </string>
+    <string name="qa10">Piensa diferente.</string>
+    <string name="aa10">
+        Pensar en el estrés hace que aveces nos estresemos más. Trata de pensar en otras cosas, ver la situación de otra manera (con humor, si es posible)
+        y no pierdas la positividad.
+    </string>
+
 </resources>

@@ -67,16 +67,16 @@ public class HeartFragment extends Fragment {
 
             switch (position) {
                 case 0:
-                    GeneralInformationFragment generalInformationFragment = new GeneralInformationFragment();
-                    return generalInformationFragment;
+                    InformationCarerFragment informationCarerFragment = new InformationCarerFragment();
+                    return informationCarerFragment;
 
                 case 1:
-                    PhasesEAFragment phasesEAFragment = new PhasesEAFragment();
-                    return phasesEAFragment;
+                    ExerciseCarerFragment exerciseCarerFragment = new ExerciseCarerFragment();
+                    return exerciseCarerFragment;
 
                 case 2:
-                    CallEmergencyFragment callEmergencyFragment = new CallEmergencyFragment();
-                    return callEmergencyFragment;
+                    WarningCarerFragment warningCarerFragment = new WarningCarerFragment();
+                    return warningCarerFragment;
 
             }
             return null;
