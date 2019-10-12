@@ -33,7 +33,7 @@ public class TestFragment extends Fragment implements View.OnClickListener {
     private EditText point = null;
     private String points = null;
     private TableLayout table;
-    private long timeCountInMilliSeconds = 1 * 30000;
+    private long timeCountInMilliSeconds = 1 * 40000;
     private ProgressBar progressBarCircle;
     private TextView textViewTime,t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,qual,ofpoint,Res
             ,toneD,toneE,toneF,ttwoD,ttwoE,ttwoF,tthreD,tthreE,tthreF,tfourD
@@ -441,7 +441,7 @@ public class TestFragment extends Fragment implements View.OnClickListener {
 
     private void setTimerValues() {
         // assigning values after converting to milliseconds
-        timeCountInMilliSeconds = 30 * 1000;
+        timeCountInMilliSeconds = 40 * 1000;
     }
 
     //Método del Temporizador

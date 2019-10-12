@@ -475,7 +475,7 @@
         ¿Que deporte practica?\n
         ¿Que vehículo conduce?\n
     </string>
-    <string name="time">00:00:30</string>
+    <string name="time">00:00:40</string>
     <string name="start">Iniciar</string>
     <string name="end">Terminar</string>
     <string name="qualification">Puntaje: </string>

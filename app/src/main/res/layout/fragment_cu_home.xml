@@ -16,7 +16,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        android:background="@color/colorBackround">
+        android:background="@drawable/round_corner">
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/heart"

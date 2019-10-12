@@ -114,7 +114,7 @@
     </style>
 
     <!-- Strandard style for text in tabs -->
-    <style name="StyleTextTabs">
+    <style name="StyleTextTabs" parent="Widget.MaterialComponents.TabLayout">
         <item name="android:textSize">15sp</item>
         <item name="android:textStyle">bold</item>
     </style>
