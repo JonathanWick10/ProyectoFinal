@@ -775,5 +775,9 @@
         Pensar en el estrés hace que aveces nos estresemos más. Trata de pensar en otras cosas, ver la situación de otra manera (con humor, si es posible)
         y no pierdas la positividad.
     </string>
+    
+    <string name="sign_in_with_google">Continuar con google</string>
+    <string name="sign_in_with_facebook">Continuar con facebook</string>
+    <string name="label_register_account">¿No tienes una cuenta?</string>
 
 </resources>

@@ -77,8 +77,12 @@ public class Login extends AppCompatActivity {
     MaterialButton btnLoginEmailPass;
     @BindView(R.id.link_registrar)
     TextView register;
+    /*
     @BindView(R.id.btn_login_google)
     SignInButton btnLoginGoogle;
+    */
+    @BindView(R.id.btn_login_google)
+    MaterialButton btnLoginGoogle;
     @BindView(R.id.btn_login_facebook)
     Button btnLoginFacebook;
 
@@ -97,6 +101,8 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         ButterKnife.bind(this);
        // reference();
         //region ScreenOrientationPortrait

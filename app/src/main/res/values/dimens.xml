@@ -2,7 +2,6 @@
     <dimen name="toolbarTextViewSize">20sp</dimen>
     <dimen name="fabMargin">16dp</dimen>
     <!-- dimenciones de 10 -->
-    <dimen name="two">2dp</dimen>
     <dimen name="ten">10dp</dimen>
     <dimen name="sixteen">16dp</dimen>
     <dimen name="twenty">20dp</dimen>
@@ -78,6 +77,15 @@
     <dimen name="seventeenText">17sp</dimen>
     <dimen name="oneHundredNinetyFour">194dp</dimen>
     <dimen name="oneHundredAndEighty">180dp</dimen>
+
+    <!-- Dimens for splash -->
+    <dimen name="widthSplash">210dp</dimen>
+    <dimen name="heightSplash">250dp</dimen>
+
+    <!-- Other dimens -->
+    <dimen name="oneHundredFifty">150dp</dimen>
+    <dimen name="two">2dp</dimen>
+    <dimen name="three">3dp</dimen>
     
 </resources>
 

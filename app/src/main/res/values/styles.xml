@@ -35,11 +35,62 @@
         <item name="iconPadding">15dp</item>
     </style>
 
-    <!-- Standard style for text box layout (Login) -->
-    <style name="StyleTextInputLayotTextBoxLogin" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
-        <item name="endIconTint">@color/colorPrimary</item>
+    <!-- Standard style for login buttons -->
+    <style name="StyleLoginButtons" parent="Widget.MaterialComponents.Button">
+        <!--<item name="colorButtonNormal">@color/colorPrimaryDark</item>
+        <item name="colorControlHighlight">@color/colorPrimary</item>-->
+        <item name="rippleColor">@color/colorAccent</item>
+        <item name="android:textStyle">bold</item>
+        <item name="iconPadding">15dp</item>
+        <item name="cornerRadius">@dimen/twenty</item>
     </style>
 
+
+    <!--
+    //Standard style for google login
+    <style name="StyleButtonGoogleLog" parent="Widget.MaterialComponents.Button">
+        //<item name="colorButtonNormal">@color/colorPrimaryDark</item>
+        //<item name="colorControlHighlight">@color/colorPrimary</item>
+        // <item name="backgroundTint">@color/white</item>
+        <item name="rippleColor">@color/colorAccent</item>
+        <item name="android:textStyle">bold</item>
+        <item name="iconPadding">15dp</item>
+    </style>
+    -->
+
+    <!-- Standard style for facebook login
+    <style name="StyleButtonFacebookLog" parent="Widget.MaterialComponents.Button">
+        //<item name="colorButtonNormal">@color/colorPrimaryDark</item>
+        //<item name="colorControlHighlight">@color/colorPrimary</item>
+        //<item name="backgroundTint">#3b5998</item>
+        <item name="rippleColor">@color/colorAccent</item>
+        <item name="android:textStyle">bold</item>
+        <item name="iconPadding">15dp</item>
+    </style>
+    -->
+
+    <!-- Standard style for text input layout (Login) -->
+    <style name="StyleTextInputLayotTextBoxLogin" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxStrokeColor">@color/text_input_box_stroke</item>
+        <item name="endIconTint">@color/colorBackround</item>
+        <item name="hintTextColor">@color/colorBackround</item>
+        <item name="android:textColorHint">@color/colorBackround</item>
+        <item name="boxStrokeWidth">0.5dp</item>
+        <item name="errorIconTint">@color/white</item>
+        <item name="errorTextColor">@color/white</item>
+        <item name="android:layout_margin">@dimen/three</item>
+    </style>
+
+    <!--
+    <style name="StyleTextInputLayotTextBoxLogin" parent="Widget.Design.TextInputLayout">
+        <item name="boxStrokeColor">@color/text_input_box_stroke</item>
+        <item name="endIconTint">@color/colorBackround</item>
+        <item name="hintTextColor">@color/colorBackround</item>
+        <item name="boxBackgroundMode">outline</item>
+        <item name="boxBackgroundColor">#0c000000</item>
+        <item name="helperTextTextColor">@color/colorBackround</item>
+    </style>
+    -->
 
     <!-- Standard style for text box layout (Forms) -->
     <style name="StyleTextInputLayotTextBoxForms" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
@@ -61,6 +112,15 @@
     <style name="StyleTextInputEditText">
         <item name="android:textStyle">bold</item>
         <item name="android:maxLines">1</item>
+    </style>
+
+    <!-- Standard style for text boxes in login -->
+    <style name="StyleTextInputEditTextLogin">
+        <item name="android:textStyle">bold</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textColor">@color/colorBackround</item>
+        <item name="android:textColorHint">@color/colorBackround</item>
+        <item name="android:colorAccent">@color/colorBackround</item>
     </style>
 
     <!-- Standard style for radio groups -->
@@ -118,7 +178,7 @@
         <item name="android:textSize">15sp</item>
         <item name="android:textStyle">bold</item>
     </style>
-    
+
     <!-- Standard style for card view -->
     <style name="StyleCardView" parent="Widget.MaterialComponents.CardView">
         <item name="android:layout_margin">@dimen/ten</item>
@@ -158,6 +218,20 @@
         <item name="android:textSize">@dimen/twentyText</item>
         <item name="android:textStyle">bold</item>
         <item name="android:padding">@dimen/ten</item>
+    </style>
+
+    <!-- Standard style for text label  -->
+    <style name="StyleTextLabel">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Standard style for text button -->
+    <style name="StyleTextButton" parent="Widget.MaterialComponents.Button.TextButton.Dialog.Flush">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="cornerRadius">@dimen/twenty</item>
+        <item name="rippleColor">@color/colorAccent</item>
     </style>
 
 </resources>
