@@ -19,7 +19,7 @@ public class HealthcareProfessional {
     private String password;
     private String profession;
     private String employment_place;
-    private String rol;
+    private String role;
     //endregion
 
     //region Builders
@@ -30,7 +30,7 @@ public class HealthcareProfessional {
                                   String identification, String gender, String birthday,
                                   String nativeCity, Long phoneNumber, String address,
                                   String actualCity, String email, String userName, String password,
-                                  String profession, String employment_place, String rol) {
+                                  String profession, String employment_place, String role) {
         this.hpUID = hpUID;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -47,7 +47,7 @@ public class HealthcareProfessional {
         this.password = password;
         this.profession = profession;
         this.employment_place = employment_place;
-        this.rol = rol;
+        this.role = role;
     }
     //endregion
 
@@ -180,12 +180,12 @@ public class HealthcareProfessional {
         this.employment_place = employment_place;
     }
 
-    public String getRol() {
-        return rol;
+    public String getRole() {
+        return role;
     }
 
-    public void setRol(String rol) {
-        this.rol = rol;
+    public void setRole(String role) {
+        this.role = role;
     }
     //endregion
 

@@ -18,7 +18,7 @@ public class Admin {
     private String actualCity;
     private String address;
     private String employmentPlace;
-    private String rol;
+    private String role;
     //endregion
 
     //region Builders
@@ -29,7 +29,7 @@ public class Admin {
                  String  identification, String profession, String gender, String birthday,
                  long phoneNumber, String userName, String password, String email,
                  String nativeCity, String actualCity, String address, String employmentPlace,
-                 String rol) {
+                 String role) {
         this.adminUId = adminUId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -46,7 +46,7 @@ public class Admin {
         this.actualCity = actualCity;
         this.address = address;
         this.employmentPlace = employmentPlace;
-        this.rol = rol;
+        this.role = role;
     }
     //endregion
 
@@ -179,36 +179,34 @@ public class Admin {
         this.employmentPlace = employmentPlace;
     }
 
-    public String getRol() {
-        return rol;
+    public String getRole() {
+        return role;
     }
 
-    public void setRol(String rol) {
-        this.rol = rol;
+    public void setRole(String role) {
+        this.role = role;
     }
     //endregion
 
-    //region toString
+
     @Override
     public String toString() {
-        return "Carer{" +
-                "patientId='" + adminUId + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", identificationType='" + identificationType + '\'' +
-                ", identification=" + identification +
-                ", profession='" + profession + '\'' +
-                ", gender='" + gender + '\'' +
-                ", birthday='" + birthday + '\'' +
-                ", phoneNumber=" + phoneNumber +
-                ", userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", nativeCity='" + nativeCity + '\'' +
-                ", actualCity='" + actualCity + '\'' +
-                ", address='" + address + '\'' +
-                ", employmentPlace='" + employmentPlace + '\'' +
-                '}';
+        return  "adminUId: " + adminUId + '\n' +
+                ", firstName: " + firstName + '\n' +
+                ", lastName: " + lastName + '\n' +
+                ", identificationType: " + identificationType + '\n' +
+                ", identification: " + identification + '\n' +
+                ", profession: " + profession + '\n' +
+                ", gender='" + gender + '\n' +
+                ", birthday: " + birthday + '\n' +
+                ", phoneNumber: " + phoneNumber +
+                ", userName: " + userName + '\n' +
+                ", password: " + password + '\n' +
+                ", email: " + email + '\n' +
+                ", nativeCity='" + nativeCity + '\n' +
+                ", actualCity: " + actualCity + '\n' +
+                ", address: " + address + '\n' +
+                ", employmentPlace: " + employmentPlace + '\n' +
+                ", role: " + role + '\n';
     }
-    //endregion
 }

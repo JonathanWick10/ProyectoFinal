@@ -20,7 +20,7 @@ public class Carer {
     private String actualCity;
     private String address;
     private String employmentPlace;
-    private String rol;
+    private String role;
     //endregion
 
     //region Builders
@@ -31,7 +31,7 @@ public class Carer {
                  Long identification, String profession, String gender, String birthday,
                  Long phoneNumber, Integer age, String userName, String password, String email,
                  String nativeCity, String actualCity, String address, String employmentPlace,
-                 String rol) {
+                 String role) {
         this.carerUId = carerUId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -49,7 +49,7 @@ public class Carer {
         this.actualCity = actualCity;
         this.address = address;
         this.employmentPlace = employmentPlace;
-        this.rol = rol;
+        this.role = role;
     }
     //endregion
 
@@ -190,12 +190,12 @@ public class Carer {
         this.employmentPlace = employmentPlace;
     }
 
-    public String getRol() {
-        return rol;
+    public String getRole() {
+        return role;
     }
 
-    public void setRol(String rol) {
-        this.rol = rol;
+    public void setRole(String role) {
+        this.role = role;
     }
     //endregion
 

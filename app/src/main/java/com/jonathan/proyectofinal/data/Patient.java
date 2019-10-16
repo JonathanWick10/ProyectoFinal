@@ -25,7 +25,7 @@ public class Patient {
     private String diagnostic;
     private String observations;
     private String emergencyNumber;
-    private String rol;
+    private String role;
     Map<String,Object> assigns;
     //endregion
 
@@ -37,7 +37,7 @@ public class Patient {
                    String gender, String birthday, long phoneNumber, String department, String userName,
                    String password, String confirmPassword, String email, String nativeCity, String actualCity,
                    long familyPhoneNumber, String address, String dateDiagnostic, String diagnostic,
-                   String observations, String emergencyNumber, String rol, Map<String,Object> assigns) {
+                   String observations, String emergencyNumber, String role, Map<String,Object> assigns) {
         this.patientUID = patientUID;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -59,7 +59,7 @@ public class Patient {
         this.diagnostic = diagnostic;
         this.observations = observations;
         this.emergencyNumber = emergencyNumber;
-        this.rol = rol;
+        this.role = role;
         this.assigns = assigns;
     }
     //endregion
@@ -225,9 +225,9 @@ public class Patient {
 
     public void setEmergencyNumber(String emergencyNumber) { this.emergencyNumber = emergencyNumber; }
 
-    public String getRol() { return rol; }
+    public String getRole() { return role; }
 
-    public void setRol(String rol) { this.rol = rol;}
+    public void setRole(String role) { this.role = role;}
 
     public Map<String, Object> getAssigns() {
         return assigns;
