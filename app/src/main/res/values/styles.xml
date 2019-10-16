@@ -179,6 +179,17 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <!-- Strandard style for tabs layout with primary color -->
+    <style name="StyleTabLayoutPrimary" parent="Widget.MaterialComponents.TabLayout.Colored">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="tabIndicatorColor">@color/colorAccent</item>
+        <item name="tabMode">fixed</item>
+        <item name="tabTextColor">@color/colorBackround</item>
+        <item name="tabIconTint">@color/white</item>
+        <item name="tabTextAppearance">@style/StyleTextTabs</item>
+        <item name="tabRippleColor">@color/colorAccent</item>
+    </style>
+
     <!-- Standard style for card view -->
     <style name="StyleCardView" parent="Widget.MaterialComponents.CardView">
         <item name="android:layout_margin">@dimen/ten</item>

@@ -170,7 +170,7 @@
                 <androidx.appcompat.widget.AppCompatRatingBar
                     android:id="@+id/ratingBar"
                     android:layout_width="@dimen/oneHundredAndEighty"
-                    android:layout_height="@dimen/forty"
+                    android:layout_height="@dimen/fortyFive"
                     android:layout_weight="1"
                     android:layout_gravity="center_vertical"
                     android:numStars="4"

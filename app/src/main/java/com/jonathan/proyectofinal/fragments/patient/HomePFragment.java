@@ -44,6 +44,11 @@ public class HomePFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        buildStructure(view);
+    }
+
+    // Build the fragment structure
+    private void buildStructure(View view) {
         ViewPager viewPager = view.findViewById(R.id.view_pager_home);
         PatientFragmentPageAdapter adapter = new PatientFragmentPageAdapter(getChildFragmentManager());
         viewPager.setAdapter(adapter);

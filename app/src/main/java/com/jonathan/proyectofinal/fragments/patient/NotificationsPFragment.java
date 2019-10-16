@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.tabs.TabLayout;
 import com.jonathan.proyectofinal.R;
 
@@ -41,6 +42,11 @@ public class NotificationsPFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        buildStructure(view);
+    }
+
+    // Build the fragment structure
+    private void buildStructure(View view) {
         ViewPager viewPager = view.findViewById(R.id.view_pager_notifications);
         NotificationsPFragment.PatientFragmentPageAdapter adapter = new PatientFragmentPageAdapter(getChildFragmentManager());
         viewPager.setAdapter(adapter);
@@ -49,6 +55,12 @@ public class NotificationsPFragment extends Fragment {
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.getTabAt(0).setIcon(R.drawable.ic_local_pharmacy_black);
         tabLayout.getTabAt(1).setIcon(R.drawable.ic_group_work_black);
+
+        // Add a badge to a specific tab
+        BadgeDrawable badgeDrawable = tabLayout.getTabAt(1).getOrCreateBadge();
+        badgeDrawable.setVisible(true);
+        badgeDrawable.setNumber(1);
+        //tabLayout.getTabAt(1).removeBadge();
     }
 
     private class PatientFragmentPageAdapter extends FragmentPagerAdapter {

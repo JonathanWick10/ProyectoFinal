@@ -11,13 +11,8 @@
         android:id="@+id/tabs_home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?colorPrimary"
-        app:tabIndicatorColor="?colorAccent"
-        app:tabMode="fixed"
         app:tabSelectedTextColor="@android:color/white"
-        app:tabTextColor="#ddd"
-        app:tabIconTint="@color/white"
-        app:tabTextAppearance="@style/StyleTextTabs">
+        style="@style/StyleTabLayoutPrimary">
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/cognitive_exercises"
