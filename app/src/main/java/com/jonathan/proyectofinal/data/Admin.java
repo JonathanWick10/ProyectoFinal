@@ -189,6 +189,7 @@ public class Admin {
     //endregion
 
 
+    /*
     @Override
     public String toString() {
         return  "adminUId: " + adminUId + '\n' +
@@ -209,4 +210,5 @@ public class Admin {
                 ", employmentPlace: " + employmentPlace + '\n' +
                 ", role: " + role + '\n';
     }
+    */
 }

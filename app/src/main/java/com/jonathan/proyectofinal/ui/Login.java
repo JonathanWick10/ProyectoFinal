@@ -50,7 +50,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.jonathan.proyectofinal.R;
+import com.jonathan.proyectofinal.data.Admin;
 import com.jonathan.proyectofinal.data.Carer;
+import com.jonathan.proyectofinal.database.AdminManager;
 import com.jonathan.proyectofinal.database.CarerManager;
 import com.jonathan.proyectofinal.database.LoginManager;
 import com.jonathan.proyectofinal.fragments.admin.AdminHome;
@@ -156,7 +158,7 @@ public class Login extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
-                    goMainProfil();
+                    //goMainProfil();
                 }
             }
         };
@@ -164,8 +166,18 @@ public class Login extends AppCompatActivity {
     }
 
     private void goMainProfil() {
-        startActivity(new Intent(Login.this, MainPatient.class));
+        //startActivity(new Intent(Login.this, MainPatient.class));
         Toast.makeText(this, "LOGUEEEEEADOOOO", Toast.LENGTH_SHORT).show();
+
+
+
+
+        /*
+        if (luisa.isEmpty() || luisa == null){
+            Toast.makeText(Login.this, "no funciono", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(Login.this, "vos sabes", Toast.LENGTH_SHORT).show();
+        }*/
     }
 
     private LoginManager loginInstance() {
@@ -195,6 +207,7 @@ public class Login extends AppCompatActivity {
 
         if (validateFields() != null) {
             loginInstance().emailPasswordLogin(this, validateFields()[0], validateFields()[1]);
+            //goMainProfil();
         }
 
     }
