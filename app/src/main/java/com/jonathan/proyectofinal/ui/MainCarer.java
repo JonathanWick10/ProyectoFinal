@@ -22,10 +22,12 @@ import com.jonathan.proyectofinal.fragments.carer.GeneralInformationFragment;
 import com.jonathan.proyectofinal.fragments.carer.HeartFragment;
 import com.jonathan.proyectofinal.fragments.carer.InformationCarerFragment;
 import com.jonathan.proyectofinal.fragments.carer.ManageFragment;
+import com.jonathan.proyectofinal.fragments.carer.MemorizameFragment;
 import com.jonathan.proyectofinal.fragments.carer.NearbyHospitalFragment;
 import com.jonathan.proyectofinal.fragments.carer.PhasesEAFragment;
 import com.jonathan.proyectofinal.fragments.carer.TestFragment;
 import com.jonathan.proyectofinal.fragments.carer.WarningCarerFragment;
+import com.jonathan.proyectofinal.fragments.patient.MemorizamePFragment;
 import com.jonathan.proyectofinal.interfaces.IMainCarer;
 
 public class MainCarer extends AppCompatActivity implements IMainCarer {
@@ -54,6 +56,10 @@ public class MainCarer extends AppCompatActivity implements IMainCarer {
     public void inflateFragment(String fragmentTag) {
         transaction = getSupportFragmentManager().beginTransaction();
         // Listen to the Button Call for other Fragments in different Views
+        if(fragmentTag.equals(getString(R.string.menu_memorizame))){
+            change = new MemorizameFragment();
+            transaction.replace(R.id.containerHome,change).commit();
+        }
         if(fragmentTag.equals(getString(R.string.my_care))){
             change = new HeartFragment();
             transaction.replace(R.id.containerHome,change).commit();
