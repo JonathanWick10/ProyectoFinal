@@ -37,6 +37,25 @@
                 android:text="@string/my_care"/>
         </com.google.android.material.card.MaterialCardView>
 
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/memorizame"
+            style="@style/StyleCardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/oneHundredNinetyFour"
+                android:src="@drawable/img_selfcarer"
+                android:scaleType="centerCrop"/>
+
+            <TextView
+                style="@style/StyleSubsCardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/menu_memorizame"/>
+        </com.google.android.material.card.MaterialCardView>
+
 
         <GridLayout
             android:layout_width="match_parent"
