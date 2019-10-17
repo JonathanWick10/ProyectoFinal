@@ -41,6 +41,9 @@ import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.fragments.admin.AdminHome;
 import com.jonathan.proyectofinal.tools.Constants;
 import com.jonathan.proyectofinal.ui.Login;
+import com.jonathan.proyectofinal.ui.MainCarer;
+import com.jonathan.proyectofinal.ui.MainPatient;
+import com.jonathan.proyectofinal.ui.PatientsList;
 
 import java.util.Arrays;
 import java.util.concurrent.Executor;
@@ -67,25 +70,30 @@ public class LoginManager {
     String role;
     //endregion
 
-    public void emailPasswordLogin(final Context context, String email, String password) {
+
+    public void loginEmailPassword(final Context context, final String email, String password){
+        firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                //user = firebaseAuth.getCurrentUser();
+                //emailPasswordLogin(context);
+            }
+        });
+    }
+
+    public void redirectByRole(final Context context, FirebaseUser useruID) {
         // INICIO
-        String uID = user.getUid();
-        DocumentReference docRef = db.collection(Constants.Adminds).document(uID);
-        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+        String uID = useruID.getUid();
+        DocumentReference docRefAd = db.collection(Constants.Adminds).document(uID);
+        docRefAd.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if (documentSnapshot.exists()){
                     admin = documentSnapshot.toObject(Admin.class);
                     role = admin.getRole();
-                    //Log.d("Hola", "Rol: "+role);
-                    if (role.isEmpty()){
-                        Toast.makeText(context, "Nada", Toast.LENGTH_SHORT).show();
-                    }else {
-                        Toast.makeText(context, "Rol: "+role, Toast.LENGTH_SHORT).show();
-                        //redirect(role);
+                    if (!role.isEmpty()){
+                        context.startActivity(new Intent(context, AdminHome.class));
                     }
-                } else {
-                    Toast.makeText(context, "No exist", Toast.LENGTH_SHORT).show();
                 }
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -95,20 +103,66 @@ public class LoginManager {
                 Log.d("ERROR:", e.toString());
             }
         });
-        // FIN
 
-        /*
-        role = adminManager.admintByUID(uID);
+        DocumentReference docRefHp = db.collection(Constants.HealthcareProfesional).document(uID);
+        docRefHp.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if (documentSnapshot.exists()){
+                    hp = documentSnapshot.toObject(HealthcareProfessional.class);
+                    role = hp.getRole();
+                    if (!role.isEmpty()){
+                        context.startActivity(new Intent(context, PatientsList.class));
+                    }
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
+                Log.d("ERROR:", e.toString());
+            }
+        });
 
-        funcionaporfavor g = new funcionaporfavor();
-        g.execute();
+        DocumentReference docRefCr = db.collection(Constants.Carers).document(uID);
+        docRefCr.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if (documentSnapshot.exists()){
+                    carer = documentSnapshot.toObject(Carer.class);
+                    role = carer.getRole();
+                    if (!role.isEmpty()){
+                        context.startActivity(new Intent(context, MainCarer.class));
+                    }
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
+                Log.d("ERROR:", e.toString());
+            }
+        });
 
-        if (role.isEmpty()){
-            Toast.makeText(context, "Nada", Toast.LENGTH_SHORT).show();
-        }else {
-            Toast.makeText(context, "Rol: "+role, Toast.LENGTH_SHORT).show();
-        }
-        */
+        DocumentReference docRefPt = db.collection(Constants.Patients).document(uID);
+        docRefPt.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if (documentSnapshot.exists()){
+                    patient = documentSnapshot.toObject(Patient.class);
+                    role = patient.getRole();
+                    if (!role.isEmpty()){
+                        context.startActivity(new Intent(context, MainPatient.class));
+                    }
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
+                Log.d("ERROR:", e.toString());
+            }
+        });
     }
 
     public void createUserWithEmailAndPassword(final Context context, String email, String password) {
