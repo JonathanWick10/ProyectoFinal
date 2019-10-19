@@ -58,15 +58,6 @@ public class TherapyPSFragment extends Fragment {
             tabs.getTabAt(0);
             tabs.getTabAt(1);
             tabs.getTabAt(2);
-
-
-
-            adapter = new Adapter(getActivity().getSupportFragmentManager());
-            tabs.setupWithViewPager(viewPager);
-            viewPager.setAdapter(adapter);
-            tabs.getTabAt(0);
-            tabs.getTabAt(1);
-            tabs.getTabAt(2);
         }
 
     }
