@@ -16,15 +16,16 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 import com.jonathan.proyectofinal.R;
+import com.jonathan.proyectofinal.fragments.carer.MemorizameFragment;
 import com.jonathan.proyectofinal.interfaces.IMainCarer;
 
 public class TherapyPSFragment extends Fragment {
 
     TabLayout tabs;
-    TabItem tabPatientInfo, nearbyhospital;
+    TabItem tabPatientInfo, nearbyhospital,tabMemorizame;
     ViewPager viewPager;
     Adapter adapter;
-    String text1, text2;
+    String text1, text2, text3;
 
     private IMainCarer iMainHealthProfessional;
 
@@ -40,6 +41,7 @@ public class TherapyPSFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_ps_therapy, container, false);
         tabPatientInfo = view.findViewById(R.id.ps_tab_therapy_cognitive);
         nearbyhospital = view.findViewById(R.id.ps_tab_therapy_motor);
+        tabMemorizame=view.findViewById(R.id.ps_tab_therapy_memorizame);
         tabs = view.findViewById(R.id.ps_tabs_therapy);
         viewPager = view.findViewById(R.id.containerPageTherapyPS);
         TherapyPSFragment fragment = new TherapyPSFragment();
@@ -55,6 +57,7 @@ public class TherapyPSFragment extends Fragment {
             viewPager.setAdapter(adapter);
             tabs.getTabAt(0);
             tabs.getTabAt(1);
+            tabs.getTabAt(2);
 
 
 
@@ -63,6 +66,7 @@ public class TherapyPSFragment extends Fragment {
             viewPager.setAdapter(adapter);
             tabs.getTabAt(0);
             tabs.getTabAt(1);
+            tabs.getTabAt(2);
         }
 
     }
@@ -84,6 +88,10 @@ public class TherapyPSFragment extends Fragment {
                     MotorTherapyPSFragment motorTherapyPSFragment = new MotorTherapyPSFragment();
                     return motorTherapyPSFragment;
 
+                case 2:
+                    MemorizameFragment memorizameFragment = new MemorizameFragment();
+                    return memorizameFragment;
+
             }
             return null;
         }
@@ -100,13 +108,19 @@ public class TherapyPSFragment extends Fragment {
                     text2 = getString(R.string.motor);
                     iMainHealthProfessional.inflateFragment(getString(R.string.motor));
                     return text2;
+
+                case 2:
+                    text3=getString(R.string.menu_memorizame);
+                    iMainHealthProfessional.inflateFragment(getString(R.string.menu_memorizame));
+                    return text3;
+
             }
             return null;
         }
 
         @Override
         public int getCount() {
-            return 2;
+            return 3;
         }
     }
 

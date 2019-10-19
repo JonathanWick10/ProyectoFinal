@@ -17,6 +17,26 @@
         android:gravity="center"
         android:orientation="vertical"
         android:background="@drawable/round_corner">
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/heart"
+            style="@style/StyleCardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/oneHundredNinetyFour"
+                android:src="@drawable/img_selfcarer"
+                android:scaleType="centerCrop"/>
+
+            <TextView
+                style="@style/StyleSubsCardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/my_care"/>
+        </com.google.android.material.card.MaterialCardView>
+
+
 
 
 
@@ -29,47 +49,7 @@
             android:columnOrderPreserved="false"
             android:rowCount="2">
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/heart"
-                style="@style/StyleCardView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_rowWeight="1"
-                android:layout_columnWeight="1">
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/oneHundredNinetyFour"
-                    android:src="@drawable/img_selfcarer"
-                    android:scaleType="centerCrop"/>
-
-                <TextView
-                    style="@style/StyleSubsCardView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/my_care"/>
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/memorizame"
-                style="@style/StyleCardView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_rowWeight="1"
-                android:layout_columnWeight="1">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/oneHundredNinetyFour"
-                    android:src="@drawable/img_selfcarer"
-                    android:scaleType="centerCrop"/>
-
-                <TextView
-                    style="@style/StyleSubsCardView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/menu_memorizame"/>
-            </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/manage"

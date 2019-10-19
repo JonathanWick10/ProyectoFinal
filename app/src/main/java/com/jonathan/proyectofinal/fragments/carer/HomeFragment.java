@@ -19,7 +19,7 @@ import com.jonathan.proyectofinal.interfaces.IMainCarer;
 
 public class HomeFragment extends Fragment {
 
-    CardView heart, manage, diary, memorizame;
+    CardView heart, manage, diary;
 
     private IMainCarer mIMainCarer;
 
@@ -45,7 +45,6 @@ public class HomeFragment extends Fragment {
         heart = view.findViewById(R.id.heart);
         manage = view.findViewById(R.id.manage);
         diary = view.findViewById(R.id.diary);
-        memorizame = view.findViewById(R.id.memorizame);
 
         heart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,12 +67,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        memorizame.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mIMainCarer.inflateFragment(getString(R.string.menu_memorizame));
-            }
-        });
+
 
 
         return view;
