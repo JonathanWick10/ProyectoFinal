@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/five"
+    app:cardUseCompatPadding="true"
+    app:cardElevation="@dimen/five">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:padding="@dimen/ten"
+        >
+        <LinearLayout
+            android:layout_width="@dimen/twoHundred"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            >
+
+            <ImageView
+                android:id="@+id/physical_exercise_imagev_gif"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/oneHundred"
+                android:src="@drawable/avatar_patient" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="@dimen/five">
+
+
+
+            <TextView
+                android:id="@+id/physical_exercise_txtv_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/ten"
+                android:text="@string/physical_execise_title"
+                android:textSize="@dimen/twentyText"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/physical_execise_description"
+                    android:paddingLeft="@dimen/ten"
+                    android:textSize="@dimen/fifteenText"
+                    android:id="@+id/physical_exercise_txtv_description"/>
+
+
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="@dimen/twoHundred"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            >
+
+            <ImageView
+                android:id="@+id/admin_imgv_delete"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/oneHundred"
+                android:src="@drawable/ic_play" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

@@ -36,7 +36,6 @@ public class AdminListPSFragment extends Fragment {
 
     public AdminListPSFragment (AdminListPSAdapter.AdminListPSAdapterI adapterI){
         this.adapterI = adapterI;
-
     }
 
     @Override

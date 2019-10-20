@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:padding="@dimen/ten"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/admin_plantilla_imgav"
+            android:layout_width="@dimen/oneHundred"
+            android:layout_height="@dimen/oneHundred"
+            android:layout_gravity="center"
+            android:src="@drawable/avatar_patient" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/name_patient"
+            android:textAlignment="center"
+            android:textSize="@dimen/twentyText"
+            />
+        <LinearLayout
+            android:padding="@dimen/fifteenText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/admin_enter"
+                android:textSize="@dimen/twentyFiveText"
+                android:textAlignment="center"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/fui_button_text_save"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>

@@ -18,6 +18,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.fragments.carer.GeneralInformationFragment;
 import com.jonathan.proyectofinal.fragments.carer.PhasesEAFragment;
+import com.jonathan.proyectofinal.fragments.games.PhysicalExecise;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -69,11 +70,9 @@ public class HomePFragment extends Fragment {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    CognitiveChildFragment cognitiveChildFragment = new CognitiveChildFragment();
-                    return cognitiveChildFragment;
+                    return new CognitiveChildFragment();
                 case 1:
-                    MotorChildFragment motorChildFragment = new MotorChildFragment();
-                    return motorChildFragment;
+                    return  new PhysicalExecise();
             }
             return null;
         }

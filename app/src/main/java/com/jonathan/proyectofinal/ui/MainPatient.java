@@ -7,21 +7,21 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.fragments.games.Memorama;
-import com.jonathan.proyectofinal.fragments.patient.HomeChildFragment;
+import com.jonathan.proyectofinal.fragments.games.PhysicalExecise;
 import com.jonathan.proyectofinal.fragments.patient.HomePFragment;
 import com.jonathan.proyectofinal.fragments.patient.MemorizamePFragment;
 import com.jonathan.proyectofinal.fragments.patient.NotificationsPFragment;
 import com.jonathan.proyectofinal.interfaces.IComunicateFragment;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import java.util.HashMap;
 
 public class MainPatient extends AppCompatActivity implements IComunicateFragment {
 
@@ -68,7 +68,10 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
     @Override
     public void inicarJuego() {
         //Toast.makeText(this, "Iniciar juego desde actividad", Toast.LENGTH_SHORT).show();
-        viewPager.setCurrentItem(3);
+        //(viewPager.setCurrentItem(3);
+        Intent pasar = new Intent(MainPatient.this, Games.class);
+        pasar.putExtra("Game","Memorama");
+        startActivity(pasar);
     }
 
     private static class PatientFragmentPageAdapter extends FragmentPagerAdapter {
@@ -86,19 +89,19 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
                     return MemorizamePFragment.newInstance();
                 case 2:
                     return NotificationsPFragment.newInstance();
-                    // OPCION PROVISIONAL PARA REDIRECCIONAR AL JUEGO
-                case 3:
-                    return Memorama.newInstance();
             }
             return null;
         }
 
+
+
         // CANTIDAD PROVISIONAL PARA REDIRECCIONAR AL JUEGO
         @Override
         public int getCount() {
-            return 4;
+            return 3;
         }
     }
+
 
     /*
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =

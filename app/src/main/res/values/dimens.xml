@@ -62,7 +62,7 @@
     <dimen name="marginLeftEditTextAddPatients">110dp</dimen>
     <dimen name="paddingHorizontalEditTextAddPatients">8dp</dimen>
     <dimen name="heightEditTextAddPatients">40dp</dimen>
-    
+
     <!-- Dimens for elevation -->
     <dimen name="elevationOne">1dp</dimen>
     <dimen name="elevationTwo">2dp</dimen>
@@ -86,6 +86,7 @@
     <dimen name="oneHundredFifty">150dp</dimen>
     <dimen name="two">2dp</dimen>
     <dimen name="three">3dp</dimen>
-    
+    <dimen name="fab_margin">16dp</dimen>
+
 </resources>
 

@@ -10,12 +10,13 @@
 
 
         <ImageView
-            android:padding="10dp"
+            android:padding="@dimen/ten"
             android:id="@+id/memorama_img_plantilla"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_width="@dimen/oneHundredAndEighty"
+            android:layout_height="match_parent"
             android:scaleType="fitXY"
-            android:src="@drawable/avatar_patient"/>
+            android:layout_gravity="center"
+            android:src="@drawable/ic_imagotipo"/>
 
 
 </androidx.cardview.widget.CardView>

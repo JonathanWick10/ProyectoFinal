@@ -3,15 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.games.Memorama">
+    tools:context=".fragments.games.PhysicalExecise">
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/memorama_rv"
-        tools:listitem="@layout/memorama_plantilla">
-
-    </androidx.recyclerview.widget.RecyclerView>
+        android:id="@+id/physicalExercise_rv"
+        tools:listitem="@layout/physical_execise_plantilla"/>
 
 </FrameLayout>

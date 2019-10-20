@@ -7,13 +7,15 @@ public class MemoramaEntity {
     private int imageGrup;
     private int position;
     private boolean clickeable;
+    private boolean found;
 
-    public MemoramaEntity(String image, int imageGrup) {
+    public MemoramaEntity(String image, int imageGrup ) {
         this.image = image;
         this.show = true;
         this.imageGrup = imageGrup;
         this.position = -1;
-        this.clickeable = true;
+        this.clickeable = false;
+        this.found = false;
     }
 
     public int getImageGrup() {
@@ -54,5 +56,13 @@ public class MemoramaEntity {
 
     public void setClickeable(boolean clickeable) {
         this.clickeable = clickeable;
+    }
+
+    public boolean isFound() {
+        return found;
+    }
+
+    public void setFound(boolean found) {
+        this.found = found;
     }
 }

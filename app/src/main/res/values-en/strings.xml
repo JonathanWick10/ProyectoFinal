@@ -771,5 +771,8 @@
     <string name="sign_in_with_google">Sign in with Google</string>
     <string name="sign_in_with_facebook">Sign in with Facebook</string>
     <string name="label_register_account">Don´t have an account?</string>
-
+    <!-- physical execise-->
+    <string name="physical_execise_title">Exercise Name</string>
+    <string name="physical_execise_description">Description</string>
+    <string name="title_activity_games">Games</string>
 </resources>
