@@ -19,6 +19,7 @@ import com.jonathan.proyectofinal.fragments.games.PhysicalExecise;
 import com.jonathan.proyectofinal.fragments.patient.HomePFragment;
 import com.jonathan.proyectofinal.fragments.patient.MemorizamePFragment;
 import com.jonathan.proyectofinal.fragments.patient.NotificationsPFragment;
+import com.jonathan.proyectofinal.fragments.patient.ProfilePFragment;
 import com.jonathan.proyectofinal.interfaces.IComunicateFragment;
 
 import java.util.HashMap;
@@ -41,6 +42,9 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
                     return true;
                 case R.id.notifications_patient:
                     viewPager.setCurrentItem(2);
+                    return true;
+                case R.id.profile_patient:
+                    viewPager.setCurrentItem(3);
                     return true;
             }
             return false;
@@ -89,6 +93,8 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
                     return MemorizamePFragment.newInstance();
                 case 2:
                     return NotificationsPFragment.newInstance();
+                case 3:
+                    return ProfilePFragment.newInstance();
             }
             return null;
         }
@@ -98,7 +104,7 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
         // CANTIDAD PROVISIONAL PARA REDIRECCIONAR AL JUEGO
         @Override
         public int getCount() {
-            return 3;
+            return 4;
         }
     }
 

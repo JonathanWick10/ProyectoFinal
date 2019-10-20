@@ -113,6 +113,8 @@
     <!-- Strings for module patient -->
     <string name="menu_memorizame">Memorizame</string>
     <string name="menu_notifications">Notifications</string>
+    <string name="menu_profile">Profile</string>
+    <string name="btn_logout">Logout</string>
 
     <!-- Information general and Specific -->
 
@@ -337,6 +339,7 @@
         escuchándolo.
     </string>
 
+    <!-- Strings for module patients -->
     <string name="tab_cognitive_exercises">Cognitive Exercises</string>
     <string name="tab_motor_exercises">Motor Exercises</string>
     <string name="tab_family_questions">Family</string>
@@ -350,6 +353,11 @@
     <string name="lbl_statement">Statement:</string>
     <string name="lbl_description">Description:</string>
     <string name="lbl_rate">Rate this activity</string>
+    <string name="lbl_date_of_assignment">Date of assignment:</string>
+    <string name="lbl_frequency">Frequency:</string>
+    <string name="lbl_hours">Hours:</string>
+    <string name="btn_show_info">Show</string>
+    <string name="btn_hide_info">Hide</string>
 
     <!-- String Test Alzheimer -->
     <string name="tq1">

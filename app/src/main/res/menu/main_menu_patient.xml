@@ -16,4 +16,9 @@
         android:icon="@drawable/ic_notifications_black"
         android:title="@string/menu_notifications"></item>
 
+    <item
+        android:id="@+id/profile_patient"
+        android:icon="@drawable/ic_user_black"
+        android:title="@string/menu_profile"></item>
+
 </menu>
