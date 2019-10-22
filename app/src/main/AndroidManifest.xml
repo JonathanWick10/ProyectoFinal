@@ -36,15 +36,17 @@
             android:value="@string/facebook_app_id"
             tools:replace="android:value" />
 
-        <activity android:name=".ui.MainCarer" />
-        <activity android:name=".ui.MainPatient">
+        <activity android:name=".ui.MainCarer" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.PatientsList" />
+        <activity android:name=".ui.MainPatient">
+
+        </activity>
+        <activity android:name=".ui.PatientsList"/>
         <activity android:name=".ui.Login">
 
             <!-- cambiar al login -->

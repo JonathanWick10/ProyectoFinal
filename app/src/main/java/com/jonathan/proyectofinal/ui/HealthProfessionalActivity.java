@@ -20,6 +20,8 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.jonathan.proyectofinal.R;
+import com.jonathan.proyectofinal.fragments.carer.HeartFragment;
+import com.jonathan.proyectofinal.fragments.carer.MemorizameFamilyFragment;
 import com.jonathan.proyectofinal.fragments.carer.MemorizameFragment;
 import com.jonathan.proyectofinal.fragments.hp.CognitiveTherapyPSFragment;
 import com.jonathan.proyectofinal.fragments.hp.GraphPSFragment;
@@ -111,6 +113,10 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
         }
         else if(fragmentTag.equals(getString(R.string.motor))){
             change = new MotorTherapyPSFragment();
+            transaction.replace(R.id.containerPageTherapyPS,change).commit();
+        }
+        else if(fragmentTag.equals(getString(R.string.tab_family_questions))){
+            change = new MemorizameFamilyFragment();
             transaction.replace(R.id.containerPageTherapyPS,change).commit();
         }
     }
