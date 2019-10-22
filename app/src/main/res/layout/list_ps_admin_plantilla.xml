@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/five"
+    app:cardUseCompatPadding="true"
+    app:cardElevation="@dimen/five"
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:padding="@dimen/ten"
+        >
+        <LinearLayout
+            android:layout_width="@dimen/twoHundred"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            >
+
+            <ImageView
+                android:id="@+id/admin_imagev_photops"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/ninety"
+                android:src="@drawable/avatar_patient" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="@dimen/five">
+
+
+
+                <TextView
+                    android:id="@+id/admin_txtv_nameps"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingLeft="@dimen/ten"
+                    android:text="@string/admin_user_name"
+                    android:textSize="@dimen/fifteenText"
+                    android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/admin_id"
+                    android:paddingLeft="@dimen/ten"
+                    android:textSize="@dimen/fifteenText" />
+
+                <TextView
+                    android:id="@+id/admin_txtv_idps"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/admin_enter"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/fifteenText" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/admin_place"
+                    android:paddingLeft="@dimen/ten"
+                    android:textSize="@dimen/fifteenText" />
+
+                <TextView
+                    android:id="@+id/admin_txtv_placeps"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/admin_enter"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/fifteenText" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/admin_profession"
+                    android:paddingLeft="@dimen/ten"
+                    android:textSize="@dimen/fifteenText" />
+
+                <TextView
+                    android:id="@+id/admin_txtv_profesionps"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/admin_enter"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/fifteenText" />
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="@dimen/twoHundred"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            >
+
+            <ImageView
+                android:id="@+id/admin_imgv_delete"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/ninety"
+                android:src="@drawable/ic_delete" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+    <!-- Puedes utilizar para lista completa -->
+  <!--  <LinearLayout
+        android:padding="@dimen/diez"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/admin_plantilla_imgav"
+            android:layout_width="@dimen/cien"
+            android:layout_height="@dimen/cien"
+            android:layout_gravity="center"
+            android:src="@drawable/avatar_patient" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/name_patient"
+            android:textAlignment="center"
+            android:textSize="@dimen/veitenetext"
+            />
+        <LinearLayout
+            android:padding="@dimen/quince"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="@dimen/venticinco"
+                android:layout_height="wrap_content"
+                android:text="@string/admin_id"
+                android:textSize="@dimen/veitenetext"
+                android:textAlignment="center"/>
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/admin_enter"
+                android:textSize="@dimen/veitenetext"
+                android:textAlignment="center"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:padding="@dimen/quince"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="@dimen/venticinco"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/admin_place"
+                android:textAlignment="center"
+                android:textSize="@dimen/veitenetext" />
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/admin_enter"
+                android:textSize="@dimen/veitenetext"
+                android:textAlignment="center"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:padding="@dimen/quince"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="@dimen/venticinco"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/admin_profession"
+                android:textSize="@dimen/veitenetext"
+                android:textAlignment="center"/>
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/admin_enter"
+                android:textSize="@dimen/veitenetext"
+                android:textAlignment="center"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+-->
+</androidx.cardview.widget.CardView>

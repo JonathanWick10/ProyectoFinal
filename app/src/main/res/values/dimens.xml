@@ -1,0 +1,92 @@
+<resources>
+    <dimen name="toolbarTextViewSize">20sp</dimen>
+    <dimen name="fabMargin">16dp</dimen>
+    <!-- dimenciones de 10 -->
+    <dimen name="ten">10dp</dimen>
+    <dimen name="sixteen">16dp</dimen>
+    <dimen name="twenty">20dp</dimen>
+    <dimen name="thirty">30dp</dimen>
+    <dimen name="forty">40dp</dimen>
+    <dimen name="fifty">50dp</dimen>
+    <dimen name="sixty">60dp</dimen>
+    <dimen name="seventy">70dp</dimen>
+    <dimen name="eighty">80dp</dimen>
+    <dimen name="ninety">90dp</dimen>
+    <dimen name="oneHundred">100dp</dimen>
+    <dimen name="oneHundredForty">140dp</dimen>
+    <dimen name="twoHundred">200dp</dimen>
+    <!-- dimenciones de 5  -->
+    <dimen name="five">5dp</dimen>
+    <dimen name="fifteen">15dp</dimen>
+    <dimen name="twentyFive">25dp</dimen>
+    <dimen name="thirtyFive">35dp</dimen>
+    <dimen name="fortyFive">45dp</dimen>
+    <dimen name="fiftyFive">55dp</dimen>
+    <dimen name="sixtyFive">65dp</dimen>
+    <dimen name="seventyFive">75dp</dimen>
+    <dimen name="eightyFive">85dp</dimen>
+    <dimen name="ninetyFive">95dp</dimen>
+
+    <!-- dimenciones para texto -->
+    <!-- dimenciones de 10 -->
+    <dimen name="tenText">10sp</dimen>
+    <dimen name="twentyText">20sp</dimen>
+    <dimen name="thirtyText">30sp</dimen>
+    <dimen name="fortyText">40sp</dimen>
+    <dimen name="fiftyText">50sp</dimen>
+    <dimen name="sixtyText">60sp</dimen>
+    <dimen name="seventyText">70sp</dimen>
+    <dimen name="eightyText">80sp</dimen>
+    <dimen name="nineText">90sp</dimen>
+    <dimen name="oneHundredText">100sp</dimen>
+    <!-- dimenciones de 5  -->
+    <dimen name="fiveText">5sp</dimen>
+    <dimen name="fifteenText">15sp</dimen>
+    <dimen name="twentyFiveText">25sp</dimen>
+    <dimen name="thirtyFiveText">35sp</dimen>
+    <dimen name="fortyFiveText">45sp</dimen>
+    <dimen name="fiftyFiveText">55sp</dimen>
+    <dimen name="sixtyFiveText">65sp</dimen>
+    <dimen name="seventyFiveText">75sp</dimen>
+    <dimen name="eightyFiveText">85sp</dimen>
+    <dimen name="ninetyFiveText">95sp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+
+    <dimen name="activityVerticalMargin">16dp</dimen>
+    <dimen name="appbarPadding">16dp</dimen>
+    <dimen name="appbarPaddingTop">8dp</dimen>
+    <dimen name="marginLeftAddPatients">10dp</dimen>
+    <dimen name="marginTopAddPatients">28dp</dimen>
+
+    <dimen name="marginTopEditTextAddPatients">8dp</dimen>
+    <dimen name="marginLeftEditTextAddPatients">110dp</dimen>
+    <dimen name="paddingHorizontalEditTextAddPatients">8dp</dimen>
+    <dimen name="heightEditTextAddPatients">40dp</dimen>
+
+    <!-- Dimens for elevation -->
+    <dimen name="elevationOne">1dp</dimen>
+    <dimen name="elevationTwo">2dp</dimen>
+    <dimen name="elevationFour">4dp</dimen>
+    <dimen name="elevarionSix">6dp</dimen>
+    <dimen name="elevationEight">8dp</dimen>
+    <dimen name="elevationTwelve">12dp</dimen>
+    <dimen name="elevationTwentyFour">24dp</dimen>
+
+    <!-- Dimens for cardview -->
+    <dimen name="twentyOneText">21sp</dimen>
+    <dimen name="seventeenText">17sp</dimen>
+    <dimen name="oneHundredNinetyFour">194dp</dimen>
+    <dimen name="oneHundredAndEighty">180dp</dimen>
+
+    <!-- Dimens for splash -->
+    <dimen name="widthSplash">210dp</dimen>
+    <dimen name="heightSplash">250dp</dimen>
+
+    <!-- Other dimens -->
+    <dimen name="oneHundredFifty">150dp</dimen>
+    <dimen name="two">2dp</dimen>
+    <dimen name="three">3dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+</resources>
+

@@ -1,0 +1,160 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/sixteen"
+    tools:context=".fragments.AddPatients">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/StyleTextViewTitles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/add_patient"></TextView>
+
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/profile_image"
+                android:layout_width="match_parent"
+                android:layout_height="96dp"
+                android:src="@drawable/avatar_patient"
+                app:civ_border_color="#8BC34A"
+                app:civ_border_width="2dp"
+                app:civ_circle_background_color="@color/colorAccent" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/StyleTextInputLayotTextBoxForms"
+                android:id="@+id/til_name_patient"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:endIconMode="clear_text"
+                app:startIconDrawable="@drawable/ic_face_black"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_name_patient"
+                    style="@style/StyleTextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/label_write_question"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/StyleTextInputLayotTextBoxForms"
+                android:id="@+id/til_lastname_patient"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/label_answer"
+                app:endIconMode="clear_text"
+                app:startIconDrawable="@drawable/ic_face_black"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_last_name_patient"
+                    style="@style/StyleTextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/StyleTextInputLayotTextBoxForms"
+                android:id="@+id/til_ident_patient"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/label_answer"
+                app:endIconMode="clear_text"
+                app:startIconDrawable="@drawable/ic_identification_black"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_identification_patient"
+                    style="@style/StyleTextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/StyleTextInputLayotTextBoxForms"
+                android:id="@+id/til_nativeCity"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/label_answer"
+                app:endIconMode="clear_text"
+                app:startIconDrawable="@drawable/ic_nature_people_black"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_native_city_patient"
+                    style="@style/StyleTextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/StyleTextInputLayotTextBoxForms"
+                android:id="@+id/til_phone_patient"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/label_answer"
+                app:endIconMode="clear_text"
+                app:startIconDrawable="@drawable/ic_phone_black"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_phone_patient"
+                    style="@style/StyleTextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/StyleTextInputLayotDropDownForms"
+                android:id="@+id/til_department"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/label_select_correct_answer"
+                app:startIconDrawable="@drawable/ic_landscape_black"
+                app:errorEnabled="true">
+
+                <AutoCompleteTextView
+                    android:id="@+id/edit_department_patient"
+                    style="@style/StyleTextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_create_patient"
+                style="@style/StylePrimaryColoredButton"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="@dimen/ten"
+                android:text="@string/save" />
+            <!-- pais, departamento, municipio, zona, foto .  -->
+
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</FrameLayout>

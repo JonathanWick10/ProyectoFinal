@@ -1,0 +1,789 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Brainmher</string>
+    <string name="patient">Patient</string>
+    <string name="carer">Carer</string>
+    <string name="cognitive">Cognitive</string>
+    <string name="motor">Motor</string>
+    <string name="list_patient">Lista de pacientes</string>
+    <string name="health_professional">Profesional de la salud</string>
+    <string name="required">Required field</string>
+    <string name="email_required">Email is required</string>
+    <string name="password_required">Password is required</string>
+    <string name="auth_fail">Authentication failed</string>
+    <string name="success_regis">Registered successfully</string>
+    <string name="name_patient">Name patient</string>
+    <string name="admin_id">ID</string>
+    <string name="admin_place">Place</string>
+    <string name="admin_profession">Profession</string>
+    <string name="my_care">My Carer</string>
+    <string name="test">Test</string>
+    <string name="diary">Diary</string>
+    <string name="manage">Manage</string>
+    <string name="emergency_contacts">Contact</string>
+    <string name="nearby_hospitals">Hospital</string>
+    <string name="phases_ea">E.A. Phases</string>
+    <string name="general_information">General Info.</string>
+    <string name="home">Home</string>
+    <string name="list">Lista</string>
+    <string name="emergency">Emergencias</string>
+    <string name="info">Info</string>
+    <string name="information_carer">Info.</string>
+    <string name="exercise_carer">Exercise.</string>
+    <string name="advice_carer">Advice.</string>
+
+    //Tab
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="admin_user_name">Name user</string>
+    <string name="admin_enter">Enter</string>
+    <string name="admin_pass">Password</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="datos_incorrectos">incorrect username or password</string>
+    <string name="alert">Alert</string>
+    <string name="message_delete">sure to eliminate</string>
+    <string name="delete">Delete</string>
+
+    //Strings for Collections
+    <string name="collection_administrators">Administrators collection created...</string>
+    <string name="collection_healthcare_profeional">Healthcare profeional collection created...</string>
+    <string name="collection_carers">Carers collection created...</string>
+    <string name="collection_patients">Patients colletion created...</string>
+    <string name="collection_terapies">Terapies collection created...</string>
+    <string name="collection_notications">Notications collection created...</string>
+    <string name="creation_failed">Creation Failed</string>
+    <string name="create_collections">Crear coleciones</string>
+    <string name="create">Create</string>
+
+    //Strings Admin Add HP
+    <string name="lst_ps_name">Profesional de la salud</string>
+    <string name="crud_ps">Nuevo P.S.</string>
+    <string name="lastname_ps">Lastname</string>
+    <string name="name_ps">Name</string>
+    <string name="documet_ps">Document</string>
+    <string name="profession_ps">Profession</string>
+    <string name="admin_ps_famale">Female</string>
+    <string name="admin_ps_male">Male</string>
+    <string name="date_birth_ps">Date of birth</string>
+    <string name="admin_ps_age">Age</string>
+    <string name="admin_ps_telephone">Telephone</string>
+    <string name="admin_ps_city">City</string>
+    <string name="admin_til_user">User</string>
+    <string name="admin_til_pass">Password</string>
+    <string name="admin_til_confin_pass">Confirm Password</string>
+    <string name="admin_til_confin_email">Email</string>
+    <string name="admin_til_workplace">Workplace</string>
+    <string name="admin_til_saveps">Save</string>
+
+    <string name="add_patient">Add User</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="identification_type">Identification type</string>
+    <string name="identification">Identification</string>
+    <string name="gender">Gender</string>
+    <string name="female">Female</string>
+    <string name="male">Male</string>
+    <string name="birthday">Birthday</string>
+    <string name="phone_number">Phone number</string>
+    <string name="age">Age</string>
+    <string name="user_name">User name</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="email">Email</string>
+    <string name="department">Department</string>
+    <string name="native_city">Native city</string>
+    <string name="actual_city">Actual city</string>
+    <string name="family_phone_number">Family phone number</string>
+    <string name="address">Address</string>
+    <string name="date_diagnostic">Date diagnostic</string>
+    <string name="diagnostic">Diagnostic</string>
+    <string name="observations">Observations</string>
+    <string name="emergency_number">Emergency number</string>
+    <string name="citizenship_card">Citizenship card</string>
+    <string name="foreign_identity_card">Foreign Identity Card</string>
+    <string name="passport">Passport</string>
+    <string name="save">Save</string>
+    <string name="was_saved_succesfully">Was Saved Succesfully</string>
+    <string name="not_saved">Not saved</string>
+    <string name="select_photo">Select Image</string>
+    <string name="complete_field_please">Complete the fields, please!</string>
+
+    <!-- Strings for module patient -->
+    <string name="menu_memorizame">Memorizame</string>
+    <string name="menu_notifications">Notifications</string>
+    <string name="menu_profile">Profile</string>
+    <string name="btn_logout">Logout</string>
+
+    <!-- Information general and Specific -->
+
+    <string name="q1">¿Qué es?</string>
+    <string name="q2">¿Qué síntomas de deterioro cognitivo se observan en las diferentes fases?</string>
+    <string name="q3">¿Qué avances hay en el tratamiento de la enfermedad de Alzheimer?</string>
+    <string name="q4">¿Qué otro déficit puede presentar una persona que padece Alzheimer?</string>
+    <string name="q5">¿Se pueden tratar los síntomas de la enfermedad?</string>
+    <string name="q6">Enterarse que un familiar padece Alzheimer y querer saber ¿Cómo actuar?</string>
+    <string name="q7">¿Qué paso deben seguir los familiares después de que uno de sus integrantes es diagnosticado con Alzheimer?</string>
+    <string name="q8">¿Cómo evitar accidentes o sustos?</string>
+    <string name="q9">¿Qué es el síndrome del Cuidador?</string>
+    <string name="a1">Es una enfermedad asociada a las edades avanzadas que sólo afecta al cerebro,
+        sin relación con ningún otro órgano del cuerpo. El Alzheimer es una demencia degenerativa primaria que tiene
+        lugar de forma lenta y progresiva, de la que se desconocen las causas que desencadenan el proceso.
+        Provoca una alteración de la función neuronal, ya que en el hipocampo (zona del lóbulo temporal)
+        se produce el depósito de una proteína anormal llamada amiloide.</string>
+    <string name="a2">\u25CF Primera fase: Una pérdida del pensamiento maduro adulto. Se pierden las estructuras simbólicas.\n
+        \u25CF Segunda fase: Una pérdida de la conceptuación y dimensión del mundo real. Aparece la amnesia con:\n
+        \u25BA Afasia: pérdida del lenguaje (capacidad de hablar).\n
+        \u25BA Apraxia: perdida de la secuencia motora (no coordina bien los movimientos).\n
+        \u25BA Agnosia: perdida de la capacidad de reconocimiento de los objetos.\n
+        \u25CF Tercera fase: Es el periodo de las grandes pérdidas, pero no son absolutas.
+        En él se mantienen la afectividad, el ritmo y la capacidad de imitación.
+    </string>
+    <string name="a3">En estos momentos, las perspectivas terapéuticas farmacológicas son inciertas.
+        Aunque se está ensayando con terapias que impiden que la proteína amiloide se deposite en el cerebro
+        (deposito que provoca el daño neuronal en los pacientes de Alzheimer), la mayoría de los ensayos realizados
+        no han tenido éxito, por lo que no se puede esperar la comercialización de un fármaco en los próximos años.
+    </string>
+    <string name="a4">Déficit de memoria, mayor irritabilidad y dificultad para expresarse, son déficits presentes en todas
+        las personas que padecen Alzheimer, sumando déficit a medida que el Alzheimer avanza se encuentras algunos como,
+        perdida de la orientación espacial (no reconocen donde se encuentran), falta de iniciativa,
+        imposibilidad para planificar una labor sencilla, comportamiento anormal, agresividad, percepción e interpretación
+        anormal de las cosas, alucinaciones, entre otros.
+    </string>
+    <string name="a5">El método aplicado para tratar estos síntomas es, tranquilizantes, antidepresivos o antipsicóticos,
+        los cuales pretenden aliviar las alteraciones emocionales (como la ansiedad o la depresión), y a veces,
+        alteraciónes de la percepción de los estímulos externos (alucinaciones, ilusiones, dimensionamiento, etc.)
+    </string>
+    <string name="a6">\u25CF La familia tiene que analizar sus recursos económicos, las circunstancias concretas de los miembros
+        que la conforman y el grado de solidaridad de estos, para saber cuándo y cuántos familiares se van a implicar
+        en la atención de la persona que padece Alzheimer.\n
+        \u25CF El siguiente paso es informarse, organizarse y planificar.\n
+        La familia debe ser consciente de que se verá afectada por la enfermedad del paciente, aparecerán sentimientos
+        de inquietud, miedo, rechazo y demás. Conviene tener serenidad para encontrar la mejor solución para todos
+        sus miembros, debido a que, una vez aceptado el problema dentro de la familia, aparecerá la figura del cuidador
+        principal.
+    </string>
+    <string name="a7">Si la persona no reconoce o confunde a una persona o su nombre, intenta hablar de manera clara
+        razonable y calmada, para que este recuerde evitando entrar en una discusión.\n
+        \u25CF Primordialmente hay que asumir responsabilidades nuevas, ser prevenido y estar alerta,
+        debido a que habrá empeoramiento en la salud de este, debe evitarse caídas y tener un control fundamental
+        en la alimentación que se le brinda a la persona que fue diagnosticada con Alzheimer.\n
+    \u25CF La autonomía de la persona diagnosticada debe mantenerse al máximo, dándole la posibilidad de decidir
+        por sí mismo y sobre todo evitando inmovilizarlo.\n
+    \u25CF La estimulación es fundamental para que la persona pueda realizar actividades cotidianas, crucialmente sin
+        forzar ni protegerlo de estas, estas actividades varían de acuerdo a la anulación de sus capacidades
+        motrices y cognitivas.\n
+    \u25CF Debido a que la persona que padece Alzheimer suele responder mal a las órdenes, es sugerido negociar con él,
+        debido a que una sugerencia es tomada como una charla normal, si este de igual forma reacciona negativamente,
+        se sugiere aprovechar las pérdidas de memoria, dejando pasar algo de tiempo y de esta manera, se pueda solicitar
+        lo dicho o pedido anteriormente.\n
+        Otro método para persuadir el rechazo a dicha sugerencia, es cambiar el tema, de tal forma que se evita la
+        discusión con él.\n
+    \u25CF Ante situaciones como, agresividad, insomnio, inquietud, depresión profunda u otros, recurre al médico.\n
+    \u25CF La paciencia y el cariño son fundamentales, los problemas no son causa de quien es diagnosticado con Alzheimer,
+        sino de la enfermedad, enfermedad la cual tiene como única víctima a quien la padece. Aprender aceptar el Alzheimer
+        y sus consecuencias es primordial, de esta manera se conlleva mejor a la persona.\n
+    \u25CF El que sufre de esta enfermedad es el reflejo de quien lo cuida, así que todo lo que se le demuestre a este,
+        de esta misma manera él lo siente, un ejemplo es que, si a él se le transmiten nervios, el siente nervios,
+        de igual forma la serenidad, alegría, cariño, etc. Una persona que padece Alzheimer sabe reconocer fácilmente
+        estos estados emocionales, y la mejor forma de mostrarle la confianza, el cariño o seguridad es mediante una
+        caricia.
+    </string>
+    <string name="a8">\u25CF La identificación de la persona que padece Alzheimer es muy importante, debido a que,
+        si se perdiera u olvidara como volver a casa, tendría datos básicos para que cualquier persona lo pueda ayudar,
+        datos como, Nombre, Dirección y Teléfono serán los que debe portar, una opción muy factible, es una manilla
+        con dichos datos y para los familiares, una foto con su aspecto más reciente, para encontrar a la persona de
+        manera rápida.\n
+        \u25CF Es importante tener números de emergencia como, hospitales, policía, bomberos y el cerrajero
+        (por si llegara a quedarse encerrado y olvidar como salir).\n
+        \u25CF Una luz encendida en las noches es de gran importancia, ya que ayuda al paciente a orientarse,
+        además de evitar tropezones, debido a necesidades fisiológicas que causan la ida al baño o la presencia
+        de insomnio, es conveniente acompañarlo en estos momentos, recordándole que es hora de dormir.\n
+        \u25CF Es recomendable evitar el exceso de estímulos y actividades, además de evitar reuniones con mucha
+        gente o reuniones prolongadas, evitando ruidos extraños o situaciones extrañas para la persona que presenta Alzheimer.
+    </string>
+    <string name="a9">Es un conjunto de alteraciones, físicas, emocionales, psíquicas y sociales que el cuidador principal
+        suele presentar al transcurrir cierto tiempo desempeñando este papel. Estas alteraciones afectan todos los ámbitos
+        de vida del cuidador. Si necesita más conocimiento sobre el síndrome, en la ventana principal “Home” de esta app
+        se encontrará con la sección de “Mi cuidado”, la que brindará todo el conocimiento sobre dicho síndrome y las formas
+        de evitarlo.
+    </string>
+
+    <string name="qp1">Phase 1:</string>
+    <string name="qp2">Phase 2:</string>
+    <string name="qp3">Phase 3:</string>
+
+    <string name="ap1">\n
+        <b>¿Cómo es la primera fase del alzheimer?</b>\n\n
+
+        Normalmente esta fase no se diagnostica porque los síntomas no son demasiado evidentes. Los olvidos y descuidos que
+        empiezan a aparecer son achacados a la edad o a un acontecimiento reciente (fallecimiento de alguien cercano,
+        enfermedad, hospitalización...) y la familia y el propio paciente intentan disculpar y hasta encubrir, estas conductas.
+        Normalmente no hay percepción de enfermedad, por lo que la familia no ve necesidad de consultar a un médico.\n\n
+
+        <b>¿Cuales son los sintomas de la primera fase?</b>\n\n
+
+        <li>Pérdida de memoria: el paciente tiene dificultad para retener nueva información; se da cuenta de sus olvidos, por lo que
+        puede manifestar ansiedad o depresión, al no ser consciente de lo que le ocurre.\n</li>
+        <li>Pérdida de vocabulario: dificultad para expresarse, porque no encuentra la palabra adecuada (y la cambia por otra),
+        es más lento y menos fluido hablando, hace pausas porque no le sale el ‘’nombre de las cosas’’…\n</li>
+        <li>Dificultad para realizar tareas cotidianas: conducir, cocinar, hacer la compra...\n</li>
+        <li>Tendencia a perderse: no sabe dónde está, se desorienta con facilidad…\n</li>
+        <li>Cambio de personalidad: cambios de carácter o humor, sin causa aparente. El enfermo está más irritable, menos comunicativo,
+        distinto de antes...\n\n</li>
+        En esta fase el paciente es independiente y autónomo para su propio cuidado: aseo, vestido, movilidad.\n\n
+
+        <b>¿Cómo debe cuidarse a un paciente en fase 1?</b>\n\n
+
+        El objetivo es mantener el bienestar psíquico, la salud y dignidad del paciente hasta el final. Esto puede lograrse:\n\n
+        <li>Potenciando su autonomía: que haga por sí mismo cuanto le sea posible para que no olvide sus rutinas, se mantenga útil y
+        su autoestima no decaiga.\n</li>
+        <li>Ayudando al paciente o realizando por él las actividades que no pueda realizar por sí mismo.\n</li>
+        <li>Evitando cualquier complicación previsible.\n\n</li>
+
+        <b>¿Cuidados específicos de la primera fase?</b>\n\n
+
+        <li>Evita que esté solo y que salga solo de casa (por si se desorienta).\n</li>
+        <li>Vigila su estado de salud general: vista, oído, dientes, movilidad, tensión arterial, azúcar...\n</li>
+        <li>Potencia el ejercicio físico (que realice paseos diarios, siempre acompañado).\n</li>
+        <li>Intenta que realice actividades o tareas que estimulen su mente y lo mantengan mentalmente activo.\n</li>
+        <li>Proporciónale una alimentación equilibrada y variada, rica en fibra y proteínas, vigilando que beba toda el agua necesaria.\n</li>
+        <li>Oriéntalo en el espacio y en el tiempo por medio de calendarios y relojes bien visibles, recordándole el día de la semana y
+        del mes en que está.\n</li>
+        <li>Intenta mantener las rutinas, haciéndole ver cuándo es la hora de comer y dormir, salir a dar un paseo, etc.\n</li>
+        <li>Comunícate con el enfermo de forma eficaz: frases cortas y sencillas, sin discutir, con paciencia…</li>
+    </string>
+    <string name="ap2">\n
+        <b>¿Qué síntomas se observan en la segunda fase?\n\n</b>
+
+        En la segunda fase de la enfermedad los síntomas de la fase anterior se hacen tan evidentes que no se pueden ocultar ni encubrir.
+        El paciente se hace ya dependiente de su familia, aunque puede seguir realizando tareas, como asearse, vestirse, comer..., siempre con supervisión.\n
+
+        En general, en la segunda fase se observa:\n\n
+
+        <li>Olvido de sucesos recientes: llega a confundir a personas próximas como hijos, cónyuge, etc.</li>\n
+        <li>Pérdida de dicción: repite palabras o frases sin sentido. Puede leer pero no es capaz de entender lo que lee porque no sabe interpretar el mensaje.</li>\n
+        <li>Olvido de rutinas: vestirse, hacer la cama, poner la mesa...</li>\n
+        <li>Desorientación: deambula continuamente ya que no sabe dónde está y busca su casa, su calle... Puede perderse con facilidad.</li>\n
+        <li>Reacciones desmesuradas tanto de sumisión como de enfado; puede sufrir alucinaciones, sobre todo nocturnas.</li>\n\n
+        Cuando la fase 2 ya está avanzadaaparece alteración de la marcha, pérdida de hábitos higiénicos, e incapacidad para vestirse y comer sólo.\n\n
+
+        <b>¿Qué alteraciones suele tener el enfermo en la 2 fase?</b>\n\n
+
+        Normalmente se diagnostica alzhéimer en esta fase moderada (fase II), observándose diversas alteraciones:\n\n
+
+        <li>A nivel cognitivo: suele tener cuadros de amnesia, afasia (pérdida de la capacidad para hablar), apraxia (pérdida de la capacidad de movimiento)
+        o agnosia (pérdida de la capacidad de reconocer los objetos).\n</li>
+        <li>A nivel funcional: se dan alteraciones de las actividades encaminadas a realizar los actos básicos de la vida. Estamos ante una pérdida
+        progresiva de la independencia.\n</li>
+        <li>Alteraciones psíquicas y del comportamiento: surgen ansiedad, depresión, alucinaciones, agresividad, vagabundeo, insomnio, etc.
+        Todos ellos, trastornos que causan gran ansiedad familiar.\n\n</li>
+
+        <b>¿Cómo debe actuar la familia en la segunda fase?</b>\n\n
+
+        Como la segunda fase ya supone una pérdida progresiva de la independencia del afectado, la familia debería informarse sobre las ofertas de
+        apoyo disponibles, como:\n\n
+
+        <li>Asociaciones de familiares: informan, ayudan y aconsejan a las familias que ya notan el agotamiento físico y psíquico, sobre todo el cuidador
+        principal. Tienen servicios como asistencia social, ayuda a domicilio, voluntariado y grupos de apoyo para que los cuidadores se ayuden entre sí.\n</li>
+
+        <li>Centros de Día: cuidan y mantienen activo al paciente unas horas al día, permitiendo al cuidador conservar unas condiciones laborales y sociales
+        que impidan su aislamiento y agotamiento físico y mental.\n</li>
+
+        <li>Talleres de Estimulación Física y Cognitiva: mantienen la actividad física y mental del paciente, por lo que pueden retrasar los síntomas de la
+        demencia severa.\n\n</li>
+
+        También es importante en esta fase la implicación familiar: motivar a toda la familia para que apoye activamente al cuidador principal,
+        sustituyéndolo en sus tareas cuando pueda.\n\n
+
+        <b>¿Qué capacidades se conservan (y cuales no) en la segunda fase (leve - moderada)?</b>\n\n
+
+        En este momento de la enfermedad ya no se dispone:\n\n
+
+        <li>Del pensamiento complejo y estructurado del adulto</li>\n
+        <li>Del razonamiento abstracto\n</li>
+        <li>No hay capacidad para generar hipótesis</li>\n
+        <li>No se puede deducir, ni inducir\n\n</li>
+
+        Pero sí se posee capacidad para la realización de operaciones concretas, como:\n\n
+
+        <li>Relaciones de orden: como cerca y lejos, encima y debajo, dentro y fuera.</li>\n
+        <li>Operaciones concretas con conjuntos: como son clasificaciones, correspondencias y agrupaciones.</li>
+
+    </string>
+    <string name="ap3">\n
+        <b>¿Cómo suele ser la tercera y ultima fase de Alzheimer?\n\n</b>
+
+        En esta etapa la dependencia es total y se produce la falta de autonomía del paciente. Apenas se mueve, no sale de casa y su actividad se resume,
+        como mucho, en ir de la cama a la silla y viceversa. Al final, el paciente ya permanece encamado, proceso que culmina con su fallecimiento.\n\n
+
+        <b>¿Cuáles son los síntomas de la tercera fase?\n\n</b>
+
+        <li>Desorientación completa: no conoce a nadie, aunque percibe a su cuidador</li>\n
+        <li>Pérdida del habla: ni articula ni parece entender, pero es receptivo al afecto</li>\n
+        <li>Apatía y pasividad: no quiere realizar ninguna actividad</li>\n
+        <li>Incontinencia: no controla sus esfínteres</li>\n
+        <li>Problemas de deglución: le cuesta trabajo masticar y tragar</li>\n
+        <li>Somnolencia: está adormecido la mayor parte del día</li>\n
+        <li>Problemas de encamamiento: aparecen las complicaciones derivadas de la inmovilidad: escaras, neumonía, atrofia muscular, rigidez...\n\n</li>
+
+        <b>¿Cómo debe actuar la familia en la tercera fase?\n\n</b>
+
+        Es importante liberar a la familia de la angustia que supone cuidar a una persona con un deterioro tan evidente, por lo que se debe contar con
+        el adecuado apoyo sanitario y social (asociación, familia, amigos, etc.). El cuidador principal necesita ser escuchado, por lo que debe
+        facilitársele el que hable de sus sentimientos y del temor que suele aquejarle: la muerte del paciente. Cuando el cuidador principal
+        se encuentre ya al límite de sus fuerzas físicas y psíquicas, puede contar con ayuda domiciliaria, además de ingresar al paciente en una
+        residencia de forma temporal o definitiva, para que pueda descansar y recuperarse. El resto de la familia debe apoyar en todo momento las
+        decisiones del cuidador principal, implicarse en los cuidados del paciente y cuidar al cuidador principal dándole tiempo libre, apoyándolo y
+        escuchándolo.
+    </string>
+
+    <!-- Strings for module patients -->
+    <string name="tab_cognitive_exercises">Cognitive Exercises</string>
+    <string name="tab_motor_exercises">Motor Exercises</string>
+    <string name="tab_family_questions">Family</string>
+    <string name="tab_home_questions">Home</string>
+    <string name="tab_places_questions">Places</string>
+    <string name="tab_pets_questions">Pets</string>
+    <string name="tab_medicaments">Medicaments</string>
+    <string name="tab_therapies">Therapies</string>
+    <string name="lbl_level">Level:</string>
+    <string name="lbl_progress">Progress:</string>
+    <string name="lbl_statement">Statement:</string>
+    <string name="lbl_description">Description:</string>
+    <string name="lbl_rate">Rate this activity</string>
+    <string name="lbl_date_of_assignment">Date of assignment:</string>
+    <string name="lbl_frequency">Frequency:</string>
+    <string name="lbl_hours">Hours:</string>
+    <string name="btn_show_info">Show</string>
+    <string name="btn_hide_info">Hide</string>
+
+    <!-- String Test Alzheimer -->
+    <string name="tq1">
+        <b>1. Fluidez verbal semántica</b>
+    </string>
+    <string name="test1">\n\n
+        Durante 30 seg. debe decir nombres de frutas.
+    </string>
+    <string name="tq2">
+        <b>2. Fluidez verbal fonológica</b>
+    </string>
+    <string name="test2">\n\n
+        Nombrar palabras que empiecen con la letra "f" en 30 seg.
+    </string>
+    <string name="tq3">
+        <b>3. Denominación a definiciones</b>
+    </string>
+    <string name="test3">
+        ¿Donde ponen los huevos los pajaros?\n
+        ¿Que alimento producen las abejas?\n
+        ¿Dónde se conservan fríos los alimentos?\n
+        ¿Con que objeto puede verse a sí mismo?\n
+        ¿Con que se abren las botellas de cerveza?\n
+        ¿Dónde se compran los medicamentos?\n
+        ¿Como se llama el animal que tiene un cuello muy largo?\n
+        ¿Dónde miramos la fecha?\n
+        ¿Dónde se apoya la cabeza en la almohada?\n
+        ¿Con que barres el suelo?
+    </string>
+    <string name="tq4">
+        <b>4. Denominación de objetos</b>
+    </string>
+    <string name="test4">
+        Indique:\n
+        \n
+        Botón.\n            Hombro.\n
+        Ojal.\n             Codo.\n
+        Manga.\n            Muñeca.\n
+        Cuello.\n           Ceja.\n
+        Bolsillo.\n         Parpado.
+    </string>
+    <string name="tq5">
+        <b>5. Fluidez verbal de nombres propios</b>
+    </string>
+    <string name="test5">\n\n
+        Nombre 5 deportistas de este país\n
+        Nombre de 5 actores o actrices.
+    </string>
+    <string name="tq6">
+        <b>6. Denominación de nombres propios</b>
+    </string>
+    <string name="test6">
+        ¿Como se llama?\n
+        \n
+        ¿El Papa actual?\n
+        ¿El presidente de Estados Unidos?\n
+        ¿El presidente de Colombia?\n
+        ¿El líder opositor del presidente?\n
+        ¿La Reina de Inglaterra?\n
+        ¿El piloto Colombiano que gano la formula 1?\n
+        ¿El primer ministro de Colombia?\n
+        ¿El presidente de Ecuador?\n
+        ¿El presidente de Venezuela?
+        ¿El presidente de Brasil?
+    </string>
+    <string name="tq7">
+        <b>7. Recuerdo inmediato de una lista de palabras</b>
+    </string>
+    <string name="test7">
+        Recuerde de esta lista:\n
+        \n
+        Arroz\n             Bombilla\n
+        Café\n              Tomate\n
+        Queso\n             Jabón\n
+        Fosforos\n          Salmon\n
+        Sal\n               Cerveza
+    </string>
+    <string name="tq8">
+        <b>8. Recuerdo inmediato de los datos de una persona</b>
+    </string>
+    <string name="test8">
+        Voy a presentar un amigo...\n
+        \n
+        Se llama Alberto.\n
+        Vive en París.\n
+        Tiene 41 años.\n
+        Tiene 3 hijos.\n
+        Trabaja en un banco.\n
+        Su padre era militar.\n
+        Su comida favorita es el espageti.\n
+        Su afición preferida es coleccionar sellos.\n
+        Le gusta jugar tenis.\n
+        No tiene coche, pero conduce moto.\n
+        \n
+        ¿Que recuerda de mi amigo?
+    </string>
+    <string name="tq9">
+        <b>9. Recuerdo demorado de la lista de palabras</b>
+    </string>
+    <string name="test9">\n\n
+        ¿Cuantas cosas recuerda de la lista de utencilios?
+    </string>
+    <string name="tq10">
+        <b>10. Recuerdo demorado de los datos de una persona</b>
+    </string>
+    <string name="test10">
+        ¿Como se llama mi amigo?\n
+        ¿Dónde vive?\n
+        ¿Cuántos años tiene?\n
+        ¿Cuántos hijos tiene?\n
+        ¿En que trabaja?\n
+        ¿Que profesión tenía su padre?\n
+        ¿Cuál es su comida favorita?\n
+        ¿Cuál es su afición preferida?\n
+        ¿Que deporte practica?\n
+        ¿Que vehículo conduce?\n
+    </string>
+    <string name="time">00:00:40</string>
+    <string name="start">Iniciar</string>
+    <string name="end">Terminar</string>
+    <string name="qualification">Puntaje: </string>
+    <string name="point">00</string>
+    <string name="of_point">/10</string>
+
+    <!-- String Information Carer -->
+    <string name="qc1">¿Qué alteraciones físicas suele padecer el cuidador principal?</string>
+    <string name="ac1">
+        Los cuidadores principales suelen ver incrementadas las enfermedades propias de la edad (en el caso de que sea avanzada) por el esfuerzo
+        y sobrecarga física que supone el cuidado de un enfermo. Las barreras arquitectónicas (puertas y pasillos estrechos, escaleras, camas bajas...)
+        y la necesidad de mover, transportar o acompañar los movimientos del enfermo, pueden provocar la aparición o aumento de problemas musculares y
+        de huesos (como dolores de espalda).\n
+
+        El sistema inmunológico también suele verse afectado. El agotamiento de las defensas hace que seamos más proclives a padecer procesos infecciosos
+        como gripes, laringitis... Por ello, muchos cuidadores principales acaban teniendo que recurrir a la ayuda de un número considerable de fármacos.
+    </string>
+    <string name="qc2">¿Qué alteraciones psicológicas conlleva el síndrome del cuidador?</string>
+    <string name="ac2">
+        La gran carga emocional suele provocar fatiga, agotamiento y cansancio. La aceptación de la enfermedad coloca al cuidador ante un sentimiento de
+        pérdida lento y progresivo: se pierde a un ser querido, que deja de reconocernos y nosotros a él (ya no es la persona que fue).\n
+
+        El cuidador principal también se enfrenta a sentimientos contradictorios: deseos de que termine esa situación pero, al mismo tiempo,
+        no querer perder al ser querido.\n
+
+        Probablemente sentirá enfado, irritabilidad y frustración, que suele acompañarse de grandes sentimientos de culpa. Si esos sentimientos no
+        son reconducidos le provocarán ansiedad, que puede a su vez derivar en síntomas cardiovasculares, palpitaciones, desmayos, alteraciones en la
+        tensión arterial, trastornos respiratorios, diarreas, náuseas, vómitos…\n
+
+        Si esta situación persiste, pueden producir efectos crónicos en forma de: insomnio, sudoración, tensión muscular, fatiga, gran dificultad para
+        pensar y encontrar soluciones eficaces a los problemas.\n
+
+        Por ello, es muy importante que el cuidador principal se sienta apoyado por su entorno cercano, que encuentre apoyo para no descuidar su salud
+        ni su vida social, acudiendo al especialista medico ante el inicio de cualquiera de los síntomas descritos. El papel activo de la familia de
+        cuidador y cuidado es fundamental para ayudar a evitar que caiga en este síndrome.
+    </string>
+    <string name="qc3">¿El síndrome del cuidador también influye en la vida social?</string>
+    <string name="ac3">
+        Sí, ya que se produce un aislamiento social al combinarse el estado emocional depresivo/ansioso con el malestar físico. El cuidador irá
+        prescindiendo de participar en actos sociales, actividades lúdicas, etc., con lo cual perderá gran cantidad de amistades.\n
+
+        Por ello, es importante (desde el círculo más cercano) animar al cuidador a que se distraiga y se de algún respiro, que no abandone
+        completamente su vida social y realice actividades de ocio que puedan relajar y enriquecer su vida.\n
+    </string>
+    <string name="qc4">¿Qué consecuencias tiene el síndrome del cuidador?</string>
+    <string name="ac4">
+        Las consecuencias podrían resumirse en 4: frustración, insatisfacción por la vida, depresión y enfermedad. Para evitarlas, conviene
+        entre todos dar apoyo y soporte a los cuidadores y a sus familiares.
+    </string>
+    <string name="qc5">¿Qué puede hacer la familia para ayudar a una persona con el síndrome del cuidador?</string>
+    <string name="ac5">
+        Toda la familia del cuidador debe intentar:\n
+        \n
+        <li>Reconocer el problema lo antes posible y buscar ayuda (dentro de la familia, profesionales, asociaciones...).</li>\n
+        <li>Aceptar el problema y lo que de él se deriva; hablar del problema disminuye la ansiedad).</li>\n
+        <li>Prestar su apoyo y ánimo incondicional al cuidador: animarle a que salga, que se distraiga, que descanse, reemplazarle
+        en sus tareas durante el tiempo necesario para que desconecte y pueda hacer su vida, etc.</li>
+    </string>
+    <string name="qc6">¿Qué perfil debe tener el cuidador principal?</string>
+    <string name="ac6">
+        Hay muchos perfiles posibles, desde hijos/as hasta parejas o familiares políticos, que asumen ese rol de cuidadores. Generalizando,
+        podríamos decir que, con frecuencia, suele ser una mujer de unos sesenta años. Sea el perfil que sea, normalmente esta persona estará
+        expuesta a una sobrecarga física y psíquica que hará que pase de llevarlo bien a sentirse extenuada, por lo que es necesario que quien
+        realiza la función cuidadora no se olvide de cuidarse a sí mismo/a y se sienta apoyada por su familia y entorno cercano.
+    </string>
+    <string name="qc7">¿Qué implica ser el cuidador principal?</string>
+    <string name="ac7">
+    La decisión de ser cuidador principal desencadena una serie de consecuencias:\n
+    \n
+    <li>La relación con el resto de la familia cambia completamente: comienza una tarea dura, fatigosa, difícil y sin descanso.</li>\n
+    <li>Sentimiento de responsabilidad: La persona asume el cuidado principal porque se ve en el deber de hacerlo por el afecto o cariño hacia
+        el enfermo y las relaciones previas existentes. Aun así, ese sentimiento de responsabilidad puede ir más allá del que resulta razonable.</li>\n
+    <li>Síndrome del cuidador principal: El cuidador principal suele sufrir alteraciones múltiples a nivel físico, psíquico y social que afectarán
+        a todos los ámbitos de su vida, tanto familiar como personal.</li>
+    </string>
+    <string name="qc8">¿Cuáles son las ventajas de que exista un cuidador principal en la familia?</string>
+    <string name="ac8">
+        <li>Resuelve la necesidad de una persona que organice y coordine los cuidados y atención que necesita el paciente.\n</li>
+        <li>Permite a los distintos profesionales sanitarios o sociales disponer de un interlocutor estable y disponible con el que cooperar.\n</li>
+        <li>El cuidador funciona además como coordinador y garantía de que se van a cumplir las prescripciones de tratamiento y cuidados, además de como
+        fuente de información sobre la evolución y situación de los pacientes.</li>
+    </string>
+    <string name="qc9">¿Cuáles son los puntos débiles de que exista un cuidador ptincipal en la familia?</string>
+    <string name="ac9">
+        <li>Si no existe acuerdo en la familia sobre quién debe ser el cuidador principal pueden surgir conflictos entre familiares o incluso
+        entre cuidadores.\n</li>
+        <li>También puede ser problemático si los demás cuidadores no se sienten implicados y se desentienden de la colaboración en los cuidados o
+        del apoyo que necesite el cuidador principal.\n</li>
+        <li>Otro problema puede ser que el resto de cuidadores familiares considere que el cuidador principal no realiza adecuadamente los cuidados,
+        generándose conflictos que pueden requerir asesoramiento o mediación profesional.</li>
+    </string>
+    <string name="qc10">¿Cómo debe actuar el cuidador en la segunda fase?</string>
+    <string name="ac10">
+        Debe cuidar su salud, acudiendo al médico y a la familia ante síntomas como insomnio, depresión, agotamiento, etc. e intentar mantener sus relaciones
+        afectivas y familiares, permitiéndose expresar todos aquellos sentimientos que le agobian.
+    </string>
+    <string name="qc11">¿En qué medida es conveniente sentirse apoyado (por un familiar o profesional)?</string>
+    <string name="ac11">
+        Es muy importante que el cuidador reciba apoyo familiar o profesional en las distintas fases de la enfermedad, para así evitar sentimientos de
+        soledad, pena, incertidumbre, impotencia…\n
+        Cuando el cuidador observe cambios en su estado de ánimo o en su comportamiento habitual con el paciente es necesario que acuda a un profesional
+        de la salud para que le guíe en la toma de decisiones. Las Asociaciones de Familiares de Enfermos de Alzhéimer también pueden resultar de gran
+        ayuda y apoyo para el cuidador principal.
+    </string>
+    <string name="qc12">¿Qué actividades de ocio son favorables para el cuidador?</string>
+    <string name="ac12">
+        El ocio debe atender particularmente a cada persona y adaptarse a sus gustos e intereses:\n
+        \n
+        <li>Las actividades deben ser vehículo de tu creatividad y emociones y deben despertar y mantener tu interés.\n</li>
+        <li>Las actividades deben conjugar diversas experiencias: diversidad de materiales, situaciones, lugares y relaciones.\n</li>
+        <li>Las actividades debes realizarlas preferentemente en grupo para favorecer el contacto y las relaciones con los demás, la comunicación, etc.\n</li>
+        <li>Las actividades deben facilitar nuestra participación, fomentando que cada participante mantenga un papel activo, obtenga una mayor conciencia
+        de su cuerpo, de las sensaciones...</li>
+    </string>
+    <string name="qc13">¿Es normal que, como cuidador/a tenga ansiedad?</string>
+    <string name="ac13">
+        Ante determinadas situaciones la ansiedad es una respuesta normal. El problema es que, si se prolonga en el tiempo, puede convertirse en un
+        miedo constante que suele acabar en un estado depresivo.\n
+        La ansiedad continua y no controlada puede además desembocar en alteraciones físicas y dolores reales, que no están ocasionadas por alteraciones
+        de los órganos sino por la sobrecarga emocional. Entre estos síntomas físicos destacan: síntomas cardiovasculares, palpitaciones, desmayos,
+        alteraciones en la tensión arterial, trastornos respiratorios, diarreas, náuseas, vómitos. Ante cualquiera de estos síntomas o si pensamos
+        que estamos empezando a padecer episodios de ansiedad, conviene acudir al médico.
+    </string>
+    <string name="qc14">¿Como puedo afrontar el cuidar a un familiar con quien tenia una mala relación?</string>
+    <string name="ac14">
+        Se debe tratar de pensar en los sentimientos de afecto que nos vincularon con la persona enferma antes del deterioro de las relaciones.
+        Sea como fuere, hay que cuidar a los pacientes como debe tratarse a cualquier ser humano en similares circunstancias.
+        \n
+        Si no es posible superar los problemas de relación con el paciente, se puede recurrir a la búsqueda de una solución institucional que evite
+        el desamparo de esa persona (agencias o servicios públicos o privados).
+    </string>
+    <string name="qc15">¿Como puedo superar el sentimiento de culpa, tras elingreso de mi familiar a una residencia?</string>
+    <string name="ac15">
+        El ingreso en una residencia supone, muchas veces, la prestación de un mejor cuidado y mayor seguridad y comodidad para el paciente.
+        Aunque nuestro familiar esté en una residencia, podremos mantener con él contacto y prestarle atenciones cuando queramos, así como supervisar
+        los cuidados prestados por el centro residencial.
+        \n
+        Si se actúa persiguiendo el beneficio del paciente, la culpabilidad tiende a superarse tan pronto como se comprueban los beneficios para el
+        paciente. Si no fuese así, pueden ser razones subjetivas de otro tipo las que generan un sufrimiento psíquico, que puede requerir una ayuda
+        profesional.
+    </string>
+    <string name="qc16">¿Puede el paciente rechazar que alguien desconocido entre en su casa para ayudar a cuidarlo?</string>
+    <string name="ac16">
+        Los cambios siempre suelen alterar y contrariar al enfermo de alzhéimer. Para que no exista ese rechazo se debe crear la necesidad en el paciente,
+        para que así vea que esta persona viene a satisfacer dicha necesidad.
+        \n
+        Es muy importante que la persona conozca la enfermedad y tenga experiencia en el trato y cuidado de personas con demencias. También es positivo
+        establecer un vínculo afectivo entre el paciente y cuidador.
+    </string>
+    <string name="qc17">¿Es positivo participar en las reuniones de asociaciones de familiares de enfermos de Alzhéimer?</string>
+    <string name="ac17">
+        La asistencia a estos grupos permite conocer a personas que tienen problemas similares, que se hacen preguntas parecidas y que tienen que
+        resolver los mismos problemas. En ellos, podemos compartir emociones, sentimientos comunes y dudas, por lo que nos ayudará a resolver los
+        problemas diarios del cuidador.
+        \n
+        Además, nos hace sentirnos apoyados en las dificultades diarias y también en los momentos difíciles de la enfermedad, atenuando el aislamiento
+        y la soledad que puede padecer el cuidador.
+        \n
+        Buscar un grupo de apoyo al cuidador sirve de ayuda a nivel psicológico y emocional (el cuidador se siente más apoyado, comparte sus
+        pensamientos, se relaciona con más personas…) y a nivel operativo (se pueden resolver dudas e inquietudes y aprender mucho compartiendo
+        experiencias con personas en la misma situación).
+    </string>
+    <string name="qc18">¿Cuáles son los beneficios de acudir a reuniones de familiares?</string>
+    <string name="ac18">
+        Los beneficios de acudir a las reuniones de un grupo de familiares, son múltiples y variados, ya que permiten:\n
+        \n
+        <li>Encontrar información (sobre la enfermedad, recursos sociales y sanitarios disponibles, etc) y compartir con normalidad experiencias relacionadas
+        con los cuidados, o dudas y temores sobre el futuro.\n</li>
+        <li>Crear un lugar de encuentro donde poder compartir conocimientos y sentimientos.\n</li>
+        <li>Recibir apoyo, soporte emocional y comprensión de otras personas que están en la misma situación.</li>
+    </string>
+    <string name="qc19">El cuidado de mi familiar me está afectando psicologicamente y no puedo mas ¿Qué puedo hacer?</string>
+    <string name="ac19">
+        El cuidado de un dependiente puede producir alteraciones en nuestro equilibrio psicológico y estado de ánimo -ansiedad o depresión-.\n
+        En esos casos, es necesario acudir a un profesional: un psicólogo, que te oriente en las conductas que puedes modificar y te enseñe prácticas
+        reductoras de estrés.\n
+        También puede ser de ayuda acudir a asociaciones de familiares de afectados de alzhéimer, donde poder compartir estos sentimientos y recibir
+        apoyo de personas en una situación similar. Puedes encontrar un listado de las Asociaciones que existen en España en el apartado "Asociaciones"
+        de esta app.
+    </string>
+    <string name="qc20">Cuáles son los síntomas más frecuentes relacionados con la función cuidadora</string>
+    <string name="ac20">
+        Pueden detectarse síntomas de diversos tipos:\n
+        \n
+        <li>Físicos: dolor de cabeza, problemas digestivos o de alimentación, sensación de cansancio o agotamiento, taquicardias, hipertensión...</li>\n
+        <li>Psíquicos: depresión, ansiedad, problemas de conducta alimentaria, problemas de sueño, irritabilidad, consumo inadecuado de substancias
+        (incluidos psicofármacos), abandono del autocuidado...</li>\n
+        <li>Síntomas que afectan a la vida laboral o social: problemas para conciliar la función cuidadora con otras funciones, no preservar un
+        espacio personal básico, tendencia a la soledad y al aislamiento, pérdida de rendimiento...</li>
+    </string>
+    <string name="qc21">¿Cómo puedo saber si tengo el síndrome del cuidador (burn-out)?</string>
+    <string name="ac21">
+        Cuando no se previenen o resuelven los problemas de ansiedad o desánimo, estos sentimientos pueden volverse crónicos, llegando a la situación
+        de sentirse quemado (síndrome de burn-out).
+        \n
+        El síndrome se reconoce por el agotamiento emocional, el trato despersonalizado a la persona cuidada, los sentimientos de insatisfacción intensos
+        y de falta de logros y reconocimiento, el pesimismo y la tendencia al abandono y el desánimo.
+    </string>
+    <string name="qc22">¿Que cambios indican que tengo el síndrome del cuidador?</string>
+    <string name="ac22">
+        <li>Insomnio: dificultad para conciliar el sueño o todo el contrario (demasiado sueño).</li>
+        <li>Fatiga crónica.</li>
+        <li>Aislamiento: tendencia a abandonarse, a apartarse de las relaciones sociales, incluso de las familiares.</li>
+        <li>Problemas físicos: palpitaciones, tensiones, molestias digestivas...</li>
+        <li>Problemas con el apetito: aumento o disminución.</li>
+        <li>Dificultad para incluir a la familia en decisiones y relaciones: suele acarrear alteraciones de la pareja, discusiones, pérdida de intimidad,
+            problemas de relación sexual…</li>
+        <li>Dificultad para solucionar diversos tipos de nerviosismo, depresión...</li>
+    </string>
+    <string name="qc23">¿Cómo puedo evitar el síndrome del cuidador?</string>
+    <string name="ac23">
+        <li>Descansa lo suficiente.</li>\n
+        <li>Dedícate tiempo.</li>\n
+        <li>Realiza actividades que te gusten.</li>\n
+        <li>Conserva a tus amigos o relaciones para no aislarte. Comenta con ellos tus problemas y diviértete.</li>\n
+        <li>Conserva tu salud y una buena apariencia física.</li>\n
+        <li>Comunícate con las Asociaciones de Familiares de la zona donde vives; en Galicia puedes contactar con FAGAL (Federación de Asociaciones
+        Gallegas de Familiares de Enfermos de Alzheimer).</li>\n
+        <li>Encuentra tiempo libre para descansar, hacer la compra, conservar actividades de ocio o estar sólo.</li>\n
+        <li>Pide la ayuda de otras personas (familiares, amigos, vecinos, ayuda a domicilio, etc.) y no la rechaces si te la ofrecen. Es un paso difícil,
+        pero es decisivo para poder continuar.</li>
+    </string>
+    <string name="qc24">Si padezco síndrome del cuidador ¿Qué puedo hacer para mejorar mi estado?</string>
+    <string name="ac24">
+        <li>Vuelve a incorporar en tu vida intereses, actividades, contactos, amistades…que hayas ido abandonando. Haz una lista de actividades que te
+        gustaría realizar y comienza por las más sencillas. Gradualmente podrás incorporar más para que el disfrute personal sea una parte natural de
+        tu día a día.\n</li>
+        <li>Aunque la vida te parezca cargada de pena, cansancio, frustración y tristeza, no pierdas la capacidad de reír, amar o sentir alegría.\n</li>
+        <li>La risa ayuda a nuestra cordura en momentos de dificultad. No te sientas mal por reírte de los errores que comete una persona confusa.
+        Probablemente ella también se reirá, aunque no sepa lo que te hace gracia.\n</li>
+        <li>Anímate a hacer cosas, a participar, realizarte, relacionarte...</li>
+    </string>
+    <string name="qc25">¿Debo ir preparándome mentalmente para la muerte de mi familiar?</string>
+    <string name="ac25">
+        La muerte es algo inevitable, pero que no debe obsesionarnos. Es positivo que, en vida del enfermo, le expresemos nuestros sentimientos de afecto
+        y le pidamos perdón -si es necesario- por algo dicho o hecho, aún cuando no pueda entendernos. Vivir una relación limpia día a día, aprender a
+        perdonar y a perdonarnos -mientras podemos- nos permitirá luego poder vivir un duelo más sereno, sin mortificarnos por situaciones que ya no
+        podremos resolver.
+    </string>
+    <string name="qc26">¿Cómo puedo superar la muerte del familiar al que cuidaba?</string>
+    <string name="ac26">
+        La tristeza es algo normal y hay que manifestarla: mostrar los sentimientos de pérdida (llorar sin miedo) es necesario para poder ir superando
+        la situación. Tras la pérdida, pueden aparecer sentimientos de culpa, rabia, arrepentimiento por cosas dichas o no dichas…Para superarlos,
+        debemos aprender a perdonarnos a nosotros mismos y no culparnos.
+        \n
+        También es probable que sintamos un dolor y una pena profunda (que puede provocar aislamiento, depresión…), pero a medida que pase el tiempo,
+        nos daremos cuenta de que esa pena es compatible con una vida normal (podemos y debemos seguir viviendo) y, poco a poco, el tiempo hará que
+        volvamos a tener nuevas ilusiones y mirar con esperanza el futuro.
+    </string>
+
+    <!-- String Warnings Carer -->
+    <string name="qa1">Te puedes equivocar.</string>
+    <string name="aa1">
+        Concédete el derecho a cometer errores y a experimentar sentimientos negativos (todos somos humanos, así que no te mortifiques).
+    </string>
+    <string name="qa2">No te pares.</string>
+    <string name="aa2">
+        Busca toda la información que puedas a través de profesionales, asociaciones de familiares y conocidos. Así, podras resolver todas tus dudas
+        y solucionar los problemas que se presentan.
+    </string>
+    <string name="qa3">No pierdas el sentido del humor.</string>
+    <string name="aa3">
+        Muchas veces recurrir al humor y reírse de las situaciones, te ayudará a desdramatizarlas y llevarlas mejor.
+    </string>
+    <string name="qa4">Déjate ayudar.</string>
+    <string name="aa4">
+        No rechaces la ayuda que te ofrecen familiares, vecinos o amigos. Es mejor aceptar ayuda y delegar algunas responsabilidades para mitigar
+        la sobrecarga que supone ser el cuidador principal.
+    </string>
+    <string name="qa5">Anticipate.</string>
+    <string name="aa5">
+        Sé precavido, informate y anticípate en la medida de lo posible a problemas previsibles. Conoce cómo va a ir evolucionando la enfermedad,
+        hará que sepas reaccionar ante los primeros síntomas de cambio.
+    </string>
+    <string name="qa6">Cuídate tú.</string>
+    <string name="aa6">
+        Si no cuidas tu propia salud y bienestar, no podrás cuidar adecuadamente a tu familiar enfermo. Intenta descansar y desconectar todo lo que puedas.
+    </string>
+    <string name="qa7">No pierdas la paciencia.</string>
+    <string name="aa7">
+        Cuando esperas una respuesta no seas impaciente ni te sientas frustrada porque no sea lo que esperas. Cuando las cosas no salen como tenías previsto,
+        no te desesperes e intenta tomártelo con humor, sin perderlos nervios.
+    </string>
+    <string name="qa8">Desestrésate.</string>
+    <string name="aa8">
+        Para salir de situaciones agobiantes, distráete con algo sencillo y que te guste. Recupera hobbies (pintar, manualidades, lectura, deportes, tocar
+        algun instrumento, etc..), realiza ejercicios de respiración y relajación, escucha musica, etc...
+    </string>
+    <string name="qa9">No te olvides de tus propias necesidades.</string>
+    <string name="aa9">
+        Intenta hacer un especio para ti cada día, para hacer algo que te guste o te haga sentir realizad@. Intenta reservar un rato para tu propia vida
+        social, para no perder la relación con tus amig@s o entorno; sal a tomar un café, dar un paseo, hacer compras con aquellas personas con quién
+        solias hacerlo antes.
+    </string>
+    <string name="qa10">Piensa diferente.</string>
+    <string name="aa10">
+        Pensar en el estrés hace que aveces nos estresemos más. Trata de pensar en otras cosas, ver la situación de otra manera (con humor, si es posible)
+        y no pierdas la positividad.
+    </string>
+
+    <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="sign_in_with_facebook">Sign in with Facebook</string>
+    <string name="label_register_account">Don´t have an account?</string>
+    <!-- physical execise-->
+    <string name="physical_execise_title">Exercise Name</string>
+    <string name="physical_execise_description">Description</string>
+    <string name="title_activity_games">Games</string>
+    <string name="label_write_question">Write a question which corresponds to the image.</string>
+    <string name="label_answer">Escriba una opción de respuesta.</string>
+    <string name="label_select_correct_answer">Select correct answer.</string>
+</resources>

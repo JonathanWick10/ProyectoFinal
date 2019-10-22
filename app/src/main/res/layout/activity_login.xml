@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.Login">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:padding="@dimen/ten"
+            android:gravity="center"
+            android:background="@drawable/color_gradient_background"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="@dimen/sixteen"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/twenty"
+                android:src="@drawable/ic_imagotipo_white" />
+
+            <!-- caja de texto para nombre de usuario -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/StyleTextInputLayotTextBoxLogin"
+                android:id="@+id/txtinput_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ten"
+                android:hint="@string/email"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:startIconDrawable="@drawable/ic_mail_black"
+                app:startIconTint="@color/colorBackround">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/StyleTextInputEditTextLogin"
+                    android:id="@+id/login_admin_edt_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- caja de texto para contraseña de usuario -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/StyleTextInputLayotTextBoxLogin"
+                android:id="@+id/txtinput_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/admin_pass"
+                app:endIconMode="password_toggle"
+                app:errorEnabled="true"
+                app:startIconDrawable="@drawable/ic_https_black"
+                app:startIconTint="@color/colorBackround">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/StyleTextInputEditTextLogin"
+                    android:id="@+id/login_admin_edt_pass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--
+            <com.google.android.gms.common.SignInButton
+                style="@style/StyleLoginButtons"
+                android:id="@+id/btn_login_google"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+                -->
+
+            <!-- botón para inicio de sesión -->
+            <com.google.android.material.button.MaterialButton
+                style="@style/StyleLoginButtons"
+                android:id="@+id/login_admin_btn_enter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sixteen"
+                android:text="@string/admin_enter"
+                app:iconGravity="start"
+                app:icon="@drawable/ic_brainmher"
+                app:iconSize="@dimen/twentyFive"/>
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/StyleLoginButtons"
+                android:id="@+id/btn_login_google"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/sign_in_with_google"
+                app:iconGravity="start"
+                app:icon="@drawable/ic_google"
+                app:iconSize="@dimen/twentyFive"/>
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/StyleLoginButtons"
+                android:id="@+id/btn_login_facebook"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Continuar con Facebook"
+                app:iconGravity="start"
+                app:icon="@drawable/ic_facebook"
+                app:iconSize="@dimen/twentyFive"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <TextView
+                    style="@style/StyleTextLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/twenty"
+                    android:layout_marginVertical="@dimen/five"
+                    android:paddingVertical="@dimen/ten"
+                    android:text="@string/label_register_account"/>
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/StyleTextButton"
+                    android:id="@+id/link_registrar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/five"
+                    android:paddingVertical="@dimen/ten"
+                    android:text="Registrar"/>
+
+            </LinearLayout>
+        </LinearLayout>
+</RelativeLayout>

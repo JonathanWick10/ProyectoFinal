@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.patient.CognitiveChildFragment">
+
+
+    <com.google.android.material.card.MaterialCardView
+        style="@style/StyleCardView"
+        android:id="@+id/cardActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:strokeColor="@color/colorPrimaryLight"
+        app:strokeWidth="@dimen/two"
+        android:clickable="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/iv_game_miniature"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/oneHundredNinetyFour"
+                android:src="@drawable/cards" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_margin="@dimen/sixteen">
+
+                <TextView
+                    style="@style/StyleCardViewTitles"
+                    android:id="@+id/lbl_activity_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/thirty"
+                    android:text="Memorama" />
+
+                <TextView
+                    style="@style/StyleCardViewSubTitles"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/twentyFive"
+                    android:layout_marginTop="@dimen/two"
+                    android:text="@string/lbl_description"/>
+
+                <TextView
+                    style="@style/StyleCardViewDescriptions"
+                    android:id="@+id/admin_txtv_idps"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/twentyFive"
+                    android:text="Juego de cartas para estumilar la memoria."/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal">
+                    <Button
+                        android:id="@+id/btnExpand"
+                        android:layout_width="@dimen/sixty"
+                        android:layout_height="@dimen/sixty"
+                        android:background="@drawable/ic_keyboard_arrow_down_black"
+                        android:backgroundTint="@color/colorPrimary"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/expandableView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:layout_marginLeft="@dimen/sixteen"
+                android:layout_marginRight="@dimen/sixteen"
+                android:layout_marginBottom="@dimen/sixteen">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@android:color/darker_gray"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/twentyFive"
+                    android:layout_marginTop="@dimen/ten"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        style="@style/StyleCardViewSubTitles"
+                        android:id="@+id/lbl_level"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/lbl_level"/>
+
+                    <TextView
+                        style="@style/StyleCardViewDescriptions"
+                        android:id="@+id/data_level"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="3/5"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/twentyFive"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/StyleCardViewSubTitles"
+                        android:id="@+id/lbl_progress"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/lbl_progress"/>
+
+                    <TextView
+                        style="@style/StyleCardViewDescriptions"
+                        android:id="@+id/data_progress"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="60%"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/twentyFive"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/StyleCardViewSubTitles"
+                        android:id="@+id/lbl_statement"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/lbl_statement"/>
+
+                    <TextView
+                        style="@style/StyleCardViewDescriptions"
+                        android:id="@+id/data_statement"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Incompleto"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@android:color/darker_gray" />
+
+            <LinearLayout
+                style="@style/StyleLayoutActionCardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/StyleCardViewDescriptions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/lbl_rate" />
+
+                <androidx.appcompat.widget.AppCompatRatingBar
+                    android:id="@+id/ratingBar"
+                    android:layout_width="@dimen/oneHundredAndEighty"
+                    android:layout_height="@dimen/fortyFive"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
+                    android:numStars="4"
+                    android:stepSize="1"/>
+
+                <TextView
+                    style="@style/StyleCardViewDescriptions"
+                    android:id="@+id/data_rating"
+                    android:layout_width="@dimen/ten"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/colorPrimary"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <!--
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:padding="@dimen/ten"
+            >
+            <LinearLayout
+                android:layout_width="@dimen/twoHundred"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                >
+
+                <ImageView
+                    android:id="@+id/iv_game_miniature"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/ninety"
+                    android:src="@drawable/cards" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="@dimen/five">
+
+
+
+                <TextView
+                    android:id="@+id/lbl_activity_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingLeft="@dimen/ten"
+                    android:text="Nombre de juego"
+                    android:textSize="@dimen/fifteenText"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/lbl_progress"
+                        android:paddingLeft="@dimen/ten"
+                        android:textSize="@dimen/fifteenText" />
+
+                    <TextView
+                        android:id="@+id/admin_txtv_idps"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="60%"
+                        android:textAlignment="center"
+                        android:textSize="@dimen/fifteenText" />
+                </LinearLayout>
+
+                <Button
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:id="@+id/action_button_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Información"
+                    android:textColor="@color/colorPrimaryLight" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="@dimen/twoHundred"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                >
+
+                <ImageView
+                    android:id="@+id/img_start_game_"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/ninety"
+                    android:src="@drawable/ic_casino_black" />
+            </LinearLayout>
+        </LinearLayout>
+        -->
+
+
+        <!-- CARDS DE PRUEBA
+        <LinearLayout
+            android:padding="@dimen/ten"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/admin_plantilla_imgav"
+                android:layout_width="@dimen/oneHundred"
+                android:layout_height="@dimen/oneHundred"
+                android:layout_gravity="center"
+                android:src="@drawable/avatar_patient" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/name_patient"
+                android:textAlignment="center"
+                android:textSize="@dimen/twentyText"
+                />
+            <LinearLayout
+                android:padding="@dimen/fifteen"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="@dimen/twentyFive"
+                    android:layout_height="wrap_content"
+                    android:text="@string/admin_id"
+                    android:textSize="@dimen/twentyText"
+                    android:textAlignment="center"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/admin_enter"
+                    android:textSize="@dimen/twentyText"
+                    android:textAlignment="center"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:padding="@dimen/fifteen"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/twentyFive"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/admin_place"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/twentyText" />
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/admin_enter"
+                    android:textSize="@dimen/twentyText"
+                    android:textAlignment="center"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:padding="@dimen/fifteen"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/fifteen"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/admin_profession"
+                    android:textSize="@dimen/twentyText"
+                    android:textAlignment="center"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/admin_enter"
+                    android:textSize="@dimen/twentyText"
+                    android:textAlignment="center"/>
+
+            </LinearLayout>
+        </LinearLayout>
+        FIN CARDS DE PRUEBA -->
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.core.widget.NestedScrollView>

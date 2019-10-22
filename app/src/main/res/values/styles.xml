@@ -1,11 +1,273 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!-- Standard style for text view layout (Login) -->
+    <style name="StyleTextViewTitles">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Standard style for buttons -->
+    <style name="StylePrimaryColoredButton" parent="Widget.MaterialComponents.Button">
+        <!--<item name="colorButtonNormal">@color/colorPrimaryDark</item>
+        <item name="colorControlHighlight">@color/colorPrimary</item>-->
+        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="rippleColor">@color/colorAccent</item>
+        <item name="android:textStyle">bold</item>
+        <item name="iconPadding">15dp</item>
+    </style>
+
+    <!-- Standard style for login buttons -->
+    <style name="StyleLoginButtons" parent="Widget.MaterialComponents.Button">
+        <!--<item name="colorButtonNormal">@color/colorPrimaryDark</item>
+        <item name="colorControlHighlight">@color/colorPrimary</item>-->
+        <item name="rippleColor">@color/colorAccent</item>
+        <item name="android:textStyle">bold</item>
+        <item name="iconPadding">15dp</item>
+        <item name="cornerRadius">@dimen/twenty</item>
+    </style>
+
+
+    <!--
+    //Standard style for google login
+    <style name="StyleButtonGoogleLog" parent="Widget.MaterialComponents.Button">
+        //<item name="colorButtonNormal">@color/colorPrimaryDark</item>
+        //<item name="colorControlHighlight">@color/colorPrimary</item>
+        // <item name="backgroundTint">@color/white</item>
+        <item name="rippleColor">@color/colorAccent</item>
+        <item name="android:textStyle">bold</item>
+        <item name="iconPadding">15dp</item>
+    </style>
+    -->
+
+    <!-- Standard style for facebook login
+    <style name="StyleButtonFacebookLog" parent="Widget.MaterialComponents.Button">
+        //<item name="colorButtonNormal">@color/colorPrimaryDark</item>
+        //<item name="colorControlHighlight">@color/colorPrimary</item>
+        //<item name="backgroundTint">#3b5998</item>
+        <item name="rippleColor">@color/colorAccent</item>
+        <item name="android:textStyle">bold</item>
+        <item name="iconPadding">15dp</item>
+    </style>
+    -->
+
+    <!-- Standard style for text input layout (Login) -->
+    <style name="StyleTextInputLayotTextBoxLogin" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxStrokeColor">@color/text_input_box_stroke</item>
+        <item name="endIconTint">@color/colorBackround</item>
+        <item name="hintTextColor">@color/colorBackround</item>
+        <item name="android:textColorHint">@color/colorBackround</item>
+        <item name="boxStrokeWidth">0.5dp</item>
+        <item name="errorIconTint">@color/white</item>
+        <item name="errorTextColor">@color/white</item>
+        <item name="android:layout_margin">@dimen/three</item>
+    </style>
+
+    <!--
+    <style name="StyleTextInputLayotTextBoxLogin" parent="Widget.Design.TextInputLayout">
+        <item name="boxStrokeColor">@color/text_input_box_stroke</item>
+        <item name="endIconTint">@color/colorBackround</item>
+        <item name="hintTextColor">@color/colorBackround</item>
+        <item name="boxBackgroundMode">outline</item>
+        <item name="boxBackgroundColor">#0c000000</item>
+        <item name="helperTextTextColor">@color/colorBackround</item>
+    </style>
+    -->
+
+    <!-- Standard style for text box layout (Forms) -->
+    <style name="StyleTextInputLayotTextBoxForms" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
+        <item name="endIconTint">@color/colorPrimary</item>
+        <item name="boxBackgroundColor">@color/colorBackround</item>
+        <item name="android:layout_margin">10dp</item>
+    </style>
+
+
+    <!-- Standard style for layout of drop-down lists (Forms) -->
+    <style name="StyleTextInputLayotDropDownForms" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu">
+        <item name="boxBackgroundColor">@color/colorBackround</item>
+        <item name="android:paddingBottom">@dimen/ten</item>
+        <item name="android:paddingRight">@dimen/ten</item>
+        <item name="android:paddingLeft">@dimen/ten</item>
+    </style>
+
+    <!-- Standard style for text boxes -->
+    <style name="StyleTextInputEditText">
+        <item name="android:textStyle">bold</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <!-- Standard style for text boxes in login -->
+    <style name="StyleTextInputEditTextLogin">
+        <item name="android:textStyle">bold</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textColor">@color/colorBackround</item>
+        <item name="android:textColorHint">@color/colorBackround</item>
+        <item name="android:colorAccent">@color/colorBackround</item>
+    </style>
+
+    <!-- Standard style for radio groups -->
+    <style name="StyleRadioGroupForms" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:paddingLeft">@dimen/fiftyFive</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <!-- Standard style for radio buttons -->
+    <style name="StyleRadioButtonForms" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:layout_weight">1</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/gray</item>
+    </style>
+
+    <!-- Standard style for image calendar button -->
+    <style name="StyleCircleImageViewCalendarForms" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="android:background">@color/colorBackround</item>
+        <item name="android:src">@drawable/ic_calendar</item>
+        <item name="android:layout_marginBottom">@dimen/ten</item>
+        <item name="android:layout_marginRight">@dimen/ten</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:clickable">true</item>
+        <item name="android:elevation">@dimen/elevationTwo</item>
+    </style>
+
+    <!-- Standard style for gender subtitle (Forms) -->
+    <style name="StyleLabelGenderForms">
+        <item name="android:layout_marginRight">@dimen/ten</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/fifteen</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <!-- Standard style for field container and image for date of birth -->
+    <style name="StyleLinearLayoutBirthDateForms">
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:paddingRight">@dimen/ten</item>
+    </style>
+
+    <!-- Standard style for gender field container -->
+    <style name="StyleLinearLayoutGenderForms">
+        <item name="android:orientation">horizontal</item>
+        <item name="android:paddingLeft">@dimen/ten</item>
+    </style>
+
+    <!-- Standard style for bottom navigation -->
+    <style name="StyleBottonNavigation" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
+        <item name="elevation">1dp</item>
+    </style>
+
+    <!-- Strandard style for text in tabs -->
+    <style name="StyleTextTabs" parent="Widget.MaterialComponents.TabLayout">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Strandard style for tabs layout with primary color -->
+    <style name="StyleTabLayoutPrimary" parent="Widget.MaterialComponents.TabLayout.Colored">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="tabIndicatorColor">@color/colorAccent</item>
+        <item name="tabMode">fixed</item>
+        <item name="tabTextColor">@color/colorBackround</item>
+        <item name="tabIconTint">@color/white</item>
+        <item name="tabTextAppearance">@style/StyleTextTabs</item>
+        <item name="tabRippleColor">@color/colorAccent</item>
+    </style>
+
+    <!-- Standard style for card view -->
+    <style name="StyleCardView" parent="Widget.MaterialComponents.CardView">
+        <item name="android:layout_margin">@dimen/ten</item>
+        <item name="cardCornerRadius">@dimen/twenty</item>
+        <item name="cardElevation">@dimen/elevarionSix</item>
+        <item name="rippleColor">@color/colorAccent</item>
+    </style>
+
+    <!-- Standard style for card view titles -->
+    <style name="StyleCardViewTitles">
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">@dimen/twentyOneText</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Standard style for card view subtitles -->
+    <style name="StyleCardViewSubTitles">
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">@dimen/seventeenText</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Standard style for card view descriptions -->
+    <style name="StyleCardViewDescriptions">
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">@dimen/fifteenText</item>
+    </style>
+
+    <!-- Standard style for subtitles with background in cardview -->
+    <style name="StyleSubsCardView">
+        <item name="android:layout_gravity">bottom</item>
+        <item name="android:background">#6c000000</item>
+        <item name="android:textColor">@color/colorBackround</item>
+        <item name="android:textSize">@dimen/twentyText</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:padding">@dimen/ten</item>
+    </style>
+
+    <!-- Standard style for text label  -->
+    <style name="StyleTextLabel">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Standard style for text button -->
+    <style name="StyleTextButton" parent="Widget.MaterialComponents.Button.TextButton.Dialog.Flush">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="cornerRadius">@dimen/twenty</item>
+        <item name="rippleColor">@color/colorAccent</item>
+    </style>
+
+    <!-- Standard style for text button in card view -->
+    <style name="StyleTextButtonCardView" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textStyle">bold</item>
+        <item name="cornerRadius">@dimen/twenty</item>
+        <item name="rippleColor">@color/colorAccent</item>
+    </style>
+
+    <!-- Standard style for layout actions in card view -->
+    <style name="StyleLayoutActionCardView">
+        <item name="android:layout_marginTop">@dimen/ten</item>
+        <item name="android:layout_marginLeft">@dimen/sixteen</item>
+        <item name="android:layout_marginBottom">@dimen/ten</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <!-- Standard style for layout button actions in card view -->
+    <style name="StyleLayoutButtonActionCardView">
+        <item name="android:layout_marginTop">@dimen/ten</item>
+        <item name="android:layout_marginLeft">@dimen/ten</item>
+        <item name="android:layout_marginBottom">@dimen/ten</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:orientation">horizontal</item>
     </style>
 
 </resources>
