@@ -783,4 +783,7 @@
     <string name="physical_execise_title">Exercise Name</string>
     <string name="physical_execise_description">Description</string>
     <string name="title_activity_games">Games</string>
+    <string name="label_write_question">Write a question which corresponds to the image.</string>
+    <string name="label_answer">Escriba una opción de respuesta.</string>
+    <string name="label_select_correct_answer">Select correct answer.</string>
 </resources>
