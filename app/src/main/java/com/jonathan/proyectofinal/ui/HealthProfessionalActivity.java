@@ -20,17 +20,15 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.jonathan.proyectofinal.R;
-import com.jonathan.proyectofinal.fragments.carer.HeartFragment;
 import com.jonathan.proyectofinal.fragments.carer.MemorizameFamilyFragment;
 import com.jonathan.proyectofinal.fragments.carer.MemorizameFragment;
+import com.jonathan.proyectofinal.fragments.carer.MemorizameHomeFragment;
+import com.jonathan.proyectofinal.fragments.carer.MemorizamePetsFragment;
+import com.jonathan.proyectofinal.fragments.carer.MemorizamePlacesFragment;
 import com.jonathan.proyectofinal.fragments.hp.CognitiveTherapyPSFragment;
-import com.jonathan.proyectofinal.fragments.hp.GraphPSFragment;
 import com.jonathan.proyectofinal.fragments.hp.InformationCarerPSFragment;
-import com.jonathan.proyectofinal.fragments.hp.InformationPSFragment;
 import com.jonathan.proyectofinal.fragments.hp.InformationPatientPSFragment;
 import com.jonathan.proyectofinal.fragments.hp.MotorTherapyPSFragment;
-import com.jonathan.proyectofinal.fragments.hp.NotificationPSFragment;
-import com.jonathan.proyectofinal.fragments.hp.TherapyPSFragment;
 import com.jonathan.proyectofinal.interfaces.IMainCarer;
 
 public class HealthProfessionalActivity extends AppCompatActivity implements IMainCarer {
@@ -117,7 +115,23 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
         }
         else if(fragmentTag.equals(getString(R.string.tab_family_questions))){
             change = new MemorizameFamilyFragment();
-            transaction.replace(R.id.containerPageTherapyPS,change).commit();
+            transaction.replace(R.id.containerMemorizame,change).commit();
+        }
+        else if(fragmentTag.equals(getString(R.string.tab_family_questions))){
+            change = new MemorizameFamilyFragment();
+            transaction.replace(R.id.containerMemorizame,change).commit();
+        }
+        else if(fragmentTag.equals(getString(R.string.tab_pets_questions))){
+            change = new MemorizamePetsFragment();
+            transaction.replace(R.id.containerMemorizame,change).commit();
+        }
+        else if(fragmentTag.equals(getString(R.string.tab_home_questions))){
+            change = new MemorizameHomeFragment();
+            transaction.replace(R.id.containerMemorizame,change).commit();
+        }
+        else if(fragmentTag.equals(getString(R.string.tab_places_questions))){
+            change = new MemorizamePlacesFragment();
+            transaction.replace(R.id.containerMemorizame,change).commit();
         }
     }
 }

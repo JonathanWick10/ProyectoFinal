@@ -22,7 +22,11 @@ import com.jonathan.proyectofinal.fragments.carer.GeneralInformationFragment;
 import com.jonathan.proyectofinal.fragments.carer.HeartFragment;
 import com.jonathan.proyectofinal.fragments.carer.InformationCarerFragment;
 import com.jonathan.proyectofinal.fragments.carer.ManageFragment;
+import com.jonathan.proyectofinal.fragments.carer.MemorizameFamilyFragment;
 import com.jonathan.proyectofinal.fragments.carer.MemorizameFragment;
+import com.jonathan.proyectofinal.fragments.carer.MemorizameHomeFragment;
+import com.jonathan.proyectofinal.fragments.carer.MemorizamePetsFragment;
+import com.jonathan.proyectofinal.fragments.carer.MemorizamePlacesFragment;
 import com.jonathan.proyectofinal.fragments.carer.NearbyHospitalFragment;
 import com.jonathan.proyectofinal.fragments.carer.PhasesEAFragment;
 import com.jonathan.proyectofinal.fragments.carer.TestFragment;
@@ -70,7 +74,7 @@ public class MainCarer extends AppCompatActivity implements IMainCarer {
             //change = new ManageFragment();
             //transaction.replace(R.id.containerHome,change).commit();
         }
-        if(fragmentTag.equals(getString(R.string.diary))){
+        else if(fragmentTag.equals(getString(R.string.diary))){
             change = new DiaryFragment();
             transaction.replace(R.id.containerHome,change).commit();
         }

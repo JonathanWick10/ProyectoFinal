@@ -14,6 +14,7 @@ import com.jonathan.proyectofinal.R;
 public class MemorizameFamilyFragment extends Fragment {
 
     public MemorizameFamilyFragment(){}
+
 /*    public MemorizameFamilyFragment(int contentLayoutId) {
         super(contentLayoutId);
     }

@@ -20,7 +20,7 @@
                 android:id="@+id/ps_tab_therapy_cognitive"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Monday"
+                android:text="@string/cognitive"
                 android:layout_alignParentStart="true"
                 />
 
@@ -28,21 +28,21 @@
                 android:id="@+id/ps_tab_therapy_motor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tuesday" />
+                android:text="@string/motor" />
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/ps_tab_therapy_memorizame"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Memorizame" />
+                android:text="@string/menu_memorizame" />
 
         </com.google.android.material.tabs.TabLayout>
 
         <androidx.viewpager.widget.ViewPager
+            android:id="@+id/containerPageTherapyPS"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="4dp"
-            android:id="@+id/containerPageTherapyPS"
             android:layout_below="@id/ps_tabs_therapy"
             />
 

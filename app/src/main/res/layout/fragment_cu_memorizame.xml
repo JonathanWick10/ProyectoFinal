@@ -18,12 +18,6 @@
         android:orientation="vertical"
         android:background="@drawable/round_corner">
 
-
-
-
-
-
-
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -120,7 +114,7 @@
     </LinearLayout>
 
     <FrameLayout
-        android:id="@+id/containerHome"
+        android:id="@+id/containerMemorizame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:elevation="30dp"></FrameLayout>
