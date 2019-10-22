@@ -27,8 +27,8 @@
 
                 <ImageView
                     android:id="@+id/iv_therapy_miniature"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
+                    android:layout_width="@dimen/oneHundredFifty"
+                    android:layout_height="@dimen/oneHundredFifty"
                     android:src="@drawable/cards" />
 
                 <LinearLayout
@@ -56,8 +56,8 @@
                         style="@style/StyleCardViewDescriptions"
                         android:id="@+id/admin_therapy_desc"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/twentyFive"
-                        android:text="Juego de cartas para estumilar la memoria."/>
+                        android:layout_height="wrap_content"
+                        android:text="Juego de cartas para estumilar la memoria y mejorar la atención del paciente a travez de la estimulación cognitiva ....."/>
                 </LinearLayout>
 
             </LinearLayout>

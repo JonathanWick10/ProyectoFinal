@@ -8,101 +8,109 @@
 
 
     <com.google.android.material.card.MaterialCardView
-        style="@style/StyleCardView"
         android:id="@+id/cardActivity"
+        style="@style/StyleCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:clickable="true"
         app:strokeColor="@color/colorPrimaryLight"
-        app:strokeWidth="@dimen/two"
-        android:clickable="true">
+        app:strokeWidth="@dimen/two">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/iv_game_miniature"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/oneHundredNinetyFour"
-                android:src="@drawable/cards" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_margin="@dimen/sixteen">
+                android:orientation="horizontal">
 
-                <TextView
-                    style="@style/StyleCardViewTitles"
-                    android:id="@+id/lbl_activity_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/thirty"
-                    android:text="Memorama" />
-
-                <TextView
-                    style="@style/StyleCardViewSubTitles"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/twentyFive"
-                    android:layout_marginTop="@dimen/two"
-                    android:text="@string/lbl_description"/>
-
-                <TextView
-                    style="@style/StyleCardViewDescriptions"
-                    android:id="@+id/admin_txtv_idps"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/twentyFive"
-                    android:text="Juego de cartas para estumilar la memoria."/>
+                <ImageView
+                    android:id="@+id/iv_game_miniature"
+                    android:layout_width="@dimen/oneHundredFifty"
+                    android:layout_height="@dimen/oneHundredFifty"
+                    android:src="@drawable/cards" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal">
-                    <Button
-                        android:id="@+id/btnExpand"
-                        android:layout_width="@dimen/sixty"
-                        android:layout_height="@dimen/sixty"
-                        android:background="@drawable/ic_keyboard_arrow_down_black"
-                        android:backgroundTint="@color/colorPrimary"/>
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/sixteen"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/lbl_activity_name"
+                        style="@style/StyleCardViewTitles"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/thirty"
+                        android:text="Memorama" />
+
+                    <TextView
+                        style="@style/StyleCardViewSubTitles"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/twentyFive"
+                        android:layout_marginTop="@dimen/two"
+                        android:text="@string/lbl_description" />
+
+                    <TextView
+                        android:id="@+id/admin_txtv_idps"
+                        style="@style/StyleCardViewDescriptions"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/twentyFive"
+                        android:text="Juego de cartas para estumilar la memoria y mejorar la atención del paciente a travez de la estimulación cognitiva ....." />
+
                 </LinearLayout>
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_horizontal">
+
+                <Button
+                    android:id="@+id/btnExpand"
+                    android:layout_width="@dimen/sixty"
+                    android:layout_height="@dimen/sixty"
+                    android:background="@drawable/ic_keyboard_arrow_down_black"
+                    android:backgroundTint="@color/colorPrimary" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/expandableView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:visibility="gone"
                 android:layout_marginLeft="@dimen/sixteen"
                 android:layout_marginRight="@dimen/sixteen"
-                android:layout_marginBottom="@dimen/sixteen">
+                android:layout_marginBottom="@dimen/sixteen"
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
-                    android:background="@android:color/darker_gray"/>
+                    android:background="@android:color/darker_gray" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/twentyFive"
                     android:layout_marginTop="@dimen/ten"
-                    android:orientation="horizontal" >
+                    android:orientation="horizontal">
 
                     <TextView
-                        style="@style/StyleCardViewSubTitles"
                         android:id="@+id/lbl_level"
+                        style="@style/StyleCardViewSubTitles"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="@string/lbl_level"/>
+                        android:text="@string/lbl_level" />
 
                     <TextView
-                        style="@style/StyleCardViewDescriptions"
                         android:id="@+id/data_level"
+                        style="@style/StyleCardViewDescriptions"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="3/5"/>
+                        android:text="3/5" />
 
                 </LinearLayout>
 
@@ -112,18 +120,18 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        style="@style/StyleCardViewSubTitles"
                         android:id="@+id/lbl_progress"
+                        style="@style/StyleCardViewSubTitles"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="@string/lbl_progress"/>
+                        android:text="@string/lbl_progress" />
 
                     <TextView
-                        style="@style/StyleCardViewDescriptions"
                         android:id="@+id/data_progress"
+                        style="@style/StyleCardViewDescriptions"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="60%"/>
+                        android:text="60%" />
 
                 </LinearLayout>
 
@@ -133,18 +141,18 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        style="@style/StyleCardViewSubTitles"
                         android:id="@+id/lbl_statement"
+                        style="@style/StyleCardViewSubTitles"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="@string/lbl_statement"/>
+                        android:text="@string/lbl_statement" />
 
                     <TextView
-                        style="@style/StyleCardViewDescriptions"
                         android:id="@+id/data_statement"
+                        style="@style/StyleCardViewDescriptions"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Incompleto"/>
+                        android:text="Incompleto" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -169,17 +177,17 @@
                     android:id="@+id/ratingBar"
                     android:layout_width="@dimen/oneHundredAndEighty"
                     android:layout_height="@dimen/fortyFive"
-                    android:layout_weight="1"
                     android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
                     android:numStars="4"
-                    android:stepSize="1"/>
+                    android:stepSize="1" />
 
                 <TextView
-                    style="@style/StyleCardViewDescriptions"
                     android:id="@+id/data_rating"
+                    style="@style/StyleCardViewDescriptions"
                     android:layout_width="@dimen/ten"
                     android:layout_height="match_parent"
-                    android:textColor="@color/colorPrimary"/>
+                    android:textColor="@color/colorPrimary" />
 
             </LinearLayout>
         </LinearLayout>
