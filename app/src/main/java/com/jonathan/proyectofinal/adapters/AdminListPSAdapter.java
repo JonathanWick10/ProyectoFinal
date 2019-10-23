@@ -10,14 +10,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.jonathan.proyectofinal.R;
+import com.jonathan.proyectofinal.data.Admin;
+import com.jonathan.proyectofinal.data.HealthcareProfessional;
 
 import java.util.List;
 
 public class AdminListPSAdapter extends RecyclerView.Adapter<AdminListPSAdapter.Holder> {
-    private List<String> list;
+    private List<HealthcareProfessional> list;
     private AdminListPSAdapter.AdminListPSAdapterI adapterI;
 
-    public AdminListPSAdapter(List<String> list, AdminListPSAdapter.AdminListPSAdapterI adapterI) {
+
+    public AdminListPSAdapter(List<HealthcareProfessional> list, AdminListPSAdapter.AdminListPSAdapterI adapterI) {
         this.list = list;
         this.adapterI = adapterI;
     }
@@ -25,6 +28,8 @@ public class AdminListPSAdapter extends RecyclerView.Adapter<AdminListPSAdapter.
     public class Holder extends RecyclerView.ViewHolder {
         public ImageView photo, delete;
         public TextView name, id, place, profession;
+        HealthcareProfessional item;
+
 
         public Holder(@NonNull View itemView) {
             super(itemView);
@@ -35,6 +40,15 @@ public class AdminListPSAdapter extends RecyclerView.Adapter<AdminListPSAdapter.
             place = itemView.findViewById(R.id.admin_txtv_placeps);
             profession = itemView.findViewById(R.id.admin_txtv_profesionps);
             delete = itemView.findViewById(R.id.admin_imgv_delete);
+        }
+
+        public void setData(HealthcareProfessional item){
+            this.item = item;
+            name.setText(item.getFirstName()+" "+item.getLastName());
+            id.setText(item.getIdentification());
+            place.setText(item.getEmployment_place());
+            profession.setText(item.getProfession());
+
         }
     }
 
@@ -48,8 +62,7 @@ public class AdminListPSAdapter extends RecyclerView.Adapter<AdminListPSAdapter.
     @Override
     public void onBindViewHolder(@NonNull AdminListPSAdapter.Holder holder, final int position) {
         //setear
-        holder.name.setText(list.get(position));
-        holder.id.setText(list.get(position));
+        holder.setData(list.get(position));
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,6 +79,6 @@ public class AdminListPSAdapter extends RecyclerView.Adapter<AdminListPSAdapter.
     }
 
     public interface AdminListPSAdapterI {
-        void btnEliminar(String pojo);
+        void btnEliminar(HealthcareProfessional pojo);
     }
 }

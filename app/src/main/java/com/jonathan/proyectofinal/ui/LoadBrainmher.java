@@ -8,11 +8,16 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.jonathan.proyectofinal.R;
+import com.jonathan.proyectofinal.database.LoginManager;
 
 public class LoadBrainmher extends AppCompatActivity {
 
     private final int DURATION_SPLAH = 2000;
+    private FirebaseAuth firebaseAuth;
+    private FirebaseUser firebaseUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,17 +33,27 @@ public class LoadBrainmher extends AppCompatActivity {
 //endregion
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        setContentView(R.layout.activity_load_brainmher);
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
 
+        setContentView(R.layout.activity_load_brainmher);
         //Método para definir parametros y funcionalidad al ejecutar el splash screen
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(LoadBrainmher.this, Login.class);
-                startActivity(intent);
+                redirect();
                 finish();
             };
         }, DURATION_SPLAH);
+    }
 
+    private void redirect() {
+        if (firebaseUser != null){
+            LoginManager loginManager = new LoginManager();
+            loginManager.redirectByRole(LoadBrainmher.this,firebaseUser);
+        }  else {
+            Intent intent = new Intent(LoadBrainmher.this, Login.class);
+            startActivity(intent);
+        }
     }
 }

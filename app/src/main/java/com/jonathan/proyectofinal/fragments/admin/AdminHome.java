@@ -17,6 +17,7 @@ import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.adapters.AdminListPSAdapter;
+import com.jonathan.proyectofinal.data.HealthcareProfessional;
 import com.jonathan.proyectofinal.fragments.games.Memorama;
 
 import butterknife.BindView;
@@ -46,7 +47,7 @@ public class AdminHome extends AppCompatActivity implements AdminAddHealthProfes
     private AdminListPSAdapter.AdminListPSAdapterI alertDelete() {
         AdminListPSAdapter.AdminListPSAdapterI psAdapterI = new AdminListPSAdapter.AdminListPSAdapterI() {
             @Override
-            public void btnEliminar(String pojo) {
+            public void btnEliminar(HealthcareProfessional pojo) {
                 AlertDialog.Builder alerta = new AlertDialog.Builder(AdminHome.this);
                 alerta.setTitle(getString(R.string.alert));
                 alerta.setMessage(getString(R.string.message_delete) + " - " + pojo);

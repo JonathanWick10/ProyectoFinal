@@ -13,9 +13,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.adapters.AdminListPSAdapter;
+import com.jonathan.proyectofinal.data.HealthcareProfessional;
+import com.jonathan.proyectofinal.tools.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +39,8 @@ public class AdminListPSFragment extends Fragment {
     private View view;
     private RecyclerView recyclerView ;
     private AdminListPSAdapter.AdminListPSAdapterI adapterI;
+    private List<HealthcareProfessional> healthcareProfessionalList = new ArrayList<>();
+    HealthcareProfessional hp = new HealthcareProfessional();
 
 
     public AdminListPSFragment (AdminListPSAdapter.AdminListPSAdapterI adapterI){
@@ -50,18 +59,22 @@ public class AdminListPSFragment extends Fragment {
 
     private void reference() {
         recyclerView = view.findViewById(R.id.admin_rv_list);
-        List<String> list= new ArrayList<>();
-        list.add("Data 1");
-        list.add("Data 2");
-        list.add("Data 3");
-        list.add("Data 4");
-        list.add("Data 5");
-        list.add("Data 6");
-        list.add("Data 7");
-        recyclerView.setAdapter(new AdminListPSAdapter(list,adapterI));
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setHasFixedSize(true);
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection(Constants.HealthcareProfesional).get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        healthcareProfessionalList = new ArrayList<>();
+                        for (QueryDocumentSnapshot documentSnapshot:
+                             queryDocumentSnapshots) {
+                            hp = documentSnapshot.toObject(HealthcareProfessional.class);
+                            healthcareProfessionalList.add(hp);
+                        }
+                        recyclerView.setAdapter(new AdminListPSAdapter(healthcareProfessionalList,adapterI));
+                        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                        recyclerView.setHasFixedSize(true);
+                    }
+                });
     }
  /*
     @OnClick(R.id.admin_fab_add)

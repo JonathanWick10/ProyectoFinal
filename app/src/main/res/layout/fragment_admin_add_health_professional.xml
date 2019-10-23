@@ -15,12 +15,13 @@
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/admin_createps_img_ps"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/oneHundred"
+            android:layout_height="0dp"
             android:layout_gravity="center"
             android:src="@drawable/avatar_patient"
             app:civ_border_width="2dp"
             app:civ_circle_background_color="@color/colorAccent"
-            app:civ_border_color="#8BC34A"/>
+            app:civ_border_color="#8BC34A"
+            android:visibility="invisible"/>
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/StyleTextInputLayotTextBoxForms"
@@ -65,7 +66,7 @@
             app:errorEnabled="true">
 
             <AutoCompleteTextView
-                android:id="@+id/admin_identification_type_patient"
+                android:id="@+id/admin_identification_type"
                 style="@style/StyleTextInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -277,6 +278,7 @@
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!--
         <com.google.android.material.textfield.TextInputLayout
             style="@style/StyleTextInputLayotTextBoxForms"
             android:layout_width="match_parent"
@@ -293,6 +295,7 @@
                 android:hint="@string/admin_til_confin_pass"
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
+        -->
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/StyleTextInputLayotTextBoxForms"
@@ -327,14 +330,30 @@
                 android:hint="@string/admin_til_workplace" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/admin_createps_btn_save"
-            style="@style/StylePrimaryColoredButton"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginLeft="@dimen/ten"
-            android:text="@string/admin_til_saveps" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/admin_createps_btn_save"
+                style="@style/StylePrimaryColoredButton"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="@dimen/ten"
+                android:text="@string/admin_til_saveps" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/admin_createps_btn_save_update"
+                style="@style/StylePrimaryColoredButton"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="@dimen/ten"
+                android:text="@string/admin_til_saveps"
+                android:visibility="invisible"/>
+
+        </RelativeLayout>
         <!-- pais, departamento, municipio, zona, foto .  -->
 
 
