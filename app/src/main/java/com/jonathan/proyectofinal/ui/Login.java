@@ -38,6 +38,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -49,13 +50,17 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.data.Admin;
 import com.jonathan.proyectofinal.data.Carer;
+import com.jonathan.proyectofinal.data.HealthcareProfessional;
 import com.jonathan.proyectofinal.database.AdminManager;
 import com.jonathan.proyectofinal.database.CarerManager;
 import com.jonathan.proyectofinal.database.LoginManager;
 import com.jonathan.proyectofinal.fragments.admin.AdminHome;
+import com.jonathan.proyectofinal.tools.Constants;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -95,6 +100,8 @@ public class Login extends AppCompatActivity {
     List<AuthUI.IdpConfig> providers;
     private FirebaseAuth firebaseAuth;
     FirebaseUser user;
+
+    HealthcareProfessional hp = new HealthcareProfessional();
 
     CallbackManager callbackManager;
     private static final String TAG="MainActivity";

@@ -95,6 +95,12 @@ public class AdminHome extends AppCompatActivity implements AdminAddHealthProfes
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
     /*private AdminListPSFragment.AdminListPSFragmentI addPsSalud(){
         AdminListPSFragment.AdminListPSFragmentI professionalI = new AdminListPSFragment.AdminListPSFragmentI() {
             @Override

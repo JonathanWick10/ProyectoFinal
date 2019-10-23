@@ -77,6 +77,7 @@ public class LoginManager {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 //user = firebaseAuth.getCurrentUser();
                 //emailPasswordLogin(context);
+
             }
         });
     }

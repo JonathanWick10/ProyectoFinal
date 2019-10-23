@@ -76,13 +76,7 @@ public class AdminListPSFragment extends Fragment {
                     }
                 });
     }
- /*
-    @OnClick(R.id.admin_fab_add)
-    public void addPs(View view){
 
-        listPSFragmentI.onclickAddPs();
-    }
-*/
    public interface AdminListPSFragmentI{
         void onclickAddPs();
     }

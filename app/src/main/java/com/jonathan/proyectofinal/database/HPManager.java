@@ -39,4 +39,17 @@ public class HPManager {
         return healthcareProfessional;
     }
     //endregion
+
+    //region CreateHP
+    public boolean createHP(HealthcareProfessional hp){
+        collectionReferencePatients.document(hp.getEmail()).set(hp)
+        .addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                flag = true;
+            }
+        });
+        return flag;
+    }
+    //endregion
 }
