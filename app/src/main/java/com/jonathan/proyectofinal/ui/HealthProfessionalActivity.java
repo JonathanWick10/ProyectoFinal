@@ -108,6 +108,7 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
         else if(fragmentTag.equals(getString(R.string.menu_memorizame))){
             change = new MemorizameFragment();
             transaction.replace(R.id.containerPageTherapyPS,change).commit();
+
         }
         else if(fragmentTag.equals(getString(R.string.motor))){
             change = new MotorTherapyPSFragment();

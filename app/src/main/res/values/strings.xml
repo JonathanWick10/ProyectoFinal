@@ -80,6 +80,7 @@
     <string name="admin_til_saveps">Guardar</string>
 
     <string name="add_patient">Agregar Paciente</string>
+    <string name="add_image">Agregar imagen</string>
     <string name="first_name">Nombres</string>
     <string name="last_name">Apellidos</string>
     <string name="identification_type">Tipo de identificación</string>

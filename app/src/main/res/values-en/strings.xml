@@ -78,6 +78,7 @@
     <string name="admin_til_saveps">Save</string>
 
     <string name="add_patient">Add User</string>
+    <string name="add_image">Add image</string>
     <string name="first_name">First name</string>
     <string name="last_name">Last name</string>
     <string name="identification_type">Identification type</string>
