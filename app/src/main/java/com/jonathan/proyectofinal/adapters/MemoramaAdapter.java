@@ -112,7 +112,7 @@ public class MemoramaAdapter extends RecyclerView.Adapter<MemoramaAdapter.Holder
             });
 
         } else {
-            //alerta todos los datos estan encontrados Reiniciar o menu
+            //todos los datos estan encontrados Reiniciar o menu
             holder.imgv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

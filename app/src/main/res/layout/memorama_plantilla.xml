@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardUseCompatPadding="true"
+    android:orientation="horizontal"
     app:cardCornerRadius="5dp"
-    app:cardElevation="5dp">
+    app:cardElevation="5dp"
+    app:cardUseCompatPadding="true">
 
 
-        <ImageView
-            android:padding="@dimen/ten"
-            android:id="@+id/memorama_img_plantilla"
-            android:layout_width="@dimen/oneHundredAndEighty"
-            android:layout_height="match_parent"
-            android:scaleType="fitXY"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_imagotipo"/>
+    <ImageView
+        android:id="@+id/memorama_img_plantilla"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:padding="@dimen/ten"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_imagotipo" />
 
 
 </androidx.cardview.widget.CardView>

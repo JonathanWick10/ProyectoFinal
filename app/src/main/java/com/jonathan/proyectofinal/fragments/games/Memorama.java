@@ -1,5 +1,6 @@
 package com.jonathan.proyectofinal.fragments.games;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -32,9 +33,11 @@ public class Memorama extends Fragment implements MemoramaAdapter.MemoramaAdapte
     private HashMap<String, Integer> data;
     private MemoramaAdapter memoramaAdapter;
     private List<MemoramaEntity> listComplete;
+    private MemoramaI listener;
 
-    public Memorama(HashMap<String, Integer> data) {
+    public Memorama(HashMap<String, Integer> data, MemoramaI listener) {
         this.data = data;
+        this.listener = listener;
     }
 
     private View view;
@@ -163,7 +166,7 @@ public class Memorama extends Fragment implements MemoramaAdapter.MemoramaAdapte
                 }
             }, 2000);
         }else{
-            Toast.makeText(getContext(), "ganaste", Toast.LENGTH_SHORT).show();
+            listener.alertWin().show();
         }
 
     }
@@ -171,5 +174,10 @@ public class Memorama extends Fragment implements MemoramaAdapter.MemoramaAdapte
     @Override
     public void showMsm(String mensaje) {
         Toast.makeText(getContext(), mensaje, Toast.LENGTH_SHORT).show();
+    }
+
+    public interface MemoramaI {
+        void reload(Integer i);
+        AlertDialog.Builder alertWin();
     }
 }
