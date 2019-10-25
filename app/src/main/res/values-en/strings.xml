@@ -791,4 +791,6 @@
     <string name="label_write_question">Write a question which corresponds to the image.</string>
     <string name="label_answer">Escriba una opción de respuesta.</string>
     <string name="label_select_correct_answer">Select correct answer.</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
 </resources>
