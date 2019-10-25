@@ -1,8 +1,11 @@
 package com.jonathan.proyectofinal.ui;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
@@ -18,7 +21,10 @@ import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.fragments.carer.MemorizameFamilyFragment;
 import com.jonathan.proyectofinal.fragments.carer.MemorizameFragment;
@@ -31,18 +37,29 @@ import com.jonathan.proyectofinal.fragments.hp.InformationPatientPSFragment;
 import com.jonathan.proyectofinal.fragments.hp.MotorTherapyPSFragment;
 import com.jonathan.proyectofinal.interfaces.IMainCarer;
 
-public class HealthProfessionalActivity extends AppCompatActivity implements IMainCarer {
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+public class HealthProfessionalActivity extends AppCompatActivity implements IMainCarer, NavigationView.OnNavigationItemSelectedListener {
 
     Fragment change = null;
     FragmentTransaction transaction;
-  //  String patientUID = "";
-  String patientIdentification = "";
+    //  String patientUID = "";
+    String patientIdentification = "";
+    @BindView(R.id.second_drawer_layout_hp)
+    DrawerLayout drawerLayout;
+    @BindView(R.id.second_navigation_view_hp)
+    NavigationView navigationView;
+    @BindView(R.id.toolbar_health_professional)
+    MaterialToolbar toolbar;
+    FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //init();
         setContentView(R.layout.activity_health_professional);
+        ButterKnife.bind(this);
 
         //region ScreenOrientationPortrait
         //Screen orientation portrait
@@ -52,8 +69,13 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
 
 //endregion
 //region toolbar
-        Toolbar myToolbar = findViewById(R.id.toolbar_health_professional);
+        MaterialToolbar myToolbar = findViewById(R.id.toolbar_health_professional);
         setSupportActionBar(myToolbar);
+        firebaseAuth = FirebaseAuth.getInstance();
+        navigationView.setNavigationItemSelectedListener(this);
+        ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close);
+        drawerLayout.addDrawerListener(drawerToggle);
+        drawerToggle.syncState();
         //endregion
         BottomNavigationView navigationView = findViewById(R.id.navigation_health_professional);
         //navigationView.setOnNavigationItemSelectedListener(navListener);
@@ -134,5 +156,35 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
             change = new MemorizamePlacesFragment();
             transaction.replace(R.id.containerMemorizame,change).commit();
         }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        closeDrawer();
+        switch (item.getItemId()){
+            case R.id.btn_logout:
+                firebaseAuth.signOut();
+                Intent intent = new Intent(HealthProfessionalActivity.this, Login.class);
+                startActivity(intent);
+                break;
+        }
+        return true;
+    }
+
+    private void closeDrawer() {
+        drawerLayout.closeDrawer(GravityCompat.START);
+    }
+
+    private void openDrawer() {
+        drawerLayout.openDrawer(GravityCompat.START);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
+            closeDrawer();
+        }
+        super.onBackPressed();
+        finish();
     }
 }

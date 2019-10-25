@@ -20,11 +20,10 @@
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbarAdmin"
-                style="@style/Widget.MaterialComponents.Toolbar.Primary"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
-                app:popupTheme="@style/AppTheme.PopupOverlay" />
+                style="@style/StyleToolbarPrimary"/>
         </com.google.android.material.appbar.AppBarLayout>
 
         <FrameLayout
@@ -44,7 +43,6 @@
             app:fabCradleRoundedCornerRadius="30dp"
             app:fabCradleVerticalOffset="0dp"
             app:hideOnScroll="true" />
-        <!--app:navigationIcon="@drawable/ic_menu_white"-->
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabAdmin"

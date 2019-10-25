@@ -36,7 +36,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/oneHundredNinetyFour"
-                    android:src="@drawable/img_selfcarer"
+                    android:src="@drawable/img_family"
                     android:scaleType="centerCrop"/>
 
                 <TextView
@@ -58,7 +58,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/oneHundredNinetyFour"
-                    android:src="@drawable/img_manage"
+                    android:src="@drawable/img_home"
                     android:scaleType="centerCrop"/>
 
                 <TextView
@@ -79,7 +79,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/oneHundredNinetyFour"
-                    android:src="@drawable/img_diary"
+                    android:src="@drawable/img_places"
                     android:scaleType="centerCrop"/>
 
                 <TextView
@@ -100,7 +100,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/oneHundredNinetyFour"
-                    android:src="@drawable/img_diary"
+                    android:src="@drawable/img_pets"
                     android:scaleType="centerCrop"/>
 
                 <TextView

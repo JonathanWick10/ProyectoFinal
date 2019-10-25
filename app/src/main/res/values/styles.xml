@@ -273,4 +273,17 @@
         <item name="android:orientation">horizontal</item>
     </style>
 
+    <!-- Standard style for toolbar primary -->
+    <style name="StyleToolbarPrimary" parent="Widget.MaterialComponents.Toolbar.Primary">
+        <item name="android:popupTheme">@style/AppTheme.PopupOverlay</item>
+        <item name="android:minHeight">?attr/actionBarSize</item>
+    </style>
+
+    <!-- Standard style for toolbar transparent -->
+    <style name="StyleToolbarTransparent">
+        <item name="android:popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="android:theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+        <item name="android:minHeight">?attr/actionBarSize</item>
+    </style>
+
 </resources>

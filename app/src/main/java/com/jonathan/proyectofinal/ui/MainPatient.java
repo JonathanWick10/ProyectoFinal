@@ -1,7 +1,10 @@
 package com.jonathan.proyectofinal.ui;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -12,8 +15,12 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.MenuItem;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.jonathan.proyectofinal.R;
+import com.jonathan.proyectofinal.fragments.admin.AdminHome;
 import com.jonathan.proyectofinal.fragments.games.Memorama;
 import com.jonathan.proyectofinal.fragments.games.PhysicalExecise;
 import com.jonathan.proyectofinal.fragments.patient.HomePFragment;
@@ -25,10 +32,20 @@ import com.jonathan.proyectofinal.interfaces.IMainCarer;
 
 import java.util.HashMap;
 
-public class MainPatient extends AppCompatActivity implements IComunicateFragment, IMainCarer {
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
+public class MainPatient extends AppCompatActivity implements IComunicateFragment, NavigationView.OnNavigationItemSelectedListener {
+
+    @BindView(R.id.toolbarPatient)
+    MaterialToolbar toolbar;
+    @BindView(R.id.drawer_layout_patient)
+    DrawerLayout drawerLayout;
+    @BindView(R.id.navigation_view_patient)
+    NavigationView navigationView;
     private ViewPager viewPager;
     private BottomNavigationView navigation;
+    FirebaseAuth firebaseAuth;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -44,9 +61,11 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
                 case R.id.notifications_patient:
                     viewPager.setCurrentItem(2);
                     return true;
+                    /*
                 case R.id.profile_patient:
                     viewPager.setCurrentItem(3);
                     return true;
+                    */
             }
             return false;
         }
@@ -56,6 +75,13 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_patient);
+        ButterKnife.bind(this);
+        setSupportActionBar(toolbar);
+        firebaseAuth = FirebaseAuth.getInstance();
+        navigationView.setNavigationItemSelectedListener(this);
+        ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close);
+        drawerLayout.addDrawerListener(drawerToggle);
+        drawerToggle.syncState();
         /*
         ButterKnife.bind(this);
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
@@ -80,16 +106,33 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
     }
 
     @Override
-    public void inflateFragment(String fragmentTag) {
-        if(fragmentTag.equals(getString(R.string.btn_logout))){
-            Intent intent = new Intent(MainPatient.this, Login.class);
-            startActivity(intent);
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        closeDrawer();
+        switch (item.getItemId()){
+            case R.id.btn_logout:
+                firebaseAuth.signOut();
+                Intent intent = new Intent(MainPatient.this, Login.class);
+                startActivity(intent);
+                break;
         }
+        return true;
+    }
+
+    private void closeDrawer() {
+        drawerLayout.closeDrawer(GravityCompat.START);
+    }
+
+    private void openDrawer() {
+        drawerLayout.openDrawer(GravityCompat.START);
     }
 
     @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
+            closeDrawer();
+        }
+        super.onBackPressed();
+        finish();
     }
 
     private static class PatientFragmentPageAdapter extends FragmentPagerAdapter {
@@ -107,8 +150,10 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
                     return MemorizamePFragment.newInstance();
                 case 2:
                     return NotificationsPFragment.newInstance();
+                    /*
                 case 3:
                     return ProfilePFragment.newInstance();
+                    */
             }
             return null;
         }
@@ -118,7 +163,7 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
         // CANTIDAD PROVISIONAL PARA REDIRECCIONAR AL JUEGO
         @Override
         public int getCount() {
-            return 4;
+            return 3;
         }
     }
 

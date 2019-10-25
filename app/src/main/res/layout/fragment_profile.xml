@@ -6,13 +6,4 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.patient.ProfilePFragment">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/button_logout"
-        style="@style/StylePrimaryColoredButton"
-        android:layout_width="@dimen/twoHundred"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:text="@string/btn_logout"
-        app:icon="@drawable/ic_exit_to_app_black"/>
-
 </androidx.core.widget.NestedScrollView>
