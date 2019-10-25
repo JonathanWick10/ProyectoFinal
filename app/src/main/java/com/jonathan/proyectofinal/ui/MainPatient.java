@@ -21,10 +21,11 @@ import com.jonathan.proyectofinal.fragments.patient.MemorizamePFragment;
 import com.jonathan.proyectofinal.fragments.patient.NotificationsPFragment;
 import com.jonathan.proyectofinal.fragments.patient.ProfilePFragment;
 import com.jonathan.proyectofinal.interfaces.IComunicateFragment;
+import com.jonathan.proyectofinal.interfaces.IMainCarer;
 
 import java.util.HashMap;
 
-public class MainPatient extends AppCompatActivity implements IComunicateFragment {
+public class MainPatient extends AppCompatActivity implements IComunicateFragment, IMainCarer {
 
     private ViewPager viewPager;
     private BottomNavigationView navigation;
@@ -76,6 +77,19 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
         Intent pasar = new Intent(MainPatient.this, Games.class);
         pasar.putExtra("Game","Memorama");
         startActivity(pasar);
+    }
+
+    @Override
+    public void inflateFragment(String fragmentTag) {
+        if(fragmentTag.equals(getString(R.string.btn_logout))){
+            Intent intent = new Intent(MainPatient.this, Login.class);
+            startActivity(intent);
+        }
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
     }
 
     private static class PatientFragmentPageAdapter extends FragmentPagerAdapter {

@@ -1,6 +1,10 @@
 package com.jonathan.proyectofinal.ui;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
@@ -11,10 +15,16 @@ import androidx.navigation.ui.NavigationUI;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.WindowManager;
+import android.widget.Toolbar;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.jonathan.proyectofinal.R;
+import com.jonathan.proyectofinal.fragments.admin.AdminHome;
 import com.jonathan.proyectofinal.fragments.carer.CallEmergencyFragment;
 import com.jonathan.proyectofinal.fragments.carer.DiaryFragment;
 import com.jonathan.proyectofinal.fragments.carer.ExerciseCarerFragment;
@@ -34,26 +44,45 @@ import com.jonathan.proyectofinal.fragments.carer.WarningCarerFragment;
 import com.jonathan.proyectofinal.fragments.patient.MemorizamePFragment;
 import com.jonathan.proyectofinal.interfaces.IMainCarer;
 
-public class MainCarer extends AppCompatActivity implements IMainCarer {
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
+public class MainCarer extends AppCompatActivity implements IMainCarer, NavigationView.OnNavigationItemSelectedListener {
+
+    @BindView(R.id.drawer_layout_career)
+    DrawerLayout drawerLayout;
+    @BindView(R.id.navigation_view_career)
+    NavigationView navigationView;
+    @BindView(R.id.toolbarCareer)
+    MaterialToolbar toolbar;
     Fragment change = null;
     FragmentTransaction transaction;
+    FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_carer);
+        ButterKnife.bind(this);
         //region ScreenOrientationPortrait
         //Screen orientation portrait
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         //Keep screen on
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
+
 //endregion
         //Function to read the items of BottomNavigation
-        BottomNavigationView navigationView = findViewById(R.id.navigation_carer);
+        BottomNavigationView bottomnNavigationView = findViewById(R.id.navigation_carer);
         NavController navController = Navigation.findNavController(this, R.id.content_carer);
-        NavigationUI.setupWithNavController(navigationView, navController);
+        NavigationUI.setupWithNavController(bottomnNavigationView, navController);
+
+        setSupportActionBar(toolbar);
+        navigationView.setNavigationItemSelectedListener(this);
+        firebaseAuth = FirebaseAuth.getInstance();
+        ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close);
+        drawerLayout.addDrawerListener(drawerToggle);
+        drawerToggle.syncState();
     }
 
     @Override
@@ -110,5 +139,35 @@ public class MainCarer extends AppCompatActivity implements IMainCarer {
             change = new TestFragment();
             transaction.replace(R.id.content_carer,change).commit();
         }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        closeDrawer();
+        switch (item.getItemId()) {
+            case R.id.btn_logout:
+                firebaseAuth.signOut();
+                Intent intent = new Intent(MainCarer.this, Login.class);
+                startActivity(intent);
+                break;
+        }
+            return true;
+    }
+
+    private void closeDrawer() {
+        drawerLayout.closeDrawer(GravityCompat.START);
+    }
+
+    private void openDrawer() {
+        drawerLayout.openDrawer(GravityCompat.START);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
+            closeDrawer();
+        }
+        super.onBackPressed();
+        finish();
     }
 }

@@ -42,12 +42,12 @@ public class AdminHome extends AppCompatActivity implements AdminAddHealthProfes
     BottomAppBar bottomAppBar;
     @BindView(R.id.fabAdmin)
     FloatingActionButton floatingActionButton;
-    @BindView(R.id.toolbarHp)
+    @BindView(R.id.toolbarAdmin)
     MaterialToolbar toolbar;
 
-    @BindView(R.id.drawer_layout_hp)
+    @BindView(R.id.drawer_layout_admin)
     DrawerLayout drawerLayout;
-    @BindView(R.id.navigation_view_hp)
+    @BindView(R.id.navigation_view_admin)
     NavigationView navigationView;
     private boolean isFabTapped = false;
     FirebaseAuth firebaseAuth;
@@ -127,7 +127,7 @@ public class AdminHome extends AppCompatActivity implements AdminAddHealthProfes
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        String itemName = (String) item.getTitle();
+        //String itemName = (String) item.getTitle();
         closeDrawer();
         switch (item.getItemId()){
             case R.id.btn_logout:
