@@ -25,13 +25,18 @@ import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.data.Patient;
 import com.jonathan.proyectofinal.database.ImageManager;
 import com.jonathan.proyectofinal.database.PatientsManager;
 import com.jonathan.proyectofinal.fragments.general.DatePickerFragment;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -106,6 +111,8 @@ public class AddPatients extends Fragment {
     //Variables for all datepicker
     private OnFragmentInteractionListener mListener;
     boolean flag = true;
+    FirebaseAuth firebaseAuth;
+    FirebaseUser user;
     //endregion
 
     @Nullable
@@ -118,6 +125,8 @@ public class AddPatients extends Fragment {
         logicImageProfile();
         logicButtonCalendar(view);
         logicButtonDateDiagnosis(view);
+        firebaseAuth = FirebaseAuth.getInstance();
+        user = firebaseAuth.getCurrentUser();
         return view;
     }
 
@@ -212,8 +221,8 @@ public class AddPatients extends Fragment {
             patient.setDiagnostic(diagnosticString);
             patient.setDateDiagnostic(dateDiagnosticString);
             patient.setObservations(observationString);
-            Map<String, Object> assigns = new HashMap<>();
-            assigns.put("id", "1061755715");
+            String[] assignsArray = {user.getUid()};
+            List<String> assigns = Arrays.asList(assignsArray);
             patient.setAssigns(assigns);
             //endregion
         }else{

@@ -3,6 +3,7 @@ package com.jonathan.proyectofinal.fragments.hp;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.common.util.DataUtils;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.adapters.PatientsAdapter;
 import com.jonathan.proyectofinal.data.HealthcareProfessional;
@@ -24,6 +33,7 @@ import com.jonathan.proyectofinal.database.PatientsManager;
 import com.jonathan.proyectofinal.fragments.admin.AdminHome;
 import com.jonathan.proyectofinal.interfaces.IOnPatientClickListener;
 import com.jonathan.proyectofinal.interfaces.IPatientsListFragmentListener;
+import com.jonathan.proyectofinal.tools.Constants;
 import com.jonathan.proyectofinal.ui.HealthProfessionalActivity;
 import com.jonathan.proyectofinal.ui.PatientsList;
 
@@ -44,8 +54,12 @@ public class PatientsListFragment extends Fragment {
     private PatientsAdapter.ISelectionPatient iSelectionPatient;
     private PatientsAdapter.IDeletePatient iDeletePatient;
     private View view;
-    private PatientsManager patientsManager = new PatientsManager();
-    List<Patient> list = new ArrayList<>();
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    CollectionReference collectionReferencePatients = db.collection(Constants.Patients);
+    FirebaseAuth firebaseAuth;
+    FirebaseUser user;
+    List<Patient> patientList = new ArrayList<>();
+    Patient patientM = new Patient();
     //endregion
 
     public PatientsListFragment() {
@@ -56,7 +70,10 @@ public class PatientsListFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         view = inflater.inflate(R.layout.fragment_patients, container, false);
+        firebaseAuth = FirebaseAuth.getInstance();
+        user = firebaseAuth.getCurrentUser();
         reference();
+
         return view;
     }
 
@@ -107,18 +124,42 @@ public class PatientsListFragment extends Fragment {
     private void initRecyclerView() {
         //list = patientsManager.listForHP("");
         //Código quemado--------------------------
-        List<Patient> list2 = new ArrayList<>();
+        /*List<Patient> list2 = new ArrayList<>();
         Patient patientu = new Patient();
         patientu.setFirstName("jonathan");
         patientu.setIdentification("1061755715");
         for (int i = 0; i<=6; i++){
             list2.add(patientu);
-        }
+        }*/
         //------------------------------------------
-        recyclerView.setLayoutManager(linearLayoutManager);
-        adapter = new PatientsAdapter(list2,getActivity(),iSelectionPatient,iDeletePatient);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setHasFixedSize(true);
+        String uid = user.getUid();
+        collectionReferencePatients
+                .whereArrayContains("assigns", uid)
+                .orderBy("firstName")
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        patientList = new ArrayList<Patient>();
+                        for (QueryDocumentSnapshot documentSnapshopt :
+                                queryDocumentSnapshots) {
+                            patientM = documentSnapshopt.toObject(Patient.class);
+                            patientList.add(patientM);
+                        }
+                        recyclerView.setLayoutManager(linearLayoutManager);
+                        adapter = new PatientsAdapter(patientList,getActivity(),iSelectionPatient,iDeletePatient);
+                        recyclerView.setAdapter(adapter);
+                        recyclerView.setHasFixedSize(true);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d("Message", e.toString());
+                    }
+                });
+
+
     }
 
     //region Código Carolina

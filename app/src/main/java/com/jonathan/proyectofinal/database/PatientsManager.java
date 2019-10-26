@@ -104,7 +104,7 @@ public class PatientsManager {
     //region Read Patients for Healthcarer profesional
     public List<Patient> listForHP(String healthcareProfessional) {
         collectionReferencePatients
-                .whereEqualTo("assigns.id", healthcareProfessional)
+                .whereEqualTo("assigns", healthcareProfessional)
                 .orderBy("firstName")
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -215,9 +215,9 @@ public class PatientsManager {
 
     //region Assign Patient
     public boolean assignPatient(Patient patient, String id) {
-        patientM = patientByID(patient.getIdentification().toString());
-        Map<String, Object> ids = patientM.getAssigns();
-        ids.put("id", id);
+        patientM = patientByID(patient.getIdentification());
+        List<String> ids = patientM.getAssigns();
+        ids.add(id);
         flag = createPatient(patientM);
         return flag;
     }

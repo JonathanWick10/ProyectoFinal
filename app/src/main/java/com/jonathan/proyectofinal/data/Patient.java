@@ -1,5 +1,6 @@
 package com.jonathan.proyectofinal.data;
 
+import java.util.List;
 import java.util.Map;
 
 public class Patient {
@@ -26,7 +27,7 @@ public class Patient {
     private String observations;
     private String emergencyNumber;
     private String role;
-    Map<String,Object> assigns;
+    List<String> assigns;
     //endregion
 
     //region Builders
@@ -37,7 +38,7 @@ public class Patient {
                    String gender, String birthday, long phoneNumber, String department, String userName,
                    String password, String confirmPassword, String email, String nativeCity, String actualCity,
                    long familyPhoneNumber, String address, String dateDiagnostic, String diagnostic,
-                   String observations, String emergencyNumber, String role, Map<String,Object> assigns) {
+                   String observations, String emergencyNumber, String role, List<String> assigns) {
         this.patientUID = patientUID;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -229,11 +230,11 @@ public class Patient {
 
     public void setRole(String role) { this.role = role;}
 
-    public Map<String, Object> getAssigns() {
+    public List<String> getAssigns() {
         return assigns;
     }
 
-    public void setAssigns(Map<String, Object> assigns) {
+    public void setAssigns(List<String> assigns) {
         this.assigns = assigns;
     }
     //endregion
