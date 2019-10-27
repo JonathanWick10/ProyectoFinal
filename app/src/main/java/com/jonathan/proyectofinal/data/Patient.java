@@ -1,5 +1,6 @@
 package com.jonathan.proyectofinal.data;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -237,6 +238,8 @@ public class Patient {
     public void setAssigns(List<String> assigns) {
         this.assigns = assigns;
     }
+
+
     //endregion
 
     //region toString

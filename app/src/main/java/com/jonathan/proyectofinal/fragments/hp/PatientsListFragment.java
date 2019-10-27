@@ -54,8 +54,6 @@ public class PatientsListFragment extends Fragment {
     private PatientsAdapter.ISelectionPatient iSelectionPatient;
     private PatientsAdapter.IDeletePatient iDeletePatient;
     private View view;
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
-    CollectionReference collectionReferencePatients = db.collection(Constants.Patients);
     FirebaseAuth firebaseAuth;
     FirebaseUser user;
     List<Patient> patientList = new ArrayList<>();
@@ -122,17 +120,11 @@ public class PatientsListFragment extends Fragment {
     //endregion
 
     private void initRecyclerView() {
-        //list = patientsManager.listForHP("");
-        //Código quemado--------------------------
-        /*List<Patient> list2 = new ArrayList<>();
-        Patient patientu = new Patient();
-        patientu.setFirstName("jonathan");
-        patientu.setIdentification("1061755715");
-        for (int i = 0; i<=6; i++){
-            list2.add(patientu);
-        }*/
         //------------------------------------------
+        recyclerView.setLayoutManager(linearLayoutManager);
         String uid = user.getUid();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        CollectionReference collectionReferencePatients = db.collection(Constants.Patients);
         collectionReferencePatients
                 .whereArrayContains("assigns", uid)
                 .orderBy("firstName")
@@ -146,7 +138,6 @@ public class PatientsListFragment extends Fragment {
                             patientM = documentSnapshopt.toObject(Patient.class);
                             patientList.add(patientM);
                         }
-                        recyclerView.setLayoutManager(linearLayoutManager);
                         adapter = new PatientsAdapter(patientList,getActivity(),iSelectionPatient,iDeletePatient);
                         recyclerView.setAdapter(adapter);
                         recyclerView.setHasFixedSize(true);
