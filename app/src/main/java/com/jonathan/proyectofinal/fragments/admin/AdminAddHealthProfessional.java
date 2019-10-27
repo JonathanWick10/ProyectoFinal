@@ -26,10 +26,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -99,7 +102,10 @@ public class AdminAddHealthProfessional extends Fragment{
     Admin admin = new Admin();
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
+    FirebaseFirestore db;
     String role;
+    String uIDAdmin;
+    String uIDHP;
     //endregion
 
     public AdminAddHealthProfessional() {
@@ -113,6 +119,8 @@ public class AdminAddHealthProfessional extends Fragment{
         view = inflater.inflate(R.layout.fragment_admin_add_health_professional, container, false);
         firebaseAuth= FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
+        uIDAdmin = firebaseUser.getUid();
+        db = FirebaseFirestore.getInstance();
         ButterKnife.bind(this, view);
         dropdownMenu(view);
         logicButtonCalendar(view);
@@ -141,14 +149,65 @@ public class AdminAddHealthProfessional extends Fragment{
     public void logicButtonSave(View view){
         boolean flag2 = setPojoHp();
         if (flag2) {
-            HPManager hpManager = new HPManager();//Instance PatientsManager
-            boolean rta = hpManager.createHP(hp);
-            if (rta) {
-                Toast.makeText(getActivity(), getResources().getString(R.string.was_saved_succesfully), Toast.LENGTH_SHORT).show();
+            //_____________________________________________________________________________________________________
 
-            } else {
-                Toast.makeText(getActivity(), getResources().getString(R.string.not_saved), Toast.LENGTH_SHORT).show();
-            }
+            firebaseAuth.createUserWithEmailAndPassword(hp.getEmail(),hp.getPassword())
+                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()){
+                                firebaseAuth.signOut();
+                            }
+                        }
+                    });
+
+            firebaseAuth.signInWithEmailAndPassword(hp.getEmail(), hp.getPassword())
+                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()){
+                                AuthResult itask = task.getResult();
+                                FirebaseUser ures=itask.getUser();
+                                uIDHP = ures.getUid();
+                                hp.setHpUID(uIDHP);
+                                db.collection(Constants.HealthcareProfesional).document(hp.getHpUID()).set(hp)
+                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+                                                Toast.makeText(getActivity(), getResources().getString(R.string.was_saved_succesfully), Toast.LENGTH_SHORT).show();
+                                            }
+                                        })
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                Log.d("message", e.toString());
+                                            }
+                                        });
+                            }
+                        }
+                    });
+
+            firebaseAuth.signOut();
+
+            db.collection(Constants.Adminds).document(uIDAdmin).get()
+                    .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                        @Override
+                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+                            if (documentSnapshot.exists()){
+                                admin= documentSnapshot.toObject(Admin.class);
+                                firebaseAuth.signInWithEmailAndPassword(admin.getEmail(), admin.getPassword())
+                                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                                Toast.makeText(getActivity(), "accedio de nuevo", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+                            }
+                        }
+                    });
+
+            //_________________________________________________________________________________________________________
+
         }else{
             Toast.makeText(getActivity(), getResources().getString(R.string.complete_field_please), Toast.LENGTH_SHORT).show();
         }

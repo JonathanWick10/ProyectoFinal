@@ -152,30 +152,4 @@ public class PatientsListFragment extends Fragment {
 
 
     }
-
-    //region Código Carolina
-   /* private void initAdapter() {
-        if (adapter == null){
-            adapter = new PatientsAdapter(getActivity().getApplicationContext(), this);
-        }
-    }
-    private void initRecyclerView() {
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setHasFixedSize(true);
-    }
-
-    public void onItemClick(Patient patient) {
-        //Toast.makeText(getActivity(),customer.getCodigoCliente(),Toast.LENGTH_SHORT).show();
-        ((PatientsList) getActivity()).fragmentClick(patient);
-    }
-
-    public void addAllToList(List<Patient> patients) {
-        PatientsManager patientsManager = new PatientsManager();
-        HealthcareProfessional patient2 = new HealthcareProfessional();
-        patient2.setIdentification("1061755715");
-        adapter.addAll(patientsManager.listForHP(patient2)patients);
-    }*/
-    //endregion
-
 }
