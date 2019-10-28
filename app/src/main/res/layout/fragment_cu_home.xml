@@ -5,18 +5,14 @@
     android:id="@+id/fragmentHome"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grayLight"
     android:orientation="vertical"
-    android:padding="6dp"
-    tools:context=".fragments.carer.HomeFragment"
-    app:layout_constraintCircleRadius="@dimen/twenty">
+    tools:context=".fragments.carer.HomeFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:orientation="vertical"
-        android:background="@drawable/round_corner">
+        android:orientation="vertical">
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/heart"
             style="@style/StyleCardView"

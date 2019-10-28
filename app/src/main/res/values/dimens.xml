@@ -87,6 +87,7 @@
     <dimen name="two">2dp</dimen>
     <dimen name="three">3dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="eighteen">18dp</dimen>
 
 </resources>
 

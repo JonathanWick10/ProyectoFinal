@@ -91,14 +91,14 @@ public class InformationPatientPSFragment extends Fragment {
        emergencyNumber="123";
 
 
-        tvAgePatient.setText(": " +agePatient+" años");
-        tvGenderPatient.setText(": " +genderPatient);
-        tvNativeCityPatient.setText(": " +nativeCityPatient);
-        tvCurrentCityPatient.setText(": " +currentCityPatient);
-        tvGuestPhonePatient.setText(": " +guestPhonePatient);
-        tvAddressPatient.setText(": " +addressPatient);
-        tvDiagnosis.setText(": " +diagnosis);
-        tvDiagnosisDate.setText(": " +diagnosisDate);
+        tvAgePatient.setText("" +agePatient+" años");
+        tvGenderPatient.setText("" +genderPatient);
+        tvNativeCityPatient.setText("" +nativeCityPatient);
+        tvCurrentCityPatient.setText("" +currentCityPatient);
+        tvGuestPhonePatient.setText("" +guestPhonePatient);
+        tvAddressPatient.setText("" +addressPatient);
+        tvDiagnosis.setText("" +diagnosis);
+        tvDiagnosisDate.setText("" +diagnosisDate);
         tvPatientName.setText(firstName+" "+lastName);
 
     }

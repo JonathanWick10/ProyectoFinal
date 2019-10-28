@@ -54,8 +54,8 @@ public class InformationPSFragment extends Fragment {
             adapter = new Adapter(getChildFragmentManager());
             tabs.setupWithViewPager(viewPager);
             viewPager.setAdapter(adapter);
-            tabs.getTabAt(0);
-            tabs.getTabAt(1);
+            tabs.getTabAt(0).setIcon(R.drawable.ic_assignment_ind_black);
+            tabs.getTabAt(1).setIcon(R.drawable.ic_caregiver);
         }
 
     }

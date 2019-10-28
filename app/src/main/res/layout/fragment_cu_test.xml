@@ -1,918 +1,862 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.carer.TestFragment"
-    android:background="@color/grayLight"
-    android:padding="6dp">
+    tools:context=".fragments.carer.TestFragment">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:id="@+id/cv_1"
-        app:cardCornerRadius="15dp">
-
-        <androidx.core.widget.NestedScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-            <RelativeLayout
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:id="@+id/test_title"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="10dp">
-                <LinearLayout
-                    android:layout_marginTop="@dimen/ten"
-                    android:id="@+id/test_title"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ten"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:text="@string/test"
+                    android:textColor="@color/black"
+                    android:textSize="24dp"
+                    android:textStyle="bold"></TextView>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/cont_test"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/test_title"
+                android:layout_marginTop="@dimen/sixteen">
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/StylePrimaryColoredButtonTest"
+                    android:id="@+id/tq1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="24dp"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"
-                        android:background="@color/white"
-                        android:text="@string/test"></TextView>
-                </LinearLayout>
-                <RelativeLayout
-                    android:id="@+id/cont_test"
-                    android:layout_marginTop="@dimen/sixteen"
+                    android:text="@string/tq1"/>
+
+                <com.codesgood.views.JustifiedTextView
+                    android:id="@+id/t1"
                     android:layout_width="match_parent"
-                    android:layout_below="@id/test_title"
-                    android:layout_height="wrap_content">
-                    <Button
-                        android:id="@+id/tq1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:clickable="true"
-                        android:textAllCaps="false"
-                        android:padding="4dp"
-                        android:gravity="left"
-                        android:textSize="20dp"
-                        android:enabled="true"
-                        android:text="@string/tq1"></Button>
-                    <com.codesgood.views.JustifiedTextView
-                        android:id="@+id/t1"
-                        android:layout_below="@+id/tq1"
-                        android:textColor="@color/black"
-                        android:textSize="18dp"
-                        android:padding="8dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone"
-                        android:text="@string/test1"/>
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tq1"
+                    android:padding="8dp"
+                    android:text="@string/test1"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:visibility="gone" />
 
-                    <Button
-                        android:id="@+id/tq2"
-                        android:textAllCaps="false"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="4dp"
-                        android:layout_below="@+id/t1"
-                        android:background="@color/white"
-                        android:clickable="true"
-                        android:enabled="true"
-                        android:visibility="gone"
-                        android:gravity="left"
-                        android:textSize="20dp"
-                        android:text="@string/tq2"></Button>
-                    <com.codesgood.views.JustifiedTextView
-                        android:id="@+id/t2"
-                        android:layout_below="@+id/tq2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="18dp"
-                        android:textColor="@color/black"
-                        android:padding="8dp"
-                        android:visibility="gone"
-                        android:text="@string/test2"/>
+                <com.google.android.material.button.MaterialButton
+                    style="@style/StylePrimaryColoredButtonTest"
+                    android:id="@+id/tq2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/t1"
+                    android:text="@string/tq2"
+                    android:visibility="gone"/>
 
-            <Button
-                android:id="@+id/tq3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="4dp"
-                android:layout_below="@+id/t2"
-                android:background="@color/white"
-                android:clickable="true"
-                android:gravity="left"
-                android:textSize="20dp"
-                android:textAllCaps="false"
-                android:enabled="true"
-                android:visibility="gone"
-                android:text="@string/tq3"></Button>
-            <com.codesgood.views.JustifiedTextView
-                android:id="@+id/t3"
-                android:layout_below="@+id/tq3"
-                android:textSize="18dp"
-                android:padding="8dp"
-                android:textColor="@color/black"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:text="@string/test3"/>
-            <Button
-                android:id="@+id/tq4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/t3"
-                android:background="@color/white"
-                android:clickable="true"
-                android:textAllCaps="false"
-                android:padding="4dp"
-                android:gravity="left"
-                android:textSize="20dp"
-                android:enabled="true"
-                android:visibility="gone"
-                android:text="@string/tq4"></Button>
-            <com.codesgood.views.JustifiedTextView
-                android:id="@+id/t4"
-                android:layout_below="@+id/tq4"
-                android:textSize="18dp"
-                android:padding="8dp"
-                android:textColor="@color/black"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:text="@string/test4"/>
+                <com.codesgood.views.JustifiedTextView
+                    android:id="@+id/t2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tq2"
+                    android:padding="8dp"
+                    android:text="@string/test2"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:visibility="gone" />
 
-            <Button
-                android:id="@+id/tq5"
-                android:textAllCaps="false"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="4dp"
-                android:layout_below="@+id/t4"
-                android:background="@color/white"
-                android:clickable="true"
-                android:enabled="true"
-                android:visibility="gone"
-                android:gravity="left"
-                android:textSize="20dp"
-                android:text="@string/tq5"></Button>
-            <com.codesgood.views.JustifiedTextView
-                android:id="@+id/t5"
-                android:layout_below="@+id/tq5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18dp"
-                android:textColor="@color/black"
-                android:padding="8dp"
-                android:visibility="gone"
-                android:text="@string/test5"/>
+                <com.google.android.material.button.MaterialButton
+                    style="@style/StylePrimaryColoredButtonTest"
+                    android:id="@+id/tq3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/t2"
+                    android:text="@string/tq3"
+                    android:visibility="gone"/>
 
-            <Button
-                android:id="@+id/tq6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="4dp"
-                android:layout_below="@+id/t5"
-                android:background="@color/white"
-                android:clickable="true"
-                android:gravity="left"
-                android:textSize="20dp"
-                android:textAllCaps="false"
-                android:enabled="true"
-                android:visibility="gone"
-                android:text="@string/tq6"></Button>
-            <com.codesgood.views.JustifiedTextView
-                android:id="@+id/t6"
-                android:layout_below="@+id/tq6"
-                android:textSize="18dp"
-                android:textColor="@color/black"
-                android:padding="8dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:text="@string/test6"/>
-            <Button
-                android:id="@+id/tq7"
-                android:layout_below="@id/t6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:clickable="true"
-                android:textAllCaps="false"
-                android:padding="4dp"
-                android:gravity="left"
-                android:textSize="20dp"
-                android:enabled="true"
-                android:visibility="gone"
-                android:text="@string/tq7"></Button>
-            <com.codesgood.views.JustifiedTextView
-                android:id="@+id/t7"
-                android:layout_below="@+id/tq7"
-                android:textSize="18dp"
-                android:textColor="@color/black"
-                android:padding="8dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:text="@string/test7"/>
+                <com.codesgood.views.JustifiedTextView
+                    android:id="@+id/t3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tq3"
+                    android:padding="8dp"
+                    android:text="@string/test3"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:visibility="gone" />
 
-            <Button
-                android:id="@+id/tq8"
-                android:textAllCaps="false"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="4dp"
-                android:layout_below="@+id/t7"
-                android:background="@color/white"
-                android:clickable="true"
-                android:enabled="true"
-                android:visibility="gone"
-                android:gravity="left"
-                android:textSize="20dp"
-                android:text="@string/tq8"></Button>
-            <com.codesgood.views.JustifiedTextView
-                android:id="@+id/t8"
-                android:layout_below="@+id/tq8"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18dp"
-                android:textColor="@color/black"
-                android:padding="8dp"
-                android:visibility="gone"
-                android:text="@string/test8"/>
+                <com.google.android.material.button.MaterialButton
+                    style="@style/StylePrimaryColoredButtonTest"
+                    android:id="@+id/tq4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/t3"
+                    android:text="@string/tq4"
+                    android:visibility="gone"/>
 
-            <Button
-                android:id="@+id/tq9"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="4dp"
-                android:layout_below="@+id/t8"
-                android:background="@color/white"
-                android:clickable="true"
-                android:gravity="left"
-                android:textSize="20dp"
-                android:textAllCaps="false"
-                android:enabled="true"
-                android:visibility="gone"
-                android:text="@string/tq9"></Button>
-            <com.codesgood.views.JustifiedTextView
-                android:id="@+id/t9"
-                android:layout_below="@+id/tq9"
-                android:textSize="18dp"
-                android:textColor="@color/black"
-                android:padding="8dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:text="@string/test9"/>
+                <com.codesgood.views.JustifiedTextView
+                    android:id="@+id/t4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tq4"
+                    android:padding="8dp"
+                    android:text="@string/test4"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:visibility="gone" />
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/StylePrimaryColoredButtonTest"
+                    android:id="@+id/tq5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/t4"
+                    android:text="@string/tq5"
+                    android:visibility="gone"/>
+
+                <com.codesgood.views.JustifiedTextView
+                    android:id="@+id/t5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tq5"
+                    android:padding="8dp"
+                    android:text="@string/test5"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:visibility="gone" />
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/StylePrimaryColoredButtonTest"
+                    android:id="@+id/tq6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/t5"
+                    android:text="@string/tq6"
+                    android:visibility="gone"/>
+
+                <com.codesgood.views.JustifiedTextView
+                    android:id="@+id/t6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tq6"
+                    android:padding="8dp"
+                    android:text="@string/test6"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:visibility="gone" />
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/StylePrimaryColoredButtonTest"
+                    android:id="@+id/tq7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/t6"
+                    android:text="@string/tq7"
+                    android:visibility="gone"/>
+
+                <com.codesgood.views.JustifiedTextView
+                    android:id="@+id/t7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tq7"
+                    android:padding="8dp"
+                    android:text="@string/test7"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:visibility="gone" />
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/StylePrimaryColoredButtonTest"
+                    android:id="@+id/tq8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/t7"
+                    android:text="@string/tq8"
+                    android:visibility="gone"/>
+
+                <com.codesgood.views.JustifiedTextView
+                    android:id="@+id/t8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tq8"
+                    android:padding="8dp"
+                    android:text="@string/test8"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:visibility="gone" />
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/StylePrimaryColoredButtonTest"
+                    android:id="@+id/tq9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/t8"
+                    android:text="@string/tq9"
+                    android:visibility="gone"/>
+
+                <com.codesgood.views.JustifiedTextView
+                    android:id="@+id/t9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tq9"
+                    android:padding="8dp"
+                    android:text="@string/test9"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:visibility="gone" />
 
 
-            <Button
-                android:id="@+id/tq10"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="4dp"
-                android:layout_below="@+id/t9"
-                android:background="@color/white"
-                android:clickable="true"
-                android:gravity="left"
-                android:textSize="20dp"
-                android:textAllCaps="false"
-                android:enabled="true"
-                android:visibility="gone"
-                android:text="@string/tq10"></Button>
-            <com.codesgood.views.JustifiedTextView
-                android:id="@+id/t10"
-                android:layout_below="@+id/tq10"
-                android:textSize="18dp"
-                android:textColor="@color/black"
-                android:padding="8dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:text="@string/test10"/>
+                <com.google.android.material.button.MaterialButton
+                    style="@style/StylePrimaryColoredButtonTest"
+                    android:id="@+id/tq10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/t9"
+                    android:text="@string/tq10"
+                    android:visibility="gone"/>
+
+                <com.codesgood.views.JustifiedTextView
+                    android:id="@+id/t10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tq10"
+                    android:padding="8dp"
+                    android:text="@string/test10"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:visibility="gone" />
             </RelativeLayout>
 
-                <LinearLayout
-                    android:id="@+id/element1"
-                    android:layout_below="@+id/cont_test"
-                    android:layout_width="match_parent"
+            <LinearLayout
+                android:id="@+id/element1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/cont_test"
+                android:layout_alignParentBottom="true">
+
+                <TextView
+                    android:id="@+id/txt_qualification"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
-                    android:layout_height="match_parent">
+                    android:layout_marginStart="@dimen/twentyFive"
+                    android:layout_marginEnd="@dimen/twentyFive"
+                    android:text="@string/qualification"
+                    android:textColor="@color/blackDark"
+                    android:textSize="@dimen/twenty"
+                    android:visibility="gone"></TextView>
 
-                    <TextView
-                        android:id="@+id/txt_qualification"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone"
-                        android:layout_alignParentBottom="true"
-                        android:textColor="@color/blackDark"
-                        android:layout_marginEnd="@dimen/twentyFive"
-                        android:layout_marginStart="@dimen/twentyFive"
-                        android:textSize="@dimen/twenty"
-                        android:text="@string/qualification">
-                    </TextView>
+                <EditText
+                    android:id="@+id/point_qualification"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/twentyFive"
+                    android:layout_marginBottom="39dp"
+                    android:layout_toEndOf="@+id/txt_qualification"
+                    android:hint="@string/point"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/twenty"
+                    android:visibility="gone" />
 
-                    <EditText
-                        android:id="@+id/point_qualification"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone"
-                        android:layout_alignParentBottom="true"
-                        android:layout_toEndOf="@+id/txt_qualification"
-                        android:layout_centerVertical="true"
-                        android:inputType="number"
-                        android:maxLength="2"
-                        android:textSize="@dimen/twenty"
-                        android:layout_marginEnd="@dimen/twentyFive"
-                        android:layout_marginBottom="39dp"
-                        android:hint="@string/point"
-                        android:textColor="@color/black" />
+                <TextView
+                    android:id="@+id/of10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginEnd="@dimen/sixteen"
+                    android:layout_marginBottom="@dimen/twenty"
+                    android:layout_toEndOf="@+id/point_qualification"
+                    android:text="@string/of_point"
+                    android:textColor="@color/blackDark"
+                    android:textSize="@dimen/twenty"
+                    android:visibility="gone" />
+            </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/of10"
-                        android:textColor="@color/blackDark"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone"
-                        android:layout_marginBottom="@dimen/twenty"
-                        android:layout_alignParentBottom="true"
-                        android:textSize="@dimen/twenty"
-                        android:layout_marginEnd="@dimen/sixteen"
-                        android:layout_centerInParent="true"
-                        android:layout_toEndOf="@+id/point_qualification"
-                        android:text="@string/of_point" />
-                </LinearLayout>
+            <TableLayout
+                android:id="@+id/table"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/test_title"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:visibility="gone">
 
-                <TableLayout
-                    android:id="@+id/table"
+                <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_below="@id/test_title"
-                    android:visibility="gone"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/ten"
+                    android:gravity="center"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Dominios"
+                        android:textColor="@color/grayDark"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="-4dp"
+                        android:layout_marginRight="10dp"
+                        android:text="E.A. "
+                        android:textColor="@color/grayDark"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="D.C.L."
+                        android:textColor="@color/grayDark"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="Normal"
+                        android:textColor="@color/grayDark"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </TableRow>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/grayDark" />
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center"
+                    android:paddingTop="6dp">
+
+                    <TextView
+                        android:id="@+id/txtUnoc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="F.V.S" />
+
+                    <TextView
+                        android:id="@+id/txtUnod"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="-10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="6.47" />
+
+                    <TextView
+                        android:id="@+id/txtUnoe"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="4dp"
+                        android:text="7.77" />
+
+                    <TextView
+                        android:id="@+id/txtUnof"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="9.04" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
                     android:gravity="center">
 
-                    <TableRow
-                        android:layout_marginTop="@dimen/ten"
+                    <TextView
+                        android:id="@+id/txtDosc"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="5dp"
-                        android:gravity="center">
+                        android:text="F.V.F." />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Dominios"
-                                android:textSize="20sp"
-                                android:textStyle="bold"
-                                android:textColor="@color/grayDark" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="-4dp"
-                                android:layout_marginRight="10dp"
-                                android:text="E.A. "
-                                android:textSize="20sp"
-                                android:textStyle="bold"
-                                android:textColor="@color/grayDark" />
-
-                        <TextView
-                            android:layout_height="wrap_content"
-                            android:layout_width="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:text="D.C.L."
-                            android:textSize="20sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/grayDark" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:text="Normal"
-                            android:textSize="20sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/grayDark" />
-                    </TableRow>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/grayDark"/>
-
-                    <TableRow
+                    <TextView
+                        android:id="@+id/txtDosd"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:paddingTop="6dp"
-                        android:gravity="center">
+                        android:layout_marginLeft="-10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="5.94" />
 
-                        <TextView
-                            android:id="@+id/txtUnoc"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="F.V.S" />
-
-                        <TextView
-                            android:id="@+id/txtUnod"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="-10dp"
-                            android:layout_marginRight="10dp"
-                            android:text="6.47" />
-
-                        <TextView
-                            android:id="@+id/txtUnoe"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="4dp"
-                            android:text="7.77" />
-
-                        <TextView
-                            android:id="@+id/txtUnof"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="9.04" />
-
-                    </TableRow>
-
-                    <TableRow
+                    <TextView
+                        android:id="@+id/txtDose"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:gravity="center">
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="4dp"
+                        android:text="7.54" />
 
-                        <TextView
-                            android:id="@+id/txtDosc"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="F.V.F." />
-
-                        <TextView
-                            android:id="@+id/txtDosd"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="5.94"
-                            android:layout_marginLeft="-10dp"
-                            android:layout_marginRight="10dp" />
-
-                        <TextView
-                            android:id="@+id/txtDose"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="7.54"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="4dp"/>
-
-                        <TextView
-                            android:id="@+id/txtDosf"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="8.56" />
-
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:gravity="center">
-
-                        <TextView
-                            android:id="@+id/txtTresc"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="D.D." />
-
-                        <TextView
-                            android:id="@+id/txtTresd"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="5.94"
-                            android:layout_marginLeft="-10dp"
-                            android:layout_marginRight="10dp"/>
-
-                        <TextView
-                            android:id="@+id/txtTrese"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="7.62"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="4dp"/>
-
-                        <TextView
-                            android:id="@+id/txtTresf"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="8.44" />
-
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="4dp"
-                        android:gravity="center">
-
-                        <TextView
-                            android:id="@+id/txtCuatroc"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="D.O." />
-
-                        <TextView
-                            android:id="@+id/txtCuatrod"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="5.29"
-                            android:layout_marginLeft="-9dp"
-                            android:layout_marginRight="10dp"/>
-
-                        <TextView
-                            android:id="@+id/txtCuatroe"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="7.58"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="4dp" />
-
-                        <TextView
-                            android:id="@+id/txtCuatrof"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="8.32" />
-
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="3dp"
-                        android:gravity="center">
-
-                        <TextView
-                            android:id="@+id/txtCincoc"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="F.V.N.P." />
-
-                        <TextView
-                            android:id="@+id/txtCincod"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="5.21"
-                            android:layout_marginLeft="-9dp"
-                            android:layout_marginRight="10dp"/>
-
-                        <TextView
-                            android:id="@+id/txtCincoe"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="6.73"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="4dp" />
-
-                        <TextView
-                            android:id="@+id/txtCincof"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="8.28" />
-
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="3dp"
-                        android:gravity="center">
-
-                        <TextView
-                            android:id="@+id/txtSeisc"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="D.N.P" />
-
-                        <TextView
-                            android:id="@+id/txtSeisd"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="5.59"
-                            android:layout_marginLeft="-9dp"
-                            android:layout_marginRight="10dp"/>
-
-                        <TextView
-                            android:id="@+id/txtSeise"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="7.38"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="4dp"/>
-
-                        <TextView
-                            android:id="@+id/txtSeisf"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="8.60" />
-
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="3dp"
-                        android:gravity="center">
-
-                        <TextView
-                            android:id="@+id/txtSietec"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="R.I.U.L.P." />
-
-                        <TextView
-                            android:id="@+id/txtSieted"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="6.09"
-                            android:layout_marginLeft="-9dp"
-                            android:layout_marginRight="10dp"/>
-
-                        <TextView
-                            android:id="@+id/txtSietee"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="7.81"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="4dp"/>
-
-                        <TextView
-                            android:id="@+id/txtSietef"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="8.56" />
-
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="3dp"
-                        android:gravity="center">
-
-                        <TextView
-                            android:id="@+id/txtOchoc"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="R.I.D.U.P." />
-
-                        <TextView
-                            android:id="@+id/txtOchod"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="6.04"
-                            android:layout_marginLeft="-9dp"
-                            android:layout_marginRight="10dp" />
-
-                        <TextView
-                            android:id="@+id/txtOchoe"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="7.32"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="4dp"/>
-
-                        <TextView
-                            android:id="@+id/txtOchof"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="8.05" />
-
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="3dp"
-                        android:gravity="center">
-
-                        <TextView
-                            android:id="@+id/txtNuevec"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="R.D.L.P." />
-
-                        <TextView
-                            android:id="@+id/txtNueved"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="4.63"
-                            android:layout_marginLeft="-9dp"
-                            android:layout_marginRight="10dp"/>
-
-                        <TextView
-                            android:id="@+id/txtNuevee"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="6.40"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="4dp"/>
-
-                        <TextView
-                            android:id="@+id/txtNuevef"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="7.20" />
-
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="3dp"
-                        android:gravity="center">
-
-                        <TextView
-                            android:id="@+id/txtDiezc"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="R.D.D.U.P." />
-
-                        <TextView
-                            android:id="@+id/txtDiezd"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="5.03"
-                            android:layout_marginLeft="-9dp"
-                            android:layout_marginRight="10dp" />
-
-                        <TextView
-                            android:id="@+id/txtDieze"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="6.96"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="4dp"/>
-
-                        <TextView
-                            android:id="@+id/txtDiezf"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="7.56" />
-
-                    </TableRow>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/grayDark"/>
-
-                    <TableRow
-                        android:layout_marginTop="@dimen/ten"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="3dp"
-                        android:gravity="center"
-                        android:paddingBottom="10dp">
-
-                        <TextView
-                            android:id="@+id/txtOncec"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Ponderado." />
-
-                        <TextView
-                            android:id="@+id/txtOnced"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="56.23"
-                            android:textColor="@color/redDark"
-                            android:layout_marginLeft="-9dp"
-                            android:layout_marginRight="10dp" />
-
-                        <TextView
-                            android:id="@+id/txtOncee"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="73.11"
-                            android:textColor="@color/yellowDark"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="4dp"/>
-
-                        <TextView
-                            android:id="@+id/txtOncef"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="82.61"
-                            android:textColor="@color/blueDark" />
-                    </TableRow>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/grayDark" />
-
-                    <TableRow
+                    <TextView
+                        android:id="@+id/txtDosf"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:paddingTop="3dp">
+                        android:text="8.56" />
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="Puntuación."
-                            android:textStyle="bold"
-                            android:textColor="@color/grayDark"
-                            android:textSize="20sp" />
+                </TableRow>
 
-                        <TextView
-                            android:id="@+id/txtDiferencia"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_span="10"
-                            android:gravity="end"
-                            android:text="00.0/100.0"
-                            android:textColor="@color/grayDark"
-                            android:textSize="20sp" />
-                    </TableRow>
-                </TableLayout>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/txtTresc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="D.D." />
+
+                    <TextView
+                        android:id="@+id/txtTresd"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="-10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="5.94" />
+
+                    <TextView
+                        android:id="@+id/txtTrese"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="4dp"
+                        android:text="7.62" />
+
+                    <TextView
+                        android:id="@+id/txtTresf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="8.44" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/txtCuatroc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="D.O." />
+
+                    <TextView
+                        android:id="@+id/txtCuatrod"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="-9dp"
+                        android:layout_marginRight="10dp"
+                        android:text="5.29" />
+
+                    <TextView
+                        android:id="@+id/txtCuatroe"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="4dp"
+                        android:text="7.58" />
+
+                    <TextView
+                        android:id="@+id/txtCuatrof"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="8.32" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/txtCincoc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="F.V.N.P." />
+
+                    <TextView
+                        android:id="@+id/txtCincod"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="-9dp"
+                        android:layout_marginRight="10dp"
+                        android:text="5.21" />
+
+                    <TextView
+                        android:id="@+id/txtCincoe"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="4dp"
+                        android:text="6.73" />
+
+                    <TextView
+                        android:id="@+id/txtCincof"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="8.28" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/txtSeisc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="D.N.P" />
+
+                    <TextView
+                        android:id="@+id/txtSeisd"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="-9dp"
+                        android:layout_marginRight="10dp"
+                        android:text="5.59" />
+
+                    <TextView
+                        android:id="@+id/txtSeise"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="4dp"
+                        android:text="7.38" />
+
+                    <TextView
+                        android:id="@+id/txtSeisf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="8.60" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/txtSietec"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="R.I.U.L.P." />
+
+                    <TextView
+                        android:id="@+id/txtSieted"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="-9dp"
+                        android:layout_marginRight="10dp"
+                        android:text="6.09" />
+
+                    <TextView
+                        android:id="@+id/txtSietee"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="4dp"
+                        android:text="7.81" />
+
+                    <TextView
+                        android:id="@+id/txtSietef"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="8.56" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/txtOchoc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="R.I.D.U.P." />
+
+                    <TextView
+                        android:id="@+id/txtOchod"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="-9dp"
+                        android:layout_marginRight="10dp"
+                        android:text="6.04" />
+
+                    <TextView
+                        android:id="@+id/txtOchoe"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="4dp"
+                        android:text="7.32" />
+
+                    <TextView
+                        android:id="@+id/txtOchof"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="8.05" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/txtNuevec"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="R.D.L.P." />
+
+                    <TextView
+                        android:id="@+id/txtNueved"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="-9dp"
+                        android:layout_marginRight="10dp"
+                        android:text="4.63" />
+
+                    <TextView
+                        android:id="@+id/txtNuevee"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="4dp"
+                        android:text="6.40" />
+
+                    <TextView
+                        android:id="@+id/txtNuevef"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="7.20" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/txtDiezc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="R.D.D.U.P." />
+
+                    <TextView
+                        android:id="@+id/txtDiezd"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="-9dp"
+                        android:layout_marginRight="10dp"
+                        android:text="5.03" />
+
+                    <TextView
+                        android:id="@+id/txtDieze"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="4dp"
+                        android:text="6.96" />
+
+                    <TextView
+                        android:id="@+id/txtDiezf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="7.56" />
+
+                </TableRow>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/grayDark" />
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginTop="@dimen/ten"
+                    android:gravity="center"
+                    android:paddingBottom="10dp">
+
+                    <TextView
+                        android:id="@+id/txtOncec"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Ponderado." />
+
+                    <TextView
+                        android:id="@+id/txtOnced"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="-9dp"
+                        android:layout_marginRight="10dp"
+                        android:text="56.23"
+                        android:textColor="@color/redDark" />
+
+                    <TextView
+                        android:id="@+id/txtOncee"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="4dp"
+                        android:text="73.11"
+                        android:textColor="@color/yellowDark" />
+
+                    <TextView
+                        android:id="@+id/txtOncef"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="82.61"
+                        android:textColor="@color/blueDark" />
+                </TableRow>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/grayDark" />
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingTop="3dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Puntuación."
+                        android:textColor="@color/grayDark"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtDiferencia"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_span="10"
+                        android:gravity="end"
+                        android:text="00.0/100.0"
+                        android:textColor="@color/grayDark"
+                        android:textSize="20sp" />
+                </TableRow>
+            </TableLayout>
 
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
 
-        <RelativeLayout
-            android:id="@+id/element"
+    <RelativeLayout
+        android:id="@+id/element"
 
-            android:layout_width="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true">
+
+        <ProgressBar
+            android:id="@+id/progressBarCircle"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="@dimen/ninety"
+            android:layout_height="@dimen/ninety"
             android:layout_alignParentBottom="true"
-            android:layout_height="match_parent">
+            android:background="@drawable/circle_2"
+            android:indeterminate="false"
+            android:max="100"
+            android:progress="100"
+            android:progressDrawable="@drawable/circle_1"
+            android:rotation="-90"></ProgressBar>
 
-            <ProgressBar
-                android:id="@+id/progressBarCircle"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="@dimen/ninety"
-                android:layout_height="@dimen/ninety"
-                android:layout_alignParentBottom="true"
-                android:background="@drawable/circle_2"
-                android:indeterminate="false"
-                android:max="100"
-                android:progress="100"
-                android:progressDrawable="@drawable/circle_1"
-                android:rotation="-90" >
-            </ProgressBar>
+        <TextView
+            android:id="@+id/textViewTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/twentyFive"
+            android:layout_marginEnd="@dimen/twentyFive"
+            android:layout_marginBottom="39dp"
+            android:text="@string/time"
+            android:textColor="@color/blueDark"
+            android:textSize="@dimen/tenText" />
 
-            <TextView
-                android:id="@+id/textViewTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="@dimen/twentyFive"
-                android:layout_marginStart="@dimen/twentyFive"
-                android:layout_marginBottom="39dp"
-                android:text="@string/time"
-                android:textColor="@color/blueDark"
-                android:textSize="@dimen/tenText" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnStar"
+            style="@style/StylePrimaryColoredButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginEnd="@dimen/sixteen"
+            android:layout_marginBottom="@dimen/twenty"
+            android:layout_toEndOf="@+id/progressBarCircle"
+            android:text="@string/start"
+            android:visibility="gone" />
 
-            <com.google.android.material.button.MaterialButton
-                style="@style/StylePrimaryColoredButton"
-                android:id="@+id/btnStar"
-                android:visibility="gone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/twenty"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="@dimen/twenty"
-                android:layout_marginEnd="@dimen/sixteen"
-                android:layout_centerInParent="true"
-                android:layout_toEndOf="@+id/progressBarCircle"
-                android:text="@string/start" />
-
-            <com.google.android.material.button.MaterialButton
-                style="@style/StylePrimaryColoredButton"
-                android:id="@+id/btnEnd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="@dimen/sixteen"
-                android:layout_centerInParent="true"
-                android:layout_marginBottom="@dimen/twenty"
-                android:layout_toEndOf="@+id/btnStar"
-                android:text="@string/end" />
-        </RelativeLayout>
-    </androidx.cardview.widget.CardView>
-
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnEnd"
+            style="@style/StylePrimaryColoredButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="@dimen/sixteen"
+            android:layout_marginBottom="@dimen/twenty"
+            android:layout_toEndOf="@+id/btnStar"
+            android:text="@string/end" />
+    </RelativeLayout>
 </FrameLayout>

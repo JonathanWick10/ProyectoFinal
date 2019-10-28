@@ -55,9 +55,9 @@ public class TherapyPSFragment extends Fragment {
             adapter = new Adapter(getChildFragmentManager());
             tabs.setupWithViewPager(viewPager);
             viewPager.setAdapter(adapter);
-            tabs.getTabAt(0);
-            tabs.getTabAt(1);
-            tabs.getTabAt(2);
+            tabs.getTabAt(0).setIcon(R.drawable.ic_lightbulb_outline_black);
+            tabs.getTabAt(1).setIcon(R.drawable.ic_accessibility_black);
+            tabs.getTabAt(2).setIcon(R.drawable.ic_brain_black);
         }
 
     }
