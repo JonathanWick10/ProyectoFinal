@@ -357,6 +357,9 @@
     <string name="lbl_date_of_assignment">Date of assignment:</string>
     <string name="lbl_frequency">Frequency:</string>
     <string name="lbl_hours">Hours:</string>
+    <string name="lbl_start_date">Start date:</string>
+    <string name="lbl_end_date">End date:</string>
+    <string name="lbl_finished">Finished:</string>
     <string name="btn_show_info">Show</string>
     <string name="btn_hide_info">Hide</string>
     <string name="family_questions_img">family question</string>

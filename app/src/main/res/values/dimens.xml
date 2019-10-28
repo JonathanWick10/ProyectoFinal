@@ -67,7 +67,7 @@
     <dimen name="elevationOne">1dp</dimen>
     <dimen name="elevationTwo">2dp</dimen>
     <dimen name="elevationFour">4dp</dimen>
-    <dimen name="elevarionSix">6dp</dimen>
+    <dimen name="elevationSix">6dp</dimen>
     <dimen name="elevationEight">8dp</dimen>
     <dimen name="elevationTwelve">12dp</dimen>
     <dimen name="elevationTwentyFour">24dp</dimen>

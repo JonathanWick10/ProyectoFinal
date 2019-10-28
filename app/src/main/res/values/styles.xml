@@ -222,7 +222,7 @@
     <style name="StyleCardView" parent="Widget.MaterialComponents.CardView">
         <item name="android:layout_margin">@dimen/ten</item>
         <item name="cardCornerRadius">@dimen/twenty</item>
-        <item name="cardElevation">@dimen/elevarionSix</item>
+        <item name="cardElevation">@dimen/elevationSix</item>
         <item name="rippleColor">@color/colorAccent</item>
     </style>
 

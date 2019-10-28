@@ -364,6 +364,9 @@
     <string name="lbl_date_of_assignment">Fecha de asignación:</string>
     <string name="lbl_frequency">Frecuencia:</string>
     <string name="lbl_hours">Horas:</string>
+    <string name="lbl_start_date">Fecha de inicio:</string>
+    <string name="lbl_end_date">Fecha de finalización:</string>
+    <string name="lbl_finished">Finalizado:</string>
     <string name="btn_show_info">Mostrar</string>
     <string name="btn_hide_info">Ocultar</string>
     <string name="family_questions_img">Preguntas familia</string>
