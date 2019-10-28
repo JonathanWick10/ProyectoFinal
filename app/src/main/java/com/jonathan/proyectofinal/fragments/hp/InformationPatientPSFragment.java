@@ -64,6 +64,7 @@ public class InformationPatientPSFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_ps_information_patient, container, false);
         ButterKnife.bind(this, view);
         initDatas();
+        //String uID = getArguments().getString("UID");
 
         return view;
 

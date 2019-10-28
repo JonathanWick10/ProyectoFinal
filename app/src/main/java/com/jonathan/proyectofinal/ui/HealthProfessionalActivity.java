@@ -45,7 +45,7 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
     Fragment change = null;
     FragmentTransaction transaction;
     //  String patientUID = "";
-    String patientIdentification = "";
+    String patientIdentification = "", patientUID = "";
     @BindView(R.id.second_drawer_layout_hp)
     DrawerLayout drawerLayout;
     @BindView(R.id.second_navigation_view_hp)
@@ -53,6 +53,7 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
     @BindView(R.id.toolbar_health_professional)
     MaterialToolbar toolbar;
     FirebaseAuth firebaseAuth;
+    Bundle args = new Bundle();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +82,8 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
         //navigationView.setOnNavigationItemSelectedListener(navListener);
         NavController navController = Navigation.findNavController(this, R.id.content_health_professional);
         NavigationUI.setupWithNavController(navigationView, navController);
-       //patientUID= getIntent().getExtras().getString("patientUID");
+        patientUID= getIntent().getExtras().getString("patientUID");
+        args.putString("UID",patientUID);
       //  Toast.makeText(this, "patientUID:"+patientUID, Toast.LENGTH_LONG).show();
         patientIdentification=getIntent().getExtras().getString("patientIdentification");
         Toast.makeText(this, "patientIdentification:  "+patientIdentification, Toast.LENGTH_LONG).show();
@@ -117,6 +119,7 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
         // Listen to the Button Call for other Fragments in different Views
         if(fragmentTag.equals(getString(R.string.patient))){
             change = new InformationPatientPSFragment();
+            change.setArguments(args);
             transaction.replace(R.id.containerPageInformationPS,change).commit();
         }
         else if(fragmentTag.equals(getString(R.string.carer))){
