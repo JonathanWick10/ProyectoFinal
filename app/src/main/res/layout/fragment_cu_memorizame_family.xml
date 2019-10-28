@@ -1,14 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/fragmentList"
+        android:name="com.jonathan.proyectofinal.fragments.carer.MemorizameFamilyFragment"
+        tools:layout="@layout/fragment_memorizame_grid"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="2dp"
+        android:drawSelectorOnTop="false"
+
+        />
 
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:alignmentMode="alignMargins"
+        android:layout_below="@id/fragmentList"
         android:columnCount="2"
         android:columnOrderPreserved="false"
         android:rowCount="12">
@@ -104,5 +121,5 @@
 
     </GridLayout>
 
-
+    </RelativeLayout>
 </FrameLayout>
