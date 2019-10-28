@@ -8,8 +8,11 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.jonathan.proyectofinal.R;
+import com.jonathan.proyectofinal.fragments.hp.PatientsListFragment;
 
 public class MemorizameFamilyFragment extends Fragment {
 
@@ -25,6 +28,7 @@ public class MemorizameFamilyFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_cu_memorizame_family,container,false);
+
         return view;
     }
 
