@@ -59,6 +59,5 @@ public class PhysicalExecise extends Fragment  {
 
     public interface PhysicalExeciseI{
         void alert(String option);
-
     }
 }
