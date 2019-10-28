@@ -1,6 +1,7 @@
 package com.jonathan.proyectofinal.fragments.patient;
 
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -25,13 +26,14 @@ import com.jonathan.proyectofinal.fragments.games.PhysicalExecise;
  */
 public class HomePFragment extends Fragment {
 
-    public static HomePFragment newInstance() {
-        return new HomePFragment();
+    private PhysicalExecise.PhysicalExeciseI physicalExeciseI ;
+    public static HomePFragment newInstance(PhysicalExecise.PhysicalExeciseI physicalExeciseI){
+        return new HomePFragment(physicalExeciseI);
     }
 
 
-    public HomePFragment() {
-        // Required empty public constructor
+    public HomePFragment(PhysicalExecise.PhysicalExeciseI physicalExeciseI) {
+        this.physicalExeciseI = physicalExeciseI;
     }
 
 
@@ -72,7 +74,7 @@ public class HomePFragment extends Fragment {
                 case 0:
                     return new CognitiveChildFragment();
                 case 1:
-                    return  new PhysicalExecise();
+                    return new PhysicalExecise(physicalExeciseI);
             }
             return null;
         }
