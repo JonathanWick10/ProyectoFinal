@@ -39,10 +39,8 @@
 
         <activity android:name=".fragments.admin.AdminHome"/>
         <activity android:name=".ui.MainCarer" >
-
         </activity>
-        <activity
-            android:name=".ui.MainPatient"
+        <activity android:name=".ui.MainPatient"
             android:screenOrientation="portrait">
 
         </activity>
@@ -53,7 +51,7 @@
 
             <!-- cambiar al login -->
         </activity>
-        <activity android:name=".ui.HealthProfessionalActivity">
+        <activity android:name=".ui.HealthProfessionalActivity" >
 
         </activity>
         <activity android:name=".ui.LoadBrainmher" >
