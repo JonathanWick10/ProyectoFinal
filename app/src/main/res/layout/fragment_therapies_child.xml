@@ -57,7 +57,7 @@
                         android:id="@+id/admin_therapy_desc"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Juego de cartas para estumilar la memoria y mejorar la atención del paciente a travez de la estimulación cognitiva ....."/>
+                        android:text="Juego de cartas para estumilar la memoria y mejorar la atención."/>
                 </LinearLayout>
 
             </LinearLayout>
