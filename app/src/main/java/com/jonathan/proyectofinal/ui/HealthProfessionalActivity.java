@@ -31,6 +31,7 @@ import com.jonathan.proyectofinal.fragments.carer.MemorizameFragment;
 import com.jonathan.proyectofinal.fragments.carer.MemorizameHomeFragment;
 import com.jonathan.proyectofinal.fragments.carer.MemorizamePetsFragment;
 import com.jonathan.proyectofinal.fragments.carer.MemorizamePlacesFragment;
+import com.jonathan.proyectofinal.fragments.carer.NewCardMemorizame;
 import com.jonathan.proyectofinal.fragments.hp.CognitiveTherapyPSFragment;
 import com.jonathan.proyectofinal.fragments.hp.InformationCarerPSFragment;
 import com.jonathan.proyectofinal.fragments.hp.InformationPatientPSFragment;
@@ -157,6 +158,10 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
         }
         else if(fragmentTag.equals(getString(R.string.tab_places_questions))){
             change = new MemorizamePlacesFragment();
+            transaction.replace(R.id.containerMemorizame,change).commit();
+        }
+        else if(fragmentTag.equals(getString(R.string.family_questions_img))){
+            change = new NewCardMemorizame();
             transaction.replace(R.id.containerMemorizame,change).commit();
         }
     }

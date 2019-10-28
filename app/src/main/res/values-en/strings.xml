@@ -359,6 +359,8 @@
     <string name="lbl_hours">Hours:</string>
     <string name="btn_show_info">Show</string>
     <string name="btn_hide_info">Hide</string>
+    <string name="family_questions_img">family question</string>
+
 
     <!-- String Test Alzheimer -->
     <string name="tq1">
