@@ -96,7 +96,7 @@ public class PhysicalExerciseAdapter extends RecyclerView.Adapter<PhysicalExerci
 
     public class holder extends RecyclerView.ViewHolder {
         TextView nameE, description;
-        GifImageView image;
+        ImageView image;
         public int time;
 
         public holder(@NonNull View itemView) {
@@ -104,7 +104,7 @@ public class PhysicalExerciseAdapter extends RecyclerView.Adapter<PhysicalExerci
 
             nameE = itemView.findViewById(R.id.physical_exercise_txtv_name);
             description = itemView.findViewById(R.id.physical_exercise_txtv_description);
-            //image = itemView.findViewById(R.id.physical_exercise_imagev_gif);
+            image = itemView.findViewById(R.id.physical_exercise_imagev_gif);
         }
     }
 

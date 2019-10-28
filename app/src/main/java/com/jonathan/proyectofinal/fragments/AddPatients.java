@@ -206,9 +206,6 @@ public class AddPatients extends Fragment {
                                                         Log.d("message: ", e.toString());
                                                     }
                                                 });
-
-
-
                                     }
                                 }
                             });
@@ -255,7 +252,7 @@ public class AddPatients extends Fragment {
     }
 
     private void uploadImageToStorage(Uri uriImage, final Patient patient) {
-        final StorageReference imgRef = storageReference.child("Users/"+patient.getPatientUID());
+        StorageReference imgRef = storageReference.child("Users/Patients/"+patient.getPatientUID()+".jpg");
         imgRef.putFile(uriImage)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
