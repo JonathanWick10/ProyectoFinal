@@ -68,7 +68,7 @@ public class PhysicalExerciseAdapter extends RecyclerView.Adapter<PhysicalExerci
 
             nameE = itemView.findViewById(R.id.physical_exercise_txtv_name);
             description = itemView.findViewById(R.id.physical_exercise_txtv_description);
-            image = itemView.findViewById(R.id.physical_exercise_imagev_gif);
+            //image = itemView.findViewById(R.id.physical_exercise_imagev_gif);
         }
     }
 }
