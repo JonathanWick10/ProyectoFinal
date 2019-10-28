@@ -44,6 +44,7 @@ import com.jonathan.proyectofinal.data.HealthcareProfessional;
 import com.jonathan.proyectofinal.database.HPManager;
 import com.jonathan.proyectofinal.database.LoginManager;
 import com.jonathan.proyectofinal.fragments.general.DatePickerFragment;
+import com.jonathan.proyectofinal.interfaces.IMainCarer;
 import com.jonathan.proyectofinal.tools.Constants;
 
 import butterknife.BindView;
@@ -54,6 +55,8 @@ import butterknife.OnClick;
  * A simple {@link Fragment} subclass.
  */
 public class AdminAddHealthProfessional extends Fragment{
+
+    private IMainCarer mIMainCarer;
 
     //region Variables
     private View view;
@@ -199,7 +202,9 @@ public class AdminAddHealthProfessional extends Fragment{
                                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                             @Override
                                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                                Toast.makeText(getActivity(), "accedio de nuevo", Toast.LENGTH_SHORT).show();
+                                                if(task.isSuccessful()) {
+                                                    mIMainCarer.inflateFragment(getString(R.string.list));
+                                                }
                                             }
                                         });
                             }
@@ -285,6 +290,7 @@ public class AdminAddHealthProfessional extends Fragment{
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         try {
+            mIMainCarer = (IMainCarer) getActivity();
             mListener = (OnFragmentInteractionListener) context;
         } catch (ClassCastException e){
             throw new ClassCastException(context.toString() + e + " must implement OnFragmentInteractionListener");

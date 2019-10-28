@@ -30,13 +30,14 @@ import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.adapters.AdminListPSAdapter;
 import com.jonathan.proyectofinal.data.HealthcareProfessional;
 import com.jonathan.proyectofinal.fragments.games.Memorama;
+import com.jonathan.proyectofinal.interfaces.IMainCarer;
 import com.jonathan.proyectofinal.ui.Login;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class AdminHome extends AppCompatActivity implements AdminAddHealthProfessional.OnFragmentInteractionListener, NavigationView.OnNavigationItemSelectedListener {
+public class AdminHome extends AppCompatActivity implements IMainCarer,AdminAddHealthProfessional.OnFragmentInteractionListener, NavigationView.OnNavigationItemSelectedListener {
 
     @BindView(R.id.babAdmin)
     BottomAppBar bottomAppBar;
@@ -154,6 +155,21 @@ public class AdminHome extends AppCompatActivity implements AdminAddHealthProfes
         }
         super.onBackPressed();
         finish();
+    }
+
+    @Override
+    public void inflateFragment(String fragmentTag) {
+        if(fragmentTag.equals(getString(R.string.list))){
+            bottomAppBar.setFabAlignmentMode(BottomAppBar.FAB_ALIGNMENT_MODE_CENTER);
+            handleFrame(new AdminListPSFragment(alertDelete()));
+            //handleFrame(new Memorama());
+            floatingActionButton.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_person_add));
+        }
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
     }
 
     /*
