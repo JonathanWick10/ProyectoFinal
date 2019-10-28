@@ -18,6 +18,8 @@ import com.jonathan.proyectofinal.fragments.games.PhysicalExecise;
 
 import java.util.List;
 
+import pl.droidsonroids.gif.GifImageView;
+
 public class PhysicalExerciseAdapter extends RecyclerView.Adapter<PhysicalExerciseAdapter.holder> {
 
     private List<PhysicalExerciseEntity> listExercise;
@@ -39,7 +41,7 @@ public class PhysicalExerciseAdapter extends RecyclerView.Adapter<PhysicalExerci
     public void onBindViewHolder(@NonNull holder holder, int position) {
         //setear datos
         holder.nameE.setText(listExercise.get(position).getNameExercise());
-        Log.v("Alerta", "asdasd");
+        //Log.v("Alerta", "asdasd");
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,7 +60,7 @@ public class PhysicalExerciseAdapter extends RecyclerView.Adapter<PhysicalExerci
 
     public class holder extends RecyclerView.ViewHolder {
         TextView nameE, description;
-        ImageView image;
+        GifImageView image;
         public int time;
 
         public holder(@NonNull View itemView) {

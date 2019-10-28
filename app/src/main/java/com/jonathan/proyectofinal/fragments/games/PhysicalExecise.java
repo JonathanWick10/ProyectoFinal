@@ -44,13 +44,9 @@ public class PhysicalExecise extends Fragment  {
 
     private void recylerView() {
         List<PhysicalExerciseEntity> lista = new ArrayList<>();
-        PhysicalExerciseEntity entity = new PhysicalExerciseEntity();
         PhysicalExerciseEntity entity1 = new PhysicalExerciseEntity();
-        entity1.setNameExercise("Sentadillas");
+        entity1.setNameExercise("Salto de cuerda");
         lista.add(entity1);
-        entity.setNameExercise("Flexiones de pecho");
-        entity.setNameExercise("abdominales");
-        lista.add(entity);
         rv = view.findViewById(R.id.physicalExercise_rv);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.setHasFixedSize(true);

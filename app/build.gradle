@@ -71,5 +71,8 @@ dependencies {
     //dependencie for Login with Facebook
     implementation 'com.facebook.android:facebook-login:[5,6)'
 
+    // dependence for create of Gif
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.19'
+
 
 }

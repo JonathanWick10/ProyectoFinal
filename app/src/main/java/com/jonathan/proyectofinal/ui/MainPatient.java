@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
+
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -135,6 +137,20 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
         switch (option){
             case "eliminar": break;
         }
+        builder.setNeutralButton("atras", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        builder.setPositiveButton("Jugar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        builder.show();
     }
 
     private static class PatientFragmentPageAdapter extends FragmentPagerAdapter {
