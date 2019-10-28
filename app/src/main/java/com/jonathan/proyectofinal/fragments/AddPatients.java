@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,15 +24,29 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.jonathan.proyectofinal.R;
+import com.jonathan.proyectofinal.data.Carer;
+import com.jonathan.proyectofinal.data.HealthcareProfessional;
 import com.jonathan.proyectofinal.data.Patient;
 import com.jonathan.proyectofinal.database.ImageManager;
 import com.jonathan.proyectofinal.database.PatientsManager;
 import com.jonathan.proyectofinal.fragments.general.DatePickerFragment;
+import com.jonathan.proyectofinal.tools.Constants;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -112,7 +127,13 @@ public class AddPatients extends Fragment {
     private OnFragmentInteractionListener mListener;
     boolean flag = true;
     FirebaseAuth firebaseAuth;
-    FirebaseUser user;
+    FirebaseUser firebaseUser;
+    FirebaseFirestore db;
+    StorageReference storageReference;
+    String uIDHPoCarer;
+    String uIDPatient;
+    HealthcareProfessional hp = new HealthcareProfessional();
+    Carer carer = new Carer();
     //endregion
 
     @Nullable
@@ -120,13 +141,16 @@ public class AddPatients extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.activity_add_patients,container,false);
         ButterKnife.bind(this, view);
+        storageReference = FirebaseStorage.getInstance().getReference();
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
+        uIDHPoCarer = firebaseUser.getUid();
+        db = FirebaseFirestore.getInstance();
         dropdownMenu(view);
         logicButtonSave();
         logicImageProfile();
         logicButtonCalendar(view);
         logicButtonDateDiagnosis(view);
-        firebaseAuth = FirebaseAuth.getInstance();
-        user = firebaseAuth.getCurrentUser();
         return view;
     }
 
@@ -150,20 +174,104 @@ public class AddPatients extends Fragment {
             public void onClick(View view) {
                 boolean flag2 = setPojoPatients();
                 if (flag2) {
-                    PatientsManager patientsManager = new PatientsManager();//Instance PatientsManager
-                    ImageManager imageManager = new ImageManager();//Instance ImageManager
-                    imageManager.uploadImageToStorage(uriImage, patient);
-                    boolean rta = patientsManager.createPatient(patient);
-                    if (rta) {
-                        Toast.makeText(getActivity(), getResources().getString(R.string.was_saved_succesfully), Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(getActivity(), getResources().getString(R.string.not_saved), Toast.LENGTH_SHORT).show();
-                    }
+
+                    firebaseAuth.createUserWithEmailAndPassword(patient.getEmail(),patient.getPassword())
+                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    firebaseAuth.signOut();
+                                }
+                            });
+
+                    firebaseAuth.signInWithEmailAndPassword(patient.getEmail(), patient.getPassword())
+                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()){
+                                        AuthResult itask = task.getResult();
+                                        FirebaseUser ures=itask.getUser();
+                                        uIDPatient = ures.getUid();
+                                        patient.setPatientUID(uIDPatient);
+                                        uploadImageToStorage(uriImage, patient);
+                                        db.collection(Constants.Patients).document(patient.getPatientUID()).set(patient)
+                                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                    @Override
+                                                    public void onSuccess(Void aVoid) {
+                                                        Toast.makeText(getActivity(), getResources().getString(R.string.was_saved_succesfully), Toast.LENGTH_SHORT).show();
+                                                    }
+                                                })
+                                                .addOnFailureListener(new OnFailureListener() {
+                                                    @Override
+                                                    public void onFailure(@NonNull Exception e) {
+                                                        Log.d("message: ", e.toString());
+                                                    }
+                                                });
+
+
+
+                                    }
+                                }
+                            });
+                    firebaseAuth.signOut();
+
+                    db.collection(Constants.HealthcareProfesional).document(uIDHPoCarer).get()
+                            .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                @Override
+                                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                    if (documentSnapshot.exists()){
+                                        hp = documentSnapshot.toObject(HealthcareProfessional.class);
+                                        firebaseAuth.signInWithEmailAndPassword(hp.getEmail(),hp.getPassword())
+                                                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<AuthResult> task) {
+                                                        Toast.makeText(getActivity(), "accedio de nuevo", Toast.LENGTH_SHORT).show();
+                                                    }
+                                                });
+                                    }
+                                }
+                            });
+
+                    db.collection(Constants.Carers).document(uIDHPoCarer).get()
+                            .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                @Override
+                                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                    if (documentSnapshot.exists()){
+                                        carer = documentSnapshot.toObject(Carer.class);
+                                        firebaseAuth.signInWithEmailAndPassword(carer.getEmail(), carer.getPassword())
+                                                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<AuthResult> task) {
+                                                        Toast.makeText(getActivity(), "accedio de nuevo", Toast.LENGTH_SHORT).show();
+                                                    }
+                                                });
+                                    }
+                                }
+                            });
                 }else{
                     Toast.makeText(getActivity(), getResources().getString(R.string.complete_field_please), Toast.LENGTH_SHORT).show();
                 }
             }
         });
+    }
+
+    private void uploadImageToStorage(Uri uriImage, final Patient patient) {
+        final StorageReference imgRef = storageReference.child("Users/"+patient.getPatientUID());
+        imgRef.putFile(uriImage)
+                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
+                        while(!uri.isComplete());
+                        Uri url = uri.getResult();
+                        patient.setUriImg(url);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+                    }
+                });
     }
 
     private boolean setPojoPatients() {
@@ -221,7 +329,7 @@ public class AddPatients extends Fragment {
             patient.setDiagnostic(diagnosticString);
             patient.setDateDiagnostic(dateDiagnosticString);
             patient.setObservations(observationString);
-            String[] assignsArray = {user.getUid()};
+            String[] assignsArray = {firebaseUser.getUid()};
             List<String> assigns = Arrays.asList(assignsArray);
             patient.setAssigns(assigns);
             //endregion
@@ -295,7 +403,8 @@ public class AddPatients extends Fragment {
             editDateDiagnostic.setText(selectedDate);
         } else if (requestCode == REQUEST_CODE2 && resultCode == Activity.RESULT_OK){
             uriImage = data.getData();
-            profileImage.setImageURI(uriImage);
+            Glide.with(getActivity()).load(uriImage).fitCenter().into(profileImage);
+            //profileImage.setImageURI(uriImage);
         }
     }
 

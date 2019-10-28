@@ -1,5 +1,7 @@
 package com.jonathan.proyectofinal.data;
 
+import android.net.Uri;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -29,6 +31,7 @@ public class Patient {
     private String emergencyNumber;
     private String role;
     List<String> assigns;
+    private Uri uriImg;
     //endregion
 
     //region Builders
@@ -39,7 +42,7 @@ public class Patient {
                    String gender, String birthday, long phoneNumber, String department, String userName,
                    String password, String confirmPassword, String email, String nativeCity, String actualCity,
                    long familyPhoneNumber, String address, String dateDiagnostic, String diagnostic,
-                   String observations, String emergencyNumber, String role, List<String> assigns) {
+                   String observations, String emergencyNumber, String role, List<String> assigns, Uri uriImg) {
         this.patientUID = patientUID;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -63,6 +66,7 @@ public class Patient {
         this.emergencyNumber = emergencyNumber;
         this.role = role;
         this.assigns = assigns;
+        this.uriImg = uriImg;
     }
     //endregion
 
@@ -239,6 +243,13 @@ public class Patient {
         this.assigns = assigns;
     }
 
+    public Uri getUriImg() {
+        return uriImg;
+    }
+
+    public void setUriImg(Uri uriImg) {
+        this.uriImg = uriImg;
+    }
 
     //endregion
 
