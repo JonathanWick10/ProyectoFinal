@@ -39,6 +39,16 @@
     <string name="admin_enter">Enter</string>
     <string name="admin_pass">Password</string>
 
+    //Strings for notifications
+    <string name="notification_hour">Hour</string>
+    <string name="hour_format">Start: hh:mm</string>
+    <string name="alarm_on">On</string>
+    <string name="alarm_off">Off</string>
+    <string name="medicine_notification">Medicine</string>
+    <string name="medicine_name">Medicine</string>
+    <string name="medicine_reminder">Remember to take this medicine every:</string>
+    <string name="every">every:</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="datos_incorrectos">incorrect username or password</string>

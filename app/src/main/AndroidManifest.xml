@@ -62,6 +62,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.MainActivity" />
+
+        <receiver android:name=".data.AlertReceiver"></receiver>
     </application>
 
 </manifest>
