@@ -25,7 +25,7 @@ public class MemorizameFamilyFragmentGrid extends Fragment {
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
 
-    private MemorizameFamilyGridAdapter adapter;
+  //  private MemorizameFamilyGridAdapter adapter;
 
     @Nullable
     @Override

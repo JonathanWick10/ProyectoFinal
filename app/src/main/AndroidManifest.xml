@@ -40,24 +40,29 @@
         <activity android:name=".fragments.admin.AdminHome"/>
         <activity android:name=".ui.MainCarer" >
 
+
         </activity>
         <activity
             android:name=".ui.MainPatient"
             android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name=".ui.PatientsList"/>
-        <activity android:name=".ui.Login">
+        <activity android:name=".ui.PatientsList">
 
-            <!-- cambiar al login -->
         </activity>
-        <activity android:name=".ui.HealthProfessionalActivity" />
-        <activity android:name=".ui.LoadBrainmher" >
+        <activity android:name=".ui.Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>/>
+            <!-- cambiar al login -->
+        </activity>
+        <activity android:name=".ui.HealthProfessionalActivity">
+
+        </activity>
+        <activity android:name=".ui.LoadBrainmher" >
+
         </activity>
         <activity android:name=".ui.MainActivity" />
     </application>

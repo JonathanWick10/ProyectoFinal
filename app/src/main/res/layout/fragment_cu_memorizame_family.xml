@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/fragmentList"
-        android:name="com.jonathan.proyectofinal.fragments.carer.MemorizameFamilyFragment"
+        android:name="com.jonathan.proyectofinal.fragments.carer.MemorizameFamilyFragmentGrid"
         tools:layout="@layout/fragment_memorizame_grid"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="2dp"
@@ -21,7 +21,7 @@
 
         />
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cv_family_1"
+            android:id="@+id/cv_add_image"
             style="@style/StyleCardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
