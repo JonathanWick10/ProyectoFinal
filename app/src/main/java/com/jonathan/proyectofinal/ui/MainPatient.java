@@ -2,6 +2,7 @@ package com.jonathan.proyectofinal.ui;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -9,33 +10,24 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.view.MenuItem;
-
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.jonathan.proyectofinal.R;
-import com.jonathan.proyectofinal.fragments.admin.AdminHome;
-import com.jonathan.proyectofinal.fragments.games.Memorama;
 import com.jonathan.proyectofinal.fragments.games.PhysicalExecise;
 import com.jonathan.proyectofinal.fragments.patient.HomePFragment;
 import com.jonathan.proyectofinal.fragments.patient.MemorizamePFragment;
 import com.jonathan.proyectofinal.fragments.patient.NotificationsPFragment;
-import com.jonathan.proyectofinal.fragments.patient.ProfilePFragment;
 import com.jonathan.proyectofinal.interfaces.IComunicateFragment;
-import com.jonathan.proyectofinal.interfaces.IMainCarer;
-
-import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainPatient extends AppCompatActivity implements IComunicateFragment, NavigationView.OnNavigationItemSelectedListener {
+public class MainPatient extends AppCompatActivity implements IComunicateFragment, NavigationView.OnNavigationItemSelectedListener, PhysicalExecise.PhysicalExeciseI {
 
     @BindView(R.id.toolbarPatient)
     MaterialToolbar toolbar;
@@ -89,6 +81,7 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
         */
         viewPager = findViewById(R.id.view_pager);
         PatientFragmentPageAdapter adapter = new PatientFragmentPageAdapter(getSupportFragmentManager());
+        adapter.setPhysicalExeciseI(this);
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(adapter.getCount() - 1);
         navigation = findViewById(R.id.navigation);
@@ -135,7 +128,23 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
         finish();
     }
 
+    @Override
+    public void alert(String option) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setView(R.layout.plantilla_physicalexersice_info);
+        switch (option){
+            case "eliminar": break;
+        }
+    }
+
     private static class PatientFragmentPageAdapter extends FragmentPagerAdapter {
+
+
+        PhysicalExecise.PhysicalExeciseI physicalExeciseI ;
+
+        public void setPhysicalExeciseI(PhysicalExecise.PhysicalExeciseI physicalExeciseI) {
+            this.physicalExeciseI = physicalExeciseI;
+        }
 
         public PatientFragmentPageAdapter(FragmentManager fm) {
             super(fm);
@@ -145,7 +154,7 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return HomePFragment.newInstance();
+                    return HomePFragment.newInstance(physicalExeciseI);
                 case 1:
                     return MemorizamePFragment.newInstance();
                 case 2:
@@ -166,6 +175,9 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
             return 3;
         }
     }
+
+
+
 
 
     /*

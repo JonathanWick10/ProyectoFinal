@@ -18,17 +18,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class PhysicalExecise extends Fragment {
+public class PhysicalExecise extends Fragment  {
 
-
+    private PhysicalExeciseI physicalExeciseI;
+    private View view;
+    private RecyclerView rv;
 
     public PhysicalExecise() {
         // Required empty public constructor
     }
-
-    private View view;
-    private RecyclerView rv;
-    private PhysicalExecise.PhysicalExeciseI physicalExeciseI ;
 
     public PhysicalExecise(PhysicalExeciseI physicalExeciseI) {
         this.physicalExeciseI = physicalExeciseI;
@@ -56,10 +54,10 @@ public class PhysicalExecise extends Fragment {
         rv = view.findViewById(R.id.physicalExercise_rv);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.setHasFixedSize(true);
-        rv.setAdapter(new PhysicalExerciseAdapter(lista));
+        rv.setAdapter(new PhysicalExerciseAdapter(lista,physicalExeciseI));
     }
 
     public interface PhysicalExeciseI{
-        void alert();
+        void alert(String option);
     }
 }
