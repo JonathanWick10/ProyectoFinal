@@ -189,7 +189,7 @@
 
     <!-- Standard style for bottom navigation -->
     <style name="StyleBottonNavigation" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
-        <item name="elevation">1dp</item>
+        <item name="elevation">2dp</item>
     </style>
 
     <!-- Strandard style for text in tabs -->

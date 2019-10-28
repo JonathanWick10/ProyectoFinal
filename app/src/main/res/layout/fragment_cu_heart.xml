@@ -21,7 +21,7 @@
                 android:id="@+id/tabh"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/StyleTextTabs">
+                style="@style/StyleTabLayoutWhite">
                 <com.google.android.material.tabs.TabItem
                     android:id="@+id/information_carer"
                     android:layout_width="match_parent"
