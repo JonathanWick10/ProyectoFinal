@@ -3,11 +3,195 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.patient.HomeChildFragment">
 
-    <TextView
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardActivityM"
+        style="@style/StyleCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hogar"/>
+        android:clickable="true"
+        app:strokeColor="@color/colorPrimaryLight"
+        app:strokeWidth="@dimen/two">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/iv_game_miniature"
+                    android:layout_width="@dimen/oneHundredFifty"
+                    android:layout_height="@dimen/oneHundredFifty"
+                    android:src="@drawable/cat_casas" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/sixteen"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/lbl_activity_name"
+                        style="@style/StyleCardViewTitles"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/thirty"
+                        android:text="Hogar" />
+
+                    <TextView
+                        style="@style/StyleCardViewSubTitles"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/twentyFive"
+                        android:layout_marginTop="@dimen/two"
+                        android:text="@string/lbl_description" />
+
+                    <TextView
+                        android:id="@+id/admin_txtv_idps"
+                        style="@style/StyleCardViewDescriptions"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/twentyFive"
+                        android:text="Juego que permite determinar, cuanto recuerdas de tu casa." />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_horizontal">
+
+                <Button
+                    android:id="@+id/btnExpand"
+                    android:layout_width="@dimen/sixty"
+                    android:layout_height="@dimen/sixty"
+                    android:background="@drawable/ic_keyboard_arrow_down_black"
+                    android:backgroundTint="@color/colorPrimary" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/expandableView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/sixteen"
+                android:layout_marginRight="@dimen/sixteen"
+                android:layout_marginBottom="@dimen/sixteen"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@android:color/darker_gray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/twentyFive"
+                    android:layout_marginTop="@dimen/ten"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_level"
+                        style="@style/StyleCardViewSubTitles"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/lbl_level" />
+
+                    <TextView
+                        android:id="@+id/data_level"
+                        style="@style/StyleCardViewDescriptions"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="3/5" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/twentyFive"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_progress"
+                        style="@style/StyleCardViewSubTitles"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/lbl_progress" />
+
+                    <TextView
+                        android:id="@+id/data_progress"
+                        style="@style/StyleCardViewDescriptions"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="60%" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/twentyFive"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_statement"
+                        style="@style/StyleCardViewSubTitles"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/lbl_statement" />
+
+                    <TextView
+                        android:id="@+id/data_statement"
+                        style="@style/StyleCardViewDescriptions"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Incompleto" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@android:color/darker_gray" />
+
+            <LinearLayout
+                style="@style/StyleLayoutActionCardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/StyleCardViewDescriptions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/lbl_rate" />
+
+                <androidx.appcompat.widget.AppCompatRatingBar
+                    android:id="@+id/ratingBar"
+                    android:layout_width="@dimen/oneHundredAndEighty"
+                    android:layout_height="@dimen/fortyFive"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:numStars="4"
+                    android:stepSize="1" />
+
+                <TextView
+                    android:id="@+id/data_rating"
+                    style="@style/StyleCardViewDescriptions"
+                    android:layout_width="@dimen/ten"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/colorPrimary" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.core.widget.NestedScrollView>
