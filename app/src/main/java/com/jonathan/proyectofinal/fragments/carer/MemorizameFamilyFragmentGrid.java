@@ -25,7 +25,7 @@ public class MemorizameFamilyFragmentGrid extends Fragment {
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
 
-  //  private MemorizameFamilyGridAdapter adapter;
+    private MemorizameFamilyGridAdapter adapter;
 
     @Nullable
     @Override
@@ -38,18 +38,18 @@ public class MemorizameFamilyFragmentGrid extends Fragment {
         return view;
     }
     private void initAdapter() {
-        /*
+
         if (adapter == null){
-            adapter = new TopArticlesAdapter(getActivity().getApplicationContext(), this);
+         //   adapter = new MemorizameFamilyFragmentGrid(getActivity().getApplicationContext(), this);
         }
 
-         */
+
     }
 
     private void initRecyclerView() {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),3));//cambiar numero de columnas
-      //  recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(adapter);
     }
 
 
