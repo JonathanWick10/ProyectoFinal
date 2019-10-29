@@ -811,6 +811,6 @@
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
     <string name="exersice_description">Además de proporcionar beneficios al estado físico en general, los ejercicios con cuerda tienen efectos particularmente interesantes para determinadas personas y prácticas deportivas.Los músculos de los brazos y de las piernas (pantorrillas, muslos y glúteos) se desarrollan y fortalecen, perdiendo su flacidez y mejorando su forma, mientras el cuello, los hombros y el pecho se ensanchan y se vuelven firmes.</string>
-
+    <string name="no_patient">there are no patients</string>
 
 </resources>
