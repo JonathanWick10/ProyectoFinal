@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_memorizame"
+        style="@style/StyleCardView"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fragmentList">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:id="@+id/img_memorizame"
+            android:layout_height="@dimen/oneHundredNinetyFour"
+            android:src="@drawable/img_selfcarer"
+            android:scaleType="centerCrop"/>
+
+        <TextView
+            android:id="@+id/text_memorizame"
+            style="@style/StyleSubsCardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/add_image"/>
+    </com.google.android.material.card.MaterialCardView>
+
+
+</LinearLayout>
