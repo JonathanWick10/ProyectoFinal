@@ -314,7 +314,7 @@ public class AddPatients extends Fragment {
         if (!nameSring.isEmpty()&&!lastNameString.isEmpty()&&!typeIDString.isEmpty()&&!idString.isEmpty()&&
         !seleccionRG.isEmpty()&&!birthDayString.isEmpty()&&!phoneString.isEmpty()&&!departmentString.isEmpty()
         &&!nativeCityString.isEmpty()&&!actualCityString.isEmpty()&&!addressString.isEmpty()&&!emailString.isEmpty()
-        &&!userString.isEmpty()&&!passwordString.isEmpty()&&!confirmPasswordString.isEmpty()&&!diagnosticString.isEmpty()
+        &&!userString.isEmpty()&&!passwordString.isEmpty()&&!diagnosticString.isEmpty()
         &&!dateDiagnosticString.isEmpty()&&!observationString.isEmpty()) {
             //region Set data to Pojo Patients
             patient.setFirstName(nameSring);
@@ -331,7 +331,6 @@ public class AddPatients extends Fragment {
             patient.setEmail(emailString);
             patient.setUserName(userString);
             patient.setPassword(passwordString);
-            patient.setConfirmPassword(confirmPasswordString);
             patient.setDiagnostic(diagnosticString);
             patient.setDateDiagnostic(dateDiagnosticString);
             patient.setObservations(observationString);
