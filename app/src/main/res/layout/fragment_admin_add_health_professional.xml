@@ -337,7 +337,7 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/admin_createps_btn_save"
                 style="@style/StylePrimaryColoredButton"
-                android:layout_width="250dp"
+                android:layout_width="230dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:layout_marginLeft="@dimen/ten"
@@ -346,7 +346,7 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/admin_createps_btn_save_update"
                 style="@style/StylePrimaryColoredButton"
-                android:layout_width="250dp"
+                android:layout_width="230dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:layout_marginLeft="@dimen/ten"

@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".fragments.patient.CognitiveChildFragment">
 
-
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardActivity"
         style="@style/StyleCardView"

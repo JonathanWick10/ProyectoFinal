@@ -395,12 +395,14 @@ public class AddPatients extends Fragment {
         String typeId9 = "Santander";
         String typeId10 = "Valle del cauca";
 
-        String[] documentos = new String[] {typeId1, typeId2, typeId3, typeId4, typeId5, typeId6, typeId7, typeId8, typeId9, typeId10,};
+        String[] documentos = {"Cédula de ciudadanía", "Cédula de extranjería", "Pasaporte"};
+
+        String[] departamentos = new String[] {typeId1, typeId2, typeId3, typeId4, typeId5, typeId6, typeId7, typeId8, typeId9, typeId10,};
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), R.layout.dropdown_menu_popup_item, documentos);
         autoCompletIdType.setAdapter(adapter);
 
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<>(getContext(), R.layout.dropdown_menu_popup_item, documentos);
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<>(getContext(), R.layout.dropdown_menu_popup_item, departamentos);
         autoCompletDepartment.setAdapter(adapter2);
     }
 

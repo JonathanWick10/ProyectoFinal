@@ -27,7 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="96dp"
                 android:src="@drawable/avatar_patient"
-                app:civ_border_color="#8BC34A"
+                app:civ_border_color="@color/colorPrimary"
                 app:civ_border_width="2dp"
                 app:civ_circle_background_color="@color/colorAccent" />
 
@@ -386,7 +386,7 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_create_patient"
                 style="@style/StylePrimaryColoredButton"
-                android:layout_width="250dp"
+                android:layout_width="230dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:layout_marginLeft="@dimen/ten"
