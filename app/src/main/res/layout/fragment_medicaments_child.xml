@@ -29,7 +29,7 @@
                     android:id="@+id/iv_medicament_miniature"
                     android:layout_width="@dimen/oneHundredFifty"
                     android:layout_height="@dimen/oneHundredFifty"
-                    android:src="@drawable/cards" />
+                    android:src="@drawable/img_losartan" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -56,27 +56,14 @@
                         android:id="@+id/lbl_data_description"
                         style="@style/StyleCardViewDescriptions"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/twentyFive"
+                        android:layout_height="wrap_content"
                         android:text="Medicamento para regular la presión arterial." />
 
                 </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:gravity="center_horizontal">
-
-                <Button
-                    android:id="@+id/btnExpand"
-                    android:layout_width="@dimen/sixty"
-                    android:layout_height="@dimen/sixty"
-                    android:background="@drawable/ic_keyboard_arrow_down_black"
-                    android:backgroundTint="@color/colorPrimary" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/expandableViewMedicament"
+                android:id="@+id/expandableMedicamentView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/sixteen"
@@ -97,18 +84,18 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/lbl_level_"
+                        android:id="@+id/lbl_recipe_date"
                         style="@style/StyleCardViewSubTitles"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="@string/lbl_level" />
+                        android:text="@string/lbl_recibe_date" />
 
                     <TextView
-                        android:id="@+id/data_level"
+                        android:id="@+id/data_recipe_date"
                         style="@style/StyleCardViewDescriptions"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="3/5" />
+                        android:text="28-10-2019" />
 
                 </LinearLayout>
 
@@ -118,18 +105,18 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/lbl_progress"
+                        android:id="@+id/lbl_frequency"
                         style="@style/StyleCardViewSubTitles"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="@string/lbl_progress" />
+                        android:text="@string/lbl_frequency" />
 
                     <TextView
-                        android:id="@+id/data_progress"
+                        android:id="@+id/data_frequency"
                         style="@style/StyleCardViewDescriptions"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="60%" />
+                        android:text="Diariamente" />
 
                 </LinearLayout>
 
@@ -139,18 +126,60 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/lbl_statement"
+                        android:id="@+id/lbl_dose"
+                        style="@style/StyleCardViewSubTitles"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/lbl_dose" />
+
+                    <TextView
+                        android:id="@+id/data_dose"
+                        style="@style/StyleCardViewDescriptions"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="1 píldora" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/twentyFive"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_hours"
+                        style="@style/StyleCardViewSubTitles"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/lbl_hours" />
+
+                    <TextView
+                        android:id="@+id/data_hours"
+                        style="@style/StyleCardViewDescriptions"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="7:00am, 2:00pm, 9:00pm" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/twentyFive"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_statement_medicament"
                         style="@style/StyleCardViewSubTitles"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="@string/lbl_statement" />
 
                     <TextView
-                        android:id="@+id/data_statement"
+                        android:id="@+id/data_statement_medicament"
                         style="@style/StyleCardViewDescriptions"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Incompleto" />
+                        android:text="Sin terminar" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -161,31 +190,16 @@
                 android:background="@android:color/darker_gray" />
 
             <LinearLayout
-                style="@style/StyleLayoutActionCardView"
+                style="@style/StyleLayoutButtonActionCardView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TextView
-                    style="@style/StyleCardViewDescriptions"
+                <com.google.android.material.button.MaterialButton
+                    style="@style/StyleTextButtonCardView"
+                    android:id="@+id/btn_show_hide_medicament"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="@string/lbl_rate" />
-
-                <androidx.appcompat.widget.AppCompatRatingBar
-                    android:id="@+id/ratingBar"
-                    android:layout_width="@dimen/oneHundredAndEighty"
-                    android:layout_height="@dimen/fortyFive"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1"
-                    android:numStars="4"
-                    android:stepSize="1" />
-
-                <TextView
-                    android:id="@+id/data_rating"
-                    style="@style/StyleCardViewDescriptions"
-                    android:layout_width="@dimen/ten"
-                    android:layout_height="match_parent"
-                    android:textColor="@color/colorPrimary" />
+                    android:layout_height="wrap_content"
+                    android:text="@string/btn_show_info"/>
 
             </LinearLayout>
         </LinearLayout>

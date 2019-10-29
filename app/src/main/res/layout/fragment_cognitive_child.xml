@@ -57,7 +57,7 @@
                         style="@style/StyleCardViewDescriptions"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/twentyFive"
-                        android:text="Juego de cartas para estumilar la memoria y mejorar la atención." />
+                        android:text="Juego de cartas para estumilar la memoria." />
 
                 </LinearLayout>
 

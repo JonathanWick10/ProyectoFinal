@@ -370,6 +370,8 @@
     <string name="lbl_start_date">Start date:</string>
     <string name="lbl_end_date">End date:</string>
     <string name="lbl_finished">Finished:</string>
+    <string name="lbl_recibe_date">Recipe date:</string>
+    <string name="lbl_dose">Dose:</string>
     <string name="btn_show_info">Show</string>
     <string name="btn_hide_info">Hide</string>
     <string name="family_questions_img">family question</string>
