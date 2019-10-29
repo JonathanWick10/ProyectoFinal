@@ -198,6 +198,10 @@ public class TestFragment extends Fragment implements View.OnClickListener {
                 }
                 break;
             case R.id.btnStar:
+                //Método que detiene el temporizador
+                if (countDownTimer != null) {
+                    countDownTimer.cancel();
+                }
                 iniciarTemporizador();
                 break;
             case R.id.btnEnd:
