@@ -33,6 +33,7 @@ import com.jonathan.proyectofinal.fragments.admin.AdminAddHealthProfessional;
 import com.jonathan.proyectofinal.fragments.admin.AdminHome;
 import com.jonathan.proyectofinal.fragments.admin.AdminListPSFragment;
 import com.jonathan.proyectofinal.fragments.hp.PatientsListFragment;
+import com.jonathan.proyectofinal.interfaces.IMainCarer;
 import com.jonathan.proyectofinal.interfaces.IPatientsListFragmentListener;
 
 import butterknife.BindView;
@@ -41,7 +42,7 @@ import butterknife.OnClick;
 
 import java.util.List;
 
-public class PatientsList extends AppCompatActivity implements AddPatients.OnFragmentInteractionListener, NavigationView.OnNavigationItemSelectedListener {
+public class PatientsList extends AppCompatActivity implements IMainCarer,AddPatients.OnFragmentInteractionListener, NavigationView.OnNavigationItemSelectedListener {
 
     @BindView(R.id.babHProfessional)
     BottomAppBar bottomAppBar;
@@ -153,5 +154,19 @@ public class PatientsList extends AppCompatActivity implements AddPatients.OnFra
         }
         super.onBackPressed();
         finish();
+    }
+
+    @Override
+    public void inflateFragment(String fragmentTag) {
+        if(fragmentTag.equals("prueba")){
+            bottomAppBar.setFabAlignmentMode(BottomAppBar.FAB_ALIGNMENT_MODE_CENTER);
+            handleFrame(new PatientsListFragment());
+            floatingActionButton.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_person_add));
+        }
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
     }
 }

@@ -46,6 +46,7 @@ import com.jonathan.proyectofinal.data.Patient;
 import com.jonathan.proyectofinal.database.ImageManager;
 import com.jonathan.proyectofinal.database.PatientsManager;
 import com.jonathan.proyectofinal.fragments.general.DatePickerFragment;
+import com.jonathan.proyectofinal.interfaces.IMainCarer;
 import com.jonathan.proyectofinal.tools.Constants;
 
 import java.util.ArrayList;
@@ -59,6 +60,9 @@ import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AddPatients extends Fragment {
+
+    private IMainCarer mIMainCarer;
+
     public AddPatients() {
     }
     //region Variables
@@ -192,7 +196,9 @@ public class AddPatients extends Fragment {
                                         FirebaseUser ures=itask.getUser();
                                         uIDPatient = ures.getUid();
                                         patient.setPatientUID(uIDPatient);
-                                        uploadImageToStorage(uriImage, patient);
+                                        if (uriImage!=null){
+                                            uploadImageToStorage(uriImage, patient);
+                                        }
                                         db.collection(Constants.Patients).document(patient.getPatientUID()).set(patient)
                                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                     @Override
@@ -221,7 +227,10 @@ public class AddPatients extends Fragment {
                                                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                                     @Override
                                                     public void onComplete(@NonNull Task<AuthResult> task) {
-                                                        Toast.makeText(getActivity(), "accedio de nuevo", Toast.LENGTH_SHORT).show();
+                                                        if(task.isSuccessful()) {
+                                                            mIMainCarer.inflateFragment("prueba");
+                                                        }
+                                                        //Toast.makeText(getActivity(), "accedio de nuevo", Toast.LENGTH_SHORT).show();
                                                     }
                                                 });
                                     }
@@ -238,7 +247,10 @@ public class AddPatients extends Fragment {
                                                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                                     @Override
                                                     public void onComplete(@NonNull Task<AuthResult> task) {
-                                                        Toast.makeText(getActivity(), "accedio de nuevo", Toast.LENGTH_SHORT).show();
+                                                        if(task.isSuccessful()) {
+                                                            mIMainCarer.inflateFragment("prueba");
+                                                        }
+                                                        //Toast.makeText(getActivity(), "accedio de nuevo", Toast.LENGTH_SHORT).show();
                                                     }
                                                 });
                                     }
@@ -400,7 +412,9 @@ public class AddPatients extends Fragment {
             editDateDiagnostic.setText(selectedDate);
         } else if (requestCode == REQUEST_CODE2 && resultCode == Activity.RESULT_OK){
             uriImage = data.getData();
-            Glide.with(getActivity()).load(uriImage).fitCenter().into(profileImage);
+            if (uriImage != null ){
+                Glide.with(getActivity()).load(uriImage).fitCenter().into(profileImage);
+            }
             //profileImage.setImageURI(uriImage);
         }
     }
@@ -409,6 +423,7 @@ public class AddPatients extends Fragment {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         try {
+            mIMainCarer = (IMainCarer) getActivity();
             mListener = (OnFragmentInteractionListener) context;
         } catch (ClassCastException e){
             throw new ClassCastException(context.toString() + e + " must implement OnFragmentInteractionListener");
