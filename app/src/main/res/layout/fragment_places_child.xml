@@ -30,7 +30,7 @@
                     android:id="@+id/iv_game_miniature"
                     android:layout_width="@dimen/oneHundredFifty"
                     android:layout_height="@dimen/oneHundredFifty"
-                    android:src="@drawable/cat_calle" />
+                    android:src="@drawable/img_places_card" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
