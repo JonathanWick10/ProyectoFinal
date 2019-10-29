@@ -134,6 +134,7 @@ public class PatientsList extends AppCompatActivity implements IMainCarer,AddPat
                 firebaseAuth.signOut();
                 Intent intent = new Intent(PatientsList.this, Login.class);
                 startActivity(intent);
+                finish();
                 break;
         }
         return true;
