@@ -130,16 +130,25 @@
     <!-- Standard style for text boxes -->
     <style name="StyleTextInputEditText">
         <item name="android:textStyle">bold</item>
-        <item name="android:maxLines">1</item>
+    </style>
+
+    <!-- Standard style for text box email in login -->
+    <style name="StyleTextInputEditTextLoginEmail">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/colorBackround</item>
+        <item name="android:textColorHint">@color/colorBackround</item>
+        <item name="android:colorAccent">@color/colorBackround</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:inputType">textEmailAddress</item>
     </style>
 
     <!-- Standard style for text boxes in login -->
     <style name="StyleTextInputEditTextLogin">
         <item name="android:textStyle">bold</item>
-        <item name="android:maxLines">1</item>
         <item name="android:textColor">@color/colorBackround</item>
         <item name="android:textColorHint">@color/colorBackround</item>
         <item name="android:colorAccent">@color/colorBackround</item>
+        <item name="android:singleLine">true</item>
     </style>
 
     <!-- Standard style for radio groups -->

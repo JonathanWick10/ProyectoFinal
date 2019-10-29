@@ -102,8 +102,6 @@ public class AddPatients extends Fragment {
     TextInputEditText editUser;
     @BindView(R.id.edit_password_patient)
     TextInputEditText editPassword;
-    @BindView(R.id.edit_confirm_password_patient)
-    TextInputEditText editConfirmPassword;
     @BindView(R.id.edit_diagnostic_patient)
     TextInputEditText editDiagnostic;
     @BindView(R.id.edit_date_diagnostic_patient)
@@ -307,7 +305,6 @@ public class AddPatients extends Fragment {
         emailString = editEmail.getText().toString();
         userString = editUser.getText().toString();
         passwordString = editPassword.getText().toString();
-        confirmPasswordString = editConfirmPassword.getText().toString();
         diagnosticString = editDiagnostic.getText().toString();
         dateDiagnosticString = editDateDiagnostic.getText().toString();
         observationString = editObservation.getText().toString();
@@ -338,6 +335,7 @@ public class AddPatients extends Fragment {
             patient.setDiagnostic(diagnosticString);
             patient.setDateDiagnostic(dateDiagnosticString);
             patient.setObservations(observationString);
+            patient.setRole(Constants.Patients);
             String[] assignsArray = {firebaseUser.getUid()};
             List<String> assigns = Arrays.asList(assignsArray);
             patient.setAssigns(assigns);
@@ -387,10 +385,18 @@ public class AddPatients extends Fragment {
     }
 
     private void dropdownMenu(View view) {
-        String typeId1 = getResources().getString(R.string.citizenship_card);
-        String typeId2 = getResources().getString(R.string.foreign_identity_card);
-        String typeId3 = getResources().getString(R.string.passport);
-        String[] documentos = new String[] {typeId1, typeId2,typeId3};
+        String typeId1 = "Atlántico";
+        String typeId2 = "Antioquia";
+        String typeId3 = "Caqueta";
+        String typeId4 = "Cauca";
+        String typeId5 = "Cundinamarca";
+        String typeId6 = "Huila";
+        String typeId7 = "Nariño";
+        String typeId8 = "Norte de Santander";
+        String typeId9 = "Santander";
+        String typeId10 = "Valle del cauca";
+
+        String[] documentos = new String[] {typeId1, typeId2, typeId3, typeId4, typeId5, typeId6, typeId7, typeId8, typeId9, typeId10,};
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), R.layout.dropdown_menu_popup_item, documentos);
         autoCompletIdType.setAdapter(adapter);
