@@ -130,6 +130,7 @@
     <!-- Standard style for text boxes -->
     <style name="StyleTextInputEditText">
         <item name="android:textStyle">bold</item>
+        <item name="android:singleLine">true</item>
     </style>
 
     <!-- Standard style for text box email in login -->
