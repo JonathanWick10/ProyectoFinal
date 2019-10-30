@@ -132,6 +132,7 @@ public class PatientsList extends AppCompatActivity implements IMainCarer,AddPat
         switch (item.getItemId()){
             case (R.id.btn_profile):
                 Intent navigation = new Intent(PatientsList.this, NavigationOptions.class);
+                navigation.putExtra("option", "profile");
                 startActivity(navigation);
                 break;
             case R.id.btn_logout:

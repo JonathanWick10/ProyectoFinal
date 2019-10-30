@@ -31,7 +31,9 @@ import com.jonathan.proyectofinal.adapters.AdminListPSAdapter;
 import com.jonathan.proyectofinal.data.HealthcareProfessional;
 import com.jonathan.proyectofinal.fragments.games.Memorama;
 import com.jonathan.proyectofinal.interfaces.IMainCarer;
+import com.jonathan.proyectofinal.ui.HealthProfessionalActivity;
 import com.jonathan.proyectofinal.ui.Login;
+import com.jonathan.proyectofinal.ui.NavigationOptions;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -131,6 +133,11 @@ public class AdminHome extends AppCompatActivity implements IMainCarer,AdminAddH
         //String itemName = (String) item.getTitle();
         closeDrawer();
         switch (item.getItemId()){
+            case (R.id.btn_profile):
+                Intent navigation = new Intent(AdminHome.this, NavigationOptions.class);
+                navigation.putExtra("option", "profile");
+                startActivity(navigation);
+                break;
             case R.id.btn_logout:
                 firebaseAuth.signOut();
                 Intent intent = new Intent(AdminHome.this, Login.class);

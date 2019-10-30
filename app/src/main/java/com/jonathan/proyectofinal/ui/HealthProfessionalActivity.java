@@ -176,6 +176,7 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
         switch (item.getItemId()){
             case (R.id.btn_profile):
                 Intent navigation = new Intent(HealthProfessionalActivity.this, NavigationOptions.class);
+                navigation.putExtra("option", "profile");
                 startActivity(navigation);
                 break;
             case R.id.btn_logout:
