@@ -13,8 +13,18 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -132,25 +142,71 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
 
     @Override
     public void alert(String option) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this,R.style.BackgroundRounded);
-        builder.setView(R.layout.plantilla_physicalexersice_info);
+
+        final AlertDialog alertDialog;
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this,R.style.BackgroundRounded);
+
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            // only for Lollipop and newer versions
+            try {
+                LayoutInflater inflater = this.getLayoutInflater();
+                View dialogView = inflater.inflate(R.layout.plantilla_physicalexersice_info, null);
+                builder.setView(dialogView);
+                alertDialog=builder.create();
+
+                Button btn1=(Button)dialogView.findViewById(R.id.btn1);
+                btn1.setText("Atras");
+                btn1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        alertDialog.dismiss();
+                    }
+                });
+                Button btn2=(Button)dialogView.findViewById(R.id.btn2);
+                btn2.setText("Jugar");
+                btn2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        alertDialog.dismiss();
+                    }
+                });
+                TextView tvInformation=dialogView.findViewById(R.id.text_information);
+                tvInformation.setText(R.string.exersice_description);
+                alertDialog.show();
+
+
+
+
+            } catch (Resources.NotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+
+        else{
+            builder.setNeutralButton("atras", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+
+                }
+            });
+
+            builder.setPositiveButton("Jugar", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            builder.setCancelable(false);
+            builder.show();
+
+        }
+
         switch (option){
             case "eliminar": break;
         }
-        builder.setNeutralButton("atras", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
 
-            }
-        });
-
-        builder.setPositiveButton("Jugar", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-            }
-        });
-        builder.show();
     }
 
     private static class PatientFragmentPageAdapter extends FragmentPagerAdapter {
