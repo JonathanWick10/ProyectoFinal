@@ -15,10 +15,18 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.jonathan.proyectofinal.R;
+import com.jonathan.proyectofinal.data.Carer;
+import com.jonathan.proyectofinal.data.HealthcareProfessional;
 import com.jonathan.proyectofinal.interfaces.IMainCarer;
+import com.jonathan.proyectofinal.tools.Constants;
 
 import java.io.FileReader;
 
@@ -29,6 +37,12 @@ public class InformationPSFragment extends Fragment {
     ViewPager viewPager;
     Adapter adapter;
     String text1, text2;
+    FirebaseFirestore db;
+    FirebaseAuth auth;
+    FirebaseUser user;
+    HealthcareProfessional hp = new HealthcareProfessional();
+    Carer carer = new Carer();
+
 
     private IMainCarer iMainHealthProfessional;
 
@@ -38,13 +52,37 @@ public class InformationPSFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_ps_information, container, false);
+        final View view = inflater.inflate(R.layout.fragment_ps_information, container, false);
         tabPatientInfo = view.findViewById(R.id.ps_tab_info_patient);
         nearbyhospital = view.findViewById(R.id.ps_tab_info_carer);
         tabs = view.findViewById(R.id.ps_tabs_info);
         viewPager = view.findViewById(R.id.containerPageInformationPS);
-        InformationPatientPSFragment fragment = new InformationPatientPSFragment();
-        SetUpViewPager(viewPager, tabs, fragment);
+        db = FirebaseFirestore.getInstance();
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+        db.collection(Constants.HealthcareProfesional).document(user.getUid()).get()
+        .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if (documentSnapshot.exists()){
+                    tabs.setVisibility(view.VISIBLE);
+                    hp = documentSnapshot.toObject(HealthcareProfessional.class);
+                    InformationPatientPSFragment fragment = new InformationPatientPSFragment();
+                    SetUpViewPager(viewPager, tabs, fragment);
+               }
+            }
+        });
+        db.collection(Constants.Carers).document(user.getUid()).get()
+        .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if (documentSnapshot.exists()){
+                    carer = documentSnapshot.toObject(Carer.class);
+                    iMainHealthProfessional.inflateFragment("patient2");
+                }
+            }
+        });
+
         return view;
     }
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/info_patient"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
@@ -14,21 +15,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            style="@style/StyleTabLayoutWhite">
+            style="@style/StyleTabLayoutWhite"
+            android:visibility="gone">
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/ps_tab_info_patient"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Monday"
                 android:layout_alignParentStart="true"
                 />
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/ps_tab_info_carer"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tuesday" />
+                android:layout_height="wrap_content"/>
 
         </com.google.android.material.tabs.TabLayout>
 

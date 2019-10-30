@@ -122,6 +122,9 @@
     <string name="select_photo">Select Image</string>
     <string name="complete_field_please">Complete the fields, please!</string>
 
+    // Registration Carer
+    <string name="add_Carer">Add Carer</string>
+
     <!-- Strings for module patient -->
     <string name="menu_memorizame">Memorizame</string>
     <string name="menu_notifications">Notifications</string>

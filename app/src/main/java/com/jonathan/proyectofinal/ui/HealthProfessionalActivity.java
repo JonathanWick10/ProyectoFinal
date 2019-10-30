@@ -123,6 +123,11 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
             change.setArguments(args);
             transaction.replace(R.id.containerPageInformationPS,change).commit();
         }
+        else if(fragmentTag.equals("patient2")){
+            change = new InformationPatientPSFragment();
+            change.setArguments(args);
+            transaction.replace(R.id.info_patient,change).commit();
+        }
         else if(fragmentTag.equals(getString(R.string.carer))){
             change = new InformationCarerPSFragment();
             transaction.replace(R.id.containerPageInformationPS,change).commit();
