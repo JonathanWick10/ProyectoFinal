@@ -833,4 +833,7 @@
         Los músculos de los brazos y de las piernas (pantorrillas, muslos y glúteos) se desarrollan y fortalecen, perdiendo su flacidez y mejorando su forma, mientras el cuello, los hombros y el pecho se ensanchan y se vuelven firmes.</string>
 
     <string name="no_patient">no hay pacientes</string>
+    <string name="yes">Si</string>
+    <string name="no">No</string>
+    <string name="ask_dialog_memorizame">¿Deseas agregar otra imagen?</string>
 </resources>
