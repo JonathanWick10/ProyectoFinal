@@ -226,6 +226,13 @@ public class PatientsListFragment extends Fragment {
                         adapter = new PatientsAdapter(patientList,getActivity(),iSelectionPatient,iDeletePatient);
                         recyclerView.setAdapter(adapter);
                         recyclerView.setHasFixedSize(true);
+                        if(patientList.size()!=0){
+                            recyclerView.setVisibility(View.VISIBLE);
+                            noPatient.setVisibility(View.INVISIBLE);
+                        }else {
+                            recyclerView.setVisibility(View.INVISIBLE);
+                            noPatient.setVisibility(View.VISIBLE);
+                        }
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
