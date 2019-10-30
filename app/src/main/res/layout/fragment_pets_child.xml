@@ -9,7 +9,7 @@
 
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardActivityM"
+        android:id="@+id/cardActivityMemoPets"
         style="@style/StyleCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/iv_game_miniature"
+                    android:id="@+id/iv_memogame_pets"
                     android:layout_width="@dimen/oneHundredFifty"
                     android:layout_height="@dimen/oneHundredFifty"
                     android:src="@drawable/img_pets_card" />
@@ -41,7 +41,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/lbl_activity_name"
+                        android:id="@+id/lbl_memopets_name"
                         style="@style/StyleCardViewTitles"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/thirty"
@@ -55,105 +55,11 @@
                         android:text="@string/lbl_description" />
 
                     <TextView
-                        android:id="@+id/admin_txtv_idps"
+                        android:id="@+id/lbl_memopets_desc"
                         style="@style/StyleCardViewDescriptions"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/twentyFive"
                         android:text="Juego que determina, que recuerdas de alguna mascota." />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:gravity="center_horizontal">
-
-                <Button
-                    android:id="@+id/btnExpand"
-                    android:layout_width="@dimen/sixty"
-                    android:layout_height="@dimen/sixty"
-                    android:background="@drawable/ic_keyboard_arrow_down_black"
-                    android:backgroundTint="@color/colorPrimary" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/expandableView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/sixteen"
-                android:layout_marginRight="@dimen/sixteen"
-                android:layout_marginBottom="@dimen/sixteen"
-                android:orientation="vertical"
-                android:visibility="gone">
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="@android:color/darker_gray" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/twentyFive"
-                    android:layout_marginTop="@dimen/ten"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/lbl_level"
-                        style="@style/StyleCardViewSubTitles"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="@string/lbl_level" />
-
-                    <TextView
-                        android:id="@+id/data_level"
-                        style="@style/StyleCardViewDescriptions"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="3/5" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/twentyFive"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/lbl_progress"
-                        style="@style/StyleCardViewSubTitles"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="@string/lbl_progress" />
-
-                    <TextView
-                        android:id="@+id/data_progress"
-                        style="@style/StyleCardViewDescriptions"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="60%" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/twentyFive"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/lbl_statement"
-                        style="@style/StyleCardViewSubTitles"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="@string/lbl_statement" />
-
-                    <TextView
-                        android:id="@+id/data_statement"
-                        style="@style/StyleCardViewDescriptions"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="Incompleto" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -168,26 +74,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <androidx.appcompat.widget.AppCompatRatingBar
+                    android:id="@+id/ratingBarMemoPets"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/StyleRatingBar" />
+
                 <TextView
+                    android:id="@+id/data_rating_memopets"
                     style="@style/StyleCardViewDescriptions"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="@string/lbl_rate" />
-
-                <androidx.appcompat.widget.AppCompatRatingBar
-                    android:id="@+id/ratingBar"
-                    android:layout_width="@dimen/oneHundredAndEighty"
-                    android:layout_height="@dimen/fortyFive"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1"
-                    android:numStars="4"
-                    android:stepSize="1" />
-
-                <TextView
-                    android:id="@+id/data_rating"
-                    style="@style/StyleCardViewDescriptions"
-                    android:layout_width="@dimen/ten"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:textColor="@color/colorPrimary" />
 
             </LinearLayout>

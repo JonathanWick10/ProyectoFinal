@@ -175,17 +175,10 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
                     return MemorizamePFragment.newInstance();
                 case 2:
                     return NotificationsPFragment.newInstance();
-                    /*
-                case 3:
-                    return ProfilePFragment.newInstance();
-                    */
             }
             return null;
         }
 
-
-
-        // CANTIDAD PROVISIONAL PARA REDIRECCIONAR AL JUEGO
         @Override
         public int getCount() {
             return 3;

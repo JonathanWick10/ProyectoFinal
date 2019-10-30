@@ -323,4 +323,10 @@
         <item name="android:minHeight">?attr/actionBarSize</item>
     </style>
 
+    <!-- Standard style for rating bars -->
+    <style name="StyleRatingBar" parent="Widget.AppCompat.RatingBar" >
+        <item name="android:numStars">5</item>
+        <item name="android:stepSize">1</item>
+    </style >
+
 </resources>

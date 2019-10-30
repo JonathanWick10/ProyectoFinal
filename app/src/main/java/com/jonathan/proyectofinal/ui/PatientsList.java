@@ -130,6 +130,10 @@ public class PatientsList extends AppCompatActivity implements IMainCarer,AddPat
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         closeDrawer();
         switch (item.getItemId()){
+            case (R.id.btn_profile):
+                Intent navigation = new Intent(PatientsList.this, NavigationOptions.class);
+                startActivity(navigation);
+                break;
             case R.id.btn_logout:
                 firebaseAuth.signOut();
                 Intent intent = new Intent(PatientsList.this, Login.class);
