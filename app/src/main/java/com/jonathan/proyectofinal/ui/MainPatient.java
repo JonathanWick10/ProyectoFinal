@@ -30,6 +30,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.jonathan.proyectofinal.R;
+import com.jonathan.proyectofinal.fragments.admin.AdminHome;
 import com.jonathan.proyectofinal.fragments.games.PhysicalExecise;
 import com.jonathan.proyectofinal.fragments.patient.HomePFragment;
 import com.jonathan.proyectofinal.fragments.patient.MemorizamePFragment;
@@ -114,6 +115,11 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         closeDrawer();
         switch (item.getItemId()){
+            case (R.id.btn_profile):
+                Intent navigation = new Intent(MainPatient.this, NavigationOptions.class);
+                navigation.putExtra("option", "profile");
+                startActivity(navigation);
+                break;
             case R.id.btn_logout:
                 firebaseAuth.signOut();
                 Intent intent = new Intent(MainPatient.this, Login.class);

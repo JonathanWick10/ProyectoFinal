@@ -28,6 +28,7 @@ public class NavigationOptions extends AppCompatActivity {
 
     @BindView(R.id.toolbar_navigation_option)
     MaterialToolbar toolbar;
+    String option;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +40,12 @@ public class NavigationOptions extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         if(savedInstanceState == null){
-            handleFrame(new ProfileFragment());
+            option = getIntent().getExtras().getString("option");
+            switch (option){
+                case "profile":
+                    handleFrame(new ProfileFragment());
+                    break;
+            }
         }
     }
 

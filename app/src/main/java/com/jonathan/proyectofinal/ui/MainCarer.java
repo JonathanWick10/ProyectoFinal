@@ -145,6 +145,11 @@ public class MainCarer extends AppCompatActivity implements IMainCarer, Navigati
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         closeDrawer();
         switch (item.getItemId()) {
+            case (R.id.btn_profile):
+                Intent navigation = new Intent(MainCarer.this, NavigationOptions.class);
+                navigation.putExtra("option", "profile");
+                startActivity(navigation);
+                break;
             case R.id.btn_logout:
                 firebaseAuth.signOut();
                 Intent intent = new Intent(MainCarer.this, Login.class);
