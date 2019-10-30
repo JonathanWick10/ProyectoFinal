@@ -60,6 +60,7 @@ import com.jonathan.proyectofinal.database.AdminManager;
 import com.jonathan.proyectofinal.database.CarerManager;
 import com.jonathan.proyectofinal.database.LoginManager;
 import com.jonathan.proyectofinal.fragments.admin.AdminHome;
+import com.jonathan.proyectofinal.fragments.carer.InformationCarerFragment;
 import com.jonathan.proyectofinal.tools.Constants;
 
 import java.security.MessageDigest;
@@ -279,9 +280,11 @@ public class Login extends AppCompatActivity {
     /*********************************** REGISTRO LUEGO BORRAR ******************************/
     private void register() {
 
-        if (validateFields() != null) {
+        /*if (validateFields() != null) {
             loginInstance().createUserWithEmailAndPassword(this, validateFields()[0], validateFields()[1]);
-        }
+        }*/
+        Intent intent = new Intent(Login.this,Registration_Carer.class);
+        startActivity(intent);
 
     }
     /*************************************************************************************/

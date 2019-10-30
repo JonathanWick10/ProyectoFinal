@@ -3,22 +3,21 @@ package com.jonathan.proyectofinal.data;
 public class Carer {
 
     //region Variables
-    private String carerUId;
+    private String carerUID;
     private String firstName;
     private String lastName;
     private String identificationType;
-    private Long identification;
-    private String profession;
+    private String identification;
     private String gender;
     private String birthday;
-    private Long phoneNumber;
-    private Integer age;
+    private String nativeCity;
+    private String address;
+    private String actualCity;
+    private long phoneNumber;
+    private String email;
     private String userName;
     private String password;
-    private String email;
-    private String nativeCity;
-    private String actualCity;
-    private String address;
+    private String profession;
     private String employmentPlace;
     private String role;
     //endregion
@@ -27,12 +26,12 @@ public class Carer {
     public Carer() {
     }
 
-    public Carer(String carerUId, String firstName, String lastName, String identificationType,
-                 Long identification, String profession, String gender, String birthday,
-                 Long phoneNumber, Integer age, String userName, String password, String email,
+    public Carer(String carerUID, String firstName, String lastName, String identificationType,
+                 String identification, String profession, String gender, String birthday,
+                 long phoneNumber, String userName, String password, String email,
                  String nativeCity, String actualCity, String address, String employmentPlace,
                  String role) {
-        this.carerUId = carerUId;
+        this.carerUID = carerUID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.identificationType = identificationType;
@@ -41,7 +40,6 @@ public class Carer {
         this.gender = gender;
         this.birthday = birthday;
         this.phoneNumber = phoneNumber;
-        this.age = age;
         this.userName = userName;
         this.password = password;
         this.email = email;
@@ -55,11 +53,11 @@ public class Carer {
 
     //region Getters and Setters
     public String getCarerUId() {
-        return carerUId;
+        return carerUID;
     }
 
     public void setCarerUId(String patientId) {
-        this.carerUId = patientId;
+        this.carerUID = patientId;
     }
 
     public String getFirstName() {
@@ -86,11 +84,11 @@ public class Carer {
         this.identificationType = identificationType;
     }
 
-    public Long getIdentification() {
+    public String getIdentification() {
         return identification;
     }
 
-    public void setIdentification(Long identification) {
+    public void setIdentification(String identification) {
         this.identification = identification;
     }
 
@@ -118,20 +116,12 @@ public class Carer {
         this.birthday = birthday;
     }
 
-    public Long getPhoneNumber() {
+    public long getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(Long phoneNumber) {
+    public void setPhoneNumber(long phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
     }
 
     public String getUserName() {
@@ -203,7 +193,7 @@ public class Carer {
     @Override
     public String toString() {
         return "Carer{" +
-                "patientId='" + carerUId + '\'' +
+                "patientId='" + carerUID + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", identificationType='" + identificationType + '\'' +
@@ -212,7 +202,6 @@ public class Carer {
                 ", gender='" + gender + '\'' +
                 ", birthday='" + birthday + '\'' +
                 ", phoneNumber=" + phoneNumber +
-                ", age=" + age +
                 ", userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +

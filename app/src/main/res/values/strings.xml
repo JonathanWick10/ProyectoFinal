@@ -51,8 +51,7 @@
     <string name="medicine_reminder">Recuerda que debes tomar o aplicar el medicamento.</string>
     <string name="every">Cada:</string>
 
-    <string-array
-        name="unit_time">
+    <string-array name="unit_time">
         <item>Horas</item>
         <item>Días</item>
         <item>Semanas</item>
@@ -132,6 +131,9 @@
     <string name="not_saved">No guardo</string>
     <string name="select_photo">Seleccione la Imagen</string>
     <string name="complete_field_please">Complete los campos, por favor!</string>
+
+    // Registration Carer
+    <string name="add_Carer">Agregar Cuidador</string>
 
     <!-- Strings for module patient -->
     <string name="menu_memorizame">Memorizame</string>
