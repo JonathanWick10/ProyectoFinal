@@ -29,6 +29,7 @@ import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.fragments.admin.AdminHome;
 import com.jonathan.proyectofinal.fragments.games.PhysicalExecise;
@@ -51,6 +52,7 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
     private ViewPager viewPager;
     private BottomNavigationView navigation;
     FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -83,10 +85,17 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
         navigationView.setNavigationItemSelectedListener(this);
         ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close);
         drawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
+        TextView name_user = navigationView.getHeaderView(0).findViewById(R.id.lbl_name_user);
+        TextView email_user = navigationView.getHeaderView(0).findViewById(R.id.lbl_email_user);
+        if (name_user!=null && email_user!=null) {
+            name_user.setText(firebaseUser.getDisplayName());
+            email_user.setText(firebaseUser.getEmail());
+        }
         /*
         ButterKnife.bind(this);
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);

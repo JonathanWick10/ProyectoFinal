@@ -18,6 +18,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
@@ -26,6 +27,7 @@ import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.adapters.AdminListPSAdapter;
 import com.jonathan.proyectofinal.data.HealthcareProfessional;
@@ -54,6 +56,7 @@ public class AdminHome extends AppCompatActivity implements IMainCarer,AdminAddH
     NavigationView navigationView;
     private boolean isFabTapped = false;
     FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,10 +65,17 @@ public class AdminHome extends AppCompatActivity implements IMainCarer,AdminAddH
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
         navigationView.setNavigationItemSelectedListener(this);
         ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close);
         drawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
+        TextView name_user = navigationView.getHeaderView(0).findViewById(R.id.lbl_name_user);
+        TextView email_user = navigationView.getHeaderView(0).findViewById(R.id.lbl_email_user);
+        if (name_user!=null && email_user!=null) {
+            name_user.setText(firebaseUser.getDisplayName());
+            email_user.setText(firebaseUser.getEmail());
+        }
 
         if (savedInstanceState == null) {
             handleFrame(new AdminListPSFragment(alertDelete()));

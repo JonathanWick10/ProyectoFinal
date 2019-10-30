@@ -128,6 +128,7 @@ public class Registration_Carer extends AppCompatActivity {
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        auth = FirebaseAuth.getInstance();
         storageReference = FirebaseStorage.getInstance().getReference();
         db = FirebaseFirestore.getInstance();
         progressDialog = new ProgressDialog(Registration_Carer.this);

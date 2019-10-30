@@ -18,6 +18,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.appbar.MaterialToolbar;
@@ -26,6 +27,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.data.Patient;
 import com.jonathan.proyectofinal.fragments.AddPatients;
@@ -55,6 +57,7 @@ public class PatientsList extends AppCompatActivity implements IMainCarer,AddPat
     @BindView(R.id.toolbarHP)
     MaterialToolbar toolbar;
     FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
     private boolean isFabTapped = false;
     private IPatientsListFragmentListener fragmentListener;
 
@@ -73,10 +76,17 @@ public class PatientsList extends AppCompatActivity implements IMainCarer,AddPat
 
         setSupportActionBar(toolbar);
         firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
         navigationView.setNavigationItemSelectedListener(this);
         ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close);
         drawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
+        TextView name_user = navigationView.getHeaderView(0).findViewById(R.id.lbl_name_user);
+        TextView email_user = navigationView.getHeaderView(0).findViewById(R.id.lbl_email_user);
+        if (name_user!=null && email_user!=null) {
+            name_user.setText(firebaseUser.getDisplayName());
+            email_user.setText(firebaseUser.getEmail());
+        }
 
 //endregion
 

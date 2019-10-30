@@ -205,7 +205,7 @@ public class Carer {
     @Override
     public String toString() {
         return "Carer{" +
-                "patientId='" + carerUID + '\'' +
+                "carerId='" + carerUID + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", identificationType='" + identificationType + '\'' +

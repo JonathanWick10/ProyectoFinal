@@ -19,12 +19,14 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.fragments.carer.MemorizameFamilyFragment;
 import com.jonathan.proyectofinal.fragments.carer.MemorizameFragment;
@@ -54,6 +56,7 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
     @BindView(R.id.toolbar_health_professional)
     MaterialToolbar toolbar;
     FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
     Bundle args = new Bundle();
 
     @Override
@@ -74,10 +77,17 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
         //MaterialToolbar myToolbar = findViewById(R.id.toolbar_health_professional);
         setSupportActionBar(toolbar);
         firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
         navigationView.setNavigationItemSelectedListener(this);
         ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close);
         drawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
+        TextView name_user = navigationView.getHeaderView(0).findViewById(R.id.lbl_name_user);
+        TextView email_user = navigationView.getHeaderView(0).findViewById(R.id.lbl_email_user);
+        if (name_user!=null && email_user!=null) {
+            name_user.setText(firebaseUser.getDisplayName());
+            email_user.setText(firebaseUser.getEmail());
+        }
         //endregion
         BottomNavigationView navigationView = findViewById(R.id.navigation_health_professional);
         //navigationView.setOnNavigationItemSelectedListener(navListener);

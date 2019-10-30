@@ -9,6 +9,7 @@
     android:layout_gravity="center"
     android:gravity="center"
     tools:context=".ui.MainCarer">
+    <include layout="@layout/drawer_header_hp"/>
 
     <RelativeLayout
         android:layout_width="match_parent"

@@ -1,6 +1,7 @@
 package com.jonathan.proyectofinal.ui;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
@@ -15,14 +16,17 @@ import androidx.navigation.ui.NavigationUI;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.MenuItem;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toolbar;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.fragments.admin.AdminHome;
 import com.jonathan.proyectofinal.fragments.carer.CallEmergencyFragment;
@@ -46,6 +50,7 @@ import com.jonathan.proyectofinal.interfaces.IMainCarer;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Optional;
 
 public class MainCarer extends AppCompatActivity implements IMainCarer, NavigationView.OnNavigationItemSelectedListener {
 
@@ -58,6 +63,7 @@ public class MainCarer extends AppCompatActivity implements IMainCarer, Navigati
     Fragment change = null;
     FragmentTransaction transaction;
     FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,8 +86,16 @@ public class MainCarer extends AppCompatActivity implements IMainCarer, Navigati
         setSupportActionBar(toolbar);
         navigationView.setNavigationItemSelectedListener(this);
         firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
+
         ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close);
         drawerLayout.addDrawerListener(drawerToggle);
+        TextView name_user = navigationView.getHeaderView(0).findViewById(R.id.lbl_name_user);
+        TextView email_user = navigationView.getHeaderView(0).findViewById(R.id.lbl_email_user);
+        if (name_user!=null && email_user!=null) {
+            name_user.setText(firebaseUser.getDisplayName());
+            email_user.setText(firebaseUser.getEmail());
+        }
         drawerToggle.syncState();
     }
 
