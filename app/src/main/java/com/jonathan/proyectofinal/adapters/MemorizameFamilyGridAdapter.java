@@ -24,6 +24,14 @@ public class MemorizameFamilyGridAdapter extends RecyclerView.Adapter<Memorizame
     MemorizameFamilyGridAdapter.IDeleteMemorizame iDeleteMemorizame;
     //endregion
 
+
+    public MemorizameFamilyGridAdapter(List<Memorizame> memorizameList, Context context, ISelectionMemorizame iSelectionMemorizame, IDeleteMemorizame iDeleteMemorizame) {
+        this.memorizameList = memorizameList;
+        this.context = context;
+        this.iSelectionMemorizame = iSelectionMemorizame;
+        this.iDeleteMemorizame = iDeleteMemorizame;
+    }
+
     //region Overwritten methods of RecyclerView
     @NonNull
     @Override
