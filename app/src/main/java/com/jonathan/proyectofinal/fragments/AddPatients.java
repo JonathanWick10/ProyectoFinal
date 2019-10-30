@@ -1,6 +1,7 @@
 package com.jonathan.proyectofinal.fragments;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -136,6 +137,7 @@ public class AddPatients extends Fragment {
     String uIDPatient;
     HealthcareProfessional hp = new HealthcareProfessional();
     Carer carer = new Carer();
+    ProgressDialog progressDialog;
     //endregion
 
     @Nullable
@@ -148,6 +150,7 @@ public class AddPatients extends Fragment {
         firebaseUser = firebaseAuth.getCurrentUser();
         uIDHPoCarer = firebaseUser.getUid();
         db = FirebaseFirestore.getInstance();
+        progressDialog = new ProgressDialog(getActivity());
         dropdownMenu(view);
         logicButtonSave();
         logicImageProfile();
@@ -176,6 +179,8 @@ public class AddPatients extends Fragment {
             public void onClick(View view) {
                 boolean flag2 = setPojoPatients();
                 if (flag2) {
+                    progressDialog.setMessage("Realizando registro en línea");
+                    progressDialog.show();
 
                     firebaseAuth.createUserWithEmailAndPassword(patient.getEmail(),patient.getPassword())
                             .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -226,6 +231,7 @@ public class AddPatients extends Fragment {
                                                     @Override
                                                     public void onComplete(@NonNull Task<AuthResult> task) {
                                                         if(task.isSuccessful()) {
+                                                            progressDialog.dismiss();
                                                             mIMainCarer.inflateFragment("prueba");
                                                         }
                                                         //Toast.makeText(getActivity(), "accedio de nuevo", Toast.LENGTH_SHORT).show();
@@ -246,6 +252,7 @@ public class AddPatients extends Fragment {
                                                     @Override
                                                     public void onComplete(@NonNull Task<AuthResult> task) {
                                                         if(task.isSuccessful()) {
+                                                            progressDialog.dismiss();
                                                             mIMainCarer.inflateFragment("prueba");
                                                         }
                                                         //Toast.makeText(getActivity(), "accedio de nuevo", Toast.LENGTH_SHORT).show();

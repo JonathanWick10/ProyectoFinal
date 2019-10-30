@@ -17,6 +17,21 @@ android:layout_height="match_parent"
         android:indeterminateOnly="true"
         android:layout_gravity="center"/>
         -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/txt_no_patient"
+            android:text="@string/no_patient"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="35dp"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-smallcaps"
+            ></TextView>
 
 <androidx.recyclerview.widget.RecyclerView
     android:layout_width="match_parent"
@@ -24,6 +39,7 @@ android:layout_height="match_parent"
     android:id="@+id/recyclerView"
     tools:listitem="@layout/listview_list_patients"
       />
+    </RelativeLayout>
 
 <!--    tools:listitem="@layout/listview_list_patients"-->
 </FrameLayout>
