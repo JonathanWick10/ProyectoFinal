@@ -132,7 +132,7 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
 
     @Override
     public void alert(String option) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this,R.style.BackgroundRounded);
         builder.setView(R.layout.plantilla_physicalexersice_info);
         switch (option){
             case "eliminar": break;
