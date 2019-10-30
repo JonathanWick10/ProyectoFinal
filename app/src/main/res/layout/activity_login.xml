@@ -64,16 +64,7 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!--
-        <com.google.android.gms.common.SignInButton
-            style="@style/StyleLoginButtons"
-            android:id="@+id/btn_login_google"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-            -->
-
         <!-- botón para inicio de sesión -->
-
         <com.google.android.material.button.MaterialButton
             android:id="@+id/login_admin_btn_enter"
             style="@style/StyleLoginButtons"
@@ -81,22 +72,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/five"
             android:text="@string/admin_enter" />
-        <!--
-            app:iconGravity="start"
-            app:icon="@drawable/ic_brainmher"
-            app:iconSize="@dimen/twentyFive"
-        -->
-
-        <!--
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/label_register_or"
-            android:textColor="@color/white"
-            android:layout_margin="@dimen/five"/>
-            -->
-
 
         <View
             android:layout_width="match_parent"

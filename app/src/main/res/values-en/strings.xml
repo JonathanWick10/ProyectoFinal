@@ -367,7 +367,6 @@
     <string name="lbl_progress">Progress:</string>
     <string name="lbl_statement">Statement:</string>
     <string name="lbl_description">Description:</string>
-    <string name="lbl_rate">Rate this activity</string>
     <string name="lbl_date_of_assignment">Date of assignment:</string>
     <string name="lbl_frequency">Frequency:</string>
     <string name="lbl_hours">Hours:</string>
@@ -380,6 +379,8 @@
     <string name="btn_hide_info">Hide</string>
     <string name="family_questions_img">family question</string>
 
+    <!-- General strings -->
+    <style name="lbl_welcome">Welcome4</style>
 
     <!-- String Test Alzheimer -->
     <string name="tq1">

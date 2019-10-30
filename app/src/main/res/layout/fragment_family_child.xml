@@ -3,11 +3,91 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.patient.FamilyChildFragment">
 
-    <TextView
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardActivityMemoFamily"
+        style="@style/StyleCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Familia"/>
+        android:clickable="true"
+        app:strokeColor="@color/colorPrimaryLight"
+        app:strokeWidth="@dimen/two">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/iv_memogame_family"
+                    android:layout_width="@dimen/oneHundredFifty"
+                    android:layout_height="@dimen/oneHundredFifty"
+                    android:src="@drawable/img_family_card" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/sixteen"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/lbl_memofamily_name"
+                        style="@style/StyleCardViewTitles"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/thirty"
+                        android:text="Familia" />
+
+                    <TextView
+                        style="@style/StyleCardViewSubTitles"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/twentyFive"
+                        android:layout_marginTop="@dimen/two"
+                        android:text="@string/lbl_description" />
+
+                    <TextView
+                        android:id="@+id/lbl_memofamily_desc"
+                        style="@style/StyleCardViewDescriptions"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/twentyFive"
+                        android:text="Juego que permite determinar, que tanto recuerdas de tú familia." />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@android:color/darker_gray" />
+
+            <LinearLayout
+                style="@style/StyleLayoutActionCardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatRatingBar
+                    android:id="@+id/ratingBarMemoFamily"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/StyleRatingBar"/>
+
+                <TextView
+                    android:id="@+id/data_rating_memofamily"
+                    style="@style/StyleCardViewDescriptions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimary" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.core.widget.NestedScrollView>

@@ -166,26 +166,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TextView
-                    style="@style/StyleCardViewDescriptions"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="@string/lbl_rate" />
-
-                <androidx.appcompat.widget.AppCompatRatingBar
+                <RatingBar
                     android:id="@+id/ratingBar"
-                    android:layout_width="@dimen/oneHundredAndEighty"
-                    android:layout_height="@dimen/fortyFive"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1"
-                    android:numStars="4"
-                    android:stepSize="1" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/StyleRatingBar"/>
 
                 <TextView
                     android:id="@+id/data_rating"
                     style="@style/StyleCardViewDescriptions"
-                    android:layout_width="@dimen/ten"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:textColor="@color/colorPrimary" />
 
             </LinearLayout>

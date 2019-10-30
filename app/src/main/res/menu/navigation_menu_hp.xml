@@ -4,6 +4,12 @@
 
     <group android:checkableBehavior="none">
         <item
+            android:id="@+id/btn_profile"
+            android:title="@string/menu_profile"
+            android:icon="@drawable/ic_person"
+            app:showAsAction="ifRoom"/>
+
+        <item
             android:id="@+id/btn_logout"
             android:title="@string/btn_logout"
             android:icon="@drawable/ic_exit_to_app_black"

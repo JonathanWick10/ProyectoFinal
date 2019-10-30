@@ -382,7 +382,6 @@
     <string name="lbl_progress">Progreso:</string>
     <string name="lbl_statement">Estado:</string>
     <string name="lbl_description">Descripción:</string>
-    <string name="lbl_rate">Califica esta actividad</string>
     <string name="lbl_date_of_assignment">Fecha de asignación:</string>
     <string name="lbl_frequency">Frecuencia:</string>
     <string name="lbl_hours">Horas:</string>
@@ -394,6 +393,9 @@
     <string name="btn_show_info">Mostrar</string>
     <string name="btn_hide_info">Ocultar</string>
     <string name="family_questions_img">Preguntas familia</string>
+
+    <!-- General strings -->
+    <string name="lbl_welcome">Bienvenido</string>
 
     <!-- String Test Alzheimer -->
     <string name="tq1">

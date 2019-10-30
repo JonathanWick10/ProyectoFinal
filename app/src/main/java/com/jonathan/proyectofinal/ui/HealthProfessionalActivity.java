@@ -71,8 +71,8 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
 
 //endregion
 //region toolbar
-        MaterialToolbar myToolbar = findViewById(R.id.toolbar_health_professional);
-        setSupportActionBar(myToolbar);
+        //MaterialToolbar myToolbar = findViewById(R.id.toolbar_health_professional);
+        setSupportActionBar(toolbar);
         firebaseAuth = FirebaseAuth.getInstance();
         navigationView.setNavigationItemSelectedListener(this);
         ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close);
@@ -139,7 +139,6 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
         else if(fragmentTag.equals(getString(R.string.menu_memorizame))){
             change = new MemorizameFragment();
             transaction.replace(R.id.containerPageTherapyPS,change).commit();
-
         }
         else if(fragmentTag.equals(getString(R.string.motor))){
             change = new MotorTherapyPSFragment();
@@ -175,6 +174,10 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         closeDrawer();
         switch (item.getItemId()){
+            case (R.id.btn_profile):
+                Intent navigation = new Intent(HealthProfessionalActivity.this, NavigationOptions.class);
+                startActivity(navigation);
+                break;
             case R.id.btn_logout:
                 firebaseAuth.signOut();
                 Intent intent = new Intent(HealthProfessionalActivity.this, Login.class);
