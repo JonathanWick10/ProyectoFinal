@@ -1,5 +1,7 @@
 package com.jonathan.proyectofinal.data;
 
+import android.net.Uri;
+
 public class Carer {
 
     //region Variables
@@ -20,6 +22,7 @@ public class Carer {
     private String profession;
     private String employmentPlace;
     private String role;
+    private Uri uriImg;
     //endregion
 
     //region Builders
@@ -30,7 +33,7 @@ public class Carer {
                  String identification, String profession, String gender, String birthday,
                  long phoneNumber, String userName, String password, String email,
                  String nativeCity, String actualCity, String address, String employmentPlace,
-                 String role) {
+                 String role, Uri uriImg) {
         this.carerUID = carerUID;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -48,6 +51,7 @@ public class Carer {
         this.address = address;
         this.employmentPlace = employmentPlace;
         this.role = role;
+        this.uriImg = uriImg;
     }
     //endregion
 
@@ -186,6 +190,14 @@ public class Carer {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public Uri getUriImg() {
+        return uriImg;
+    }
+
+    public void setUriImg(Uri uriImg) {
+        this.uriImg = uriImg;
     }
     //endregion
 
