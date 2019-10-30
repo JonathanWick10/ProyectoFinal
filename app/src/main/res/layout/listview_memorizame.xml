@@ -21,11 +21,11 @@
             android:scaleType="centerCrop"/>
 
         <TextView
-            android:id="@+id/text_memorizame"
+            android:id="@+id/text_number"
             style="@style/StyleSubsCardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/add_image"/>
+            android:text="@string/number"/>
     </com.google.android.material.card.MaterialCardView>
 
 

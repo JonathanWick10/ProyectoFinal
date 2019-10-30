@@ -12,21 +12,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.data.Memorizame;
-import com.jonathan.proyectofinal.data.Patient;
 
 import java.util.List;
 
 public class MemorizameFamilyGridAdapter extends RecyclerView.Adapter<MemorizameFamilyGridAdapter.MemorizameFamilyGridViewHolder> {
-    //extends RecyclerView.Adapter<MemorizameFamilyGridAdapter.Holder>
 
     //region Variables
     List<Memorizame> memorizameList;
     Context context;
-    MemorizameFamilyGridAdapter.ISelectionPatient iSelectionPatient;
-    MemorizameFamilyGridAdapter.IDeletePatient iDeletePatient;
+    MemorizameFamilyGridAdapter.ISelectionMemorizame iSelectionMemorizame;
+    MemorizameFamilyGridAdapter.IDeleteMemorizame iDeleteMemorizame;
     //endregion
-
-
 
     //region Overwritten methods of RecyclerView
     @NonNull
@@ -44,15 +40,18 @@ public class MemorizameFamilyGridAdapter extends RecyclerView.Adapter<Memorizame
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                iSelectionPatient.clickItem(memorizameList.get(position));
+                iSelectionMemorizame.clickItem(memorizameList.get(position));
             }
         });
+        /*
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                iDeletePatient.clickdelete(memorizameList.get(position));
+                iDeleteMemorizame.clickdelete(memorizameList.get(position));
             }
         });
+
+         */
     }
 
     @Override
@@ -66,8 +65,8 @@ public class MemorizameFamilyGridAdapter extends RecyclerView.Adapter<Memorizame
     //region ViewHolder of Recycler
     public class MemorizameFamilyGridViewHolder  extends RecyclerView.ViewHolder {
 
-        ImageView photo, delete;
-        TextView name, identification;
+        ImageView photo;
+        TextView number;
         Memorizame item;
         View layout;
 
@@ -75,29 +74,27 @@ public class MemorizameFamilyGridAdapter extends RecyclerView.Adapter<Memorizame
         public MemorizameFamilyGridViewHolder (@NonNull View itemView) {
             super(itemView);
             layout = itemView;
-            photo = itemView.findViewById(R.id.imagePatient);
-            delete = itemView.findViewById(R.id.btn_delete);
-            name = itemView.findViewById(R.id.tvPatientName);
-            identification = itemView.findViewById(R.id.tvPatientId);
+            photo = itemView.findViewById(R.id.img_memorizame);
+            number = itemView.findViewById(R.id.text_number);
         }
 
         //Set data to views
         public void setData(Memorizame item) {
             this.item = item;
-            name.setText(item.getQuestion());
-            identification.setText(item.getCorrectAnswer());
+            number.setText(item.getQuestion());
+            photo = item.getImg();
         }
     }
     //endregion
 
 
     //region Interfaces
-    public interface ISelectionPatient {
-        void clickItem(Memorizame patient);
+    public interface ISelectionMemorizame {
+        void clickItem(Memorizame memorizame);
     }
 
-    public interface IDeletePatient {
-        void clickdelete(Memorizame patient);
+    public interface IDeleteMemorizame {
+        void clickdelete(Memorizame memorizame);
     }
     //endregion
 

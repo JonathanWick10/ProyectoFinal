@@ -87,6 +87,7 @@
     <string name="admin_til_workplace">Workplace</string>
     <string name="admin_til_saveps">Save</string>
 
+    <string name="number">Number</string>
     <string name="add_patient">Add User</string>
     <string name="add_image">Add image</string>
     <string name="first_name">First name</string>
