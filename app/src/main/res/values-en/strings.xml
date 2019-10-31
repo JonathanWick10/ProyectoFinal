@@ -89,6 +89,7 @@
 
     <string name="number">Number</string>
     <string name="add_patient">Add User</string>
+    <string name="add_health_professional">Add Healt Professional</string>
     <string name="add_image">Add image</string>
     <string name="first_name">First name</string>
     <string name="last_name">Last name</string>
@@ -383,6 +384,9 @@
     <!-- General strings -->
     <string name="lbl_welcome">Welcome</string>
     <string name="lbl_my_profile">My Profile</string>
+
+    <!-- Strings for field validations -->
+    <string name="val_min_passwornd">Must contain at least 6 characters</string>
 
     <!-- String Test Alzheimer -->
     <string name="tq1">

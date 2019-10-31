@@ -36,10 +36,15 @@ import butterknife.ButterKnife;
  */
 public class CognitiveChildFragment extends Fragment {
 
+    @BindView(R.id.expandableView)
     LinearLayout expandableView;
+    @BindView(R.id.btnExpand)
     Button btnExpand;
+    @BindView(R.id.cardActivity)
     CardView cardActivity;
+    @BindView(R.id.ratingBar)
     RatingBar ratingBar;
+    @BindView(R.id.data_rating)
     TextView ratingTxt;
 
     IComunicateFragment interfaceComunicateFragments;
@@ -63,6 +68,7 @@ public class CognitiveChildFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         vista = inflater.inflate(R.layout.fragment_cognitive_child, container, false);
+        ButterKnife.bind(this, vista);
         return vista;
         //return inflater.inflate(R.layout.fragment_cognitive_child, container, false);
 
@@ -106,14 +112,7 @@ public class CognitiveChildFragment extends Fragment {
         int position =getArguments().getInt(ARGUMENT_POSITION, -1);
         textView.setText(position == 0 ? R.string.do_not_stop_believing : R.string.a8);
         */
-
-        expandableView = view.findViewById(R.id.expandableView);
-        btnExpand = view.findViewById(R.id.btnExpand);
-        ratingBar = view.findViewById(R.id.ratingBar);
-        ratingTxt = view.findViewById(R.id.data_rating);
-        cardActivity = view.findViewById(R.id.cardActivity);
         ratingBar.setOnRatingBarChangeListener(mOnRatingChangeListener);
-
 
         btnExpand.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,39 +136,6 @@ public class CognitiveChildFragment extends Fragment {
                 interfaceComunicateFragments.inicarJuego();
             }
         });
-
-        /*
-        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
-                //ratingTxt.setText(String.valueOf(v));
-                switch ((int) ratingBar.getRating()) {
-                    case 1:
-                        //ratingTxt.setText("Very bad");
-                        ratingBar.setNumStars(1);
-                        break;
-                    case 2:
-                        //ratingTxt.setText("Need some improvement");
-                        ratingBar.setNumStars(2);
-                        break;
-                    case 3:
-                        //ratingTxt.setText("Good");
-                        ratingBar.setNumStars(3);
-                        break;
-                    case 4:
-                        //ratingTxt.setText("Great");
-                        ratingBar.setNumStars(4);
-                        break;
-                    case 5:
-                        //ratingTxt.setText("Awesome. I love it");
-                        ratingBar.setRating(5);
-                        break;
-                    default:
-                        //ratingTxt.setText("");
-                }
-            }
-        });
-        */
     }
 
     @Override

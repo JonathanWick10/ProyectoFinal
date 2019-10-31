@@ -13,6 +13,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -32,6 +34,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -61,7 +64,8 @@ public class Registration_Carer extends AppCompatActivity {
     //region Variables
     @BindView(R.id.toolbar_registration_carer)
     MaterialToolbar toolbar;
-
+    @BindView(R.id.til_password_create_carer)
+    TextInputLayout til_password;
 
     @BindView(R.id.profile_image)
     CircleImageView profileImage;
@@ -139,6 +143,40 @@ public class Registration_Carer extends AppCompatActivity {
         logicButtonSave();
         logicImageProfile();
         logicButtonCalendar();
+        verifyFields();
+    }
+
+    private void verifyFields() {
+        editPassword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                til_password.setError(null);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                validateFields("password");
+            }
+        });
+    }
+
+    private boolean validateFields(String field) {
+        boolean data = true;
+        switch (field){
+            case "password":
+                String email = editPassword.getText().toString().trim();
+                if (email.length() < 7) {
+                    til_password.setError(getString(R.string.val_min_passwornd));
+                    data = false;
+                }
+                break;
+        }
+        return data;
     }
 
     private void logicImageProfile() {
@@ -259,7 +297,7 @@ public class Registration_Carer extends AppCompatActivity {
             &&!idString.isEmpty()&&!seleccionRG.isEmpty()&&!birthDayString.isEmpty()
             &&!phoneString.isEmpty()&&!nativeCityString.isEmpty()&&!actualCityString.isEmpty()
             &&!addressString.isEmpty()&&!emailString.isEmpty()&&!userString.isEmpty()
-            &&!passwordString.isEmpty()&&!profession.isEmpty()&&!workC.isEmpty()) {
+            &&!passwordString.isEmpty()&&!profession.isEmpty()&&!workC.isEmpty()&&emailString.length()>=7) {
             //region Set data to Pojo Patients
             carer.setFirstName(nameSring);
             carer.setLastName(lastNameString);

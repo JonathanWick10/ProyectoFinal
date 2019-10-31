@@ -285,6 +285,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/StyleTextInputLayotTextBoxForms"
+                android:id="@+id/til_password_create_carer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:endIconMode="password_toggle"

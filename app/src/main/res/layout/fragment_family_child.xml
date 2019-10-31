@@ -57,7 +57,7 @@
                         style="@style/StyleCardViewDescriptions"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/twentyFive"
-                        android:text="Juego que permite determinar, que tanto recuerdas de tú familia." />
+                        android:text="Juego que determina, que tanto recuerdas de tu familia." />
 
                 </LinearLayout>
 

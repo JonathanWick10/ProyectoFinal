@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,6 +34,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -68,6 +71,9 @@ public class AddPatients extends Fragment {
     public AddPatients() {
     }
     //region Variables
+    @BindView(R.id.til_password_patient)
+    TextInputLayout til_password;
+
     @BindView(R.id.profile_image)
     CircleImageView profileImage;
     @BindView(R.id.edit_name_patient)
@@ -157,7 +163,41 @@ public class AddPatients extends Fragment {
         logicImageProfile();
         logicButtonCalendar(view);
         logicButtonDateDiagnosis(view);
+        verifiFieds();
         return view;
+    }
+
+    private void verifiFieds() {
+        editPassword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                til_password.setError(null);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                vaildateFields("password");
+            }
+        });
+    }
+
+    private boolean vaildateFields(String field) {
+        boolean data = true;
+        switch (field){
+            case "password":
+                String email = editPassword.getText().toString().trim();
+                if (email.length() < 7) {
+                    til_password.setError(getString(R.string.val_min_passwornd));
+                    data = false;
+                }
+                break;
+        }
+        return data;
     }
 
     private void logicImageProfile() {
@@ -323,7 +363,7 @@ public class AddPatients extends Fragment {
         !seleccionRG.isEmpty()&&!birthDayString.isEmpty()&&!phoneString.isEmpty()&&!departmentString.isEmpty()
         &&!nativeCityString.isEmpty()&&!actualCityString.isEmpty()&&!addressString.isEmpty()&&!emailString.isEmpty()
         &&!userString.isEmpty()&&!passwordString.isEmpty()&&!diagnosticString.isEmpty()
-        &&!dateDiagnosticString.isEmpty()&&!observationString.isEmpty()) {
+        &&!dateDiagnosticString.isEmpty()&&!observationString.isEmpty()&&emailString.length()>=7) {
             //region Set data to Pojo Patients
             patient.setFirstName(nameSring);
             patient.setLastName(lastNameString);

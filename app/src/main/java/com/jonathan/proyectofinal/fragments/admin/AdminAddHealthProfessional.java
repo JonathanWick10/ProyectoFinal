@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,6 +34,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -55,12 +58,15 @@ import butterknife.OnClick;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AdminAddHealthProfessional extends Fragment{
+public class AdminAddHealthProfessional extends Fragment {
 
     private IMainCarer mIMainCarer;
 
     //region Variables
     private View view;
+    @BindView(R.id.til_hp_create_pass)
+    TextInputLayout til_password;
+
     @BindView(R.id.admin_createps_til_name)
     TextInputEditText firstNameHp;
     @BindView(R.id.admin_createps_til_lastname)
@@ -121,19 +127,53 @@ public class AdminAddHealthProfessional extends Fragment{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_admin_add_health_professional, container, false);
-        firebaseAuth= FirebaseAuth.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
         uIDAdmin = firebaseUser.getUid();
         db = FirebaseFirestore.getInstance();
         ButterKnife.bind(this, view);
         dropdownMenu(view);
         logicButtonCalendar(view);
+        verifiFieds();
         return view;
+    }
+
+    private void verifiFieds() {
+        passHp.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                til_password.setError(null);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                vaildateFields("password");
+            }
+        });
+    }
+
+    private boolean vaildateFields(String field) {
+        boolean data = true;
+        switch (field){
+            case "password":
+                String email = passHp.getText().toString().trim();
+                if (email.length() < 7) {
+                    til_password.setError(getString(R.string.val_min_passwornd));
+                    data = false;
+                }
+                break;
+        }
+        return data;
     }
 
     private void logicButtonCalendar(View view) {
         // Get the fragment manager so they can start from the fragment
-        final FragmentManager fm = ((AppCompatActivity)getActivity()).getSupportFragmentManager();
+        final FragmentManager fm = ((AppCompatActivity) getActivity()).getSupportFragmentManager();
 
         // Using an onclick listener in TextInputEditText to display datePicker
         ibCalendar.setOnClickListener(new View.OnClickListener() {
@@ -150,16 +190,15 @@ public class AdminAddHealthProfessional extends Fragment{
     }
 
     @OnClick(R.id.admin_createps_btn_save)
-    public void logicButtonSave(View view){
+    public void logicButtonSave(View view) {
         boolean flag2 = setPojoHp();
         if (flag2) {
             //_____________________________________________________________________________________________________
-
-            firebaseAuth.createUserWithEmailAndPassword(hp.getEmail(),hp.getPassword())
+            firebaseAuth.createUserWithEmailAndPassword(hp.getEmail(), hp.getPassword())
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()){
+                            if (task.isSuccessful()) {
                                 firebaseAuth.signOut();
                             }
                         }
@@ -169,9 +208,9 @@ public class AdminAddHealthProfessional extends Fragment{
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()){
+                            if (task.isSuccessful()) {
                                 AuthResult itask = task.getResult();
-                                FirebaseUser ures=itask.getUser();
+                                FirebaseUser ures = itask.getUser();
                                 uIDHP = ures.getUid();
                                 hp.setHpUID(uIDHP);
                                 db.collection(Constants.HealthcareProfesional).document(hp.getHpUID()).set(hp)
@@ -197,13 +236,13 @@ public class AdminAddHealthProfessional extends Fragment{
                     .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                         @Override
                         public void onSuccess(DocumentSnapshot documentSnapshot) {
-                            if (documentSnapshot.exists()){
-                                admin= documentSnapshot.toObject(Admin.class);
+                            if (documentSnapshot.exists()) {
+                                admin = documentSnapshot.toObject(Admin.class);
                                 firebaseAuth.signInWithEmailAndPassword(admin.getEmail(), admin.getPassword())
                                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                             @Override
                                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                                if(task.isSuccessful()) {
+                                                if (task.isSuccessful()) {
                                                     mIMainCarer.inflateFragment(getString(R.string.list));
                                                 }
                                             }
@@ -213,8 +252,7 @@ public class AdminAddHealthProfessional extends Fragment{
                     });
 
             //_________________________________________________________________________________________________________
-
-        }else{
+        } else {
             Toast.makeText(getActivity(), getResources().getString(R.string.complete_field_please), Toast.LENGTH_SHORT).show();
         }
     }
@@ -229,7 +267,7 @@ public class AdminAddHealthProfessional extends Fragment{
             int radioButtonId = genderHp.getCheckedRadioButtonId();
             View radioButton = genderHp.findViewById(radioButtonId);
             int indice = genderHp.indexOfChild(radioButton);
-            RadioButton rb = (RadioButton)  genderHp.getChildAt(indice);
+            RadioButton rb = (RadioButton) genderHp.getChildAt(indice);
             gender = rb.getText().toString();
         }
         //endregion
@@ -247,7 +285,7 @@ public class AdminAddHealthProfessional extends Fragment{
         if (!firstName.isEmpty() && !lastName.isEmpty() && !typeId.isEmpty() && !ident.isEmpty() &&
                 !gender.isEmpty() && !birthdate.isEmpty() && !nativeCity.isEmpty() && !phone.isEmpty() &&
                 !address.isEmpty() && !actualCity.isEmpty() && !email.isEmpty() && !userHealth.isEmpty() &&
-                !pass.isEmpty() && !profession.isEmpty() && !workP.isEmpty()){
+                !pass.isEmpty() && !profession.isEmpty() && !workP.isEmpty()&&email.length()>=7) {
             hp.setFirstName(firstName);
             hp.setLastName(lastName);
             hp.setIdentificationType(typeId);
@@ -265,15 +303,15 @@ public class AdminAddHealthProfessional extends Fragment{
             hp.setEmployment_place(workP);
             hp.setRole(Constants.HealthcareProfesional);
 
-            return  flag = true;
-        }else {
+            return flag = true;
+        } else {
             return flag = false;
         }
     }
 
     private void dropdownMenu(View view) {
         // Filling drop-down list for document type
-        String[] documentos = new String[] {getResources().getString(R.string.citizenship_card), getResources().getString(R.string.foreign_identity_card), getResources().getString(R.string.passport)};
+        String[] documentos = new String[]{getResources().getString(R.string.citizenship_card), getResources().getString(R.string.foreign_identity_card), getResources().getString(R.string.passport)};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), R.layout.dropdown_menu_popup_item, documentos);
         AutoCompleteTextView tipoIdentificacion = view.findViewById(R.id.admin_identification_type);
         tipoIdentificacion.setAdapter(adapter);
@@ -281,7 +319,7 @@ public class AdminAddHealthProfessional extends Fragment{
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK){
+        if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             selectedDate = data.getStringExtra("selectedDate");
             dateOfBirthET.setText(selectedDate);
         }
@@ -293,7 +331,7 @@ public class AdminAddHealthProfessional extends Fragment{
         try {
             mIMainCarer = (IMainCarer) getActivity();
             mListener = (OnFragmentInteractionListener) context;
-        } catch (ClassCastException e){
+        } catch (ClassCastException e) {
             throw new ClassCastException(context.toString() + e + " must implement OnFragmentInteractionListener");
         }
     }
@@ -304,7 +342,7 @@ public class AdminAddHealthProfessional extends Fragment{
         mListener = null;
     }
 
-    public interface OnFragmentInteractionListener{
+    public interface OnFragmentInteractionListener {
         public void onFragmentInteraction(Uri uri);
     }
 }

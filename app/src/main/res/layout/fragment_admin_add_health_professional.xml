@@ -12,6 +12,12 @@
         android:orientation="vertical"
         android:padding="@dimen/ten">
 
+        <TextView
+            style="@style/StyleTextViewTitles"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/add_health_professional"></TextView>
+
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/admin_createps_img_ps"
             android:layout_width="match_parent"
@@ -263,6 +269,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/StyleTextInputLayotTextBoxForms"
+            android:id="@+id/til_hp_create_pass"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:endIconMode="password_toggle"
@@ -275,7 +282,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/admin_til_pass"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <!--
