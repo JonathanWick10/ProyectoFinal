@@ -117,6 +117,7 @@
     <string name="foreign_identity_card">Foreign Identity Card</string>
     <string name="passport">Passport</string>
     <string name="save">Save</string>
+    <string name="update">Update</string>
     <string name="was_saved_succesfully">Was Saved Succesfully</string>
     <string name="not_saved">Not saved</string>
     <string name="select_photo">Select Image</string>
@@ -380,7 +381,8 @@
     <string name="family_questions_img">family question</string>
 
     <!-- General strings -->
-    <style name="lbl_welcome">Welcome4</style>
+    <string name="lbl_welcome">Welcome</string>
+    <string name="lbl_my_profile">My Profile</string>
 
     <!-- String Test Alzheimer -->
     <string name="tq1">

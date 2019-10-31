@@ -44,6 +44,7 @@ import com.jonathan.proyectofinal.data.HealthcareProfessional;
 import com.jonathan.proyectofinal.database.HPManager;
 import com.jonathan.proyectofinal.database.LoginManager;
 import com.jonathan.proyectofinal.fragments.general.DatePickerFragment;
+import com.jonathan.proyectofinal.fragments.general.DatePickerFragmentDateOfBirth;
 import com.jonathan.proyectofinal.interfaces.IMainCarer;
 import com.jonathan.proyectofinal.tools.Constants;
 
@@ -139,7 +140,7 @@ public class AdminAddHealthProfessional extends Fragment{
             @Override
             public void onClick(View view) {
                 // Create the datePickerFragment
-                AppCompatDialogFragment newFragment = new DatePickerFragment();
+                AppCompatDialogFragment newFragment = new DatePickerFragmentDateOfBirth();
                 // Set the targetFragment to receive the results, specifying the request code
                 newFragment.setTargetFragment(AdminAddHealthProfessional.this, REQUEST_CODE);
                 // Show the widget

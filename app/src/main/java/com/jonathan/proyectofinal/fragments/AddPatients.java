@@ -47,6 +47,7 @@ import com.jonathan.proyectofinal.data.Patient;
 import com.jonathan.proyectofinal.database.ImageManager;
 import com.jonathan.proyectofinal.database.PatientsManager;
 import com.jonathan.proyectofinal.fragments.general.DatePickerFragment;
+import com.jonathan.proyectofinal.fragments.general.DatePickerFragmentDateOfBirth;
 import com.jonathan.proyectofinal.interfaces.IMainCarer;
 import com.jonathan.proyectofinal.tools.Constants;
 
@@ -363,7 +364,7 @@ public class AddPatients extends Fragment {
             @Override
             public void onClick(View view) {
                 // Create the datePickerFragment
-                AppCompatDialogFragment newFragment = new DatePickerFragment();
+                AppCompatDialogFragment newFragment = new DatePickerFragmentDateOfBirth();
                 // Set the targetFragment to receive the results, specifying the request code
                 newFragment.setTargetFragment(AddPatients.this, REQUEST_CODE);
                 // Show the widget
@@ -402,7 +403,7 @@ public class AddPatients extends Fragment {
         String typeId9 = "Santander";
         String typeId10 = "Valle del cauca";
 
-        String[] documentos = {"Cédula de ciudadanía", "Cédula de extranjería", "Pasaporte"};
+        String[] documentos = {getResources().getString(R.string.citizenship_card), getResources().getString(R.string.foreign_identity_card), getResources().getString(R.string.passport)};
 
         String[] departamentos = new String[] {typeId1, typeId2, typeId3, typeId4, typeId5, typeId6, typeId7, typeId8, typeId9, typeId10,};
 

@@ -68,11 +68,6 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
                 case R.id.notifications_patient:
                     viewPager.setCurrentItem(2);
                     return true;
-                    /*
-                case R.id.profile_patient:
-                    viewPager.setCurrentItem(3);
-                    return true;
-                    */
             }
             return false;
         }
@@ -101,6 +96,7 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
         getSupportFragmentManager().beginTransaction().replace(R.id.containerFramePatient, new HomePFragment()).commit();
         */
+
         viewPager = findViewById(R.id.view_pager);
         PatientFragmentPageAdapter adapter = new PatientFragmentPageAdapter(getSupportFragmentManager());
         adapter.setPhysicalExeciseI(this);
@@ -109,12 +105,8 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
         navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
-
-    // METODO PROVISIONAL CON INTERFAZ PARA REDIRECCIONAR AL JUEGO
     @Override
     public void inicarJuego() {
-        //Toast.makeText(this, "Iniciar juego desde actividad", Toast.LENGTH_SHORT).show();
-        //(viewPager.setCurrentItem(3);
         Intent pasar = new Intent(MainPatient.this, Games.class);
         pasar.putExtra("Game","Memorama");
         startActivity(pasar);
@@ -255,32 +247,4 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
             return 3;
         }
     }
-
-
-
-
-
-    /*
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
-            new BottomNavigationView.OnNavigationItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    Fragment selectedFragment = null;
-
-                    switch (item.getItemId()){
-                        case R.id.home_patient:
-                            selectedFragment = new HomePFragment();
-                            break;
-                        case R.id.memorizame_patient:
-                            selectedFragment = new MemorizamePFragment();
-                            break;
-                        case R.id.notifications_patient:
-                            selectedFragment = new NotificationsPFragment();
-                            break;
-                    }
-                    getSupportFragmentManager().beginTransaction().replace(R.id.containerFramePatient, selectedFragment).commit();
-                    return true;
-                }
-            };
-     */
 }

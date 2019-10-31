@@ -9,7 +9,6 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RestrictTo;
 import androidx.appcompat.app.AppCompatDialogFragment;
 import androidx.fragment.app.Fragment;
 
@@ -29,13 +28,13 @@ import java.util.Locale;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DatePickerFragment extends AppCompatDialogFragment implements DatePickerDialog.OnDateSetListener {
+public class DatePickerFragmentDateOfBirth extends AppCompatDialogFragment implements DatePickerDialog.OnDateSetListener {
 
-    //private static final String TAG = "DatePickerFragment";
+    //private static final String TAG = "DatePickerFragmentDateOfBirth";
     final Calendar c = Calendar.getInstance();
 
     /*
-    public DatePickerFragment() {
+    public DatePickerFragmentDateOfBirth() {
         // Required empty public constructor
     }
     */
@@ -50,8 +49,10 @@ public class DatePickerFragment extends AppCompatDialogFragment implements DateP
         int day = c.get(Calendar.DAY_OF_MONTH);
 
         // Devuelve una nueva instancia de DatePickerDialog
-        DatePickerDialog dialog = new DatePickerDialog(getActivity(), DatePickerFragment.this, year, month, day);
-        c.set(Calendar.YEAR, year);
+        DatePickerDialog dialog = new DatePickerDialog(getActivity(), DatePickerFragmentDateOfBirth.this, year - 18, month, day);
+        c.set(Calendar.YEAR, year - 100);
+        dialog.getDatePicker().setMinDate(c.getTimeInMillis());
+        c.set(Calendar.YEAR, year - 18);
         dialog.getDatePicker().setMaxDate(c.getTimeInMillis());
         return dialog;
         //return super.onCreateDialog(savedInstanceState);
@@ -67,7 +68,6 @@ public class DatePickerFragment extends AppCompatDialogFragment implements DateP
     }
     */
 
-    // Llamado cuando una fecha ha sido seleccionada
     @Override
     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
         c.set(Calendar.YEAR, year);

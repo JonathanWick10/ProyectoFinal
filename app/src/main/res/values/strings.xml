@@ -127,6 +127,7 @@
     <string name="foreign_identity_card">Cédula extranjería</string>
     <string name="passport">Pasaporte</string>
     <string name="save">Guardar</string>
+    <string name="update">Actualizar</string>
     <string name="was_saved_succesfully">Se guardó exitosamente</string>
     <string name="not_saved">No guardo</string>
     <string name="select_photo">Seleccione la Imagen</string>
@@ -396,6 +397,7 @@
 
     <!-- General strings -->
     <string name="lbl_welcome">Bienvenido</string>
+    <string name="lbl_my_profile">Mi Perfil</string>
 
     <!-- String Test Alzheimer -->
     <string name="tq1">
