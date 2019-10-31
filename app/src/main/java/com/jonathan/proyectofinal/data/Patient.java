@@ -31,7 +31,7 @@ public class Patient {
     private String emergencyNumber;
     private String role;
     List<String> assigns;
-    private Uri uriImg;
+    private String uriImg;
     //endregion
 
     //region Builders
@@ -42,7 +42,7 @@ public class Patient {
                    String gender, String birthday, long phoneNumber, String department, String userName,
                    String password, String confirmPassword, String email, String nativeCity, String actualCity,
                    long familyPhoneNumber, String address, String dateDiagnostic, String diagnostic,
-                   String observations, String emergencyNumber, String role, List<String> assigns, Uri uriImg) {
+                   String observations, String emergencyNumber, String role, List<String> assigns, String uriImg) {
         this.patientUID = patientUID;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -243,11 +243,11 @@ public class Patient {
         this.assigns = assigns;
     }
 
-    public Uri getUriImg() {
+    public String getUriImg() {
         return uriImg;
     }
 
-    public void setUriImg(Uri uriImg) {
+    public void setUriImg(String uriImg) {
         this.uriImg = uriImg;
     }
 

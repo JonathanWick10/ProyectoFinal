@@ -207,6 +207,7 @@ public class AddPatients extends Fragment {
                                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                     @Override
                                                     public void onSuccess(Void aVoid) {
+                                                        progressDialog.dismiss();
                                                         Toast.makeText(getActivity(), getResources().getString(R.string.was_saved_succesfully), Toast.LENGTH_SHORT).show();
                                                     }
                                                 })
@@ -278,7 +279,23 @@ public class AddPatients extends Fragment {
                         Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
                         while(!uri.isComplete());
                         Uri url = uri.getResult();
-                        patient.setUriImg(url);
+                        /////////////////////////
+                        db.collection(Constants.Patients)
+                                .document(patient.getPatientUID())
+                                .update( "uriImg", url.toString())
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        Log.d("Success", "Image saved");
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Log.e("Failure"+e.toString(), "Error image");
+                                    }
+                                });
+                        //////////////////////////////
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
