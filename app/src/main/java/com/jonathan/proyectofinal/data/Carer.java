@@ -22,7 +22,7 @@ public class Carer {
     private String profession;
     private String employmentPlace;
     private String role;
-    private Uri uriImg;
+    private String uriImg;
     //endregion
 
     //region Builders
@@ -33,7 +33,7 @@ public class Carer {
                  String identification, String profession, String gender, String birthday,
                  long phoneNumber, String userName, String password, String email,
                  String nativeCity, String actualCity, String address, String employmentPlace,
-                 String role, Uri uriImg) {
+                 String role, String uriImg) {
         this.carerUID = carerUID;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -192,11 +192,11 @@ public class Carer {
         this.role = role;
     }
 
-    public Uri getUriImg() {
+    public String getUriImg() {
         return uriImg;
     }
 
-    public void setUriImg(Uri uriImg) {
+    public void setUriImg(String uriImg) {
         this.uriImg = uriImg;
     }
     //endregion

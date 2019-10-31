@@ -19,15 +19,22 @@ import android.os.Bundle;
 import android.text.Layout;
 import android.view.MenuItem;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.jonathan.proyectofinal.R;
+import com.jonathan.proyectofinal.data.Carer;
 import com.jonathan.proyectofinal.fragments.admin.AdminHome;
 import com.jonathan.proyectofinal.fragments.carer.CallEmergencyFragment;
 import com.jonathan.proyectofinal.fragments.carer.DiaryFragment;
@@ -47,10 +54,12 @@ import com.jonathan.proyectofinal.fragments.carer.TestFragment;
 import com.jonathan.proyectofinal.fragments.carer.WarningCarerFragment;
 import com.jonathan.proyectofinal.fragments.patient.MemorizamePFragment;
 import com.jonathan.proyectofinal.interfaces.IMainCarer;
+import com.jonathan.proyectofinal.tools.Constants;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Optional;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainCarer extends AppCompatActivity implements IMainCarer, NavigationView.OnNavigationItemSelectedListener {
 
@@ -64,6 +73,8 @@ public class MainCarer extends AppCompatActivity implements IMainCarer, Navigati
     FragmentTransaction transaction;
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
+    FirebaseFirestore db;
+    Carer carer = new Carer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,10 +101,22 @@ public class MainCarer extends AppCompatActivity implements IMainCarer, Navigati
 
         ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close);
         drawerLayout.addDrawerListener(drawerToggle);
-        TextView name_user = navigationView.getHeaderView(0).findViewById(R.id.lbl_name_user);
-        TextView email_user = navigationView.getHeaderView(0).findViewById(R.id.lbl_email_user);
+        final TextView name_user = navigationView.getHeaderView(0).findViewById(R.id.lbl_name_user);
+        final TextView email_user = navigationView.getHeaderView(0).findViewById(R.id.lbl_email_user);
+        final CircleImageView image_user = navigationView.getHeaderView(0).findViewById(R.id.img_users_navigation);
+        db = FirebaseFirestore.getInstance();
+        db.collection(Constants.Carers).document(firebaseUser.getUid()).get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()){
+                            carer = documentSnapshot.toObject(Carer.class);
+                            name_user.setText(carer.getFirstName()+" "+carer.getLastName());
+                            Glide.with(MainCarer.this).load(carer.getUriImg()).fitCenter().into(image_user);
+                        }
+                    }
+                });
         if (name_user!=null && email_user!=null) {
-            name_user.setText(firebaseUser.getDisplayName());
             email_user.setText(firebaseUser.getEmail());
         }
         drawerToggle.syncState();

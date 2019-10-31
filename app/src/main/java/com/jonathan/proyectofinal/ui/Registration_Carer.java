@@ -24,6 +24,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -133,6 +134,7 @@ public class Registration_Carer extends AppCompatActivity {
         storageReference = FirebaseStorage.getInstance().getReference();
         db = FirebaseFirestore.getInstance();
         progressDialog = new ProgressDialog(Registration_Carer.this);
+        uriImage = Uri.parse("android.resource://" + getPackageName() +"/"+R.drawable.avatar_patient);
         dropdownMenu();
         logicButtonSave();
         logicImageProfile();
@@ -180,28 +182,34 @@ public class Registration_Carer extends AppCompatActivity {
                                         uIDCarer = ures.getUid();
                                         carer.setCarerUId(uIDCarer);
                                         if (uriImage!=null){
-                                            uploadImageToStorage(uriImage, carer);
-                                        }else{
-                                            uriImage = Uri.parse("android.resource://" + getPackageName() +"/"+R.drawable.avatar_patient);
-                                            uploadImageToStorage(uriImage, carer);
-                                            carer.setUriImg(uriImage);
+                                            final StorageReference imgRef = storageReference.child("Users/Carers/"+carer.getCarerUId()+".jpg");
+                                            imgRef.putFile(uriImage)
+                                                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                                        @Override
+                                                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                                            Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
+                                                            while(!uri.isComplete());
+                                                            Uri url = uri.getResult();
+                                                            carer.setUriImg(url.toString());
+                                                            db.collection(Constants.Carers).document(carer.getCarerUId()).set(carer)
+                                                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                        @Override
+                                                                        public void onSuccess(Void aVoid) {
+                                                                            Toast.makeText(Registration_Carer.this, getResources().getString(R.string.was_saved_succesfully), Toast.LENGTH_SHORT).show();
+                                                                            Intent intent = new Intent(Registration_Carer.this,MainCarer.class);
+                                                                            startActivity(intent);
+                                                                            progressDialog.dismiss();
+                                                                        }
+                                                                    })
+                                                                    .addOnFailureListener(new OnFailureListener() {
+                                                                        @Override
+                                                                        public void onFailure(@NonNull Exception e) {
+                                                                            Log.d("message: ", e.toString());
+                                                                        }
+                                                                    });
+                                                        }
+                                                    });
                                         }
-                                        db.collection(Constants.Carers).document(carer.getCarerUId()).set(carer)
-                                                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                    @Override
-                                                    public void onSuccess(Void aVoid) {
-                                                        Toast.makeText(Registration_Carer.this, getResources().getString(R.string.was_saved_succesfully), Toast.LENGTH_SHORT).show();
-                                                        Intent intent = new Intent(Registration_Carer.this,MainCarer.class);
-                                                        startActivity(intent);
-                                                        progressDialog.dismiss();
-                                                    }
-                                                })
-                                                .addOnFailureListener(new OnFailureListener() {
-                                                    @Override
-                                                    public void onFailure(@NonNull Exception e) {
-                                                        Log.d("message: ", e.toString());
-                                                    }
-                                                });
                                     }
                                 }
                             });
@@ -212,24 +220,11 @@ public class Registration_Carer extends AppCompatActivity {
         });
     }
 
-    private void uploadImageToStorage(Uri uriImage, final Carer carer) {
-        StorageReference imgRef = storageReference.child("Users/Carers/"+carer.getCarerUId()+".jpg");
-        imgRef.putFile(uriImage)
-                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
-                        while(!uri.isComplete());
-                        Uri url = uri.getResult();
-                        carer.setUriImg(url);
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
+    private void uploadImageToStorage(final Uri uriImage, final Carer carer) {
 
-                    }
-                });
+
+
+
     }
 
     private boolean setPojoPatients() {
