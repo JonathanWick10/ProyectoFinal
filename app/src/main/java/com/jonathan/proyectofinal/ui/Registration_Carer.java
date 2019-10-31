@@ -57,6 +57,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Registration_Carer extends AppCompatActivity {
 
+    //region Variables
     @BindView(R.id.toolbar_registration_carer)
     MaterialToolbar toolbar;
 
@@ -180,6 +181,10 @@ public class Registration_Carer extends AppCompatActivity {
                                         carer.setCarerUId(uIDCarer);
                                         if (uriImage!=null){
                                             uploadImageToStorage(uriImage, carer);
+                                        }else{
+                                            uriImage = Uri.parse("android.resource://" + getPackageName() +"/"+R.drawable.avatar_patient);
+                                            uploadImageToStorage(uriImage, carer);
+                                            carer.setUriImg(uriImage);
                                         }
                                         db.collection(Constants.Carers).document(carer.getCarerUId()).set(carer)
                                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -277,9 +282,6 @@ public class Registration_Carer extends AppCompatActivity {
             carer.setProfession(profession);
             carer.setEmploymentPlace(workC);
             carer.setRole(Constants.Carers);
-            /*String[] assignsArray = {users.getUid()};
-            List<String> assigns = Arrays.asList(assignsArray);
-            carer.setAs(assigns);*/
             //endregion
         }else{
             flag = false;
@@ -329,16 +331,11 @@ public class Registration_Carer extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        /*if (requestCode == REQUEST_CODE1 && resultCode == Activity.RESULT_OK){
-            selectedDate = data.getStringExtra("selectedDate");
-            // Establece el valor de editText
-            dateOfBirthET.setText(selectedDate);
-        } else*/ if (requestCode == REQUEST_CODE2 && resultCode == Activity.RESULT_OK){
+        if (requestCode == REQUEST_CODE2 && resultCode == Activity.RESULT_OK){
             uriImage = data.getData();
             if (uriImage != null ){
                 Glide.with(Registration_Carer.this).load(uriImage).fitCenter().into(profileImage);
             }
-            //profileImage.setImageURI(uriImage);
         }
     }
 
