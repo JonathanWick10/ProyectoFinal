@@ -258,13 +258,6 @@ public class Registration_Carer extends AppCompatActivity {
         });
     }
 
-    private void uploadImageToStorage(final Uri uriImage, final Carer carer) {
-
-
-
-
-    }
-
     private boolean setPojoPatients() {
         //region get text of form
         nameSring = editName.getText().toString();

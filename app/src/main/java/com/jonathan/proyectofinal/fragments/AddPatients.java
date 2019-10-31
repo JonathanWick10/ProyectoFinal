@@ -53,6 +53,8 @@ import com.jonathan.proyectofinal.fragments.general.DatePickerFragment;
 import com.jonathan.proyectofinal.fragments.general.DatePickerFragmentDateOfBirth;
 import com.jonathan.proyectofinal.interfaces.IMainCarer;
 import com.jonathan.proyectofinal.tools.Constants;
+import com.jonathan.proyectofinal.ui.MainCarer;
+import com.jonathan.proyectofinal.ui.Registration_Carer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -158,6 +160,7 @@ public class AddPatients extends Fragment {
         uIDHPoCarer = firebaseUser.getUid();
         db = FirebaseFirestore.getInstance();
         progressDialog = new ProgressDialog(getActivity());
+        uriImage = Uri.parse("android.resource://" + getActivity().getPackageName() +"/"+R.drawable.avatar_patient);
         dropdownMenu(view);
         logicButtonSave();
         logicImageProfile();
@@ -241,21 +244,32 @@ public class AddPatients extends Fragment {
                                         uIDPatient = ures.getUid();
                                         patient.setPatientUID(uIDPatient);
                                         if (uriImage!=null){
-                                            uploadImageToStorage(uriImage, patient);
+                                            final StorageReference imgRef = storageReference.child("Users/Patients/"+patient.getPatientUID()+".jpg");
+                                            imgRef.putFile(uriImage)
+                                                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                                        @Override
+                                                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                                            Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
+                                                            while(!uri.isComplete());
+                                                            Uri url = uri.getResult();
+                                                            patient.setUriImg(url.toString());
+                                                            db.collection(Constants.Patients).document(patient.getPatientUID()).set(patient)
+                                                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                        @Override
+                                                                        public void onSuccess(Void aVoid) {
+                                                                            Toast.makeText(getActivity(), getResources().getString(R.string.was_saved_succesfully), Toast.LENGTH_SHORT).show();
+                                                                        }
+                                                                    })
+                                                                    .addOnFailureListener(new OnFailureListener() {
+                                                                        @Override
+                                                                        public void onFailure(@NonNull Exception e) {
+                                                                            Log.d("message: ", e.toString());
+                                                                        }
+                                                                    });
+                                                        }
+                                                    });
                                         }
-                                        db.collection(Constants.Patients).document(patient.getPatientUID()).set(patient)
-                                                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                    @Override
-                                                    public void onSuccess(Void aVoid) {
-                                                        Toast.makeText(getActivity(), getResources().getString(R.string.was_saved_succesfully), Toast.LENGTH_SHORT).show();
-                                                    }
-                                                })
-                                                .addOnFailureListener(new OnFailureListener() {
-                                                    @Override
-                                                    public void onFailure(@NonNull Exception e) {
-                                                        Log.d("message: ", e.toString());
-                                                    }
-                                                });
+
                                     }
                                 }
                             });
@@ -273,7 +287,7 @@ public class AddPatients extends Fragment {
                                                     public void onComplete(@NonNull Task<AuthResult> task) {
                                                         if(task.isSuccessful()) {
                                                             progressDialog.dismiss();
-                                                            mIMainCarer.inflateFragment("prueba");
+                                                            mIMainCarer.inflateFragment(getString(R.string.list_patient));
                                                         }
                                                         //Toast.makeText(getActivity(), "accedio de nuevo", Toast.LENGTH_SHORT).show();
                                                     }
@@ -294,7 +308,7 @@ public class AddPatients extends Fragment {
                                                     public void onComplete(@NonNull Task<AuthResult> task) {
                                                         if(task.isSuccessful()) {
                                                             progressDialog.dismiss();
-                                                            mIMainCarer.inflateFragment("prueba");
+                                                            mIMainCarer.inflateFragment(getString(R.string.list_patient));
                                                         }
                                                         //Toast.makeText(getActivity(), "accedio de nuevo", Toast.LENGTH_SHORT).show();
                                                     }
@@ -307,26 +321,6 @@ public class AddPatients extends Fragment {
                 }
             }
         });
-    }
-
-    private void uploadImageToStorage(Uri uriImage, final Patient patient) {
-        StorageReference imgRef = storageReference.child("Users/Patients/"+patient.getPatientUID()+".jpg");
-        imgRef.putFile(uriImage)
-                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
-                        while(!uri.isComplete());
-                        Uri url = uri.getResult();
-                        patient.setUriImg(url);
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-
-                    }
-                });
     }
 
     private boolean setPojoPatients() {

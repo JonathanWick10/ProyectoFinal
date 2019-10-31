@@ -93,7 +93,7 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
         //navigationView.setOnNavigationItemSelectedListener(navListener);
         NavController navController = Navigation.findNavController(this, R.id.content_health_professional);
         NavigationUI.setupWithNavController(navigationView, navController);
-        patientUID= getIntent().getExtras().getString("patientUID");
+        patientUID = getIntent().getExtras().getString("patientUID");
         args.putString("UID",patientUID);
       //  Toast.makeText(this, "patientUID:"+patientUID, Toast.LENGTH_LONG).show();
         patientIdentification=getIntent().getExtras().getString("patientIdentification");
