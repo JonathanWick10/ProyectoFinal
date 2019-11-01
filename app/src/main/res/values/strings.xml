@@ -401,7 +401,7 @@
     <string name="lbl_my_profile">Mi Perfil</string>
 
     <!-- Strings for field validations -->
-    <string name="val_min_passwornd">Debe contener almenos 6 caracteres</string>
+    <string name="val_min_passwornd">Debe contener almenos 7 caracteres</string>
 
     <!-- String Test Alzheimer -->
     <string name="tq1">

@@ -814,8 +814,10 @@
             android:layout_width="@dimen/ninety"
             android:layout_height="@dimen/ninety"
             android:layout_alignParentBottom="true"
+            android:layout_marginEnd="@dimen/seventy"
             android:background="@drawable/circle_2"
             android:indeterminate="false"
+            android:layout_marginBottom="@dimen/fifty"
             android:max="100"
             android:progress="100"
             android:progressDrawable="@drawable/circle_1"
@@ -829,7 +831,7 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="@dimen/twentyFive"
             android:layout_marginEnd="@dimen/twentyFive"
-            android:layout_marginBottom="39dp"
+            android:layout_marginBottom="@dimen/eightyFive"
             android:text="@string/time"
             android:textColor="@color/blueDark"
             android:textSize="@dimen/tenText" />
@@ -843,7 +845,7 @@
             android:layout_centerInParent="true"
             android:layout_marginStart="@dimen/twenty"
             android:layout_marginEnd="@dimen/sixteen"
-            android:layout_marginBottom="@dimen/twenty"
+            android:layout_marginBottom="@dimen/seventy"
             android:layout_toEndOf="@+id/progressBarCircle"
             android:text="@string/start"
             android:visibility="gone" />
@@ -856,8 +858,8 @@
             android:layout_alignParentBottom="true"
             android:layout_centerInParent="true"
             android:layout_marginStart="@dimen/sixteen"
-            android:layout_marginBottom="@dimen/twenty"
             android:layout_toEndOf="@+id/btnStar"
+            android:layout_marginBottom="@dimen/seventy"
             android:text="@string/end" />
     </RelativeLayout>
 </FrameLayout>
