@@ -41,6 +41,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.data.Admin;
 import com.jonathan.proyectofinal.data.HealthcareProfessional;
@@ -113,9 +116,11 @@ public class AdminAddHealthProfessional extends Fragment {
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
     FirebaseFirestore db;
+    StorageReference storageReference;
     String role;
     String uIDAdmin;
     String uIDHP;
+    Uri uriImage;
     //endregion
 
     public AdminAddHealthProfessional() {
@@ -132,6 +137,8 @@ public class AdminAddHealthProfessional extends Fragment {
         uIDAdmin = firebaseUser.getUid();
         db = FirebaseFirestore.getInstance();
         ButterKnife.bind(this, view);
+        storageReference = FirebaseStorage.getInstance().getReference();
+        uriImage = Uri.parse("android.resource://" + getActivity().getPackageName() +"/"+R.drawable.avatar_patient);
         dropdownMenu(view);
         logicButtonCalendar(view);
         verifiFieds();
@@ -213,19 +220,32 @@ public class AdminAddHealthProfessional extends Fragment {
                                 FirebaseUser ures = itask.getUser();
                                 uIDHP = ures.getUid();
                                 hp.setHpUID(uIDHP);
-                                db.collection(Constants.HealthcareProfesional).document(hp.getHpUID()).set(hp)
-                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                            @Override
-                                            public void onSuccess(Void aVoid) {
-                                                Toast.makeText(getActivity(), getResources().getString(R.string.was_saved_succesfully), Toast.LENGTH_SHORT).show();
-                                            }
-                                        })
-                                        .addOnFailureListener(new OnFailureListener() {
-                                            @Override
-                                            public void onFailure(@NonNull Exception e) {
-                                                Log.d("message", e.toString());
-                                            }
-                                        });
+                                if (uriImage!=null){
+                                    final StorageReference imgRef = storageReference.child("Users/Healthcare_profesionals/"+hp.getHpUID()+".jpg");
+                                    imgRef.putFile(uriImage)
+                                            .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                                @Override
+                                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                                    Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
+                                                    while(!uri.isComplete());
+                                                    Uri url = uri.getResult();
+                                                    hp.setUriImg(url.toString());
+                                                    db.collection(Constants.HealthcareProfesional).document(hp.getHpUID()).set(hp)
+                                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                @Override
+                                                                public void onSuccess(Void aVoid) {
+                                                                    Toast.makeText(getActivity(), getResources().getString(R.string.was_saved_succesfully), Toast.LENGTH_SHORT).show();
+                                                                }
+                                                            })
+                                                            .addOnFailureListener(new OnFailureListener() {
+                                                                @Override
+                                                                public void onFailure(@NonNull Exception e) {
+                                                                    Log.d("message", e.toString());
+                                                                }
+                                                            });
+                                                }
+                                            });
+                                }
                             }
                         }
                     });

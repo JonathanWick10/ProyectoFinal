@@ -125,11 +125,6 @@ public class MainCarer extends AppCompatActivity implements IMainCarer, Navigati
     @Override
     public void inflateFragment(String fragmentTag) {
         transaction = getSupportFragmentManager().beginTransaction();
-        // Listen to the Button Call for other Fragments in different Views
-      /*  if(fragmentTag.equals(getString(R.string.menu_memorizame))){
-            change = new MemorizameFragment();
-            transaction.replace(R.id.containerHome,change).commit();
-        }*/
         if(fragmentTag.equals(getString(R.string.my_care))){
             change = new HeartFragment();
             transaction.replace(R.id.containerHome,change).commit();

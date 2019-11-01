@@ -19,6 +19,7 @@ public class Admin {
     private String address;
     private String employmentPlace;
     private String role;
+    private String uriImage;
     //endregion
 
     //region Builders
@@ -29,7 +30,7 @@ public class Admin {
                  String  identification, String profession, String gender, String birthday,
                  long phoneNumber, String userName, String password, String email,
                  String nativeCity, String actualCity, String address, String employmentPlace,
-                 String role) {
+                 String role, String uriImage) {
         this.adminUId = adminUId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -47,6 +48,7 @@ public class Admin {
         this.address = address;
         this.employmentPlace = employmentPlace;
         this.role = role;
+        this.uriImage = uriImage;
     }
     //endregion
 
@@ -186,6 +188,15 @@ public class Admin {
     public void setRole(String role) {
         this.role = role;
     }
+
+    public String getUriImage() {
+        return uriImage;
+    }
+
+    public void setUriImage(String uriImage) {
+        this.uriImage = uriImage;
+    }
+
     //endregion
 
 
