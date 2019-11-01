@@ -46,7 +46,7 @@
             android:gravity="center"
             style="@style/StyleCardViewTitles"></TextView>
 
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             style="@style/StyleCardView">
@@ -253,6 +253,6 @@
         </LinearLayout>
 
         <!-- ************************************* -->
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

@@ -9,11 +9,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
+        style="@style/StyleCardView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="10dp"
         android:layout_marginHorizontal="10dp"
         android:layout_marginVertical="10dp"
         >
@@ -71,7 +70,7 @@
         android:layout_marginVertical="@dimen/fifteen"
         >
 
-        <TextView
+        4<TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -122,9 +121,7 @@
         android:id="@+id/btn_notification_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_access_alarm_black_24dp"
-        style="@style/Widget.AppCompat.ImageButton"
-        ></ImageButton>
+        style="@style/StyleImageButtonAlarm"/>
 
         </LinearLayout>
 
@@ -172,7 +169,7 @@
 
 
     </LinearLayout>
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>
 
     </ScrollView>
 </FrameLayout>

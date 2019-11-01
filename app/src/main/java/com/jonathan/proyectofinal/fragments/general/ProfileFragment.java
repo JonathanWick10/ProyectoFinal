@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +39,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ProfileFragment extends Fragment {
 
     private View view;
+
+    @BindView(R.id.til_password_profile)
+    TextInputLayout til_password;
 
     @BindView(R.id.img_image_profile)
     CircleImageView civProfile;
@@ -100,7 +105,41 @@ public class ProfileFragment extends Fragment {
         dropdowns(view);
         logicButtonCalendarDB(view);
         logicButtonCalendarDD(view);
+        verifiFieds();
         return view;
+    }
+
+    private void verifiFieds() {
+        txtPassword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                til_password.setError(null);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                vaildateFields("password");
+            }
+        });
+    }
+
+    private boolean vaildateFields(String field) {
+        boolean data = true;
+        switch (field){
+            case "password":
+                String email = txtPassword.getText().toString().trim();
+                if (email.length() < 7) {
+                    til_password.setError(getString(R.string.val_min_passwornd));
+                    data = false;
+                }
+                break;
+        }
+        return data;
     }
 
     private void dropdowns(View view) {

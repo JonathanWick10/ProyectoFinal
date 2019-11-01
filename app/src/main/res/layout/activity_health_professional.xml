@@ -7,44 +7,40 @@
     android:layout_height="match_parent"
     tools:context=".ui.HealthProfessionalActivity">
 
-    <RelativeLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/app_bar_hp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/toolbar_health_professional"
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/app_bar_hp"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin"
-                style="@style/StyleToolbarPrimary"/>
-        </com.google.android.material.appbar.AppBarLayout>
+                android:layout_height="wrap_content">
 
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/toolbar_health_professional"
+                    style="@style/StyleToolbarPrimary"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"/>
+            </com.google.android.material.appbar.AppBarLayout>
 
-        <fragment
-            android:id="@+id/content_health_professional"
-            android:name="androidx.navigation.fragment.NavHostFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/navigation_health_professional"
-            android:layout_below="@id/app_bar_hp"
-            android:layout_alignParentStart="true"
-            app:defaultNavHost="true"
-            app:navGraph="@navigation/health_professional_navigation"></fragment>
+            <fragment
+                android:id="@+id/content_health_professional"
+                android:name="androidx.navigation.fragment.NavHostFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:defaultNavHost="true"
+                app:navGraph="@navigation/health_professional_navigation"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/navigation_health_professional"
-            style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            app:menu="@menu/menu_health_professional" />
-
-    </RelativeLayout>
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/navigation_health_professional"
+                style="@style/StyleBottonNavigation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                app:menu="@menu/menu_health_professional"
+                app:layout_behavior=".fragments.general.BottomNavigationBehavior"/>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/second_navigation_view_hp"
@@ -52,8 +48,8 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:headerLayout="@layout/drawer_header_hp"
-        app:menu="@menu/navigation_menu_hp"
         app:itemIconTint="@color/colorPrimary"
-        app:itemTextColor="#E6000000"/>
+        app:itemTextColor="#E6000000"
+        app:menu="@menu/navigation_menu_hp" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

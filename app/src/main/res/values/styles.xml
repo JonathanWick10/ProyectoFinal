@@ -176,6 +176,16 @@
         <item name="android:elevation">@dimen/elevationTwo</item>
     </style>
 
+    <!-- Standard style for image button alarm button -->
+    <style name="StyleImageButtonAlarm" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:src">@drawable/ic_access_alarm_black_24dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:clickable">true</item>
+        <item name="android:tintMode">src_in</item>
+        <item name="android:tint">@color/colorPrimaryDark</item>
+    </style>
+
     <!-- Standard style for gender subtitle (Forms) -->
     <style name="StyleLabelGenderForms">
         <item name="android:layout_marginRight">@dimen/ten</item>
@@ -247,12 +257,29 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <!-- Standard style for mini card view titles -->
+    <style name="StyleMiniCardViewTitles">
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">@dimen/fifteenText</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingLeft">@dimen/ten</item>
+    </style>
+
     <!-- Standard style for card view subtitles -->
     <style name="StyleCardViewSubTitles">
         <item name="android:layout_weight">1</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:textSize">@dimen/seventeenText</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Standard style for mini card view subtitles -->
+    <style name="StyleMiniCardViewSubTitles">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">@dimen/fifteenText</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingLeft">@dimen/ten</item>
     </style>
 
     <!-- Standard style for card view descriptions -->

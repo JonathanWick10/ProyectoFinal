@@ -257,7 +257,7 @@ public class AddPatients extends Fragment {
                                                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                                         @Override
                                                                         public void onSuccess(Void aVoid) {
-                                                                            Toast.makeText(getActivity(), getResources().getString(R.string.was_saved_succesfully), Toast.LENGTH_SHORT).show();
+
                                                                         }
                                                                     })
                                                                     .addOnFailureListener(new OnFailureListener() {
@@ -287,9 +287,9 @@ public class AddPatients extends Fragment {
                                                     public void onComplete(@NonNull Task<AuthResult> task) {
                                                         if(task.isSuccessful()) {
                                                             progressDialog.dismiss();
+                                                            Toast.makeText(getActivity(), getResources().getString(R.string.was_saved_succesfully), Toast.LENGTH_SHORT).show();
                                                             mIMainCarer.inflateFragment(getString(R.string.list_patient));
                                                         }
-                                                        //Toast.makeText(getActivity(), "accedio de nuevo", Toast.LENGTH_SHORT).show();
                                                     }
                                                 });
                                     }
@@ -308,6 +308,7 @@ public class AddPatients extends Fragment {
                                                     public void onComplete(@NonNull Task<AuthResult> task) {
                                                         if(task.isSuccessful()) {
                                                             progressDialog.dismiss();
+                                                            Toast.makeText(getActivity(), getResources().getString(R.string.was_saved_succesfully), Toast.LENGTH_SHORT).show();
                                                             mIMainCarer.inflateFragment(getString(R.string.list_patient));
                                                         }
                                                         //Toast.makeText(getActivity(), "accedio de nuevo", Toast.LENGTH_SHORT).show();

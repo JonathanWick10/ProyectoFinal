@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.general.ProfileFragment"
-    android:layout_marginTop="@dimen/ten">
+    android:padding="@dimen/sixteen">
 
     <LinearLayout
         android:layout_width="match_parent"

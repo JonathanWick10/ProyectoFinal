@@ -1,4 +1,4 @@
-package com.jonathan.proyectofinal.fragments.patient;
+package com.jonathan.proyectofinal.fragments.general;
 
 import android.content.Context;
 import android.util.AttributeSet;
