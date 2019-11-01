@@ -36,9 +36,11 @@ public class TherapyPSFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
      //   return inflater.inflate(R.layout.fragment_ps_therapy, container, false);
-
-
         View view = inflater.inflate(R.layout.fragment_ps_therapy, container, false);
+        Bundle bundle = getArguments();
+        if (bundle!=null){
+            String uID = bundle.getString("patientUID");
+        }
         tabPatientInfo = view.findViewById(R.id.ps_tab_therapy_cognitive);
         nearbyhospital = view.findViewById(R.id.ps_tab_therapy_motor);
         tabMemorizame=view.findViewById(R.id.ps_tab_therapy_memorizame);

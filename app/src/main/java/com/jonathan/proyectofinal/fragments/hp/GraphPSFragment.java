@@ -44,6 +44,10 @@ public class GraphPSFragment extends Fragment {
 
         view = inflater.inflate(R.layout.fragment_ps_graph, container, false);
         lineChart = (LineChart)view.findViewById(R.id.graph1);
+        Bundle bundle = getArguments();
+        if (bundle!=null){
+            String uID = bundle.getString("patientUID");
+        }
         reference();
         createCharts();
         return view;

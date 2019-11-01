@@ -94,7 +94,7 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
         NavController navController = Navigation.findNavController(this, R.id.content_health_professional);
         NavigationUI.setupWithNavController(navigationView, navController);
         patientUID = getIntent().getExtras().getString("patientUID");
-        args.putString("UID",patientUID);
+        args.putString("patientUID",patientUID);
       //  Toast.makeText(this, "patientUID:"+patientUID, Toast.LENGTH_LONG).show();
         patientIdentification=getIntent().getExtras().getString("patientIdentification");
         Toast.makeText(this, "patientIdentification:  "+patientIdentification, Toast.LENGTH_LONG).show();
@@ -140,42 +140,52 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
         }
         else if(fragmentTag.equals(getString(R.string.carer))){
             change = new InformationCarerPSFragment();
+            change.setArguments(args);
             transaction.replace(R.id.containerPageInformationPS,change).commit();
         }
         else if(fragmentTag.equals(getString(R.string.cognitive))){
             change = new CognitiveTherapyPSFragment();
+            change.setArguments(args);
             transaction.replace(R.id.containerPageTherapyPS,change).commit();
         }
         else if(fragmentTag.equals(getString(R.string.menu_memorizame))){
             change = new MemorizameFragment();
+            change.setArguments(args);
             transaction.replace(R.id.containerPageTherapyPS,change).commit();
         }
         else if(fragmentTag.equals(getString(R.string.motor))){
             change = new MotorTherapyPSFragment();
+            change.setArguments(args);
             transaction.replace(R.id.containerPageTherapyPS,change).commit();
         }
         else if(fragmentTag.equals(getString(R.string.tab_family_questions))){
             change = new MemorizameFamilyFragment();
+            change.setArguments(args);
             transaction.replace(R.id.containerMemorizame,change).commit();
         }
         else if(fragmentTag.equals(getString(R.string.tab_family_questions))){
             change = new MemorizameFamilyFragment();
+            change.setArguments(args);
             transaction.replace(R.id.containerMemorizame,change).commit();
         }
         else if(fragmentTag.equals(getString(R.string.tab_pets_questions))){
             change = new MemorizamePetsFragment();
+            change.setArguments(args);
             transaction.replace(R.id.containerMemorizame,change).commit();
         }
         else if(fragmentTag.equals(getString(R.string.tab_home_questions))){
             change = new MemorizameHomeFragment();
+            change.setArguments(args);
             transaction.replace(R.id.containerMemorizame,change).commit();
         }
         else if(fragmentTag.equals(getString(R.string.tab_places_questions))){
             change = new MemorizamePlacesFragment();
+            change.setArguments(args);
             transaction.replace(R.id.containerMemorizame,change).commit();
         }
         else if(fragmentTag.equals(getString(R.string.family_questions_img))){
             change = new NewCardMemorizame();
+            change.setArguments(args);
             transaction.replace(R.id.containerMemorizame,change).commit();
         }
     }

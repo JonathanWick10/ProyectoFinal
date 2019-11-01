@@ -57,6 +57,8 @@ public class InformationPatientPSFragment extends Fragment {
     public InformationPatientPSFragment() {
     }
 
+
+    /*
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -64,12 +66,26 @@ public class InformationPatientPSFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_ps_information_patient, container, false);
         ButterKnife.bind(this, view);
         initDatas();
-        //String uID = getArguments().getString("UID");
+        Bundle bundle = getArguments();
+        String uID = bundle.getString("patientUID");
 
         return view;
 
-    }
+    }*/
 
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
+        View view = inflater.inflate(R.layout.fragment_ps_information_patient, container, false);
+        ButterKnife.bind(this, view);
+        initDatas();
+        Bundle bundle = getArguments();
+        if (bundle!=null){
+            String uID = bundle.getString("patientUID");
+        }
+        return view;
+    }
 
     public void initDatas() {
        agePatient="25";
