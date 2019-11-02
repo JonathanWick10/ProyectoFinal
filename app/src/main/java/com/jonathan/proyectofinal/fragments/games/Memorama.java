@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -26,7 +25,7 @@ import java.util.Random;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class Memorama extends Fragment {
+public class Memorama extends Fragment  {
 
     //region imagesViews
     @BindView(R.id.item_uno)
@@ -82,8 +81,11 @@ public class Memorama extends Fragment {
     private List<MemoramaEntity> listaComplete;
     private MemoramaEntity elemetSave;
     private boolean clickAllElemets = true;
+    private Memoramai memoramai ;
 
-
+    public Memorama(Memoramai memoramai) {
+        this.memoramai = memoramai;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -285,25 +287,31 @@ public class Memorama extends Fragment {
 
     public void alertWin() {
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         View layoutInflater = getLayoutInflater().inflate(R.layout.memorama_win_plantilla, null);
         builder.setView(layoutInflater);
         Button btnOnback = layoutInflater.findViewById(R.id.mwmorama_winp_btnonback);
-        Button btnReload = layoutInflater.findViewById(R.id.mwmorama_winp_reload);
+        final Button btnReload = layoutInflater.findViewById(R.id.mwmorama_winp_reload);
 
         btnOnback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().getSupportFragmentManager().popBackStack();
+               memoramai.callOnbackPressed();
             }
         });
+
         btnReload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                initGame();
+                memoramai.reloadGame();
             }
         });
         builder.show();
+    }
+
+    public interface Memoramai{
+        void reloadGame();
+        void callOnbackPressed();
     }
 }

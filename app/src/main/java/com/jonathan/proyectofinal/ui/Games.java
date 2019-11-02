@@ -2,7 +2,6 @@ package com.jonathan.proyectofinal.ui;
 
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
-import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,17 +23,16 @@ import com.jonathan.proyectofinal.fragments.games.Memorama;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class Games extends AppCompatActivity {
+public class Games extends AppCompatActivity  implements Memorama.Memoramai {
 
+    //region Reference
     @BindView(R.id.contanedor_games)
     public FrameLayout container;
     @BindView(R.id.progres_cont)
     public LinearLayout progresCont;
-
-    private FrameLayout conte;
-    private AlertDialog.Builder builder;
-    private FragmentManager frg;
-
+    @BindView(R.id.progressBar_init)
+    public ProgressBar progressBar;
+//endregion
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +51,11 @@ public class Games extends AppCompatActivity {
 
     }
     private void iniciarProgres() {
-        ProgressBar progressBar = findViewById(R.id.progressBar4);
+
+        //mostrar Progress
+        progresCont.setVisibility(View.VISIBLE);
+        container.setVisibility(View.GONE);
+
         ObjectAnimator anim = ObjectAnimator.ofArgb(progressBar, "progress", 0, 100);
         anim.setDuration(3000);
         anim.setInterpolator(new DecelerateInterpolator());
@@ -67,7 +69,7 @@ public class Games extends AppCompatActivity {
                 //inciar fragmento
                 FragmentManager fm = getSupportFragmentManager();
                 FragmentTransaction ft = fm.beginTransaction();
-                ft.replace(R.id.contanedor_games, new Memorama());
+                ft.replace(R.id.contanedor_games, new Memorama(Games.this));
                 ft.commit();
 
                 //ocultar y mostra
@@ -82,14 +84,17 @@ public class Games extends AppCompatActivity {
     }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                break;
-        }
+        if (item.getItemId() == android.R.id.home)  onBackPressed();
         return true;
     }
 
+    @Override
+    public void reloadGame() {
+        iniciarProgres();
+    }
 
+    @Override
+    public void callOnbackPressed() {
+        onBackPressed();
+    }
 }
