@@ -9,6 +9,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.DialogInterface;
@@ -38,6 +39,7 @@ import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.data.Patient;
 import com.jonathan.proyectofinal.fragments.admin.AdminHome;
 import com.jonathan.proyectofinal.fragments.games.PhysicalExecise;
+import com.jonathan.proyectofinal.fragments.games.PhysicalExercisePractic;
 import com.jonathan.proyectofinal.fragments.patient.HomePFragment;
 import com.jonathan.proyectofinal.fragments.patient.MemorizamePFragment;
 import com.jonathan.proyectofinal.fragments.patient.NotificationsPFragment;
@@ -195,8 +197,9 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
                 btn2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
-                        alertDialog.dismiss();
+                        FragmentManager fragmentManager = getSupportFragmentManager();
+                        FragmentTransaction ft = fragmentManager.beginTransaction();
+                        ft.replace(R.id.managerfrag, new PhysicalExercisePractic());
                     }
                 });
                 TextView tvInformation=dialogView.findViewById(R.id.text_information);

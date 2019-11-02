@@ -7,77 +7,233 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.jonathan.proyectofinal.R;
-import com.jonathan.proyectofinal.adapters.MemoramaAdapter;
 import com.jonathan.proyectofinal.data.MemoramaEntity;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class Memorama extends Fragment implements MemoramaAdapter.MemoramaAdapterI {
+public class Memorama extends Fragment {
 
-    @BindView(R.id.memorama_rv)
-    public RecyclerView cartas;
+    //region imagesViews
+    @BindView(R.id.item_uno)
+    public ImageView itemUno;
 
-    private HashMap<String, Integer> data;
-    private MemoramaAdapter memoramaAdapter;
-    private List<MemoramaEntity> listComplete;
-    private MemoramaI listener;
+    @BindView(R.id.item_dos)
+    public ImageView itemDos;
 
-    public Memorama(HashMap<String, Integer> data, MemoramaI listener) {
-        this.data = data;
-        this.listener = listener;
-    }
+    @BindView(R.id.item_tres)
+    public ImageView itemTres;
 
-    private View view;
+    @BindView(R.id.item_cuatro)
+    public ImageView itemCuatro;
+
+    @BindView(R.id.item_cinco)
+    public ImageView itemCinco;
+
+    @BindView(R.id.item_seis)
+    public ImageView itemSeis;
+
+    @BindView(R.id.item_siete)
+    public ImageView itemSiete;
+
+    @BindView(R.id.item_ocho)
+    public ImageView itemOcho;
+
+    @BindView(R.id.item_nueve)
+    public ImageView itemNueve;
+
+    @BindView(R.id.item_diez)
+    public ImageView itemDiez;
+
+    @BindView(R.id.item_once)
+    public ImageView itemOnce;
+
+    @BindView(R.id.item_doce)
+    public ImageView itemDoce;
+
+    @BindView(R.id.item_trece)
+    public ImageView itemTrese;
+
+    @BindView(R.id.item_catorce)
+    public ImageView itemCatorse;
+
+    @BindView(R.id.item_quince)
+    public ImageView itemQuinse;
+
+    @BindView(R.id.item_dieciseis)
+    public ImageView itemDieciceis;
+    //endregion
+
+    private List<ImageView> imageViews;
+    private List<MemoramaEntity> listaComplete;
+    private MemoramaEntity elemetSave;
+    private boolean clickAllElemets = true;
+
+
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
-        // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_memorama, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        //inflar vista
+        View view = inflater.inflate(R.layout.fragment_memorama, container, false);
         ButterKnife.bind(this, view);
-
-        //settear datos de recycler view
-        listComplete = getDataListComplete();
-        memoramaAdapter = new MemoramaAdapter(listComplete, this, data);
-
-        cartas.setAdapter(memoramaAdapter);
-        cartas.setLayoutManager(new GridLayoutManager(view.getContext(), 4));
-        cartas.setHasFixedSize(true);
-
-        //actualizar items
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                for (MemoramaEntity item : listComplete) {
-                    item.setShow(false);
-                    item.setClickeable(true);
-                }
-                memoramaAdapter.notifyDataSetChanged();
-            }
-        }, 5000);
-
         return view;
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        //metodos despues de cargar vista
+        initGame();
+    }
+
+    private void initGame() {
+        listaComplete = getDataListComplete();
+        //lista de imagene views
+        imageViews = new ArrayList<>();
+        imageViews.add(itemUno);
+        imageViews.add(itemDos);
+        imageViews.add(itemTres);
+        imageViews.add(itemCuatro);
+        imageViews.add(itemCinco);
+        imageViews.add(itemSeis);
+        imageViews.add(itemSiete);
+        imageViews.add(itemOcho);
+        imageViews.add(itemNueve);
+        imageViews.add(itemDiez);
+        imageViews.add(itemOnce);
+        imageViews.add(itemDoce);
+        imageViews.add(itemTrese);
+        imageViews.add(itemCatorse);
+        imageViews.add(itemQuinse);
+        imageViews.add(itemDieciceis);
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                try {
+                    //mostrar y ocultar imagenes
+                    runOnUIThread(true);
+                    Thread.sleep(5000);
+                    runOnUIThread(false);
+                } catch (Exception e) {
+                    Log.e("Error", e.toString());
+                }
+
+            }
+        }).start();
+    }
+
+    private void runOnUIThread(final boolean showAllImages) {
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                int position = 0;
+                for (ImageView item : imageViews) {
+                    //setar parametros
+                    if (showAllImages) {
+                        //mostrar carta
+                        item.setImageResource(listaComplete.get(position).getImageId());
+                        item.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                //eso es para anular un onlick si ya tiene, porque si se le pasa null creo que no sirve
+                            }
+                        });
+                    } else {
+                        //ocultar carta
+                        item.setImageResource(R.drawable.ic_logo_carta);
+                        final int finalPosition = position;
+                        item.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                clickListener(finalPosition);
+                            }
+                        });
+                    }
+                    position++;
+                }
+            }
+        });
+    }
+
+    private void clickListener(final int finalPosition) {
+        if (clickAllElemets) {
+            final MemoramaEntity lista = listaComplete.get(finalPosition);
+
+            if (lista.isClick() && !lista.isFinded()) {
+                //variables locales
+                if (elemetSave == null) {
+                    //es la primera ves
+                    elemetSave = lista;
+                    imageViews.get(finalPosition).setImageResource(lista.getImageId());
+                } else {
+
+                    if (elemetSave != lista) {
+
+                        final MemoramaEntity listaSave = listaComplete.get(elemetSave.getPosition());
+                        imageViews.get(finalPosition).setImageResource(lista.getImageId());
+
+                        if (lista.getImgGroup() == elemetSave.getImgGroup()) {
+                            //setear find del actual y antiguo
+                            lista.setFinded(true);
+                            listaSave.setFinded(true);
+
+                            lista.setClick(false);
+                            listaSave.setClick(false);
+
+                            elemetSave = null;
+
+                            //validar si ya estan todos completos
+                            int cont = 0;
+                            for (MemoramaEntity item : listaComplete) if (item.isFinded()) cont++;
+                            if (cont >= listaComplete.size()) alertWin();
+
+                        } else {
+                            Toast.makeText(getContext(), "Fallo.", Toast.LENGTH_SHORT).show();
+                            lista.setClick(false);
+                            listaSave.setClick(false);
+                            clickAllElemets = false;
+
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    //change img
+                                    imageViews.get(elemetSave.getPosition()).setImageResource(R.drawable.ic_logo_carta);
+                                    imageViews.get(finalPosition).setImageResource(R.drawable.ic_logo_carta);
+
+                                    lista.setClick(true);
+                                    listaSave.setClick(true);
+
+                                    clickAllElemets = true;
+                                    elemetSave = null;
+                                }
+                            }, 2000);
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     private List<MemoramaEntity> getDataListComplete() {
         //crear las listas
         List<MemoramaEntity> memoramaEntities = getDataList();
-        List<Integer> numersUsed = new ArrayList<>();
+        List<Integer> numbersUsed = new ArrayList<>();
 
         //obtienen los 16 elementos y se reccorren
         List<MemoramaEntity> items = getDataList();
@@ -89,9 +245,9 @@ public class Memorama extends Fragment implements MemoramaAdapter.MemoramaAdapte
                 //valida si ya existe esa posocion guardada
                 int aletarori = numberAleatory();
 
-                if (!numersUsed.contains(aletarori)) {
+                if (!numbersUsed.contains(aletarori)) {
                     //agrega el elemento a la psoicion
-                    numersUsed.add(aletarori);
+                    numbersUsed.add(aletarori);
 
                     //se editar eleento y se cambia al siguiente
                     item.setPosition(aletarori);
@@ -105,27 +261,18 @@ public class Memorama extends Fragment implements MemoramaAdapter.MemoramaAdapte
     }
 
     private List<MemoramaEntity> getDataList() {
-        //Lista
         List<MemoramaEntity> memoramaEntities = new ArrayList<>();
-
         for (int i = 0; i < 2; i++) {
-            memoramaEntities.add(new MemoramaEntity("https://st2.depositphotos.com/5960950/8671/v/950/depositphotos_86717778-stock-illustration-abstract-colorful-geometric-triangles-rhombus.jpg", 1));
-
-            memoramaEntities.add(new MemoramaEntity("https://previews.123rf.com/images/ksena32/ksena321710/ksena32171000413/87933208-fondo-de-confeti-de-peque%C3%B1as-estrellas-de-colores.jpg", 2));
-
-            memoramaEntities.add(new MemoramaEntity("https://previews.123rf.com/images/pwg89/pwg891509/pwg89150900025/45306031-hojas-peque%C3%B1as.jpg", 3));
-
-            memoramaEntities.add(new MemoramaEntity("https://bolsas-de-organza.es/wp-content/uploads/2014/01/Bolsas-de-organza-peque%C3%B1as-tama%C3%B1o-10x15cm.jpg", 4));
-
-            memoramaEntities.add(new MemoramaEntity("http://maitebayona.com/wp-content/uploads/2017/04/Cosas-pequeU251cU2592as.jpg", 5));
-
-            memoramaEntities.add(new MemoramaEntity("http://www.habitosvitales.com/wp-content/uploads/2008/10/smallstuff.jpg", 6));
-
-            memoramaEntities.add(new MemoramaEntity("https://www.olimanitas.com/wp-content/uploads/2018/05/como-hacer-flores-de-papel-peque%C3%B1as-1024x683.jpg", 7));
-
-            memoramaEntities.add(new MemoramaEntity("https://coolties.es/wp-content/uploads/2018/11/PEQUE%C3%91AS-AMEBAS1.jpg", 8));
+            //crea los 8 lementos primarios
+            memoramaEntities.add(new MemoramaEntity(R.drawable.boy_uno_icon, 1));
+            memoramaEntities.add(new MemoramaEntity(R.drawable.boy_dos_icon, 2));
+            memoramaEntities.add(new MemoramaEntity(R.drawable.boy_tres_icon, 3));
+            memoramaEntities.add(new MemoramaEntity(R.drawable.boy_cuatro_icon, 4));
+            memoramaEntities.add(new MemoramaEntity(R.drawable.boy_cinco_icon, 5));
+            memoramaEntities.add(new MemoramaEntity(R.drawable.boy_seis_icon, 6));
+            memoramaEntities.add(new MemoramaEntity(R.drawable.boy_siete_icon, 7));
+            memoramaEntities.add(new MemoramaEntity(R.drawable.boy_ocho_icon, 8));
         }
-
         return memoramaEntities;
     }
 
@@ -136,48 +283,27 @@ public class Memorama extends Fragment implements MemoramaAdapter.MemoramaAdapte
         return new Random().nextInt((max - min) + 1) + min;
     }
 
-    @Override
-    public void updateAllItems() {
-        int cont = 0;
-        for (MemoramaEntity item : listComplete) {
-           if (item.isFound()){
-               cont ++ ;
-           }
+    public void alertWin() {
 
-            item.setClickeable(false);
-        }
-        Log.v("CONTADOR",cont+"");
-        memoramaAdapter.notifyDataSetChanged();
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-        if(cont < listComplete.size()){
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    for (MemoramaEntity item : listComplete) {
-                        if (!item.isFound()) {
-                            item.setShow(false);
-                            item.setClickeable(true);
-                        }else{
-                            item.setShow(true);
-                            item.setClickeable(false);
-                        }
-                    }
-                    memoramaAdapter.notifyDataSetChanged();
-                }
-            }, 2000);
-        }else{
-            listener.alertWin().show();
-        }
+        View layoutInflater = getLayoutInflater().inflate(R.layout.memorama_win_plantilla, null);
+        builder.setView(layoutInflater);
+        Button btnOnback = layoutInflater.findViewById(R.id.mwmorama_winp_btnonback);
+        Button btnReload = layoutInflater.findViewById(R.id.mwmorama_winp_reload);
 
-    }
-
-    @Override
-    public void showMsm(String mensaje) {
-        Toast.makeText(getContext(), mensaje, Toast.LENGTH_SHORT).show();
-    }
-
-    public interface MemoramaI {
-        void reload(Integer i);
-        AlertDialog.Builder alertWin();
+        btnOnback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().popBackStack();
+            }
+        });
+        btnReload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initGame();
+            }
+        });
+        builder.show();
     }
 }

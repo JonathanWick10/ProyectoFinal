@@ -1,68 +1,35 @@
 package com.jonathan.proyectofinal.data;
 
 public class MemoramaEntity {
-    //Todo Recordar pedir que creen el pojo en firebase
-    private String image;
-    private boolean show;
-    private int imageGrup;
-    private int position;
-    private boolean clickeable;
-    private boolean found;
+    private int position, imgGroup;
+    private int imageId;
+    private boolean show, finded, click;
 
-    public MemoramaEntity(String image, int imageGrup ) {
-        this.image = image;
-        this.show = true;
-        this.imageGrup = imageGrup;
-        this.position = -1;
-        this.clickeable = false;
-        this.found = false;
+    public MemoramaEntity(int imageId, int imgGroup){
+        this.imageId = imageId;
+        this.imgGroup = imgGroup;
+
+        //inicia oculto, aunque durante unos segundos se muestran.
+        this.show = false;
+        this.finded = false;
+        this.click = true;
     }
 
-    public int getImageGrup() {
-        return imageGrup;
-    }
+    public int getPosition() { return position; }
+    public void setPosition(int position) { this.position = position; }
 
-    public void setImageGrup(int imageGrup) {
-        this.imageGrup = imageGrup;
-    }
+    public int getImgGroup() { return imgGroup; }
+    public void setImgGroup(int imgGroup) { this.imgGroup = imgGroup; }
 
-    public String getImage() {
-        return image;
-    }
+    public int getImageId() { return imageId; }
+    public void setImageId(int imageId) { this.imageId = imageId; }
 
-    public void setImage(String image) {
-        this.image = image;
-    }
+    public boolean isShow() { return show; }
+    public void setShow(boolean show) { this.show = show; }
 
-    public boolean isShow() {
-        return show;
-    }
+    public boolean isFinded() { return finded; }
+    public void setFinded(boolean finded) { this.finded = finded; }
 
-    public void setShow(boolean show) {
-        this.show = show;
-    }
-
-    public int getPosition() {
-        return position;
-    }
-
-    public void setPosition(int position) {
-        this.position = position;
-    }
-
-    public boolean isClickeable() {
-        return clickeable;
-    }
-
-    public void setClickeable(boolean clickeable) {
-        this.clickeable = clickeable;
-    }
-
-    public boolean isFound() {
-        return found;
-    }
-
-    public void setFound(boolean found) {
-        this.found = found;
-    }
+    public boolean isClick() { return click; }
+    public void setClick(boolean click) { this.click = click; }
 }
