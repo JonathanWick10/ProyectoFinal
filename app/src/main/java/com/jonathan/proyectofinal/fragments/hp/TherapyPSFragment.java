@@ -35,7 +35,6 @@ public class TherapyPSFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-     //   return inflater.inflate(R.layout.fragment_ps_therapy, container, false);
         View view = inflater.inflate(R.layout.fragment_ps_therapy, container, false);
         Bundle bundle = getArguments();
         if (bundle!=null){

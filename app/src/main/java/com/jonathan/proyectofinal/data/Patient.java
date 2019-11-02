@@ -32,6 +32,7 @@ public class Patient {
     private String role;
     List<String> assigns;
     private String uriImg;
+    private int age;
     //endregion
 
     //region Builders
@@ -42,7 +43,7 @@ public class Patient {
                    String gender, String birthday, long phoneNumber, String department, String userName,
                    String password, String confirmPassword, String email, String nativeCity, String actualCity,
                    long familyPhoneNumber, String address, String dateDiagnostic, String diagnostic,
-                   String observations, String emergencyNumber, String role, List<String> assigns, String uriImg) {
+                   String observations, String emergencyNumber, String role, List<String> assigns, String uriImg, Integer age) {
         this.patientUID = patientUID;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -67,6 +68,7 @@ public class Patient {
         this.role = role;
         this.assigns = assigns;
         this.uriImg = uriImg;
+        this.age = age;
     }
     //endregion
 
@@ -249,6 +251,14 @@ public class Patient {
 
     public void setUriImg(String uriImg) {
         this.uriImg = uriImg;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     //endregion

@@ -9,8 +9,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavType;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.jonathan.proyectofinal.R;
+import com.jonathan.proyectofinal.data.Patient;
+import com.jonathan.proyectofinal.tools.Constants;
+
+import java.util.Calendar;
+import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -36,42 +45,11 @@ public class InformationPatientPSFragment extends Fragment {
     @BindView(R.id.tv_ps_diagnosisdate)
     TextView tvDiagnosisDate;
 
-    String firstName="";
-    String lastName="";
-    String agePatient="";
-    String genderPatient="";
-    String nativeCityPatient="";
-    String currentCityPatient="";
-    String guestPhonePatient="";
-    String addressPatient="";
-    String diagnosis="";
-    String diagnosisDate="";
-    String identificationType="";
-    String identification="";
-    String birthday="";
-    long phoneNumber=0;
-    String email="";
-    String observations="";
-    String emergencyNumber="";
+    FirebaseFirestore db;
+    Patient patient = new Patient();
 
     public InformationPatientPSFragment() {
     }
-
-
-    /*
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-        View view = inflater.inflate(R.layout.fragment_ps_information_patient, container, false);
-        ButterKnife.bind(this, view);
-        initDatas();
-        Bundle bundle = getArguments();
-        String uID = bundle.getString("patientUID");
-
-        return view;
-
-    }*/
 
     @Nullable
     @Override
@@ -79,44 +57,38 @@ public class InformationPatientPSFragment extends Fragment {
         super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_ps_information_patient, container, false);
         ButterKnife.bind(this, view);
-        initDatas();
-        Bundle bundle = getArguments();
-        if (bundle!=null){
-            String uID = bundle.getString("patientUID");
-        }
         return view;
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        db = FirebaseFirestore.getInstance();
+        Bundle bundle = getArguments();
+        if (bundle!=null){
+            String uID = bundle.getString("patientUID");
+            db.collection(Constants.Patients).document(uID).get()
+                    .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                        @Override
+                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+                            if (documentSnapshot.exists()){
+                                patient = documentSnapshot.toObject(Patient.class);
+                            }
+                        }
+                    });
+        }
+    }
+
     public void initDatas() {
-       agePatient="25";
-       genderPatient="Femenino";
-       nativeCityPatient="Cali";
-       currentCityPatient="Popayán";
-       guestPhonePatient="312 252 1155";
-       addressPatient="Calle 7N";
-       diagnosis="El paciente tiene Alzheimer";
-       diagnosisDate="15 - 10 - 2014";
-       firstName="Carolina";
-       lastName="Valencia";
-       identificationType="Cedula de ciudadania";
-       identification="00000000";
-       birthday="15 - 10 - 1993";
-       phoneNumber=5728369;
-       email="abcdes@gmail.com";
-       observations="Paciente con";
-       emergencyNumber="123";
-
-
-        tvAgePatient.setText("" +agePatient+" años");
-        tvGenderPatient.setText("" +genderPatient);
-        tvNativeCityPatient.setText("" +nativeCityPatient);
-        tvCurrentCityPatient.setText("" +currentCityPatient);
-        tvGuestPhonePatient.setText("" +guestPhonePatient);
-        tvAddressPatient.setText("" +addressPatient);
-        tvDiagnosis.setText("" +diagnosis);
-        tvDiagnosisDate.setText("" +diagnosisDate);
-        tvPatientName.setText(firstName+" "+lastName);
-
+        tvAgePatient.setText("" +patient.getAge()+" años");
+        tvGenderPatient.setText("" +patient.getGender());
+        tvNativeCityPatient.setText("" +patient.getNativeCity());
+        tvCurrentCityPatient.setText("" +patient.getActualCity());
+        tvGuestPhonePatient.setText("" +patient.getPhoneNumber());
+        tvAddressPatient.setText("" + patient.getAddress());
+        tvDiagnosis.setText("" +patient.getDiagnostic());
+        tvDiagnosisDate.setText("" +patient.getDateDiagnostic());
+        tvPatientName.setText(patient.getFirstName()+" "+patient.getLastName());
     }
 
 

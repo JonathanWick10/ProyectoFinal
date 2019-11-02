@@ -58,6 +58,7 @@ import com.jonathan.proyectofinal.ui.Registration_Carer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -381,6 +382,15 @@ public class AddPatients extends Fragment {
             String[] assignsArray = {firebaseUser.getUid()};
             List<String> assigns = Arrays.asList(assignsArray);
             patient.setAssigns(assigns);
+
+            String dateOfBirth = birthDayString;
+            String[] parts = dateOfBirth.split("/");
+            String anio = parts[2]; // 654321
+            int year = Integer.parseInt(anio);
+            Calendar cal= Calendar.getInstance();
+            int actualYear = cal.get(Calendar.YEAR);
+            int age = actualYear - year;
+            patient.setAge(age);
             //endregion
         }else{
             flag = false;
