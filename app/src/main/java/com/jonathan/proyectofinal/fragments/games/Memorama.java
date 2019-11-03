@@ -25,7 +25,7 @@ import java.util.Random;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class Memorama extends Fragment  {
+public class Memorama extends Fragment {
 
     //region imagesViews
     @BindView(R.id.item_uno)
@@ -81,7 +81,7 @@ public class Memorama extends Fragment  {
     private List<MemoramaEntity> listaComplete;
     private MemoramaEntity elemetSave;
     private boolean clickAllElemets = true;
-    private Memoramai memoramai ;
+    private Memoramai memoramai;
 
     public Memorama(Memoramai memoramai) {
         this.memoramai = memoramai;
@@ -285,8 +285,7 @@ public class Memorama extends Fragment  {
         return new Random().nextInt((max - min) + 1) + min;
     }
 
-    public void alertWin() {
-
+    private void alertWin() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         View layoutInflater = getLayoutInflater().inflate(R.layout.memorama_win_plantilla, null);
@@ -294,24 +293,31 @@ public class Memorama extends Fragment  {
         Button btnOnback = layoutInflater.findViewById(R.id.mwmorama_winp_btnonback);
         final Button btnReload = layoutInflater.findViewById(R.id.mwmorama_winp_reload);
 
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+        final AlertDialog finalDialog = dialog;
+
         btnOnback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               memoramai.callOnbackPressed();
+                finalDialog.dismiss();
+                memoramai.callOnbackPressed();
             }
         });
 
         btnReload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                finalDialog.dismiss();
                 memoramai.reloadGame();
             }
         });
-        builder.show();
     }
 
-    public interface Memoramai{
+    public interface Memoramai {
         void reloadGame();
+
         void callOnbackPressed();
     }
 }

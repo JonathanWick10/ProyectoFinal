@@ -17,15 +17,11 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.appbar.MaterialToolbar;
@@ -37,9 +33,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.data.Patient;
-import com.jonathan.proyectofinal.fragments.admin.AdminHome;
 import com.jonathan.proyectofinal.fragments.games.PhysicalExecise;
-import com.jonathan.proyectofinal.fragments.games.PhysicalExercisePractic;
 import com.jonathan.proyectofinal.fragments.patient.HomePFragment;
 import com.jonathan.proyectofinal.fragments.patient.MemorizamePFragment;
 import com.jonathan.proyectofinal.fragments.patient.NotificationsPFragment;
@@ -199,7 +193,7 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
                     public void onClick(View view) {
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         FragmentTransaction ft = fragmentManager.beginTransaction();
-                        ft.replace(R.id.managerfrag, new PhysicalExercisePractic());
+                        ft.replace(R.id.managerfrag, new PhysicalExecise());
                     }
                 });
                 TextView tvInformation=dialogView.findViewById(R.id.text_information);

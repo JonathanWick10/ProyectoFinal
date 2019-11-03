@@ -32,15 +32,16 @@ public class Games extends AppCompatActivity  implements Memorama.Memoramai {
     public LinearLayout progresCont;
     @BindView(R.id.progressBar_init)
     public ProgressBar progressBar;
-//endregion
+
+    //endregion
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_games);
         ButterKnife.bind(this);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
@@ -51,7 +52,6 @@ public class Games extends AppCompatActivity  implements Memorama.Memoramai {
 
     }
     private void iniciarProgres() {
-
         //mostrar Progress
         progresCont.setVisibility(View.VISIBLE);
         container.setVisibility(View.GONE);
@@ -95,6 +95,6 @@ public class Games extends AppCompatActivity  implements Memorama.Memoramai {
 
     @Override
     public void callOnbackPressed() {
-        onBackPressed();
+        finish();
     }
 }
