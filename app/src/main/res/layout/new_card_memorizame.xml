@@ -41,7 +41,7 @@
                 app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit_name_patient"
+                    android:id="@+id/edit_question"
                     style="@style/StyleTextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -60,7 +60,7 @@
                 app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit_last_name_patient"
+                    android:id="@+id/edit_answer1"
                     style="@style/StyleTextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
                 app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit_identification_patient"
+                    android:id="@+id/edit_answer2"
                     style="@style/StyleTextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -99,7 +99,7 @@
                 app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit_native_city_patient"
+                    android:id="@+id/edit_answer3"
                     style="@style/StyleTextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -117,7 +117,7 @@
                 app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit_phone_patient"
+                    android:id="@+id/edit_answer4"
                     style="@style/StyleTextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -134,7 +134,7 @@
                 app:errorEnabled="true">
 
                 <AutoCompleteTextView
-                    android:id="@+id/edit_department_patient"
+                    android:id="@+id/edit_correct_answer"
                     style="@style/StyleTextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
