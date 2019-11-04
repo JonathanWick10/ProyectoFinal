@@ -107,7 +107,7 @@ public class NewCardMemorizame extends Fragment {
             public void onClick(View view) {
                 boolean flag2 = setPojoMemorizame();
 
-                Log.d("Save Memorizame","flag:"+flag2);
+                //Log.d("Save Memorizame","flag:"+flag2);
                 if (flag2){
 
                     String option= "option";
@@ -115,7 +115,10 @@ public class NewCardMemorizame extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), getResources().getString(R.string.complete_field_please), Toast.LENGTH_SHORT).show();
+                    String option= "option";
+                    Alert(option);
+
+                   // Toast.makeText(context, getResources().getString(R.string.complete_field_please), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -204,7 +207,6 @@ public class NewCardMemorizame extends Fragment {
         answer4=answer4Patient.getText().toString();
         correctAnswer=Integer.parseInt((String)correctAnswerPatient.getText().toString());
 
-
         if (!question.isEmpty() && !answer1.isEmpty() && !answer2.isEmpty() && !answer3.isEmpty() &&
                 !answer4.isEmpty()) {
             memorizame.setQuestion(question);
@@ -214,6 +216,7 @@ public class NewCardMemorizame extends Fragment {
             memorizame.setAnswer4(answer4);
             memorizame.setCorrectAnswer(correctAnswer);
             memorizame.setPatientUID(patientUID);
+
 
 
              return flag = true;
