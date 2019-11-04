@@ -118,8 +118,13 @@ public class NewCardMemorizame extends Fragment {
 
                 Log.d("Save Memorizame","flag:"+flag2);
                 if (flag2){
+
                     String option= "option";
                     Alert(option);
+                }
+                else {
+
+                    Toast.makeText(getActivity(), getResources().getString(R.string.complete_field_please), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -206,7 +211,7 @@ public class NewCardMemorizame extends Fragment {
         answer2 = answer2Patient.getText().toString();
         answer3 = answer3Patient.getText().toString();
         answer4=answer4Patient.getText().toString();
-        correctAnswer=2;
+        correctAnswer=Integer.parseInt((String)correctAnswerPatient.getText().toString());
 
 
         if (!question.isEmpty() && !answer1.isEmpty() && !answer2.isEmpty() && !answer3.isEmpty() &&
