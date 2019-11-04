@@ -46,24 +46,15 @@ public class NewCardMemorizame extends Fragment {
     public NewCardMemorizame(){}
 
 
-    String selectedDate;
-    public static final int REQUEST_CODE = 11;
-    private AdminAddHealthProfessional.OnFragmentInteractionListener mListener;
-    HealthcareProfessional hp = new HealthcareProfessional();
-    String firstName, lastName, typeId, ident, gender, birthdate, nativeCity, phone, address,
-            actualCity, email, userHealth, pass, profession, workP;
-
     String patientUID, patientUID_2, question,answer1,answer2,answer3,answer4;
     int correctAnswer;
     Memorizame memorizame= new Memorizame();
     boolean flag = false;
-    LoginManager loginManager = new LoginManager();
-    Admin admin = new Admin();
+
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
     FirebaseFirestore db;
     StorageReference storageReference;
-    String role;
     Uri uriImage;
 
 
