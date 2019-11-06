@@ -191,6 +191,10 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
             change.setArguments(args);
             transaction.replace(R.id.containerMemorizame,change).commit();
         }
+        else if(fragmentTag.equals("memorizamepru")){
+            change = new MemorizameFragment();
+            transaction.replace(R.id.containerMemorizame,change).commit();
+        }
     }
 
     @Override

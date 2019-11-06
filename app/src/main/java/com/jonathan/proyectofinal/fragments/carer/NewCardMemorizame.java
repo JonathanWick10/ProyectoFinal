@@ -37,6 +37,7 @@ import com.jonathan.proyectofinal.data.Memorizame;
 import com.jonathan.proyectofinal.data.Patient;
 import com.jonathan.proyectofinal.database.LoginManager;
 import com.jonathan.proyectofinal.fragments.admin.AdminAddHealthProfessional;
+import com.jonathan.proyectofinal.interfaces.IMainCarer;
 import com.jonathan.proyectofinal.tools.Constants;
 import com.jonathan.proyectofinal.ui.HealthProfessionalActivity;
 
@@ -59,6 +60,7 @@ public class NewCardMemorizame extends Fragment {
     Uri uriImage;
     Patient patient = new Patient();
 
+    private IMainCarer iMainHealthProfessional;
 
 
     Context context;
@@ -76,6 +78,7 @@ public class NewCardMemorizame extends Fragment {
     TextInputEditText answer4Patient;
     @BindView(R.id.edit_correct_answer)
     AutoCompleteTextView correctAnswerPatient;
+    Bundle args = new Bundle();
 
 
 
@@ -151,6 +154,7 @@ public class NewCardMemorizame extends Fragment {
                 btn1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        translation();
                         alertDialog.dismiss();
                     }
                 });
@@ -180,7 +184,6 @@ public class NewCardMemorizame extends Fragment {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.dismiss();
-
                 }
             });
 
@@ -201,6 +204,10 @@ public class NewCardMemorizame extends Fragment {
 
 
 
+    }
+
+    private void translation() {
+        iMainHealthProfessional.inflateFragment("memorizamepru");
     }
 
     private boolean setPojoMemorizame(){
@@ -234,5 +241,10 @@ public class NewCardMemorizame extends Fragment {
     }
 
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        iMainHealthProfessional = (IMainCarer) getActivity();
+    }// No adapter attached; skipping layout
 
 }
