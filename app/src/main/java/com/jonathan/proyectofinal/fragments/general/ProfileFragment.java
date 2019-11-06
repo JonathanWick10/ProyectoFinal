@@ -18,16 +18,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.jonathan.proyectofinal.R;
+import com.jonathan.proyectofinal.data.Patient;
 import com.jonathan.proyectofinal.fragments.admin.AdminAddHealthProfessional;
+import com.jonathan.proyectofinal.tools.Constants;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -40,8 +46,38 @@ public class ProfileFragment extends Fragment {
 
     private View view;
 
+    @BindView(R.id.til_name_profile)
+    TextInputLayout til_name;
+    @BindView(R.id.til_lastname_profile)
+    TextInputLayout til_lastname;
+    @BindView(R.id.til_identification_type_profile)
+    TextInputLayout til_identification_type;
+    @BindView(R.id.til_identification_profile)
+    TextInputLayout til_identification;
+    @BindView(R.id.til_date_birth_profile)
+    TextInputLayout til_date_birth;
+    @BindView(R.id.til_native_city_profile)
+    TextInputLayout til_native_city;
+    @BindView(R.id.til_phone_profile)
+    TextInputLayout til_phone;
+    @BindView(R.id.til_department_profile)
+    TextInputLayout til_department;
+    @BindView(R.id.til_actual_city_profile)
+    TextInputLayout til_actual_city;
+    @BindView(R.id.til_address_profile)
+    TextInputLayout til_address;
+    @BindView(R.id.til_email_profile)
+    TextInputLayout til_email;
+    @BindView(R.id.til_user_profile)
+    TextInputLayout til_user;
     @BindView(R.id.til_password_profile)
     TextInputLayout til_password;
+    @BindView(R.id.til_profession_profile)
+    TextInputLayout til_profession;
+    @BindView(R.id.til_workplace_profile)
+    TextInputLayout til_workplace;
+
+
 
     @BindView(R.id.img_image_profile)
     CircleImageView civProfile;
@@ -55,6 +91,10 @@ public class ProfileFragment extends Fragment {
     TextInputEditText txtIdentification;
     @BindView(R.id.rg_gender_profile)
     RadioGroup rgGender;
+    @BindView(R.id.rb_female_profile)
+    RadioButton rb_female;
+    @BindView(R.id.rb_male_profile)
+    RadioButton rb_male;
     @BindView(R.id.edit_date_birth_profile)
     TextInputEditText txtDateBirth;
     @BindView(R.id.iv_date_birth_profile)
@@ -75,12 +115,6 @@ public class ProfileFragment extends Fragment {
     TextInputEditText txtUser;
     @BindView(R.id.edit_password_profile)
     TextInputEditText txtPassword;
-    @BindView(R.id.edit_diagnostic_patient)
-    TextInputEditText txtDiagnosis;
-    @BindView(R.id.edit_diagnosis_date_profile)
-    TextInputEditText txtDiagnosisDate;
-    @BindView(R.id.iv_date_diagnosis_profile)
-    CircleImageView civCalendarDD;
     @BindView(R.id.edit_profession_profile)
     TextInputEditText txtProfession;
     @BindView(R.id.edit_workplace_profile)
@@ -88,8 +122,10 @@ public class ProfileFragment extends Fragment {
     @BindView(R.id.button_update_profile)
     MaterialButton btnUpdate;
     String selectedDate;
+    String selectedGender;
     public static final int REQUEST_CODE = 11;
-    public static final int REQUEST_CODE1 = 12;
+
+    FirebaseFirestore db;
 
 
     public ProfileFragment() {
@@ -102,11 +138,110 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_profile, container, false);
         ButterKnife.bind(this, view);
+        getUserData();
         dropdowns(view);
         logicButtonCalendarDB(view);
-        logicButtonCalendarDD(view);
         verifiFieds();
         return view;
+    }
+
+    private void getUserData() {
+        db = FirebaseFirestore.getInstance();
+        Bundle bundle = getArguments();
+        if (bundle!=null){
+            String uID = bundle.getString("userUid");
+            String role = bundle.getString("userRole");
+
+            switch (role){
+                case "Patients":
+                    db.collection(Constants.Patients).document(uID).get()
+                            .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                @Override
+                                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                    if (documentSnapshot.exists()){
+                                        Patient patient = new Patient();
+                                        patient = documentSnapshot.toObject(Patient.class);
+                                        setDataPatients(patient);
+                                    }
+                                }
+                            });
+                    break;
+            }
+
+
+        }
+    }
+
+    //Método para ocular campos no correspondientes al paciente y colocar datos pertenecientes
+    private void setDataPatients(Patient patient) {
+        txtName.setEnabled(false);
+        txtLastName.setEnabled(false);
+        txtIdType.setEnabled(false);
+        txtIdentification.setEnabled(false);
+        rb_female.setEnabled(false);
+        rb_male.setEnabled(false);
+        rgGender.setEnabled(false);
+        txtDateBirth.setEnabled(false);
+        txtNativeCity.setEnabled(false);
+        txtPhone.setEnabled(false);
+        txtDepartment.setEnabled(false);
+        txtActualCity.setEnabled(false);
+        txtAddress.setEnabled(false);
+        txtEmail.setEnabled(false);
+        txtUser.setEnabled(false);
+        txtPassword.setEnabled(false);
+        til_name.setEndIconMode(TextInputLayout.END_ICON_NONE);
+        til_lastname.setEndIconMode(TextInputLayout.END_ICON_NONE);
+        til_identification_type.setEndIconMode(TextInputLayout.END_ICON_NONE);
+        til_identification.setEndIconMode(TextInputLayout.END_ICON_NONE);
+        til_date_birth.setEndIconMode(TextInputLayout.END_ICON_NONE);
+        til_native_city.setEndIconMode(TextInputLayout.END_ICON_NONE);
+        til_phone.setEndIconMode(TextInputLayout.END_ICON_NONE);
+        til_department.setEndIconMode(TextInputLayout.END_ICON_NONE);
+        til_actual_city.setEndIconMode(TextInputLayout.END_ICON_NONE);
+        til_address.setEndIconMode(TextInputLayout.END_ICON_NONE);
+        til_email.setEndIconMode(TextInputLayout.END_ICON_NONE);
+        til_user.setEndIconMode(TextInputLayout.END_ICON_NONE);
+        til_profession.setVisibility(View.GONE);
+        til_workplace.setVisibility(View.GONE);
+        btnUpdate.setVisibility(View.GONE);
+        civCalendarDB.setVisibility(View.GONE);
+        txtName.setFocusable(false);
+        txtLastName.setFocusable(false);
+        txtIdType.setFocusable(false);
+        txtIdentification.setFocusable(false);
+        txtDateBirth.setFocusable(false);
+        txtNativeCity.setFocusable(false);
+        txtPhone.setFocusable(false);
+        txtDepartment.setFocusable(false);
+        txtActualCity.setFocusable(false);
+        txtAddress.setFocusable(false);
+        txtEmail.setFocusable(false);
+        txtDateBirth.setFocusable(false);
+        txtUser.setFocusable(false);
+        txtPassword.setFocusable(false);
+        txtName.setText(patient.getFirstName());
+        txtLastName.setText(patient.getLastName());
+        txtIdType.setText(patient.getIdentificationType(), false);
+        txtIdentification.setText(patient.getIdentification());
+        selectedGender = patient.getGender();
+        switch (selectedGender){
+            case "Femenino":
+                rb_female.setChecked(true);
+                break;
+            case "Masculino":
+                rb_male.setChecked(true);
+                break;
+        }
+        txtDateBirth.setText(patient.getBirthday());
+        txtPhone.setText(Long.toString(patient.getPhoneNumber()));
+        txtUser.setText(patient.getUserName());
+        txtPassword.setText(patient.getPassword());
+        txtEmail.setText(patient.getEmail());
+        txtNativeCity.setText(patient.getNativeCity());
+        txtActualCity.setText(patient.getActualCity());
+        txtAddress.setText(patient.getAddress());
+        txtDepartment.setText(patient.getDepartment(), false);
     }
 
     private void verifiFieds() {
@@ -175,27 +310,12 @@ public class ProfileFragment extends Fragment {
         });
     }
 
-    private void logicButtonCalendarDD(View view) {
-        final FragmentManager fm = ((AppCompatActivity)getActivity()).getSupportFragmentManager();
-        civCalendarDD.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AppCompatDialogFragment newFragment = new DatePickerFragment();
-                newFragment.setTargetFragment(ProfileFragment.this, REQUEST_CODE1);
-                newFragment.show(fm, "datePicker");
-            }
-        });
-    }
-
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK){
             selectedDate = data.getStringExtra("selectedDate");
             txtDateBirth.setText(selectedDate);
-        } else if (requestCode == REQUEST_CODE1 && resultCode == Activity.RESULT_OK){
-            selectedDate = data.getStringExtra("selectedDate");
-            txtDiagnosisDate.setText(selectedDate);
         }
     }
 }

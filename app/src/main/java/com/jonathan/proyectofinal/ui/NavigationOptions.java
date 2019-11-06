@@ -28,7 +28,8 @@ public class NavigationOptions extends AppCompatActivity {
 
     @BindView(R.id.toolbar_navigation_option)
     MaterialToolbar toolbar;
-    String option;
+    String option, uid, role;
+    Bundle args = new Bundle();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,18 +42,23 @@ public class NavigationOptions extends AppCompatActivity {
 
         if(savedInstanceState == null){
             option = getIntent().getExtras().getString("option");
+            uid = getIntent().getExtras().getString("user_uid");
+            role = getIntent().getExtras().getString("user_role");
             switch (option){
                 case "profile":
-                    handleFrame(new ProfileFragment());
+                    args.putString("userUid", uid);
+                    args.putString("userRole", role);
+                    handleFrame(new ProfileFragment(), args);
                     break;
             }
         }
     }
 
     //Método que se encarga de gestionarl el llenado del frame con fragmentos
-    private void handleFrame(Fragment fragment) {
+    private void handleFrame(Fragment fragment, Bundle args) {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
+        fragment.setArguments(args);
         fragmentTransaction.replace(R.id.content_navigation_option, fragment);
         fragmentTransaction.commit();
     }

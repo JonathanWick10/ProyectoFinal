@@ -136,6 +136,8 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
             case (R.id.btn_profile):
                 Intent navigation = new Intent(MainPatient.this, NavigationOptions.class);
                 navigation.putExtra("option", "profile");
+                navigation.putExtra("user_uid", patient.getPatientUID());
+                navigation.putExtra("user_role", patient.getRole());
                 startActivity(navigation);
                 break;
             case R.id.btn_logout:
