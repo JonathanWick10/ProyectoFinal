@@ -276,53 +276,10 @@ public class ProfileFragment extends Fragment {
 
     private void setDataAdmins(Admin admin) {
         //Fields properties
-        txtName.setEnabled(false);
-        txtLastName.setEnabled(false);
-        txtIdType.setEnabled(false);
-        txtIdentification.setEnabled(false);
-        txtProfession.setEnabled(false);
-        rb_female.setEnabled(false);
-        rb_male.setEnabled(false);
-        txtDateBirth.setEnabled(false);
-        txtNativeCity.setEnabled(false);
-        txtPhone.setEnabled(false);
-        txtActualCity.setEnabled(false);
-        txtAddress.setEnabled(false);
         txtEmail.setEnabled(false);
-        txtUser.setEnabled(false);
         txtPassword.setEnabled(false);
-        txtWorkPlace.setEnabled(false);
-        til_name.setEndIconMode(TextInputLayout.END_ICON_NONE);
-        til_lastname.setEndIconMode(TextInputLayout.END_ICON_NONE);
-        til_identification_type.setEndIconMode(TextInputLayout.END_ICON_NONE);
-        til_identification.setEndIconMode(TextInputLayout.END_ICON_NONE);
-        til_profession.setEndIconMode(TextInputLayout.END_ICON_NONE);
-        til_date_birth.setEndIconMode(TextInputLayout.END_ICON_NONE);
-        til_native_city.setEndIconMode(TextInputLayout.END_ICON_NONE);
-        til_phone.setEndIconMode(TextInputLayout.END_ICON_NONE);
-        til_actual_city.setEndIconMode(TextInputLayout.END_ICON_NONE);
-        til_address.setEndIconMode(TextInputLayout.END_ICON_NONE);
         til_email.setEndIconMode(TextInputLayout.END_ICON_NONE);
-        til_user.setEndIconMode(TextInputLayout.END_ICON_NONE);
-        til_workplace.setEndIconMode(TextInputLayout.END_ICON_NONE);
         til_department.setVisibility(View.GONE);
-        btnUpdate.setVisibility(View.GONE);
-        civCalendarDB.setVisibility(View.GONE);
-        txtName.setFocusable(false);
-        txtLastName.setFocusable(false);
-        txtIdType.setFocusable(false);
-        txtIdentification.setFocusable(false);
-        txtProfession.setFocusable(false);
-        txtDateBirth.setFocusable(false);
-        txtNativeCity.setFocusable(false);
-        txtPhone.setFocusable(false);
-        txtActualCity.setFocusable(false);
-        txtAddress.setFocusable(false);
-        txtEmail.setFocusable(false);
-        txtDateBirth.setFocusable(false);
-        txtUser.setFocusable(false);
-        txtPassword.setFocusable(false);
-        txtWorkPlace.setFocusable(false);
 
         //Set data in fields
         txtName.setText(admin.getFirstName());
