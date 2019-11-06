@@ -45,8 +45,9 @@ public class InformationPatientPSFragment extends Fragment {
     @BindView(R.id.tv_ps_diagnosisdate)
     TextView tvDiagnosisDate;
 
-    FirebaseFirestore db;
     Patient patient = new Patient();
+
+    FirebaseFirestore db;
 
     public InformationPatientPSFragment() {
     }
@@ -57,6 +58,11 @@ public class InformationPatientPSFragment extends Fragment {
         super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_ps_information_patient, container, false);
         ButterKnife.bind(this, view);
+        Bundle bundle = getArguments();
+        if (bundle!=null){
+            patient = (Patient) bundle.getSerializable("patient");
+            initDatas();
+        }
         return view;
     }
 
@@ -64,19 +70,7 @@ public class InformationPatientPSFragment extends Fragment {
     public void onStart() {
         super.onStart();
         db = FirebaseFirestore.getInstance();
-        Bundle bundle = getArguments();
-        if (bundle!=null){
-            String uID = bundle.getString("patientUID");
-            db.collection(Constants.Patients).document(uID).get()
-                    .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                        @Override
-                        public void onSuccess(DocumentSnapshot documentSnapshot) {
-                            if (documentSnapshot.exists()){
-                                patient = documentSnapshot.toObject(Patient.class);
-                            }
-                        }
-                    });
-        }
+
     }
 
     public void initDatas() {

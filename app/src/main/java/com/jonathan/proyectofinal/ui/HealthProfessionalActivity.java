@@ -28,6 +28,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.jonathan.proyectofinal.R;
+import com.jonathan.proyectofinal.data.Patient;
 import com.jonathan.proyectofinal.fragments.carer.MemorizameFamilyFragment;
 import com.jonathan.proyectofinal.fragments.carer.MemorizameFragment;
 import com.jonathan.proyectofinal.fragments.carer.MemorizameHomeFragment;
@@ -58,6 +59,7 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
     Bundle args = new Bundle();
+    Patient patientSendFragment = new Patient();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,10 +95,11 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
         //navigationView.setOnNavigationItemSelectedListener(navListener);
         NavController navController = Navigation.findNavController(this, R.id.content_health_professional);
         NavigationUI.setupWithNavController(navigationView, navController);
-        patientUID = getIntent().getExtras().getString("patientUID");
-        args.putString("patientUID",patientUID);
-      //  Toast.makeText(this, "patientUID:"+patientUID, Toast.LENGTH_LONG).show();
-        patientIdentification=getIntent().getExtras().getString("patientIdentification");
+        args = getIntent().getExtras();
+        if (args!= null){
+            patientSendFragment = (Patient) args.getSerializable("patient");
+            args.putSerializable("patient",patientSendFragment);
+        }
         Toast.makeText(this, "patientIdentification:  "+patientIdentification, Toast.LENGTH_LONG).show();
     }
 
@@ -132,13 +135,12 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
             change = new InformationPatientPSFragment();
             change.setArguments(args);
             transaction.replace(R.id.containerPageInformationPS,change).commit();
-        }/*
+        }
         else if(fragmentTag.equals("patient2")){
             change = new InformationPatientPSFragment();
             change.setArguments(args);
             transaction.replace(R.id.info_patient,change).commit();
         }
-        */
         else if(fragmentTag.equals(getString(R.string.carer))){
             change = new InformationCarerPSFragment();
             change.setArguments(args);

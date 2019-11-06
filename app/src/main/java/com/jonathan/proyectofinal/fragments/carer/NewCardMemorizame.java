@@ -34,6 +34,7 @@ import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.data.Admin;
 import com.jonathan.proyectofinal.data.HealthcareProfessional;
 import com.jonathan.proyectofinal.data.Memorizame;
+import com.jonathan.proyectofinal.data.Patient;
 import com.jonathan.proyectofinal.database.LoginManager;
 import com.jonathan.proyectofinal.fragments.admin.AdminAddHealthProfessional;
 import com.jonathan.proyectofinal.tools.Constants;
@@ -56,6 +57,7 @@ public class NewCardMemorizame extends Fragment {
     FirebaseFirestore db;
     StorageReference storageReference;
     Uri uriImage;
+    Patient patient = new Patient();
 
 
 
@@ -85,7 +87,10 @@ public class NewCardMemorizame extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.new_card_memorizame,container,false);
 
-
+        Bundle bundle = getArguments();
+        if (bundle!=null){
+            patient = (Patient) bundle.getSerializable("patient");
+        }
 
 
         context=container.getContext();
@@ -205,16 +210,16 @@ public class NewCardMemorizame extends Fragment {
         answer2 = answer2Patient.getText().toString();
         answer3 = answer3Patient.getText().toString();
         answer4=answer4Patient.getText().toString();
-        correctAnswer=Integer.parseInt((String)correctAnswerPatient.getText().toString());
+        String correct = correctAnswerPatient.getText().toString();
 
         if (!question.isEmpty() && !answer1.isEmpty() && !answer2.isEmpty() && !answer3.isEmpty() &&
-                !answer4.isEmpty()) {
+                !answer4.isEmpty() && !correct.isEmpty()) {
             memorizame.setQuestion(question);
             memorizame.setAnswer1(answer1);
             memorizame.setAnswer2(answer2);
             memorizame.setAnswer3(answer3);
             memorizame.setAnswer4(answer4);
-            memorizame.setCorrectAnswer(correctAnswer);
+            memorizame.setCorrectAnswer(correctAnswer=Integer.parseInt(correct));
             memorizame.setPatientUID(patientUID);
 
 

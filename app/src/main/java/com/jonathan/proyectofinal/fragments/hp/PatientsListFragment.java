@@ -105,13 +105,11 @@ public class PatientsListFragment extends Fragment {
         iSelectionPatient = new PatientsAdapter.ISelectionPatient() {
             @Override
             public void clickItem(Patient patient) {
-                Toast.makeText(getActivity(), patient.getIdentification()+" / "+patient.getFirstName(), Toast.LENGTH_SHORT).show();
-                Intent goPatient =new Intent(getActivity(), HealthProfessionalActivity.class);
-                String patientUID= patient.getPatientUID();
-                String patientIdentification= patient.getIdentification();
-                goPatient.putExtra("patientUID", patientUID);
-                goPatient.putExtra("patientIdentification", patientIdentification);
-
+                Toast.makeText(getActivity(), patient.getIdentification() + " / " + patient.getFirstName(), Toast.LENGTH_SHORT).show();
+                Intent goPatient = new Intent(getActivity(), HealthProfessionalActivity.class);
+                Bundle patientSend = new Bundle();
+                patientSend.putSerializable("patient", patient);
+                goPatient.putExtras(patientSend);
                 startActivity(goPatient);
             }
         };
@@ -134,7 +132,7 @@ public class PatientsListFragment extends Fragment {
                                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                     @Override
                                     public void onComplete(@NonNull Task<AuthResult> task) {
-                                        if (task.isSuccessful()){
+                                        if (task.isSuccessful()) {
                                             AuthResult itask = task.getResult();
                                             FirebaseUser ures = itask.getUser();
                                             db.collection(Constants.Patients).document(patient.getPatientUID()).delete()
@@ -157,17 +155,17 @@ public class PatientsListFragment extends Fragment {
                                                             Toast.makeText(getActivity(), "se elimino", Toast.LENGTH_SHORT).show();
                                                         }
                                                     });
+                                        }
                                     }
-                                }
-                        });
+                                });
 
                         db.collection(Constants.HealthcareProfesional).document(userHPoCarer).get()
                                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                                     @Override
                                     public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                        if(documentSnapshot.exists()){
+                                        if (documentSnapshot.exists()) {
                                             hp = documentSnapshot.toObject(HealthcareProfessional.class);
-                                            firebaseAuth.signInWithEmailAndPassword(hp.getEmail(),hp.getPassword())
+                                            firebaseAuth.signInWithEmailAndPassword(hp.getEmail(), hp.getPassword())
                                                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                                         @Override
                                                         public void onComplete(@NonNull Task<AuthResult> task) {
@@ -183,9 +181,9 @@ public class PatientsListFragment extends Fragment {
                                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                                     @Override
                                     public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                        if (documentSnapshot.exists()){
+                                        if (documentSnapshot.exists()) {
                                             carer = documentSnapshot.toObject(Carer.class);
-                                            firebaseAuth.signInWithEmailAndPassword(carer.getEmail(),carer.getPassword())
+                                            firebaseAuth.signInWithEmailAndPassword(carer.getEmail(), carer.getPassword())
                                                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                                         @Override
                                                         public void onComplete(@NonNull Task<AuthResult> task) {
@@ -223,13 +221,13 @@ public class PatientsListFragment extends Fragment {
                             patientM = documentSnapshopt.toObject(Patient.class);
                             patientList.add(patientM);
                         }
-                        adapter = new PatientsAdapter(patientList,getActivity(),iSelectionPatient,iDeletePatient);
+                        adapter = new PatientsAdapter(patientList, getActivity(), iSelectionPatient, iDeletePatient);
                         recyclerView.setAdapter(adapter);
                         recyclerView.setHasFixedSize(true);
-                        if(patientList.size()!=0){
+                        if (patientList.size() != 0) {
                             recyclerView.setVisibility(View.VISIBLE);
                             noPatient.setVisibility(View.INVISIBLE);
-                        }else {
+                        } else {
                             recyclerView.setVisibility(View.INVISIBLE);
                             noPatient.setVisibility(View.VISIBLE);
                         }

@@ -2,11 +2,12 @@ package com.jonathan.proyectofinal.data;
 
 import android.net.Uri;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class Patient {
+public class Patient implements Serializable {
     //region Variables
     private String patientUID;
     private String firstName;
