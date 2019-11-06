@@ -112,13 +112,11 @@ public class MainCarer extends AppCompatActivity implements IMainCarer, Navigati
                         if (documentSnapshot.exists()){
                             carer = documentSnapshot.toObject(Carer.class);
                             name_user.setText(carer.getUserName()+" "+carer.getLastName());
+                            email_user.setText(carer.getEmail());
                             Glide.with(MainCarer.this).load(carer.getUriImg()).fitCenter().into(image_user);
                         }
                     }
                 });
-        if (name_user!=null && email_user!=null) {
-            email_user.setText(firebaseUser.getEmail());
-        }
         drawerToggle.syncState();
     }
 
@@ -180,6 +178,8 @@ public class MainCarer extends AppCompatActivity implements IMainCarer, Navigati
             case (R.id.btn_profile):
                 Intent navigation = new Intent(MainCarer.this, NavigationOptions.class);
                 navigation.putExtra("option", "profile");
+                navigation.putExtra("user_uid", carer.getCarerUId());
+                navigation.putExtra("user_role", carer.getRole());
                 startActivity(navigation);
                 break;
             case R.id.btn_logout:

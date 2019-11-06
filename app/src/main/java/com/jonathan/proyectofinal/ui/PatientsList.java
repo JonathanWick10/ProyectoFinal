@@ -34,6 +34,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.data.Carer;
+import com.jonathan.proyectofinal.data.HealthcareProfessional;
 import com.jonathan.proyectofinal.data.Patient;
 import com.jonathan.proyectofinal.fragments.AddPatients;
 import com.jonathan.proyectofinal.fragments.admin.AdminAddHealthProfessional;
@@ -66,10 +67,12 @@ public class PatientsList extends AppCompatActivity implements IMainCarer,AddPat
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
     FirebaseFirestore db;
-    Patient patient = new Patient();
+    //Patient patient = new Patient();
+    HealthcareProfessional hp = new HealthcareProfessional();
+    Carer carer = new Carer();
     private boolean isFabTapped = false;
     private IPatientsListFragmentListener fragmentListener;
-
+    String userRole;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,29 +89,42 @@ public class PatientsList extends AppCompatActivity implements IMainCarer,AddPat
         setSupportActionBar(toolbar);
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
+        db = FirebaseFirestore.getInstance();
         navigationView.setNavigationItemSelectedListener(this);
         ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close);
         drawerLayout.addDrawerListener(drawerToggle);
+        drawerToggle.syncState();
         final TextView name_user = navigationView.getHeaderView(0).findViewById(R.id.lbl_name_user);
         final TextView email_user = navigationView.getHeaderView(0).findViewById(R.id.lbl_email_user);
         final CircleImageView image_user = navigationView.getHeaderView(0).findViewById(R.id.img_users_navigation);
-        db = FirebaseFirestore.getInstance();
-        db.collection(Constants.Patients).document(firebaseUser.getUid()).get()
+
+        db.collection(Constants.HealthcareProfesional).document(firebaseUser.getUid()).get()
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         if (documentSnapshot.exists()){
-                            patient = documentSnapshot.toObject(Patient.class);
-                            name_user.setText(patient.getUserName()+" "+patient.getLastName());
-                            Glide.with(PatientsList.this).load(patient.getUriImg()).fitCenter().into(image_user);
+                            hp = documentSnapshot.toObject(HealthcareProfessional.class);
+                            name_user.setText(hp.getFirstName()+" "+hp.getLastName());
+                            email_user.setText(hp.getEmail());
+                            Glide.with(PatientsList.this).load(hp.getUriImg()).fitCenter().into(image_user);
+                            userRole = hp.getRole();
                         }
                     }
                 });
-        if (name_user!=null && email_user!=null) {
-            email_user.setText(firebaseUser.getEmail());
-        }
-        drawerToggle.syncState();
 
+        db.collection(Constants.Carers).document(firebaseUser.getUid()).get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()){
+                            carer = documentSnapshot.toObject(Carer.class);
+                            name_user.setText(carer.getUserName()+" "+carer.getLastName());
+                            email_user.setText(carer.getEmail());
+                            Glide.with(PatientsList.this).load(carer.getUriImg()).fitCenter().into(image_user);
+                            userRole = carer.getRole();
+                        }
+                    }
+                });
 //endregion
 
         //region Fragment PatientsList
@@ -164,6 +180,8 @@ public class PatientsList extends AppCompatActivity implements IMainCarer,AddPat
             case (R.id.btn_profile):
                 Intent navigation = new Intent(PatientsList.this, NavigationOptions.class);
                 navigation.putExtra("option", "profile");
+                navigation.putExtra("user_uid", firebaseUser.getUid());
+                navigation.putExtra("user_role", userRole);
                 startActivity(navigation);
                 break;
             case R.id.btn_logout:

@@ -229,6 +229,8 @@ public class AdminHome extends AppCompatActivity implements IMainCarer,AdminAddH
             case (R.id.btn_profile):
                 Intent navigation = new Intent(AdminHome.this, NavigationOptions.class);
                 navigation.putExtra("option", "profile");
+                navigation.putExtra("user_uid", admin.getAdminUId());
+                navigation.putExtra("user_role", admin.getRole());
                 startActivity(navigation);
                 break;
             case R.id.btn_logout:

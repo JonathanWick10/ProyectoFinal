@@ -22,12 +22,18 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.jonathan.proyectofinal.R;
+import com.jonathan.proyectofinal.data.Carer;
+import com.jonathan.proyectofinal.data.HealthcareProfessional;
 import com.jonathan.proyectofinal.data.Patient;
 import com.jonathan.proyectofinal.fragments.carer.MemorizameFamilyFragment;
 import com.jonathan.proyectofinal.fragments.carer.MemorizameFragment;
@@ -40,9 +46,11 @@ import com.jonathan.proyectofinal.fragments.hp.InformationCarerPSFragment;
 import com.jonathan.proyectofinal.fragments.hp.InformationPatientPSFragment;
 import com.jonathan.proyectofinal.fragments.hp.MotorTherapyPSFragment;
 import com.jonathan.proyectofinal.interfaces.IMainCarer;
+import com.jonathan.proyectofinal.tools.Constants;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class HealthProfessionalActivity extends AppCompatActivity implements IMainCarer, NavigationView.OnNavigationItemSelectedListener {
 
@@ -60,6 +68,8 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
     FirebaseUser firebaseUser;
     Bundle args = new Bundle();
     Patient patientSendFragment = new Patient();
+    FirebaseFirestore db;
+    HealthcareProfessional hp = new HealthcareProfessional();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,12 +94,22 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
         ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close);
         drawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
-        TextView name_user = navigationView.getHeaderView(0).findViewById(R.id.lbl_name_user);
-        TextView email_user = navigationView.getHeaderView(0).findViewById(R.id.lbl_email_user);
-        if (name_user!=null && email_user!=null) {
-            name_user.setText(firebaseUser.getDisplayName());
-            email_user.setText(firebaseUser.getEmail());
-        }
+        final TextView name_user = navigationView.getHeaderView(0).findViewById(R.id.lbl_name_user);
+        final TextView email_user = navigationView.getHeaderView(0).findViewById(R.id.lbl_email_user);
+        final CircleImageView image_user = navigationView.getHeaderView(0).findViewById(R.id.img_users_navigation);
+        db = FirebaseFirestore.getInstance();
+        db.collection(Constants.HealthcareProfesional).document(firebaseUser.getUid()).get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()){
+                            hp = documentSnapshot.toObject(HealthcareProfessional.class);
+                            name_user.setText(hp.getFirstName()+" "+hp.getLastName());
+                            email_user.setText(hp.getEmail());
+                            Glide.with(HealthProfessionalActivity.this).load(hp.getUriImg()).fitCenter().into(image_user);
+                        }
+                    }
+                });
         //endregion
         BottomNavigationView navigationView = findViewById(R.id.navigation_health_professional);
         //navigationView.setOnNavigationItemSelectedListener(navListener);
@@ -204,6 +224,8 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
             case (R.id.btn_profile):
                 Intent navigation = new Intent(HealthProfessionalActivity.this, NavigationOptions.class);
                 navigation.putExtra("option", "profile");
+                navigation.putExtra("user_uid", hp.getHpUID());
+                navigation.putExtra("user_role", hp.getRole());
                 startActivity(navigation);
                 break;
             case R.id.btn_logout:

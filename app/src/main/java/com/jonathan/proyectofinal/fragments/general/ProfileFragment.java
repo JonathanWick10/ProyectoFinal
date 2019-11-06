@@ -31,6 +31,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.jonathan.proyectofinal.R;
+import com.jonathan.proyectofinal.data.Admin;
+import com.jonathan.proyectofinal.data.Carer;
+import com.jonathan.proyectofinal.data.HealthcareProfessional;
 import com.jonathan.proyectofinal.data.Patient;
 import com.jonathan.proyectofinal.fragments.admin.AdminAddHealthProfessional;
 import com.jonathan.proyectofinal.tools.Constants;
@@ -153,6 +156,45 @@ public class ProfileFragment extends Fragment {
             String role = bundle.getString("userRole");
 
             switch (role){
+                case "Admin":
+                    db.collection(Constants.Adminds).document(uID).get()
+                            .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                @Override
+                                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                    if (documentSnapshot.exists()){
+                                        Admin admin = new Admin();
+                                        admin = documentSnapshot.toObject(Admin.class);
+                                        setDataAdmins(admin);
+                                    }
+                                }
+                            });
+                    break;
+                case "Healthcare_profesionals":
+                    db.collection(Constants.HealthcareProfesional).document(uID).get()
+                            .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                @Override
+                                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                    if (documentSnapshot.exists()){
+                                        HealthcareProfessional hp = new HealthcareProfessional();
+                                        hp = documentSnapshot.toObject(HealthcareProfessional.class);
+                                        setDataHp(hp);
+                                    }
+                                }
+                            });
+                    break;
+                case "Carers":
+                    db.collection(Constants.Carers).document(uID).get()
+                            .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                @Override
+                                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                    if (documentSnapshot.exists()){
+                                        Carer carer = new Carer();
+                                        carer = documentSnapshot.toObject(Carer.class);
+                                        setDataCarer(carer);
+                                    }
+                                }
+                            });
+                    break;
                 case "Patients":
                     db.collection(Constants.Patients).document(uID).get()
                             .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
@@ -172,15 +214,151 @@ public class ProfileFragment extends Fragment {
         }
     }
 
+    private void setDataCarer(Carer carer) {
+        //Fields properties
+        til_department.setVisibility(View.GONE);
+
+        //Set data in fields
+        txtName.setText(carer.getFirstName());
+        txtLastName.setText(carer.getLastName());
+        txtIdType.setText(carer.getIdentificationType(), false);
+        txtIdentification.setText(carer.getIdentification());
+        txtProfession.setText(carer.getProfession());
+        selectedGender = carer.getGender();
+        switch (selectedGender){
+            case "Femenino":
+                rb_female.setChecked(true);
+                break;
+            case "Masculino":
+                rb_male.setChecked(true);
+                break;
+        }
+        txtDateBirth.setText(carer.getBirthday());
+        txtPhone.setText(Long.toString(carer.getPhoneNumber()));
+        txtUser.setText(carer.getUserName());
+        txtPassword.setText(carer.getPassword());
+        txtEmail.setText(carer.getEmail());
+        txtNativeCity.setText(carer.getNativeCity());
+        txtActualCity.setText(carer.getActualCity());
+        txtAddress.setText(carer.getAddress());
+        txtWorkPlace.setText(carer.getEmploymentPlace());
+    }
+
+    private void setDataHp(HealthcareProfessional hp) {
+        //Fields properties
+        til_department.setVisibility(View.GONE);
+
+        //Set data in fields
+        txtName.setText(hp.getFirstName());
+        txtLastName.setText(hp.getLastName());
+        txtIdType.setText(hp.getIdentificationType(), false);
+        txtIdentification.setText(hp.getIdentification());
+        txtProfession.setText(hp.getProfession());
+        selectedGender = hp.getGender();
+        switch (selectedGender){
+            case "Femenino":
+                rb_female.setChecked(true);
+                break;
+            case "Masculino":
+                rb_male.setChecked(true);
+                break;
+        }
+        txtDateBirth.setText(hp.getBirthday());
+        txtPhone.setText(Long.toString(hp.getPhoneNumber()));
+        txtUser.setText(hp.getUserName());
+        txtPassword.setText(hp.getPassword());
+        txtEmail.setText(hp.getEmail());
+        txtNativeCity.setText(hp.getNativeCity());
+        txtActualCity.setText(hp.getActualCity());
+        txtAddress.setText(hp.getAddress());
+        txtWorkPlace.setText(hp.getEmployment_place());
+    }
+
+    private void setDataAdmins(Admin admin) {
+        //Fields properties
+        txtName.setEnabled(false);
+        txtLastName.setEnabled(false);
+        txtIdType.setEnabled(false);
+        txtIdentification.setEnabled(false);
+        txtProfession.setEnabled(false);
+        rb_female.setEnabled(false);
+        rb_male.setEnabled(false);
+        txtDateBirth.setEnabled(false);
+        txtNativeCity.setEnabled(false);
+        txtPhone.setEnabled(false);
+        txtActualCity.setEnabled(false);
+        txtAddress.setEnabled(false);
+        txtEmail.setEnabled(false);
+        txtUser.setEnabled(false);
+        txtPassword.setEnabled(false);
+        txtWorkPlace.setEnabled(false);
+        til_name.setEndIconMode(TextInputLayout.END_ICON_NONE);
+        til_lastname.setEndIconMode(TextInputLayout.END_ICON_NONE);
+        til_identification_type.setEndIconMode(TextInputLayout.END_ICON_NONE);
+        til_identification.setEndIconMode(TextInputLayout.END_ICON_NONE);
+        til_profession.setEndIconMode(TextInputLayout.END_ICON_NONE);
+        til_date_birth.setEndIconMode(TextInputLayout.END_ICON_NONE);
+        til_native_city.setEndIconMode(TextInputLayout.END_ICON_NONE);
+        til_phone.setEndIconMode(TextInputLayout.END_ICON_NONE);
+        til_actual_city.setEndIconMode(TextInputLayout.END_ICON_NONE);
+        til_address.setEndIconMode(TextInputLayout.END_ICON_NONE);
+        til_email.setEndIconMode(TextInputLayout.END_ICON_NONE);
+        til_user.setEndIconMode(TextInputLayout.END_ICON_NONE);
+        til_workplace.setEndIconMode(TextInputLayout.END_ICON_NONE);
+        til_department.setVisibility(View.GONE);
+        btnUpdate.setVisibility(View.GONE);
+        civCalendarDB.setVisibility(View.GONE);
+        txtName.setFocusable(false);
+        txtLastName.setFocusable(false);
+        txtIdType.setFocusable(false);
+        txtIdentification.setFocusable(false);
+        txtProfession.setFocusable(false);
+        txtDateBirth.setFocusable(false);
+        txtNativeCity.setFocusable(false);
+        txtPhone.setFocusable(false);
+        txtActualCity.setFocusable(false);
+        txtAddress.setFocusable(false);
+        txtEmail.setFocusable(false);
+        txtDateBirth.setFocusable(false);
+        txtUser.setFocusable(false);
+        txtPassword.setFocusable(false);
+        txtWorkPlace.setFocusable(false);
+
+        //Set data in fields
+        txtName.setText(admin.getFirstName());
+        txtLastName.setText(admin.getLastName());
+        txtIdType.setText(admin.getIdentificationType(), false);
+        txtIdentification.setText(admin.getIdentification());
+        txtProfession.setText(admin.getProfession());
+        selectedGender = admin.getGender();
+        switch (selectedGender){
+            case "Femenino":
+                rb_female.setChecked(true);
+                break;
+            case "Masculino":
+                rb_male.setChecked(true);
+                break;
+        }
+        txtDateBirth.setText(admin.getBirthday());
+        txtPhone.setText(Long.toString(admin.getPhoneNumber()));
+        txtUser.setText(admin.getUserName());
+        txtPassword.setText(admin.getPassword());
+        txtEmail.setText(admin.getEmail());
+        txtNativeCity.setText(admin.getNativeCity());
+        txtActualCity.setText(admin.getActualCity());
+        txtAddress.setText(admin.getAddress());
+        txtWorkPlace.setText(admin.getEmploymentPlace());
+    }
+
     //Método para ocular campos no correspondientes al paciente y colocar datos pertenecientes
     private void setDataPatients(Patient patient) {
+        //Fields properties
         txtName.setEnabled(false);
         txtLastName.setEnabled(false);
         txtIdType.setEnabled(false);
         txtIdentification.setEnabled(false);
         rb_female.setEnabled(false);
         rb_male.setEnabled(false);
-        rgGender.setEnabled(false);
         txtDateBirth.setEnabled(false);
         txtNativeCity.setEnabled(false);
         txtPhone.setEnabled(false);
@@ -220,6 +398,8 @@ public class ProfileFragment extends Fragment {
         txtDateBirth.setFocusable(false);
         txtUser.setFocusable(false);
         txtPassword.setFocusable(false);
+
+        //Set data in fields
         txtName.setText(patient.getFirstName());
         txtLastName.setText(patient.getLastName());
         txtIdType.setText(patient.getIdentificationType(), false);
