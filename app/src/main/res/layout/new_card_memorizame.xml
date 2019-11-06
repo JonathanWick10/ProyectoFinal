@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/sixteen"
-    android:background="@color/white"
+    android:background="@color/colorBackround"
     tools:context=".fragments.AddPatients">
 
     <androidx.core.widget.NestedScrollView
@@ -14,13 +13,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_margin="@dimen/sixteen">
 
             <TextView
                 style="@style/StyleTextViewTitles"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/add_patient"></TextView>
+                android:text="@string/add_family_question"></TextView>
 
             <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/profile_image"
@@ -37,7 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:endIconMode="clear_text"
-                app:startIconDrawable="@drawable/ic_face_black"
+                app:startIconDrawable="@drawable/ic_live_help_black"
                 app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -56,7 +56,7 @@
                 android:layout_height="match_parent"
                 android:hint="@string/label_answer"
                 app:endIconMode="clear_text"
-                app:startIconDrawable="@drawable/ic_face_black"
+                app:startIconDrawable="@drawable/ic_looks_one_black"
                 app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -76,7 +76,7 @@
                 android:layout_height="match_parent"
                 android:hint="@string/label_answer"
                 app:endIconMode="clear_text"
-                app:startIconDrawable="@drawable/ic_identification_black"
+                app:startIconDrawable="@drawable/ic_looks_two_black"
                 app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -95,7 +95,7 @@
                 android:layout_height="match_parent"
                 android:hint="@string/label_answer"
                 app:endIconMode="clear_text"
-                app:startIconDrawable="@drawable/ic_nature_people_black"
+                app:startIconDrawable="@drawable/ic_looks_3_black"
                 app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -113,7 +113,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/label_answer"
                 app:endIconMode="clear_text"
-                app:startIconDrawable="@drawable/ic_phone_black"
+                app:startIconDrawable="@drawable/ic_looks_4_black"
                 app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -130,7 +130,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/label_select_correct_answer"
-                app:startIconDrawable="@drawable/ic_landscape_black"
+                app:startIconDrawable="@drawable/ic_check_box_black"
                 app:errorEnabled="true">
 
                 <AutoCompleteTextView
@@ -147,7 +147,7 @@
                 style="@style/StylePrimaryColoredButton"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="left"
+                android:layout_gravity="center"
                 android:layout_marginLeft="@dimen/ten"
                 android:text="@string/save" />
             <!-- pais, departamento, municipio, zona, foto .  -->

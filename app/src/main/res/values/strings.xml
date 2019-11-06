@@ -133,6 +133,10 @@
     <string name="not_saved">No guardo</string>
     <string name="select_photo">Seleccione la Imagen</string>
     <string name="complete_field_please">Complete los campos, por favor!</string>
+    <string name="add_family_question">Agregar Pregunta de Familia</string>
+    <string name="add_home_question">Agregar Pregunta de Hogar</string>
+    <string name="add_place_question">Agregar Pregunta de Lugar</string>
+    <string name="add_pet_question">Agregar Pregunta de Mascota</string>
 
     // Registration Carer
     <string name="add_Carer">Agregar Cuidador</string>

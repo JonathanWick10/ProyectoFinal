@@ -123,6 +123,10 @@
     <string name="not_saved">Not saved</string>
     <string name="select_photo">Select Image</string>
     <string name="complete_field_please">Complete the fields, please!</string>
+    <string name="add_family_question">Add Family Question</string>
+    <string name="add_home_question">Add Home Question</string>
+    <string name="add_place_question">Add Place Question</string>
+    <string name="add_pet_question">Add Pet Question</string>
 
     // Registration Carer
     <string name="add_Carer">Add Carer</string>

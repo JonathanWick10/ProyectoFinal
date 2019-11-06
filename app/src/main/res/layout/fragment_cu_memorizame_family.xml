@@ -44,14 +44,14 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/oneHundredNinetyFour"
-                android:src="@drawable/img_selfcarer"
+                android:src="@drawable/img_family_question"
                 android:scaleType="centerCrop"/>
 
             <TextView
                 style="@style/StyleSubsCardView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/add_image"/>
+                android:text="@string/add_family_question"/>
         </com.google.android.material.card.MaterialCardView>
 
 
