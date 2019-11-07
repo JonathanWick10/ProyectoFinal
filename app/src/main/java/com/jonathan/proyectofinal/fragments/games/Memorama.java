@@ -310,14 +310,13 @@ public class Memorama extends Fragment {
             @Override
             public void onClick(View v) {
                 finalDialog.dismiss();
-                memoramai.reloadGame();
+                memoramai.reloadGame("Memorama");
             }
         });
     }
 
     public interface Memoramai {
-        void reloadGame();
-
+        void reloadGame(String reloadGame);
         void callOnbackPressed();
     }
 }

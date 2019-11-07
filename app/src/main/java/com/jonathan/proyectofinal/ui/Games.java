@@ -19,6 +19,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.fragments.games.Memorama;
+import com.jonathan.proyectofinal.fragments.games.PhysicalExercisePractic;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,15 +44,23 @@ public class Games extends AppCompatActivity  implements Memorama.Memoramai {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         //flecha de atras
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        iniciarProgres();
+
+            iniciarProgres((getIntent().getExtras().getString("Game", "Memorama")));
+
+
+
+
+
 
     }
-    private void iniciarProgres() {
+    private void iniciarProgres(final String typeGame) {
+
         //mostrar Progress
         progresCont.setVisibility(View.VISIBLE);
         container.setVisibility(View.GONE);
@@ -69,8 +78,15 @@ public class Games extends AppCompatActivity  implements Memorama.Memoramai {
                 //inciar fragmento
                 FragmentManager fm = getSupportFragmentManager();
                 FragmentTransaction ft = fm.beginTransaction();
-                ft.replace(R.id.contanedor_games, new Memorama(Games.this));
-                ft.commit();
+
+                if(typeGame.equals("Memorama")){
+                    ft.replace(R.id.contanedor_games, new Memorama(Games.this));
+                    ft.commit();
+                }else {
+                    ft.replace(R.id.contanedor_games, new PhysicalExercisePractic());
+                    ft.commit();
+                }
+
 
                 //ocultar y mostra
                 progresCont.setVisibility(View.GONE);
@@ -89,8 +105,8 @@ public class Games extends AppCompatActivity  implements Memorama.Memoramai {
     }
 
     @Override
-    public void reloadGame() {
-        iniciarProgres();
+    public void reloadGame(String typeGame) {
+        iniciarProgres(typeGame);
     }
 
     @Override

@@ -34,6 +34,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.data.Patient;
 import com.jonathan.proyectofinal.fragments.games.PhysicalExecise;
+import com.jonathan.proyectofinal.fragments.games.PhysicalExercisePractic;
 import com.jonathan.proyectofinal.fragments.patient.HomePFragment;
 import com.jonathan.proyectofinal.fragments.patient.MemorizamePFragment;
 import com.jonathan.proyectofinal.fragments.patient.NotificationsPFragment;
@@ -189,21 +190,19 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
                     }
                 });
                 Button btn2=(Button)dialogView.findViewById(R.id.btn2);
-                btn2.setText("Jugar");
+                btn2.setText("practicar");
                 btn2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        FragmentManager fragmentManager = getSupportFragmentManager();
-                        FragmentTransaction ft = fragmentManager.beginTransaction();
-                        ft.replace(R.id.managerfrag, new PhysicalExecise());
+                        alertDialog.dismiss();
+                        Intent pasar = new Intent(MainPatient.this, Games.class);
+                        pasar.putExtra("Game","Physical");
+                        startActivity(pasar);
                     }
                 });
                 TextView tvInformation=dialogView.findViewById(R.id.text_information);
                 tvInformation.setText(R.string.exersice_description);
                 alertDialog.show();
-
-
-
 
             } catch (Resources.NotFoundException e) {
                 e.printStackTrace();

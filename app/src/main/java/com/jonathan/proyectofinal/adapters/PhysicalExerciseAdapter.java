@@ -98,7 +98,7 @@ public class PhysicalExerciseAdapter extends RecyclerView.Adapter<PhysicalExerci
 
     public class holder extends RecyclerView.ViewHolder {
         TextView nameE, description;
-        ImageView image;
+        GifImageView image;
         public int time;
 
         public holder(@NonNull View itemView) {
