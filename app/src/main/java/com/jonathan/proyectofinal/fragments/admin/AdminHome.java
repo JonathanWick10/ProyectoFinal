@@ -236,6 +236,7 @@ public class AdminHome extends AppCompatActivity implements IMainCarer,AdminAddH
             case R.id.btn_logout:
                 firebaseAuth.signOut();
                 Intent intent = new Intent(AdminHome.this, Login.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 break;
         }

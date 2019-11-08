@@ -144,6 +144,7 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
             case R.id.btn_logout:
                 firebaseAuth.signOut();
                 Intent intent = new Intent(MainPatient.this, Login.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 break;
         }

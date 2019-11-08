@@ -73,6 +73,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class Login extends AppCompatActivity {
+
+    //region Variables
     @BindView(R.id.login_admin_edt_name)
     TextInputEditText name;
     @BindView(R.id.txtinput_name)
@@ -85,10 +87,6 @@ public class Login extends AppCompatActivity {
     MaterialButton btnLoginEmailPass;
     @BindView(R.id.link_registrar)
     TextView register;
-    /*
-    @BindView(R.id.btn_login_google)
-    SignInButton btnLoginGoogle;
-    */
     @BindView(R.id.btn_login_google)
     MaterialButton btnLoginGoogle;
     @BindView(R.id.btn_login_facebook)
@@ -107,6 +105,10 @@ public class Login extends AppCompatActivity {
     CallbackManager callbackManager;
     private static final String TAG="MainActivity";
 
+    FirebaseFirestore db;
+
+    //endregion
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -121,6 +123,9 @@ public class Login extends AppCompatActivity {
         //Keep screen on
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         //endregion
+
+        //Instance to FireStore
+        db = FirebaseFirestore.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
         loginInstance().googleClientSettings(this);
@@ -160,38 +165,18 @@ public class Login extends AppCompatActivity {
             }
         });
 
-
+        //region if there is any change in authentication its runs
         firebaseAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
-                    //goMainProfil();
                     loginInstance().redirectByRole(Login.this, user);
                 }
             }
         };
+        //endregion
 
-    }
-
-    private void goMainProfil() {
-        //startActivity(new Intent(Login.this, MainPatient.class));
-        //Toast.makeText(this, "LOGUEEEEEADOOOO", Toast.LENGTH_SHORT).show();
-        if (user != null) {
-            //loginInstance().emailPasswordLogin(Login.this);
-
-        } else {
-            Toast.makeText(this, "Aun no esta logueado sebo", Toast.LENGTH_SHORT).show();
-        }
-
-
-
-        /*
-        if (luisa.isEmpty() || luisa == null){
-            Toast.makeText(Login.this, "no funciono", Toast.LENGTH_SHORT).show();
-        }else{
-            Toast.makeText(Login.this, "vos sabes", Toast.LENGTH_SHORT).show();
-        }*/
     }
 
     private LoginManager loginInstance() {
@@ -238,8 +223,6 @@ public class Login extends AppCompatActivity {
             public void onSuccess(LoginResult loginResult) {
                 Log.d(TAG, "facebook:onSuccess:" + loginResult);
                 loginInstance().handleFacebookAccessToken(loginResult.getAccessToken(), Login.this);
-                // Toast.makeText(MainActivity.this,"LOGUIN CORRECTO", Toast.LENGTH_SHORT).show();
-                // simpleProgressBar.setVisibility(View.INVISIBLE);
             }
 
             @Override
@@ -268,28 +251,18 @@ public class Login extends AppCompatActivity {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             if(result.isSuccess()){
                 loginInstance().handleGoogleAccessToken(result, Login.this);
-                //goMainProfil();
             }else {
-                Toast.makeText(Login.this,getString(R.string.auth_fail), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this,getString(R.string.auth_fail), Toast.LENGTH_SHORT).show();
             }
         }
     }
 
-
-    /***************************************************************************************/
-    /*********************************** REGISTRO LUEGO BORRAR ******************************/
     private void register() {
 
-        /*if (validateFields() != null) {
-            loginInstance().createUserWithEmailAndPassword(this, validateFields()[0], validateFields()[1]);
-        }*/
         Intent intent = new Intent(Login.this,Registration_Carer.class);
         startActivity(intent);
 
     }
-    /*************************************************************************************/
-    /*************************************************************************************/
-
 
     private String[] validateFields() {
         String email = name.getText().toString().trim();
