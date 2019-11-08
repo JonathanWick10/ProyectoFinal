@@ -206,7 +206,7 @@ public class Memorama extends Fragment {
                             if (cont >= listaComplete.size()) alertWin();
 
                         } else {
-                            Toast.makeText(getContext(), "Fallo.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Sigue intentando", Toast.LENGTH_SHORT).show();
                             lista.setClick(false);
                             listaSave.setClick(false);
                             clickAllElemets = false;
@@ -224,7 +224,7 @@ public class Memorama extends Fragment {
                                     clickAllElemets = true;
                                     elemetSave = null;
                                 }
-                            }, 2000);
+                            }, 750);
                         }
                     }
                 }
@@ -291,7 +291,7 @@ public class Memorama extends Fragment {
         View layoutInflater = getLayoutInflater().inflate(R.layout.memorama_win_plantilla, null);
         builder.setView(layoutInflater);
         Button btnOnback = layoutInflater.findViewById(R.id.mwmorama_winp_btnonback);
-        final Button btnReload = layoutInflater.findViewById(R.id.mwmorama_winp_reload);
+        Button btnReload = layoutInflater.findViewById(R.id.mwmorama_winp_reload);
 
         AlertDialog dialog = builder.create();
         dialog.show();

@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frm_phy"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/frm_phy"
     tools:context=".fragments.games.PhysicalExercisePractic">
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/fragment_pep_gif"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/gif_prueba"
+        android:layout_centerInParent="true"
+        android:layout_above="@id/text_view_countdown"/>
 
     <TextView
         android:id="@+id/text_view_countdown"
@@ -12,10 +20,10 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="00:00"
         android:textColor="@android:color/black"
-        android:textSize="60sp" />
-
+        android:textSize="@dimen/fiftyText"
+        android:text="0:0"
+        android:layout_alignParentBottom="true"/>
 
 
 </RelativeLayout>

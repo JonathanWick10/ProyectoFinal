@@ -820,6 +820,7 @@
     <string name="win_cont_messege">¿ Do you want to try again ?</string>
     <string name="reload">Reload</string>
     <string name="volver_juego">Back to menu</string>
+    <string name="physical_exersice_finish">Congratulations you got it.</string>
 
     <string name="label_write_question">Write a question which corresponds to the image.</string>
     <string name="label_answer">Escriba una opción de respuesta.</string>

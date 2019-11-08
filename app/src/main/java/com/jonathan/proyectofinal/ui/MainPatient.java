@@ -177,12 +177,11 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             // only for Lollipop and newer versions
             try {
-                LayoutInflater inflater = this.getLayoutInflater();
-                View dialogView = inflater.inflate(R.layout.plantilla_physicalexersice_info, null);
+                View dialogView = this.getLayoutInflater().inflate(R.layout.plantilla_physicalexersice_info, null);
                 builder.setView(dialogView);
                 alertDialog=builder.create();
 
-                Button btn1=(Button)dialogView.findViewById(R.id.btn1);
+                Button btn1= dialogView.findViewById(R.id.btn1);
                 btn1.setText("Atras");
                 btn1.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -190,7 +189,7 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
                         alertDialog.dismiss();
                     }
                 });
-                Button btn2=(Button)dialogView.findViewById(R.id.btn2);
+                Button btn2= dialogView.findViewById(R.id.btn2);
                 btn2.setText("practicar");
                 btn2.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -211,6 +210,11 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
         }
 
         else{
+            LayoutInflater inflater = this.getLayoutInflater();
+            View dialogView = inflater.inflate(R.layout.plantilla_physicalexersice_info, null);
+            builder.setView(dialogView);
+            alertDialog=builder.create();
+
             builder.setNeutralButton("atras", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
@@ -222,7 +226,11 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
             builder.setPositiveButton("Jugar", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
+
+                    alertDialog.dismiss();
+                    Intent pasar = new Intent(MainPatient.this, Games.class);
+                    pasar.putExtra("Game","Physical");
+                    startActivity(pasar);
                 }
             });
             builder.setCancelable(false);

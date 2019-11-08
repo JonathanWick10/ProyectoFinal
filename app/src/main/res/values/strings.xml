@@ -838,6 +838,8 @@
     <string name="reload">Recargar</string>
     <string name="volver_juego">Volver al menu</string>
 
+    <string name="physical_exersice_finish">Felicitaciones lo has conseguido. </string>
+
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
     <string name="exersice_description">Además de proporcionar beneficios al estado físico en general, los ejercicios con cuerda tienen efectos particularmente interesantes para determinadas personas y prácticas deportivas.

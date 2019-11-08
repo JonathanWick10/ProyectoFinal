@@ -2,6 +2,7 @@ package com.jonathan.proyectofinal.ui;
 
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
@@ -24,7 +26,7 @@ import com.jonathan.proyectofinal.fragments.games.PhysicalExercisePractic;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class Games extends AppCompatActivity  implements Memorama.Memoramai {
+public class Games extends AppCompatActivity  implements Memorama.Memoramai{
 
     //region Reference
     @BindView(R.id.contanedor_games)
@@ -83,7 +85,7 @@ public class Games extends AppCompatActivity  implements Memorama.Memoramai {
                     ft.replace(R.id.contanedor_games, new Memorama(Games.this));
                     ft.commit();
                 }else {
-                    ft.replace(R.id.contanedor_games, new PhysicalExercisePractic());
+                    ft.replace(R.id.contanedor_games, new PhysicalExercisePractic(Games.this));
                     ft.commit();
                 }
 
@@ -113,4 +115,6 @@ public class Games extends AppCompatActivity  implements Memorama.Memoramai {
     public void callOnbackPressed() {
         finish();
     }
+
+
 }
