@@ -1,6 +1,7 @@
 package com.jonathan.proyectofinal.fragments.admin;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,10 +12,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,17 +26,28 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.adapters.AdminListPSAdapter;
+import com.jonathan.proyectofinal.data.Admin;
 import com.jonathan.proyectofinal.data.HealthcareProfessional;
 import com.jonathan.proyectofinal.fragments.games.Memorama;
 import com.jonathan.proyectofinal.interfaces.IMainCarer;
+import com.jonathan.proyectofinal.tools.Constants;
 import com.jonathan.proyectofinal.ui.HealthProfessionalActivity;
 import com.jonathan.proyectofinal.ui.Login;
 import com.jonathan.proyectofinal.ui.NavigationOptions;
@@ -57,6 +72,10 @@ public class AdminHome extends AppCompatActivity implements IMainCarer,AdminAddH
     private boolean isFabTapped = false;
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
+    String uIdAdmind;
+    ProgressDialog progressDialog;
+    FirebaseFirestore db;
+    Admin admin = new Admin();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,18 +83,30 @@ public class AdminHome extends AppCompatActivity implements IMainCarer,AdminAddH
         setContentView(R.layout.activity_admin_home);
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
+        Context context;
+        progressDialog = new ProgressDialog(AdminHome.this);
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
+        db = FirebaseFirestore.getInstance();
+        uIdAdmind = firebaseUser.getUid();
         navigationView.setNavigationItemSelectedListener(this);
         ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close);
         drawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
-        TextView name_user = navigationView.getHeaderView(0).findViewById(R.id.lbl_name_user);
-        TextView email_user = navigationView.getHeaderView(0).findViewById(R.id.lbl_email_user);
-        if (name_user!=null && email_user!=null) {
-            name_user.setText(firebaseUser.getDisplayName());
-            email_user.setText(firebaseUser.getEmail());
-        }
+        final TextView name_user = navigationView.getHeaderView(0).findViewById(R.id.lbl_name_user);
+        final TextView email_user = navigationView.getHeaderView(0).findViewById(R.id.lbl_email_user);
+        db.collection(Constants.Adminds).document(uIdAdmind).addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                if (documentSnapshot.exists()){
+                    admin = documentSnapshot.toObject(Admin.class);
+                    if (name_user!=null && email_user!=null) {
+                        name_user.setText(admin.getFirstName()+" "+admin.getLastName());
+                        email_user.setText(admin.getEmail());
+                    }
+                }
+            }
+        });
 
         if (savedInstanceState == null) {
             handleFrame(new AdminListPSFragment(alertDelete()));
@@ -86,14 +117,66 @@ public class AdminHome extends AppCompatActivity implements IMainCarer,AdminAddH
     private AdminListPSAdapter.AdminListPSAdapterI alertDelete() {
         AdminListPSAdapter.AdminListPSAdapterI psAdapterI = new AdminListPSAdapter.AdminListPSAdapterI() {
             @Override
-            public void btnEliminar(HealthcareProfessional pojo) {
+            public void btnEliminar(final HealthcareProfessional pojo) {
                 AlertDialog.Builder alerta = new AlertDialog.Builder(AdminHome.this);
                 alerta.setTitle(getString(R.string.alert));
-                alerta.setMessage(getString(R.string.message_delete) + " - " + pojo);
+                alerta.setMessage(getString(R.string.message_delete) + " - " + pojo.getFirstName()+" "+ pojo.getLastName());
                 alerta.setPositiveButton(getString(R.string.delete), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(AdminHome.this, "Caiste prro", Toast.LENGTH_SHORT).show();
+                        progressDialog.setMessage("Eliminando registro en línea");
+                        progressDialog.show();
+                        firebaseAuth.signInWithEmailAndPassword(pojo.getEmail(),pojo.getPassword())
+                                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<AuthResult> task) {
+                                        if (task.isSuccessful()){
+                                            AuthResult itask = task.getResult();
+                                            FirebaseUser ures = itask.getUser();
+                                            db.collection(Constants.HealthcareProfesional).document(pojo.getHpUID())
+                                                    .delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                @Override
+                                                public void onSuccess(Void aVoid) {
+                                                    Toast.makeText(AdminHome.this, "usuario eliminado", Toast.LENGTH_SHORT).show();
+                                                }
+                                            }).addOnFailureListener(new OnFailureListener() {
+                                                @Override
+                                                public void onFailure(@NonNull Exception e) {
+                                                    Log.d("Message: ",e.toString());
+                                                }
+                                            });
+                                            ures.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    Toast.makeText(AdminHome.this, "se elimino", Toast.LENGTH_SHORT).show();
+                                                }
+                                            });
+                                        }
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.d("Message: ",e.toString());
+                            }
+                        });
+
+                        db.collection(Constants.Adminds).document(uIdAdmind).get()
+                                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                    @Override
+                                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                        if (documentSnapshot.exists()){
+                                            admin = documentSnapshot.toObject(Admin.class);
+                                            firebaseAuth.signInWithEmailAndPassword(admin.getEmail(),admin.getPassword())
+                                                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                                        @Override
+                                                        public void onComplete(@NonNull Task<AuthResult> task) {
+                                                            progressDialog.dismiss();
+                                                        }
+                                                    });
+                                        }
+                                    }
+                                });
+
                     }
                 });
                 alerta.show();
@@ -146,11 +229,14 @@ public class AdminHome extends AppCompatActivity implements IMainCarer,AdminAddH
             case (R.id.btn_profile):
                 Intent navigation = new Intent(AdminHome.this, NavigationOptions.class);
                 navigation.putExtra("option", "profile");
+                navigation.putExtra("user_uid", admin.getAdminUId());
+                navigation.putExtra("user_role", admin.getRole());
                 startActivity(navigation);
                 break;
             case R.id.btn_logout:
                 firebaseAuth.signOut();
                 Intent intent = new Intent(AdminHome.this, Login.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 break;
         }

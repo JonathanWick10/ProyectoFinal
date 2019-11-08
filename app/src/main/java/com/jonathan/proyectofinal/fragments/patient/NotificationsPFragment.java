@@ -57,9 +57,13 @@ public class NotificationsPFragment extends Fragment {
         tabLayout.getTabAt(1).setIcon(R.drawable.ic_group_work_black);
 
         // Add a badge to a specific tab
-        BadgeDrawable badgeDrawable = tabLayout.getTabAt(1).getOrCreateBadge();
-        badgeDrawable.setVisible(true);
-        badgeDrawable.setNumber(1);
+        BadgeDrawable badgeTherapies = tabLayout.getTabAt(1).getOrCreateBadge();
+        badgeTherapies.setVisible(true);
+        badgeTherapies.setNumber(1);
+
+        BadgeDrawable badgeMedicaments = tabLayout.getTabAt(0).getOrCreateBadge();
+        badgeMedicaments.setVisible(true);
+        badgeMedicaments.setNumber(1);
         //tabLayout.getTabAt(1).removeBadge();
     }
 

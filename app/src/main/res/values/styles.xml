@@ -176,6 +176,16 @@
         <item name="android:elevation">@dimen/elevationTwo</item>
     </style>
 
+    <!-- Standard style for image button alarm button -->
+    <style name="StyleImageButtonAlarm" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:src">@drawable/ic_access_alarm_black_24dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:clickable">true</item>
+        <item name="android:tintMode">src_in</item>
+        <item name="android:tint">@color/colorPrimaryDark</item>
+    </style>
+
     <!-- Standard style for gender subtitle (Forms) -->
     <style name="StyleLabelGenderForms">
         <item name="android:layout_marginRight">@dimen/ten</item>
@@ -247,12 +257,29 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <!-- Standard style for mini card view titles -->
+    <style name="StyleMiniCardViewTitles">
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">@dimen/fifteenText</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingLeft">@dimen/ten</item>
+    </style>
+
     <!-- Standard style for card view subtitles -->
     <style name="StyleCardViewSubTitles">
         <item name="android:layout_weight">1</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:textSize">@dimen/seventeenText</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Standard style for mini card view subtitles -->
+    <style name="StyleMiniCardViewSubTitles">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">@dimen/fifteenText</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingLeft">@dimen/ten</item>
     </style>
 
     <!-- Standard style for card view descriptions -->
@@ -295,9 +322,12 @@
 
     <!-- Standard style for layout actions in card view -->
     <style name="StyleLayoutActionCardView">
+        <!--
         <item name="android:layout_marginTop">@dimen/ten</item>
         <item name="android:layout_marginLeft">@dimen/sixteen</item>
         <item name="android:layout_marginBottom">@dimen/ten</item>
+        -->
+        <item name="android:layout_margin">@dimen/eight</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:orientation">horizontal</item>
     </style>
@@ -329,5 +359,45 @@
         <item name="android:numStars">5</item>
         <item name="android:stepSize">1</item>
     </style >
+
+
+    <!-- Styles memorama-->
+    <style name="parent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="parentCero">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="parentTotal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="rowItem" parent="parentTotal">
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+    <style name="item" parent="parentTotal">
+        <item name="android:layout_weight">1</item>
+        <item name="android:padding">10dp</item>
+    </style>
+
+    <style name="card" parent="CardView.Light">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="cardCornerRadius">5dp</item>
+        <item name="cardElevation">5dp</item>
+        <item name="cardUseCompatPadding">true</item>
+    </style>
+
+
+    <style name="MyProgressBar" parent="@style/Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:progressBackgroundTint">#69f0ae</item>
+        <item name="android:progressTint">#b71c1c</item>
+        <item name="android:minWidth">200dp</item>
+    </style>
 
 </resources>

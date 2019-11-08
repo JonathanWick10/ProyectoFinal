@@ -15,7 +15,7 @@ import com.jonathan.proyectofinal.database.LoginManager;
 
 public class LoadBrainmher extends AppCompatActivity {
 
-    //private final int DURATION_SPLAH = 2000;
+    private final int DURATION_SPLAH = 2000;
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
 
@@ -38,16 +38,13 @@ public class LoadBrainmher extends AppCompatActivity {
 
         setContentView(R.layout.activity_load_brainmher);
         //Método para definir parametros y funcionalidad al ejecutar el splash screen
-        /*
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 redirect();
-                finish();
             };
         }, DURATION_SPLAH);
-        */
-        redirect();
     }
 
     private void redirect() {
@@ -56,6 +53,7 @@ public class LoadBrainmher extends AppCompatActivity {
             loginManager.redirectByRole(LoadBrainmher.this,firebaseUser);
         }  else {
             Intent intent = new Intent(LoadBrainmher.this, Login.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         }
     }
@@ -63,6 +61,5 @@ public class LoadBrainmher extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        finish();
     }
 }

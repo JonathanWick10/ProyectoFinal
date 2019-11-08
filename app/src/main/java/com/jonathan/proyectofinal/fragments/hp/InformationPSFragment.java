@@ -53,6 +53,10 @@ public class InformationPSFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_ps_information, container, false);
+        Bundle bundle = getArguments();
+        if (bundle!=null){
+            String uID = bundle.getString("patientUID");
+        }
         tabPatientInfo = view.findViewById(R.id.ps_tab_info_patient);
         nearbyhospital = view.findViewById(R.id.ps_tab_info_carer);
         tabs = view.findViewById(R.id.ps_tabs_info);

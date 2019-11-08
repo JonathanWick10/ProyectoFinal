@@ -22,12 +22,19 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.jonathan.proyectofinal.R;
+import com.jonathan.proyectofinal.data.Carer;
+import com.jonathan.proyectofinal.data.HealthcareProfessional;
+import com.jonathan.proyectofinal.data.Patient;
 import com.jonathan.proyectofinal.fragments.carer.MemorizameFamilyFragment;
 import com.jonathan.proyectofinal.fragments.carer.MemorizameFragment;
 import com.jonathan.proyectofinal.fragments.carer.MemorizameHomeFragment;
@@ -39,9 +46,11 @@ import com.jonathan.proyectofinal.fragments.hp.InformationCarerPSFragment;
 import com.jonathan.proyectofinal.fragments.hp.InformationPatientPSFragment;
 import com.jonathan.proyectofinal.fragments.hp.MotorTherapyPSFragment;
 import com.jonathan.proyectofinal.interfaces.IMainCarer;
+import com.jonathan.proyectofinal.tools.Constants;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class HealthProfessionalActivity extends AppCompatActivity implements IMainCarer, NavigationView.OnNavigationItemSelectedListener {
 
@@ -58,6 +67,9 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
     Bundle args = new Bundle();
+    Patient patientSendFragment = new Patient();
+    FirebaseFirestore db;
+    HealthcareProfessional hp = new HealthcareProfessional();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,21 +94,32 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
         ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close);
         drawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
-        TextView name_user = navigationView.getHeaderView(0).findViewById(R.id.lbl_name_user);
-        TextView email_user = navigationView.getHeaderView(0).findViewById(R.id.lbl_email_user);
-        if (name_user!=null && email_user!=null) {
-            name_user.setText(firebaseUser.getDisplayName());
-            email_user.setText(firebaseUser.getEmail());
-        }
+        final TextView name_user = navigationView.getHeaderView(0).findViewById(R.id.lbl_name_user);
+        final TextView email_user = navigationView.getHeaderView(0).findViewById(R.id.lbl_email_user);
+        final CircleImageView image_user = navigationView.getHeaderView(0).findViewById(R.id.img_users_navigation);
+        db = FirebaseFirestore.getInstance();
+        db.collection(Constants.HealthcareProfesional).document(firebaseUser.getUid()).get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()){
+                            hp = documentSnapshot.toObject(HealthcareProfessional.class);
+                            name_user.setText(hp.getFirstName()+" "+hp.getLastName());
+                            email_user.setText(hp.getEmail());
+                            Glide.with(HealthProfessionalActivity.this).load(hp.getUriImg()).fitCenter().into(image_user);
+                        }
+                    }
+                });
         //endregion
         BottomNavigationView navigationView = findViewById(R.id.navigation_health_professional);
         //navigationView.setOnNavigationItemSelectedListener(navListener);
         NavController navController = Navigation.findNavController(this, R.id.content_health_professional);
         NavigationUI.setupWithNavController(navigationView, navController);
-        patientUID= getIntent().getExtras().getString("patientUID");
-        args.putString("UID",patientUID);
-      //  Toast.makeText(this, "patientUID:"+patientUID, Toast.LENGTH_LONG).show();
-        patientIdentification=getIntent().getExtras().getString("patientIdentification");
+        args = getIntent().getExtras();
+        if (args!= null){
+            patientSendFragment = (Patient) args.getSerializable("patient");
+            args.putSerializable("patient",patientSendFragment);
+        }
         Toast.makeText(this, "patientIdentification:  "+patientIdentification, Toast.LENGTH_LONG).show();
     }
 
@@ -140,42 +163,56 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
         }
         else if(fragmentTag.equals(getString(R.string.carer))){
             change = new InformationCarerPSFragment();
+            change.setArguments(args);
             transaction.replace(R.id.containerPageInformationPS,change).commit();
         }
         else if(fragmentTag.equals(getString(R.string.cognitive))){
             change = new CognitiveTherapyPSFragment();
+            change.setArguments(args);
             transaction.replace(R.id.containerPageTherapyPS,change).commit();
         }
         else if(fragmentTag.equals(getString(R.string.menu_memorizame))){
             change = new MemorizameFragment();
+            change.setArguments(args);
             transaction.replace(R.id.containerPageTherapyPS,change).commit();
         }
         else if(fragmentTag.equals(getString(R.string.motor))){
             change = new MotorTherapyPSFragment();
+            change.setArguments(args);
             transaction.replace(R.id.containerPageTherapyPS,change).commit();
         }
         else if(fragmentTag.equals(getString(R.string.tab_family_questions))){
             change = new MemorizameFamilyFragment();
+            change.setArguments(args);
             transaction.replace(R.id.containerMemorizame,change).commit();
         }
         else if(fragmentTag.equals(getString(R.string.tab_family_questions))){
             change = new MemorizameFamilyFragment();
+            change.setArguments(args);
             transaction.replace(R.id.containerMemorizame,change).commit();
         }
         else if(fragmentTag.equals(getString(R.string.tab_pets_questions))){
             change = new MemorizamePetsFragment();
+            change.setArguments(args);
             transaction.replace(R.id.containerMemorizame,change).commit();
         }
         else if(fragmentTag.equals(getString(R.string.tab_home_questions))){
             change = new MemorizameHomeFragment();
+            change.setArguments(args);
             transaction.replace(R.id.containerMemorizame,change).commit();
         }
         else if(fragmentTag.equals(getString(R.string.tab_places_questions))){
             change = new MemorizamePlacesFragment();
+            change.setArguments(args);
             transaction.replace(R.id.containerMemorizame,change).commit();
         }
         else if(fragmentTag.equals(getString(R.string.family_questions_img))){
             change = new NewCardMemorizame();
+            change.setArguments(args);
+            transaction.replace(R.id.containerMemorizame,change).commit();
+        }
+        else if(fragmentTag.equals("memorizamepru")){
+            change = new MemorizameFragment();
             transaction.replace(R.id.containerMemorizame,change).commit();
         }
     }
@@ -187,11 +224,14 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
             case (R.id.btn_profile):
                 Intent navigation = new Intent(HealthProfessionalActivity.this, NavigationOptions.class);
                 navigation.putExtra("option", "profile");
+                navigation.putExtra("user_uid", hp.getHpUID());
+                navigation.putExtra("user_role", hp.getRole());
                 startActivity(navigation);
                 break;
             case R.id.btn_logout:
                 firebaseAuth.signOut();
                 Intent intent = new Intent(HealthProfessionalActivity.this, Login.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 break;
         }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cardActivityMotor"
     style="@style/StyleCardView"
@@ -17,11 +18,11 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <ImageView
+            <pl.droidsonroids.gif.GifImageView
                 android:id="@+id/physical_exercise_imagev_gif"
                 android:layout_width="@dimen/oneHundredFifty"
                 android:layout_height="@dimen/oneHundredFifty"
-                android:src="@drawable/img_rope" />
+                android:src="@drawable/gif_prueba" />
 
             <LinearLayout
                 android:layout_width="match_parent"

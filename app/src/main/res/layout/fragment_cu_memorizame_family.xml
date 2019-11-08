@@ -8,7 +8,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
+<!--
     <fragment
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,24 +20,38 @@
         android:drawSelectorOnTop="false"
 
         />
+
+        -->
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/recyclerView"
+            android:scrollbars="vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="2dp"
+            android:drawSelectorOnTop="false"
+            tools:context=".fragments.carer.MemorizameFamilyFragmentGrid"
+            android:background="@color/white"
+            />
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cv_add_image"
             style="@style/StyleCardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/fragmentList">
+            android:layout_below="@id/recyclerView">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/oneHundredNinetyFour"
-                android:src="@drawable/img_selfcarer"
+                android:src="@drawable/img_family_question"
                 android:scaleType="centerCrop"/>
 
             <TextView
                 style="@style/StyleSubsCardView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/add_image"/>
+                android:text="@string/add_family_question"/>
         </com.google.android.material.card.MaterialCardView>
 
 

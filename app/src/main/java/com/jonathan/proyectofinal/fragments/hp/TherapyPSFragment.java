@@ -16,6 +16,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 import com.jonathan.proyectofinal.R;
+import com.jonathan.proyectofinal.data.Patient;
 import com.jonathan.proyectofinal.fragments.carer.MemorizameFragment;
 import com.jonathan.proyectofinal.interfaces.IMainCarer;
 
@@ -26,6 +27,8 @@ public class TherapyPSFragment extends Fragment {
     ViewPager viewPager;
     Adapter adapter;
     String text1, text2, text3;
+    Patient patientSendFragment = new Patient();
+    Bundle args = new Bundle();
 
     private IMainCarer iMainHealthProfessional;
 
@@ -35,10 +38,12 @@ public class TherapyPSFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-     //   return inflater.inflate(R.layout.fragment_ps_therapy, container, false);
-
-
         View view = inflater.inflate(R.layout.fragment_ps_therapy, container, false);
+        args = getArguments();
+        if (args!= null){
+            patientSendFragment = (Patient) args.getSerializable("patient");
+            args.putSerializable("patient",patientSendFragment);
+        }
         tabPatientInfo = view.findViewById(R.id.ps_tab_therapy_cognitive);
         nearbyhospital = view.findViewById(R.id.ps_tab_therapy_motor);
         tabMemorizame=view.findViewById(R.id.ps_tab_therapy_memorizame);
@@ -82,6 +87,7 @@ public class TherapyPSFragment extends Fragment {
 
                 case 2:
                     MemorizameFragment memorizameFragment = new MemorizameFragment();
+                    memorizameFragment.setArguments(args);
                     return memorizameFragment;
 
             }

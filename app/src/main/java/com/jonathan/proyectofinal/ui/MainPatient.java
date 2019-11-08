@@ -9,6 +9,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.DialogInterface;
@@ -16,30 +17,33 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.jonathan.proyectofinal.R;
-import com.jonathan.proyectofinal.fragments.admin.AdminHome;
+import com.jonathan.proyectofinal.data.Patient;
 import com.jonathan.proyectofinal.fragments.games.PhysicalExecise;
+import com.jonathan.proyectofinal.fragments.games.PhysicalExercisePractic;
 import com.jonathan.proyectofinal.fragments.patient.HomePFragment;
 import com.jonathan.proyectofinal.fragments.patient.MemorizamePFragment;
 import com.jonathan.proyectofinal.fragments.patient.NotificationsPFragment;
 import com.jonathan.proyectofinal.interfaces.IComunicateFragment;
+import com.jonathan.proyectofinal.tools.Constants;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainPatient extends AppCompatActivity implements IComunicateFragment, NavigationView.OnNavigationItemSelectedListener, PhysicalExecise.PhysicalExeciseI {
 
@@ -53,6 +57,8 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
     private BottomNavigationView navigation;
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
+    FirebaseFirestore db;
+    Patient patient = new Patient();
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -84,13 +90,25 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
         navigationView.setNavigationItemSelectedListener(this);
         ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close);
         drawerLayout.addDrawerListener(drawerToggle);
-        drawerToggle.syncState();
-        TextView name_user = navigationView.getHeaderView(0).findViewById(R.id.lbl_name_user);
-        TextView email_user = navigationView.getHeaderView(0).findViewById(R.id.lbl_email_user);
+        final TextView name_user = navigationView.getHeaderView(0).findViewById(R.id.lbl_name_user);
+        final TextView email_user = navigationView.getHeaderView(0).findViewById(R.id.lbl_email_user);
+        final CircleImageView image_user = navigationView.getHeaderView(0).findViewById(R.id.img_users_navigation);
+        db = FirebaseFirestore.getInstance();
+        db.collection(Constants.Patients).document(firebaseUser.getUid()).get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()){
+                            patient = documentSnapshot.toObject(Patient.class);
+                            name_user.setText(patient.getUserName()+" "+patient.getLastName());
+                            Glide.with(MainPatient.this).load(patient.getUriImg()).fitCenter().into(image_user);
+                        }
+                    }
+                });
         if (name_user!=null && email_user!=null) {
-            name_user.setText(firebaseUser.getDisplayName());
             email_user.setText(firebaseUser.getEmail());
         }
+        drawerToggle.syncState();
         /*
         ButterKnife.bind(this);
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
@@ -119,11 +137,14 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
             case (R.id.btn_profile):
                 Intent navigation = new Intent(MainPatient.this, NavigationOptions.class);
                 navigation.putExtra("option", "profile");
+                navigation.putExtra("user_uid", patient.getPatientUID());
+                navigation.putExtra("user_role", patient.getRole());
                 startActivity(navigation);
                 break;
             case R.id.btn_logout:
                 firebaseAuth.signOut();
                 Intent intent = new Intent(MainPatient.this, Login.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 break;
         }
@@ -156,12 +177,11 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             // only for Lollipop and newer versions
             try {
-                LayoutInflater inflater = this.getLayoutInflater();
-                View dialogView = inflater.inflate(R.layout.plantilla_physicalexersice_info, null);
+                View dialogView = this.getLayoutInflater().inflate(R.layout.plantilla_physicalexersice_info, null);
                 builder.setView(dialogView);
                 alertDialog=builder.create();
 
-                Button btn1=(Button)dialogView.findViewById(R.id.btn1);
+                Button btn1= dialogView.findViewById(R.id.btn1);
                 btn1.setText("Atras");
                 btn1.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -169,21 +189,20 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
                         alertDialog.dismiss();
                     }
                 });
-                Button btn2=(Button)dialogView.findViewById(R.id.btn2);
-                btn2.setText("Jugar");
+                Button btn2= dialogView.findViewById(R.id.btn2);
+                btn2.setText("practicar");
                 btn2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
                         alertDialog.dismiss();
+                        Intent pasar = new Intent(MainPatient.this, Games.class);
+                        pasar.putExtra("Game","Physical");
+                        startActivity(pasar);
                     }
                 });
                 TextView tvInformation=dialogView.findViewById(R.id.text_information);
                 tvInformation.setText(R.string.exersice_description);
                 alertDialog.show();
-
-
-
 
             } catch (Resources.NotFoundException e) {
                 e.printStackTrace();
@@ -191,6 +210,11 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
         }
 
         else{
+            LayoutInflater inflater = this.getLayoutInflater();
+            View dialogView = inflater.inflate(R.layout.plantilla_physicalexersice_info, null);
+            builder.setView(dialogView);
+            alertDialog=builder.create();
+
             builder.setNeutralButton("atras", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
@@ -202,7 +226,11 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
             builder.setPositiveButton("Jugar", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
+
+                    alertDialog.dismiss();
+                    Intent pasar = new Intent(MainPatient.this, Games.class);
+                    pasar.putExtra("Game","Physical");
+                    startActivity(pasar);
                 }
             });
             builder.setCancelable(false);

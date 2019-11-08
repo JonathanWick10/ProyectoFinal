@@ -24,14 +24,21 @@ import com.jonathan.proyectofinal.fragments.games.PhysicalExecise;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import pl.droidsonroids.gif.GifImageView;
 
 public class PhysicalExerciseAdapter extends RecyclerView.Adapter<PhysicalExerciseAdapter.holder> {
 
+    @BindView(R.id.expandableViewMotor)
     LinearLayout expandableView;
+    @BindView(R.id.btnExpandMotor)
     Button btnExpand;
+    @BindView(R.id.cardActivityMotor)
     CardView cardActivity;
+    @BindView(R.id.ratingBarMotor)
     RatingBar ratingBar;
+    @BindView(R.id.data_rating_motor)
     TextView ratingTxt;
 
     private List<PhysicalExerciseEntity> listExercise;
@@ -46,14 +53,9 @@ public class PhysicalExerciseAdapter extends RecyclerView.Adapter<PhysicalExerci
     @Override
     public holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.physical_execise_plantilla, parent, false);
+        ButterKnife.bind(this, view);
 
-        expandableView = view.findViewById(R.id.expandableViewMotor);
-        btnExpand = view.findViewById(R.id.btnExpandMotor);
-        ratingBar = view.findViewById(R.id.ratingBarMotor);
-        ratingTxt = view.findViewById(R.id.data_rating_motor);
-        cardActivity = view.findViewById(R.id.cardActivityMotor);
         ratingBar.setOnRatingBarChangeListener(mOnRatingChangeListener);
-
 
         btnExpand.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,7 +98,7 @@ public class PhysicalExerciseAdapter extends RecyclerView.Adapter<PhysicalExerci
 
     public class holder extends RecyclerView.ViewHolder {
         TextView nameE, description;
-        ImageView image;
+        GifImageView image;
         public int time;
 
         public holder(@NonNull View itemView) {

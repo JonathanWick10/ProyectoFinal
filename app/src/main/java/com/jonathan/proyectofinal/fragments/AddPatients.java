@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,6 +34,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -50,9 +53,12 @@ import com.jonathan.proyectofinal.fragments.general.DatePickerFragment;
 import com.jonathan.proyectofinal.fragments.general.DatePickerFragmentDateOfBirth;
 import com.jonathan.proyectofinal.interfaces.IMainCarer;
 import com.jonathan.proyectofinal.tools.Constants;
+import com.jonathan.proyectofinal.ui.MainCarer;
+import com.jonathan.proyectofinal.ui.Registration_Carer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -68,6 +74,9 @@ public class AddPatients extends Fragment {
     public AddPatients() {
     }
     //region Variables
+    @BindView(R.id.til_password_patient)
+    TextInputLayout til_password;
+
     @BindView(R.id.profile_image)
     CircleImageView profileImage;
     @BindView(R.id.edit_name_patient)
@@ -152,12 +161,47 @@ public class AddPatients extends Fragment {
         uIDHPoCarer = firebaseUser.getUid();
         db = FirebaseFirestore.getInstance();
         progressDialog = new ProgressDialog(getActivity());
+        uriImage = Uri.parse("android.resource://" + getActivity().getPackageName() +"/"+R.drawable.avatar_patient);
         dropdownMenu(view);
         logicButtonSave();
         logicImageProfile();
         logicButtonCalendar(view);
         logicButtonDateDiagnosis(view);
+        verifiFieds();
         return view;
+    }
+
+    private void verifiFieds() {
+        editPassword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                til_password.setError(null);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                vaildateFields("password");
+            }
+        });
+    }
+
+    private boolean vaildateFields(String field) {
+        boolean data = true;
+        switch (field){
+            case "password":
+                String email = editPassword.getText().toString().trim();
+                if (email.length() < 7) {
+                    til_password.setError(getString(R.string.val_min_passwornd));
+                    data = false;
+                }
+                break;
+        }
+        return data;
     }
 
     private void logicImageProfile() {
@@ -201,22 +245,32 @@ public class AddPatients extends Fragment {
                                         uIDPatient = ures.getUid();
                                         patient.setPatientUID(uIDPatient);
                                         if (uriImage!=null){
-                                            uploadImageToStorage(uriImage, patient);
+                                            final StorageReference imgRef = storageReference.child("Users/Patients/"+patient.getPatientUID()+".jpg");
+                                            imgRef.putFile(uriImage)
+                                                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                                        @Override
+                                                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                                            Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
+                                                            while(!uri.isComplete());
+                                                            Uri url = uri.getResult();
+                                                            patient.setUriImg(url.toString());
+                                                            db.collection(Constants.Patients).document(patient.getPatientUID()).set(patient)
+                                                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                        @Override
+                                                                        public void onSuccess(Void aVoid) {
+
+                                                                        }
+                                                                    })
+                                                                    .addOnFailureListener(new OnFailureListener() {
+                                                                        @Override
+                                                                        public void onFailure(@NonNull Exception e) {
+                                                                            Log.d("message: ", e.toString());
+                                                                        }
+                                                                    });
+                                                        }
+                                                    });
                                         }
-                                        db.collection(Constants.Patients).document(patient.getPatientUID()).set(patient)
-                                                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                    @Override
-                                                    public void onSuccess(Void aVoid) {
-                                                        progressDialog.dismiss();
-                                                        Toast.makeText(getActivity(), getResources().getString(R.string.was_saved_succesfully), Toast.LENGTH_SHORT).show();
-                                                    }
-                                                })
-                                                .addOnFailureListener(new OnFailureListener() {
-                                                    @Override
-                                                    public void onFailure(@NonNull Exception e) {
-                                                        Log.d("message: ", e.toString());
-                                                    }
-                                                });
+
                                     }
                                 }
                             });
@@ -234,9 +288,9 @@ public class AddPatients extends Fragment {
                                                     public void onComplete(@NonNull Task<AuthResult> task) {
                                                         if(task.isSuccessful()) {
                                                             progressDialog.dismiss();
-                                                            mIMainCarer.inflateFragment("prueba");
+                                                            Toast.makeText(getActivity(), getResources().getString(R.string.was_saved_succesfully), Toast.LENGTH_SHORT).show();
+                                                            mIMainCarer.inflateFragment(getString(R.string.list_patient));
                                                         }
-                                                        //Toast.makeText(getActivity(), "accedio de nuevo", Toast.LENGTH_SHORT).show();
                                                     }
                                                 });
                                     }
@@ -255,7 +309,8 @@ public class AddPatients extends Fragment {
                                                     public void onComplete(@NonNull Task<AuthResult> task) {
                                                         if(task.isSuccessful()) {
                                                             progressDialog.dismiss();
-                                                            mIMainCarer.inflateFragment("prueba");
+                                                            Toast.makeText(getActivity(), getResources().getString(R.string.was_saved_succesfully), Toast.LENGTH_SHORT).show();
+                                                            mIMainCarer.inflateFragment(getString(R.string.list_patient));
                                                         }
                                                         //Toast.makeText(getActivity(), "accedio de nuevo", Toast.LENGTH_SHORT).show();
                                                     }
@@ -268,42 +323,6 @@ public class AddPatients extends Fragment {
                 }
             }
         });
-    }
-
-    private void uploadImageToStorage(Uri uriImage, final Patient patient) {
-        StorageReference imgRef = storageReference.child("Users/Patients/"+patient.getPatientUID()+".jpg");
-        imgRef.putFile(uriImage)
-                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
-                        while(!uri.isComplete());
-                        Uri url = uri.getResult();
-                        /////////////////////////
-                        db.collection(Constants.Patients)
-                                .document(patient.getPatientUID())
-                                .update( "uriImg", url.toString())
-                                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void aVoid) {
-                                        Log.d("Success", "Image saved");
-                                    }
-                                })
-                                .addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Log.e("Failure"+e.toString(), "Error image");
-                                    }
-                                });
-                        //////////////////////////////
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-
-                    }
-                });
     }
 
     private boolean setPojoPatients() {
@@ -340,7 +359,7 @@ public class AddPatients extends Fragment {
         !seleccionRG.isEmpty()&&!birthDayString.isEmpty()&&!phoneString.isEmpty()&&!departmentString.isEmpty()
         &&!nativeCityString.isEmpty()&&!actualCityString.isEmpty()&&!addressString.isEmpty()&&!emailString.isEmpty()
         &&!userString.isEmpty()&&!passwordString.isEmpty()&&!diagnosticString.isEmpty()
-        &&!dateDiagnosticString.isEmpty()&&!observationString.isEmpty()) {
+        &&!dateDiagnosticString.isEmpty()&&!observationString.isEmpty()&&emailString.length()>=7) {
             //region Set data to Pojo Patients
             patient.setFirstName(nameSring);
             patient.setLastName(lastNameString);
@@ -363,6 +382,17 @@ public class AddPatients extends Fragment {
             String[] assignsArray = {firebaseUser.getUid()};
             List<String> assigns = Arrays.asList(assignsArray);
             patient.setAssigns(assigns);
+
+            /*
+            String dateOfBirth = birthDayString;
+            String[] parts = dateOfBirth.split("/");
+            String anio = parts[2]; // 654321
+            int year = Integer.parseInt(anio);
+            Calendar cal= Calendar.getInstance();
+            int actualYear = cal.get(Calendar.YEAR);
+            int age = actualYear - year;
+            patient.setAge(age);
+            */
             //endregion
         }else{
             flag = false;

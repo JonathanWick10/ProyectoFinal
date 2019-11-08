@@ -20,7 +20,12 @@ public class CognitiveTherapyPSFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_ps_therapy_cognitive, container, false);
+        View view = inflater.inflate(R.layout.fragment_ps_therapy_cognitive, container, false);
+        Bundle bundle = getArguments();
+        if (bundle!=null){
+            String uID = bundle.getString("patientUID");
+        }
+        return view;
     }
 
 }

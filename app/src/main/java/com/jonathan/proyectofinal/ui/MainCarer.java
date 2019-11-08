@@ -111,25 +111,18 @@ public class MainCarer extends AppCompatActivity implements IMainCarer, Navigati
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         if (documentSnapshot.exists()){
                             carer = documentSnapshot.toObject(Carer.class);
-                            name_user.setText(carer.getFirstName()+" "+carer.getLastName());
+                            name_user.setText(carer.getUserName()+" "+carer.getLastName());
+                            email_user.setText(carer.getEmail());
                             Glide.with(MainCarer.this).load(carer.getUriImg()).fitCenter().into(image_user);
                         }
                     }
                 });
-        if (name_user!=null && email_user!=null) {
-            email_user.setText(firebaseUser.getEmail());
-        }
         drawerToggle.syncState();
     }
 
     @Override
     public void inflateFragment(String fragmentTag) {
         transaction = getSupportFragmentManager().beginTransaction();
-        // Listen to the Button Call for other Fragments in different Views
-      /*  if(fragmentTag.equals(getString(R.string.menu_memorizame))){
-            change = new MemorizameFragment();
-            transaction.replace(R.id.containerHome,change).commit();
-        }*/
         if(fragmentTag.equals(getString(R.string.my_care))){
             change = new HeartFragment();
             transaction.replace(R.id.containerHome,change).commit();
@@ -185,11 +178,14 @@ public class MainCarer extends AppCompatActivity implements IMainCarer, Navigati
             case (R.id.btn_profile):
                 Intent navigation = new Intent(MainCarer.this, NavigationOptions.class);
                 navigation.putExtra("option", "profile");
+                navigation.putExtra("user_uid", carer.getCarerUId());
+                navigation.putExtra("user_role", carer.getRole());
                 startActivity(navigation);
                 break;
             case R.id.btn_logout:
                 firebaseAuth.signOut();
                 Intent intent = new Intent(MainCarer.this, Login.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 break;
         }

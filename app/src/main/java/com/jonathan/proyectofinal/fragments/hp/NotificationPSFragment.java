@@ -61,9 +61,11 @@ public class NotificationPSFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-
         View view = inflater.inflate(R.layout.fragment_ps_notification, container, false);
+        Bundle bundle = getArguments();
+        if (bundle!=null){
+            String uID = bundle.getString("patientUID");
+        }
         referenceViews(view);
         notificationData=new NotificationData();
         alarmManager = (AlarmManager) getContext().getSystemService(Context.ALARM_SERVICE);

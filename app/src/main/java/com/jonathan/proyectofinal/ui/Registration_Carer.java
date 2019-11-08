@@ -13,6 +13,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -32,6 +34,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -61,8 +65,10 @@ public class Registration_Carer extends AppCompatActivity {
     //region Variables
     @BindView(R.id.toolbar_registration_carer)
     MaterialToolbar toolbar;
-
-
+    @BindView(R.id.input_text_layout_email)
+    TextInputLayout til_email_layout;
+    @BindView(R.id.til_password_create_carer)
+    TextInputLayout til_password;
     @BindView(R.id.profile_image)
     CircleImageView profileImage;
     @BindView(R.id.admin_createps_til_name)
@@ -119,7 +125,7 @@ public class Registration_Carer extends AppCompatActivity {
     StorageReference storageReference;
     String uIDCarer;
     Carer carer = new Carer();
-    ProgressDialog progressDialog;
+    boolean flagGoogleAndface = false;
     //endregion
 
 
@@ -130,15 +136,65 @@ public class Registration_Carer extends AppCompatActivity {
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        auth = FirebaseAuth.getInstance();
         storageReference = FirebaseStorage.getInstance().getReference();
         db = FirebaseFirestore.getInstance();
-        progressDialog = new ProgressDialog(Registration_Carer.this);
-        uriImage = Uri.parse("android.resource://" + getPackageName() +"/"+R.drawable.avatar_patient);
+        uriImage = Uri.parse("android.resource://" + getPackageName() +"/"+R.drawable.img_add_image);
+        Glide.with(Registration_Carer.this).load(uriImage).fitCenter().into(profileImage);
         dropdownMenu();
         logicButtonSave();
         logicImageProfile();
         logicButtonCalendar();
+        verifyFields();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Bundle bundle = getIntent().getExtras();
+        AuthCredential credential = bundle.getParcelable("credencial");
+        auth = FirebaseAuth.getInstance();
+        users = auth.getCurrentUser();
+        if (users != null){
+            editEmail.setText(users.getEmail());
+            til_email_layout.setEnabled(false);
+            editPassword.setText("GoogleOrFacebook");
+            til_password.setVisibility(View.GONE);
+            flagGoogleAndface = true;
+            carer.setCarerUId(users.getUid());
+        }
+    }
+
+    private void verifyFields() {
+        editPassword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                til_password.setError(null);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                validateFields("password");
+            }
+        });
+    }
+
+    private boolean validateFields(String field) {
+        boolean data = true;
+        switch (field){
+            case "password":
+                String email = editPassword.getText().toString().trim();
+                if (email.length() < 7) {
+                    til_password.setError(getString(R.string.val_min_passwornd));
+                    data = false;
+                }
+                break;
+        }
+        return data;
     }
 
     private void logicImageProfile() {
@@ -161,70 +217,98 @@ public class Registration_Carer extends AppCompatActivity {
             public void onClick(View view) {
                 boolean flag2 = setPojoPatients();
                 if (flag2) {
-                    progressDialog.setMessage("Realizando registro en línea");
-                    progressDialog.show();
+                    final ProgressDialog progressDialog = ProgressDialog.show(Registration_Carer.this,
+                            "Brainmher","Realizando registro en línea");
 
-                    auth.createUserWithEmailAndPassword(carer.getEmail(),carer.getPassword())
-                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    auth.signOut();
-                                }
-                            });
-
-                    auth.signInWithEmailAndPassword(carer.getEmail(), carer.getPassword())
-                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if (task.isSuccessful()){
-                                        AuthResult itask = task.getResult();
-                                        FirebaseUser ures=itask.getUser();
-                                        uIDCarer = ures.getUid();
-                                        carer.setCarerUId(uIDCarer);
-                                        if (uriImage!=null){
-                                            final StorageReference imgRef = storageReference.child("Users/Carers/"+carer.getCarerUId()+".jpg");
-                                            imgRef.putFile(uriImage)
-                                                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    if (flagGoogleAndface){
+                        if (uriImage!=null){
+                            final StorageReference imgRef = storageReference.child("Users/Carers/"+carer.getCarerUId()+".jpg");
+                            imgRef.putFile(uriImage)
+                                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                        @Override
+                                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                            Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
+                                            while(!uri.isComplete());
+                                            Uri url = uri.getResult();
+                                            carer.setUriImg(url.toString());
+                                            db.collection(Constants.Carers).document(carer.getCarerUId()).set(carer)
+                                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                         @Override
-                                                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                                            Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
-                                                            while(!uri.isComplete());
-                                                            Uri url = uri.getResult();
-                                                            carer.setUriImg(url.toString());
-                                                            db.collection(Constants.Carers).document(carer.getCarerUId()).set(carer)
-                                                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                                        @Override
-                                                                        public void onSuccess(Void aVoid) {
-                                                                            Toast.makeText(Registration_Carer.this, getResources().getString(R.string.was_saved_succesfully), Toast.LENGTH_SHORT).show();
-                                                                            Intent intent = new Intent(Registration_Carer.this,MainCarer.class);
-                                                                            startActivity(intent);
-                                                                            progressDialog.dismiss();
-                                                                        }
-                                                                    })
-                                                                    .addOnFailureListener(new OnFailureListener() {
-                                                                        @Override
-                                                                        public void onFailure(@NonNull Exception e) {
-                                                                            Log.d("message: ", e.toString());
-                                                                        }
-                                                                    });
+                                                        public void onSuccess(Void aVoid) {
+                                                            Toast.makeText(Registration_Carer.this, getResources().getString(R.string.was_saved_succesfully), Toast.LENGTH_SHORT).show();
+                                                            Intent intent = new Intent(Registration_Carer.this,MainCarer.class);
+                                                            startActivity(intent);
+                                                            progressDialog.dismiss();
+                                                            finish();
+                                                        }
+                                                    })
+                                                    .addOnFailureListener(new OnFailureListener() {
+                                                        @Override
+                                                        public void onFailure(@NonNull Exception e) {
+                                                            Log.d("message: ", e.toString());
                                                         }
                                                     });
                                         }
+                                    });
+                        }
+                    }else{
+                        auth.createUserWithEmailAndPassword(carer.getEmail(),carer.getPassword())
+                                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<AuthResult> task) {
+                                        auth.signOut();
                                     }
-                                }
-                            });
+                                });
+
+                        auth.signInWithEmailAndPassword(carer.getEmail(), carer.getPassword())
+                                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<AuthResult> task) {
+                                        if (task.isSuccessful()){
+                                            AuthResult itask = task.getResult();
+                                            FirebaseUser ures=itask.getUser();
+                                            uIDCarer = ures.getUid();
+                                            carer.setCarerUId(uIDCarer);
+                                            if (uriImage!=null){
+                                                final StorageReference imgRef = storageReference.child("Users/Carers/"+carer.getCarerUId()+".jpg");
+                                                imgRef.putFile(uriImage)
+                                                        .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                                            @Override
+                                                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                                                Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
+                                                                while(!uri.isComplete());
+                                                                Uri url = uri.getResult();
+                                                                carer.setUriImg(url.toString());
+                                                                db.collection(Constants.Carers).document(carer.getCarerUId()).set(carer)
+                                                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                            @Override
+                                                                            public void onSuccess(Void aVoid) {
+                                                                                Toast.makeText(Registration_Carer.this, getResources().getString(R.string.was_saved_succesfully), Toast.LENGTH_SHORT).show();
+                                                                                Intent intent = new Intent(Registration_Carer.this,MainCarer.class);
+                                                                                startActivity(intent);
+                                                                                progressDialog.dismiss();
+                                                                                finish();
+                                                                            }
+                                                                        })
+                                                                        .addOnFailureListener(new OnFailureListener() {
+                                                                            @Override
+                                                                            public void onFailure(@NonNull Exception e) {
+                                                                                Log.d("message: ", e.toString());
+                                                                            }
+                                                                        });
+                                                            }
+                                                        });
+                                            }
+                                        }
+                                    }
+                                });
+                    }
+
                 }else{
                     Toast.makeText(Registration_Carer.this, getResources().getString(R.string.complete_field_please), Toast.LENGTH_SHORT).show();
                 }
             }
         });
-    }
-
-    private void uploadImageToStorage(final Uri uriImage, final Carer carer) {
-
-
-
-
     }
 
     private boolean setPojoPatients() {
@@ -259,7 +343,7 @@ public class Registration_Carer extends AppCompatActivity {
             &&!idString.isEmpty()&&!seleccionRG.isEmpty()&&!birthDayString.isEmpty()
             &&!phoneString.isEmpty()&&!nativeCityString.isEmpty()&&!actualCityString.isEmpty()
             &&!addressString.isEmpty()&&!emailString.isEmpty()&&!userString.isEmpty()
-            &&!passwordString.isEmpty()&&!profession.isEmpty()&&!workC.isEmpty()) {
+            &&!passwordString.isEmpty()&&!profession.isEmpty()&&!workC.isEmpty()&&emailString.length()>=7) {
             //region Set data to Pojo Patients
             carer.setFirstName(nameSring);
             carer.setLastName(lastNameString);

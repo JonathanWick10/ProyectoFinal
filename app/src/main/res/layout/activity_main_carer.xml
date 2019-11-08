@@ -9,9 +9,8 @@
     android:layout_gravity="center"
     android:gravity="center"
     tools:context=".ui.MainCarer">
-    <include layout="@layout/drawer_header_hp"/>
 
-    <RelativeLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -23,7 +22,6 @@
                 android:id="@+id/toolbarCareer"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin"
                 style="@style/StyleToolbarPrimary"/>
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -31,12 +29,10 @@
             android:id="@+id/content_carer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/navigation_carer"
-            android:layout_alignParentStart="true"
             android:name="androidx.navigation.fragment.NavHostFragment"
             app:defaultNavHost="true"
             app:navGraph="@navigation/carer_navigation"
-            android:layout_marginTop="?android:attr/actionBarSize"></fragment>
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"></fragment>
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             style="@style/StyleBottonNavigation"
@@ -44,9 +40,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:menu="@menu/main_carer"
-            android:layout_alignParentBottom="true"/>
+            android:layout_gravity="bottom"
+            app:layout_behavior=".fragments.general.BottomNavigationBehavior"/>
 
-    </RelativeLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation_view_career"

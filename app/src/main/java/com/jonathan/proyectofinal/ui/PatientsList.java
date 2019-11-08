@@ -21,6 +21,8 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -28,7 +30,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.jonathan.proyectofinal.R;
+import com.jonathan.proyectofinal.data.Carer;
+import com.jonathan.proyectofinal.data.HealthcareProfessional;
 import com.jonathan.proyectofinal.data.Patient;
 import com.jonathan.proyectofinal.fragments.AddPatients;
 import com.jonathan.proyectofinal.fragments.admin.AdminAddHealthProfessional;
@@ -37,10 +43,12 @@ import com.jonathan.proyectofinal.fragments.admin.AdminListPSFragment;
 import com.jonathan.proyectofinal.fragments.hp.PatientsListFragment;
 import com.jonathan.proyectofinal.interfaces.IMainCarer;
 import com.jonathan.proyectofinal.interfaces.IPatientsListFragmentListener;
+import com.jonathan.proyectofinal.tools.Constants;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 import java.util.List;
 
@@ -58,9 +66,13 @@ public class PatientsList extends AppCompatActivity implements IMainCarer,AddPat
     MaterialToolbar toolbar;
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
+    FirebaseFirestore db;
+    //Patient patient = new Patient();
+    HealthcareProfessional hp = new HealthcareProfessional();
+    Carer carer = new Carer();
     private boolean isFabTapped = false;
     private IPatientsListFragmentListener fragmentListener;
-
+    String userRole;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,17 +89,42 @@ public class PatientsList extends AppCompatActivity implements IMainCarer,AddPat
         setSupportActionBar(toolbar);
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
+        db = FirebaseFirestore.getInstance();
         navigationView.setNavigationItemSelectedListener(this);
         ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close);
         drawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
-        TextView name_user = navigationView.getHeaderView(0).findViewById(R.id.lbl_name_user);
-        TextView email_user = navigationView.getHeaderView(0).findViewById(R.id.lbl_email_user);
-        if (name_user!=null && email_user!=null) {
-            name_user.setText(firebaseUser.getDisplayName());
-            email_user.setText(firebaseUser.getEmail());
-        }
+        final TextView name_user = navigationView.getHeaderView(0).findViewById(R.id.lbl_name_user);
+        final TextView email_user = navigationView.getHeaderView(0).findViewById(R.id.lbl_email_user);
+        final CircleImageView image_user = navigationView.getHeaderView(0).findViewById(R.id.img_users_navigation);
 
+        db.collection(Constants.HealthcareProfesional).document(firebaseUser.getUid()).get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()){
+                            hp = documentSnapshot.toObject(HealthcareProfessional.class);
+                            name_user.setText(hp.getFirstName()+" "+hp.getLastName());
+                            email_user.setText(hp.getEmail());
+                            Glide.with(PatientsList.this).load(hp.getUriImg()).fitCenter().into(image_user);
+                            userRole = hp.getRole();
+                        }
+                    }
+                });
+
+        db.collection(Constants.Carers).document(firebaseUser.getUid()).get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()){
+                            carer = documentSnapshot.toObject(Carer.class);
+                            name_user.setText(carer.getUserName()+" "+carer.getLastName());
+                            email_user.setText(carer.getEmail());
+                            Glide.with(PatientsList.this).load(carer.getUriImg()).fitCenter().into(image_user);
+                            userRole = carer.getRole();
+                        }
+                    }
+                });
 //endregion
 
         //region Fragment PatientsList
@@ -143,11 +180,14 @@ public class PatientsList extends AppCompatActivity implements IMainCarer,AddPat
             case (R.id.btn_profile):
                 Intent navigation = new Intent(PatientsList.this, NavigationOptions.class);
                 navigation.putExtra("option", "profile");
+                navigation.putExtra("user_uid", firebaseUser.getUid());
+                navigation.putExtra("user_role", userRole);
                 startActivity(navigation);
                 break;
             case R.id.btn_logout:
                 firebaseAuth.signOut();
                 Intent intent = new Intent(PatientsList.this, Login.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 finish();
                 break;
@@ -174,7 +214,7 @@ public class PatientsList extends AppCompatActivity implements IMainCarer,AddPat
 
     @Override
     public void inflateFragment(String fragmentTag) {
-        if(fragmentTag.equals("prueba")){
+        if(fragmentTag.equals(getString(R.string.list_patient))){
             bottomAppBar.setFabAlignmentMode(BottomAppBar.FAB_ALIGNMENT_MODE_CENTER);
             handleFrame(new PatientsListFragment());
             floatingActionButton.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_person_add));

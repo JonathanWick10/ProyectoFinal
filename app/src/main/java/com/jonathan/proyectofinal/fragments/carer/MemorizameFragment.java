@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,10 +13,13 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.jonathan.proyectofinal.R;
+import com.jonathan.proyectofinal.data.Patient;
 import com.jonathan.proyectofinal.interfaces.IMainCarer;
 
 public class MemorizameFragment extends Fragment {
     CardView family, pets, home, places;
+    Patient patientSendFragment = new Patient();
+    Bundle args = new Bundle();
 
     private IMainCarer mIMainCarer;
 
@@ -30,6 +34,14 @@ public class MemorizameFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_cu_memorizame,container,false);
+
+        args = getArguments();
+        if (args!= null){
+            patientSendFragment = (Patient) args.getSerializable("patient");
+            args.putSerializable("patient",patientSendFragment);
+            Toast.makeText(getActivity(), patientSendFragment.getFirstName(), Toast.LENGTH_SHORT).show();
+        }
+
 
         family = view.findViewById(R.id.cv_family);
         pets = view.findViewById(R.id.cv_pets);

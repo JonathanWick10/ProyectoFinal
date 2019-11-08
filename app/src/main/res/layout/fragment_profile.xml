@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.general.ProfileFragment"
-    android:layout_marginTop="@dimen/ten">
+    tools:context=".fragments.general.ProfileFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_margin="@dimen/sixteen">
 
         <TextView
             style="@style/StyleTextViewTitles"
@@ -311,56 +311,6 @@
                 android:layout_height="match_parent"
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/StyleTextInputLayotTextBoxForms"
-            android:id="@+id/til_diagnostic_profile"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="@string/diagnostic"
-            app:endIconMode="clear_text"
-            app:startIconDrawable="@drawable/ic_assignment_black"
-            app:errorEnabled="true">
-
-            <com.google.android.material.textfield.TextInputEditText
-                style="@style/StyleTextInputEditText"
-                android:id="@+id/edit_diagnostic_patient"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <LinearLayout
-            style="@style/StyleLinearLayoutBirthDateForms"
-            android:layout_width="match_parent"
-            android:layout_height="75dp">
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/StyleTextInputLayotTextBoxForms"
-                android:id="@+id/til_diagnosis_date_profile"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="@string/date_diagnostic"
-                app:endIconMode="clear_text"
-                app:startIconDrawable="@drawable/ic_calendar_black"
-                app:errorEnabled="true">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit_diagnosis_date_profile"
-                    style="@style/StyleTextInputEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:enabled="false"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/iv_date_diagnosis_profile"
-                style="@style/StyleCircleImageViewCalendarForms"
-                android:layout_width="85dp"
-                android:layout_height="85dp"/>
-
-        </LinearLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/StyleTextInputLayotTextBoxForms"

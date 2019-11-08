@@ -22,7 +22,10 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="?attr/actionBarSize">
+        android:paddingTop="?attr/actionBarSize"
+        android:paddingLeft="@dimen/sixteen"
+        android:paddingRight="@dimen/sixteen"
+        android:paddingBottom="@dimen/sixteen">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -40,7 +43,7 @@
                 android:id="@+id/profile_image"
                 android:layout_width="match_parent"
                 android:layout_height="96dp"
-                android:src="@drawable/avatar_patient"
+                android:src="@drawable/img_add_image"
                 app:civ_border_color="@color/colorPrimary"
                 app:civ_border_width="2dp"
                 app:civ_circle_background_color="@color/colorAccent" />
@@ -251,6 +254,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/StyleTextInputLayotTextBoxForms"
+                android:id="@+id/input_text_layout_email"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:endIconMode="clear_text"
@@ -285,6 +289,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/StyleTextInputLayotTextBoxForms"
+                android:id="@+id/til_password_create_carer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:endIconMode="password_toggle"
@@ -299,25 +304,6 @@
                     android:hint="@string/admin_til_pass"
                     android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
-
-            <!--
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/StyleTextInputLayotTextBoxForms"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:endIconMode="password_toggle"
-                app:startIconDrawable="@drawable/ic_key_black"
-                app:errorEnabled="true">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/admin_create_add_til_confirm_pass"
-                    style="@style/StyleTextInputEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="@string/admin_til_confin_pass"
-                    android:inputType="textPassword" />
-            </com.google.android.material.textfield.TextInputLayout>
-            -->
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/StyleTextInputLayotTextBoxForms"

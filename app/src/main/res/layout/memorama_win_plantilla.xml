@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/text_win"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:fontFamily="sans-serif-medium"
+        android:padding="@dimen/tenText"
+        android:text="@string/win_messege"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/twentyFiveText" />
+
+    <TextView
+        android:id="@+id/txt_puntuacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:padding="@dimen/tenText"
+        android:text="win"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/twentyText"
+        android:layout_below="@id/text_win"/>
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/memorama_gif_plantilla"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_puntuacion"
+        android:layout_above="@id/txt_restart"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="-2dp"
+        android:layout_marginBottom="12dp"
+        android:src="@drawable/win_gif" />
+
+    <TextView
+        android:id="@+id/txt_restart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/cont_layout"
+        android:layout_marginTop="@dimen/ten"
+        android:fontFamily="sans-serif-medium"
+        android:padding="@dimen/ten"
+        android:text="@string/win_cont_messege"
+        android:textAlignment="center"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/twentyText" />
+
+
+    <LinearLayout
+        android:id="@+id/cont_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:padding="@dimen/five">
+
+        <Button
+            android:id="@+id/mwmorama_winp_reload"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/five"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:text="@string/reload"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/mwmorama_winp_btnonback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/five"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:text="@string/volver_juego"
+            android:textColor="@color/white" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

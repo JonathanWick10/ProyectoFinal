@@ -89,6 +89,7 @@
 
     <string name="number">Number</string>
     <string name="add_patient">Add User</string>
+    <string name="add_health_professional">Add Healt Professional</string>
     <string name="add_image">Add image</string>
     <string name="first_name">First name</string>
     <string name="last_name">Last name</string>
@@ -118,10 +119,15 @@
     <string name="passport">Passport</string>
     <string name="save">Save</string>
     <string name="update">Update</string>
+    <string name="cancel">Cancel</string>
     <string name="was_saved_succesfully">Was Saved Succesfully</string>
     <string name="not_saved">Not saved</string>
     <string name="select_photo">Select Image</string>
     <string name="complete_field_please">Complete the fields, please!</string>
+    <string name="add_family_question">Add Family Question</string>
+    <string name="add_home_question">Add Home Question</string>
+    <string name="add_place_question">Add Place Question</string>
+    <string name="add_pet_question">Add Pet Question</string>
 
     // Registration Carer
     <string name="add_Carer">Add Carer</string>
@@ -383,6 +389,9 @@
     <!-- General strings -->
     <string name="lbl_welcome">Welcome</string>
     <string name="lbl_my_profile">My Profile</string>
+
+    <!-- Strings for field validations -->
+    <string name="val_min_passwornd">Must contain at least 6 characters</string>
 
     <!-- String Test Alzheimer -->
     <string name="tq1">
@@ -808,9 +817,11 @@
     <string name="physical_execise_title">Exercise Name</string>
     <string name="physical_execise_description">Description</string>
     <string name="title_activity_games">Games</string>
-    <string name="win_messege">Wow you won</string>
+    <string name="win_messege">Congratulations you have won.</string>
+    <string name="win_cont_messege">¿ Do you want to try again ?</string>
     <string name="reload">Reload</string>
     <string name="volver_juego">Back to menu</string>
+    <string name="physical_exersice_finish">Congratulations you got it.</string>
 
     <string name="label_write_question">Write a question which corresponds to the image.</string>
     <string name="label_answer">Escriba una opción de respuesta.</string>
@@ -822,5 +833,6 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="ask_dialog_memorizame">Do you want to add another image?</string>
+    <string name="no_healthcarer_pro">there are no health carer professionals</string>
 
 </resources>

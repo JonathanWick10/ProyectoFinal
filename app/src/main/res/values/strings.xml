@@ -99,6 +99,7 @@
 
     <string name="number">Número</string>
     <string name="add_patient">Agregar Paciente</string>
+    <string name="add_health_professional">Agregar Profesional de la Salud</string>
     <string name="add_image">Agregar imagen</string>
     <string name="first_name">Nombres</string>
     <string name="last_name">Apellidos</string>
@@ -128,10 +129,15 @@
     <string name="passport">Pasaporte</string>
     <string name="save">Guardar</string>
     <string name="update">Actualizar</string>
+    <string name="cancel">Cancelar</string>
     <string name="was_saved_succesfully">Se guardó exitosamente</string>
     <string name="not_saved">No guardo</string>
     <string name="select_photo">Seleccione la Imagen</string>
     <string name="complete_field_please">Complete los campos, por favor!</string>
+    <string name="add_family_question">Agregar Pregunta de Familia</string>
+    <string name="add_home_question">Agregar Pregunta de Hogar</string>
+    <string name="add_place_question">Agregar Pregunta de Lugar</string>
+    <string name="add_pet_question">Agregar Pregunta de Mascota</string>
 
     // Registration Carer
     <string name="add_Carer">Agregar Cuidador</string>
@@ -398,6 +404,9 @@
     <!-- General strings -->
     <string name="lbl_welcome">Bienvenido</string>
     <string name="lbl_my_profile">Mi Perfil</string>
+
+    <!-- Strings for field validations -->
+    <string name="val_min_passwornd">Debe contener almenos 7 caracteres</string>
 
     <!-- String Test Alzheimer -->
     <string name="tq1">
@@ -825,9 +834,12 @@
     <string name="label_write_question">Escribe una pregunta que corresponda con la imagen.</string>
     <string name="label_answer">Escriba una opción de respuesta.</string>
     <string name="label_select_correct_answer">Selecciona la respuesta correcta.</string>
-    <string name="win_messege">Wow Ganaste.</string>
+    <string name="win_messege">!Felicitaciones has ganado!.</string>
+    <string name="win_cont_messege">¿Quieres volver a intentarlo?</string>
     <string name="reload">Recargar</string>
     <string name="volver_juego">Volver al menu</string>
+
+    <string name="physical_exersice_finish">Felicitaciones lo has conseguido. </string>
 
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
@@ -838,4 +850,5 @@
     <string name="yes">Si</string>
     <string name="no">No</string>
     <string name="ask_dialog_memorizame">¿Deseas agregar otra imagen?</string>
+    <string name="no_healthcarer_pro">no hay profesionales de la salud</string>
 </resources>
