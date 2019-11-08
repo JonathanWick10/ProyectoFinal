@@ -8,7 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -82,6 +84,9 @@ public class Memorama extends Fragment {
     private MemoramaEntity elemetSave;
     private boolean clickAllElemets = true;
     private Memoramai memoramai;
+    // 12.5 por pareja encontrada
+    // 100 al responder todas las preguntas sin equivocarse
+    private double calificacion = 0;
 
     public Memorama(Memoramai memoramai) {
         this.memoramai = memoramai;
@@ -191,6 +196,8 @@ public class Memorama extends Fragment {
                         imageViews.get(finalPosition).setImageResource(lista.getImageId());
 
                         if (lista.getImgGroup() == elemetSave.getImgGroup()) {
+                            // si la persona acerto las imagenes se le agregan 12.5 para dar un total de 8 aciertos = 100%
+                            calificacion = calificacion + 12.5;
                             //setear find del actual y antiguo
                             lista.setFinded(true);
                             listaSave.setFinded(true);
@@ -203,9 +210,11 @@ public class Memorama extends Fragment {
                             //validar si ya estan todos completos
                             int cont = 0;
                             for (MemoramaEntity item : listaComplete) if (item.isFinded()) cont++;
-                            if (cont >= listaComplete.size()) alertWin();
+                            if (cont >= listaComplete.size()) alertWin(calificacion);
 
                         } else {
+                            // Si la peesina se equivoco se resta -10 puntos de su calificación final
+                            calificacion = calificacion - 6.25;
                             Toast.makeText(getContext(), "Sigue intentando", Toast.LENGTH_SHORT).show();
                             lista.setClick(false);
                             listaSave.setClick(false);
@@ -285,13 +294,15 @@ public class Memorama extends Fragment {
         return new Random().nextInt((max - min) + 1) + min;
     }
 
-    private void alertWin() {
+    private void alertWin(Double Puntuacion) {
         final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         View layoutInflater = getLayoutInflater().inflate(R.layout.memorama_win_plantilla, null);
         builder.setView(layoutInflater);
         Button btnOnback = layoutInflater.findViewById(R.id.mwmorama_winp_btnonback);
         Button btnReload = layoutInflater.findViewById(R.id.mwmorama_winp_reload);
+
+        TextView txtPuntuacion = layoutInflater.findViewById(R.id.txt_puntuacion);
 
         AlertDialog dialog = builder.create();
         dialog.show();
@@ -313,6 +324,11 @@ public class Memorama extends Fragment {
                 memoramai.reloadGame("Memorama");
             }
         });
+
+       txtPuntuacion.setText ((Double.parseDouble(Puntuacion.toString()) <= 0) ? "0" : Puntuacion.toString());
+
+
+
     }
 
     public interface Memoramai {
