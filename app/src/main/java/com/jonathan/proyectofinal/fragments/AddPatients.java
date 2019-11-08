@@ -383,6 +383,7 @@ public class AddPatients extends Fragment {
             List<String> assigns = Arrays.asList(assignsArray);
             patient.setAssigns(assigns);
 
+            /*
             String dateOfBirth = birthDayString;
             String[] parts = dateOfBirth.split("/");
             String anio = parts[2]; // 654321
@@ -391,6 +392,7 @@ public class AddPatients extends Fragment {
             int actualYear = cal.get(Calendar.YEAR);
             int age = actualYear - year;
             patient.setAge(age);
+            */
             //endregion
         }else{
             flag = false;

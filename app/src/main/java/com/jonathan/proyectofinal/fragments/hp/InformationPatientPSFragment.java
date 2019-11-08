@@ -67,8 +67,10 @@ public class InformationPatientPSFragment extends Fragment {
     TextView tvGenderPatient;
     @BindView(R.id.tv_ps_datebirthPatient)
     TextView tvDateBitthPatient;
+    /*
     @BindView(R.id.tv_ps_agePatient)
     TextView tvAgePatient;
+    */
     @BindView(R.id.tv_ps_nativeCityPatient)
     TextView tvNativeCityPatient;
     @BindView(R.id.tv_ps_departmentPatient)
@@ -281,7 +283,7 @@ public class InformationPatientPSFragment extends Fragment {
     }
 
     public void initDatas() {
-        tvAgePatient.setText("" +patient.getAge()+" años");
+        //tvAgePatient.setText("" +patient.getAge()+" años");
         tvGenderPatient.setText("" +patient.getGender());
         tvNativeCityPatient.setText("" +patient.getNativeCity());
         tvCurrentCityPatient.setText("" +patient.getActualCity());
