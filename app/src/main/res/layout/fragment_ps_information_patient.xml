@@ -858,38 +858,22 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btn_save"
-                        style="@style/Widget.MaterialComponents.Button"
+                        style="@style/StyleTextButtonCardView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/five"
-                        android:layout_marginRight="@dimen/ten"
-                        android:layout_marginBottom="6dp"
-                        android:backgroundTint="@color/white"
-                        android:elevation="@dimen/elevationOne"
                         android:text="@string/save"
-                        android:textColor="@color/colorPrimaryDark"
                         android:visibility="gone"
-                        app:cornerRadius="@dimen/twenty"
-                        app:icon="@drawable/ic_save"
-                        app:iconTint="@color/colorPrimaryDark"
-                        app:rippleColor="@color/colorAccent" />
+                        app:icon="@drawable/ic_save"/>
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btn_edit_cancel"
-                        style="@style/Widget.MaterialComponents.Button"
+                        style="@style/StyleTextButtonCardView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/five"
-                        android:layout_marginRight="@dimen/ten"
-                        android:layout_marginBottom="6dp"
-                        android:backgroundTint="@color/white"
-                        android:elevation="@dimen/elevationOne"
                         android:text="@string/update"
-                        android:textColor="@color/colorPrimaryDark"
-                        app:cornerRadius="@dimen/twenty"
-                        app:icon="@drawable/ic_edit_black"
-                        app:iconTint="@color/colorPrimaryDark"
-                        app:rippleColor="@color/colorAccent" />
+                        app:icon="@drawable/ic_edit_black" />
                     <!--android:onClick="showPopup"-->
 
                 </LinearLayout>
