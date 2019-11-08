@@ -1,257 +1,299 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    tools:context=".fragments.hp.InformationPatientPSFragment"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    tools:context=".fragments.hp.InformationPatientPSFragment">
 
     <!-- *********NO HE TERMINADO ESTO STRINGS Y ...********** -->
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_marginVertical="20dp"
         android:layout_marginBottom="15dp"
-        >
-
-    <TextView
-        android:text="PERFIL DEL PACIENTE"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        style="@style/StyleTextViewTitles"></TextView>
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/iv_ps_patient_photo"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:src="@drawable/avatar_patient"/>
+        android:orientation="vertical">
 
         <TextView
-            android:text="Nombre"
+            style="@style/StyleTextViewTitles"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textColor="@color/colorPrimaryDark"
-            style="@style/StyleCardViewDescriptions"></TextView>
+            android:text="PERFIL DEL PACIENTE"></TextView>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_ps_patient_photo"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:src="@drawable/avatar_patient" />
+
+        <TextView
+            style="@style/StyleCardViewDescriptions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Nombre"
+            android:textColor="@color/colorPrimaryDark"></TextView>
 
         <TextView
             android:id="@+id/tv_ps_patientName"
+            style="@style/StyleCardViewTitles"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            style="@style/StyleCardViewTitles"></TextView>
+            android:gravity="center"></TextView>
 
         <com.google.android.material.card.MaterialCardView
+            style="@style/StyleCardView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            style="@style/StyleCardView">
+            android:layout_height="match_parent">
 
-        <!-- ************************************* -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
-
+            <!-- ************************************* -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingVertical="10dp"
-                android:paddingHorizontal="10dp"
-                >
+                android:padding="@dimen/ten">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/age"
-                    android:textColor="@color/colorPrimaryDark"
-                    style="@style/StyleCardViewDescriptions"></TextView>
+                    android:orientation="vertical"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="10dp">
 
-                <TextView
-                    android:id="@+id/tv_ps_agePatient"
-                    android:text="18 años"
+                    <TextView
+                        style="@style/StyleCardViewDescriptions"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/age"
+                        android:textColor="@color/colorPrimaryDark"></TextView>
+
+                    <TextView
+                        android:id="@+id/tv_ps_agePatient"
+                        style="@style/StyleCardViewTitles"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="18 años"></TextView>
+
+                </LinearLayout>
+                4
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="10dp">
+
+                    <TextView
+                        style="@style/StyleCardViewDescriptions"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gender"
+                        android:textColor="@color/colorPrimaryDark"></TextView>
+
+                    <TextView
+                        android:id="@+id/tv_ps_genderPatient"
+                        style="@style/StyleCardViewTitles"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Masculino"></TextView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="10dp">
+
+                    <TextView
+                        style="@style/StyleCardViewDescriptions"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/native_city"
+                        android:textColor="@color/colorPrimaryDark"></TextView>
+
+                    <TextView
+                        android:id="@+id/tv_ps_nativeCityPatient"
+                        style="@style/StyleCardViewTitles"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Cali"></TextView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="10dp">
+
+                    <TextView
+                        style="@style/StyleCardViewDescriptions"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/actual_city"
+                        android:textColor="@color/colorPrimaryDark"></TextView>
+
+                    <TextView
+                        android:id="@+id/tv_ps_currentcityPatient"
+                        style="@style/StyleCardViewTitles"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Popayán"></TextView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="10dp">
+
+                    <TextView
+                        style="@style/StyleCardViewDescriptions"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/family_phone_number"
+                        android:textColor="@color/colorPrimaryDark"></TextView>
+
+                    <TextView
+                        android:id="@+id/tv_ps_guestPhonePatient"
+                        style="@style/StyleCardViewTitles"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="454545"></TextView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="10dp">
+
+                    <TextView
+                        style="@style/StyleCardViewDescriptions"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/address"
+                        android:textColor="@color/colorPrimaryDark"></TextView>
+
+                    <TextView
+                        android:id="@+id/tv_ps_addressPatient"
+                        style="@style/StyleCardViewTitles"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Cll 45 n l"></TextView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="10dp">
+
+                    <TextView
+                        style="@style/StyleCardViewDescriptions"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/diagnostic"
+                        android:textColor="@color/colorPrimaryDark"></TextView>
+
+                    <TextView
+                        android:id="@+id/tv_ps_diagnosis"
+                        style="@style/StyleCardViewTitles"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Alzheimher fase 1"></TextView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="10dp">
+
+                    <TextView
+                        style="@style/StyleCardViewDescriptions"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/date_diagnostic"
+                        android:textColor="@color/colorPrimaryDark"></TextView>
+
+                    <TextView
+                        android:id="@+id/tv_ps_diagnosisdate"
+                        style="@style/StyleCardViewTitles"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="27-10-2018"></TextView>
+
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray"
+                    android:layout_marginLeft="@dimen/ten"
+                    android:layout_marginRight="@dimen/ten"/>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    style="@style/StyleCardViewTitles"></TextView>
+                    android:gravity="end">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_save"
+                        style="@style/Widget.MaterialComponents.Button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/white"
+                        android:elevation="@dimen/elevationOne"
+                        android:text="@string/save"
+                        android:textColor="@color/colorPrimaryDark"
+                        app:cornerRadius="@dimen/twenty"
+                        app:icon="@drawable/ic_save"
+                        app:iconTint="@color/colorPrimaryDark"
+                        app:rippleColor="@color/colorAccent"
+                        android:layout_marginTop="@dimen/five"
+                        android:layout_marginBottom="6dp"
+                        android:layout_marginRight="@dimen/ten"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_edit_cancel"
+                        style="@style/Widget.MaterialComponents.Button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/white"
+                        android:elevation="@dimen/elevationOne"
+                        android:text="Editar"
+                        android:textColor="@color/colorPrimaryDark"
+                        app:cornerRadius="@dimen/twenty"
+                        app:icon="@drawable/ic_edit_black"
+                        app:iconTint="@color/colorPrimaryDark"
+                        app:rippleColor="@color/colorAccent"
+                        android:layout_marginTop="@dimen/five"
+                        android:layout_marginBottom="6dp"
+                        android:layout_marginRight="@dimen/ten"/>
+                    <!--android:onClick="showPopup"-->
+
+                </LinearLayout>
 
             </LinearLayout>
-4
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingVertical="10dp"
-                android:paddingHorizontal="10dp"
-                >
 
-                <TextView
-                    android:text="@string/gender"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorPrimaryDark"
-                    style="@style/StyleCardViewDescriptions"></TextView>
-
-                <TextView
-                    android:id="@+id/tv_ps_genderPatient"
-                    android:text="Masculino"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/StyleCardViewTitles"></TextView>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingVertical="10dp"
-                android:paddingHorizontal="10dp"
-                >
-
-                <TextView
-                    android:text="@string/native_city"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorPrimaryDark"
-                    style="@style/StyleCardViewDescriptions"></TextView>
-
-                <TextView
-                    android:id="@+id/tv_ps_nativeCityPatient"
-                    android:text="Cali"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/StyleCardViewTitles"></TextView>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingVertical="10dp"
-                android:paddingHorizontal="10dp"
-                >
-
-                <TextView
-                    android:text="@string/actual_city"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorPrimaryDark"
-                    style="@style/StyleCardViewDescriptions"></TextView>
-
-                <TextView
-                    android:id="@+id/tv_ps_currentcityPatient"
-                    android:text="Popayán"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/StyleCardViewTitles"></TextView>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingVertical="10dp"
-                android:paddingHorizontal="10dp"
-                >
-
-                <TextView
-                    android:text="@string/family_phone_number"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorPrimaryDark"
-                    style="@style/StyleCardViewDescriptions"></TextView>
-
-                <TextView
-                    android:id="@+id/tv_ps_guestPhonePatient"
-                    android:text="454545"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/StyleCardViewTitles"></TextView>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingVertical="10dp"
-                android:paddingHorizontal="10dp"
-                >
-
-                <TextView
-                    android:text="@string/address"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorPrimaryDark"
-                    style="@style/StyleCardViewDescriptions"></TextView>
-
-                <TextView
-                    android:id="@+id/tv_ps_addressPatient"
-                    android:text="Cll 45 n l"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/StyleCardViewTitles"></TextView>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingVertical="10dp"
-                android:paddingHorizontal="10dp"
-                >
-
-                <TextView
-                    android:text="@string/diagnostic"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorPrimaryDark"
-                    style="@style/StyleCardViewDescriptions"></TextView>
-
-                <TextView
-                    android:id="@+id/tv_ps_diagnosis"
-                    android:text="Alzheimher fase 1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/StyleCardViewTitles"></TextView>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingVertical="10dp"
-                android:paddingHorizontal="10dp"
-                >
-
-                <TextView
-                    android:text="@string/date_diagnostic"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorPrimaryDark"
-                    style="@style/StyleCardViewDescriptions"></TextView>
-
-                <TextView
-                    android:id="@+id/tv_ps_diagnosisdate"
-                    android:text="27-10-2018"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/StyleCardViewTitles"></TextView>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <!-- ************************************* -->
+            <!-- ************************************* -->
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
