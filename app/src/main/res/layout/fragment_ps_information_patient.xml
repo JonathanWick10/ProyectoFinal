@@ -47,7 +47,8 @@
         <com.google.android.material.card.MaterialCardView
             style="@style/StyleCardView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            app:cardBackgroundColor="@color/colorBackround">
 
             <!-- ************************************* -->
             <LinearLayout
@@ -56,198 +57,799 @@
                 android:orientation="vertical"
                 android:padding="@dimen/ten">
 
+                <!-- Linear layout for view data -->
                 <LinearLayout
+                    android:id="@+id/ll_view_data"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="10dp">
+
+                        <TextView
+                            style="@style/StyleCardViewDescriptions"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/first_name"
+                            android:textColor="@color/colorPrimaryDark"></TextView>
+
+                        <TextView
+                            android:id="@+id/tv_ps_namePatient"
+                            style="@style/StyleCardViewTitles"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/first_name"></TextView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="10dp">
+
+                        <TextView
+                            style="@style/StyleCardViewDescriptions"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/last_name"
+                            android:textColor="@color/colorPrimaryDark"></TextView>
+
+                        <TextView
+                            android:id="@+id/tv_ps_lastnamePatient"
+                            style="@style/StyleCardViewTitles"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/last_name"></TextView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="10dp">
+
+                        <TextView
+                            style="@style/StyleCardViewDescriptions"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/identification_type"
+                            android:textColor="@color/colorPrimaryDark"></TextView>
+
+                        <TextView
+                            android:id="@+id/tv_ps_idtypePatient"
+                            style="@style/StyleCardViewTitles"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/identification_type"></TextView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="10dp">
+
+                        <TextView
+                            style="@style/StyleCardViewDescriptions"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/identification"
+                            android:textColor="@color/colorPrimaryDark"></TextView>
+
+                        <TextView
+                            android:id="@+id/tv_ps_identificationPatient"
+                            style="@style/StyleCardViewTitles"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/identification"></TextView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="10dp">
+
+                        <TextView
+                            style="@style/StyleCardViewDescriptions"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/gender"
+                            android:textColor="@color/colorPrimaryDark"></TextView>
+
+                        <TextView
+                            android:id="@+id/tv_ps_genderPatient"
+                            style="@style/StyleCardViewTitles"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/gender"></TextView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="10dp">
+
+                        <TextView
+                            style="@style/StyleCardViewDescriptions"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/date_birth_ps"
+                            android:textColor="@color/colorPrimaryDark"></TextView>
+
+                        <TextView
+                            android:id="@+id/tv_ps_datebirthPatient"
+                            style="@style/StyleCardViewTitles"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/date_birth_ps"></TextView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="10dp">
+
+                        <TextView
+                            style="@style/StyleCardViewDescriptions"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/age"
+                            android:textColor="@color/colorPrimaryDark"></TextView>
+
+                        <TextView
+                            android:id="@+id/tv_ps_agePatient"
+                            style="@style/StyleCardViewTitles"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/age"></TextView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="10dp">
+
+                        <TextView
+                            style="@style/StyleCardViewDescriptions"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/native_city"
+                            android:textColor="@color/colorPrimaryDark"></TextView>
+
+                        <TextView
+                            android:id="@+id/tv_ps_nativeCityPatient"
+                            style="@style/StyleCardViewTitles"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/native_city"></TextView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="10dp">
+
+                        <TextView
+                            style="@style/StyleCardViewDescriptions"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/family_phone_number"
+                            android:textColor="@color/colorPrimaryDark"></TextView>
+
+                        <TextView
+                            android:id="@+id/tv_ps_guestPhonePatient"
+                            style="@style/StyleCardViewTitles"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/family_phone_number"></TextView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="10dp">
+
+                        <TextView
+                            style="@style/StyleCardViewDescriptions"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/department"
+                            android:textColor="@color/colorPrimaryDark"></TextView>
+
+                        <TextView
+                            android:id="@+id/tv_ps_departmentPatient"
+                            style="@style/StyleCardViewTitles"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/department"></TextView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="10dp">
+
+                        <TextView
+                            style="@style/StyleCardViewDescriptions"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/actual_city"
+                            android:textColor="@color/colorPrimaryDark"></TextView>
+
+                        <TextView
+                            android:id="@+id/tv_ps_currentcityPatient"
+                            style="@style/StyleCardViewTitles"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/actual_city"></TextView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="10dp">
+
+                        <TextView
+                            style="@style/StyleCardViewDescriptions"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/address"
+                            android:textColor="@color/colorPrimaryDark"></TextView>
+
+                        <TextView
+                            android:id="@+id/tv_ps_addressPatient"
+                            style="@style/StyleCardViewTitles"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/address"></TextView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="10dp">
+
+                        <TextView
+                            style="@style/StyleCardViewDescriptions"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/email"
+                            android:textColor="@color/colorPrimaryDark"></TextView>
+
+                        <TextView
+                            android:id="@+id/tv_ps_emaiPatient"
+                            style="@style/StyleCardViewTitles"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/email"></TextView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="10dp">
+
+                        <TextView
+                            style="@style/StyleCardViewDescriptions"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/user_name"
+                            android:textColor="@color/colorPrimaryDark"></TextView>
+
+                        <TextView
+                            android:id="@+id/tv_ps_userPatient"
+                            style="@style/StyleCardViewTitles"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/user_name"></TextView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="10dp">
+
+                        <TextView
+                            style="@style/StyleCardViewDescriptions"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/password"
+                            android:textColor="@color/colorPrimaryDark"></TextView>
+
+                        <TextView
+                            android:id="@+id/tv_ps_passPatient"
+                            style="@style/StyleCardViewTitles"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/password"></TextView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="10dp">
+
+                        <TextView
+                            style="@style/StyleCardViewDescriptions"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/diagnostic"
+                            android:textColor="@color/colorPrimaryDark"></TextView>
+
+                        <TextView
+                            android:id="@+id/tv_ps_diagnosisPatient"
+                            style="@style/StyleCardViewTitles"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/diagnostic"></TextView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="10dp">
+
+                        <TextView
+                            style="@style/StyleCardViewDescriptions"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/date_diagnostic"
+                            android:textColor="@color/colorPrimaryDark"></TextView>
+
+                        <TextView
+                            android:id="@+id/tv_ps_diagnosisdatePatient"
+                            style="@style/StyleCardViewTitles"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/date_diagnostic"></TextView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="10dp">
+
+                        <TextView
+                            style="@style/StyleCardViewDescriptions"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/observations"
+                            android:textColor="@color/colorPrimaryDark"></TextView>
+
+                        <TextView
+                            android:id="@+id/tv_ps_observationsPatient"
+                            style="@style/StyleCardViewTitles"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/observations"></TextView>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <!-- Linear layout for edit fields -->
+                <LinearLayout
+                    android:id="@+id/ll_edit_data"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:paddingHorizontal="10dp"
-                    android:paddingVertical="10dp">
+                    android:visibility="gone">
 
-                    <TextView
-                        style="@style/StyleCardViewDescriptions"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/edit_til_name_patient"
+                        style="@style/StyleTextInputLayotTextBoxForms"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/age"
-                        android:textColor="@color/colorPrimaryDark"></TextView>
+                        app:endIconMode="clear_text"
+                        app:errorEnabled="true"
+                        app:startIconDrawable="@drawable/ic_face_black">
 
-                    <TextView
-                        android:id="@+id/tv_ps_agePatient"
-                        style="@style/StyleCardViewTitles"
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edit_txt_name_patient"
+                            style="@style/StyleTextInputEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/first_name"
+                            android:inputType="text" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/edit_til_lastname_patient"
+                        style="@style/StyleTextInputLayotTextBoxForms"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="18 años"></TextView>
+                        app:endIconMode="clear_text"
+                        app:errorEnabled="true"
+                        app:startIconDrawable="@drawable/ic_face_black">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edit_txt_lastname_patient"
+                            style="@style/StyleTextInputEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/last_name"
+                            android:inputType="text" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/edit_til_idtype_patient"
+                        style="@style/StyleTextInputLayotDropDownForms"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/identification_type"
+                        app:errorEnabled="true"
+                        app:startIconDrawable="@drawable/ic_identification_black">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/edit_txt_idtype_patient"
+                            style="@style/StyleTextInputEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:enabled="false" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/edit_til_identification_patient"
+                        style="@style/StyleTextInputLayotTextBoxForms"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="@string/identification"
+                        app:endIconMode="clear_text"
+                        app:errorEnabled="true"
+                        app:startIconDrawable="@drawable/ic_identification_black">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edit_txt_identification_patient"
+                            style="@style/StyleTextInputEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <LinearLayout
+                        style="@style/StyleLinearLayoutGenderForms"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:startIconDrawable="@drawable/ic_wc_black"></com.google.android.material.textfield.TextInputLayout>
+
+                        <TextView
+                            style="@style/StyleLabelGenderForms"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="@string/gender"></TextView>
+                    </LinearLayout>
+
+                    <RadioGroup
+                        android:id="@+id/edit_rg_gender_patient"
+                        style="@style/StyleRadioGroupForms"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/edit_rb_female_patient"
+                            style="@style/StyleRadioButtonForms"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/female" />
+
+                        <RadioButton
+                            android:id="@+id/edit_rb_male_patient"
+                            style="@style/StyleRadioButtonForms"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/male" />
+                    </RadioGroup>
+
+                    <LinearLayout
+                        style="@style/StyleLinearLayoutBirthDateForms"
+                        android:layout_width="match_parent"
+                        android:layout_height="75dp">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/StyleTextInputLayotTextBoxForms"
+                            android:id="@+id/edit_til_birthday_patient"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            app:endIconMode="clear_text"
+                            app:startIconDrawable="@drawable/ic_calendar_black"
+                            app:errorEnabled="true">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/edit_txt_datebirth_patient"
+                                style="@style/StyleTextInputEditText"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:enabled="false"
+                                android:hint="@string/date_birth_ps" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/edit_iv_datebirth_patient"
+                            style="@style/StyleCircleImageViewCalendarForms"
+                            android:layout_width="85dp"
+                            android:layout_height="85dp" />
+
+                    </LinearLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/StyleTextInputLayotTextBoxForms"
+                        android:id="@+id/edit_til_nativecity_patient"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="@string/native_city"
+                        app:endIconMode="clear_text"
+                        app:startIconDrawable="@drawable/ic_nature_people_black"
+                        app:errorEnabled="true">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edit_txt_nativecity_patient"
+                            style="@style/StyleTextInputEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/StyleTextInputLayotTextBoxForms"
+                        android:id="@+id/edit_til_phone_patient"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/phone_number"
+                        app:endIconMode="clear_text"
+                        app:startIconDrawable="@drawable/ic_phone_black"
+                        app:errorEnabled="true">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edit_txt_phone_patient"
+                            style="@style/StyleTextInputEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/StyleTextInputLayotDropDownForms"
+                        android:id="@+id/edit_til_department"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/department"
+                        app:startIconDrawable="@drawable/ic_landscape_black"
+                        app:errorEnabled="true">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/edit_txt_department_patient"
+                            style="@style/StyleTextInputEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:enabled="false"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/StyleTextInputLayotTextBoxForms"
+                        android:id="@+id/edit_til_actualCity"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="@string/actual_city"
+                        app:endIconMode="clear_text"
+                        app:startIconDrawable="@drawable/ic_location_city_black"
+                        app:errorEnabled="true">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edit_txt_actualcity_patient"
+                            style="@style/StyleTextInputEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/StyleTextInputLayotTextBoxForms"
+                        android:id="@+id/edit_til_address_patient"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="@string/address"
+                        app:endIconMode="clear_text"
+                        app:startIconDrawable="@drawable/ic_home_black_24dp"
+                        app:errorEnabled="true">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edit_txt_address_patient"
+                            style="@style/StyleTextInputEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:inputType="text" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/StyleTextInputLayotTextBoxForms"
+                        android:id="@+id/edit_til_email_patient"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="@string/email"
+                        app:endIconMode="clear_text"
+                        app:startIconDrawable="@drawable/ic_mail_black"
+                        app:errorEnabled="true">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edit_txt_email_patient"
+                            style="@style/StyleTextInputEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:inputType="textEmailAddress" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/StyleTextInputLayotTextBoxForms"
+                        android:id="@+id/edit_til_user_patient"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="@string/user_name"
+                        app:endIconMode="clear_text"
+                        app:startIconDrawable="@drawable/ic_user_black"
+                        app:errorEnabled="true">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edit_txt_user_patient"
+                            style="@style/StyleTextInputEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:inputType="text" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/StyleTextInputLayotTextBoxForms"
+                        android:id="@+id/edit_til_password_patient"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="@string/password"
+                        app:endIconMode="password_toggle"
+                        app:startIconDrawable="@drawable/ic_key_black"
+                        app:errorEnabled="true">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edit_txt_password_patient"
+                            style="@style/StyleTextInputEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:inputType="textPassword" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/StyleTextInputLayotTextBoxForms"
+                        android:id="@+id/edit_til_diagnostic_patient"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="@string/diagnostic"
+                        app:endIconMode="clear_text"
+                        app:startIconDrawable="@drawable/ic_assignment_black"
+                        app:errorEnabled="true">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edit_txt_diagnostic_patient"
+                            style="@style/StyleTextInputEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:inputType="text" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <LinearLayout
+                        style="@style/StyleLinearLayoutBirthDateForms"
+                        android:layout_width="match_parent"
+                        android:layout_height="75dp">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/StyleTextInputLayotTextBoxForms"
+                            android:id="@+id/edit_til_datediagnosis_patient"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:hint="@string/date_diagnostic"
+                            app:endIconMode="clear_text"
+                            app:startIconDrawable="@drawable/ic_calendar_black"
+                            app:errorEnabled="true">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/edit_txt_datediagnosis_patient"
+                                style="@style/StyleTextInputEditText"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:enabled="false"/>
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/edit_iv_datediagnosis_patient"
+                            style="@style/StyleCircleImageViewCalendarForms"
+                            android:layout_width="85dp"
+                            android:layout_height="85dp"/>
+
+                    </LinearLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/StyleTextInputLayotTextBoxForms"
+                        android:id="@+id/edit_til_observations_patient"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="@string/observations"
+                        app:endIconMode="clear_text"
+                        app:startIconDrawable="@drawable/ic_edit_black"
+                        app:errorEnabled="true">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edit_txt_observations_patient"
+                            style="@style/StyleTextInputEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:inputType="text"/>
+                    </com.google.android.material.textfield.TextInputLayout>
 
                 </LinearLayout>
-                4
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingHorizontal="10dp"
-                    android:paddingVertical="10dp">
-
-                    <TextView
-                        style="@style/StyleCardViewDescriptions"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/gender"
-                        android:textColor="@color/colorPrimaryDark"></TextView>
-
-                    <TextView
-                        android:id="@+id/tv_ps_genderPatient"
-                        style="@style/StyleCardViewTitles"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Masculino"></TextView>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingHorizontal="10dp"
-                    android:paddingVertical="10dp">
-
-                    <TextView
-                        style="@style/StyleCardViewDescriptions"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/native_city"
-                        android:textColor="@color/colorPrimaryDark"></TextView>
-
-                    <TextView
-                        android:id="@+id/tv_ps_nativeCityPatient"
-                        style="@style/StyleCardViewTitles"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Cali"></TextView>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingHorizontal="10dp"
-                    android:paddingVertical="10dp">
-
-                    <TextView
-                        style="@style/StyleCardViewDescriptions"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/actual_city"
-                        android:textColor="@color/colorPrimaryDark"></TextView>
-
-                    <TextView
-                        android:id="@+id/tv_ps_currentcityPatient"
-                        style="@style/StyleCardViewTitles"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Popayán"></TextView>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingHorizontal="10dp"
-                    android:paddingVertical="10dp">
-
-                    <TextView
-                        style="@style/StyleCardViewDescriptions"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/family_phone_number"
-                        android:textColor="@color/colorPrimaryDark"></TextView>
-
-                    <TextView
-                        android:id="@+id/tv_ps_guestPhonePatient"
-                        style="@style/StyleCardViewTitles"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="454545"></TextView>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingHorizontal="10dp"
-                    android:paddingVertical="10dp">
-
-                    <TextView
-                        style="@style/StyleCardViewDescriptions"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/address"
-                        android:textColor="@color/colorPrimaryDark"></TextView>
-
-                    <TextView
-                        android:id="@+id/tv_ps_addressPatient"
-                        style="@style/StyleCardViewTitles"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Cll 45 n l"></TextView>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingHorizontal="10dp"
-                    android:paddingVertical="10dp">
-
-                    <TextView
-                        style="@style/StyleCardViewDescriptions"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/diagnostic"
-                        android:textColor="@color/colorPrimaryDark"></TextView>
-
-                    <TextView
-                        android:id="@+id/tv_ps_diagnosis"
-                        style="@style/StyleCardViewTitles"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Alzheimher fase 1"></TextView>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingHorizontal="10dp"
-                    android:paddingVertical="10dp">
-
-                    <TextView
-                        style="@style/StyleCardViewDescriptions"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/date_diagnostic"
-                        android:textColor="@color/colorPrimaryDark"></TextView>
-
-                    <TextView
-                        android:id="@+id/tv_ps_diagnosisdate"
-                        style="@style/StyleCardViewTitles"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="27-10-2018"></TextView>
-
-                </LinearLayout>
-
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@android:color/darker_gray"
                     android:layout_marginLeft="@dimen/ten"
-                    android:layout_marginRight="@dimen/ten"/>
+                    android:layout_marginRight="@dimen/ten"
+                    android:background="@android:color/darker_gray" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -259,34 +861,35 @@
                         style="@style/Widget.MaterialComponents.Button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/five"
+                        android:layout_marginRight="@dimen/ten"
+                        android:layout_marginBottom="6dp"
                         android:backgroundTint="@color/white"
                         android:elevation="@dimen/elevationOne"
                         android:text="@string/save"
                         android:textColor="@color/colorPrimaryDark"
+                        android:visibility="gone"
                         app:cornerRadius="@dimen/twenty"
                         app:icon="@drawable/ic_save"
                         app:iconTint="@color/colorPrimaryDark"
-                        app:rippleColor="@color/colorAccent"
-                        android:layout_marginTop="@dimen/five"
-                        android:layout_marginBottom="6dp"
-                        android:layout_marginRight="@dimen/ten"/>
+                        app:rippleColor="@color/colorAccent" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btn_edit_cancel"
                         style="@style/Widget.MaterialComponents.Button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/five"
+                        android:layout_marginRight="@dimen/ten"
+                        android:layout_marginBottom="6dp"
                         android:backgroundTint="@color/white"
                         android:elevation="@dimen/elevationOne"
-                        android:text="Editar"
+                        android:text="@string/update"
                         android:textColor="@color/colorPrimaryDark"
                         app:cornerRadius="@dimen/twenty"
                         app:icon="@drawable/ic_edit_black"
                         app:iconTint="@color/colorPrimaryDark"
-                        app:rippleColor="@color/colorAccent"
-                        android:layout_marginTop="@dimen/five"
-                        android:layout_marginBottom="6dp"
-                        android:layout_marginRight="@dimen/ten"/>
+                        app:rippleColor="@color/colorAccent" />
                     <!--android:onClick="showPopup"-->
 
                 </LinearLayout>
