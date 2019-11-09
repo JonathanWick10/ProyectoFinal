@@ -26,6 +26,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavType;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
@@ -50,9 +51,14 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class InformationPatientPSFragment extends Fragment {
 
+    //region Variables
+
+    //region Variables view
     private IMainCarer mIMainCarer;
     private AddPatients.OnFragmentInteractionListener mListener;
 
+    @BindView(R.id.iv_ps_patient_photo)
+    CircleImageView imgprofile;
     @BindView(R.id.tv_ps_patientName)
     TextView tvPatientName;
     @BindView(R.id.tv_ps_namePatient)
@@ -97,17 +103,23 @@ public class InformationPatientPSFragment extends Fragment {
     MaterialButton btnEditCancel;
     @BindView(R.id.btn_save)
     MaterialButton btnSave;
+    //endregion
 
+    //region Linearlayout
     @BindView(R.id.ll_view_data)
     LinearLayout linear_view;
     @BindView(R.id.ll_edit_data)
     LinearLayout linear_edit;
+    //endregion
 
+    //region TextInputLayouts
     @BindView(R.id.edit_til_name_patient)
     TextInputLayout tilNamePatient;
     @BindView(R.id.edit_til_password_patient)
     TextInputLayout tilPasswordPatient;
+    //endregion
 
+    //region Variables update
     @BindView(R.id.edit_txt_name_patient)
     TextInputEditText txtNamePatient;
     @BindView(R.id.edit_txt_lastname_patient)
@@ -157,6 +169,9 @@ public class InformationPatientPSFragment extends Fragment {
 
     Patient patient = new Patient();
     FirebaseFirestore db;
+    //endregion
+
+    //endregion
 
     public InformationPatientPSFragment() {
     }
@@ -168,10 +183,11 @@ public class InformationPatientPSFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_ps_information_patient, container, false);
         ButterKnife.bind(this, view);
         Bundle bundle = getArguments();
-        if (bundle!=null){
+        /*if (bundle!=null){
             patient = (Patient) bundle.getSerializable("patient");
+            Glide.with(getActivity()).load(patient.getUriImg()).fitCenter().into(imgprofile);
             initDatas();
-        }
+        }*/
         logicButtonCalendar(view);
         logicButtonDateDiagnosis(view);
         dropdownMenu(view);
@@ -283,15 +299,52 @@ public class InformationPatientPSFragment extends Fragment {
     }
 
     public void initDatas() {
-        //tvAgePatient.setText("" +patient.getAge()+" años");
-        tvGenderPatient.setText("" +patient.getGender());
-        tvNativeCityPatient.setText("" +patient.getNativeCity());
-        tvCurrentCityPatient.setText("" +patient.getActualCity());
-        tvGuestPhonePatient.setText("" +patient.getPhoneNumber());
-        tvAddressPatient.setText("" + patient.getAddress());
-        tvDiagnosis.setText("" +patient.getDiagnostic());
-        tvDiagnosisDate.setText("" +patient.getDateDiagnostic());
+
+        //region setData for view
+
         tvPatientName.setText(patient.getFirstName()+" "+patient.getLastName());
+        tvNamePatient.setText(patient.getFirstName());
+        tvLastNamePatient.setText(patient.getLastName());
+        tvIdTypePatient.setText(patient.getIdentificationType());
+        tvIdentificationPatient.setText(patient.getIdentification());
+        tvGenderPatient.setText(patient.getGender());
+        tvDateBitthPatient.setText(patient.getBirthday());
+        tvNativeCityPatient.setText(patient.getNativeCity());
+        tvGuestPhonePatient.setText(String.valueOf(patient.getPhoneNumber()));
+        tvDepartmentPatient.setText(patient.getDepartment());
+        tvCurrentCityPatient.setText(patient.getActualCity());
+        tvAddressPatient.setText(patient.getAddress());
+        tvEmailPatient.setText(patient.getEmail());
+        tvPassPatient.setText(patient.getPassword());
+        tvDiagnosis.setText(patient.getDiagnostic());
+        tvDiagnosisDate.setText(patient.getDateDiagnostic());
+        tvObservationsDate.setText(patient.getObservations());
+        //endregion
+
+        //region setData for Update
+        txtNamePatient.setText(patient.getFirstName());
+        txtLastNamePatient.setText(patient.getLastName());
+        txtIdTypePatient.setText(patient.getIdentificationType());
+        txtIdentificationPatient.setText(patient.getIdentification());
+        String genderP = patient.getGender();
+        if (!genderP.isEmpty() && genderP == "Masculino"){
+            rbGenderMalePatient.setChecked(true);
+        }else {
+            rbGenderFemalePatient.setChecked(true);
+        }
+        txtDateBirthPatient.setText(patient.getBirthday());
+        txtNativeCityPatient.setText(patient.getNativeCity());
+        txtPhonePatient.setText(String.valueOf(patient.getPhoneNumber()));
+        txtDepartmentPatient.setText(patient.getDepartment());
+        txtActualCityPatient.setText(patient.getActualCity());
+        txtAddressPatient.setText(patient.getAddress());
+        txtEmailPatient.setText(patient.getEmail());
+        txtUserPatient.setText(patient.getUserName());
+        txtPasswordPatient.setText(patient.getPassword());
+        txtDiagnosisPatient.setText(patient.getDiagnostic());
+        txtDateDiagnosisPatient.setText(patient.getDateDiagnostic());
+        txtObservationsPatient.setText(patient.getObservations());
+        //endregion
     }
 
     private void dropdownMenu(View view) {

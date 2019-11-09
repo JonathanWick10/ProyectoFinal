@@ -105,7 +105,6 @@ public class PatientsListFragment extends Fragment {
         iSelectionPatient = new PatientsAdapter.ISelectionPatient() {
             @Override
             public void clickItem(Patient patient) {
-                Toast.makeText(getActivity(), patient.getIdentification() + " / " + patient.getFirstName(), Toast.LENGTH_SHORT).show();
                 Intent goPatient = new Intent(getActivity(), HealthProfessionalActivity.class);
                 Bundle patientSend = new Bundle();
                 patientSend.putSerializable("patient", patient);

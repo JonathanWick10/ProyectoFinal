@@ -120,7 +120,6 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
             patientSendFragment = (Patient) args.getSerializable("patient");
             args.putSerializable("patient",patientSendFragment);
         }
-        Toast.makeText(this, "patientIdentification:  "+patientIdentification, Toast.LENGTH_LONG).show();
     }
 
 
