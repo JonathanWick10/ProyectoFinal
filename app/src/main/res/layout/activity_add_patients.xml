@@ -22,7 +22,7 @@
                 android:id="@+id/profile_image"
                 android:layout_width="match_parent"
                 android:layout_height="96dp"
-                android:src="@drawable/avatar_patient"
+                android:src="@drawable/img_add_image"
                 app:civ_border_color="@color/colorPrimary"
                 app:civ_border_width="2dp"
                 app:civ_circle_background_color="@color/colorAccent" />
