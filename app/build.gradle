@@ -1,5 +1,7 @@
+apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
+
 
 android {
     compileSdkVersion 29
@@ -11,6 +13,12 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        manifestPlaceholders = [
+                onesignal_app_id: '9cd9c148-31f8-4935-b558-eb91e0798617',
+                // Project number pulled from dashboard, local value is ignored.
+                onesignal_google_project_number: 'REMOTE'
+        ]
     }
     buildTypes {
         release {
@@ -74,5 +82,11 @@ dependencies {
     // dependence for create of Gif
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.19'
 
-
+    // dependence of onesignal and retrofit
+    implementation 'com.onesignal:OneSignal:3.12.2'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.1.0'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
 }

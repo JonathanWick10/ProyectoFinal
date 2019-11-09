@@ -14,6 +14,10 @@
         android:roundIcon="@mipmap/ic_miniature"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <meta-data android:name="com.onesignal.NotificationOpened.DEFAULT" android:value="DISABLE" />
+
+
         <activity android:name=".ui.NavigationOptions"></activity>
         <activity android:name=".ui.Registration_Carer"></activity>
         <activity
