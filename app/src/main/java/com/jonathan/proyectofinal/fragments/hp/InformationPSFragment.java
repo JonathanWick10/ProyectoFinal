@@ -25,6 +25,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.data.Carer;
 import com.jonathan.proyectofinal.data.HealthcareProfessional;
+import com.jonathan.proyectofinal.data.Patient;
 import com.jonathan.proyectofinal.interfaces.IMainCarer;
 import com.jonathan.proyectofinal.tools.Constants;
 
@@ -42,6 +43,9 @@ public class InformationPSFragment extends Fragment {
     FirebaseUser user;
     HealthcareProfessional hp = new HealthcareProfessional();
     Carer carer = new Carer();
+    Patient patient = new Patient();
+    Bundle args = new Bundle();
+    Bundle bundle = new Bundle();
 
 
     private IMainCarer iMainHealthProfessional;
@@ -53,9 +57,10 @@ public class InformationPSFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_ps_information, container, false);
-        Bundle bundle = getArguments();
+        bundle = getArguments();
         if (bundle!=null){
-            String uID = bundle.getString("patientUID");
+            patient = (Patient)bundle.getSerializable("patient");
+            args.putSerializable("patient", patient);
         }
         tabPatientInfo = view.findViewById(R.id.ps_tab_info_patient);
         nearbyhospital = view.findViewById(R.id.ps_tab_info_carer);
@@ -71,7 +76,12 @@ public class InformationPSFragment extends Fragment {
                 if (documentSnapshot.exists()){
                     tabs.setVisibility(view.VISIBLE);
                     hp = documentSnapshot.toObject(HealthcareProfessional.class);
+                    if (bundle!=null){
+                        patient = (Patient)bundle.getSerializable("patient");
+                        args.putSerializable("patient", patient);
+                    }
                     InformationPatientPSFragment fragment = new InformationPatientPSFragment();
+                    fragment.setArguments(args);
                     SetUpViewPager(viewPager, tabs, fragment);
                }
             }
@@ -115,9 +125,11 @@ public class InformationPSFragment extends Fragment {
             switch (position) {
                 case 0:
                     InformationPatientPSFragment informationPatientPSFragment = new InformationPatientPSFragment();
+                    informationPatientPSFragment.setArguments(args);
                     return informationPatientPSFragment;
                 case 1:
                     InformationCarerPSFragment informationCarerPSFragment = new InformationCarerPSFragment();
+                    informationCarerPSFragment.setArguments(args);
                     return informationCarerPSFragment;
 
             }
