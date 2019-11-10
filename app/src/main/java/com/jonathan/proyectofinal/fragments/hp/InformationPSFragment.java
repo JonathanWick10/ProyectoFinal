@@ -44,8 +44,8 @@ public class InformationPSFragment extends Fragment {
     HealthcareProfessional hp = new HealthcareProfessional();
     Carer carer = new Carer();
     Patient patient = new Patient();
-    Bundle args = new Bundle();
-    Bundle bundle = new Bundle();
+    Bundle args ;
+    Bundle bundle;
 
 
     private IMainCarer iMainHealthProfessional;
@@ -74,15 +74,9 @@ public class InformationPSFragment extends Fragment {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if (documentSnapshot.exists()){
-                    tabs.setVisibility(view.VISIBLE);
                     hp = documentSnapshot.toObject(HealthcareProfessional.class);
-                    if (bundle!=null){
-                        patient = (Patient)bundle.getSerializable("patient");
-                        args.putSerializable("patient", patient);
-                    }
-                    InformationPatientPSFragment fragment = new InformationPatientPSFragment();
-                    fragment.setArguments(args);
-                    SetUpViewPager(viewPager, tabs, fragment);
+                    iMainHealthProfessional.inflateFragment("patient2");
+                    //SetUpViewPager(viewPager, tabs);
                }
             }
         });
@@ -100,15 +94,15 @@ public class InformationPSFragment extends Fragment {
         return view;
     }
 
-    private void SetUpViewPager(ViewPager viewPager, TabLayout tabs, Fragment fragment) {
+    private void SetUpViewPager(ViewPager viewPager, TabLayout tabs) {
 
-        if (fragment != null) {
+        //if (fragment != null) {
             adapter = new Adapter(getChildFragmentManager());
             tabs.setupWithViewPager(viewPager);
             viewPager.setAdapter(adapter);
             tabs.getTabAt(0).setIcon(R.drawable.ic_assignment_ind_black);
             tabs.getTabAt(1).setIcon(R.drawable.ic_caregiver);
-        }
+        //}
 
     }
 
@@ -125,11 +119,9 @@ public class InformationPSFragment extends Fragment {
             switch (position) {
                 case 0:
                     InformationPatientPSFragment informationPatientPSFragment = new InformationPatientPSFragment();
-                    informationPatientPSFragment.setArguments(args);
                     return informationPatientPSFragment;
                 case 1:
                     InformationCarerPSFragment informationCarerPSFragment = new InformationCarerPSFragment();
-                    informationCarerPSFragment.setArguments(args);
                     return informationCarerPSFragment;
 
             }
