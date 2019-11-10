@@ -183,11 +183,11 @@ public class InformationPatientPSFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_ps_information_patient, container, false);
         ButterKnife.bind(this, view);
         Bundle bundle = getArguments();
-        /*if (bundle!=null){
+        if (bundle!=null){
             patient = (Patient) bundle.getSerializable("patient");
             Glide.with(getActivity()).load(patient.getUriImg()).fitCenter().into(imgprofile);
             initDatas();
-        }*/
+        }
         logicButtonCalendar(view);
         logicButtonDateDiagnosis(view);
         dropdownMenu(view);

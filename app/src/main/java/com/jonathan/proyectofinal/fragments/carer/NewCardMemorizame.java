@@ -1,15 +1,19 @@
 package com.jonathan.proyectofinal.fragments.carer;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -23,6 +27,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,6 +37,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.data.Admin;
 import com.jonathan.proyectofinal.data.HealthcareProfessional;
@@ -41,8 +49,12 @@ import com.jonathan.proyectofinal.interfaces.IMainCarer;
 import com.jonathan.proyectofinal.tools.Constants;
 import com.jonathan.proyectofinal.ui.HealthProfessionalActivity;
 
+import java.util.Locale;
+import java.util.UUID;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class NewCardMemorizame extends Fragment {
     public NewCardMemorizame(){}
@@ -59,6 +71,8 @@ public class NewCardMemorizame extends Fragment {
     StorageReference storageReference;
     Uri uriImage;
     Patient patient = new Patient();
+
+    public static final int REQUEST_CODE2 = 10;
 
     private IMainCarer iMainHealthProfessional;
 
@@ -78,6 +92,8 @@ public class NewCardMemorizame extends Fragment {
     TextInputEditText answer4Patient;
     @BindView(R.id.edit_correct_answer)
     AutoCompleteTextView correctAnswerPatient;
+    @BindView(R.id.profile_image)
+    CircleImageView addImage;
     Bundle args = new Bundle();
 
 
@@ -103,11 +119,10 @@ public class NewCardMemorizame extends Fragment {
         patientUID = firebaseUser.getUid();
         db = FirebaseFirestore.getInstance();
         storageReference = FirebaseStorage.getInstance().getReference();
-        uriImage = Uri.parse("android.resource://" + getActivity().getPackageName() +"/"+R.drawable.avatar_patient);
-        //dropdownMenu(view);
-        //logicButtonCalendar(view);
+
         //verifiFieds();
         ButterKnife.bind(this, view);
+        dropdownMenu(view);
 
 
         btnSave.setOnClickListener(new View.OnClickListener() {
@@ -119,22 +134,119 @@ public class NewCardMemorizame extends Fragment {
                 if (flag2){
 
                     String option= "option";
+                    saveMemorizame();
                     Alert(option);
                 }
                 else {
 
-                    String option= "option";
-                    Alert(option);
-
-                   // Toast.makeText(context, getResources().getString(R.string.complete_field_please), Toast.LENGTH_SHORT).show();
-                }
+                     }
             }
         });
 
+        logicImageProfile();
         return view;
     }
 
+    private void dropdownMenu(View view) {
+        String[] correctAnswerArray ={"1","2","3","4"};
+        ArrayAdapter<String> arrayAdapter= new ArrayAdapter<>(getActivity(),
+                R.layout.dropdown_menu_popup_item,correctAnswerArray);
+        correctAnswerPatient.setAdapter(arrayAdapter);
 
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+     if (requestCode == REQUEST_CODE2 && resultCode == Activity.RESULT_OK){
+        uriImage = data.getData();
+        if (uriImage != null ){
+            Glide.with(getActivity()).load(uriImage).fitCenter().into(addImage);
+        }
+        //profileImage.setImageURI(uriImage);
+    }
+    }
+
+    private void logicImageProfile() {
+        addImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Intent to tour the gallery
+                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                // Accept all kinds of images
+                intent.setType("image/*");
+                //If you have several types of viewers, it will ask which one to start with
+                startActivityForResult(intent.createChooser(intent,getResources().getString(R.string.select_photo)),REQUEST_CODE2);
+            }
+        });
+    }
+
+    public void saveMemorizame(){
+
+
+//region for flags
+        HealthProfessionalActivity healthProfessionalActivity = new HealthProfessionalActivity();
+
+        healthProfessionalActivity=(HealthProfessionalActivity)getActivity();
+        int h=healthProfessionalActivity.flagActivity;
+        Toast.makeText(getActivity(), "Memorizame"+h, Toast.LENGTH_SHORT).show();
+        String categoria="";
+        switch (h){
+            case 1:
+                categoria="Family";
+                break;
+            case 2:
+                categoria="Pets";
+                break;
+            case 3:
+                categoria="Home";
+                break;
+            case 4:
+                categoria="Places";
+                break;
+
+        }
+        //endregion
+        //region for logic save
+
+        final String categoria2= categoria;
+
+        if (uriImage!= null){
+            final String uuidGenerated = createTransactionID();
+            memorizame.setUuidGenerated(uuidGenerated);
+
+            final StorageReference imgRef= storageReference.child(categoria+"/"+uuidGenerated+".jpg");
+            imgRef.putFile(uriImage)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
+                            while (!uri.isComplete());
+                            Uri url= uri.getResult();
+                            memorizame.setUriImg(url.toString());
+                            db.collection(Constants.Memorizame).document(patient.getPatientUID())
+                                    .collection(categoria2).document(uuidGenerated).set(memorizame)
+                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            Toast.makeText(getActivity(), "Tarjeta Memorizame guardada exitosamente", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                        }
+                    });
+
+
+
+        }
+
+
+
+
+        //endregion
+    }
+    public String createTransactionID(){
+        return UUID.randomUUID().toString().replaceAll("-", "").toUpperCase();
+    }
 
     public void Alert(String option) {
 
@@ -154,6 +266,7 @@ public class NewCardMemorizame extends Fragment {
                 btn1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+
                         translation();
                         alertDialog.dismiss();
                     }
@@ -220,19 +333,28 @@ public class NewCardMemorizame extends Fragment {
         String correct = correctAnswerPatient.getText().toString();
 
         if (!question.isEmpty() && !answer1.isEmpty() && !answer2.isEmpty() && !answer3.isEmpty() &&
-                !answer4.isEmpty() && !correct.isEmpty()) {
+                !answer4.isEmpty() && !correct.isEmpty() && uriImage!=null) {
+
             memorizame.setQuestion(question);
             memorizame.setAnswer1(answer1);
             memorizame.setAnswer2(answer2);
             memorizame.setAnswer3(answer3);
             memorizame.setAnswer4(answer4);
-            memorizame.setCorrectAnswer(correctAnswer=Integer.parseInt(correct));
+            memorizame.setCorrectAnswer(correct);
             memorizame.setPatientUID(patientUID);
 
 
 
              return flag = true;
         } else {
+            if (uriImage==null){
+                Toast.makeText(getActivity(), "Agregue imagen", Toast.LENGTH_SHORT).show();
+
+            }
+            else {
+                Toast.makeText(context, getResources().getString(R.string.complete_field_please), Toast.LENGTH_SHORT).show();
+
+            }
              return flag = false;
 
 

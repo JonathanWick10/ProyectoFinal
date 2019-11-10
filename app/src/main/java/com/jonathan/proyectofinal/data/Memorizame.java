@@ -1,5 +1,6 @@
 package com.jonathan.proyectofinal.data;
 
+import android.net.Uri;
 import android.widget.ImageView;
 
 public class Memorizame {
@@ -9,15 +10,17 @@ public class Memorizame {
     private String answer2;
     private String answer3;
     private String answer4;
-    private int correctAnswer;
-    private ImageView img;
+    private String correctAnswer;
+    private String uriImg;
+    private String uuidGenerated;
 
     public Memorizame() {
     }
 
 
 
-    public Memorizame(String patientUID, String question, String answer1, String answer2, String answer3, String answer4, int correctAnswer, ImageView img) {
+    public Memorizame(String patientUID, String question, String answer1, String answer2,
+                      String answer3, String answer4, String correctAnswer, String uriImg, String uuidGenerated) {
         this.patientUID = patientUID;
         this.question = question;
         this.answer1 = answer1;
@@ -25,7 +28,8 @@ public class Memorizame {
         this.answer3 = answer3;
         this.answer4 = answer4;
         this.correctAnswer = correctAnswer;
-        this.img = img;
+        this.uriImg = uriImg;
+        this.uuidGenerated= uuidGenerated;
     }
 
     //region getter and setter
@@ -77,22 +81,29 @@ public class Memorizame {
         this.answer4 = answer4;
     }
 
-    public int getCorrectAnswer() {
+    public String getCorrectAnswer() {
         return correctAnswer;
     }
 
-    public void setCorrectAnswer(int correctAnswer) {
+    public void setCorrectAnswer(String correctAnswer) {
         this.correctAnswer = correctAnswer;
     }
 
-    public ImageView getImg() {
-        return img;
+    public String getUriImg() {
+        return uriImg;
     }
 
-    public void setImg(ImageView img) {
-        this.img = img;
+    public void setUriImg(String uriImg) {
+        this.uriImg = uriImg;
     }
 
+    public String getUuidGenerated() {
+        return uuidGenerated;
+    }
+
+    public void setUuidGenerated(String uuidGenerated) {
+        this.uuidGenerated = uuidGenerated;
+    }
     //endregion
 
     @Override
@@ -105,7 +116,6 @@ public class Memorizame {
                 ", answer3='" + answer3 + '\'' +
                 ", answer4='" + answer4 + '\'' +
                 ", correctAnswer=" + correctAnswer +
-                ", img=" + img +
                 '}';
     }
 }

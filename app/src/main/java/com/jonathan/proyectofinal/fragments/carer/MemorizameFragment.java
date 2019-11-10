@@ -51,6 +51,7 @@ public class MemorizameFragment extends Fragment {
         family.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 mIMainCarer.inflateFragment(getString(R.string.tab_family_questions));
             }
         });

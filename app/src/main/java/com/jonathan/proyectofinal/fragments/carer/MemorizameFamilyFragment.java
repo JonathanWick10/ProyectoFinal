@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -34,6 +36,7 @@ import com.jonathan.proyectofinal.data.Memorizame;
 import com.jonathan.proyectofinal.fragments.hp.PatientsListFragment;
 import com.jonathan.proyectofinal.interfaces.IMainCarer;
 import com.jonathan.proyectofinal.tools.Constants;
+import com.jonathan.proyectofinal.ui.HealthProfessionalActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,6 +64,8 @@ public class MemorizameFamilyFragment extends Fragment {
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
+    @BindView(R.id.title_add_image)
+    TextView titleAddImage;
 
     private MemorizameFamilyGridAdapter adapter;
     private MemorizameFamilyGridAdapter.ISelectionMemorizame iSelectionMemorizame;
@@ -82,6 +87,31 @@ public class MemorizameFamilyFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_cu_memorizame_family,container,false);
+        ButterKnife.bind(this, view);
+
+//region for flags
+        HealthProfessionalActivity healthProfessionalActivity = new HealthProfessionalActivity();
+        healthProfessionalActivity=(HealthProfessionalActivity)getActivity();
+        int h=healthProfessionalActivity.flagActivity;
+        Toast.makeText(getActivity(), "Memorizame"+h, Toast.LENGTH_SHORT).show();
+        switch (h){
+            case 1:
+                titleAddImage.setText("Agregar pregunta de familia");
+                break;
+            case 2:
+                titleAddImage.setText("Agregar pregunta de mascotas");
+                break;
+            case 3:
+                titleAddImage.setText("Agregar pregunta de hogar");
+                break;
+            case 4:
+                titleAddImage.setText("Agregar pregunta de lugar");
+                break;
+
+        }
+        //endregion
+
+
         addquestion = view.findViewById(R.id.cv_add_image);
         addquestion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,7 +127,8 @@ public class MemorizameFamilyFragment extends Fragment {
         db = FirebaseFirestore.getInstance();
 
         progressDialog = new ProgressDialog(getActivity());
-        ButterKnife.bind(this, view);
+
+
 
 
         initAdapter();

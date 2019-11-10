@@ -56,6 +56,7 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
 
     Fragment change = null;
     FragmentTransaction transaction;
+    public int flagActivity=0;
     //  String patientUID = "";
     String patientIdentification = "", patientUID = "";
     @BindView(R.id.second_drawer_layout_hp)
@@ -70,6 +71,10 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
     Patient patientSendFragment = new Patient();
     FirebaseFirestore db;
     HealthcareProfessional hp = new HealthcareProfessional();
+
+    public void setFlag(int flag){
+        flagActivity=flag;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -183,26 +188,32 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
         else if(fragmentTag.equals(getString(R.string.tab_family_questions))){
             change = new MemorizameFamilyFragment();
             change.setArguments(args);
+            setFlag(1);
             transaction.replace(R.id.containerMemorizame,change).commit();
         }
-        else if(fragmentTag.equals(getString(R.string.tab_family_questions))){
+    /*    else if(fragmentTag.equals(getString(R.string.tab_family_questions))){
             change = new MemorizameFamilyFragment();
             change.setArguments(args);
             transaction.replace(R.id.containerMemorizame,change).commit();
         }
+
+     */
         else if(fragmentTag.equals(getString(R.string.tab_pets_questions))){
-            change = new MemorizamePetsFragment();
+            change = new MemorizameFamilyFragment();
             change.setArguments(args);
+            setFlag(2);
             transaction.replace(R.id.containerMemorizame,change).commit();
         }
         else if(fragmentTag.equals(getString(R.string.tab_home_questions))){
-            change = new MemorizameHomeFragment();
+            change = new MemorizameFamilyFragment();
             change.setArguments(args);
+            setFlag(3);
             transaction.replace(R.id.containerMemorizame,change).commit();
         }
         else if(fragmentTag.equals(getString(R.string.tab_places_questions))){
-            change = new MemorizamePlacesFragment();
+            change = new MemorizameFamilyFragment();
             change.setArguments(args);
+            setFlag(4);
             transaction.replace(R.id.containerMemorizame,change).commit();
         }
         else if(fragmentTag.equals(getString(R.string.family_questions_img))){
