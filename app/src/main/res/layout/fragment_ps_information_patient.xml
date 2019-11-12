@@ -261,7 +261,7 @@
                             style="@style/StyleCardViewDescriptions"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/family_phone_number"
+                            android:text="@string/phone_number"
                             android:textColor="@color/colorPrimaryDark"></TextView>
 
                         <TextView
@@ -269,7 +269,7 @@
                             style="@style/StyleCardViewTitles"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/family_phone_number"></TextView>
+                            android:text="@string/phone_number"></TextView>
 
                     </LinearLayout>
 

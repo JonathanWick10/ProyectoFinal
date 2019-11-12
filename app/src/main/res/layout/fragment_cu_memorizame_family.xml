@@ -8,20 +8,6 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-<!--
-    <fragment
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/fragmentList"
-        android:name="com.jonathan.proyectofinal.fragments.carer.MemorizameFamilyFragmentGrid"
-        tools:layout="@layout/fragment_memorizame_grid"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="2dp"
-        android:drawSelectorOnTop="false"
-
-        />
-
-        -->
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
@@ -33,6 +19,7 @@
             android:drawSelectorOnTop="false"
             tools:context=".fragments.carer.MemorizameFamilyFragmentGrid"
             android:background="@color/white"
+            tools:listitem="@layout/listview_memorizame"
             />
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cv_add_image"
@@ -42,12 +29,14 @@
             android:layout_below="@id/recyclerView">
 
             <ImageView
+                android:id="@+id/iv_question"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/oneHundredNinetyFour"
                 android:src="@drawable/img_family_question"
                 android:scaleType="centerCrop"/>
 
             <TextView
+                android:id="@+id/title_add_image"
                 style="@style/StyleSubsCardView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

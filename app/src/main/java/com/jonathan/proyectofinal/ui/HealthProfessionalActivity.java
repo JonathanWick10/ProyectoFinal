@@ -43,6 +43,7 @@ import com.jonathan.proyectofinal.fragments.carer.MemorizamePlacesFragment;
 import com.jonathan.proyectofinal.fragments.carer.NewCardMemorizame;
 import com.jonathan.proyectofinal.fragments.hp.CognitiveTherapyPSFragment;
 import com.jonathan.proyectofinal.fragments.hp.InformationCarerPSFragment;
+import com.jonathan.proyectofinal.fragments.hp.InformationPSFragment;
 import com.jonathan.proyectofinal.fragments.hp.InformationPatientPSFragment;
 import com.jonathan.proyectofinal.fragments.hp.MotorTherapyPSFragment;
 import com.jonathan.proyectofinal.interfaces.IMainCarer;
@@ -55,7 +56,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class HealthProfessionalActivity extends AppCompatActivity implements IMainCarer, NavigationView.OnNavigationItemSelectedListener {
 
     Fragment change = null;
+    Fragment contentLayout = null;
     FragmentTransaction transaction;
+    public int flagActivity=0;
     //  String patientUID = "";
     String patientIdentification = "", patientUID = "";
     @BindView(R.id.second_drawer_layout_hp)
@@ -70,6 +73,11 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
     Patient patientSendFragment = new Patient();
     FirebaseFirestore db;
     HealthcareProfessional hp = new HealthcareProfessional();
+    Carer carer = new Carer();
+
+    public void setFlag(int flag){
+        flagActivity=flag;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,6 +118,18 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
                         }
                     }
                 });
+        db.collection(Constants.Carers).document(firebaseUser.getUid()).get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()){
+                            carer = documentSnapshot.toObject(Carer.class);
+                            name_user.setText(carer.getFirstName()+" "+carer.getLastName());
+                            email_user.setText(carer.getEmail());
+                            Glide.with(HealthProfessionalActivity.this).load(carer.getUriImg()).fitCenter().into(image_user);
+                        }
+                    }
+                });
         //endregion
         BottomNavigationView navigationView = findViewById(R.id.navigation_health_professional);
         //navigationView.setOnNavigationItemSelectedListener(navListener);
@@ -120,7 +140,6 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
             patientSendFragment = (Patient) args.getSerializable("patient");
             args.putSerializable("patient",patientSendFragment);
         }
-        Toast.makeText(this, "patientIdentification:  "+patientIdentification, Toast.LENGTH_LONG).show();
     }
 
 
@@ -151,12 +170,12 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
     public void inflateFragment(String fragmentTag) {
         transaction = getSupportFragmentManager().beginTransaction();
         // Listen to the Button Call for other Fragments in different Views
-        if(fragmentTag.equals(getString(R.string.patient))){
+        /*if(fragmentTag.equals("patient1")){
             change = new InformationPatientPSFragment();
-            change.setArguments(args);
-            transaction.replace(R.id.containerPageInformationPS,change).commit();
+            contentLayout = new InformationPSFragment();
+            transaction.replace(R.id.info_patient,change).commit();
         }
-        else if(fragmentTag.equals("patient2")){
+        else */if(fragmentTag.equals("patient2")){
             change = new InformationPatientPSFragment();
             change.setArguments(args);
             transaction.replace(R.id.info_patient,change).commit();
@@ -184,26 +203,32 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
         else if(fragmentTag.equals(getString(R.string.tab_family_questions))){
             change = new MemorizameFamilyFragment();
             change.setArguments(args);
+            setFlag(1);
             transaction.replace(R.id.containerMemorizame,change).commit();
         }
-        else if(fragmentTag.equals(getString(R.string.tab_family_questions))){
+    /*    else if(fragmentTag.equals(getString(R.string.tab_family_questions))){
             change = new MemorizameFamilyFragment();
             change.setArguments(args);
             transaction.replace(R.id.containerMemorizame,change).commit();
         }
+
+     */
         else if(fragmentTag.equals(getString(R.string.tab_pets_questions))){
-            change = new MemorizamePetsFragment();
+            change = new MemorizameFamilyFragment();
             change.setArguments(args);
+            setFlag(2);
             transaction.replace(R.id.containerMemorizame,change).commit();
         }
         else if(fragmentTag.equals(getString(R.string.tab_home_questions))){
-            change = new MemorizameHomeFragment();
+            change = new MemorizameFamilyFragment();
             change.setArguments(args);
+            setFlag(3);
             transaction.replace(R.id.containerMemorizame,change).commit();
         }
         else if(fragmentTag.equals(getString(R.string.tab_places_questions))){
-            change = new MemorizamePlacesFragment();
+            change = new MemorizameFamilyFragment();
             change.setArguments(args);
+            setFlag(4);
             transaction.replace(R.id.containerMemorizame,change).commit();
         }
         else if(fragmentTag.equals(getString(R.string.family_questions_img))){
@@ -215,6 +240,11 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
             change = new MemorizameFragment();
             transaction.replace(R.id.containerMemorizame,change).commit();
         }
+        else if(fragmentTag.equals("memorizamee")){
+            change = new NewCardMemorizame();
+            transaction.replace(R.id.containerMemorizame,change).commit();
+        }
+
     }
 
     @Override

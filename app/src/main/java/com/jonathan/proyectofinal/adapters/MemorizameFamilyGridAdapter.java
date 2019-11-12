@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.data.Memorizame;
 
@@ -90,7 +91,7 @@ public class MemorizameFamilyGridAdapter extends RecyclerView.Adapter<Memorizame
         public void setData(Memorizame item) {
             this.item = item;
             number.setText(item.getQuestion());
-            photo = item.getImg();
+            Glide.with(context).load(item.getUriImg()).fitCenter().into(photo);
         }
     }
     //endregion

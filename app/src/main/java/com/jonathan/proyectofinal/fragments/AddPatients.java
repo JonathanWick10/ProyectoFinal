@@ -147,7 +147,6 @@ public class AddPatients extends Fragment {
     String uIDPatient;
     HealthcareProfessional hp = new HealthcareProfessional();
     Carer carer = new Carer();
-    ProgressDialog progressDialog;
     //endregion
 
     @Nullable
@@ -160,8 +159,6 @@ public class AddPatients extends Fragment {
         firebaseUser = firebaseAuth.getCurrentUser();
         uIDHPoCarer = firebaseUser.getUid();
         db = FirebaseFirestore.getInstance();
-        progressDialog = new ProgressDialog(getActivity());
-        uriImage = Uri.parse("android.resource://" + getActivity().getPackageName() +"/"+R.drawable.avatar_patient);
         dropdownMenu(view);
         logicButtonSave();
         logicImageProfile();
@@ -224,8 +221,8 @@ public class AddPatients extends Fragment {
             public void onClick(View view) {
                 boolean flag2 = setPojoPatients();
                 if (flag2) {
-                    progressDialog.setMessage("Realizando registro en línea");
-                    progressDialog.show();
+                    final ProgressDialog progressDialog = ProgressDialog.show(getActivity(),
+                            "Brainmher","Realizando registro en línea");
 
                     firebaseAuth.createUserWithEmailAndPassword(patient.getEmail(),patient.getPassword())
                             .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -245,6 +242,32 @@ public class AddPatients extends Fragment {
                                         uIDPatient = ures.getUid();
                                         patient.setPatientUID(uIDPatient);
                                         if (uriImage!=null){
+                                            final StorageReference imgRef = storageReference.child("Users/Patients/"+patient.getPatientUID()+".jpg");
+                                            imgRef.putFile(uriImage)
+                                                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                                        @Override
+                                                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                                            Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
+                                                            while(!uri.isComplete());
+                                                            Uri url = uri.getResult();
+                                                            patient.setUriImg(url.toString());
+                                                            db.collection(Constants.Patients).document(patient.getPatientUID()).set(patient)
+                                                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                        @Override
+                                                                        public void onSuccess(Void aVoid) {
+
+                                                                        }
+                                                                    })
+                                                                    .addOnFailureListener(new OnFailureListener() {
+                                                                        @Override
+                                                                        public void onFailure(@NonNull Exception e) {
+                                                                            Log.d("message: ", e.toString());
+                                                                        }
+                                                                    });
+                                                        }
+                                                    });
+                                        }else{
+                                            uriImage = Uri.parse("android.resource://" + getActivity().getPackageName() +"/"+R.drawable.avatar_patient);
                                             final StorageReference imgRef = storageReference.child("Users/Patients/"+patient.getPatientUID()+".jpg");
                                             imgRef.putFile(uriImage)
                                                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {

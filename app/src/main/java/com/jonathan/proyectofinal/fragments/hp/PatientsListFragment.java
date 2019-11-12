@@ -31,6 +31,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.adapters.PatientsAdapter;
 import com.jonathan.proyectofinal.data.Carer;
@@ -71,7 +73,6 @@ public class PatientsListFragment extends Fragment {
     String userHPoCarer = "";
     HealthcareProfessional hp = new HealthcareProfessional();
     Carer carer = new Carer();
-    ProgressDialog progressDialog;
     //endregion
 
     public PatientsListFragment() {
@@ -86,7 +87,6 @@ public class PatientsListFragment extends Fragment {
         user = firebaseAuth.getCurrentUser();
         userHPoCarer = user.getUid();
         db = FirebaseFirestore.getInstance();
-        progressDialog = new ProgressDialog(getActivity());
         reference();
 
         return view;
@@ -105,7 +105,6 @@ public class PatientsListFragment extends Fragment {
         iSelectionPatient = new PatientsAdapter.ISelectionPatient() {
             @Override
             public void clickItem(Patient patient) {
-                Toast.makeText(getActivity(), patient.getIdentification() + " / " + patient.getFirstName(), Toast.LENGTH_SHORT).show();
                 Intent goPatient = new Intent(getActivity(), HealthProfessionalActivity.class);
                 Bundle patientSend = new Bundle();
                 patientSend.putSerializable("patient", patient);
@@ -125,8 +124,8 @@ public class PatientsListFragment extends Fragment {
                 alerta.setPositiveButton(getString(R.string.delete), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        progressDialog.setMessage("Eliminando registro en línea");
-                        progressDialog.show();
+                        final ProgressDialog progressDialog = ProgressDialog.show(getActivity(),
+                                "Brainmher","Eliminando registro en línea");
 
                         firebaseAuth.signInWithEmailAndPassword(patient.getEmail(), patient.getPassword())
                                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -135,6 +134,14 @@ public class PatientsListFragment extends Fragment {
                                         if (task.isSuccessful()) {
                                             AuthResult itask = task.getResult();
                                             FirebaseUser ures = itask.getUser();
+                                            StorageReference storageReference = FirebaseStorage.getInstance().getReference();
+                                            StorageReference deleteImage = storageReference.child("Users/Patients/"+patient.getPatientUID()+".jpg");
+                                            deleteImage.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                @Override
+                                                public void onSuccess(Void aVoid) {
+
+                                                }
+                                            });
                                             db.collection(Constants.Patients).document(patient.getPatientUID()).delete()
                                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                         @Override
@@ -204,6 +211,8 @@ public class PatientsListFragment extends Fragment {
 
     private void initRecyclerView() {
         //------------------------------------------
+        final ProgressDialog progressDialog = ProgressDialog.show(getActivity(),
+                "Brainmher","Consultando registros en línea");
         recyclerView.setLayoutManager(linearLayoutManager);
         String uid = user.getUid();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -231,6 +240,7 @@ public class PatientsListFragment extends Fragment {
                             recyclerView.setVisibility(View.INVISIBLE);
                             noPatient.setVisibility(View.VISIBLE);
                         }
+                        progressDialog.dismiss();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

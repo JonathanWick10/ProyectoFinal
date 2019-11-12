@@ -7,6 +7,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,9 +34,11 @@ import com.jonathan.proyectofinal.adapters.MemorizameFamilyGridAdapter;
 import com.jonathan.proyectofinal.data.Carer;
 import com.jonathan.proyectofinal.data.HealthcareProfessional;
 import com.jonathan.proyectofinal.data.Memorizame;
+import com.jonathan.proyectofinal.data.Patient;
 import com.jonathan.proyectofinal.fragments.hp.PatientsListFragment;
 import com.jonathan.proyectofinal.interfaces.IMainCarer;
 import com.jonathan.proyectofinal.tools.Constants;
+import com.jonathan.proyectofinal.ui.HealthProfessionalActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,6 +66,10 @@ public class MemorizameFamilyFragment extends Fragment {
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
+    @BindView(R.id.title_add_image)
+    TextView titleAddImage;
+    @BindView(R.id.iv_question)
+    ImageView ivQuestion;
 
     private MemorizameFamilyGridAdapter adapter;
     private MemorizameFamilyGridAdapter.ISelectionMemorizame iSelectionMemorizame;
@@ -75,6 +84,9 @@ public class MemorizameFamilyFragment extends Fragment {
     HealthcareProfessional hp = new HealthcareProfessional();
     Carer carer = new Carer();
     ProgressDialog progressDialog;
+    Patient patient = new Patient();
+    String categoria="";
+    IMainCarer iMainCarer;
     //endregion
 
 
@@ -82,6 +94,43 @@ public class MemorizameFamilyFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_cu_memorizame_family,container,false);
+        ButterKnife.bind(this, view);
+
+        Bundle bundle = getArguments();
+        if (bundle!=null){
+            patient = (Patient) bundle.getSerializable("patient");
+        }
+//region for flags
+        HealthProfessionalActivity healthProfessionalActivity = new HealthProfessionalActivity();
+        healthProfessionalActivity=(HealthProfessionalActivity)getActivity();
+        int h=healthProfessionalActivity.flagActivity;
+
+        switch (h){
+            case 1:
+                categoria="Family";
+                ivQuestion.setImageResource(R.drawable.img_family_question);
+                titleAddImage.setText("Agregar pregunta de familia");
+                break;
+            case 2:
+                categoria="Pets";
+                ivQuestion.setImageResource(R.drawable.img_pets_question);
+                titleAddImage.setText("Agregar pregunta de mascotas");
+                break;
+            case 3:
+                categoria="Home";
+                ivQuestion.setImageResource(R.drawable.img_home_question);
+                titleAddImage.setText("Agregar pregunta de hogar");
+                break;
+            case 4:
+                categoria="Places";
+                ivQuestion.setImageResource(R.drawable.img_places_question);
+                titleAddImage.setText("Agregar pregunta de lugar");
+                break;
+
+        }
+        //endregion
+
+
         addquestion = view.findViewById(R.id.cv_add_image);
         addquestion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,18 +146,30 @@ public class MemorizameFamilyFragment extends Fragment {
         db = FirebaseFirestore.getInstance();
 
         progressDialog = new ProgressDialog(getActivity());
-        ButterKnife.bind(this, view);
+
+
 
 
         initAdapter();
+        logicEventSelecItem();
         initRecyclerView();
       //endregion
         return view;
     }
 
+    private void logicEventSelecItem() {
+        iSelectionMemorizame = new MemorizameFamilyGridAdapter.ISelectionMemorizame() {
+            @Override
+            public void clickItem(Memorizame memorizame) {
+                iMainCarer.inflateFragment("memorizamee");
+            }
+        };
+    }
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        iMainCarer = (IMainCarer) getActivity();
         mIMainCarer = (IMainCarer) getActivity();
     }
 
@@ -128,14 +189,11 @@ public class MemorizameFamilyFragment extends Fragment {
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),3));//cambiar numero de columnas
 
         String uid = user.getUid();
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        //FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         CollectionReference collectionReferenceMemorizame = db.collection(Constants.Memorizame);
 
-        collectionReferenceMemorizame
-                .whereArrayContains("assigns", uid)
-                .orderBy("firstName")
-                .get()
+        collectionReferenceMemorizame.document(patient.getPatientUID()).collection(categoria).get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
