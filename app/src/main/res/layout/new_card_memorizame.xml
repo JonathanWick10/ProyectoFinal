@@ -17,6 +17,7 @@
             android:layout_margin="@dimen/sixteen">
 
             <TextView
+                android:id="@+id/tv_title_question"
                 style="@style/StyleTextViewTitles"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

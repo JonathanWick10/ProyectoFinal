@@ -834,5 +834,6 @@
     <string name="no">No</string>
     <string name="ask_dialog_memorizame">Do you want to add another image?</string>
     <string name="no_healthcarer_pro">there are no health carer professionals</string>
+    <string name="no_notifications">There are not notifications</string>
 
 </resources>

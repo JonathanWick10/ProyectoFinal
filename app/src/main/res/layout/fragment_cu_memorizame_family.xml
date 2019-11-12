@@ -42,6 +42,7 @@
             android:layout_below="@id/recyclerView">
 
             <ImageView
+                android:id="@+id/iv_question"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/oneHundredNinetyFour"
                 android:src="@drawable/img_family_question"

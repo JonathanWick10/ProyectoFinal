@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -67,6 +68,8 @@ public class MemorizameFamilyFragment extends Fragment {
     RecyclerView recyclerView;
     @BindView(R.id.title_add_image)
     TextView titleAddImage;
+    @BindView(R.id.iv_question)
+    ImageView ivQuestion;
 
     private MemorizameFamilyGridAdapter adapter;
     private MemorizameFamilyGridAdapter.ISelectionMemorizame iSelectionMemorizame;
@@ -105,18 +108,22 @@ public class MemorizameFamilyFragment extends Fragment {
         switch (h){
             case 1:
                 categoria="Family";
+                ivQuestion.setImageResource(R.drawable.img_family_question);
                 titleAddImage.setText("Agregar pregunta de familia");
                 break;
             case 2:
                 categoria="Pets";
+                ivQuestion.setImageResource(R.drawable.img_pets_question);
                 titleAddImage.setText("Agregar pregunta de mascotas");
                 break;
             case 3:
                 categoria="Home";
+                ivQuestion.setImageResource(R.drawable.img_home_question);
                 titleAddImage.setText("Agregar pregunta de hogar");
                 break;
             case 4:
                 categoria="Places";
+                ivQuestion.setImageResource(R.drawable.img_places_question);
                 titleAddImage.setText("Agregar pregunta de lugar");
                 break;
 

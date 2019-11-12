@@ -1,208 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.patient.MedicamentsChildFragment">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardActivityMedicaments"
-        style="@style/StyleCardView"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        app:strokeColor="@color/colorPrimaryLight"
-        app:strokeWidth="@dimen/two">
+        android:layout_height="match_parent">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/txt_no_medicaments"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="sans-serif-smallcaps"
+            android:gravity="center"
+            android:text="@string/no_notifications"
+            android:textSize="35dp"
+            android:textStyle="bold"
+            android:visibility="gone"></TextView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_notifications_medicaments"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            tools:listitem="@layout/item_medicament_card" />
+    </RelativeLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/iv_medicament_miniature"
-                    android:layout_width="@dimen/oneHundredFifty"
-                    android:layout_height="@dimen/oneHundredFifty"
-                    android:src="@drawable/img_losartan" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="@dimen/sixteen"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/lbl_medicament_name"
-                        style="@style/StyleCardViewTitles"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/thirty"
-                        android:text="Losartan" />
-
-                    <TextView
-                        style="@style/StyleCardViewSubTitles"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/twentyFive"
-                        android:layout_marginTop="@dimen/two"
-                        android:text="@string/lbl_description" />
-
-                    <TextView
-                        android:id="@+id/lbl_data_description"
-                        style="@style/StyleCardViewDescriptions"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Medicamento para regular la presión arterial." />
-
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/expandableMedicamentView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/sixteen"
-                android:layout_marginRight="@dimen/sixteen"
-                android:layout_marginBottom="@dimen/sixteen"
-                android:orientation="vertical"
-                android:visibility="gone">
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="@android:color/darker_gray" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/twentyFive"
-                    android:layout_marginTop="@dimen/ten"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/lbl_recipe_date"
-                        style="@style/StyleCardViewSubTitles"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="@string/lbl_recibe_date" />
-
-                    <TextView
-                        android:id="@+id/data_recipe_date"
-                        style="@style/StyleCardViewDescriptions"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="28-10-2019" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/twentyFive"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/lbl_frequency"
-                        style="@style/StyleCardViewSubTitles"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="@string/lbl_frequency" />
-
-                    <TextView
-                        android:id="@+id/data_frequency"
-                        style="@style/StyleCardViewDescriptions"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="Diariamente" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/twentyFive"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/lbl_dose"
-                        style="@style/StyleCardViewSubTitles"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="@string/lbl_dose" />
-
-                    <TextView
-                        android:id="@+id/data_dose"
-                        style="@style/StyleCardViewDescriptions"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="1 píldora" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/twentyFive"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/lbl_hours"
-                        style="@style/StyleCardViewSubTitles"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="@string/lbl_hours" />
-
-                    <TextView
-                        android:id="@+id/data_hours"
-                        style="@style/StyleCardViewDescriptions"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="7:00am, 2:00pm" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/twentyFive"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/lbl_statement_medicament"
-                        style="@style/StyleCardViewSubTitles"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="@string/lbl_statement" />
-
-                    <TextView
-                        android:id="@+id/data_statement_medicament"
-                        style="@style/StyleCardViewDescriptions"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="Sin terminar" />
-
-                </LinearLayout>
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@android:color/darker_gray" />
-
-            <LinearLayout
-                style="@style/StyleLayoutButtonActionCardView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.button.MaterialButton
-                    style="@style/StyleTextButtonCardView"
-                    android:id="@+id/btn_show_hide_medicament"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/btn_show_info"/>
-
-            </LinearLayout>
-        </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
-
-</androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
