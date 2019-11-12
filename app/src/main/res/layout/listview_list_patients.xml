@@ -22,7 +22,7 @@
         android:layout_height="match_parent"
         android:layout_marginTop="2dp"
         android:layout_gravity="center_vertical">
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imagePatient"
             android:layout_width="56dp"
             android:layout_height="56dp"
@@ -30,8 +30,7 @@
             android:layout_marginLeft="12dp"
             android:layout_marginRight="8dp"
             android:layout_gravity="center_vertical"
-            android:src="@drawable/avatar_patient"
-            />
+            android:src="@drawable/avatar_patient" />
 
         <TextView
             style="@style/StyleMiniCardViewTitles"

@@ -18,6 +18,8 @@ import com.jonathan.proyectofinal.interfaces.IOnPatientClickListener;
 
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class PatientsAdapter extends RecyclerView.Adapter<PatientsAdapter.PatientViewHolder> {
 
     //region Variables
@@ -72,7 +74,8 @@ public class PatientsAdapter extends RecyclerView.Adapter<PatientsAdapter.Patien
     //region ViewHolder of Recycler
     public class PatientViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView photo, delete;
+        CircleImageView photo;
+        ImageView delete;
         TextView name, identification;
         Patient item;
         View layout;
