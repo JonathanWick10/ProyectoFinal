@@ -31,6 +31,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.adapters.PatientsAdapter;
 import com.jonathan.proyectofinal.data.Carer;
@@ -134,6 +136,14 @@ public class PatientsListFragment extends Fragment {
                                         if (task.isSuccessful()) {
                                             AuthResult itask = task.getResult();
                                             FirebaseUser ures = itask.getUser();
+                                            StorageReference storageReference = FirebaseStorage.getInstance().getReference();
+                                            StorageReference deleteImage = storageReference.child("Users/Patients/"+patient.getPatientUID()+".jpg");
+                                            deleteImage.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                @Override
+                                                public void onSuccess(Void aVoid) {
+
+                                                }
+                                            });
                                             db.collection(Constants.Patients).document(patient.getPatientUID()).delete()
                                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                         @Override
