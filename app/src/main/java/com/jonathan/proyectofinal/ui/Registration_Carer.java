@@ -3,9 +3,6 @@ package com.jonathan.proyectofinal.ui;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDialogFragment;
-import androidx.fragment.app.FragmentManager;
-
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
@@ -26,7 +23,6 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -35,27 +31,17 @@ import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.data.Carer;
-import com.jonathan.proyectofinal.data.HealthcareProfessional;
-import com.jonathan.proyectofinal.data.Patient;
-import com.jonathan.proyectofinal.fragments.AddPatients;
-import com.jonathan.proyectofinal.fragments.general.DatePickerFragment;
 import com.jonathan.proyectofinal.tools.Constants;
-
-import java.util.Arrays;
 import java.util.Calendar;
-import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -150,8 +136,8 @@ public class Registration_Carer extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        Bundle bundle = getIntent().getExtras();
-        AuthCredential credential = bundle.getParcelable("credencial");
+        /*Bundle bundle = getIntent().getExtras();
+        AuthCredential credential = bundle.getParcelable("credencial");*/
         auth = FirebaseAuth.getInstance();
         users = auth.getCurrentUser();
         if (users != null){
