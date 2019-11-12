@@ -159,7 +159,6 @@ public class AddPatients extends Fragment {
         firebaseUser = firebaseAuth.getCurrentUser();
         uIDHPoCarer = firebaseUser.getUid();
         db = FirebaseFirestore.getInstance();
-        uriImage = Uri.parse("android.resource://" + getActivity().getPackageName() +"/"+R.drawable.avatar_patient);
         dropdownMenu(view);
         logicButtonSave();
         logicImageProfile();
@@ -243,6 +242,32 @@ public class AddPatients extends Fragment {
                                         uIDPatient = ures.getUid();
                                         patient.setPatientUID(uIDPatient);
                                         if (uriImage!=null){
+                                            final StorageReference imgRef = storageReference.child("Users/Patients/"+patient.getPatientUID()+".jpg");
+                                            imgRef.putFile(uriImage)
+                                                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                                        @Override
+                                                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                                            Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
+                                                            while(!uri.isComplete());
+                                                            Uri url = uri.getResult();
+                                                            patient.setUriImg(url.toString());
+                                                            db.collection(Constants.Patients).document(patient.getPatientUID()).set(patient)
+                                                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                        @Override
+                                                                        public void onSuccess(Void aVoid) {
+
+                                                                        }
+                                                                    })
+                                                                    .addOnFailureListener(new OnFailureListener() {
+                                                                        @Override
+                                                                        public void onFailure(@NonNull Exception e) {
+                                                                            Log.d("message: ", e.toString());
+                                                                        }
+                                                                    });
+                                                        }
+                                                    });
+                                        }else{
+                                            uriImage = Uri.parse("android.resource://" + getActivity().getPackageName() +"/"+R.drawable.avatar_patient);
                                             final StorageReference imgRef = storageReference.child("Users/Patients/"+patient.getPatientUID()+".jpg");
                                             imgRef.putFile(uriImage)
                                                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
