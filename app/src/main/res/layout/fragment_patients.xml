@@ -29,6 +29,7 @@ android:layout_height="match_parent"
             android:textSize="35dp"
             android:layout_centerInParent="true"
             android:gravity="center"
+            android:visibility="invisible"
             android:textStyle="bold"
             android:fontFamily="sans-serif-smallcaps"
             ></TextView>

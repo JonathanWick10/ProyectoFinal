@@ -73,7 +73,6 @@ public class PatientsListFragment extends Fragment {
     String userHPoCarer = "";
     HealthcareProfessional hp = new HealthcareProfessional();
     Carer carer = new Carer();
-    ProgressDialog progressDialog;
     //endregion
 
     public PatientsListFragment() {
@@ -88,7 +87,6 @@ public class PatientsListFragment extends Fragment {
         user = firebaseAuth.getCurrentUser();
         userHPoCarer = user.getUid();
         db = FirebaseFirestore.getInstance();
-        progressDialog = new ProgressDialog(getActivity());
         reference();
 
         return view;
@@ -126,8 +124,8 @@ public class PatientsListFragment extends Fragment {
                 alerta.setPositiveButton(getString(R.string.delete), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        progressDialog.setMessage("Eliminando registro en línea");
-                        progressDialog.show();
+                        final ProgressDialog progressDialog = ProgressDialog.show(getActivity(),
+                                "Brainmher","Eliminando registro en línea");
 
                         firebaseAuth.signInWithEmailAndPassword(patient.getEmail(), patient.getPassword())
                                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -213,6 +211,8 @@ public class PatientsListFragment extends Fragment {
 
     private void initRecyclerView() {
         //------------------------------------------
+        final ProgressDialog progressDialog = ProgressDialog.show(getActivity(),
+                "Brainmher","Consultando registros en línea");
         recyclerView.setLayoutManager(linearLayoutManager);
         String uid = user.getUid();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -240,6 +240,7 @@ public class PatientsListFragment extends Fragment {
                             recyclerView.setVisibility(View.INVISIBLE);
                             noPatient.setVisibility(View.VISIBLE);
                         }
+                        progressDialog.dismiss();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

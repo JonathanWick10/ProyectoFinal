@@ -147,7 +147,6 @@ public class AddPatients extends Fragment {
     String uIDPatient;
     HealthcareProfessional hp = new HealthcareProfessional();
     Carer carer = new Carer();
-    ProgressDialog progressDialog;
     //endregion
 
     @Nullable
@@ -160,7 +159,6 @@ public class AddPatients extends Fragment {
         firebaseUser = firebaseAuth.getCurrentUser();
         uIDHPoCarer = firebaseUser.getUid();
         db = FirebaseFirestore.getInstance();
-        progressDialog = new ProgressDialog(getActivity());
         uriImage = Uri.parse("android.resource://" + getActivity().getPackageName() +"/"+R.drawable.avatar_patient);
         dropdownMenu(view);
         logicButtonSave();
@@ -224,8 +222,8 @@ public class AddPatients extends Fragment {
             public void onClick(View view) {
                 boolean flag2 = setPojoPatients();
                 if (flag2) {
-                    progressDialog.setMessage("Realizando registro en línea");
-                    progressDialog.show();
+                    final ProgressDialog progressDialog = ProgressDialog.show(getActivity(),
+                            "Brainmher","Realizando registro en línea");
 
                     firebaseAuth.createUserWithEmailAndPassword(patient.getEmail(),patient.getPassword())
                             .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
