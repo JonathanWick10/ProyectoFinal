@@ -49,8 +49,8 @@ public class HeartFragment extends Fragment {
             adapt = new Adapter(getChildFragmentManager());
             tabs.setupWithViewPager(viewPag);
             viewPag.setAdapter(adapt);
-            tabs.getTabAt(0).setIcon(R.drawable.ic_info);
-            tabs.getTabAt(1).setIcon(R.drawable.ic_accessibility_black);
+            tabs.getTabAt(1).setIcon(R.drawable.ic_info);
+            tabs.getTabAt(0).setIcon(R.drawable.ic_accessibility_black);
             tabs.getTabAt(2).setIcon(R.drawable.ic_description);
         }
     }
@@ -67,12 +67,12 @@ public class HeartFragment extends Fragment {
 
             switch (position) {
                 case 0:
-                    InformationCarerFragment informationCarerFragment = new InformationCarerFragment();
-                    return informationCarerFragment;
-
-                case 1:
                     ExerciseCarerFragment exerciseCarerFragment = new ExerciseCarerFragment();
                     return exerciseCarerFragment;
+
+                case 1:
+                    InformationCarerFragment informationCarerFragment = new InformationCarerFragment();
+                    return informationCarerFragment;
 
                 case 2:
                     WarningCarerFragment warningCarerFragment = new WarningCarerFragment();
@@ -92,13 +92,13 @@ public class HeartFragment extends Fragment {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    text1 = getString(R.string.information_carer);
-                    mIMainCarer.inflateFragment(getString(R.string.information_carer));
-                    return text1;
-                case 1:
                     text2 = getString(R.string.exercise_carer);
                     mIMainCarer.inflateFragment(getString(R.string.exercise_carer));
                     return text2;
+                case 1:
+                    text1 = getString(R.string.information_carer);
+                    mIMainCarer.inflateFragment(getString(R.string.information_carer));
+                    return text1;
                 case 2:
                     text3 = getString(R.string.advice_carer);
                     mIMainCarer.inflateFragment(getString(R.string.advice_carer));
