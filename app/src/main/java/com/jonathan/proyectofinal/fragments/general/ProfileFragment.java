@@ -2,17 +2,22 @@ package com.jonathan.proyectofinal.fragments.general;
 
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +27,10 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -30,6 +38,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.data.Admin;
 import com.jonathan.proyectofinal.data.Carer;
@@ -37,6 +47,8 @@ import com.jonathan.proyectofinal.data.HealthcareProfessional;
 import com.jonathan.proyectofinal.data.Patient;
 import com.jonathan.proyectofinal.fragments.admin.AdminAddHealthProfessional;
 import com.jonathan.proyectofinal.tools.Constants;
+import com.jonathan.proyectofinal.ui.MainCarer;
+import com.jonathan.proyectofinal.ui.Registration_Carer;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -126,9 +138,13 @@ public class ProfileFragment extends Fragment {
     MaterialButton btnUpdate;
     String selectedDate;
     String selectedGender;
+    public static final int REQUEST_CODE2 = 10;
     public static final int REQUEST_CODE = 11;
 
     FirebaseFirestore db;
+    Uri uriImage;
+    StorageReference storageReference;
+    final Carer carerr = new Carer();
 
 
     public ProfileFragment() {
@@ -144,8 +160,23 @@ public class ProfileFragment extends Fragment {
         getUserData();
         dropdowns(view);
         logicButtonCalendarDB(view);
+        logicImageProfile();
         verifiFieds();
         return view;
+    }
+
+    private void logicImageProfile() {
+        civProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Intent to tour the gallery
+                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                // Accept all kinds of images
+                intent.setType("image/*");
+                //If you have several types of viewers, it will ask which one to start with
+                startActivityForResult(intent.createChooser(intent,getResources().getString(R.string.select_photo)),REQUEST_CODE2);
+            }
+        });
     }
 
     private void getUserData() {
@@ -165,6 +196,14 @@ public class ProfileFragment extends Fragment {
                                         Admin admin = new Admin();
                                         admin = documentSnapshot.toObject(Admin.class);
                                         setDataAdmins(admin);
+
+                                        btnUpdate.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                final ProgressDialog progressDialog = ProgressDialog.show(getActivity(),
+                                                        "Brainmher","Realizando registro en línea");
+                                            }
+                                        });
                                     }
                                 }
                             });
@@ -186,11 +225,46 @@ public class ProfileFragment extends Fragment {
                     db.collection(Constants.Carers).document(uID).get()
                             .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                                 @Override
-                                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                public void onSuccess(final DocumentSnapshot documentSnapshot) {
+                                    Carer carer = new Carer();
+                                    carer = documentSnapshot.toObject(Carer.class);
+                                    setDataCarer(carer);
                                     if (documentSnapshot.exists()){
-                                        Carer carer = new Carer();
-                                        carer = documentSnapshot.toObject(Carer.class);
-                                        setDataCarer(carer);
+                                        btnUpdate.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                final ProgressDialog progressDialog = ProgressDialog.show(getActivity(),
+                                                        "Brainmher","Realizando registro en línea");
+                                                if (uriImage!=null){
+                                                    final StorageReference imgRef = storageReference.child("Users/Carers/"+carerr.getCarerUId()+".jpg");
+                                                    imgRef.putFile(uriImage)
+                                                            .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                                                @Override
+                                                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                                                    Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
+                                                                    while(!uri.isComplete());
+                                                                    Uri url = uri.getResult();
+                                                                    carerr.setUriImg(url.toString());
+                                                                    db.collection(Constants.Carers).document(carerr.getCarerUId()).set(carerr)
+                                                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                                @Override
+                                                                                public void onSuccess(Void aVoid) {
+                                                                                    Toast.makeText(getActivity(), getResources().getString(R.string.was_saved_succesfully), Toast.LENGTH_SHORT).show();
+                                                                                    progressDialog.dismiss();
+                                                                                }
+                                                                            })
+                                                                            .addOnFailureListener(new OnFailureListener() {
+                                                                                @Override
+                                                                                public void onFailure(@NonNull Exception e) {
+                                                                                    Log.d("message: ", e.toString());
+                                                                                }
+                                                                            });
+                                                                }
+                                                            });
+                                                }
+                                            }
+                                        });
+
                                     }
                                 }
                             });
@@ -453,6 +527,12 @@ public class ProfileFragment extends Fragment {
         if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK){
             selectedDate = data.getStringExtra("selectedDate");
             txtDateBirth.setText(selectedDate);
+        }
+        else if (requestCode == REQUEST_CODE2 && resultCode == Activity.RESULT_OK){
+            uriImage = data.getData();
+            if (uriImage != null ){
+                Glide.with(ProfileFragment.this).load(uriImage).fitCenter().into(civProfile);
+            }
         }
     }
 }
