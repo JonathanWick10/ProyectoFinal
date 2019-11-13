@@ -12,6 +12,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="@dimen/thirty"
+            android:layout_height="@dimen/thirty"
+            android:src="@drawable/ic_highlight_off_white"
+            style="@style/StyleDeleteCardButton"/>
+
         <ImageView
             android:layout_width="match_parent"
             android:id="@+id/img_memorizame"

@@ -400,4 +400,13 @@
         <item name="android:minWidth">200dp</item>
     </style>
 
+    <!-- Standard style for button delete in cardview -->
+    <style name="StyleDeleteCardButton">
+        <item name="android:elevation">@dimen/elevationOne</item>
+        <item name="android:backgroundTint">#6c000000</item>
+        <item name="android:layout_gravity">end</item>
+        <item name="android:layout_marginTop">@dimen/five</item>
+        <item name="android:layout_marginRight">@dimen/five</item>
+    </style>
+
 </resources>
