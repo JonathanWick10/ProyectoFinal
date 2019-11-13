@@ -1,5 +1,6 @@
 package com.jonathan.proyectofinal.adapters;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,11 +17,13 @@ import com.jonathan.proyectofinal.data.HealthcareProfessional;
 import java.util.List;
 
 public class AdminListPSAdapter extends RecyclerView.Adapter<AdminListPSAdapter.Holder> {
+    Context context;
     private List<HealthcareProfessional> list;
     private AdminListPSAdapter.AdminListPSAdapterI adapterI;
 
 
-    public AdminListPSAdapter(List<HealthcareProfessional> list, AdminListPSAdapter.AdminListPSAdapterI adapterI) {
+    public AdminListPSAdapter(Context context,List<HealthcareProfessional> list, AdminListPSAdapter.AdminListPSAdapterI adapterI) {
+        this.context = context;
         this.list = list;
         this.adapterI = adapterI;
     }

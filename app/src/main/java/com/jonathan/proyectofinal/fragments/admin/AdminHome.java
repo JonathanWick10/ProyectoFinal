@@ -79,6 +79,7 @@ public class AdminHome extends AppCompatActivity implements IMainCarer,AdminAddH
     private boolean isFabTapped = false;
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
+    Context context;
     String uIdAdmind;
     ProgressDialog progressDialog;
     FirebaseFirestore db;
@@ -90,6 +91,7 @@ public class AdminHome extends AppCompatActivity implements IMainCarer,AdminAddH
         setContentView(R.layout.activity_admin_home);
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
+        context = this;
         progressDialog = new ProgressDialog(AdminHome.this);
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
@@ -115,172 +117,8 @@ public class AdminHome extends AppCompatActivity implements IMainCarer,AdminAddH
         });
 
         if (savedInstanceState == null) {
-            handleFrame(new AdminListPSFragment(alertDelete()));
+            handleFrame(new AdminListPSFragment());
         }
-    }
-
-    // Interfas para generar alerta de eliminar
-    private AdminListPSAdapter.AdminListPSAdapterI alertDelete() {
-        AdminListPSAdapter.AdminListPSAdapterI psAdapterI = new AdminListPSAdapter.AdminListPSAdapterI() {
-            @Override
-            public void btnEliminar(final HealthcareProfessional pojo) {
-                final AlertDialog alertDialog;
-
-                final AlertDialog.Builder builder = new AlertDialog.Builder(AdminHome.this, R.style.BackgroundRounded);
-
-                String namePatient= pojo.getFirstName()+" "+ pojo.getLastName();
-
-                if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    // only for Lollipop and newer versions
-                    try {
-                        LayoutInflater inflater = AdminHome.this.getLayoutInflater();
-                        View dialogView = inflater.inflate(R.layout.dialog_one_textview_two_buttons, null);
-                        builder.setView(dialogView);
-                        alertDialog = builder.create();
-
-                        Button btn1 = (Button) dialogView.findViewById(R.id.btn1);
-                        btn1.setText(R.string.no);
-                        btn1.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-
-
-                                alertDialog.dismiss();
-                            }
-                        });
-                        Button btn2 = (Button) dialogView.findViewById(R.id.btn2);
-                        btn2.setText(R.string.yes);
-                        btn2.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                progressDialog.setMessage("Eliminando registro en línea");
-                                progressDialog.show();
-                                firebaseAuth.signInWithEmailAndPassword(pojo.getEmail(),pojo.getPassword())
-                                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                                if (task.isSuccessful()){
-                                                    AuthResult itask = task.getResult();
-                                                    FirebaseUser ures = itask.getUser();
-                                                    db.collection(Constants.HealthcareProfesional).document(pojo.getHpUID())
-                                                            .delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                        @Override
-                                                        public void onSuccess(Void aVoid) {
-                                                            Toast.makeText(AdminHome.this, "usuario eliminado", Toast.LENGTH_SHORT).show();
-                                                        }
-                                                    }).addOnFailureListener(new OnFailureListener() {
-                                                        @Override
-                                                        public void onFailure(@NonNull Exception e) {
-                                                            Log.d("Message: ",e.toString());
-                                                        }
-                                                    });
-                                                    ures.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                        @Override
-                                                        public void onComplete(@NonNull Task<Void> task) {
-                                                            Toast.makeText(AdminHome.this, "se elimino", Toast.LENGTH_SHORT).show();
-                                                        }
-                                                    });
-                                                }
-                                            }
-                                        }).addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Log.d("Message: ",e.toString());
-                                    }
-                                });
-
-                                db.collection(Constants.Adminds).document(uIdAdmind).get()
-                                        .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                                            @Override
-                                            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                                if (documentSnapshot.exists()){
-                                                    admin = documentSnapshot.toObject(Admin.class);
-                                                    firebaseAuth.signInWithEmailAndPassword(admin.getEmail(),admin.getPassword())
-                                                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                                                @Override
-                                                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                                                    progressDialog.dismiss();
-                                                                }
-                                                            });
-                                                }
-                                            }
-                                        });
-                                alertDialog.dismiss();
-                            }
-                        });
-                        TextView tvInformation = dialogView.findViewById(R.id.textView);
-                        tvInformation.setText(getString(R.string.message_delete, namePatient));
-                        alertDialog.show();
-
-
-                    } catch (Resources.NotFoundException e) {
-                        e.printStackTrace();
-                    }
-                } else {
-                builder.setTitle(getString(R.string.alert));
-                builder.setMessage(getString(R.string.message_delete,namePatient));
-                builder.setPositiveButton(getString(R.string.delete), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        progressDialog.setMessage("Eliminando registro en línea");
-                        progressDialog.show();
-                        firebaseAuth.signInWithEmailAndPassword(pojo.getEmail(),pojo.getPassword())
-                                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<AuthResult> task) {
-                                        if (task.isSuccessful()){
-                                            AuthResult itask = task.getResult();
-                                            FirebaseUser ures = itask.getUser();
-                                            db.collection(Constants.HealthcareProfesional).document(pojo.getHpUID())
-                                                    .delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                @Override
-                                                public void onSuccess(Void aVoid) {
-                                                    Toast.makeText(AdminHome.this, "usuario eliminado", Toast.LENGTH_SHORT).show();
-                                                }
-                                            }).addOnFailureListener(new OnFailureListener() {
-                                                @Override
-                                                public void onFailure(@NonNull Exception e) {
-                                                    Log.d("Message: ",e.toString());
-                                                }
-                                            });
-                                            ures.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                @Override
-                                                public void onComplete(@NonNull Task<Void> task) {
-                                                    Toast.makeText(AdminHome.this, "se elimino", Toast.LENGTH_SHORT).show();
-                                                }
-                                            });
-                                        }
-                                    }
-                                }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Log.d("Message: ",e.toString());
-                            }
-                        });
-
-                        db.collection(Constants.Adminds).document(uIdAdmind).get()
-                                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                                    @Override
-                                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                        if (documentSnapshot.exists()){
-                                            admin = documentSnapshot.toObject(Admin.class);
-                                            firebaseAuth.signInWithEmailAndPassword(admin.getEmail(),admin.getPassword())
-                                                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                                        @Override
-                                                        public void onComplete(@NonNull Task<AuthResult> task) {
-                                                            progressDialog.dismiss();
-                                                        }
-                                                    });
-                                        }
-                                    }
-                                });
-
-                    }
-                });
-                builder.show();
-            }}
-        };
-        return psAdapterI;
     }
 
     //Método para gestión del click en floating action button
@@ -293,7 +131,7 @@ public class AdminHome extends AppCompatActivity implements IMainCarer,AdminAddH
             floatingActionButton.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_go_back));
         } else {
             bottomAppBar.setFabAlignmentMode(BottomAppBar.FAB_ALIGNMENT_MODE_CENTER);
-            handleFrame(new AdminListPSFragment(alertDelete()));
+            handleFrame(new AdminListPSFragment());
             //handleFrame(new Memorama());
             floatingActionButton.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_person_add));
         }
@@ -362,7 +200,7 @@ public class AdminHome extends AppCompatActivity implements IMainCarer,AdminAddH
     public void inflateFragment(String fragmentTag) {
         if(fragmentTag.equals(getString(R.string.list))){
             bottomAppBar.setFabAlignmentMode(BottomAppBar.FAB_ALIGNMENT_MODE_CENTER);
-            handleFrame(new AdminListPSFragment(alertDelete()));
+            handleFrame(new AdminListPSFragment());
             //handleFrame(new Memorama());
             floatingActionButton.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_person_add));
         }

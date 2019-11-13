@@ -2,6 +2,7 @@ package com.jonathan.proyectofinal.fragments.admin;
 
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -200,6 +201,8 @@ public class AdminAddHealthProfessional extends Fragment {
     public void logicButtonSave(View view) {
         boolean flag2 = setPojoHp();
         if (flag2) {
+            final ProgressDialog progressDialog = ProgressDialog.show(getActivity(),
+                    "Brainmher","Realizando registro en línea");
             //_____________________________________________________________________________________________________
             firebaseAuth.createUserWithEmailAndPassword(hp.getEmail(), hp.getPassword())
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -234,7 +237,7 @@ public class AdminAddHealthProfessional extends Fragment {
                                                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                                 @Override
                                                                 public void onSuccess(Void aVoid) {
-                                                                    Toast.makeText(getActivity(), getResources().getString(R.string.was_saved_succesfully), Toast.LENGTH_SHORT).show();
+
                                                                 }
                                                             })
                                                             .addOnFailureListener(new OnFailureListener() {
@@ -263,6 +266,8 @@ public class AdminAddHealthProfessional extends Fragment {
                                             @Override
                                             public void onComplete(@NonNull Task<AuthResult> task) {
                                                 if (task.isSuccessful()) {
+                                                    progressDialog.dismiss();
+                                                    Toast.makeText(getActivity(),getResources().getString(R.string.was_saved_succesfully), Toast.LENGTH_SHORT).show();
                                                     mIMainCarer.inflateFragment(getString(R.string.list));
                                                 }
                                             }
