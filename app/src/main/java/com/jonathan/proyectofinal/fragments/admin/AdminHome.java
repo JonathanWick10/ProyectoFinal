@@ -16,12 +16,16 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
@@ -41,9 +45,12 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.adapters.AdminListPSAdapter;
 import com.jonathan.proyectofinal.data.Admin;
+import com.jonathan.proyectofinal.data.Carer;
 import com.jonathan.proyectofinal.data.HealthcareProfessional;
 import com.jonathan.proyectofinal.fragments.games.Memorama;
 import com.jonathan.proyectofinal.interfaces.IMainCarer;
@@ -83,7 +90,6 @@ public class AdminHome extends AppCompatActivity implements IMainCarer,AdminAddH
         setContentView(R.layout.activity_admin_home);
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
-        Context context;
         progressDialog = new ProgressDialog(AdminHome.this);
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
@@ -118,10 +124,102 @@ public class AdminHome extends AppCompatActivity implements IMainCarer,AdminAddH
         AdminListPSAdapter.AdminListPSAdapterI psAdapterI = new AdminListPSAdapter.AdminListPSAdapterI() {
             @Override
             public void btnEliminar(final HealthcareProfessional pojo) {
-                AlertDialog.Builder alerta = new AlertDialog.Builder(AdminHome.this);
-                alerta.setTitle(getString(R.string.alert));
-                alerta.setMessage(getString(R.string.message_delete) + " - " + pojo.getFirstName()+" "+ pojo.getLastName());
-                alerta.setPositiveButton(getString(R.string.delete), new DialogInterface.OnClickListener() {
+                final AlertDialog alertDialog;
+
+                final AlertDialog.Builder builder = new AlertDialog.Builder(AdminHome.this, R.style.BackgroundRounded);
+
+                String namePatient= pojo.getFirstName()+" "+ pojo.getLastName();
+
+                if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    // only for Lollipop and newer versions
+                    try {
+                        LayoutInflater inflater = AdminHome.this.getLayoutInflater();
+                        View dialogView = inflater.inflate(R.layout.dialog_one_textview_two_buttons, null);
+                        builder.setView(dialogView);
+                        alertDialog = builder.create();
+
+                        Button btn1 = (Button) dialogView.findViewById(R.id.btn1);
+                        btn1.setText(R.string.no);
+                        btn1.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+
+
+                                alertDialog.dismiss();
+                            }
+                        });
+                        Button btn2 = (Button) dialogView.findViewById(R.id.btn2);
+                        btn2.setText(R.string.yes);
+                        btn2.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                progressDialog.setMessage("Eliminando registro en línea");
+                                progressDialog.show();
+                                firebaseAuth.signInWithEmailAndPassword(pojo.getEmail(),pojo.getPassword())
+                                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                                if (task.isSuccessful()){
+                                                    AuthResult itask = task.getResult();
+                                                    FirebaseUser ures = itask.getUser();
+                                                    db.collection(Constants.HealthcareProfesional).document(pojo.getHpUID())
+                                                            .delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                        @Override
+                                                        public void onSuccess(Void aVoid) {
+                                                            Toast.makeText(AdminHome.this, "usuario eliminado", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    }).addOnFailureListener(new OnFailureListener() {
+                                                        @Override
+                                                        public void onFailure(@NonNull Exception e) {
+                                                            Log.d("Message: ",e.toString());
+                                                        }
+                                                    });
+                                                    ures.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                        @Override
+                                                        public void onComplete(@NonNull Task<Void> task) {
+                                                            Toast.makeText(AdminHome.this, "se elimino", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    });
+                                                }
+                                            }
+                                        }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Log.d("Message: ",e.toString());
+                                    }
+                                });
+
+                                db.collection(Constants.Adminds).document(uIdAdmind).get()
+                                        .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                            @Override
+                                            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                                if (documentSnapshot.exists()){
+                                                    admin = documentSnapshot.toObject(Admin.class);
+                                                    firebaseAuth.signInWithEmailAndPassword(admin.getEmail(),admin.getPassword())
+                                                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                                                @Override
+                                                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                                                    progressDialog.dismiss();
+                                                                }
+                                                            });
+                                                }
+                                            }
+                                        });
+                                alertDialog.dismiss();
+                            }
+                        });
+                        TextView tvInformation = dialogView.findViewById(R.id.textView);
+                        tvInformation.setText(getString(R.string.message_delete, namePatient));
+                        alertDialog.show();
+
+
+                    } catch (Resources.NotFoundException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                builder.setTitle(getString(R.string.alert));
+                builder.setMessage(getString(R.string.message_delete,namePatient));
+                builder.setPositiveButton(getString(R.string.delete), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         progressDialog.setMessage("Eliminando registro en línea");
@@ -179,8 +277,8 @@ public class AdminHome extends AppCompatActivity implements IMainCarer,AdminAddH
 
                     }
                 });
-                alerta.show();
-            }
+                builder.show();
+            }}
         };
         return psAdapterI;
     }
