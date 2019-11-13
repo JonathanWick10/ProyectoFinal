@@ -143,14 +143,18 @@ public class ProfileFragment extends Fragment {
     public static final int REQUEST_CODE2 = 10;
     public static final int REQUEST_CODE = 11;
 
+    String role;
+
     String uidString,nameSring,lastNameString,typeIDString, idString, birthDayString, nativeCityString,
             actualCityString, addressString, emailString, userString, passwordString, seleccionRG
-            , phoneString, profession, workC;
+            , phoneString, profession, work;
 
     FirebaseFirestore db;
     Uri uriImage;
     StorageReference storageReference;
     Carer carer = new Carer();
+    HealthcareProfessional hp = new HealthcareProfessional();
+    StorageReference deleteImage;
 
 
     public ProfileFragment() {
@@ -191,7 +195,7 @@ public class ProfileFragment extends Fragment {
         Bundle bundle = getArguments();
         if (bundle!=null){
             final String uID = bundle.getString("userUid");
-            String role = bundle.getString("userRole");
+            role = bundle.getString("userRole");
 
             switch (role){
                 case "Admin":
@@ -221,10 +225,66 @@ public class ProfileFragment extends Fragment {
                                 @Override
                                 public void onSuccess(DocumentSnapshot documentSnapshot) {
                                     if (documentSnapshot.exists()){
-                                        HealthcareProfessional hp = new HealthcareProfessional();
                                         hp = documentSnapshot.toObject(HealthcareProfessional.class);
                                         setDataHp(hp);
                                     }
+                                    btnUpdate.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View view) {
+                                            boolean flag2 = setPojoHps();
+                                            if (flag2) {
+                                                final ProgressDialog progressDialog = ProgressDialog.show(getActivity(),
+                                                        "Brainmher","Realizando registro en línea");
+                                                if (uriImage!=null) {
+                                                    deleteImage();
+                                                    final StorageReference imgRef = storageReference.child("Users/Healthcare_profesionals/" + hp.getHpUID() + ".jpg");
+                                                    imgRef.putFile(uriImage)
+                                                            .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                                                @Override
+                                                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                                                    Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
+                                                                    while (!uri.isComplete()) ;
+                                                                    Uri url = uri.getResult();
+                                                                    hp.setUriImg(url.toString());
+                                                                    db.collection(Constants.HealthcareProfesional).document(hp.getHpUID()).set(hp)
+                                                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                                @Override
+                                                                                public void onSuccess(Void aVoid) {
+                                                                                    Toast.makeText(getActivity(), getResources().getString(R.string.was_saved_succesfully), Toast.LENGTH_SHORT).show();
+                                                                                    progressDialog.dismiss();
+                                                                                }
+                                                                            })
+                                                                            .addOnFailureListener(new OnFailureListener() {
+                                                                                @Override
+                                                                                public void onFailure(@NonNull Exception e) {
+                                                                                    Log.d("message: ", e.toString());
+                                                                                }
+                                                                            });
+
+
+                                                                }
+                                                            });
+                                                } else{
+                                                    db.collection(Constants.HealthcareProfesional).document(hp.getHpUID()).set(hp)
+                                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                @Override
+                                                                public void onSuccess(Void aVoid) {
+                                                                    Toast.makeText(getActivity(), getResources().getString(R.string.was_saved_succesfully), Toast.LENGTH_SHORT).show();
+                                                                    progressDialog.dismiss();
+                                                                }
+                                                            })
+                                                            .addOnFailureListener(new OnFailureListener() {
+                                                                @Override
+                                                                public void onFailure(@NonNull Exception e) {
+                                                                    Log.d("message: ", e.toString());
+                                                                }
+                                                            });
+                                                }
+                                            }else{
+                                                Toast.makeText(getActivity(), getResources().getString(R.string.complete_field_please), Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
                                 }
                             });
                     break;
@@ -318,14 +378,85 @@ public class ProfileFragment extends Fragment {
         }
     }
 
+    private boolean setPojoHps() {
+        uidString = hp.getHpUID();
+        nameSring = txtName.getText().toString();
+        lastNameString = txtLastName.getText().toString();
+        typeIDString = txtIdType.getText().toString();
+        idString = txtIdentification.getText().toString();
+        //region Get the selection of RadioGroup
+        if (rgGender.getCheckedRadioButtonId() != -1) {
+            int radioButtonId = rgGender.getCheckedRadioButtonId();
+            View radioButton = rgGender.findViewById(radioButtonId);
+            int indice = rgGender.indexOfChild(radioButton);
+            RadioButton rb = (RadioButton) rgGender.getChildAt(indice);
+            selectedGender = rb.getText().toString();
+        }
+        //endregion
+        birthDayString = txtDateBirth.getText().toString();
+        nativeCityString = txtNativeCity.getText().toString();
+        phoneString = txtPhone.getText().toString();
+        addressString = txtAddress.getText().toString();
+        actualCityString = txtActualCity.getText().toString();
+        emailString = txtEmail.getText().toString();
+        userString = txtUser.getText().toString();
+        passwordString = txtPassword.getText().toString();
+        profession = txtProfession.getText().toString();
+        work = txtWorkPlace.getText().toString();
+
+        if (!nameSring.isEmpty() && !lastNameString.isEmpty() && !typeIDString.isEmpty() && !idString.isEmpty() &&
+                !selectedGender.isEmpty() && !birthDayString.isEmpty() && !nativeCityString.isEmpty() && !phoneString.isEmpty() &&
+                !addressString.isEmpty() && !actualCityString.isEmpty() && !emailString.isEmpty() && !userString.isEmpty() &&
+                !passwordString.isEmpty() && !profession.isEmpty() && !work.isEmpty()&&emailString.length()>=7) {
+            hp.setHpUID(uidString);
+            hp.setFirstName(nameSring);
+            hp.setLastName(lastNameString);
+            hp.setIdentificationType(typeIDString);
+            hp.setIdentification(idString);
+            hp.setGender(selectedGender);
+            hp.setBirthday(birthDayString);
+            hp.setNativeCity(nativeCityString);
+            hp.setPhoneNumber(Long.parseLong(phoneString));
+            hp.setAddress(addressString);
+            hp.setActualCity(actualCityString);
+            hp.setEmail(emailString);
+            hp.setUserName(userString);
+            hp.setPassword(passwordString);
+            hp.setProfession(profession);
+            hp.setEmployment_place(work);
+            hp.setRole(Constants.HealthcareProfesional);
+
+            return flag = true;
+        } else {
+            return flag = false;
+        }
+    }
+
     private void deleteImage() {
-        StorageReference storageReference = FirebaseStorage.getInstance().getReference();
-        StorageReference deleteImage = storageReference.child("Users/Patients/" + carer.getCarerUId() + ".jpg");
-        deleteImage.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-            }
-        });
+        switch (role) {
+            case "Admin":
+                break;
+            case "Healthcare_profesionals":
+                storageReference = FirebaseStorage.getInstance().getReference();
+                deleteImage = storageReference.child("Users/Healthcare_profesionals/" + hp.getHpUID() + ".jpg");
+                deleteImage.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                    }
+                });
+                break;
+            case "Carers":
+                storageReference = FirebaseStorage.getInstance().getReference();
+                deleteImage = storageReference.child("Users/Carers/" + carer.getCarerUId() + ".jpg");
+                deleteImage.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                    }
+                });
+                break;
+            case "Patients":
+                break;
+        }
     }
 
     private boolean setPojoCarers() {//region get text of form
@@ -352,7 +483,7 @@ public class ProfileFragment extends Fragment {
         userString = txtUser.getText().toString().trim();
         passwordString = txtPassword.getText().toString().trim();
         profession = txtProfession.getText().toString().trim();
-        workC = txtProfession.getText().toString().trim();
+        work = txtProfession.getText().toString().trim();
         //endregion
 
         //region conditional for fields is empty
@@ -360,7 +491,7 @@ public class ProfileFragment extends Fragment {
                 &&!idString.isEmpty()&&!seleccionRG.isEmpty()&&!birthDayString.isEmpty()
                 &&!phoneString.isEmpty()&&!nativeCityString.isEmpty()&&!actualCityString.isEmpty()
                 &&!addressString.isEmpty()&&!emailString.isEmpty()&&!userString.isEmpty()
-                &&!passwordString.isEmpty()&&!profession.isEmpty()&&!workC.isEmpty()&&emailString.length()>=7) {
+                &&!passwordString.isEmpty()&&!profession.isEmpty()&&!work.isEmpty()&&emailString.length()>=7) {
             //region Set data to Pojo Patients
             carer.setCarerUId(uidString);
             carer.setFirstName(nameSring);
@@ -377,7 +508,7 @@ public class ProfileFragment extends Fragment {
             carer.setUserName(userString);
             carer.setPassword(passwordString);
             carer.setProfession(profession);
-            carer.setEmploymentPlace(workC);
+            carer.setEmploymentPlace(work);
             carer.setRole(Constants.Carers);
             //endregion
         }else{
@@ -424,6 +555,8 @@ public class ProfileFragment extends Fragment {
         til_department.setVisibility(View.GONE);
 
         //Set data in fields
+        uidString = hp.getHpUID();
+        Glide.with(ProfileFragment.this).load(hp.getUriImg()).fitCenter().into(civProfile);
         txtName.setText(hp.getFirstName());
         txtLastName.setText(hp.getLastName());
         txtIdType.setText(hp.getIdentificationType(), false);
