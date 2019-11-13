@@ -699,7 +699,7 @@ public class ProfileFragment extends Fragment {
 
         //Set data in fields
         uidString = admin.getAdminUId();
-        Glide.with(ProfileFragment.this).load(admin.getAdminUId()).fitCenter().into(civProfile);
+        Glide.with(ProfileFragment.this).load(admin.getUriImage()).fitCenter().into(civProfile);
         txtName.setText(admin.getFirstName());
         txtLastName.setText(admin.getLastName());
         txtIdType.setText(admin.getIdentificationType(), false);

@@ -30,6 +30,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -57,11 +58,13 @@ import com.jonathan.proyectofinal.interfaces.IMainCarer;
 import com.jonathan.proyectofinal.tools.Constants;
 import com.jonathan.proyectofinal.ui.HealthProfessionalActivity;
 import com.jonathan.proyectofinal.ui.Login;
+import com.jonathan.proyectofinal.ui.MainCarer;
 import com.jonathan.proyectofinal.ui.NavigationOptions;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AdminHome extends AppCompatActivity implements IMainCarer,AdminAddHealthProfessional.OnFragmentInteractionListener, NavigationView.OnNavigationItemSelectedListener {
 
@@ -103,6 +106,7 @@ public class AdminHome extends AppCompatActivity implements IMainCarer,AdminAddH
         drawerToggle.syncState();
         final TextView name_user = navigationView.getHeaderView(0).findViewById(R.id.lbl_name_user);
         final TextView email_user = navigationView.getHeaderView(0).findViewById(R.id.lbl_email_user);
+        final CircleImageView image_user = navigationView.getHeaderView(0).findViewById(R.id.img_users_navigation);
         db.collection(Constants.Adminds).document(uIdAdmind).addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
@@ -111,6 +115,7 @@ public class AdminHome extends AppCompatActivity implements IMainCarer,AdminAddH
                     if (name_user!=null && email_user!=null) {
                         name_user.setText(admin.getFirstName()+" "+admin.getLastName());
                         email_user.setText(admin.getEmail());
+                        Glide.with(AdminHome.this).load(admin.getUriImage()).fitCenter().into(image_user);
                     }
                 }
             }
