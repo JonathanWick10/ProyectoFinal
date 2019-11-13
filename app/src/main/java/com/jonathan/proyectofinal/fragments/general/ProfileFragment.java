@@ -199,7 +199,7 @@ public class ProfileFragment extends Fragment {
             role = bundle.getString("userRole");
 
             switch (role){
-                case "Admin":
+                case "Adminds":
                     db.collection(Constants.Adminds).document(uID).get()
                             .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                                 @Override
@@ -537,7 +537,7 @@ public class ProfileFragment extends Fragment {
 
     private void deleteImage() {
         switch (role) {
-            case "Admin":
+            case "Adminds":
                 storageReference = FirebaseStorage.getInstance().getReference();
                 deleteImage = storageReference.child("Users/Adminds/" + admin.getAdminUId() + ".jpg");
                 deleteImage.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
