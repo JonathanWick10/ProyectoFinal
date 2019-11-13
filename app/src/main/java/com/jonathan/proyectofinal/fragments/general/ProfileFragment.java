@@ -38,6 +38,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.jonathan.proyectofinal.R;
@@ -138,13 +139,18 @@ public class ProfileFragment extends Fragment {
     MaterialButton btnUpdate;
     String selectedDate;
     String selectedGender;
+    boolean flag = true;
     public static final int REQUEST_CODE2 = 10;
     public static final int REQUEST_CODE = 11;
+
+    String uidString,nameSring,lastNameString,typeIDString, idString, birthDayString, nativeCityString,
+            actualCityString, addressString, emailString, userString, passwordString, seleccionRG
+            , phoneString, profession, workC;
 
     FirebaseFirestore db;
     Uri uriImage;
     StorageReference storageReference;
-    final Carer carerr = new Carer();
+    Carer carer = new Carer();
 
 
     public ProfileFragment() {
@@ -157,6 +163,7 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_profile, container, false);
         ButterKnife.bind(this, view);
+        storageReference = FirebaseStorage.getInstance().getReference();
         getUserData();
         dropdowns(view);
         logicButtonCalendarDB(view);
@@ -183,7 +190,7 @@ public class ProfileFragment extends Fragment {
         db = FirebaseFirestore.getInstance();
         Bundle bundle = getArguments();
         if (bundle!=null){
-            String uID = bundle.getString("userUid");
+            final String uID = bundle.getString("userUid");
             String role = bundle.getString("userRole");
 
             switch (role){
@@ -226,26 +233,29 @@ public class ProfileFragment extends Fragment {
                             .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                                 @Override
                                 public void onSuccess(final DocumentSnapshot documentSnapshot) {
-                                    Carer carer = new Carer();
-                                    carer = documentSnapshot.toObject(Carer.class);
-                                    setDataCarer(carer);
                                     if (documentSnapshot.exists()){
-                                        btnUpdate.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View view) {
+                                        carer = documentSnapshot.toObject(Carer.class);
+                                        setDataCarer(carer);
+                                    }
+                                    btnUpdate.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View view) {
+                                            boolean flag2 = setPojoCarers();
+                                            if (flag2) {
                                                 final ProgressDialog progressDialog = ProgressDialog.show(getActivity(),
                                                         "Brainmher","Realizando registro en línea");
-                                                if (uriImage!=null){
-                                                    final StorageReference imgRef = storageReference.child("Users/Carers/"+carerr.getCarerUId()+".jpg");
+                                                if (uriImage!=null) {
+                                                    deleteImage();
+                                                    final StorageReference imgRef = storageReference.child("Users/Carers/" + carer.getCarerUId() + ".jpg");
                                                     imgRef.putFile(uriImage)
                                                             .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                                                                 @Override
                                                                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                                                                     Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
-                                                                    while(!uri.isComplete());
+                                                                    while (!uri.isComplete()) ;
                                                                     Uri url = uri.getResult();
-                                                                    carerr.setUriImg(url.toString());
-                                                                    db.collection(Constants.Carers).document(carerr.getCarerUId()).set(carerr)
+                                                                    carer.setUriImg(url.toString());
+                                                                    db.collection(Constants.Carers).document(carer.getCarerUId()).set(carer)
                                                                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                                                 @Override
                                                                                 public void onSuccess(Void aVoid) {
@@ -259,15 +269,35 @@ public class ProfileFragment extends Fragment {
                                                                                     Log.d("message: ", e.toString());
                                                                                 }
                                                                             });
+
+
+                                                                }
+                                                            });
+                                                } else{
+                                                    db.collection(Constants.Carers).document(carer.getCarerUId()).set(carer)
+                                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                @Override
+                                                                public void onSuccess(Void aVoid) {
+                                                                    Toast.makeText(getActivity(), getResources().getString(R.string.was_saved_succesfully), Toast.LENGTH_SHORT).show();
+                                                                    progressDialog.dismiss();
+                                                                }
+                                                            })
+                                                            .addOnFailureListener(new OnFailureListener() {
+                                                                @Override
+                                                                public void onFailure(@NonNull Exception e) {
+                                                                    Log.d("message: ", e.toString());
                                                                 }
                                                             });
                                                 }
+                                            }else{
+                                                Toast.makeText(getActivity(), getResources().getString(R.string.complete_field_please), Toast.LENGTH_SHORT).show();
                                             }
-                                        });
-
-                                    }
+                                        }
+                                    });
                                 }
+
                             });
+
                     break;
                 case "Patients":
                     db.collection(Constants.Patients).document(uID).get()
@@ -288,11 +318,82 @@ public class ProfileFragment extends Fragment {
         }
     }
 
+    private void deleteImage() {
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference();
+        StorageReference deleteImage = storageReference.child("Users/Patients/" + carer.getCarerUId() + ".jpg");
+        deleteImage.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+            }
+        });
+    }
+
+    private boolean setPojoCarers() {//region get text of form
+        uidString = carer.getCarerUId();
+        nameSring = txtName.getText().toString().trim();
+        lastNameString = txtLastName.getText().toString().trim();
+        typeIDString = txtIdType.getText().toString().trim();
+        idString = txtIdentification.getText().toString().trim();
+        //region Get the selection of RadioGroup
+        if (rgGender.getCheckedRadioButtonId() != -1) {
+            int radioButtonId = rgGender.getCheckedRadioButtonId();
+            View radioButton = rgGender.findViewById(radioButtonId);
+            int indice = rgGender.indexOfChild(radioButton);
+            RadioButton rb = (RadioButton)  rgGender.getChildAt(indice);
+            seleccionRG = rb.getText().toString();
+        }
+        //endregion
+        birthDayString = txtDateBirth.getText().toString().trim();
+        phoneString = txtPhone.getText().toString().trim();
+        nativeCityString = txtNativeCity.getText().toString().trim();
+        actualCityString = txtActualCity.getText().toString().trim();
+        addressString = txtAddress.getText().toString().trim();
+        emailString = txtEmail.getText().toString().trim();
+        userString = txtUser.getText().toString().trim();
+        passwordString = txtPassword.getText().toString().trim();
+        profession = txtProfession.getText().toString().trim();
+        workC = txtProfession.getText().toString().trim();
+        //endregion
+
+        //region conditional for fields is empty
+        if (!nameSring.isEmpty()&&!lastNameString.isEmpty()&&!typeIDString.isEmpty()
+                &&!idString.isEmpty()&&!seleccionRG.isEmpty()&&!birthDayString.isEmpty()
+                &&!phoneString.isEmpty()&&!nativeCityString.isEmpty()&&!actualCityString.isEmpty()
+                &&!addressString.isEmpty()&&!emailString.isEmpty()&&!userString.isEmpty()
+                &&!passwordString.isEmpty()&&!profession.isEmpty()&&!workC.isEmpty()&&emailString.length()>=7) {
+            //region Set data to Pojo Patients
+            carer.setCarerUId(uidString);
+            carer.setFirstName(nameSring);
+            carer.setLastName(lastNameString);
+            carer.setIdentificationType(typeIDString);
+            carer.setIdentification(idString);
+            carer.setGender(seleccionRG);
+            carer.setBirthday(birthDayString);
+            carer.setPhoneNumber(Long.parseLong(phoneString));
+            carer.setNativeCity(nativeCityString);
+            carer.setActualCity(actualCityString);
+            carer.setAddress(addressString);
+            carer.setEmail(emailString);
+            carer.setUserName(userString);
+            carer.setPassword(passwordString);
+            carer.setProfession(profession);
+            carer.setEmploymentPlace(workC);
+            carer.setRole(Constants.Carers);
+            //endregion
+        }else{
+            flag = false;
+        }
+        //endregion
+        return flag;
+    }
+
     private void setDataCarer(Carer carer) {
         //Fields properties
         til_department.setVisibility(View.GONE);
 
         //Set data in fields
+        uidString = carer.getCarerUId();
+        Glide.with(ProfileFragment.this).load(carer.getUriImg()).fitCenter().into(civProfile);
         txtName.setText(carer.getFirstName());
         txtLastName.setText(carer.getLastName());
         txtIdType.setText(carer.getIdentificationType(), false);
