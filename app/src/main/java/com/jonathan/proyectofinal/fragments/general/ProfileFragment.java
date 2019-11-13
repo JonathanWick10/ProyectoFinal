@@ -154,6 +154,7 @@ public class ProfileFragment extends Fragment {
     StorageReference storageReference;
     Carer carer = new Carer();
     HealthcareProfessional hp = new HealthcareProfessional();
+    Admin admin = new Admin();
     StorageReference deleteImage;
 
 
@@ -204,18 +205,66 @@ public class ProfileFragment extends Fragment {
                                 @Override
                                 public void onSuccess(DocumentSnapshot documentSnapshot) {
                                     if (documentSnapshot.exists()){
-                                        Admin admin = new Admin();
                                         admin = documentSnapshot.toObject(Admin.class);
                                         setDataAdmins(admin);
-
-                                        btnUpdate.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View view) {
+                                    }
+                                    btnUpdate.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View view) {
+                                            boolean flag2 = setPojoAdmin();
+                                            if (flag2) {
                                                 final ProgressDialog progressDialog = ProgressDialog.show(getActivity(),
                                                         "Brainmher","Realizando registro en línea");
+                                                if (uriImage!=null) {
+                                                    deleteImage();
+                                                    final StorageReference imgRef = storageReference.child("Users/Adminds/" + admin.getAdminUId() + ".jpg");
+                                                    imgRef.putFile(uriImage)
+                                                            .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                                                @Override
+                                                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                                                    Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
+                                                                    while (!uri.isComplete()) ;
+                                                                    Uri url = uri.getResult();
+                                                                    admin.setUriImage(url.toString());
+                                                                    db.collection(Constants.Adminds).document(admin.getAdminUId()).set(admin)
+                                                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                                @Override
+                                                                                public void onSuccess(Void aVoid) {
+                                                                                    Toast.makeText(getActivity(), getResources().getString(R.string.was_saved_succesfully), Toast.LENGTH_SHORT).show();
+                                                                                    progressDialog.dismiss();
+                                                                                }
+                                                                            })
+                                                                            .addOnFailureListener(new OnFailureListener() {
+                                                                                @Override
+                                                                                public void onFailure(@NonNull Exception e) {
+                                                                                    Log.d("message: ", e.toString());
+                                                                                }
+                                                                            });
+
+
+                                                                }
+                                                            });
+                                                } else{
+                                                    db.collection(Constants.Adminds).document(admin.getAdminUId()).set(admin)
+                                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                @Override
+                                                                public void onSuccess(Void aVoid) {
+                                                                    Toast.makeText(getActivity(), getResources().getString(R.string.was_saved_succesfully), Toast.LENGTH_SHORT).show();
+                                                                    progressDialog.dismiss();
+                                                                }
+                                                            })
+                                                            .addOnFailureListener(new OnFailureListener() {
+                                                                @Override
+                                                                public void onFailure(@NonNull Exception e) {
+                                                                    Log.d("message: ", e.toString());
+                                                                }
+                                                            });
+                                                }
+                                            }else{
+                                                Toast.makeText(getActivity(), getResources().getString(R.string.complete_field_please), Toast.LENGTH_SHORT).show();
                                             }
-                                        });
-                                    }
+                                        }
+                                    });
                                 }
                             });
                     break;
@@ -378,6 +427,60 @@ public class ProfileFragment extends Fragment {
         }
     }
 
+    private boolean setPojoAdmin() {
+        uidString = admin.getAdminUId();
+        nameSring = txtName.getText().toString();
+        lastNameString = txtLastName.getText().toString();
+        typeIDString = txtIdType.getText().toString();
+        idString = txtIdentification.getText().toString();
+        //region Get the selection of RadioGroup
+        if (rgGender.getCheckedRadioButtonId() != -1) {
+            int radioButtonId = rgGender.getCheckedRadioButtonId();
+            View radioButton = rgGender.findViewById(radioButtonId);
+            int indice = rgGender.indexOfChild(radioButton);
+            RadioButton rb = (RadioButton) rgGender.getChildAt(indice);
+            selectedGender = rb.getText().toString();
+        }
+        //endregion
+        birthDayString = txtDateBirth.getText().toString();
+        nativeCityString = txtNativeCity.getText().toString();
+        phoneString = txtPhone.getText().toString();
+        addressString = txtAddress.getText().toString();
+        actualCityString = txtActualCity.getText().toString();
+        emailString = txtEmail.getText().toString();
+        userString = txtUser.getText().toString();
+        passwordString = txtPassword.getText().toString();
+        profession = txtProfession.getText().toString();
+        work = txtWorkPlace.getText().toString();
+
+        if (!nameSring.isEmpty() && !lastNameString.isEmpty() && !typeIDString.isEmpty() && !idString.isEmpty() &&
+                !selectedGender.isEmpty() && !birthDayString.isEmpty() && !nativeCityString.isEmpty() && !phoneString.isEmpty() &&
+                !addressString.isEmpty() && !actualCityString.isEmpty() && !emailString.isEmpty() && !userString.isEmpty() &&
+                !passwordString.isEmpty() && !profession.isEmpty() && !work.isEmpty()&&emailString.length()>=7) {
+            admin.setAdminUId(uidString);
+            admin.setFirstName(nameSring);
+            admin.setLastName(lastNameString);
+            admin.setIdentificationType(typeIDString);
+            admin.setIdentification(idString);
+            admin.setGender(selectedGender);
+            admin.setBirthday(birthDayString);
+            admin.setNativeCity(nativeCityString);
+            admin.setPhoneNumber(Long.parseLong(phoneString));
+            admin.setAddress(addressString);
+            admin.setActualCity(actualCityString);
+            admin.setEmail(emailString);
+            admin.setUserName(userString);
+            admin.setPassword(passwordString);
+            admin.setProfession(profession);
+            admin.setEmploymentPlace(work);
+            admin.setRole(Constants.Adminds);
+
+            return flag = true;
+        } else {
+            return flag = false;
+        }
+    }
+
     private boolean setPojoHps() {
         uidString = hp.getHpUID();
         nameSring = txtName.getText().toString();
@@ -435,6 +538,13 @@ public class ProfileFragment extends Fragment {
     private void deleteImage() {
         switch (role) {
             case "Admin":
+                storageReference = FirebaseStorage.getInstance().getReference();
+                deleteImage = storageReference.child("Users/Adminds/" + admin.getAdminUId() + ".jpg");
+                deleteImage.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                    }
+                });
                 break;
             case "Healthcare_profesionals":
                 storageReference = FirebaseStorage.getInstance().getReference();
@@ -453,8 +563,6 @@ public class ProfileFragment extends Fragment {
                     public void onSuccess(Void aVoid) {
                     }
                 });
-                break;
-            case "Patients":
                 break;
         }
     }
@@ -590,6 +698,8 @@ public class ProfileFragment extends Fragment {
         til_department.setVisibility(View.GONE);
 
         //Set data in fields
+        uidString = admin.getAdminUId();
+        Glide.with(ProfileFragment.this).load(admin.getAdminUId()).fitCenter().into(civProfile);
         txtName.setText(admin.getFirstName());
         txtLastName.setText(admin.getLastName());
         txtIdType.setText(admin.getIdentificationType(), false);
