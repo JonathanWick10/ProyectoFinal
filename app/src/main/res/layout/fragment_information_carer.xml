@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.carer.InformationCarerFragment">
 
     <androidx.core.widget.NestedScrollView
@@ -13,19 +14,14 @@
             android:layout_height="match_parent">
 
             <!-- TODO: Update blank fragment layout -->
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/q1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:clickable="true"
-                android:textAllCaps="false"
-                android:padding="4dp"
-                android:gravity="left"
-                android:textSize="20dp"
-                android:drawableRight="@drawable/down_black"
-                android:enabled="true"
-                android:text="@string/qc1"></Button>
+                android:text="@string/qc1"
+                android:drawableTint="@color/white"
+                app:rippleColor="@color/colorAccent"
+                style="@style/StylePrimaryColoredButtonInformation"/>
             <TextView
                 android:id="@+id/a1"
                 android:layout_below="@+id/q1"
@@ -37,20 +33,15 @@
                 android:visibility="gone"
                 android:text="@string/ac1"/>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/q2"
-                android:textAllCaps="false"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="4dp"
                 android:layout_below="@+id/a1"
-                android:background="@color/white"
-                android:clickable="true"
-                android:drawableRight="@drawable/down_black"
-                android:enabled="true"
-                android:gravity="left"
-                android:textSize="20dp"
-                android:text="@string/qc2"></Button>
+                android:text="@string/qc2"
+                android:drawableTint="@color/white"
+                app:rippleColor="@color/colorAccent"
+                style="@style/StylePrimaryColoredButtonInformation"/>
             <TextView
                 android:id="@+id/a2"
                 android:layout_below="@+id/q2"
@@ -62,20 +53,15 @@
                 android:visibility="gone"
                 android:text="@string/ac2"/>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/q3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="4dp"
                 android:layout_below="@+id/a2"
-                android:background="@color/white"
-                android:clickable="true"
-                android:gravity="left"
-                android:textSize="20dp"
-                android:textAllCaps="false"
-                android:drawableRight="@drawable/down_black"
-                android:enabled="true"
-                android:text="@string/qc3"></Button>
+                android:text="@string/qc3"
+                android:drawableTint="@color/white"
+                app:rippleColor="@color/colorAccent"
+                style="@style/StylePrimaryColoredButtonInformation"/>
             <TextView
                 android:id="@+id/a3"
                 android:layout_below="@+id/q3"
@@ -86,20 +72,15 @@
                 android:layout_height="wrap_content"
                 android:visibility="gone"
                 android:text="@string/ac3"/>
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/q4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/a3"
-                android:background="@color/white"
-                android:clickable="true"
-                android:textAllCaps="false"
-                android:padding="4dp"
-                android:gravity="left"
-                android:textSize="20dp"
-                android:drawableRight="@drawable/down_black"
-                android:enabled="true"
-                android:text="@string/qc4"></Button>
+                android:text="@string/qc4"
+                android:drawableTint="@color/white"
+                app:rippleColor="@color/colorAccent"
+                style="@style/StylePrimaryColoredButtonInformation"/>
             <TextView
                 android:id="@+id/a4"
                 android:layout_below="@+id/q4"
@@ -111,20 +92,16 @@
                 android:visibility="gone"
                 android:text="@string/ac4"/>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/q5"
-                android:textAllCaps="false"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="4dp"
                 android:layout_below="@+id/a4"
-                android:background="@color/white"
-                android:clickable="true"
-                android:drawableRight="@drawable/down_black"
-                android:enabled="true"
-                android:gravity="left"
-                android:textSize="20dp"
-                android:text="@string/qc5"></Button>
+                android:text="@string/qc5"
+                android:drawableTint="@color/white"
+                app:rippleColor="@color/colorAccent"
+                style="@style/StylePrimaryColoredButtonInformation"/>
+
             <TextView
                 android:id="@+id/a5"
                 android:layout_below="@+id/q5"
@@ -136,20 +113,16 @@
                 android:visibility="gone"
                 android:text="@string/ac5"/>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/q6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="4dp"
                 android:layout_below="@+id/a5"
-                android:background="@color/white"
-                android:clickable="true"
-                android:gravity="left"
-                android:textSize="20dp"
-                android:textAllCaps="false"
-                android:drawableRight="@drawable/down_black"
-                android:enabled="true"
-                android:text="@string/qc6"></Button>
+                android:text="@string/qc6"
+                android:drawableTint="@color/white"
+                app:rippleColor="@color/colorAccent"
+                style="@style/StylePrimaryColoredButtonInformation"/>
+
             <TextView
                 android:id="@+id/a6"
                 android:layout_below="@+id/q6"
@@ -160,20 +133,15 @@
                 android:layout_height="wrap_content"
                 android:visibility="gone"
                 android:text="@string/ac6"/>
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/q7"
                 android:layout_below="@id/a6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:clickable="true"
-                android:textAllCaps="false"
-                android:padding="4dp"
-                android:gravity="left"
-                android:textSize="20dp"
-                android:drawableRight="@drawable/down_black"
-                android:enabled="true"
-                android:text="@string/qc7"></Button>
+                android:text="@string/qc7"
+                android:drawableTint="@color/white"
+                app:rippleColor="@color/colorAccent"
+                style="@style/StylePrimaryColoredButtonInformation"/>
             <TextView
                 android:id="@+id/a7"
                 android:layout_below="@+id/q7"
@@ -185,20 +153,15 @@
                 android:visibility="gone"
                 android:text="@string/ac7"/>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/q8"
-                android:textAllCaps="false"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="4dp"
                 android:layout_below="@+id/a7"
-                android:background="@color/white"
-                android:clickable="true"
-                android:drawableRight="@drawable/down_black"
-                android:enabled="true"
-                android:gravity="left"
-                android:textSize="20dp"
-                android:text="@string/qc8"></Button>
+                android:text="@string/qc8"
+                android:drawableTint="@color/white"
+                app:rippleColor="@color/colorAccent"
+                style="@style/StylePrimaryColoredButtonInformation"/>
             <TextView
                 android:id="@+id/a8"
                 android:layout_below="@+id/q8"
@@ -210,20 +173,15 @@
                 android:visibility="gone"
                 android:text="@string/ac8"/>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/q9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="4dp"
                 android:layout_below="@+id/a8"
-                android:background="@color/white"
-                android:clickable="true"
-                android:gravity="left"
-                android:textSize="20dp"
-                android:textAllCaps="false"
-                android:drawableRight="@drawable/down_black"
-                android:enabled="true"
-                android:text="@string/qc9"></Button>
+                android:text="@string/qc9"
+                android:drawableTint="@color/white"
+                app:rippleColor="@color/colorAccent"
+                style="@style/StylePrimaryColoredButtonInformation"/>
             <TextView
                 android:id="@+id/a9"
                 android:layout_below="@+id/q9"
@@ -234,20 +192,15 @@
                 android:layout_height="wrap_content"
                 android:visibility="gone"
                 android:text="@string/ac9"/>
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/q10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="4dp"
                 android:layout_below="@+id/a9"
-                android:background="@color/white"
-                android:clickable="true"
-                android:gravity="left"
-                android:textSize="20dp"
-                android:textAllCaps="false"
-                android:drawableRight="@drawable/down_black"
-                android:enabled="true"
-                android:text="@string/qc10"></Button>
+                android:text="@string/qc10"
+                android:drawableTint="@color/white"
+                app:rippleColor="@color/colorAccent"
+                style="@style/StylePrimaryColoredButtonInformation"/>
             <TextView
                 android:id="@+id/a10"
                 android:layout_below="@+id/q10"
@@ -258,20 +211,15 @@
                 android:layout_height="wrap_content"
                 android:visibility="gone"
                 android:text="@string/ac10"/>
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/q11"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="4dp"
                 android:layout_below="@+id/a10"
-                android:background="@color/white"
-                android:clickable="true"
-                android:gravity="left"
-                android:textSize="20dp"
-                android:textAllCaps="false"
-                android:drawableRight="@drawable/down_black"
-                android:enabled="true"
-                android:text="@string/qc11"></Button>
+                android:text="@string/qc11"
+                android:drawableTint="@color/white"
+                app:rippleColor="@color/colorAccent"
+                style="@style/StylePrimaryColoredButtonInformation"/>
             <TextView
                 android:id="@+id/a11"
                 android:layout_below="@+id/q11"
@@ -282,20 +230,15 @@
                 android:layout_height="wrap_content"
                 android:visibility="gone"
                 android:text="@string/ac11"/>
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/q12"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="4dp"
                 android:layout_below="@+id/a11"
-                android:background="@color/white"
-                android:clickable="true"
-                android:gravity="left"
-                android:textSize="20dp"
-                android:textAllCaps="false"
-                android:drawableRight="@drawable/down_black"
-                android:enabled="true"
-                android:text="@string/qc12"></Button>
+                android:text="@string/qc12"
+                android:drawableTint="@color/white"
+                app:rippleColor="@color/colorAccent"
+                style="@style/StylePrimaryColoredButtonInformation"/>
             <TextView
                 android:id="@+id/a12"
                 android:layout_below="@+id/q12"
@@ -306,20 +249,15 @@
                 android:layout_height="wrap_content"
                 android:visibility="gone"
                 android:text="@string/ac12"/>
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/q13"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="4dp"
                 android:layout_below="@+id/a12"
-                android:background="@color/white"
-                android:clickable="true"
-                android:gravity="left"
-                android:textSize="20dp"
-                android:textAllCaps="false"
-                android:drawableRight="@drawable/down_black"
-                android:enabled="true"
-                android:text="@string/qc13"></Button>
+                android:text="@string/qc13"
+                android:drawableTint="@color/white"
+                app:rippleColor="@color/colorAccent"
+                style="@style/StylePrimaryColoredButtonInformation"/>
             <TextView
                 android:id="@+id/a13"
                 android:layout_below="@+id/q13"
@@ -330,20 +268,15 @@
                 android:layout_height="wrap_content"
                 android:visibility="gone"
                 android:text="@string/ac13"/>
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/q14"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="4dp"
                 android:layout_below="@+id/a13"
-                android:background="@color/white"
-                android:clickable="true"
-                android:gravity="left"
-                android:textSize="20dp"
-                android:textAllCaps="false"
-                android:drawableRight="@drawable/down_black"
-                android:enabled="true"
-                android:text="@string/qc14"></Button>
+                android:text="@string/qc14"
+                android:drawableTint="@color/white"
+                app:rippleColor="@color/colorAccent"
+                style="@style/StylePrimaryColoredButtonInformation"/>
             <TextView
                 android:id="@+id/a14"
                 android:layout_below="@+id/q14"
@@ -354,20 +287,15 @@
                 android:layout_height="wrap_content"
                 android:visibility="gone"
                 android:text="@string/ac14"/>
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/q15"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="4dp"
                 android:layout_below="@+id/a14"
-                android:background="@color/white"
-                android:clickable="true"
-                android:gravity="left"
-                android:textSize="20dp"
-                android:textAllCaps="false"
-                android:drawableRight="@drawable/down_black"
-                android:enabled="true"
-                android:text="@string/qc15"></Button>
+                android:text="@string/qc15"
+                android:drawableTint="@color/white"
+                app:rippleColor="@color/colorAccent"
+                style="@style/StylePrimaryColoredButtonInformation"/>
             <TextView
                 android:id="@+id/a15"
                 android:layout_below="@+id/q15"
@@ -378,20 +306,15 @@
                 android:layout_height="wrap_content"
                 android:visibility="gone"
                 android:text="@string/ac15"/>
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/q16"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="4dp"
                 android:layout_below="@+id/a15"
-                android:background="@color/white"
-                android:clickable="true"
-                android:gravity="left"
-                android:textSize="20dp"
-                android:textAllCaps="false"
-                android:drawableRight="@drawable/down_black"
-                android:enabled="true"
-                android:text="@string/qc16"></Button>
+                android:text="@string/qc16"
+                android:drawableTint="@color/white"
+                app:rippleColor="@color/colorAccent"
+                style="@style/StylePrimaryColoredButtonInformation"/>
             <TextView
                 android:id="@+id/a16"
                 android:layout_below="@+id/q16"
@@ -402,20 +325,15 @@
                 android:layout_height="wrap_content"
                 android:visibility="gone"
                 android:text="@string/ac16"/>
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/q17"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="4dp"
                 android:layout_below="@+id/a16"
-                android:background="@color/white"
-                android:clickable="true"
-                android:gravity="left"
-                android:textSize="20dp"
-                android:textAllCaps="false"
-                android:drawableRight="@drawable/down_black"
-                android:enabled="true"
-                android:text="@string/qc17"></Button>
+                android:text="@string/qc17"
+                android:drawableTint="@color/white"
+                app:rippleColor="@color/colorAccent"
+                style="@style/StylePrimaryColoredButtonInformation"/>
             <TextView
                 android:id="@+id/a17"
                 android:layout_below="@+id/q17"
@@ -426,20 +344,15 @@
                 android:layout_height="wrap_content"
                 android:visibility="gone"
                 android:text="@string/ac17"/>
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/q18"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="4dp"
                 android:layout_below="@+id/a17"
-                android:background="@color/white"
-                android:clickable="true"
-                android:gravity="left"
-                android:textSize="20dp"
-                android:textAllCaps="false"
-                android:drawableRight="@drawable/down_black"
-                android:enabled="true"
-                android:text="@string/qc18"></Button>
+                android:text="@string/qc18"
+                android:drawableTint="@color/white"
+                app:rippleColor="@color/colorAccent"
+                style="@style/StylePrimaryColoredButtonInformation"/>
             <TextView
                 android:id="@+id/a18"
                 android:layout_below="@+id/q18"
@@ -450,20 +363,15 @@
                 android:layout_height="wrap_content"
                 android:visibility="gone"
                 android:text="@string/ac18"/>
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/q19"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="4dp"
                 android:layout_below="@+id/a18"
-                android:background="@color/white"
-                android:clickable="true"
-                android:gravity="left"
-                android:textSize="20dp"
-                android:textAllCaps="false"
-                android:drawableRight="@drawable/down_black"
-                android:enabled="true"
-                android:text="@string/qc19"></Button>
+                android:text="@string/qc19"
+                android:drawableTint="@color/white"
+                app:rippleColor="@color/colorAccent"
+                style="@style/StylePrimaryColoredButtonInformation"/>
             <TextView
                 android:id="@+id/a19"
                 android:layout_below="@+id/q19"
@@ -474,20 +382,15 @@
                 android:layout_height="wrap_content"
                 android:visibility="gone"
                 android:text="@string/ac19"/>
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/q20"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="4dp"
                 android:layout_below="@+id/a19"
-                android:background="@color/white"
-                android:clickable="true"
-                android:gravity="left"
-                android:textSize="20dp"
-                android:textAllCaps="false"
-                android:drawableRight="@drawable/down_black"
-                android:enabled="true"
-                android:text="@string/qc20"></Button>
+                android:text="@string/qc20"
+                android:drawableTint="@color/white"
+                app:rippleColor="@color/colorAccent"
+                style="@style/StylePrimaryColoredButtonInformation"/>
             <TextView
                 android:id="@+id/a20"
                 android:layout_below="@+id/q20"
@@ -498,20 +401,15 @@
                 android:layout_height="wrap_content"
                 android:visibility="gone"
                 android:text="@string/ac20"/>
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/q21"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="4dp"
                 android:layout_below="@+id/a20"
-                android:background="@color/white"
-                android:clickable="true"
-                android:gravity="left"
-                android:textSize="20dp"
-                android:textAllCaps="false"
-                android:drawableRight="@drawable/down_black"
-                android:enabled="true"
-                android:text="@string/qc21"></Button>
+                android:text="@string/qc21"
+                android:drawableTint="@color/white"
+                app:rippleColor="@color/colorAccent"
+                style="@style/StylePrimaryColoredButtonInformation"/>
             <TextView
                 android:id="@+id/a21"
                 android:layout_below="@+id/q21"
@@ -522,20 +420,15 @@
                 android:layout_height="wrap_content"
                 android:visibility="gone"
                 android:text="@string/ac21"/>
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/q22"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="4dp"
                 android:layout_below="@+id/a21"
-                android:background="@color/white"
-                android:clickable="true"
-                android:gravity="left"
-                android:textSize="20dp"
-                android:textAllCaps="false"
-                android:drawableRight="@drawable/down_black"
-                android:enabled="true"
-                android:text="@string/qc22"></Button>
+                android:text="@string/qc22"
+                android:drawableTint="@color/white"
+                app:rippleColor="@color/colorAccent"
+                style="@style/StylePrimaryColoredButtonInformation"/>
             <TextView
                 android:id="@+id/a22"
                 android:layout_below="@+id/q22"
@@ -546,20 +439,15 @@
                 android:layout_height="wrap_content"
                 android:visibility="gone"
                 android:text="@string/ac22"/>
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/q23"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="4dp"
                 android:layout_below="@+id/a22"
-                android:background="@color/white"
-                android:clickable="true"
-                android:gravity="left"
-                android:textSize="20dp"
-                android:textAllCaps="false"
-                android:drawableRight="@drawable/down_black"
-                android:enabled="true"
-                android:text="@string/qc23"></Button>
+                android:text="@string/qc23"
+                android:drawableTint="@color/white"
+                app:rippleColor="@color/colorAccent"
+                style="@style/StylePrimaryColoredButtonInformation"/>
             <TextView
                 android:id="@+id/a23"
                 android:layout_below="@+id/q23"
@@ -570,20 +458,15 @@
                 android:layout_height="wrap_content"
                 android:visibility="gone"
                 android:text="@string/ac23"/>
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/q24"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="4dp"
                 android:layout_below="@+id/a23"
-                android:background="@color/white"
-                android:clickable="true"
-                android:gravity="left"
-                android:textSize="20dp"
-                android:textAllCaps="false"
-                android:drawableRight="@drawable/down_black"
-                android:enabled="true"
-                android:text="@string/qc24"></Button>
+                android:text="@string/qc24"
+                android:drawableTint="@color/white"
+                app:rippleColor="@color/colorAccent"
+                style="@style/StylePrimaryColoredButtonInformation"/>
             <TextView
                 android:id="@+id/a24"
                 android:layout_below="@+id/q24"
@@ -594,20 +477,15 @@
                 android:layout_height="wrap_content"
                 android:visibility="gone"
                 android:text="@string/ac24"/>
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/q25"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="4dp"
                 android:layout_below="@+id/a24"
-                android:background="@color/white"
-                android:clickable="true"
-                android:gravity="left"
-                android:textSize="20dp"
-                android:textAllCaps="false"
-                android:drawableRight="@drawable/down_black"
-                android:enabled="true"
-                android:text="@string/qc25"></Button>
+                android:text="@string/qc25"
+                android:drawableTint="@color/white"
+                app:rippleColor="@color/colorAccent"
+                style="@style/StylePrimaryColoredButtonInformation"/>
             <TextView
                 android:id="@+id/a25"
                 android:layout_below="@+id/q25"
@@ -618,20 +496,15 @@
                 android:layout_height="wrap_content"
                 android:visibility="gone"
                 android:text="@string/ac25"/>
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/q26"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="4dp"
                 android:layout_below="@+id/a25"
-                android:background="@color/white"
-                android:clickable="true"
-                android:gravity="left"
-                android:textSize="20dp"
-                android:textAllCaps="false"
-                android:drawableRight="@drawable/down_black"
-                android:enabled="true"
-                android:text="@string/qc26"></Button>
+                android:text="@string/qc26"
+                android:drawableTint="@color/white"
+                app:rippleColor="@color/colorAccent"
+                style="@style/StylePrimaryColoredButtonInformation"/>
             <TextView
                 android:id="@+id/a26"
                 android:layout_below="@+id/q26"

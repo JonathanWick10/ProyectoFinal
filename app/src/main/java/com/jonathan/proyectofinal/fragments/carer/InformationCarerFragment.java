@@ -81,6 +81,32 @@ public class InformationCarerFragment extends Fragment implements View.OnClickLi
         a25 = view.findViewById(R.id.a25); a25.setOnClickListener(this);
         q26 = view.findViewById(R.id.q26); q26.setOnClickListener(this);
         a26 = view.findViewById(R.id.a26); a26.setOnClickListener(this);
+        q1.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+        q2.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+        q3.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+        q4.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+        q5.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+        q6.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+        q7.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+        q8.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+        q9.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+        q10.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+        q11.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+        q12.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+        q13.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+        q14.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+        q15.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+        q16.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+        q17.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+        q18.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+        q19.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+        q20.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+        q21.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+        q22.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+        q23.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+        q24.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+        q25.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+        q26.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
         return view;
     }
 
@@ -353,7 +379,7 @@ public class InformationCarerFragment extends Fragment implements View.OnClickLi
                 }
                 break;
             case R.id.q25:
-                if(a15.getVisibility() == v.VISIBLE){ //si es Visible lo pones Gone
+                if(a25.getVisibility() == v.VISIBLE){ //si es Visible lo pones Gone4
                     a25.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a25.setVisibility(v.GONE);
                     q25.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);

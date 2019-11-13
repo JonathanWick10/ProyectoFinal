@@ -14,12 +14,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.material.button.MaterialButton;
 import com.jonathan.proyectofinal.R;
 
 public class PhasesEAFragment extends Fragment implements View.OnClickListener {
 
     TextView a1,a2,a3;
-    Button q1,q2,q3;
+    MaterialButton q1,q2,q3;
 
 
     public PhasesEAFragment() {
@@ -44,6 +45,9 @@ public class PhasesEAFragment extends Fragment implements View.OnClickListener {
         a2.setOnClickListener(this);
         q3.setOnClickListener(this);
         a3.setOnClickListener(this);
+        q1.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+        q2.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+        q3.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
         return view;
     }
 
