@@ -375,10 +375,10 @@
     </style>
 
     <!-- Standard style for rating bars -->
-    <style name="StyleRatingBar" parent="Widget.AppCompat.RatingBar" >
+    <style name="StyleRatingBar" parent="Widget.AppCompat.RatingBar">
         <item name="android:numStars">5</item>
         <item name="android:stepSize">1</item>
-    </style >
+    </style>
 
 
     <!-- Styles memorama-->
@@ -386,10 +386,12 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
+
     <style name="parentCero">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
+
     <style name="parentTotal">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
@@ -399,6 +401,7 @@
         <item name="android:orientation">horizontal</item>
         <item name="android:layout_weight">1</item>
     </style>
+
     <style name="item" parent="parentTotal">
         <item name="android:layout_weight">1</item>
         <item name="android:padding">10dp</item>

@@ -391,6 +391,7 @@
     <string name="lbl_progress">Progreso:</string>
     <string name="lbl_statement">Estado:</string>
     <string name="lbl_description">Descripción:</string>
+    <string name="lbl_instructions">Instrucciones:</string>
     <string name="lbl_date_of_assignment">Fecha de asignación:</string>
     <string name="lbl_frequency">Frecuencia:</string>
     <string name="lbl_hours">Horas:</string>
@@ -402,6 +403,11 @@
     <string name="btn_show_info">Mostrar</string>
     <string name="btn_hide_info">Ocultar</string>
     <string name="family_questions_img">Preguntas familia</string>
+    <string name="lbl_description_family">Actividades para conservar recuerdos de tus seres queridos.</string>
+    <string name="lbl_description_home">Actividades para conservar recuerdos de tu hogar.</string>
+    <string name="lbl_description_places">Actividades para conservar recuerdos de los lugares que frecuentas.</string>
+    <string name="lbl_description_pets">Actividades para conservar los recuerdos de tus mascotas.</string>
+    <string name="lbl_instructions_questions">Cuando tu cuidador habilite las actividades, podrás visualizarlas en este apartado.</string>
 
     <!-- General strings -->
     <string name="lbl_welcome">Bienvenido</string>
@@ -859,4 +865,5 @@
     <string name="physical_nameExercise_resistence">Ejercicios de resistencia o aerobicos</string>
     <string name="physical_nameexercise_bodybuilding">Ejercicios de fortalecimiento o musculación</string>
     <string name="description_nameexercise_bodybuilding">Los ejercicios de fortalecimiento refuerzan y potencian la musculatura, y por tanto contribuyen a mante- ner o reforzar la autonomía y retrasar la dependencia. Mejoran el metabolismo, contribuyendo a mantener el peso y los niveles de glucosa (azúcar) y colesterol en sangre. Previenen la osteoporosis, poliartrosis y las caídas</string>
+    <string name="title_activity_notification_manager">NotificationManager</string>
 </resources>

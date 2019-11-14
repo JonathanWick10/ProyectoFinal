@@ -6,7 +6,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.patient.PlacesChildFragment">
 
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -22,49 +21,61 @@
         <LinearLayout
             android:id="@+id/layout_description_places"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/twenty">
+
+            <TextView
+                android:id="@+id/lbl_memoplaces_name"
+                style="@style/StyleCardViewTitles"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/thirty"
+                android:text="@string/tab_places_questions"
+                android:gravity="center"/>
+
+            <ImageView
+                android:id="@+id/iv_memogame_places"
+                android:layout_width="@dimen/oneHundredFifty"
+                android:layout_height="@dimen/oneHundredFifty"
+                android:src="@drawable/img_places_card" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_margin="@dimen/sixteen"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
 
-                <ImageView
-                    android:id="@+id/iv_memogame_places"
-                    android:layout_width="@dimen/oneHundredFifty"
-                    android:layout_height="@dimen/oneHundredFifty"
-                    android:src="@drawable/img_places_card" />
-
-                <LinearLayout
+                <TextView
+                    style="@style/StyleCardViewSubTitles"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="@dimen/sixteen"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/two"
+                    android:text="@string/lbl_description" />
 
-                    <TextView
-                        android:id="@+id/lbl_memoplaces_name"
-                        style="@style/StyleCardViewTitles"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/thirty"
-                        android:text="Lugares" />
+                <TextView
+                    android:id="@+id/lbl_memoplaces_desc"
+                    style="@style/StyleCardViewDescriptions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lbl_description_places"/>
 
-                    <TextView
-                        style="@style/StyleCardViewSubTitles"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/twentyFive"
-                        android:layout_marginTop="@dimen/two"
-                        android:text="@string/lbl_description" />
+                <TextView
+                    style="@style/StyleCardViewSubTitles"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/twentyFive"
+                    android:layout_marginTop="@dimen/five"
+                    android:text="@string/lbl_instructions" />
 
-                    <TextView
-                        android:id="@+id/lbl_memoplaces_desc"
-                        style="@style/StyleCardViewDescriptions"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/twentyFive"
-                        android:text="Juego que permite determinar, que recuerdas de un lugar." />
+                <TextView
+                    android:id="@+id/lbl_memoplaces_ins"
+                    style="@style/StyleCardViewDescriptions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lbl_instructions_questions" />
 
-                </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>
