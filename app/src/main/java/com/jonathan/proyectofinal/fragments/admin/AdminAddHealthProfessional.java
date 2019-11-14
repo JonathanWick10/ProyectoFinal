@@ -203,18 +203,9 @@ public class AdminAddHealthProfessional extends Fragment {
         if (flag2) {
             final ProgressDialog progressDialog = ProgressDialog.show(getActivity(),
                     "Brainmher","Realizando registro en línea");
+            firebaseAuth.signOut();
             //_____________________________________________________________________________________________________
             firebaseAuth.createUserWithEmailAndPassword(hp.getEmail(), hp.getPassword())
-                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                firebaseAuth.signOut();
-                            }
-                        }
-                    });
-
-            firebaseAuth.signInWithEmailAndPassword(hp.getEmail(), hp.getPassword())
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
@@ -249,11 +240,11 @@ public class AdminAddHealthProfessional extends Fragment {
                                                 }
                                             });
                                 }
+                                firebaseAuth.signOut();
                             }
                         }
                     });
 
-            firebaseAuth.signOut();
 
             db.collection(Constants.Adminds).document(uIDAdmin).get()
                     .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {

@@ -224,15 +224,9 @@ public class AddPatients extends Fragment {
                     final ProgressDialog progressDialog = ProgressDialog.show(getActivity(),
                             "Brainmher","Realizando registro en línea");
 
-                    firebaseAuth.createUserWithEmailAndPassword(patient.getEmail(),patient.getPassword())
-                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    firebaseAuth.signOut();
-                                }
-                            });
+                    firebaseAuth.signOut();
 
-                    firebaseAuth.signInWithEmailAndPassword(patient.getEmail(), patient.getPassword())
+                    firebaseAuth.createUserWithEmailAndPassword(patient.getEmail(),patient.getPassword())
                             .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
@@ -251,7 +245,7 @@ public class AddPatients extends Fragment {
                                                             while(!uri.isComplete());
                                                             Uri url = uri.getResult();
                                                             patient.setUriImg(url.toString());
-                                                            db.collection(Constants.Patients).document(patient.getPatientUID()).set(patient)
+                                                            db.collection(Constants.Patients).document(uIDPatient).set(patient)
                                                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                                         @Override
                                                                         public void onSuccess(Void aVoid) {
@@ -295,9 +289,9 @@ public class AddPatients extends Fragment {
                                         }
 
                                     }
+                                    firebaseAuth.signOut();
                                 }
                             });
-                    firebaseAuth.signOut();
 
                     db.collection(Constants.HealthcareProfesional).document(uIDHPoCarer).get()
                             .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
