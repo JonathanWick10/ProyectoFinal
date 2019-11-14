@@ -86,6 +86,12 @@ public class AdminListPSFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        reference();
+    }
+
     private void eventDelete() {
         adapterI = new AdminListPSAdapter.AdminListPSAdapterI() {
             @Override
@@ -257,6 +263,7 @@ public class AdminListPSFragment extends Fragment {
 
     private void reference() {
         recyclerView = view.findViewById(R.id.admin_rv_list);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection(Constants.HealthcareProfesional).get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -269,7 +276,6 @@ public class AdminListPSFragment extends Fragment {
                             healthcareProfessionalList.add(hp);
                         }
                         recyclerView.setAdapter(new AdminListPSAdapter(getActivity(),healthcareProfessionalList,adapterI));
-                        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                         recyclerView.setHasFixedSize(true);
                         if (healthcareProfessionalList.size()!=0){
                             recyclerView.setVisibility(View.VISIBLE);

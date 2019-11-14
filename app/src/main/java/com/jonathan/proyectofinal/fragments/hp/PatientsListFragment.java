@@ -81,6 +81,12 @@ public class PatientsListFragment extends Fragment {
     public PatientsListFragment() {
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        initRecyclerView();
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -96,7 +102,6 @@ public class PatientsListFragment extends Fragment {
     }
 
     private void reference() {
-        linearLayoutManager = new LinearLayoutManager(getActivity());
         ButterKnife.bind(this, view);
         eventSelectedItem();
         eventDeleteItem();
@@ -338,7 +343,7 @@ public class PatientsListFragment extends Fragment {
         //------------------------------------------
         final ProgressDialog progressDialog = ProgressDialog.show(getActivity(),
                 "Brainmher","Consultando registros en línea");
-        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         String uid = user.getUid();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         CollectionReference collectionReferencePatients = db.collection(Constants.Patients);
