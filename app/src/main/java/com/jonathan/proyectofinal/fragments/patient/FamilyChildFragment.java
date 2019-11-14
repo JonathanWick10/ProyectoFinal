@@ -1,10 +1,15 @@
 package com.jonathan.proyectofinal.fragments.patient;
 
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,7 +19,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -82,6 +89,72 @@ public class FamilyChildFragment extends Fragment {
         iSelectionMemorizame = new PatientMemorizameAdapter.ISelectionMemorizame() {
             @Override
             public void clickItem(Memorizame memorizame) {
+
+                //region AlertDialog
+                    final AlertDialog alertDialog;
+                    final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.BackgroundRounded);
+
+                    if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        // only for Lollipop and newer versions
+                        try {
+                            LayoutInflater inflater = getActivity().getLayoutInflater();
+                            View dialogView = inflater.inflate(R.layout.layout_question_memorizame, null);
+                            builder.setView(dialogView);
+                            alertDialog=builder.create();
+
+                            Button btn1=(Button)dialogView.findViewById(R.id.btn_cancelar);
+                            btn1.setText(R.string.no);
+                            btn1.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+
+                                    //translation();
+                                    alertDialog.dismiss();
+                                }
+                            });
+                            Button btn2=(Button)dialogView.findViewById(R.id.btn_terminar);
+                            btn2.setText(R.string.yes);
+                            btn2.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+
+                                    alertDialog.dismiss();
+                                }
+                            });
+                            TextView txtQuestion=dialogView.findViewById(R.id.text_question);
+                            txtQuestion.setText(memorizame.getQuestion());
+                            RadioButton rb1 = dialogView.findViewById(R.id.rb_question_1);
+                            RadioButton rb2 = dialogView.findViewById(R.id.rb_question_2);
+                            RadioButton rb3 = dialogView.findViewById(R.id.rb_question_3);
+                            RadioButton rb4 = dialogView.findViewById(R.id.rb_question_4);
+                            rb1.setText(memorizame.getAnswer1());
+                            rb2.setText(memorizame.getAnswer2());
+                            rb3.setText(memorizame.getAnswer3());
+                            rb4.setText(memorizame.getAnswer4());
+                            alertDialog.show();
+                        } catch (Resources.NotFoundException e) {
+                            e.printStackTrace();
+                        }
+                    }else{
+                        builder.setNeutralButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+
+                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                        builder.setCancelable(false);
+                        builder.show();
+
+                    }
+
+                //endregion
 
             }
         };

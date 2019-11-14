@@ -239,10 +239,6 @@ public class NewCardMemorizame extends Fragment {
 
 
         }
-
-
-
-
         //endregion
     }
     public String createTransactionID(){
