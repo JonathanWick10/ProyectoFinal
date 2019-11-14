@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.patient.PetsChildFragment">
+    tools:context=".fragments.patient.PetsChildFragment"
+    android:id="@+id/nested_scroll_view">
 
 
     <RelativeLayout
@@ -15,19 +16,23 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/recyclerViewPets"
-            tools:listitem="@layout/item_memorizame_recycler"
-            />
+            tools:listitem="@layout/item_memorizame_recycler"/>
 
         <LinearLayout
             android:id="@+id/layout_description_pets"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/twenty">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/lbl_memoplaces_name"
+                style="@style/StyleCardViewTitles"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_height="@dimen/thirty"
+                android:text="@string/tab_pets_questions"
+                android:gravity="center"/>
 
                 <ImageView
                     android:id="@+id/iv_memogame_pets"
@@ -40,19 +45,13 @@
                     android:layout_height="match_parent"
                     android:layout_margin="@dimen/sixteen"
                     android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/lbl_memopets_name"
-                        style="@style/StyleCardViewTitles"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/thirty"
-                        android:text="Mascotas" />
+                    android:orientation="vertical"
+                    android:gravity="center">
 
                     <TextView
                         style="@style/StyleCardViewSubTitles"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/twentyFive"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/two"
                         android:text="@string/lbl_description" />
 
@@ -60,12 +59,24 @@
                         android:id="@+id/lbl_memopets_desc"
                         style="@style/StyleCardViewDescriptions"
                         android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lbl_description_pets"/>
+
+                    <TextView
+                        style="@style/StyleCardViewSubTitles"
+                        android:layout_width="match_parent"
                         android:layout_height="@dimen/twentyFive"
-                        android:text="Juego que determina, que recuerdas de alguna mascota." />
+                        android:layout_marginTop="@dimen/five"
+                        android:text="@string/lbl_instructions" />
+
+                    <TextView
+                        android:id="@+id/lbl_memopets_ins"
+                        style="@style/StyleCardViewDescriptions"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lbl_instructions_questions" />
 
                 </LinearLayout>
-            </LinearLayout>
-
 
         </LinearLayout>
     </RelativeLayout>

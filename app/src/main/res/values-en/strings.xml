@@ -375,6 +375,7 @@
     <string name="lbl_progress">Progress:</string>
     <string name="lbl_statement">Statement:</string>
     <string name="lbl_description">Description:</string>
+    <string name="lbl_instructions">Instructions:</string>
     <string name="lbl_date_of_assignment">Date of assignment:</string>
     <string name="lbl_frequency">Frequency:</string>
     <string name="lbl_hours">Hours:</string>
@@ -386,6 +387,11 @@
     <string name="btn_show_info">Show</string>
     <string name="btn_hide_info">Hide</string>
     <string name="family_questions_img">family question</string>
+    <string name="lbl_description_family">Activities to preserve memories of your loved ones.</string>
+    <string name="lbl_description_home">Activities to keep memories of your home.</string>
+    <string name="lbl_description_places">Activities to keep memories of the places you frequent.</string>
+    <string name="lbl_description_pets">Activities to preserve the memories of your pets.</string>
+    <string name="lbl_instructions_questions">When your caregiver enables the activities, you can view them in this section.</string>
 
     <!-- General strings -->
     <string name="lbl_welcome">Welcome</string>
