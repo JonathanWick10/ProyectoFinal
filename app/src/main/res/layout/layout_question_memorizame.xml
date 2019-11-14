@@ -11,6 +11,12 @@
         android:orientation="vertical"
         android:padding="@dimen/sixteen"
         android:id="@+id/layout_question">
+
+        <ImageView
+            android:id="@+id/img_question"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"></ImageView>
+
     <TextView
         android:id="@+id/text_question"
         android:layout_width="match_parent"
