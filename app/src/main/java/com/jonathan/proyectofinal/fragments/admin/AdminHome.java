@@ -87,6 +87,7 @@ public class AdminHome extends AppCompatActivity implements IMainCarer,AdminAddH
     ProgressDialog progressDialog;
     FirebaseFirestore db;
     Admin admin = new Admin();
+    public long backPressedTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -148,7 +149,7 @@ public class AdminHome extends AppCompatActivity implements IMainCarer,AdminAddH
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
         fragmentTransaction.replace(R.id.admin_home_frm_contenedor, fragment);  // remplaza un fragmento de contenedor
-        fragmentTransaction.commit();
+        fragmentTransaction.addToBackStack(null).commit();
     }
 
     @Override
@@ -195,11 +196,16 @@ public class AdminHome extends AppCompatActivity implements IMainCarer,AdminAddH
 
     @Override
     public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
-            closeDrawer();
+
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0 ){
+            getSupportFragmentManager().popBackStack();
+        }else if (backPressedTime + 4000 > System.currentTimeMillis()) {
+            if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                closeDrawer();
+            }
+            super.onBackPressed();
         }
-        super.onBackPressed();
-        finish();
+        backPressedTime = System.currentTimeMillis();
     }
 
     @Override

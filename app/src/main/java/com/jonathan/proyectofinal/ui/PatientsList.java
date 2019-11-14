@@ -73,6 +73,7 @@ public class PatientsList extends AppCompatActivity implements IMainCarer,AddPat
     private boolean isFabTapped = false;
     private IPatientsListFragmentListener fragmentListener;
     String userRole;
+    public long backPressedTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -165,7 +166,7 @@ public class PatientsList extends AppCompatActivity implements IMainCarer,AddPat
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
         fragmentTransaction.replace(R.id.fragmentHProfessional, fragment);  // remplaza un fragmento de contenedor
-        fragmentTransaction.commit();
+        fragmentTransaction.addToBackStack(null).commit();
     }
 
     @Override
@@ -206,11 +207,16 @@ public class PatientsList extends AppCompatActivity implements IMainCarer,AddPat
 
     @Override
     public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
-            closeDrawer();
+
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0 ){
+            getSupportFragmentManager().popBackStack();
+        }else if (backPressedTime + 4000 > System.currentTimeMillis()) {
+            if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                closeDrawer();
+            }
+            super.onBackPressed();
         }
-        super.onBackPressed();
-        finish();
+        backPressedTime = System.currentTimeMillis();
     }
 
     @Override

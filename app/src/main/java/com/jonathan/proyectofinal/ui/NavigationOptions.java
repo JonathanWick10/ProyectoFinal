@@ -30,6 +30,7 @@ public class NavigationOptions extends AppCompatActivity {
     MaterialToolbar toolbar;
     String option, uid, role, profile_type;
     Bundle args = new Bundle();
+    public long backPressedTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +63,7 @@ public class NavigationOptions extends AppCompatActivity {
         fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
         fragment.setArguments(args);
         fragmentTransaction.replace(R.id.content_navigation_option, fragment);
-        fragmentTransaction.commit();
+        fragmentTransaction.addToBackStack(null).commit();
     }
 
     @Override
@@ -73,6 +74,12 @@ public class NavigationOptions extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0 ){
+            getSupportFragmentManager().popBackStack();
+        }else if (backPressedTime + 4000 > System.currentTimeMillis()) {
+            super.onBackPressed();
+        }
+        backPressedTime = System.currentTimeMillis();
     }
 }

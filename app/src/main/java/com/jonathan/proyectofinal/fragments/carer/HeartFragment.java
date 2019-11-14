@@ -45,14 +45,12 @@ public class HeartFragment extends Fragment {
     }
 
     private void SetUpViewPager(ViewPager viewPag, TabLayout tabs, Fragment fragment) {
-        if (fragment != null) {
             adapt = new Adapter(getChildFragmentManager());
             tabs.setupWithViewPager(viewPag);
             viewPag.setAdapter(adapt);
             tabs.getTabAt(1).setIcon(R.drawable.ic_info);
             tabs.getTabAt(0).setIcon(R.drawable.ic_accessibility_black);
             tabs.getTabAt(2).setIcon(R.drawable.ic_description);
-        }
     }
 
     public class Adapter extends FragmentPagerAdapter {
@@ -77,9 +75,10 @@ public class HeartFragment extends Fragment {
                 case 2:
                     WarningCarerFragment warningCarerFragment = new WarningCarerFragment();
                     return warningCarerFragment;
+                default:
+                    throw new RuntimeException("Invalid item index.");
 
             }
-            return null;
         }
 
         @Override
