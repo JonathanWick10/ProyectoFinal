@@ -19,7 +19,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/qc1"
-                android:drawableTint="@color/white"
+                android:drawableTint="@color/colorPrimary"
                 app:rippleColor="@color/colorAccent"
                 style="@style/StylePrimaryColoredButtonInformation"/>
             <TextView
@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/a1"
                 android:text="@string/qc2"
-                android:drawableTint="@color/white"
+                android:drawableTint="@color/colorPrimary"
                 app:rippleColor="@color/colorAccent"
                 style="@style/StylePrimaryColoredButtonInformation"/>
             <TextView
@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/a2"
                 android:text="@string/qc3"
-                android:drawableTint="@color/white"
+                android:drawableTint="@color/colorPrimary"
                 app:rippleColor="@color/colorAccent"
                 style="@style/StylePrimaryColoredButtonInformation"/>
             <TextView
@@ -78,7 +78,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/a3"
                 android:text="@string/qc4"
-                android:drawableTint="@color/white"
+                android:drawableTint="@color/colorPrimary"
                 app:rippleColor="@color/colorAccent"
                 style="@style/StylePrimaryColoredButtonInformation"/>
             <TextView
@@ -98,7 +98,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/a4"
                 android:text="@string/qc5"
-                android:drawableTint="@color/white"
+                android:drawableTint="@color/colorPrimary"
                 app:rippleColor="@color/colorAccent"
                 style="@style/StylePrimaryColoredButtonInformation"/>
 
@@ -119,7 +119,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/a5"
                 android:text="@string/qc6"
-                android:drawableTint="@color/white"
+                android:drawableTint="@color/colorPrimary"
                 app:rippleColor="@color/colorAccent"
                 style="@style/StylePrimaryColoredButtonInformation"/>
 
@@ -139,7 +139,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/qc7"
-                android:drawableTint="@color/white"
+                android:drawableTint="@color/colorPrimary"
                 app:rippleColor="@color/colorAccent"
                 style="@style/StylePrimaryColoredButtonInformation"/>
             <TextView
@@ -159,7 +159,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/a7"
                 android:text="@string/qc8"
-                android:drawableTint="@color/white"
+                android:drawableTint="@color/colorPrimary"
                 app:rippleColor="@color/colorAccent"
                 style="@style/StylePrimaryColoredButtonInformation"/>
             <TextView
@@ -179,7 +179,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/a8"
                 android:text="@string/qc9"
-                android:drawableTint="@color/white"
+                android:drawableTint="@color/colorPrimary"
                 app:rippleColor="@color/colorAccent"
                 style="@style/StylePrimaryColoredButtonInformation"/>
             <TextView
@@ -198,7 +198,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/a9"
                 android:text="@string/qc10"
-                android:drawableTint="@color/white"
+                android:drawableTint="@color/colorPrimary"
                 app:rippleColor="@color/colorAccent"
                 style="@style/StylePrimaryColoredButtonInformation"/>
             <TextView
@@ -217,7 +217,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/a10"
                 android:text="@string/qc11"
-                android:drawableTint="@color/white"
+                android:drawableTint="@color/colorPrimary"
                 app:rippleColor="@color/colorAccent"
                 style="@style/StylePrimaryColoredButtonInformation"/>
             <TextView
