@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/recyclerViewFamily"
-            tools:listitem="@layout/listview_list_patients"
+            tools:listitem="@layout/item_memorizame_recycler"
             />
         <LinearLayout
             android:id="@+id/layout_description_family"

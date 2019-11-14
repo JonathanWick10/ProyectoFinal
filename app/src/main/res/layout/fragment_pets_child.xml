@@ -7,17 +7,19 @@
     tools:context=".fragments.patient.PetsChildFragment">
 
 
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardActivityMemoPets"
-        style="@style/StyleCardView"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        app:strokeColor="@color/colorPrimaryLight"
-        app:strokeWidth="@dimen/two">
+        android:layout_height="wrap_content">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/recyclerViewPets"
+            tools:listitem="@layout/item_memorizame_recycler"
+            />
 
         <LinearLayout
+            android:id="@+id/layout_description_pets"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -64,31 +66,7 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@android:color/darker_gray" />
 
-            <LinearLayout
-                style="@style/StyleLayoutActionCardView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <androidx.appcompat.widget.AppCompatRatingBar
-                    android:id="@+id/ratingBarMemoPets"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/StyleRatingBar" />
-
-                <TextView
-                    android:id="@+id/data_rating_memopets"
-                    style="@style/StyleCardViewDescriptions"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorPrimary" />
-
-            </LinearLayout>
         </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
-
+    </RelativeLayout>
 </androidx.core.widget.NestedScrollView>
