@@ -2,7 +2,6 @@ package com.jonathan.proyectofinal.ui;
 
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,18 +10,14 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.fragments.games.Memorama;
 import com.jonathan.proyectofinal.fragments.games.PhysicalExercisePractic;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -55,11 +50,6 @@ public class Games extends AppCompatActivity  implements Memorama.Memoramai{
 
             iniciarProgres((getIntent().getExtras().getString("Game", "Memorama")));
 
-
-
-
-
-
     }
     private void iniciarProgres(final String typeGame) {
 
@@ -85,7 +75,9 @@ public class Games extends AppCompatActivity  implements Memorama.Memoramai{
                     ft.replace(R.id.contanedor_games, new Memorama(Games.this));
                     ft.commit();
                 }else {
-                    ft.replace(R.id.contanedor_games, new PhysicalExercisePractic(Games.this));
+                    int time =  getIntent().getExtras().getInt("Time");
+                    int img = getIntent().getExtras().getInt("Image");
+                    ft.replace(R.id.contanedor_games, new PhysicalExercisePractic(Games.this, img, time));
                     ft.commit();
                 }
 

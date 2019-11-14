@@ -54,6 +54,20 @@
         <item name="android:clickable">true</item>
     </style>
 
+    <!-- Standard style for buttons in informations -->
+    <style name="StylePrimaryColoredButtonInformation" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:clickable">true</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:padding">@dimen/five</item>
+        <item name="android:gravity">left</item>
+        <item name="android:textSize">@dimen/twentyText</item>
+        <item name="android:enabled">true</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="cornerRadius">@dimen/twenty</item>
+    </style>
+
     <!-- Standard style for login buttons -->
     <style name="StyleLoginButtons" parent="Widget.MaterialComponents.Button">
         <!--<item name="colorButtonNormal">@color/colorPrimaryDark</item>
@@ -131,6 +145,12 @@
     <style name="StyleTextInputEditText">
         <item name="android:textStyle">bold</item>
         <item name="android:singleLine">true</item>
+    </style>
+
+    <!-- Standard style for text boxes with single line -->
+    <style name="StyleTextInputEditTextNoSingeLine">
+        <item name="android:textStyle">bold</item>
+        <item name="android:singleLine">false</item>
     </style>
 
     <!-- Standard style for text box email in login -->
@@ -398,6 +418,15 @@
         <item name="android:progressBackgroundTint">#69f0ae</item>
         <item name="android:progressTint">#b71c1c</item>
         <item name="android:minWidth">200dp</item>
+    </style>
+
+    <!-- Standard style for button delete in cardview -->
+    <style name="StyleDeleteCardButton">
+        <item name="android:elevation">@dimen/elevationOne</item>
+        <item name="android:backgroundTint">#6c000000</item>
+        <item name="android:layout_gravity">end</item>
+        <item name="android:layout_marginTop">@dimen/five</item>
+        <item name="android:layout_marginRight">@dimen/five</item>
     </style>
 
 </resources>

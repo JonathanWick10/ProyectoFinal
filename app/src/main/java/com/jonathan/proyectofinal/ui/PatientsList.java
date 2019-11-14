@@ -182,6 +182,7 @@ public class PatientsList extends AppCompatActivity implements IMainCarer,AddPat
                 navigation.putExtra("option", "profile");
                 navigation.putExtra("user_uid", firebaseUser.getUid());
                 navigation.putExtra("user_role", userRole);
+                navigation.putExtra("profile_type", "personal");
                 startActivity(navigation);
                 break;
             case R.id.btn_logout:

@@ -1,35 +1,28 @@
 package com.jonathan.proyectofinal.adapters;
 
-import android.app.AlertDialog;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.material.tabs.TabLayout;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.data.PhysicalExerciseEntity;
 import com.jonathan.proyectofinal.fragments.games.PhysicalExecise;
-
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import pl.droidsonroids.gif.GifImageView;
 
 public class PhysicalExerciseAdapter extends RecyclerView.Adapter<PhysicalExerciseAdapter.holder> {
 
+    // region referenciacion
     @BindView(R.id.expandableViewMotor)
     LinearLayout expandableView;
     @BindView(R.id.btnExpandMotor)
@@ -40,6 +33,7 @@ public class PhysicalExerciseAdapter extends RecyclerView.Adapter<PhysicalExerci
     RatingBar ratingBar;
     @BindView(R.id.data_rating_motor)
     TextView ratingTxt;
+    // endregion
 
     private List<PhysicalExerciseEntity> listExercise;
     private PhysicalExecise.PhysicalExeciseI physicalExeciseI;
@@ -76,15 +70,19 @@ public class PhysicalExerciseAdapter extends RecyclerView.Adapter<PhysicalExerci
     }
 
     @Override
-    public void onBindViewHolder(@NonNull holder holder, int position) {
+    public void onBindViewHolder(@NonNull holder holder, final int position) {
+
+        final PhysicalExerciseEntity listExerciseget = listExercise.get(position);
         //setear datos
-        holder.nameE.setText(listExercise.get(position).getNameExercise());
-        //Log.v("Alerta", "asdasd");
+        holder.nameE.setText(listExerciseget.getNameExercise());
+        holder.image.setImageResource(listExerciseget.getImage());
+        //holder.description.setText(listExerciseget.getDescripcion());
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                physicalExeciseI.alert("eliminar");
+                physicalExeciseI.alert("eliminar" , listExerciseget);
             }
         });
 
@@ -97,15 +95,16 @@ public class PhysicalExerciseAdapter extends RecyclerView.Adapter<PhysicalExerci
 
 
     public class holder extends RecyclerView.ViewHolder {
-        TextView nameE, description;
+        TextView nameE;
+        //TextView description;
         GifImageView image;
-        public int time;
+        //public int time;
 
         public holder(@NonNull View itemView) {
             super(itemView);
 
             nameE = itemView.findViewById(R.id.physical_exercise_txtv_name);
-            description = itemView.findViewById(R.id.physical_exercise_txtv_description);
+            //description = itemView.findViewById(R.id.physical_exercise_txtv_description);
             image = itemView.findViewById(R.id.physical_exercise_imagev_gif);
         }
     }

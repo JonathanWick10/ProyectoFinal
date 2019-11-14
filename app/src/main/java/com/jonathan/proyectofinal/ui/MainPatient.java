@@ -9,7 +9,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.DialogInterface;
@@ -22,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.appbar.MaterialToolbar;
@@ -33,8 +33,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.data.Patient;
+import com.jonathan.proyectofinal.data.PhysicalExerciseEntity;
 import com.jonathan.proyectofinal.fragments.games.PhysicalExecise;
-import com.jonathan.proyectofinal.fragments.games.PhysicalExercisePractic;
 import com.jonathan.proyectofinal.fragments.patient.HomePFragment;
 import com.jonathan.proyectofinal.fragments.patient.MemorizamePFragment;
 import com.jonathan.proyectofinal.fragments.patient.NotificationsPFragment;
@@ -44,9 +44,11 @@ import com.jonathan.proyectofinal.tools.Constants;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
+import pl.droidsonroids.gif.GifImageView;
 
 public class MainPatient extends AppCompatActivity implements IComunicateFragment, NavigationView.OnNavigationItemSelectedListener, PhysicalExecise.PhysicalExeciseI {
 
+    //region reference
     @BindView(R.id.toolbarPatient)
     MaterialToolbar toolbar;
     @BindView(R.id.drawer_layout_patient)
@@ -59,6 +61,7 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
     FirebaseUser firebaseUser;
     FirebaseFirestore db;
     Patient patient = new Patient();
+    // endregion
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -139,6 +142,7 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
                 navigation.putExtra("option", "profile");
                 navigation.putExtra("user_uid", patient.getPatientUID());
                 navigation.putExtra("user_role", patient.getRole());
+                navigation.putExtra("profile_type", "personal");
                 startActivity(navigation);
                 break;
             case R.id.btn_logout:
@@ -169,7 +173,7 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
     }
 
     @Override
-    public void alert(String option) {
+    public void alert(String option, final PhysicalExerciseEntity listExerciseget) {
 
         final AlertDialog alertDialog;
         final AlertDialog.Builder builder = new AlertDialog.Builder(this,R.style.BackgroundRounded);
@@ -195,13 +199,25 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
                     @Override
                     public void onClick(View view) {
                         alertDialog.dismiss();
+                        final int time = listExerciseget.getTime();
+                        final int img = listExerciseget.getImage();
+
                         Intent pasar = new Intent(MainPatient.this, Games.class);
                         pasar.putExtra("Game","Physical");
+                        pasar.putExtra("Time",time);
+                        pasar.putExtra("Image", img);
+
                         startActivity(pasar);
                     }
                 });
-                TextView tvInformation=dialogView.findViewById(R.id.text_information);
-                tvInformation.setText(R.string.exersice_description);
+                // reference
+                TextView tvInformation = dialogView.findViewById(R.id.text_information);
+                GifImageView gift = dialogView.findViewById(R.id.gift);
+
+                // Body alert dialog
+                gift.setImageResource(listExerciseget.getImage());
+                tvInformation.setText(listExerciseget.getDescripcion());
+                //
                 alertDialog.show();
 
             } catch (Resources.NotFoundException e) {

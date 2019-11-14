@@ -1,6 +1,8 @@
 package com.jonathan.proyectofinal.data;
 
-public class HealthcareProfessional {
+import java.io.Serializable;
+
+public class HealthcareProfessional implements Serializable {
 
     //region Variables
     private String hpUID;

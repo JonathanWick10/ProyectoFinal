@@ -16,33 +16,34 @@ import com.jonathan.proyectofinal.data.Memorizame;
 
 import java.util.List;
 
-public class MemorizameFamilyGridAdapter extends RecyclerView.Adapter<MemorizameFamilyGridAdapter.MemorizameFamilyGridViewHolder> {
+public class PatientMemorizameAdapter extends RecyclerView.Adapter<PatientMemorizameAdapter.PatientMemorizameAdapterHolder> {
 
     //region Variables
     List<Memorizame> memorizameList;
     Context context;
-    MemorizameFamilyGridAdapter.ISelectionMemorizame iSelectionMemorizame;
-    MemorizameFamilyGridAdapter.IDeleteMemorizame iDeleteMemorizame;
+    PatientMemorizameAdapter.ISelectionMemorizame iSelectionMemorizame;
     //endregion
 
+    //region Builds
 
-    public MemorizameFamilyGridAdapter(List<Memorizame> memorizameList, Context context, ISelectionMemorizame iSelectionMemorizame, IDeleteMemorizame iDeleteMemorizame) {
+    public PatientMemorizameAdapter(List<Memorizame> memorizameList, Context context, ISelectionMemorizame iSelectionMemorizame) {
         this.memorizameList = memorizameList;
         this.context = context;
         this.iSelectionMemorizame = iSelectionMemorizame;
-        this.iDeleteMemorizame = iDeleteMemorizame;
     }
+
+    //endregion
 
     //region Overwritten methods of RecyclerView
     @NonNull
     @Override
-    public MemorizameFamilyGridViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.listview_memorizame, parent, false);
-        return new MemorizameFamilyGridViewHolder(view);
+    public PatientMemorizameAdapterHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_memorizame_recycler, parent, false);
+        return new PatientMemorizameAdapterHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MemorizameFamilyGridViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull PatientMemorizameAdapterHolder holder, final int position) {
         //set data
         holder.setData(memorizameList.get(position));
         //events onclick
@@ -53,14 +54,6 @@ public class MemorizameFamilyGridAdapter extends RecyclerView.Adapter<Memorizame
             }
         });
 
-        holder.imageDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                iDeleteMemorizame.clickdelete(memorizameList.get(position));
-            }
-        });
-
-
     }
 
     @Override
@@ -70,44 +63,34 @@ public class MemorizameFamilyGridAdapter extends RecyclerView.Adapter<Memorizame
     //endregion
 
 
-
-    //region ViewHolder of Recycler
-    public class MemorizameFamilyGridViewHolder  extends RecyclerView.ViewHolder {
+    //region Class Holder
+    public class PatientMemorizameAdapterHolder  extends RecyclerView.ViewHolder {
 
         ImageView photo;
-        ImageView imageDelete;
         TextView number;
         Memorizame item;
         View layout;
 
         //Reference to views
-        public MemorizameFamilyGridViewHolder (@NonNull View itemView) {
+        public PatientMemorizameAdapterHolder (@NonNull View itemView) {
             super(itemView);
             layout = itemView;
-            photo = itemView.findViewById(R.id.img_memorizame);
-            imageDelete=itemView.findViewById(R.id.img_memorizame);
-            number = itemView.findViewById(R.id.text_number);
+            photo = itemView.findViewById(R.id.img_memorizame_patient);
+            number = itemView.findViewById(R.id.text_number_patient);
         }
 
         //Set data to views
         public void setData(Memorizame item) {
             this.item = item;
-            number.setText(item.getQuestion());
+            number.setText("Empieza");
             Glide.with(context).load(item.getUriImg()).fitCenter().into(photo);
         }
     }
     //endregion
 
-
     //region Interfaces
     public interface ISelectionMemorizame {
         void clickItem(Memorizame memorizame);
     }
-
-    public interface IDeleteMemorizame {
-        void clickdelete(Memorizame memorizame);
-    }
     //endregion
-
-
 }

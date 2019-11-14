@@ -6,9 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".fragments.admin.AdminListPSFragment">
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp">
 
         <TextView
             android:id="@+id/txt_no_hp"
@@ -16,6 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:fontFamily="sans-serif-smallcaps"
+            android:visibility="invisible"
             android:gravity="center"
             android:text="@string/no_healthcarer_pro"
             android:textSize="35dp"
@@ -27,5 +33,7 @@
             android:layout_height="match_parent"
             tools:listitem="@layout/list_ps_admin_plantilla" />
     </RelativeLayout>
+    </ScrollView>
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

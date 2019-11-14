@@ -1,38 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="194dp"
-    >
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cv_memorizame"
+        android:id="@+id/cv_memorizame_patient"
         style="@style/StyleCardView"
         android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/img_delete"
-            android:layout_width="@dimen/thirty"
-            android:layout_height="@dimen/thirty"
-            android:src="@drawable/ic_highlight_off_white"
-            style="@style/StyleDeleteCardButton"/>
-
         <ImageView
             android:layout_width="match_parent"
-            android:id="@+id/img_memorizame"
+            android:id="@+id/img_memorizame_patient"
             android:layout_height="@dimen/oneHundredNinetyFour"
             android:src="@drawable/img_selfcarer"
             android:scaleType="centerCrop"/>
 
         <TextView
-            android:id="@+id/text_number"
+            android:id="@+id/text_number_patient"
             style="@style/StyleSubsCardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/number"/>
     </com.google.android.material.card.MaterialCardView>
+
 
 
 </LinearLayout>

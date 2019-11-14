@@ -53,7 +53,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="datos_incorrectos">incorrect username or password</string>
     <string name="alert">Alert</string>
-    <string name="message_delete">sure to eliminate</string>
+    <string name="message_delete">¿Are you sure to eliminate to %1$s ?</string>
+    <string name="message_delete_memorizame">¿Are you sure to eliminate this card?</string>
     <string name="delete">Delete</string>
 
     //Strings for Collections
@@ -388,7 +389,8 @@
 
     <!-- General strings -->
     <string name="lbl_welcome">Welcome</string>
-    <string name="lbl_my_profile">My Profile</string>
+    <string name="lbl_my_profile">MY PROFILE</string>
+    <string name="lbl_professionl_profile">PROFESSIONAL PROFILE</string>
 
     <!-- Strings for field validations -->
     <string name="val_min_passwornd">Must contain at least 6 characters</string>
@@ -834,6 +836,10 @@
     <string name="no">No</string>
     <string name="ask_dialog_memorizame">Do you want to add another image?</string>
     <string name="no_healthcarer_pro">there are no health carer professionals</string>
+    <string name="description_resistance_exercice">They are regular exercises maintained in the intensity time Likewise regular As for example, walking, cycling or swimming, its performance is recommended at least 5 times per week with a duration of about 20 to 60 minutes per session Beginning the exercise progressively</string>
     <string name="no_notifications">There are not notifications</string>
+    <string name="physical_nameExercise_resistence">Resistence or aerobic exercise</string>
+    <string name="physical_nameexercise_bodybuilding">Strengthening or bodybuilding exercise</string>
+    <string name="description_nameexercise_bodybuilding">Strengthening exercises strengthen and strengthen the muscles, and therefore contribute to maintaining or strengthening autonomy and delaying dependence. They improve the metabolism, helping to maintain the weight and levels of glucose (sugar) and cholesterol in the blood. They prevent osteoporosis, polyarthrosis and falls. </string>
 
 </resources>

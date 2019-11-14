@@ -3,11 +3,14 @@ package com.jonathan.proyectofinal.fragments.hp;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -78,6 +81,12 @@ public class PatientsListFragment extends Fragment {
     public PatientsListFragment() {
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        initRecyclerView();
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -93,7 +102,6 @@ public class PatientsListFragment extends Fragment {
     }
 
     private void reference() {
-        linearLayoutManager = new LinearLayoutManager(getActivity());
         ButterKnife.bind(this, view);
         eventSelectedItem();
         eventDeleteItem();
@@ -118,94 +126,216 @@ public class PatientsListFragment extends Fragment {
         iDeletePatient = new PatientsAdapter.IDeletePatient() {
             @Override
             public void clickdelete(final Patient patient) {
-                AlertDialog.Builder alerta = new AlertDialog.Builder(getActivity());
-                alerta.setTitle(getString(R.string.alert));
-                alerta.setMessage(getString(R.string.message_delete) + " - " + patient.getFirstName());
-                alerta.setPositiveButton(getString(R.string.delete), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        final ProgressDialog progressDialog = ProgressDialog.show(getActivity(),
-                                "Brainmher","Eliminando registro en línea");
+                final AlertDialog alertDialog;
 
-                        firebaseAuth.signInWithEmailAndPassword(patient.getEmail(), patient.getPassword())
-                                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<AuthResult> task) {
-                                        if (task.isSuccessful()) {
-                                            AuthResult itask = task.getResult();
-                                            FirebaseUser ures = itask.getUser();
-                                            StorageReference storageReference = FirebaseStorage.getInstance().getReference();
-                                            StorageReference deleteImage = storageReference.child("Users/Patients/"+patient.getPatientUID()+".jpg");
-                                            deleteImage.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                @Override
-                                                public void onSuccess(Void aVoid) {
+                final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.BackgroundRounded);
 
-                                                }
-                                            });
-                                            db.collection(Constants.Patients).document(patient.getPatientUID()).delete()
-                                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    // only for Lollipop and newer versions
+                    try {
+                        LayoutInflater inflater = getActivity().getLayoutInflater();
+                        View dialogView = inflater.inflate(R.layout.dialog_one_textview_two_buttons, null);
+                        builder.setView(dialogView);
+                        alertDialog = builder.create();
+
+                        Button btn1 = (Button) dialogView.findViewById(R.id.btn1);
+                        btn1.setText(R.string.no);
+                        btn1.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+
+
+                                alertDialog.dismiss();
+                            }
+                        });
+                        Button btn2 = (Button) dialogView.findViewById(R.id.btn2);
+                        btn2.setText(R.string.yes);
+                        btn2.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                final ProgressDialog progressDialog = ProgressDialog.show(getActivity(),
+                                        "Brainmher", "Eliminando registro en línea");
+
+                                firebaseAuth.signInWithEmailAndPassword(patient.getEmail(), patient.getPassword())
+                                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                                if (task.isSuccessful()) {
+                                                    AuthResult itask = task.getResult();
+                                                    FirebaseUser ures = itask.getUser();
+                                                    StorageReference storageReference = FirebaseStorage.getInstance().getReference();
+                                                    StorageReference deleteImage = storageReference.child("Users/Patients/" + patient.getPatientUID() + ".jpg");
+                                                    deleteImage.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                                                         @Override
                                                         public void onSuccess(Void aVoid) {
-                                                            Toast.makeText(getActivity(), "usuario eliminado", Toast.LENGTH_SHORT).show();
-                                                        }
-                                                    })
-                                                    .addOnFailureListener(new OnFailureListener() {
-                                                        @Override
-                                                        public void onFailure(@NonNull Exception e) {
 
                                                         }
                                                     });
-                                            ures.delete()
-                                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                        @Override
-                                                        public void onComplete(@NonNull Task<Void> task) {
-                                                            Toast.makeText(getActivity(), "se elimino", Toast.LENGTH_SHORT).show();
-                                                        }
-                                                    });
-                                        }
-                                    }
-                                });
+                                                    db.collection(Constants.Patients).document(patient.getPatientUID()).delete()
+                                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                @Override
+                                                                public void onSuccess(Void aVoid) {
+                                                                    Toast.makeText(getActivity(), "usuario eliminado", Toast.LENGTH_SHORT).show();
+                                                                }
+                                                            })
+                                                            .addOnFailureListener(new OnFailureListener() {
+                                                                @Override
+                                                                public void onFailure(@NonNull Exception e) {
 
-                        db.collection(Constants.HealthcareProfesional).document(userHPoCarer).get()
-                                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                                    @Override
-                                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                        if (documentSnapshot.exists()) {
-                                            hp = documentSnapshot.toObject(HealthcareProfessional.class);
-                                            firebaseAuth.signInWithEmailAndPassword(hp.getEmail(), hp.getPassword())
-                                                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                                        @Override
-                                                        public void onComplete(@NonNull Task<AuthResult> task) {
-                                                            initRecyclerView();
-                                                            progressDialog.dismiss();
-                                                        }
-                                                    });
-                                        }
-                                    }
-                                });
+                                                                }
+                                                            });
+                                                    ures.delete()
+                                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                                @Override
+                                                                public void onComplete(@NonNull Task<Void> task) {
+                                                                    Toast.makeText(getActivity(), "se elimino", Toast.LENGTH_SHORT).show();
+                                                                }
+                                                            });
+                                                }
+                                            }
+                                        });
 
-                        db.collection(Constants.Carers).document(userHPoCarer).get()
-                                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                                    @Override
-                                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                        if (documentSnapshot.exists()) {
-                                            carer = documentSnapshot.toObject(Carer.class);
-                                            firebaseAuth.signInWithEmailAndPassword(carer.getEmail(), carer.getPassword())
-                                                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                                        @Override
-                                                        public void onComplete(@NonNull Task<AuthResult> task) {
-                                                            initRecyclerView();
-                                                            progressDialog.dismiss();
-                                                        }
-                                                    });
-                                        }
-                                    }
-                                });
+                                db.collection(Constants.HealthcareProfesional).document(userHPoCarer).get()
+                                        .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                            @Override
+                                            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                                if (documentSnapshot.exists()) {
+                                                    hp = documentSnapshot.toObject(HealthcareProfessional.class);
+                                                    firebaseAuth.signInWithEmailAndPassword(hp.getEmail(), hp.getPassword())
+                                                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                                                @Override
+                                                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                                                    initRecyclerView();
+                                                                    progressDialog.dismiss();
+                                                                }
+                                                            });
+                                                }
+                                            }
+                                        });
+
+                                db.collection(Constants.Carers).document(userHPoCarer).get()
+                                        .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                            @Override
+                                            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                                if (documentSnapshot.exists()) {
+                                                    carer = documentSnapshot.toObject(Carer.class);
+                                                    firebaseAuth.signInWithEmailAndPassword(carer.getEmail(), carer.getPassword())
+                                                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                                                @Override
+                                                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                                                    initRecyclerView();
+                                                                    progressDialog.dismiss();
+                                                                }
+                                                            });
+                                                }
+                                            }
+                                        });
+
+                                alertDialog.dismiss();
+                            }
+                        });
+                        TextView tvInformation = dialogView.findViewById(R.id.textView);
+                        String namePatient= patient.getFirstName()+" "+ patient.getLastName();
+                        tvInformation.setText(getString(R.string.message_delete, namePatient));
+                        alertDialog.show();
+
+
+                    } catch (Resources.NotFoundException e) {
+                        e.printStackTrace();
                     }
-                });
-                alerta.show();
+                } else {
+
+                    builder.setTitle(getString(R.string.alert));
+                    builder.setMessage(getString(R.string.message_delete, patient.getFirstName()));
+                    builder.setPositiveButton(getString(R.string.delete), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            final ProgressDialog progressDialog = ProgressDialog.show(getActivity(),
+                                    "Brainmher", "Eliminando registro en línea");
+
+                            firebaseAuth.signInWithEmailAndPassword(patient.getEmail(), patient.getPassword())
+                                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<AuthResult> task) {
+                                            if (task.isSuccessful()) {
+                                                AuthResult itask = task.getResult();
+                                                FirebaseUser ures = itask.getUser();
+                                                StorageReference storageReference = FirebaseStorage.getInstance().getReference();
+                                                StorageReference deleteImage = storageReference.child("Users/Patients/" + patient.getPatientUID() + ".jpg");
+                                                deleteImage.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                    @Override
+                                                    public void onSuccess(Void aVoid) {
+
+                                                    }
+                                                });
+                                                db.collection(Constants.Patients).document(patient.getPatientUID()).delete()
+                                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                            @Override
+                                                            public void onSuccess(Void aVoid) {
+                                                                Toast.makeText(getActivity(), "usuario eliminado", Toast.LENGTH_SHORT).show();
+                                                            }
+                                                        })
+                                                        .addOnFailureListener(new OnFailureListener() {
+                                                            @Override
+                                                            public void onFailure(@NonNull Exception e) {
+
+                                                            }
+                                                        });
+                                                ures.delete()
+                                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                            @Override
+                                                            public void onComplete(@NonNull Task<Void> task) {
+                                                                Toast.makeText(getActivity(), "se elimino", Toast.LENGTH_SHORT).show();
+                                                            }
+                                                        });
+                                            }
+                                        }
+                                    });
+
+                            db.collection(Constants.HealthcareProfesional).document(userHPoCarer).get()
+                                    .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                        @Override
+                                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                            if (documentSnapshot.exists()) {
+                                                hp = documentSnapshot.toObject(HealthcareProfessional.class);
+                                                firebaseAuth.signInWithEmailAndPassword(hp.getEmail(), hp.getPassword())
+                                                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                                            @Override
+                                                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                                                initRecyclerView();
+                                                                progressDialog.dismiss();
+                                                            }
+                                                        });
+                                            }
+                                        }
+                                    });
+
+                            db.collection(Constants.Carers).document(userHPoCarer).get()
+                                    .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                        @Override
+                                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                            if (documentSnapshot.exists()) {
+                                                carer = documentSnapshot.toObject(Carer.class);
+                                                firebaseAuth.signInWithEmailAndPassword(carer.getEmail(), carer.getPassword())
+                                                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                                            @Override
+                                                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                                                initRecyclerView();
+                                                                progressDialog.dismiss();
+                                                            }
+                                                        });
+                                            }
+                                        }
+                                    });
+                        }
+                    });
+                    builder.show();
+                }
             }
-        };
+            }
+
+            ;
+
     }
     //endregion
 
@@ -213,7 +343,7 @@ public class PatientsListFragment extends Fragment {
         //------------------------------------------
         final ProgressDialog progressDialog = ProgressDialog.show(getActivity(),
                 "Brainmher","Consultando registros en línea");
-        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         String uid = user.getUid();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         CollectionReference collectionReferencePatients = db.collection(Constants.Patients);

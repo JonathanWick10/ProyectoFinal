@@ -28,7 +28,7 @@ public class NavigationOptions extends AppCompatActivity {
 
     @BindView(R.id.toolbar_navigation_option)
     MaterialToolbar toolbar;
-    String option, uid, role;
+    String option, uid, role, profile_type;
     Bundle args = new Bundle();
 
     @Override
@@ -44,10 +44,12 @@ public class NavigationOptions extends AppCompatActivity {
             option = getIntent().getExtras().getString("option");
             uid = getIntent().getExtras().getString("user_uid");
             role = getIntent().getExtras().getString("user_role");
+            profile_type = getIntent().getExtras().getString("profile_type");
             switch (option){
                 case "profile":
                     args.putString("userUid", uid);
                     args.putString("userRole", role);
+                    args.putString("profileType", profile_type);
                     handleFrame(new ProfileFragment(), args);
                     break;
             }

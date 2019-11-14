@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.carer.PhasesEAFragment">
 
     <androidx.core.widget.NestedScrollView
@@ -13,19 +14,14 @@
             android:layout_height="match_parent">
 
     <!-- TODO: Update blank fragment layout -->
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/qf1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:clickable="true"
-        android:textAllCaps="false"
-        android:padding="4dp"
-        android:gravity="left"
-        android:textSize="20dp"
-        android:drawableRight="@drawable/down_black"
-        android:enabled="true"
-        android:text="@string/qp1"></Button>
+        android:text="@string/qp1"
+        android:drawableTint="@color/colorPrimary"
+        app:rippleColor="@color/colorAccent"
+        style="@style/StylePrimaryColoredButtonInformation"/>
     <TextView
         android:id="@+id/af1"
         android:layout_below="@+id/qf1"
@@ -37,20 +33,15 @@
         android:visibility="gone"
         android:text="@string/ap1"/>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/qf2"
-        android:textAllCaps="false"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/af1"
-        android:background="@color/white"
-        android:clickable="true"
-        android:drawableRight="@drawable/down_black"
-        android:enabled="true"
-        android:padding="4dp"
-        android:gravity="left"
-        android:textSize="20dp"
-        android:text="@string/qp2"></Button>
+        android:text="@string/qp2"
+        android:drawableTint="@color/colorPrimary"
+        app:rippleColor="@color/colorAccent"
+        style="@style/StylePrimaryColoredButtonInformation"/>
     <TextView
         android:id="@+id/af2"
         android:layout_below="@+id/qf2"
@@ -62,20 +53,15 @@
         android:layout_height="wrap_content"
         android:text="@string/ap2"/>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/qf3"
-        android:textAllCaps="false"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/af2"
-        android:background="@color/white"
-        android:clickable="true"
-        android:drawableRight="@drawable/down_black"
-        android:enabled="true"
-        android:padding="4dp"
-        android:gravity="left"
-        android:textSize="20dp"
-        android:text="@string/qp3"></Button>
+        android:text="@string/qp3"
+        android:drawableTint="@color/colorPrimary"
+        app:rippleColor="@color/colorAccent"
+        style="@style/StylePrimaryColoredButtonInformation"/>
     <TextView
         android:id="@+id/af3"
         android:textAllCaps="false"

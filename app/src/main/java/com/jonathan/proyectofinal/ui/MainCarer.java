@@ -180,6 +180,7 @@ public class MainCarer extends AppCompatActivity implements IMainCarer, Navigati
                 navigation.putExtra("option", "profile");
                 navigation.putExtra("user_uid", carer.getCarerUId());
                 navigation.putExtra("user_role", carer.getRole());
+                navigation.putExtra("profile_type", "personal");
                 startActivity(navigation);
                 break;
             case R.id.btn_logout:

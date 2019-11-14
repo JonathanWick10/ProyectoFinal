@@ -2,6 +2,7 @@ package com.jonathan.proyectofinal.fragments.games;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,12 +18,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.firebase.FirebaseApp;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.data.MemoramaEntity;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -84,9 +87,13 @@ public class Memorama extends Fragment {
     private MemoramaEntity elemetSave;
     private boolean clickAllElemets = true;
     private Memoramai memoramai;
+    private long tInicio;
+    private long fJuego;
+    private long diferencia;
     // 12.5 por pareja encontrada
     // 100 al responder todas las preguntas sin equivocarse
     private double calificacion = 0;
+
 
     public Memorama(Memoramai memoramai) {
         this.memoramai = memoramai;
@@ -105,6 +112,7 @@ public class Memorama extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         //metodos despues de cargar vista
         initGame();
+
     }
 
     private void initGame() {
@@ -137,10 +145,12 @@ public class Memorama extends Fragment {
                     runOnUIThread(true);
                     Thread.sleep(5000);
                     runOnUIThread(false);
+
+                     tInicio = System.currentTimeMillis();
+
                 } catch (Exception e) {
                     Log.e("Error", e.toString());
                 }
-
             }
         }).start();
     }
@@ -294,14 +304,13 @@ public class Memorama extends Fragment {
         return new Random().nextInt((max - min) + 1) + min;
     }
 
-    private void alertWin(Double Puntuacion) {
+    private void alertWin(Double puntuacion) {
         final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         View layoutInflater = getLayoutInflater().inflate(R.layout.memorama_win_plantilla, null);
         builder.setView(layoutInflater);
         Button btnOnback = layoutInflater.findViewById(R.id.mwmorama_winp_btnonback);
         Button btnReload = layoutInflater.findViewById(R.id.mwmorama_winp_reload);
-
         TextView txtPuntuacion = layoutInflater.findViewById(R.id.txt_puntuacion);
 
         AlertDialog dialog = builder.create();
@@ -325,7 +334,10 @@ public class Memorama extends Fragment {
             }
         });
 
-       txtPuntuacion.setText ((Double.parseDouble(Puntuacion.toString()) <= 0) ? "0" : Puntuacion.toString());
+        fJuego = System.currentTimeMillis();
+        diferencia = tInicio - fJuego;
+
+       txtPuntuacion.setText ((Double.parseDouble(puntuacion.toString()) <= 0) ? "0" : puntuacion.toString());
 
 
 
