@@ -52,15 +52,15 @@ public class MemorizameFamilyGridAdapter extends RecyclerView.Adapter<Memorizame
                 iSelectionMemorizame.clickItem(memorizameList.get(position));
             }
         });
-        /*
-        holder.delete.setOnClickListener(new View.OnClickListener() {
+
+        holder.imageDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 iDeleteMemorizame.clickdelete(memorizameList.get(position));
             }
         });
 
-         */
+
     }
 
     @Override
@@ -75,6 +75,7 @@ public class MemorizameFamilyGridAdapter extends RecyclerView.Adapter<Memorizame
     public class MemorizameFamilyGridViewHolder  extends RecyclerView.ViewHolder {
 
         ImageView photo;
+        ImageView imageDelete;
         TextView number;
         Memorizame item;
         View layout;
@@ -84,6 +85,7 @@ public class MemorizameFamilyGridAdapter extends RecyclerView.Adapter<Memorizame
             super(itemView);
             layout = itemView;
             photo = itemView.findViewById(R.id.img_memorizame);
+            imageDelete=itemView.findViewById(R.id.img_memorizame);
             number = itemView.findViewById(R.id.text_number);
         }
 

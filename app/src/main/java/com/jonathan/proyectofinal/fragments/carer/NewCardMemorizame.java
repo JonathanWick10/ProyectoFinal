@@ -207,6 +207,7 @@ public class NewCardMemorizame extends Fragment {
 
         }
         //endregion
+
         //region for logic save
 
         final String categoria2= categoria;

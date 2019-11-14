@@ -54,6 +54,7 @@
     <string name="datos_incorrectos">incorrect username or password</string>
     <string name="alert">Alert</string>
     <string name="message_delete">¿Are you sure to eliminate to %1$s ?</string>
+    <string name="message_delete_memorizame">¿Are you sure to eliminate this card?</string>
     <string name="delete">Delete</string>
 
     //Strings for Collections
