@@ -17,18 +17,22 @@ import com.jonathan.proyectofinal.data.HealthcareProfessional;
 import java.util.List;
 
 public class AdminListPSAdapter extends RecyclerView.Adapter<AdminListPSAdapter.Holder> {
+
+    private List<HealthcareProfessional> healthList;
     Context context;
-    private List<HealthcareProfessional> list;
-    private AdminListPSAdapter.AdminListPSAdapterI adapterI;
+    //private AdminListPSAdapter.AdminListPSAdapterI adapterI;
+    ISelectionHealth iSelectionHealth;
+    IDeleteHealth iDeleteHealth;
 
-
-    public AdminListPSAdapter(Context context,List<HealthcareProfessional> list, AdminListPSAdapter.AdminListPSAdapterI adapterI) {
+    public AdminListPSAdapter(List<HealthcareProfessional> healthList, Context context, ISelectionHealth iSelectionHealth, IDeleteHealth iDeleteHealth) {
+        this.healthList = healthList;
         this.context = context;
-        this.list = list;
-        this.adapterI = adapterI;
+        this.iSelectionHealth = iSelectionHealth;
+        this.iDeleteHealth = iDeleteHealth;
     }
 
     public class Holder extends RecyclerView.ViewHolder {
+        View layout;
         public ImageView photo, delete;
         public TextView name, id, place, profession;
         HealthcareProfessional item;
@@ -37,6 +41,7 @@ public class AdminListPSAdapter extends RecyclerView.Adapter<AdminListPSAdapter.
         public Holder(@NonNull View itemView) {
             super(itemView);
             // encontrar los elementos que estan dentro de la plantilla
+            layout = itemView;
             photo = itemView.findViewById(R.id.admin_imagev_photops);
             name = itemView.findViewById(R.id.admin_txtv_nameps);
             id = itemView.findViewById(R.id.admin_txtv_idps);
@@ -64,24 +69,39 @@ public class AdminListPSAdapter extends RecyclerView.Adapter<AdminListPSAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull AdminListPSAdapter.Holder holder, final int position) {
-        //setear
-        holder.setData(list.get(position));
-        holder.delete.setOnClickListener(new View.OnClickListener() {
+        holder.setData(healthList.get(position));
+        holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                adapterI.btnEliminar(list.get(position));
+            public void onClick(View view) {
+                iSelectionHealth.clickItem(healthList.get(position));
             }
         });
-        // delete alert
+        holder.delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                iDeleteHealth.clickdelete(healthList.get(position));
+            }
+        });
 
     }
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return healthList.size();
     }
 
+    //region Interfaces
+    public interface ISelectionHealth {
+        void clickItem(HealthcareProfessional health);
+    }
+
+    public interface IDeleteHealth {
+        void clickdelete(HealthcareProfessional pojo);
+    }
+    //endregion
+
+    /*
     public interface AdminListPSAdapterI {
         void btnEliminar(HealthcareProfessional pojo);
-    }
+    }*/
 }

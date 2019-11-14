@@ -256,6 +256,7 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
                 navigation.putExtra("option", "profile");
                 navigation.putExtra("user_uid", hp.getHpUID());
                 navigation.putExtra("user_role", hp.getRole());
+                navigation.putExtra("profile_type", "personal");
                 startActivity(navigation);
                 break;
             case R.id.btn_logout:

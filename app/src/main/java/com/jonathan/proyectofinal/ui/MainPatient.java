@@ -142,6 +142,7 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
                 navigation.putExtra("option", "profile");
                 navigation.putExtra("user_uid", patient.getPatientUID());
                 navigation.putExtra("user_role", patient.getRole());
+                navigation.putExtra("profile_type", "personal");
                 startActivity(navigation);
                 break;
             case R.id.btn_logout:

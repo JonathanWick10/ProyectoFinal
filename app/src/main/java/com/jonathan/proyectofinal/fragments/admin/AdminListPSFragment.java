@@ -3,6 +3,7 @@ package com.jonathan.proyectofinal.fragments.admin;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
@@ -44,6 +45,8 @@ import com.jonathan.proyectofinal.adapters.AdminListPSAdapter;
 import com.jonathan.proyectofinal.data.Admin;
 import com.jonathan.proyectofinal.data.HealthcareProfessional;
 import com.jonathan.proyectofinal.tools.Constants;
+import com.jonathan.proyectofinal.ui.HealthProfessionalActivity;
+import com.jonathan.proyectofinal.ui.NavigationOptions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,8 +63,11 @@ public class AdminListPSFragment extends Fragment {
     private View view;
     @BindView(R.id.txt_no_hp)
     TextView noHp;
-    private RecyclerView recyclerView ;
-    private AdminListPSAdapter.AdminListPSAdapterI adapterI;
+    @BindView(R.id.admin_rv_list)
+    RecyclerView recyclerView;
+    private AdminListPSAdapter adapter;
+    private AdminListPSAdapter.ISelectionHealth iSelectionHealth;
+    private AdminListPSAdapter.IDeleteHealth iDeleteHealth;
     private List<HealthcareProfessional> healthcareProfessionalList = new ArrayList<>();
     HealthcareProfessional hp = new HealthcareProfessional();
     FirebaseAuth firebaseAuth;
@@ -81,9 +87,24 @@ public class AdminListPSFragment extends Fragment {
         firebaseUser = firebaseAuth.getCurrentUser();
         db = FirebaseFirestore.getInstance();
         uIdAdmind = firebaseUser.getUid();
+        eventSelectedItem();
         eventDelete();
         reference();
         return view;
+    }
+
+    private void eventSelectedItem() {
+        iSelectionHealth = new AdminListPSAdapter.ISelectionHealth() {
+            @Override
+            public void clickItem(HealthcareProfessional health) {
+                Intent goHealth = new Intent(getActivity(), NavigationOptions.class);
+                goHealth.putExtra("option", "profile");
+                goHealth.putExtra("user_uid", health.getHpUID());
+                goHealth.putExtra("user_role", health.getRole());
+                goHealth.putExtra("profile_type", "professional");
+                startActivity(goHealth);
+            }
+        };
     }
 
     @Override
@@ -93,9 +114,9 @@ public class AdminListPSFragment extends Fragment {
     }
 
     private void eventDelete() {
-        adapterI = new AdminListPSAdapter.AdminListPSAdapterI() {
+        iDeleteHealth = new AdminListPSAdapter.IDeleteHealth() {
             @Override
-            public void btnEliminar( final HealthcareProfessional pojo) {
+            public void clickdelete( final HealthcareProfessional pojo) {
                 //region dialog delete
                 final AlertDialog alertDialog;
 
@@ -262,7 +283,6 @@ public class AdminListPSFragment extends Fragment {
 
 
     private void reference() {
-        recyclerView = view.findViewById(R.id.admin_rv_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection(Constants.HealthcareProfesional)
@@ -277,7 +297,7 @@ public class AdminListPSFragment extends Fragment {
                             hp = documentSnapshot.toObject(HealthcareProfessional.class);
                             healthcareProfessionalList.add(hp);
                         }
-                        recyclerView.setAdapter(new AdminListPSAdapter(getActivity(),healthcareProfessionalList,adapterI));
+                        recyclerView.setAdapter(new AdminListPSAdapter(healthcareProfessionalList,getActivity(),iSelectionHealth, iDeleteHealth));
                         recyclerView.setHasFixedSize(true);
                         if (healthcareProfessionalList.size()!=0){
                             recyclerView.setVisibility(View.VISIBLE);

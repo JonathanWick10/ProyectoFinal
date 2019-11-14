@@ -405,7 +405,8 @@
 
     <!-- General strings -->
     <string name="lbl_welcome">Bienvenido</string>
-    <string name="lbl_my_profile">Mi Perfil</string>
+    <string name="lbl_my_profile">MI PERFIL</string>
+    <string name="lbl_professionl_profile">PERFIL DE PROFESIONAL</string>
 
     <!-- Strings for field validations -->
     <string name="val_min_passwornd">Debe contener almenos 7 caracteres</string>

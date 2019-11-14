@@ -25,6 +25,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -62,6 +63,8 @@ public class ProfileFragment extends Fragment {
 
     private View view;
 
+    @BindView(R.id.tv_profile_title)
+    TextView tv_profile_title;
     @BindView(R.id.til_name_profile)
     TextInputLayout til_name;
     @BindView(R.id.til_lastname_profile)
@@ -143,7 +146,7 @@ public class ProfileFragment extends Fragment {
     public static final int REQUEST_CODE2 = 10;
     public static final int REQUEST_CODE = 11;
 
-    String role;
+    String role, profile_type;
 
     String uidString,nameSring,lastNameString,typeIDString, idString, birthDayString, nativeCityString,
             actualCityString, addressString, emailString, userString, passwordString, seleccionRG
@@ -195,6 +198,13 @@ public class ProfileFragment extends Fragment {
         db = FirebaseFirestore.getInstance();
         Bundle bundle = getArguments();
         if (bundle!=null){
+            profile_type = bundle.getString("profileType");
+            if (profile_type.equals("professional")){
+                tv_profile_title.setText(getResources().getString(R.string.lbl_professionl_profile));
+            } else if (profile_type.equals("personal")){
+                tv_profile_title.setText(getResources().getString(R.string.lbl_my_profile));
+            }
+
             final String uID = bundle.getString("userUid");
             role = bundle.getString("userRole");
 

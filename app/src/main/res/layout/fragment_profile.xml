@@ -13,10 +13,10 @@
         android:layout_margin="@dimen/sixteen">
 
         <TextView
+            android:id="@+id/tv_profile_title"
             style="@style/StyleTextViewTitles"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/lbl_my_profile"></TextView>
+            android:layout_height="wrap_content"></TextView>
 
         <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/img_image_profile"

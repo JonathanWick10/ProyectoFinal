@@ -301,7 +301,7 @@ public class AdminAddHealthProfessional extends Fragment {
         if (!firstName.isEmpty() && !lastName.isEmpty() && !typeId.isEmpty() && !ident.isEmpty() &&
                 !gender.isEmpty() && !birthdate.isEmpty() && !nativeCity.isEmpty() && !phone.isEmpty() &&
                 !address.isEmpty() && !actualCity.isEmpty() && !email.isEmpty() && !userHealth.isEmpty() &&
-                !pass.isEmpty() && !profession.isEmpty() && !workP.isEmpty()&&email.length()>=7) {
+                !pass.isEmpty() && !profession.isEmpty() && !workP.isEmpty()&&pass.length()>=7) {
             hp.setFirstName(firstName);
             hp.setLastName(lastName);
             hp.setIdentificationType(typeId);
