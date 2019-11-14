@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/qp1"
-        android:drawableTint="@color/white"
+        android:drawableTint="@color/colorPrimary"
         app:rippleColor="@color/colorAccent"
         style="@style/StylePrimaryColoredButtonInformation"/>
     <TextView
@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/af1"
         android:text="@string/qp2"
-        android:drawableTint="@color/white"
+        android:drawableTint="@color/colorPrimary"
         app:rippleColor="@color/colorAccent"
         style="@style/StylePrimaryColoredButtonInformation"/>
     <TextView
@@ -59,7 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/af2"
         android:text="@string/qp3"
-        android:drawableTint="@color/white"
+        android:drawableTint="@color/colorPrimary"
         app:rippleColor="@color/colorAccent"
         style="@style/StylePrimaryColoredButtonInformation"/>
     <TextView

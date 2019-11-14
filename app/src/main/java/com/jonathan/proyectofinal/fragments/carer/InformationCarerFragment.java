@@ -91,33 +91,22 @@ public class InformationCarerFragment extends Fragment implements View.OnClickLi
         q8.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black),null, null,null);
         q9.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black),null, null,null);
         q10.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black),null, null,null);
-
-
-        q2.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
-        q3.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
-        q4.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
-        q5.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
-        q6.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
-        q7.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
-        q8.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
-        q9.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
-        q10.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
-        q11.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
-        q12.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
-        q13.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
-        q14.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
-        q15.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
-        q16.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
-        q17.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
-        q18.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
-        q19.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
-        q20.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
-        q21.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
-        q22.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
-        q23.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
-        q24.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
-        q25.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
-        q26.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+        q11.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black),null, null,null);
+        q12.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black),null, null,null);
+        q13.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black),null, null,null);
+        q14.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black),null, null,null);
+        q15.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black),null, null,null);
+        q16.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black),null, null,null);
+        q17.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black),null, null,null);
+        q18.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black),null, null,null);
+        q19.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black),null, null,null);
+        q20.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black),null, null,null);
+        q21.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black),null, null,null);
+        q22.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black),null, null,null);
+        q23.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black),null, null,null);
+        q24.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black),null, null,null);
+        q25.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black),null, null,null);
+        q26.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black),null, null,null);
         return view;
     }
 
@@ -199,7 +188,7 @@ public class InformationCarerFragment extends Fragment implements View.OnClickLi
                 }else{ // si no es Visible, lo pones
                     a7.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a7.setVisibility(v.VISIBLE);
-                    q7.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black),null, null,null);
+                    q7.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_down_black),null, null,null);
                 }
                 break;
             case R.id.q8:
@@ -239,176 +228,176 @@ public class InformationCarerFragment extends Fragment implements View.OnClickLi
                 if(a11.getVisibility() == v.VISIBLE){ //si es Visible lo pones Gone
                     a11.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a11.setVisibility(v.GONE);
-                    q11.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+                    q11.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black),null, null,null);
                 }else{ // si no es Visible, lo pones
                     a11.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a11.setVisibility(v.VISIBLE);
-                    q11.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.up),null);
+                    q11.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_down_black),null, null,null);
                 }
                 break;
             case R.id.q12:
                 if(a12.getVisibility() == v.VISIBLE){ //si es Visible lo pones Gone
                     a12.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a12.setVisibility(v.GONE);
-                    q12.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+                    q12.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black),null, null,null);
                 }else{ // si no es Visible, lo pones
                     a12.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a12.setVisibility(v.VISIBLE);
-                    q12.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.up),null);
+                    q12.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_down_black),null, null,null);
                 }
                 break;
             case R.id.q13:
                 if(a13.getVisibility() == v.VISIBLE){ //si es Visible lo pones Gone
                     a13.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a13.setVisibility(v.GONE);
-                    q13.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+                    q13.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black),null, null,null);
                 }else{ // si no es Visible, lo pones
                     a13.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a13.setVisibility(v.VISIBLE);
-                    q13.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.up),null);
+                    q13.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_down_black),null, null,null);
                 }
                 break;
             case R.id.q14:
                 if(a14.getVisibility() == v.VISIBLE){ //si es Visible lo pones Gone
                     a14.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a14.setVisibility(v.GONE);
-                    q14.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+                    q14.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black),null, null,null);
                 }else{ // si no es Visible, lo pones
                     a14.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a14.setVisibility(v.VISIBLE);
-                    q14.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.up),null);
+                    q14.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_down_black),null, null,null);
                 }
                 break;
             case R.id.q15:
                 if(a15.getVisibility() == v.VISIBLE){ //si es Visible lo pones Gone
                     a15.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a15.setVisibility(v.GONE);
-                    q15.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+                    q15.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black),null, null,null);
                 }else{ // si no es Visible, lo pones
                     a15.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a15.setVisibility(v.VISIBLE);
-                    q15.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.up),null);
+                    q15.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_down_black),null, null,null);
                 }
                 break;
             case R.id.q16:
                 if(a16.getVisibility() == v.VISIBLE){ //si es Visible lo pones Gone
                     a16.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a16.setVisibility(v.GONE);
-                    q16.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+                    q16.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black),null, null,null);
                 }else{ // si no es Visible, lo pones
                     a16.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a16.setVisibility(v.VISIBLE);
-                    q16.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.up),null);
+                    q16.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_down_black),null, null,null);
                 }
                 break;
             case R.id.q17:
                 if(a17.getVisibility() == v.VISIBLE){ //si es Visible lo pones Gone
                     a17.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a17.setVisibility(v.GONE);
-                    q17.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+                    q17.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black),null, null,null);
                 }else{ // si no es Visible, lo pones
                     a17.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a17.setVisibility(v.VISIBLE);
-                    q17.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.up),null);
+                    q17.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_down_black),null, null,null);
                 }
                 break;
             case R.id.q18:
                 if(a18.getVisibility() == v.VISIBLE){ //si es Visible lo pones Gone
                     a18.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a18.setVisibility(v.GONE);
-                    q18.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+                    q18.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black),null, null,null);
                 }else{ // si no es Visible, lo pones
                     a18.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a18.setVisibility(v.VISIBLE);
-                    q18.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.up),null);
+                    q18.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_down_black),null, null,null);
                 }
                 break;
             case R.id.q19:
                 if(a19.getVisibility() == v.VISIBLE){ //si es Visible lo pones Gone
                     a19.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a19.setVisibility(v.GONE);
-                    q19.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+                    q19.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black),null, null,null);
                 }else{ // si no es Visible, lo pones
                     a19.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a19.setVisibility(v.VISIBLE);
-                    q19.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.up),null);
+                    q19.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_down_black),null, null,null);
                 }
                 break;
             case R.id.q20:
                 if(a20.getVisibility() == v.VISIBLE){ //si es Visible lo pones Gone
                     a20.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a20.setVisibility(v.GONE);
-                    q20.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+                    q20.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black),null, null,null);
                 }else{ // si no es Visible, lo pones
                     a20.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a20.setVisibility(v.VISIBLE);
-                    q20.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.up),null);
+                    q20.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_down_black),null, null,null);
                 }
                 break;
             case R.id.q21:
                 if(a21.getVisibility() == v.VISIBLE){ //si es Visible lo pones Gone
                     a21.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a21.setVisibility(v.GONE);
-                    q21.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+                    q21.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black),null, null,null);
                 }else{ // si no es Visible, lo pones
                     a21.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a21.setVisibility(v.VISIBLE);
-                    q21.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.up),null);
+                    q21.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_down_black),null, null,null);
                 }
                 break;
             case R.id.q22:
                 if(a22.getVisibility() == v.VISIBLE){ //si es Visible lo pones Gone
                     a22.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a22.setVisibility(v.GONE);
-                    q22.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+                    q22.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black),null, null,null);
                 }else{ // si no es Visible, lo pones
                     a22.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a22.setVisibility(v.VISIBLE);
-                    q22.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.up),null);
+                    q22.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_down_black),null, null,null);
                 }
                 break;
             case R.id.q23:
                 if(a23.getVisibility() == v.VISIBLE){ //si es Visible lo pones Gone
                     a23.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a23.setVisibility(v.GONE);
-                    q23.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+                    q23.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black),null, null,null);
                 }else{ // si no es Visible, lo pones
                     a23.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a23.setVisibility(v.VISIBLE);
-                    q23.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.up),null);
+                    q23.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_down_black),null, null,null);
                 }
                 break;
             case R.id.q24:
                 if(a24.getVisibility() == v.VISIBLE){ //si es Visible lo pones Gone
                     a24.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a24.setVisibility(v.GONE);
-                    q24.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+                    q24.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black),null, null,null);
                 }else{ // si no es Visible, lo pones
                     a24.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a24.setVisibility(v.VISIBLE);
-                    q24.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.up),null);
+                    q24.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_down_black),null, null,null);
                 }
                 break;
             case R.id.q25:
                 if(a25.getVisibility() == v.VISIBLE){ //si es Visible lo pones Gone4
                     a25.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a25.setVisibility(v.GONE);
-                    q25.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+                    q25.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black),null, null,null);
                 }else{ // si no es Visible, lo pones
                     a25.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a25.setVisibility(v.VISIBLE);
-                    q25.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.up),null);
+                    q25.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_down_black),null, null,null);
                 }
                 break;
             case R.id.q26:
                 if(a26.getVisibility() == v.VISIBLE){ //si es Visible lo pones Gone
                     a26.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a26.setVisibility(v.GONE);
-                    q26.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+                    q26.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black),null, null,null);
                 }else{ // si no es Visible, lo pones
                     a26.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a26.setVisibility(v.VISIBLE);
-                    q26.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.up),null);
+                    q26.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_down_black),null, null,null);
                 }
                 break;
         }

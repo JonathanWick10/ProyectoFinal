@@ -45,9 +45,9 @@ public class PhasesEAFragment extends Fragment implements View.OnClickListener {
         a2.setOnClickListener(this);
         q3.setOnClickListener(this);
         a3.setOnClickListener(this);
-        q1.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
-        q2.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
-        q3.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+        q1.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black),null, null,null);
+        q2.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black),null, null,null);
+        q3.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black),null, null,null);
         return view;
     }
 
@@ -59,33 +59,33 @@ public class PhasesEAFragment extends Fragment implements View.OnClickListener {
                 if(a1.getVisibility() == v.VISIBLE){ //si es Visible lo pones Gone
                     a1.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a1.setVisibility(v.GONE);
-                    q1.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+                    q1.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black),null, null,null);
                 }else{ // si no es Visible, lo pones
                     a1.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a1.setVisibility(v.VISIBLE);
-                    q1.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.up),null);
+                    q1.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_down_black),null, null,null);
                 }
                 break;
             case R.id.qf2:
                 if(a2.getVisibility() == v.VISIBLE){ //si es Visible lo pones Gone
                     a2.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a2.setVisibility(v.GONE);
-                    q2.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+                    q2.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black),null, null,null);
                 }else{ // si no es Visible, lo pones
                     a2.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a2.setVisibility(v.VISIBLE);
-                    q2.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.up),null);
+                    q2.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_down_black),null, null,null);
                 }
                 break;
             case R.id.qf3:
                 if(a3.getVisibility() == v.VISIBLE){ //si es Visible lo pones Gone
                     a3.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a3.setVisibility(v.GONE);
-                    q3.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.down_black),null);
+                    q3.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black),null, null,null);
                 }else{ // si no es Visible, lo pones
                     a3.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                     a3.setVisibility(v.VISIBLE);
-                    q3.setCompoundDrawablesWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.up),null);
+                    q3.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_keyboard_arrow_down_black),null, null,null);
                 }
                 break;
         }
