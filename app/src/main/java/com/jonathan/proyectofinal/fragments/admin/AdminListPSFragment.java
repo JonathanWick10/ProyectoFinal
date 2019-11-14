@@ -265,7 +265,9 @@ public class AdminListPSFragment extends Fragment {
         recyclerView = view.findViewById(R.id.admin_rv_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection(Constants.HealthcareProfesional).get()
+        db.collection(Constants.HealthcareProfesional)
+                .whereEqualTo("role",Constants.HealthcareProfesional)
+                .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
