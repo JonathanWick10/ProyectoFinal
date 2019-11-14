@@ -1,6 +1,7 @@
 package com.jonathan.proyectofinal.database;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -89,6 +90,7 @@ public class LoginManager {
     }
 
     public void redirectByRole(final Context context, FirebaseUser useruID) {
+        final ProgressDialog progressDialog = ProgressDialog.show(context, "Brainmher","ingresando");
         // INICIO
         if(useruID != null){
             String uID = useruID.getUid();
@@ -102,6 +104,7 @@ public class LoginManager {
                         if (!role.isEmpty()){
                             Intent intent = new Intent(context, AdminHome.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                            progressDialog.dismiss();
                             context.startActivity(intent);
                         }
                     }
@@ -124,6 +127,7 @@ public class LoginManager {
                         if (!role.isEmpty()){
                             Intent intent = new Intent(context, PatientsList.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                            progressDialog.dismiss();
                             context.startActivity(intent);
                         }
                     }
@@ -146,6 +150,7 @@ public class LoginManager {
                         if (!role.isEmpty()){
                             Intent intent = new Intent(context, MainCarer.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                            progressDialog.dismiss();
                             context.startActivity(intent);
                         }
                     }
@@ -168,6 +173,7 @@ public class LoginManager {
                         if (!role.isEmpty()){
                             Intent intent = new Intent(context, MainPatient.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                            progressDialog.dismiss();
                             context.startActivity(intent);
                         }
                     }

@@ -7,18 +7,22 @@
     tools:context=".fragments.patient.PlacesChildFragment">
 
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardActivityMemoPlaces"
-        style="@style/StyleCardView"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        app:strokeColor="@color/colorPrimaryLight"
-        app:strokeWidth="@dimen/two">
+        android:layout_height="wrap_content">
 
-        <LinearLayout
+        <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:id="@+id/recyclerViewPlaces"
+            android:visibility="invisible"
+            tools:listitem="@layout/item_memorizame_recycler"
+            />
+
+        <LinearLayout
+            android:id="@+id/layout_description_places"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <LinearLayout
@@ -63,31 +67,6 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@android:color/darker_gray" />
-
-            <LinearLayout
-                style="@style/StyleLayoutActionCardView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <androidx.appcompat.widget.AppCompatRatingBar
-                    android:id="@+id/ratingBarMemoPlaces"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/StyleRatingBar"/>
-
-                <TextView
-                    android:id="@+id/data_rating_memoplaces"
-                    style="@style/StyleCardViewDescriptions"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorPrimary" />
-
-            </LinearLayout>
         </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
-
+    </RelativeLayout>
 </androidx.core.widget.NestedScrollView>
