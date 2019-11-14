@@ -1,16 +1,14 @@
 package com.jonathan.proyectofinal.data;
 
-import java.io.StreamCorruptedException;
-
 public class PhysicalExerciseEntity {
     private String nameExercise;
-    private String Descripcion;
+    private String descripcion;
     private int time;
     private int image;
 
     public PhysicalExerciseEntity(String nameExercise, String descripcion, int time, int image) {
         this.nameExercise = nameExercise;
-        Descripcion = descripcion;
+        this.descripcion = descripcion;
         this.time = time;
         this.image = image;
     }
@@ -26,11 +24,11 @@ public class PhysicalExerciseEntity {
     }
 
     public String getDescripcion() {
-        return Descripcion;
+        return descripcion;
     }
 
     public void setDescripcion(String descripcion) {
-        Descripcion = descripcion;
+        this.descripcion = descripcion;
     }
 
     public int getTime() {

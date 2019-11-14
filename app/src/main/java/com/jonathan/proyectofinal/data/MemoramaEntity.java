@@ -5,10 +5,11 @@ public class MemoramaEntity {
     private int imageId;
     private boolean show, finded, click;
 
+
+
     public MemoramaEntity(int imageId, int imgGroup){
         this.imageId = imageId;
         this.imgGroup = imgGroup;
-
         //inicia oculto, aunque durante unos segundos se muestran.
         this.show = false;
         this.finded = false;

@@ -853,5 +853,9 @@
     <string name="no">No</string>
     <string name="ask_dialog_memorizame">¿Deseas agregar otra imagen?</string>
     <string name="no_healthcarer_pro">no hay profesionales de la salud</string>
+    <string name="description_resistance_exercice">Son ejercicios regulares mantenidos en el tiempo, de intensidad asimismo regular, como por ejemplo caminar, ir en bicicleta o nadar. Se recomienda su realización al menos cinco veces por semana, con una duración de unos veinte a sesenta minutos por sesión, iniciando el ejercicio progresivamente.</string>
     <string name="no_notifications">No hay notificaciones</string>
+    <string name="physical_nameExercise_resistence">Ejercicios de resistencia o aerobicos</string>
+    <string name="physical_nameexercise_bodybuilding">Ejercicios de fortalecimiento o musculación</string>
+    <string name="description_nameexercise_bodybuilding">Los ejercicios de fortalecimiento refuerzan y potencian la musculatura, y por tanto contribuyen a mante- ner o reforzar la autonomía y retrasar la dependencia. Mejoran el metabolismo, contribuyendo a mantener el peso y los niveles de glucosa (azúcar) y colesterol en sangre. Previenen la osteoporosis, poliartrosis y las caídas</string>
 </resources>

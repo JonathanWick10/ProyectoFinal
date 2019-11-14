@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +19,7 @@ import com.jonathan.proyectofinal.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import pl.droidsonroids.gif.GifImageView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,10 +31,13 @@ public class PhysicalExercisePractic extends Fragment {
 
     private View view;
     private Memorama.Memoramai memoramai ;
+    private Integer img , time;
 
-    public PhysicalExercisePractic(Memorama.Memoramai memoramai) {
+    public PhysicalExercisePractic(Memorama.Memoramai memoramai, Integer img , Integer time) {
 
         this.memoramai = memoramai;
+        this.time = time;
+        this.img = img;
     }
 
 
@@ -42,7 +47,10 @@ public class PhysicalExercisePractic extends Fragment {
         view = inflater.inflate(R.layout.fragment_physical_exercise_practic, container, false);
         ButterKnife.bind(this, view);
 
-        new CountDownTimer(2000, 1000) {
+         GifImageView asd  = view.findViewById(R.id.fragment_pep_gif);
+        asd.setImageResource(img);
+
+        new CountDownTimer(time, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 //texto a mostrar en cuenta regresiva en un textview
@@ -57,8 +65,10 @@ public class PhysicalExercisePractic extends Fragment {
                 //información
                 View viewInflater = getLayoutInflater().inflate(R.layout.physicalexersice_plantilla_exerxise_end , null);
                 builder.setView(viewInflater);
+
                 Button btnReload =  viewInflater.findViewById(R.id.physicla_exercise_winp_reload);
                 Button btnBackToMenu = viewInflater.findViewById(R.id.physical_exercise_winp_btnonback);
+
 
                 AlertDialog dialog = builder.create();
                 dialog.show();
