@@ -859,4 +859,5 @@
     <string name="physical_nameExercise_resistence">Ejercicios de resistencia o aerobicos</string>
     <string name="physical_nameexercise_bodybuilding">Ejercicios de fortalecimiento o musculación</string>
     <string name="description_nameexercise_bodybuilding">Los ejercicios de fortalecimiento refuerzan y potencian la musculatura, y por tanto contribuyen a mante- ner o reforzar la autonomía y retrasar la dependencia. Mejoran el metabolismo, contribuyendo a mantener el peso y los niveles de glucosa (azúcar) y colesterol en sangre. Previenen la osteoporosis, poliartrosis y las caídas</string>
+    <string name="title_activity_notification_manager">NotificationManager</string>
 </resources>

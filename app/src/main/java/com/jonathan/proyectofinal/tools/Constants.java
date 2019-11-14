@@ -15,4 +15,9 @@ public class Constants {
 
     //Constants for Patients
     public static final String Memorizame = "Memorizame";
+
+    //variables static for one signal
+    public static final String app_id = "bac4dc85-9b14-42a2-9731-921c1fe6b242";
+    public static final String rest_api_key = "Basic MTQ0YTdhODUtZGQ4NC00MDRlLThkMTgtYjY3YzgxZjU3NDcz";
+    public static final String template_id = "8b45e317-8a8a-4155-9b25-32637eec210f";
 }
