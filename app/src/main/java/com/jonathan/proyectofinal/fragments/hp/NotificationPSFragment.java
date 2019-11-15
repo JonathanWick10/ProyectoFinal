@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,6 +32,7 @@ import com.jonathan.proyectofinal.data.Mensage;
 import com.jonathan.proyectofinal.data.MensagesContent;
 import com.jonathan.proyectofinal.data.NotificationData;
 import com.jonathan.proyectofinal.data.Patient;
+import com.jonathan.proyectofinal.interfaces.IMainCarer;
 import com.jonathan.proyectofinal.tools.Constants;
 import com.onesignal.OneSignal;
 
@@ -73,11 +75,15 @@ public class NotificationPSFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_ps_notification, container, false);
-        Bundle bundle = getArguments();
 
-        if (bundle!=null){
-            patient = (Patient) bundle.getSerializable("patient");
-        }
+        /*Bundle bundle = getArguments();
+
+        if (bundle!=null){*/
+        SharedPreferences preferences = getActivity().getPreferences(0);
+        Gson gson = new Gson();
+        String json = preferences.getString("serialipatient","");
+        patient = gson.fromJson(json,Patient.class);
+        //}
         referenceViews(view);
         notificationData=new NotificationData();
         alarmManager = (AlarmManager) getContext().getSystemService(Context.ALARM_SERVICE);
@@ -92,7 +98,7 @@ public class NotificationPSFragment extends Fragment {
         return view;
     }
 
-    private void mostrarMensaje(final String title, final String mensaje){
+    private void mostrarMensaje(final String title, final String mensaje) {
         Gson gson = new Gson();
 
         //LISTA DE USUARIOS POR PLAYERID A LOS CUALES ENVIAR

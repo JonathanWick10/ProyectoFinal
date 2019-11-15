@@ -77,7 +77,6 @@ public class LoadBrainmher extends AppCompatActivity  {
                 })
                 .init();
         OneSignal.enableVibrate(true);
-        //esto es para que cuando se creer el usuario en onesignal le asigne estas propieades
     }
 
     private void redirect() {
