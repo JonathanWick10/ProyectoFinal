@@ -214,7 +214,6 @@ public class AdminAddHealthProfessional extends Fragment {
                                 FirebaseUser ures = itask.getUser();
                                 uIDHP = ures.getUid();
                                 hp.setHpUID(uIDHP);
-                                if (uriImage!=null){
                                     final StorageReference imgRef = storageReference.child("Users/Healthcare_profesionals/"+hp.getHpUID()+".jpg");
                                     imgRef.putFile(uriImage)
                                             .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -241,7 +240,6 @@ public class AdminAddHealthProfessional extends Fragment {
                                             });
                                 }
                                 firebaseAuth.signOut();
-                            }
                         }
                     });
 

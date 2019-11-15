@@ -87,6 +87,7 @@ public class AdminHome extends AppCompatActivity implements IMainCarer,AdminAddH
     ProgressDialog progressDialog;
     FirebaseFirestore db;
     Admin admin = new Admin();
+    public long backPressedTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -195,11 +196,16 @@ public class AdminHome extends AppCompatActivity implements IMainCarer,AdminAddH
 
     @Override
     public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
-            closeDrawer();
+
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0 ){
+            getSupportFragmentManager().popBackStack();
+        }else if (backPressedTime + 4000 > System.currentTimeMillis()) {
+            if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                closeDrawer();
+            }
+            super.onBackPressed();
         }
-        super.onBackPressed();
-        finish();
+        backPressedTime = System.currentTimeMillis();
     }
 
     @Override

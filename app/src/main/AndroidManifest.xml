@@ -42,7 +42,6 @@
             android:name=".ui.NotificationMg"
             android:label="@string/title_activity_notification_manager"
             android:theme="@style/AppTheme.NoActionBar" >
-
         </activity>
 
         <activity

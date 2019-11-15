@@ -65,8 +65,8 @@ public class MedicamentsAdapter extends RecyclerView.Adapter<MedicamentsAdapter.
         }
 
         public void bind(final MedicationAssignment medicationAssignment, final int position, final OnItemClick onItemClick){
-            tvMedicamentName.setText("Donepezil");
-            tvMedicamentDescription.setText("Evita la descomposición de la acetilcolina en el cerebro.");
+            tvMedicamentName.setText(medicationAssignment.getMedicamentName());
+            tvMedicamentDescription.setText(medicationAssignment.getMedicamentDescription());
 
             tvRecipeDate.setText(medicationAssignment.getRecipeDate());
             tvFrequency.setText(medicationAssignment.getFrequency());

@@ -19,10 +19,10 @@ import com.jonathan.proyectofinal.interfaces.IMainCarer;
 
 public class HeartFragment extends Fragment {
 
-    TabLayout tabs;
-    ViewPager viewPag;
-    Adapter adapt;
-    String text1, text2, text3;
+    private TabLayout tabs;
+    private ViewPager viewPag;
+    private Adapter adapt;
+    private String text1, text2, text3;
 
     private IMainCarer mIMainCarer;
 
@@ -39,20 +39,17 @@ public class HeartFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_cu_heart,container,false);
         tabs = view.findViewById(R.id.tabh);
         viewPag = view.findViewById(R.id.viewpagerh);
-        GeneralInformationFragment fragment = new GeneralInformationFragment();
-        SetUpViewPager(viewPag, tabs, fragment);
-    return view;
+        SetUpViewPager(viewPag, tabs);
+        return view;
     }
 
-    private void SetUpViewPager(ViewPager viewPag, TabLayout tabs, Fragment fragment) {
-        if (fragment != null) {
+    private void SetUpViewPager(ViewPager viewPag, TabLayout tabs) {
             adapt = new Adapter(getChildFragmentManager());
             tabs.setupWithViewPager(viewPag);
             viewPag.setAdapter(adapt);
             tabs.getTabAt(1).setIcon(R.drawable.ic_info);
             tabs.getTabAt(0).setIcon(R.drawable.ic_accessibility_black);
             tabs.getTabAt(2).setIcon(R.drawable.ic_description);
-        }
     }
 
     public class Adapter extends FragmentPagerAdapter {
@@ -77,9 +74,10 @@ public class HeartFragment extends Fragment {
                 case 2:
                     WarningCarerFragment warningCarerFragment = new WarningCarerFragment();
                     return warningCarerFragment;
+                default:
+                    throw new RuntimeException("Invalid item index.");
 
             }
-            return null;
         }
 
         @Override

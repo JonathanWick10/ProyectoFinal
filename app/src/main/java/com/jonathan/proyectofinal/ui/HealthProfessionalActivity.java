@@ -74,6 +74,7 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
     FirebaseFirestore db;
     HealthcareProfessional hp = new HealthcareProfessional();
     Carer carer = new Carer();
+    public long backPressedTime;
 
     public void setFlag(int flag){
         flagActivity=flag;
@@ -183,7 +184,7 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
         else if(fragmentTag.equals(getString(R.string.carer))){
             change = new InformationCarerPSFragment();
             change.setArguments(args);
-            transaction.replace(R.id.containerPageInformationPS,change).commit();
+            transaction.replace(R.id.containerPageInformationPS,change).addToBackStack(null).commit();
         }
         else if(fragmentTag.equals(getString(R.string.cognitive))){
             change = new CognitiveTherapyPSFragment();
@@ -204,7 +205,7 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
             change = new MemorizameFamilyFragment();
             change.setArguments(args);
             setFlag(1);
-            transaction.replace(R.id.containerMemorizame,change).commit();
+            transaction.replace(R.id.containerMemorizame,change).addToBackStack(null).commit();
         }
     /*    else if(fragmentTag.equals(getString(R.string.tab_family_questions))){
             change = new MemorizameFamilyFragment();
@@ -217,24 +218,24 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
             change = new MemorizameFamilyFragment();
             change.setArguments(args);
             setFlag(2);
-            transaction.replace(R.id.containerMemorizame,change).commit();
+            transaction.replace(R.id.containerMemorizame,change).addToBackStack(null).commit();
         }
         else if(fragmentTag.equals(getString(R.string.tab_home_questions))){
             change = new MemorizameFamilyFragment();
             change.setArguments(args);
             setFlag(3);
-            transaction.replace(R.id.containerMemorizame,change).commit();
+            transaction.replace(R.id.containerMemorizame,change).addToBackStack(null).commit();
         }
         else if(fragmentTag.equals(getString(R.string.tab_places_questions))){
             change = new MemorizameFamilyFragment();
             change.setArguments(args);
             setFlag(4);
-            transaction.replace(R.id.containerMemorizame,change).commit();
+            transaction.replace(R.id.containerMemorizame,change).addToBackStack(null).commit();
         }
         else if(fragmentTag.equals(getString(R.string.family_questions_img))){
             change = new NewCardMemorizame();
             change.setArguments(args);
-            transaction.replace(R.id.containerMemorizame,change).commit();
+            transaction.replace(R.id.containerMemorizame,change).addToBackStack(null).commit();
         }
         else if(fragmentTag.equals("memorizamepru")){
             change = new MemorizameFragment();
@@ -242,7 +243,7 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
         }
         else if(fragmentTag.equals("memorizamee")){
             change = new NewCardMemorizame();
-            transaction.replace(R.id.containerMemorizame,change).commit();
+            transaction.replace(R.id.containerMemorizame,change).addToBackStack(null).commit();
         }
 
     }
@@ -279,10 +280,15 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
 
     @Override
     public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
-            closeDrawer();
+
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0 ){
+            getSupportFragmentManager().popBackStack();
+        }else if (backPressedTime + 4000 > System.currentTimeMillis()) {
+            if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                closeDrawer();
+            }
+            super.onBackPressed();
         }
-        super.onBackPressed();
-        finish();
+        backPressedTime = System.currentTimeMillis();
     }
 }
