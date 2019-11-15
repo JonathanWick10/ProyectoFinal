@@ -63,8 +63,8 @@ public class MedicamentsChildFragment extends Fragment {
 
     private void fillRecycler() {
         list = new ArrayList<>();
-        list.add(new MedicationAssignment("10-09-2019", "9:00am, 1:00pm", "Diariamente", "1 Píldora", "Sin terminar"));
-        list.add(new MedicationAssignment("11-11-2019", "7:00am, 2:00pm", "Diariamente", "1 Píldora", "Sin terminar"));
+        list.add(new MedicationAssignment("Donepezil","Evita la descomposición de la acetilcolina en el cerebro.", "10-09-2019", "9:00am, 1:00pm", "Diariamente", "1 Píldora", "Sin terminar"));
+        list.add(new MedicationAssignment("Rivastigmina", "Etapa temprana y moderada de la enfermedad de Alzheimer.", "11-11-2019", "7:00am, 2:00pm", "Diariamente", "1 Píldora", "Sin terminar"));
     }
 
     @Override

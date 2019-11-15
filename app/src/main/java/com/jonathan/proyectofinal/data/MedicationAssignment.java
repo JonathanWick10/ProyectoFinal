@@ -2,6 +2,8 @@ package com.jonathan.proyectofinal.data;
 
 public class MedicationAssignment {
 
+    private String medicamentName;
+    private String medicamentDescription;
     private String recipeDate;
     private String hours;
     private String frequency;
@@ -11,12 +13,30 @@ public class MedicationAssignment {
     public MedicationAssignment() {
     }
 
-    public MedicationAssignment(String recipeDate, String hours, String frequency, String dose, String statement) {
+    public MedicationAssignment(String medicamentName, String medicamentDescription, String recipeDate, String hours, String frequency, String dose, String statement) {
+        this.medicamentName = medicamentName;
+        this.medicamentDescription = medicamentDescription;
         this.recipeDate = recipeDate;
         this.hours = hours;
         this.frequency = frequency;
         this.dose = dose;
         this.statement = statement;
+    }
+
+    public String getMedicamentName() {
+        return medicamentName;
+    }
+
+    public void setMedicamentName(String medicamentName) {
+        this.medicamentName = medicamentName;
+    }
+
+    public String getMedicamentDescription() {
+        return medicamentDescription;
+    }
+
+    public void setMedicamentDescription(String medicamentDescription) {
+        this.medicamentDescription = medicamentDescription;
     }
 
     public String getRecipeDate() {
@@ -57,16 +77,5 @@ public class MedicationAssignment {
 
     public void setStatement(String statement) {
         this.statement = statement;
-    }
-
-    @Override
-    public String toString() {
-        return "MedicationAssignment{" +
-                "recipeDate='" + recipeDate + '\'' +
-                ", hours='" + hours + '\'' +
-                ", frequency='" + frequency + '\'' +
-                ", dose='" + dose + '\'' +
-                ", statement='" + statement + '\'' +
-                '}';
     }
 }
