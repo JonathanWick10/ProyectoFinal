@@ -33,6 +33,7 @@ public class Patient implements Serializable {
     private String role;
     List<String> assigns;
     private String uriImg;
+    private String playerId;
     //endregion
 
     //region Builders
@@ -252,7 +253,14 @@ public class Patient implements Serializable {
         this.uriImg = uriImg;
     }
 
-    //endregion
+    public String getPlayerId() {
+        return playerId;
+    }
+
+    public void setPlayerId(String playerId) {
+        this.playerId = playerId;
+    }
+//endregion
 
     //region toString
     @Override

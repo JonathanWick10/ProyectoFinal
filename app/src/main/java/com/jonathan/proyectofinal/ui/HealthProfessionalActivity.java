@@ -46,6 +46,7 @@ import com.jonathan.proyectofinal.fragments.hp.InformationCarerPSFragment;
 import com.jonathan.proyectofinal.fragments.hp.InformationPSFragment;
 import com.jonathan.proyectofinal.fragments.hp.InformationPatientPSFragment;
 import com.jonathan.proyectofinal.fragments.hp.MotorTherapyPSFragment;
+import com.jonathan.proyectofinal.fragments.hp.NotificationPSFragment;
 import com.jonathan.proyectofinal.interfaces.IMainCarer;
 import com.jonathan.proyectofinal.tools.Constants;
 
@@ -243,6 +244,11 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
         }
         else if(fragmentTag.equals("memorizamee")){
             change = new NewCardMemorizame();
+            transaction.replace(R.id.containerMemorizame,change).addToBackStack(null).commit();
+        }
+        else if(fragmentTag.equals("notification")){
+            change = new NotificationPSFragment();
+            change.setArguments(args);
             transaction.replace(R.id.containerMemorizame,change).addToBackStack(null).commit();
         }
 

@@ -23,6 +23,7 @@ public class HealthcareProfessional implements Serializable {
     private String employment_place;
     private String role;
     private String uriImg;
+    private String playerId;
     //endregion
 
     //region Builders
@@ -199,6 +200,9 @@ public class HealthcareProfessional implements Serializable {
     public void setUriImg(String uriImg) {
         this.uriImg = uriImg;
     }
+
+    public String getPlayerId() { return playerId; }
+    public void setPlayerId(String playerId) { this.playerId = playerId; }
 
     //endregion
 
