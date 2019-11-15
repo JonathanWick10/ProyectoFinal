@@ -169,7 +169,6 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
             closeDrawer();
         }
         super.onBackPressed();
-        finish();
     }
 
     @Override

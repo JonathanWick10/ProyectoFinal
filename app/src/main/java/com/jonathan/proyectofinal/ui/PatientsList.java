@@ -73,7 +73,6 @@ public class PatientsList extends AppCompatActivity implements IMainCarer,AddPat
     private boolean isFabTapped = false;
     private IPatientsListFragmentListener fragmentListener;
     String userRole;
-    public long backPressedTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -210,13 +209,13 @@ public class PatientsList extends AppCompatActivity implements IMainCarer,AddPat
 
         if (getSupportFragmentManager().getBackStackEntryCount() > 0 ){
             getSupportFragmentManager().popBackStack();
-        }else if (backPressedTime + 4000 > System.currentTimeMillis()) {
-            if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-                closeDrawer();
-            }
+        } else
+        {
             super.onBackPressed();
         }
-        backPressedTime = System.currentTimeMillis();
+            if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                closeDrawer();
+        }
     }
 
     @Override

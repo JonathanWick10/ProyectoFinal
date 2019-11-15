@@ -77,7 +77,6 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
     FirebaseFirestore db;
     HealthcareProfessional hp = new HealthcareProfessional();
     Carer carer = new Carer();
-    public long backPressedTime;
 
     public void setFlag(int flag){
         flagActivity=flag;
@@ -297,12 +296,11 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
 
         if (getSupportFragmentManager().getBackStackEntryCount() > 0 ){
             getSupportFragmentManager().popBackStack();
-        }else if (backPressedTime + 4000 > System.currentTimeMillis()) {
-            if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-                closeDrawer();
-            }
+        }else {
             super.onBackPressed();
         }
-        backPressedTime = System.currentTimeMillis();
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            closeDrawer();
+        }
     }
 }
