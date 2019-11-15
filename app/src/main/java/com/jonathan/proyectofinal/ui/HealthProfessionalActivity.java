@@ -179,7 +179,7 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
         else */if(fragmentTag.equals("patient2")){
             change = new InformationPatientPSFragment();
             change.setArguments(args);
-            transaction.replace(R.id.info_patient,change).addToBackStack(null).commit();
+            transaction.replace(R.id.info_patient,change).commit();
         }
         else if(fragmentTag.equals(getString(R.string.carer))){
             change = new InformationCarerPSFragment();
@@ -189,17 +189,17 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
         else if(fragmentTag.equals(getString(R.string.cognitive))){
             change = new CognitiveTherapyPSFragment();
             change.setArguments(args);
-            transaction.replace(R.id.containerPageTherapyPS,change).addToBackStack(null).commit();
+            transaction.replace(R.id.containerPageTherapyPS,change).commit();
         }
         else if(fragmentTag.equals(getString(R.string.menu_memorizame))){
             change = new MemorizameFragment();
             change.setArguments(args);
-            transaction.replace(R.id.containerPageTherapyPS,change).addToBackStack(null).commit();
+            transaction.replace(R.id.containerPageTherapyPS,change).commit();
         }
         else if(fragmentTag.equals(getString(R.string.motor))){
             change = new MotorTherapyPSFragment();
             change.setArguments(args);
-            transaction.replace(R.id.containerPageTherapyPS,change).addToBackStack(null).commit();
+            transaction.replace(R.id.containerPageTherapyPS,change).commit();
         }
         else if(fragmentTag.equals(getString(R.string.tab_family_questions))){
             change = new MemorizameFamilyFragment();
@@ -239,7 +239,7 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
         }
         else if(fragmentTag.equals("memorizamepru")){
             change = new MemorizameFragment();
-            transaction.replace(R.id.containerMemorizame,change).addToBackStack(null).commit();
+            transaction.replace(R.id.containerMemorizame,change).commit();
         }
         else if(fragmentTag.equals("memorizamee")){
             change = new NewCardMemorizame();

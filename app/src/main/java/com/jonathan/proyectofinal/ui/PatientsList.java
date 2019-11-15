@@ -166,7 +166,7 @@ public class PatientsList extends AppCompatActivity implements IMainCarer,AddPat
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
         fragmentTransaction.replace(R.id.fragmentHProfessional, fragment);  // remplaza un fragmento de contenedor
-        fragmentTransaction.addToBackStack(null).commit();
+        fragmentTransaction.commit();
     }
 
     @Override
