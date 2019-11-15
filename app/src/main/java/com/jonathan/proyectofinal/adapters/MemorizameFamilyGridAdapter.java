@@ -85,7 +85,7 @@ public class MemorizameFamilyGridAdapter extends RecyclerView.Adapter<Memorizame
             super(itemView);
             layout = itemView;
             photo = itemView.findViewById(R.id.img_memorizame);
-            imageDelete=itemView.findViewById(R.id.img_memorizame);
+            imageDelete=itemView.findViewById(R.id.img_delete);
             number = itemView.findViewById(R.id.text_number);
         }
 
