@@ -32,6 +32,8 @@ public class LoadBrainmher extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_load_brainmher);
 
+        iniciarOneSignal();
+
         //region ScreenOrientationPortrait
         //Screen orientation portrait
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -43,17 +45,14 @@ public class LoadBrainmher extends AppCompatActivity  {
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
-
-        setContentView(R.layout.activity_load_brainmher);
         //Método para definir parametros y funcionalidad al ejecutar el splash screen
 
-        iniciarOneSignal(getApplicationContext());
         redirect();
     }
 
-    public static void iniciarOneSignal(final Context context) {
+    public void iniciarOneSignal() {
         // OneSignal Initialization
-        OneSignal.startInit(context)
+        OneSignal.startInit(this)
                 .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
                 .unsubscribeWhenNotificationsAreDisabled(true)
                 .setNotificationOpenedHandler(new OneSignal.NotificationOpenedHandler() {
@@ -67,16 +66,12 @@ public class LoadBrainmher extends AppCompatActivity  {
 
                         //meta data, osea datos ocultos
                         if (data != null) {
-                            customKey = data.optString("itemKeyClickOne", "");
-                            Toast.makeText(context, "itemKeyClickOne: " + customKey, Toast.LENGTH_LONG).show();
-
-                            customKey = data.optString("itemKeyClickTwo", "");
-                            Toast.makeText(context, "itemKeyClickTwo: " + customKey, Toast.LENGTH_LONG).show();
+                            customKey = data.optString("keyMetaData", "");
                         }
 
                         //id de los botones
                         if (actionType == OSNotificationAction.ActionType.ActionTaken) {
-                            Toast.makeText(context, "Button pressed with id: " + result.action.actionID, Toast.LENGTH_LONG).show();
+                            //Toast.makeText(LoadBrainmher.this, "Button pressed with id: " + result.action.actionID, Toast.LENGTH_LONG).show();
                         }
                     }
                 })
