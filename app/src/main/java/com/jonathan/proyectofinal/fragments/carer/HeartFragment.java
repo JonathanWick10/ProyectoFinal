@@ -19,10 +19,10 @@ import com.jonathan.proyectofinal.interfaces.IMainCarer;
 
 public class HeartFragment extends Fragment {
 
-    TabLayout tabs;
-    ViewPager viewPag;
-    Adapter adapt;
-    String text1, text2, text3;
+    private TabLayout tabs;
+    private ViewPager viewPag;
+    private Adapter adapt;
+    private String text1, text2, text3;
 
     private IMainCarer mIMainCarer;
 
@@ -39,12 +39,11 @@ public class HeartFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_cu_heart,container,false);
         tabs = view.findViewById(R.id.tabh);
         viewPag = view.findViewById(R.id.viewpagerh);
-        GeneralInformationFragment fragment = new GeneralInformationFragment();
-        SetUpViewPager(viewPag, tabs, fragment);
-    return view;
+        SetUpViewPager(viewPag, tabs);
+        return view;
     }
 
-    private void SetUpViewPager(ViewPager viewPag, TabLayout tabs, Fragment fragment) {
+    private void SetUpViewPager(ViewPager viewPag, TabLayout tabs) {
             adapt = new Adapter(getChildFragmentManager());
             tabs.setupWithViewPager(viewPag);
             viewPag.setAdapter(adapt);
