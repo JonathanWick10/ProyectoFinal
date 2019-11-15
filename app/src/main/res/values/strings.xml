@@ -544,12 +544,10 @@
     <string name="qc1">¿Qué alteraciones físicas suele padecer el cuidador principal?</string>
     <string name="ac1">
         Los cuidadores principales suelen ver incrementadas las enfermedades propias de la edad (en el caso de que sea avanzada) por el esfuerzo
-        y sobrecarga física que supone el cuidado de un enfermo. Las barreras arquitectónicas (puertas y pasillos estrechos, escaleras, camas bajas...)
-        y la necesidad de mover, transportar o acompañar los movimientos del enfermo, pueden provocar la aparición o aumento de problemas musculares y
+        y sobrecarga física que supone el cuidado de un enfermo, provocando la aparición o aumento de problemas musculares y
         de huesos (como dolores de espalda).\n
 
-        El sistema inmunológico también suele verse afectado. El agotamiento de las defensas hace que seamos más proclives a padecer procesos infecciosos
-        como gripes, laringitis... Por ello, muchos cuidadores principales acaban teniendo que recurrir a la ayuda de un número considerable de fármacos.
+        El sistema inmunológico también suele verse afectado, muchos cuidadores principales terminan recurriendo a la ayuda de un número considerable de fármacos.
     </string>
     <string name="qc2">¿Qué alteraciones psicológicas conlleva el síndrome del cuidador?</string>
     <string name="ac2">
@@ -599,11 +597,10 @@
         expuesta a una sobrecarga física y psíquica que hará que pase de llevarlo bien a sentirse extenuada, por lo que es necesario que quien
         realiza la función cuidadora no se olvide de cuidarse a sí mismo/a y se sienta apoyada por su familia y entorno cercano.
     </string>
-    <string name="qc7">¿Qué implica ser el cuidador principal?</string>
+    <string name="qc7">¿Qué podría ocurrir al asumir la responsabilidad de ser el cuidador principal?</string>
     <string name="ac7">
-        La decisión de ser cuidador principal desencadena una serie de consecuencias:\n
         \n
-        <li>La relación con el resto de la familia cambia completamente: comienza una tarea dura, fatigosa, difícil y sin descanso.</li>\n
+        <li>La relación con el resto de la familia podrá cambiar completamente: comienza una tarea dura, fatigosa, difícil y sin descanso.</li>\n
         <li>Sentimiento de responsabilidad: La persona asume el cuidado principal porque se ve en el deber de hacerlo por el afecto o cariño hacia
         el enfermo y las relaciones previas existentes. Aun así, ese sentimiento de responsabilidad puede ir más allá del que resulta razonable.</li>\n
         <li>Síndrome del cuidador principal: El cuidador principal suele sufrir alteraciones múltiples a nivel físico, psíquico y social que afectarán
@@ -618,27 +615,28 @@
     </string>
     <string name="qc9">¿Cuáles son los puntos débiles de que exista un cuidador ptincipal en la familia?</string>
     <string name="ac9">
-        <li>Si no existe acuerdo en la familia sobre quién debe ser el cuidador principal pueden surgir conflictos entre familiares o incluso
-        entre cuidadores.\n</li>
+        <li>Pueden surgir conflictos entre familiares o incluso entre cuidadores.\n</li>
         <li>También puede ser problemático si los demás cuidadores no se sienten implicados y se desentienden de la colaboración en los cuidados o
         del apoyo que necesite el cuidador principal.\n</li>
-        <li>Otro problema puede ser que el resto de cuidadores familiares considere que el cuidador principal no realiza adecuadamente los cuidados,
+        <li>Puede que el resto de cuidadores familiares considere que el cuidador principal no realiza adecuadamente los cuidados,
         generándose conflictos que pueden requerir asesoramiento o mediación profesional.</li>
     </string>
-    <string name="qc10">¿Cómo debe actuar el cuidador en la segunda fase?</string>
+    <string name="qc10">¿Cómo debe actuar el cuidador respecto su cuidado en la segunda fase de la emferdad de su paciente?</string>
     <string name="ac10">
-        Debe cuidar su salud, acudiendo al médico y a la familia ante síntomas como insomnio, depresión, agotamiento, etc. e intentar mantener sus relaciones
-        afectivas y familiares, permitiéndose expresar todos aquellos sentimientos que le agobian.
+        <li>Debe cuidar su salud, acudiendo al médico.\n</li>
+        <li>Es importante mantenerse acompañado de familiares ante síntomas como insomnio, depresión, agotamiento, etc. e intentar mantener sus relaciones
+        afectivas y familiares, permitiéndose expresar todos aquellos sentimientos que le agobian.\n</li>
+
     </string>
     <string name="qc11">¿En qué medida es conveniente sentirse apoyado (por un familiar o profesional)?</string>
     <string name="ac11">
-        Es muy importante que el cuidador reciba apoyo familiar o profesional en las distintas fases de la enfermedad, para así evitar sentimientos de
+        Es muy importante que el cuidador reciba apoyo familiar o profesional en las distintas fases de la enfermedad del paciente, para así evitar sentimientos de
         soledad, pena, incertidumbre, impotencia…\n
         Cuando el cuidador observe cambios en su estado de ánimo o en su comportamiento habitual con el paciente es necesario que acuda a un profesional
         de la salud para que le guíe en la toma de decisiones. Las Asociaciones de Familiares de Enfermos de Alzhéimer también pueden resultar de gran
         ayuda y apoyo para el cuidador principal.
     </string>
-    <string name="qc12">¿Qué actividades de ocio son favorables para el cuidador?</string>
+    <string name="qc12">¿Qué caracteristicas deben de tener las actividades de ocio favorables para el cuidador?</string>
     <string name="ac12">
         El ocio debe atender particularmente a cada persona y adaptarse a sus gustos e intereses:\n
         \n
