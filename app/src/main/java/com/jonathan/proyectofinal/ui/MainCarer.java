@@ -117,7 +117,7 @@ public class MainCarer extends AppCompatActivity implements IMainCarer, Navigati
         }
         else if(fragmentTag.equals(getString(R.string.information_carer))){
             change = new InformationCarerFragment();
-            transaction.replace(R.id.viewpagerh,change).addToBackStack(null).commit();
+            transaction.replace(R.id.viewpagerh,change).commit();
         }
         else if(fragmentTag.equals(getString(R.string.my_care))){
             change = new HeartFragment();
@@ -129,31 +129,31 @@ public class MainCarer extends AppCompatActivity implements IMainCarer, Navigati
         }
         else if(fragmentTag.equals(getString(R.string.nearby_hospitals))){
             change = new NearbyHospitalFragment();
-            transaction.replace(R.id.containerpage,change).addToBackStack(null).commit();
+            transaction.replace(R.id.containerpage,change).commit();
         }
         else if(fragmentTag.equals(getString(R.string.emergency_contacts))){
             change = new CallEmergencyFragment();
-            transaction.replace(R.id.containerpage,change).addToBackStack(null).commit();
+            transaction.replace(R.id.containerpage,change).commit();
         }
         else if(fragmentTag.equals(getString(R.string.phases_ea))){
             change = new PhasesEAFragment();
-            transaction.replace(R.id.viewpager,change).addToBackStack(null).commit();
+            transaction.replace(R.id.viewpager,change).commit();
         }
         else if(fragmentTag.equals(getString(R.string.general_information))){
             change = new GeneralInformationFragment();
-            transaction.replace(R.id.viewpager,change).addToBackStack(null).commit();
+            transaction.replace(R.id.viewpager,change).commit();
         }
         else if(fragmentTag.equals(getString(R.string.exercise_carer))){
             change = new ExerciseCarerFragment();
-            transaction.replace(R.id.viewpagerh,change).addToBackStack(null).commit();
+            transaction.replace(R.id.viewpagerh,change).commit();
         }
         else if(fragmentTag.equals(getString(R.string.advice_carer))){
             change = new WarningCarerFragment();
-            transaction.replace(R.id.viewpagerh,change).addToBackStack(null).commit();
+            transaction.replace(R.id.viewpagerh,change).commit();
         }
         else if(fragmentTag.equals(getString(R.string.test))){
             change = new TestFragment();
-            transaction.replace(R.id.content_carer,change).addToBackStack(null).commit();
+            transaction.replace(R.id.content_carer,change).commit();
         }
     }
 
