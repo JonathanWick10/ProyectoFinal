@@ -3,18 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/health_professional_navigation"
-    app:startDestination="@id/item_ps_info">
+    app:startDestination="@id/item_ps_therapy">
 
-    <fragment
-        android:id="@+id/item_ps_info"
-        android:name="com.jonathan.proyectofinal.fragments.hp.InformationPSFragment"
-        android:label="fragment_ps_information"
-        tools:layout="@layout/fragment_ps_information" />
     <fragment
         android:id="@+id/item_ps_therapy"
         android:name="com.jonathan.proyectofinal.fragments.hp.TherapyPSFragment"
         android:label="fragment_ps_therapy"
         tools:layout="@layout/fragment_ps_therapy" />
+    <fragment
+        android:id="@+id/item_ps_info"
+        android:name="com.jonathan.proyectofinal.fragments.hp.InformationPSFragment"
+        android:label="fragment_ps_information_patient"
+        tools:layout="@layout/fragment_ps_information_patient" />
     <fragment
         android:id="@+id/item_ps_graph"
         android:name="com.jonathan.proyectofinal.fragments.hp.GraphPSFragment"
@@ -23,6 +23,6 @@
     <fragment
         android:id="@+id/item_ps_notification"
         android:name="com.jonathan.proyectofinal.fragments.hp.NotificationPSFragment"
-        android:label="fragment_ps_notification"
-        tools:layout="@layout/fragment_ps_notification" />
+        android:label="fragment_notifications"
+        tools:layout="@layout/fragment_notifications" />
 </navigation>
