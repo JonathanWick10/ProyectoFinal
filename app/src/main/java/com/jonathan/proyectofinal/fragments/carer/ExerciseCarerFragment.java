@@ -65,39 +65,6 @@ public class ExerciseCarerFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(new PhysicalExerciseAdapter(entities(),physicalExeciseI));
-
-     /*   String uid = user.getUid();
-        //FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-        CollectionReference collectionReferenceMemorizame = db.collection(Constants.Memorizame);
-
-        collectionReferenceMemorizame.document(patient.getPatientUID()).collection(categoria).get()
-                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        memorizameList = new ArrayList<Memorizame>();
-                        for (QueryDocumentSnapshot documentSnapshopt :
-                                queryDocumentSnapshots) {
-                            memorizameM = documentSnapshopt.toObject(Memorizame.class);
-                            memorizameList.add(memorizameM);
-                        }
-                        adapter = new MemorizameFamilyGridAdapter(memorizameList,getActivity(),iSelectionMemorizame,iDeleteMemorizame);
-                        recyclerView.setAdapter(adapter);
-                        recyclerView.setHasFixedSize(true);
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.d("Message", e.toString());
-                    }
-                });
-
-
-    }
-
-      */
-
 }
 
     private List<PhysicalExerciseEntity> entities(){
