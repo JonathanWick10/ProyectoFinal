@@ -25,6 +25,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -37,6 +38,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
@@ -110,7 +112,20 @@ public class AdminListPSFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        reference();
+        //reference();
+        adapter.startListening();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        adapter.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        adapter.stopListening();
     }
 
     private void eventDelete() {
@@ -285,7 +300,21 @@ public class AdminListPSFragment extends Fragment {
     private void reference() {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection(Constants.HealthcareProfesional)
+
+        //Query creation
+        Query query = db.collection(Constants.HealthcareProfesional)
+                .whereEqualTo("role", Constants.HealthcareProfesional);
+
+        //Crea las opciones del FirestoreRecyclerOptions
+        FirestoreRecyclerOptions<HealthcareProfessional> firestoreRecyclerOptions = new FirestoreRecyclerOptions.Builder<HealthcareProfessional>()
+                .setQuery(query, HealthcareProfessional.class).build();
+
+        //Passing parameters to the adapter
+        adapter = new AdminListPSAdapter(firestoreRecyclerOptions, iSelectionHealth, iDeleteHealth);
+        adapter.notifyDataSetChanged();
+        recyclerView.setAdapter(adapter);
+        /*
+        Query query = db.collection(Constants.HealthcareProfesional)
                 .whereEqualTo("role",Constants.HealthcareProfesional)
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -308,6 +337,7 @@ public class AdminListPSFragment extends Fragment {
                         }
                     }
                 });
+         */
 
     }
 
