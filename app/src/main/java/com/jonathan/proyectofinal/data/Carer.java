@@ -23,6 +23,7 @@ public class Carer {
     private String employmentPlace;
     private String role;
     private String uriImg;
+    private String playerId;
     //endregion
 
     //region Builders
@@ -199,6 +200,15 @@ public class Carer {
     public void setUriImg(String uriImg) {
         this.uriImg = uriImg;
     }
+
+    public String getPlayerId() {
+        return playerId;
+    }
+
+    public void setPlayerId(String playerId) {
+        this.playerId = playerId;
+    }
+
     //endregion
 
     //region toString

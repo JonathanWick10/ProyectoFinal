@@ -17,7 +17,6 @@ public class Constants {
     public static final String Memorizame = "Memorizame";
 
     //variables static for one signal
-    public static final String app_id = "bac4dc85-9b14-42a2-9731-921c1fe6b242";
-    public static final String rest_api_key = "Basic MTQ0YTdhODUtZGQ4NC00MDRlLThkMTgtYjY3YzgxZjU3NDcz";
-    public static final String template_id = "8b45e317-8a8a-4155-9b25-32637eec210f";
+    public static final String app_id = "dd9a93af-d41e-4d08-a75a-c6154744060e";
+    public static final String template_id = "";
 }

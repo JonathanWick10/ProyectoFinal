@@ -13,6 +13,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -26,6 +27,7 @@ import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.data.Carer;
 import com.jonathan.proyectofinal.data.HealthcareProfessional;
 import com.jonathan.proyectofinal.data.Patient;
+import com.jonathan.proyectofinal.fragments.carer.InformationCarerFragment;
 import com.jonathan.proyectofinal.interfaces.IMainCarer;
 import com.jonathan.proyectofinal.tools.Constants;
 
@@ -57,6 +59,13 @@ public class InformationPSFragment extends Fragment {
             patient = (Patient)bundle.getSerializable("patient");
             args.putSerializable("patient", patient);
         }
+        /*FragmentManager manager = getChildFragmentManager();
+        final FragmentTransaction transaction = manager.beginTransaction();
+        Fragment change;
+        change = new InformationPatientPSFragment();
+        change.setArguments(args);
+        //setFlag(1);
+        transaction.replace(R.id.info_patient,change).commit();*/
         iMainHealthProfessional.inflateFragment("patient2");
 
         return view;

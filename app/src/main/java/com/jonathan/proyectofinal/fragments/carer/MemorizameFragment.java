@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.data.Patient;
@@ -51,6 +53,14 @@ public class MemorizameFragment extends Fragment {
         family.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                /*FragmentManager manager = getChildFragmentManager();
+                final FragmentTransaction transaction = manager.beginTransaction();
+                Fragment change;
+                change = new InformationCarerFragment();
+                //change.setArguments(args);
+                //setFlag(1);
+                transaction.add(R.id.containerMemorizame,change);
+                transaction.addToBackStack(null).commit();*/
 
                 mIMainCarer.inflateFragment(getString(R.string.tab_family_questions));
             }

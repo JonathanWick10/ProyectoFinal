@@ -13,6 +13,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.Menu;
@@ -31,6 +32,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.gson.Gson;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.data.Carer;
 import com.jonathan.proyectofinal.data.HealthcareProfessional;
@@ -46,6 +48,7 @@ import com.jonathan.proyectofinal.fragments.hp.InformationCarerPSFragment;
 import com.jonathan.proyectofinal.fragments.hp.InformationPSFragment;
 import com.jonathan.proyectofinal.fragments.hp.InformationPatientPSFragment;
 import com.jonathan.proyectofinal.fragments.hp.MotorTherapyPSFragment;
+import com.jonathan.proyectofinal.fragments.hp.NotificationPSFragment;
 import com.jonathan.proyectofinal.interfaces.IMainCarer;
 import com.jonathan.proyectofinal.tools.Constants;
 
@@ -74,7 +77,6 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
     FirebaseFirestore db;
     HealthcareProfessional hp = new HealthcareProfessional();
     Carer carer = new Carer();
-    public long backPressedTime;
 
     public void setFlag(int flag){
         flagActivity=flag;
@@ -140,6 +142,13 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
         if (args!= null){
             patientSendFragment = (Patient) args.getSerializable("patient");
             args.putSerializable("patient",patientSendFragment);
+
+            SharedPreferences preferences = getPreferences(0);
+            SharedPreferences.Editor editor = preferences.edit();
+            Gson gson = new Gson();
+            String json = gson.toJson(patientSendFragment);
+            editor.putString("serialipatient",json);
+            editor.commit();
         }
     }
 
@@ -171,66 +180,34 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
     public void inflateFragment(String fragmentTag) {
         transaction = getSupportFragmentManager().beginTransaction();
         // Listen to the Button Call for other Fragments in different Views
-        /*if(fragmentTag.equals("patient1")){
-            change = new InformationPatientPSFragment();
-            contentLayout = new InformationPSFragment();
-            transaction.replace(R.id.info_patient,change).commit();
-        }
-        else */if(fragmentTag.equals("patient2")){
+        if(fragmentTag.equals("patient2")){
             change = new InformationPatientPSFragment();
             change.setArguments(args);
             transaction.replace(R.id.info_patient,change).commit();
-        }
-        else if(fragmentTag.equals(getString(R.string.carer))){
-            change = new InformationCarerPSFragment();
-            change.setArguments(args);
-            transaction.replace(R.id.containerPageInformationPS,change).addToBackStack(null).commit();
-        }
-        else if(fragmentTag.equals(getString(R.string.cognitive))){
-            change = new CognitiveTherapyPSFragment();
-            change.setArguments(args);
-            transaction.replace(R.id.containerPageTherapyPS,change).commit();
-        }
-        else if(fragmentTag.equals(getString(R.string.menu_memorizame))){
-            change = new MemorizameFragment();
-            change.setArguments(args);
-            transaction.replace(R.id.containerPageTherapyPS,change).commit();
-        }
-        else if(fragmentTag.equals(getString(R.string.motor))){
-            change = new MotorTherapyPSFragment();
-            change.setArguments(args);
-            transaction.replace(R.id.containerPageTherapyPS,change).commit();
         }
         else if(fragmentTag.equals(getString(R.string.tab_family_questions))){
             change = new MemorizameFamilyFragment();
             change.setArguments(args);
             setFlag(1);
-            transaction.replace(R.id.containerMemorizame,change).addToBackStack(null).commit();
+            transaction.replace(R.id.fragmentHomeHP,change).addToBackStack(null).commit();
         }
-    /*    else if(fragmentTag.equals(getString(R.string.tab_family_questions))){
-            change = new MemorizameFamilyFragment();
-            change.setArguments(args);
-            transaction.replace(R.id.containerMemorizame,change).commit();
-        }
-
-     */
         else if(fragmentTag.equals(getString(R.string.tab_pets_questions))){
             change = new MemorizameFamilyFragment();
             change.setArguments(args);
             setFlag(2);
-            transaction.replace(R.id.containerMemorizame,change).addToBackStack(null).commit();
+            transaction.replace(R.id.fragmentHomeHP,change).addToBackStack(null).commit();
         }
         else if(fragmentTag.equals(getString(R.string.tab_home_questions))){
             change = new MemorizameFamilyFragment();
             change.setArguments(args);
             setFlag(3);
-            transaction.replace(R.id.containerMemorizame,change).addToBackStack(null).commit();
+            transaction.replace(R.id.fragmentHomeHP,change).addToBackStack(null).commit();
         }
         else if(fragmentTag.equals(getString(R.string.tab_places_questions))){
             change = new MemorizameFamilyFragment();
             change.setArguments(args);
             setFlag(4);
-            transaction.replace(R.id.containerMemorizame,change).addToBackStack(null).commit();
+            transaction.replace(R.id.fragmentHomeHP,change).addToBackStack(null).commit();
         }
         else if(fragmentTag.equals(getString(R.string.family_questions_img))){
             change = new NewCardMemorizame();
@@ -239,13 +216,16 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
         }
         else if(fragmentTag.equals("memorizamepru")){
             change = new MemorizameFragment();
-            transaction.replace(R.id.containerMemorizame,change).commit();
+            transaction.replace(R.id.containerPageTherapyPS,change).commit();
         }
         else if(fragmentTag.equals("memorizamee")){
             change = new NewCardMemorizame();
             transaction.replace(R.id.containerMemorizame,change).addToBackStack(null).commit();
         }
-
+        else if(fragmentTag.equals("notification")){
+            change = new NotificationPSFragment();
+            change.setArguments(args);
+        }
     }
 
     @Override
@@ -281,14 +261,13 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
     @Override
     public void onBackPressed() {
 
-        if (getSupportFragmentManager().getBackStackEntryCount() > 0 ){
-            getSupportFragmentManager().popBackStack();
-        }else if (backPressedTime + 4000 > System.currentTimeMillis()) {
-            if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-                closeDrawer();
-            }
+        if (getSupportFragmentManager().getBackStackEntryCount() == 0){
             super.onBackPressed();
+        }else {
+            getSupportFragmentManager().popBackStack();
         }
-        backPressedTime = System.currentTimeMillis();
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            closeDrawer();
+        }
     }
 }

@@ -60,7 +60,6 @@ public class MainCarer extends AppCompatActivity implements IMainCarer, Navigati
     FirebaseUser firebaseUser;
     FirebaseFirestore db;
     Carer carer = new Carer();
-    public long backPressedTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -192,13 +191,12 @@ public class MainCarer extends AppCompatActivity implements IMainCarer, Navigati
 
         if (getSupportFragmentManager().getBackStackEntryCount() > 0 ){
             getSupportFragmentManager().popBackStack();
-        }else if (backPressedTime + 4000 > System.currentTimeMillis()) {
+        }else {
             super.onBackPressed();
         }
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             closeDrawer();
         }
-        backPressedTime = System.currentTimeMillis();
     }
 
 }

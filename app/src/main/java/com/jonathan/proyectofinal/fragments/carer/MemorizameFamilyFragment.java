@@ -66,13 +66,6 @@ public class MemorizameFamilyFragment extends Fragment {
 
     public MemorizameFamilyFragment(){}
 
-/*    public MemorizameFamilyFragment(int contentLayoutId) {
-        super(contentLayoutId);
-    }
-
-
- */
-
 
 //region for fragment grid
 
@@ -162,7 +155,7 @@ public class MemorizameFamilyFragment extends Fragment {
 
 
 
-        initAdapter();
+        //initAdapter();
         logicEventSelecItem();
 
         eventDeleteItem();
@@ -329,88 +322,13 @@ public class MemorizameFamilyFragment extends Fragment {
                             final ProgressDialog progressDialog = ProgressDialog.show(getActivity(),
                                     "Brainmher", "Eliminando registro en línea");
 
-                            firebaseAuth.signInWithEmailAndPassword(patient.getEmail(), patient.getPassword())
-                                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<AuthResult> task) {
-                                            if (task.isSuccessful()) {
-                                                AuthResult itask = task.getResult();
-                                                FirebaseUser ures = itask.getUser();
-                                                StorageReference storageReference = FirebaseStorage.getInstance().getReference();
-                                                StorageReference deleteImage = storageReference.child("Users/Patients/" + patient.getPatientUID() + ".jpg");
-                                                deleteImage.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                    @Override
-                                                    public void onSuccess(Void aVoid) {
 
-                                                    }
-                                                });
-                                                db.collection(Constants.Patients).document(patient.getPatientUID()).delete()
-                                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                            @Override
-                                                            public void onSuccess(Void aVoid) {
-                                                                Toast.makeText(getActivity(), "usuario eliminado", Toast.LENGTH_SHORT).show();
-                                                            }
-                                                        })
-                                                        .addOnFailureListener(new OnFailureListener() {
-                                                            @Override
-                                                            public void onFailure(@NonNull Exception e) {
-
-                                                            }
-                                                        });
-                                                ures.delete()
-                                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                            @Override
-                                                            public void onComplete(@NonNull Task<Void> task) {
-                                                                Toast.makeText(getActivity(), "se elimino", Toast.LENGTH_SHORT).show();
-                                                            }
-                                                        });
-                                            }
-                                        }
-                                    });
-
-                            db.collection(Constants.HealthcareProfesional).document(userHPoCarer).get()
-                                    .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                                        @Override
-                                        public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                            if (documentSnapshot.exists()) {
-                                                hp = documentSnapshot.toObject(HealthcareProfessional.class);
-                                                firebaseAuth.signInWithEmailAndPassword(hp.getEmail(), hp.getPassword())
-                                                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                                            @Override
-                                                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                                                initRecyclerView();
-                                                                progressDialog.dismiss();
-                                                            }
-                                                        });
-                                            }
-                                        }
-                                    });
-
-                            db.collection(Constants.Carers).document(userHPoCarer).get()
-                                    .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                                        @Override
-                                        public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                            if (documentSnapshot.exists()) {
-                                                carer = documentSnapshot.toObject(Carer.class);
-                                                firebaseAuth.signInWithEmailAndPassword(carer.getEmail(), carer.getPassword())
-                                                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                                            @Override
-                                                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                                                initRecyclerView();
-                                                                progressDialog.dismiss();
-                                                            }
-                                                        });
-                                            }
-                                        }
-                                    });
                         }
                     });
                     builder.show();
                 }
             }
-        }
-
-        ;
+        };
 
     }
     //endregion

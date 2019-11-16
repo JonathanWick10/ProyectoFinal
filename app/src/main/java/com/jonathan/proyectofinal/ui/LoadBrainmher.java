@@ -2,6 +2,7 @@ package com.jonathan.proyectofinal.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -31,6 +32,8 @@ public class LoadBrainmher extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_load_brainmher);
 
+        iniciarOneSignal();
+
         //region ScreenOrientationPortrait
         //Screen orientation portrait
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -42,14 +45,39 @@ public class LoadBrainmher extends AppCompatActivity  {
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
-
-        setContentView(R.layout.activity_load_brainmher);
         //Método para definir parametros y funcionalidad al ejecutar el splash screen
 
         redirect();
     }
 
+    public void iniciarOneSignal() {
+        // OneSignal Initialization
+        OneSignal.startInit(this)
+                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+                .unsubscribeWhenNotificationsAreDisabled(true)
+                .setNotificationOpenedHandler(new OneSignal.NotificationOpenedHandler() {
+                    @Override
+                    public void notificationOpened(OSNotificationOpenResult result) {
 
+                        //cuando se abre una notificacion
+                        OSNotificationAction.ActionType actionType = result.action.type;
+                        JSONObject data = result.notification.payload.additionalData;
+                        String customKey;
+
+                        //meta data, osea datos ocultos
+                        if (data != null) {
+                            customKey = data.optString("keyMetaData", "");
+                        }
+
+                        //id de los botones
+                        if (actionType == OSNotificationAction.ActionType.ActionTaken) {
+                            //Toast.makeText(LoadBrainmher.this, "Button pressed with id: " + result.action.actionID, Toast.LENGTH_LONG).show();
+                        }
+                    }
+                })
+                .init();
+        OneSignal.enableVibrate(true);
+    }
 
     private void redirect() {
         new Handler().postDelayed(new Runnable() {

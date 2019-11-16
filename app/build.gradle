@@ -14,7 +14,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         manifestPlaceholders = [
-                onesignal_app_id: 'bac4dc85-9b14-42a2-9731-921c1fe6b242',
+                onesignal_app_id: 'dd9a93af-d41e-4d08-a75a-c6154744060e',
                 // Project number pulled from dashboard, local value is ignored.
                 onesignal_google_project_number: 'REMOTE'
         ]
@@ -45,6 +45,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:16.0.4'
     //dependencies for Firestore
     implementation 'com.google.firebase:firebase-firestore:21.1.0'
+    implementation 'com.firebaseui:firebase-ui-firestore:6.1.0'
     //dependencies for Storage
     implementation 'com.google.firebase:firebase-storage:19.1.0'
     implementation 'com.google.firebase:firebase-auth:19.0.0'

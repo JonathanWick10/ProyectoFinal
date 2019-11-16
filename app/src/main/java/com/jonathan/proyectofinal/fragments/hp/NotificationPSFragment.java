@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,12 +25,23 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.gson.Gson;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.data.AlertReceiver;
+import com.jonathan.proyectofinal.data.Mensage;
+import com.jonathan.proyectofinal.data.MensagesContent;
 import com.jonathan.proyectofinal.data.NotificationData;
+import com.jonathan.proyectofinal.data.Patient;
+import com.jonathan.proyectofinal.interfaces.IMainCarer;
+import com.jonathan.proyectofinal.tools.Constants;
+import com.onesignal.OneSignal;
+
+import org.json.JSONObject;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -39,6 +51,7 @@ import static androidx.core.content.ContextCompat.getSystemService;
 
 public class NotificationPSFragment extends Fragment {
 
+    //region codigo de ella
     private ImageButton startHour;
     private TextView textShowHour, calendarInst, cal;
     public final Calendar calendarInstance = Calendar.getInstance();
@@ -47,35 +60,84 @@ public class NotificationPSFragment extends Fragment {
     private TextView switchBtn_txtView;
     //private Spinner spinnerUnitTime;
     //private EditText etIntTime, etNameMedicine;
-
-
     private String [] arrayUnitTime;
     private ArrayAdapter adapter;
 
     private NotificationData notificationData;
     private AlarmManager alarmManager;
 
-    public NotificationPSFragment() {
-    }
+    public NotificationPSFragment() { }
+    //endregion
+
+    private Patient patient;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_ps_notification, container, false);
-        Bundle bundle = getArguments();
-        if (bundle!=null){
-            String uID = bundle.getString("patientUID");
-        }
+
+        /*Bundle bundle = getArguments();
+
+        if (bundle!=null){*/
+        SharedPreferences preferences = getActivity().getPreferences(0);
+        Gson gson = new Gson();
+        String json = preferences.getString("serialipatient","");
+        patient = gson.fromJson(json,Patient.class);
+        //}
         referenceViews(view);
         notificationData=new NotificationData();
         alarmManager = (AlarmManager) getContext().getSystemService(Context.ALARM_SERVICE);
 
         arrayUnitTime = getResources().getStringArray(R.array.unit_time);
         adapter = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item,arrayUnitTime);
-       // spinnerUnitTime.setAdapter(adapter);
+        // spinnerUnitTime.setAdapter(adapter);
+
+
+        //consultar las personas a enviar notificacion
+        mostrarMensaje("Hola","Mundo");
         return view;
     }
 
+    private void mostrarMensaje(final String title, final String mensaje) {
+        Gson gson = new Gson();
+
+        //LISTA DE USUARIOS POR PLAYERID A LOS CUALES ENVIAR
+        List<String> playerIds = new ArrayList<>();
+        playerIds.add(patient.getPlayerId());
+
+        //contenido en idiomas
+        MensagesContent heading = new MensagesContent();
+        heading.setEs(title);
+        heading.setEn(title);
+
+        //cabecera en idiomas
+        MensagesContent content = new MensagesContent();
+        content.setEs(mensaje);
+        content.setEn(mensaje);
+
+        //unir toda la infomarcion en la entidad
+        Mensage mensage = new Mensage();
+        mensage.setApp_id(Constants.app_id);
+        mensage.setTemplate_id(Constants.template_id);
+        //mensage.setIncluded_segments(segments);
+        mensage.setInclude_player_ids(playerIds);
+        mensage.setContents(content);
+        mensage.setHeadings(heading);
+
+        OneSignal.postNotification(gson.toJson(mensage), new OneSignal.PostNotificationResponseHandler() {
+            @Override
+            public void onSuccess(JSONObject response) {
+
+            }
+
+            @Override
+            public void onFailure(JSONObject response) {
+
+            }
+        });
+    }
+
+    //region codigo de ella
     private void referenceViews(View view) {
 
         //////////////////
@@ -205,7 +267,6 @@ public class NotificationPSFragment extends Fragment {
         return startHour;
     }
 
-
     private void startAlarm() {
 
      //   Toast.makeText(this, "init startAlarm()" + notificationData.getStatus(), Toast.LENGTH_SHORT).show();
@@ -233,15 +294,11 @@ public class NotificationPSFragment extends Fragment {
 
     }
 
-
     private void updateTimeText(Calendar c) {
         String timeText = "Inicio:";
         timeText += DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime());
         textShowHour.setText(timeText);
 
     }
-
-
-
-
+    //endregion
 }

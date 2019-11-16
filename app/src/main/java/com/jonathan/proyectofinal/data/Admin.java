@@ -20,6 +20,7 @@ public class Admin {
     private String employmentPlace;
     private String role;
     private String uriImage;
+    private String playerId;
     //endregion
 
     //region Builders
@@ -196,6 +197,9 @@ public class Admin {
     public void setUriImage(String uriImage) {
         this.uriImage = uriImage;
     }
+
+    public String getPlayerId() { return playerId; }
+    public void setPlayerId(String playerId) { this.playerId = playerId; }
 
     //endregion
 
