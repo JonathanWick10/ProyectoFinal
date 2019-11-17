@@ -314,31 +314,6 @@ public class AdminListPSFragment extends Fragment {
         adapter = new AdminListPSAdapter(firestoreRecyclerOptions, iSelectionHealth, iDeleteHealth);
         adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
-        /*
-        Query query = db.collection(Constants.HealthcareProfesional)
-                .whereEqualTo("role",Constants.HealthcareProfesional)
-                .get()
-                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        healthcareProfessionalList = new ArrayList<>();
-                        for (QueryDocumentSnapshot documentSnapshot:
-                             queryDocumentSnapshots) {
-                            hp = documentSnapshot.toObject(HealthcareProfessional.class);
-                            healthcareProfessionalList.add(hp);
-                        }
-                        recyclerView.setAdapter(new AdminListPSAdapter(healthcareProfessionalList,getActivity(),iSelectionHealth, iDeleteHealth));
-                        recyclerView.setHasFixedSize(true);
-                        if (healthcareProfessionalList.size()!=0){
-                            recyclerView.setVisibility(View.VISIBLE);
-                            noHp.setVisibility(View.INVISIBLE);
-                        }else {
-                            recyclerView.setVisibility(View.INVISIBLE);
-                            noHp.setVisibility(View.VISIBLE);
-                        }
-                    }
-                });
-         */
 
     }
 
