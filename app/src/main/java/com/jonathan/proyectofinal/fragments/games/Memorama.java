@@ -2,14 +2,12 @@ package com.jonathan.proyectofinal.fragments.games;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,14 +16,21 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.google.firebase.FirebaseApp;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.data.MemoramaEntity;
+import com.jonathan.proyectofinal.data.Patient;
+import com.jonathan.proyectofinal.tools.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -94,6 +99,9 @@ public class Memorama extends Fragment {
     // 100 al responder todas las preguntas sin equivocarse
     private double calificacion = 0;
 
+    private FirebaseAuth firebaseAuth;
+    private FirebaseFirestore db;
+    private FirebaseUser firebaseUser;
 
     public Memorama(Memoramai memoramai) {
         this.memoramai = memoramai;
@@ -104,6 +112,11 @@ public class Memorama extends Fragment {
         //inflar vista
         View view = inflater.inflate(R.layout.fragment_memorama, container, false);
         ButterKnife.bind(this, view);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
+
+        db = FirebaseFirestore.getInstance();
         return view;
     }
 
@@ -146,7 +159,7 @@ public class Memorama extends Fragment {
                     Thread.sleep(5000);
                     runOnUIThread(false);
 
-                     tInicio = System.currentTimeMillis();
+                    tInicio = System.currentTimeMillis();
 
                 } catch (Exception e) {
                     Log.e("Error", e.toString());
@@ -333,18 +346,50 @@ public class Memorama extends Fragment {
                 memoramai.reloadGame("Memorama");
             }
         });
-
         fJuego = System.currentTimeMillis();
         diferencia = tInicio - fJuego;
 
-       txtPuntuacion.setText ((Double.parseDouble(puntuacion.toString()) <= 0) ? "0" : puntuacion.toString());
+        final String score = (Double.parseDouble(puntuacion.toString()) <= 0) ? "0" : puntuacion.toString();
 
 
+        DocumentReference docRefAd = db.collection(Constants.Patients).document(firebaseUser.getUid());
+        docRefAd.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if (documentSnapshot.exists()) {
+                    Patient patiet = documentSnapshot.toObject(Patient.class);
 
+                    if (patiet.getGameMemoramaScore() == null) {
+                        //esta vacia crea una nueva lista.
+                        List<String> list = new ArrayList<>();
+                        list.add(score);
+                        //agrega puntiacion
+                        patiet.setGameMemoramaScore(list);
+                    } else {
+                        //ya existe lista, obtiene la actual y agrega nuevo
+                        List<String> list = patiet.getGameMemoramaScore();
+                        list.add(score);
+                        patiet.setGameMemoramaScore(list);
+                    }
+
+                    //guardar nuevos datos
+                    db.collection(Constants.Patients).document(firebaseAuth.getUid()).set(patiet);
+                } else {
+                    Toast.makeText(getActivity(), "Sin usuario encontrado. error", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getActivity(), "Error. " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        txtPuntuacion.setText(score);
     }
 
     public interface Memoramai {
         void reloadGame(String reloadGame);
+
         void callOnbackPressed();
     }
 }

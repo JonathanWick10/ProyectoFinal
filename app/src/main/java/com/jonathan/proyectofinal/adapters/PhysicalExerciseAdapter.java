@@ -22,19 +22,6 @@ import pl.droidsonroids.gif.GifImageView;
 
 public class PhysicalExerciseAdapter extends RecyclerView.Adapter<PhysicalExerciseAdapter.holder> {
 
-    // region referenciacion
-    @BindView(R.id.expandableViewMotor)
-    LinearLayout expandableView;
-    @BindView(R.id.btnExpandMotor)
-    Button btnExpand;
-    @BindView(R.id.cardActivityMotor)
-    CardView cardActivity;
-    @BindView(R.id.ratingBarMotor)
-    RatingBar ratingBar;
-    @BindView(R.id.data_rating_motor)
-    TextView ratingTxt;
-    // endregion
-
     private List<PhysicalExerciseEntity> listExercise;
     private PhysicalExecise.PhysicalExeciseI physicalExeciseI;
 
@@ -49,28 +36,11 @@ public class PhysicalExerciseAdapter extends RecyclerView.Adapter<PhysicalExerci
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.physical_execise_plantilla, parent, false);
         ButterKnife.bind(this, view);
 
-        ratingBar.setOnRatingBarChangeListener(mOnRatingChangeListener);
-
-        btnExpand.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (expandableView.getVisibility() == View.GONE){
-                    TransitionManager.beginDelayedTransition(cardActivity, new AutoTransition());
-                    expandableView.setVisibility(View.VISIBLE);
-                    btnExpand.setBackgroundResource(R.drawable.ic_keyboard_arrow_up_black);
-                } else {
-                    TransitionManager.beginDelayedTransition(cardActivity, new AutoTransition());
-                    expandableView.setVisibility(View.GONE);
-                    btnExpand.setBackgroundResource(R.drawable.ic_keyboard_arrow_down_black);
-                }
-            }
-        });
-
         return new holder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull holder holder, final int position) {
+    public void onBindViewHolder(@NonNull final holder holder, final int position) {
 
         final PhysicalExerciseEntity listExerciseget = listExercise.get(position);
         //setear datos
@@ -81,10 +51,54 @@ public class PhysicalExerciseAdapter extends RecyclerView.Adapter<PhysicalExerci
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                physicalExeciseI.alert("eliminar" , listExerciseget);
+                physicalExeciseI.alert("eliminar", listExerciseget);
             }
         });
+        holder.ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
+                switch ((int) ratingBar.getRating()) {
+                    case 1:
+                        //ratingTxt.setText("Very bad");
+                        holder.ratingTxt.setText("1");
+                        break;
+                    case 2:
+                        //ratingTxt.setText("Need some improvement");
+                        holder.ratingTxt.setText("2");
+                        break;
+                    case 3:
+                        //ratingTxt.setText("Good");
+                        holder.ratingTxt.setText("3");
+                        break;
+                    case 4:
+                        //ratingTxt.setText("Great");
+                        holder.ratingTxt.setText("4");
+                        break;
+                    case 5:
+                        //ratingTxt.setText("Awesome. I love it");
+                        holder.ratingTxt.setText("5");
+                        break;
+                    default:
+                        holder.ratingTxt.setText("");
+                }
+            }
+        });
+
+        holder.btnExpand.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (holder.expandableView.getVisibility() == View.GONE) {
+                    TransitionManager.beginDelayedTransition(holder.cardActivity, new AutoTransition());
+                    holder.expandableView.setVisibility(View.VISIBLE);
+                    holder.btnExpand.setBackgroundResource(R.drawable.ic_keyboard_arrow_up_black);
+                } else {
+                    TransitionManager.beginDelayedTransition(holder.cardActivity, new AutoTransition());
+                    holder.expandableView.setVisibility(View.GONE);
+                    holder.btnExpand.setBackgroundResource(R.drawable.ic_keyboard_arrow_down_black);
+                }
+            }
+        });
+
 
     }
 
@@ -95,47 +109,28 @@ public class PhysicalExerciseAdapter extends RecyclerView.Adapter<PhysicalExerci
 
 
     public class holder extends RecyclerView.ViewHolder {
+        //region reference
+        @BindView(R.id.physical_exercise_txtv_name)
         TextView nameE;
-        //TextView description;
+        @BindView(R.id.physical_exercise_imagev_gif)
         GifImageView image;
-        //public int time;
+        @BindView(R.id.expandableViewMotor)
+        LinearLayout expandableView;
+        @BindView(R.id.btnExpandMotor)
+        Button btnExpand;
+        @BindView(R.id.cardActivityMotor)
+        CardView cardActivity;
+        @BindView(R.id.ratingBarMotor)
+        RatingBar ratingBar;
+        @BindView(R.id.data_rating_motor)
+        TextView ratingTxt;
+        // endregion
+
 
         public holder(@NonNull View itemView) {
             super(itemView);
-
-            nameE = itemView.findViewById(R.id.physical_exercise_txtv_name);
-            //description = itemView.findViewById(R.id.physical_exercise_txtv_description);
-            image = itemView.findViewById(R.id.physical_exercise_imagev_gif);
+            ButterKnife.bind(this, itemView);
         }
     }
-
-    private RatingBar.OnRatingBarChangeListener mOnRatingChangeListener = new RatingBar.OnRatingBarChangeListener() {
-        @Override
-        public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
-            switch ((int) ratingBar.getRating()) {
-                case 1:
-                    //ratingTxt.setText("Very bad");
-                    ratingTxt.setText("1");
-                    break;
-                case 2:
-                    //ratingTxt.setText("Need some improvement");
-                    ratingTxt.setText("2");
-                    break;
-                case 3:
-                    //ratingTxt.setText("Good");
-                    ratingTxt.setText("3");
-                    break;
-                case 4:
-                    //ratingTxt.setText("Great");
-                    ratingTxt.setText("4");
-                    break;
-                case 5:
-                    //ratingTxt.setText("Awesome. I love it");
-                    ratingTxt.setText("5");
-                    break;
-                default:
-                    ratingTxt.setText("");
-            }
-        }
-    };
 }
+

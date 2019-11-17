@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:textColor="@android:color/black"
             android:textSize="@dimen/fiftyText"
-            android:text="0:0" />
+            android:text="00:00:00" />
     </LinearLayout>
 
 
