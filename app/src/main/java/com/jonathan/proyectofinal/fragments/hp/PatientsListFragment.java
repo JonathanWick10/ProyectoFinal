@@ -371,46 +371,5 @@ public class PatientsListFragment extends Fragment {
         adapter = new PatientsAdapter(firestoreRecyclerOptions, getActivity(),iSelectionPatient, iDeletePatient);
         adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
-        //------------------------------------------
-        /*final ProgressDialog progressDialog = ProgressDialog.show(getActivity(),
-                "Brainmher","Consultando registros en línea");
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        CollectionReference collectionReferencePatients = db.collection(Constants.Patients);
-        collectionReferencePatients
-                .whereArrayContains("assigns", uid)
-                .orderBy("firstName")
-                .get()
-                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        patientList = new ArrayList<Patient>();
-                        for (QueryDocumentSnapshot documentSnapshopt :
-                                queryDocumentSnapshots) {
-                            patientM = documentSnapshopt.toObject(Patient.class);
-                            patientList.add(patientM);
-                        }
-                        adapter = new PatientsAdapter(patientList, getActivity(), iSelectionPatient, iDeletePatient);
-                        recyclerView.setAdapter(adapter);
-                        recyclerView.setHasFixedSize(true);
-                        if (patientList.size() != 0) {
-                            recyclerView.setVisibility(View.VISIBLE);
-                            noPatient.setVisibility(View.INVISIBLE);
-                        } else {
-                            recyclerView.setVisibility(View.INVISIBLE);
-                            noPatient.setVisibility(View.VISIBLE);
-                        }
-                        progressDialog.dismiss();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.d("Message", e.toString());
-                    }
-                });*/
-
-
     }
 }

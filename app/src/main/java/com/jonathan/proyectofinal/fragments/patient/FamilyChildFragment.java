@@ -96,114 +96,123 @@ public class FamilyChildFragment extends Fragment {
             @Override
             public void clickItem(final Memorizame memorizame) {
 
-                //region AlertDialog
-                final AlertDialog alertDialog;
-                final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.BackgroundRounded);
 
-                if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    // only for Lollipop and newer versions
-                    try {
-                        LayoutInflater inflater = getActivity().getLayoutInflater();
-                        View dialogView = inflater.inflate(R.layout.layout_question_memorizame, null);
-                        builder.setView(dialogView);
-                        alertDialog=builder.create();
 
-                        TextView txtQuestion=dialogView.findViewById(R.id.text_question);
-                        txtQuestion.setText(memorizame.getQuestion());
-                        final RadioGroup rgASK = dialogView.findViewById(R.id.rg_question);
-                        RadioButton rb1 = dialogView.findViewById(R.id.rb_question_1);
-                        RadioButton rb2 = dialogView.findViewById(R.id.rb_question_2);
-                        RadioButton rb3 = dialogView.findViewById(R.id.rb_question_3);
-                        RadioButton rb4 = dialogView.findViewById(R.id.rb_question_4);
-                        rb1.setText(memorizame.getAnswer1());
-                        rb2.setText(memorizame.getAnswer2());
-                        rb3.setText(memorizame.getAnswer3());
-                        rb4.setText(memorizame.getAnswer4());
-                        ImageView imgQuestion = dialogView.findViewById(R.id.img_question);
-                        Glide.with(getActivity()).load(memorizame.getUriImg()).fitCenter().into(imgQuestion);
-
-                        Button btn1=(Button)dialogView.findViewById(R.id.btn_cancelar);
-                        btn1.setText(R.string.cancel);
-                        btn1.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-
-                                //translation();
-                                alertDialog.dismiss();
-                            }
-                        });
-                        Button btn2=(Button)dialogView.findViewById(R.id.btn_terminar);
-                        btn2.setText(R.string.yes);
-                        btn2.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-
-                                //region Get the selection of RadioGroup
-                                if (rgASK.getCheckedRadioButtonId() != -1) {
-                                    int radioButtonId = rgASK.getCheckedRadioButtonId();
-                                    View radioButton = rgASK.findViewById(radioButtonId);
-                                    int indice = rgASK.indexOfChild(radioButton);
-                                    RadioButton rb = (RadioButton)  rgASK.getChildAt(indice);
-                                    seleccionRG = rb.getText().toString();
-                                }
-                                //endregion
-
-                                if (!seleccionRG.isEmpty()){
-                                    if (seleccionRG == memorizame.getCorrectAnswer()){
-                                        Alert("Genial Acertaste Quieres Intentarlo de nuevo");
-                                        alertDialog.dismiss();
-                                    }
-                                    else {
-                                        Alert("Quieres Intentarlo de nuevo");
-                                        alertDialog.dismiss();
-                                    }
-                                }else{
-                                    Toast.makeText(getActivity(), "Selecciona una respuesta!", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
-
-                        alertDialog.show();
-                    } catch (Resources.NotFoundException e) {
-                        e.printStackTrace();
-                    }
-                }else{
-                    builder.setNeutralButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    });
-
-                    builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            if (!seleccionRG.isEmpty()){
-                                if (seleccionRG == memorizame.getCorrectAnswer()){
-                                    Alert("Genial Acertaste Quieres Intentarlo de nuevo");
-                                    dialog.dismiss();
-                                }
-                                else {
-                                    Alert("Quieres Intentarlo de nuevo");
-                                    dialog.dismiss();
-                                }
-                            }else{
-                                Toast.makeText(getActivity(), "Selecciona una respuesta!", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
-                    builder.setCancelable(false);
-                    builder.show();
-
-                }
-
-                //endregion
+                AlertQuestion(memorizame);
 
             }
         };
     }
 
-    public void Alert(String option) {
+    private void AlertQuestion(final Memorizame memorizame) {
+        //region AlertDialog
+        final AlertDialog alertDialog;
+        final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.BackgroundRounded);
+
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            // only for Lollipop and newer versions
+            try {
+                LayoutInflater inflater = getActivity().getLayoutInflater();
+                View dialogView = inflater.inflate(R.layout.layout_question_memorizame, null);
+                builder.setView(dialogView);
+                alertDialog=builder.create();
+
+                TextView txtQuestion=dialogView.findViewById(R.id.text_question);
+                txtQuestion.setText(memorizame.getQuestion());
+                final RadioGroup rgASK = dialogView.findViewById(R.id.rg_question);
+                RadioButton rb1 = dialogView.findViewById(R.id.rb_question_1);
+                RadioButton rb2 = dialogView.findViewById(R.id.rb_question_2);
+                RadioButton rb3 = dialogView.findViewById(R.id.rb_question_3);
+                RadioButton rb4 = dialogView.findViewById(R.id.rb_question_4);
+                rb1.setText(memorizame.getAnswer1());
+                rb2.setText(memorizame.getAnswer2());
+                rb3.setText(memorizame.getAnswer3());
+                rb4.setText(memorizame.getAnswer4());
+                ImageView imgQuestion = dialogView.findViewById(R.id.img_question);
+                Glide.with(getActivity()).load(memorizame.getUriImg()).fitCenter().into(imgQuestion);
+
+                Button btn1=(Button)dialogView.findViewById(R.id.btn_cancelar);
+                btn1.setText(R.string.cancel);
+                btn1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        //translation();
+                        alertDialog.dismiss();
+                    }
+                });
+                Button btn2=(Button)dialogView.findViewById(R.id.btn_terminar);
+                btn2.setText(R.string.yes);
+                btn2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        //region Get the selection of RadioGroup
+                        if (rgASK.getCheckedRadioButtonId() != -1) {
+                            int radioButtonId = rgASK.getCheckedRadioButtonId();
+                            View radioButton = rgASK.findViewById(radioButtonId);
+                            int indice = rgASK.indexOfChild(radioButton);
+                            RadioButton rb = (RadioButton)  rgASK.getChildAt(indice);
+                            seleccionRG = rb.getText().toString();
+                        }
+                        //endregion
+
+                        String rtaCorrect = memorizame.getCorrectAnswer();
+
+                        if (!seleccionRG.isEmpty()){
+                            if (seleccionRG.equals(rtaCorrect)){
+                                Alert("Genial Acertaste! ¿Quieres Intentarlo de nuevo?",memorizame);
+                                alertDialog.dismiss();
+                            }
+                            else {
+                                Alert("Lo siento fallaste! ¿Quieres Intentarlo de nuevo?", memorizame);
+                                alertDialog.dismiss();
+                            }
+                        }else{
+                            Toast.makeText(getActivity(), "Selecciona una respuesta!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+                alertDialog.show();
+            } catch (Resources.NotFoundException e) {
+                e.printStackTrace();
+            }
+        }else{
+            builder.setNeutralButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+
+            builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    if (!seleccionRG.isEmpty()){
+                        if (seleccionRG == memorizame.getCorrectAnswer()){
+                            Alert("Genial Acertaste! ¿Quieres Intentarlo de nuevo?", memorizame);
+                            dialog.dismiss();
+                        }
+                        else {
+                            Alert("Lo siento fallaste! ¿Quieres Intentarlo de nuevo?", memorizame);
+                            dialog.dismiss();
+                        }
+                    }else{
+                        Toast.makeText(getActivity(), "Selecciona una respuesta!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+            builder.setCancelable(false);
+            builder.show();
+
+        }
+
+        //endregion
+    }
+
+
+    public void Alert(String option, final Memorizame memorizame) {
 
         final AlertDialog alertDialog;
         final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.BackgroundRounded);
@@ -230,7 +239,7 @@ public class FamilyChildFragment extends Fragment {
                 btn2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        logicEventItemSelect();
+                        AlertQuestion(memorizame);
                         seleccionRG= "";
                         alertDialog.dismiss();
                     }
