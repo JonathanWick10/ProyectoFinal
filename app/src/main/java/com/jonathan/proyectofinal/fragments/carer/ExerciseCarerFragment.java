@@ -44,8 +44,8 @@ public class ExerciseCarerFragment extends Fragment {
 
     private PhysicalExecise.PhysicalExeciseI physicalExeciseI;
 
-    public ExerciseCarerFragment() {
-        // Required empty public constructor
+    public ExerciseCarerFragment(PhysicalExecise.PhysicalExeciseI physicalExeciseI ) {
+        this.physicalExeciseI = physicalExeciseI;
     }
 
 
@@ -61,7 +61,6 @@ public class ExerciseCarerFragment extends Fragment {
 
 
     private void initRecyclerView() {
-
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(new PhysicalExerciseAdapter(entities(),physicalExeciseI));

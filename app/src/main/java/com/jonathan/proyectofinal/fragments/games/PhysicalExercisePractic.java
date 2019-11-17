@@ -40,9 +40,8 @@ public class PhysicalExercisePractic extends Fragment {
         this.img = img;
     }
 
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_physical_exercise_practic, container, false);
         ButterKnife.bind(this, view);
@@ -54,13 +53,14 @@ public class PhysicalExercisePractic extends Fragment {
             @Override
             public void onTick(long millisUntilFinished) {
                 //texto a mostrar en cuenta regresiva en un textview
+                //segundo
                 countDown.setText((millisUntilFinished / 1000 + ""));
             }
 
             @Override
             public void onFinish() {
                 //iniciar alerta de salida
-                final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
 
                 //información
                 View viewInflater = getLayoutInflater().inflate(R.layout.physicalexersice_plantilla_exerxise_end , null);
