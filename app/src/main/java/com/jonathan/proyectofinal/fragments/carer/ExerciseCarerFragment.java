@@ -86,66 +86,66 @@ public class ExerciseCarerFragment extends Fragment {
 
         // dos
         PhysicalExerciseEntity entity3 = new PhysicalExerciseEntity();
-        entity2.setNameExercise(getString(R.string.physical_nameexercise_bodybuilding));
-        entity2.setDescripcion(getString(R.string.description_nameexercise_bodybuilding));
-        entity2.setImage(R.drawable.exercise3);
-        entity2.setTime(30000);
+        entity3.setNameExercise(getString(R.string.physical_nameexercise_bodybuilding));
+        entity3.setDescripcion(getString(R.string.description_nameexercise_bodybuilding));
+        entity3.setImage(R.drawable.exercise3);
+        entity3.setTime(30000);
         lista.add(entity3);
 
         // dos
         PhysicalExerciseEntity entity4 = new PhysicalExerciseEntity();
-        entity2.setNameExercise(getString(R.string.physical_nameexercise_bodybuilding));
-        entity2.setDescripcion(getString(R.string.description_nameexercise_bodybuilding));
-        entity2.setImage(R.drawable.exercise4);
-        entity2.setTime(30000);
+        entity4.setNameExercise(getString(R.string.physical_nameexercise_bodybuilding));
+        entity4.setDescripcion(getString(R.string.description_nameexercise_bodybuilding));
+        entity4.setImage(R.drawable.exercise4);
+        entity4.setTime(30000);
         lista.add(entity4);
 
         // dos
         PhysicalExerciseEntity entity5 = new PhysicalExerciseEntity();
-        entity2.setNameExercise(getString(R.string.physical_nameexercise_bodybuilding));
-        entity2.setDescripcion(getString(R.string.description_nameexercise_bodybuilding));
-        entity2.setImage(R.drawable.exercise5);
-        entity2.setTime(30000);
+        entity5.setNameExercise(getString(R.string.physical_nameexercise_bodybuilding));
+        entity5.setDescripcion(getString(R.string.description_nameexercise_bodybuilding));
+        entity5.setImage(R.drawable.exercise5);
+        entity5.setTime(30000);
         lista.add(entity5);
 
         // dos
         PhysicalExerciseEntity entity6 = new PhysicalExerciseEntity();
-        entity2.setNameExercise(getString(R.string.physical_nameexercise_bodybuilding));
-        entity2.setDescripcion(getString(R.string.description_nameexercise_bodybuilding));
-        entity2.setImage(R.drawable.exercise6);
-        entity2.setTime(30000);
+        entity6.setNameExercise(getString(R.string.physical_nameexercise_bodybuilding));
+        entity6.setDescripcion(getString(R.string.description_nameexercise_bodybuilding));
+        entity6.setImage(R.drawable.exercise6);
+        entity6.setTime(30000);
         lista.add(entity6);
 
         // dos
         PhysicalExerciseEntity entity7 = new PhysicalExerciseEntity();
-        entity2.setNameExercise(getString(R.string.physical_nameexercise_bodybuilding));
-        entity2.setDescripcion(getString(R.string.description_nameexercise_bodybuilding));
-        entity2.setImage(R.drawable.exercise7);
-        entity2.setTime(30000);
+        entity7.setNameExercise(getString(R.string.physical_nameexercise_bodybuilding));
+        entity7.setDescripcion(getString(R.string.description_nameexercise_bodybuilding));
+        entity7.setImage(R.drawable.exercise7);
+        entity7.setTime(30000);
         lista.add(entity7);
 
         // dos
         PhysicalExerciseEntity entity8 = new PhysicalExerciseEntity();
-        entity2.setNameExercise(getString(R.string.physical_nameexercise_bodybuilding));
-        entity2.setDescripcion(getString(R.string.description_nameexercise_bodybuilding));
-        entity2.setImage(R.drawable.exercise8);
-        entity2.setTime(30000);
+        entity8.setNameExercise(getString(R.string.physical_nameexercise_bodybuilding));
+        entity8.setDescripcion(getString(R.string.description_nameexercise_bodybuilding));
+        entity8.setImage(R.drawable.exercise8);
+        entity8.setTime(30000);
         lista.add(entity8);
 
         // dos
         PhysicalExerciseEntity entity9 = new PhysicalExerciseEntity();
-        entity2.setNameExercise(getString(R.string.physical_nameexercise_bodybuilding));
-        entity2.setDescripcion(getString(R.string.description_nameexercise_bodybuilding));
-        entity2.setImage(R.drawable.exercise9);
-        entity2.setTime(30000);
+        entity9.setNameExercise(getString(R.string.physical_nameexercise_bodybuilding));
+        entity9.setDescripcion(getString(R.string.description_nameexercise_bodybuilding));
+        entity9.setImage(R.drawable.exercise9);
+        entity9.setTime(30000);
         lista.add(entity9);
 
         // dos
         PhysicalExerciseEntity entity10 = new PhysicalExerciseEntity();
-        entity2.setNameExercise(getString(R.string.physical_nameexercise_bodybuilding));
-        entity2.setDescripcion(getString(R.string.description_nameexercise_bodybuilding));
-        entity2.setImage(R.drawable.exercise10);
-        entity2.setTime(30000);
+        entity10.setNameExercise(getString(R.string.physical_nameexercise_bodybuilding));
+        entity10.setDescripcion(getString(R.string.description_nameexercise_bodybuilding));
+        entity10.setImage(R.drawable.exercise10);
+        entity10.setTime(30000);
         lista.add(entity10);
 
         return  lista;
