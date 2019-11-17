@@ -21,6 +21,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.common.util.DataUtils;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -32,6 +33,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
@@ -73,7 +75,7 @@ public class PatientsListFragment extends Fragment {
     FirebaseUser user;
     List<Patient> patientList = new ArrayList<>();
     Patient patientM = new Patient();
-    String userHPoCarer = "";
+    String userHPoCarer, uidPatient;
     HealthcareProfessional hp = new HealthcareProfessional();
     Carer carer = new Carer();
     //endregion
@@ -84,7 +86,20 @@ public class PatientsListFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        initRecyclerView();
+        //reference();
+        adapter.startListening();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        adapter.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        adapter.stopListening();
     }
 
     @Nullable
@@ -163,15 +178,16 @@ public class PatientsListFragment extends Fragment {
                                                 if (task.isSuccessful()) {
                                                     AuthResult itask = task.getResult();
                                                     FirebaseUser ures = itask.getUser();
+                                                    uidPatient = ures.getUid();
                                                     StorageReference storageReference = FirebaseStorage.getInstance().getReference();
-                                                    StorageReference deleteImage = storageReference.child("Users/Patients/" + patient.getPatientUID() + ".jpg");
+                                                    StorageReference deleteImage = storageReference.child("Users/Patients/" + uidPatient + ".jpg");
                                                     deleteImage.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                                                         @Override
                                                         public void onSuccess(Void aVoid) {
 
                                                         }
                                                     });
-                                                    db.collection(Constants.Patients).document(patient.getPatientUID()).delete()
+                                                    db.collection(Constants.Patients).document(uidPatient).delete()
                                                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                                 @Override
                                                                 public void onSuccess(Void aVoid) {
@@ -205,7 +221,6 @@ public class PatientsListFragment extends Fragment {
                                                             .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                                                 @Override
                                                                 public void onComplete(@NonNull Task<AuthResult> task) {
-                                                                    initRecyclerView();
                                                                     progressDialog.dismiss();
                                                                 }
                                                             });
@@ -223,7 +238,6 @@ public class PatientsListFragment extends Fragment {
                                                             .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                                                 @Override
                                                                 public void onComplete(@NonNull Task<AuthResult> task) {
-                                                                    initRecyclerView();
                                                                     progressDialog.dismiss();
                                                                 }
                                                             });
@@ -340,11 +354,28 @@ public class PatientsListFragment extends Fragment {
     //endregion
 
     private void initRecyclerView() {
+
+        String uid = user.getUid();
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        //Query creation
+        Query query = db.collection(Constants.Patients)
+                .whereArrayContains("assigns", uid)
+                .orderBy("firstName");
+        //Crea las opciones del FirestoreRecyclerOptions
+        FirestoreRecyclerOptions<Patient> firestoreRecyclerOptions = new FirestoreRecyclerOptions.Builder<Patient>()
+                .setQuery(query, Patient.class).build();
+
+        //Passing parameters to the adapter
+        adapter = new PatientsAdapter(firestoreRecyclerOptions, getActivity(),iSelectionPatient, iDeletePatient);
+        adapter.notifyDataSetChanged();
+        recyclerView.setAdapter(adapter);
         //------------------------------------------
-        final ProgressDialog progressDialog = ProgressDialog.show(getActivity(),
+        /*final ProgressDialog progressDialog = ProgressDialog.show(getActivity(),
                 "Brainmher","Consultando registros en línea");
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        String uid = user.getUid();
+
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         CollectionReference collectionReferencePatients = db.collection(Constants.Patients);
         collectionReferencePatients
@@ -378,7 +409,7 @@ public class PatientsListFragment extends Fragment {
                     public void onFailure(@NonNull Exception e) {
                         Log.d("Message", e.toString());
                     }
-                });
+                });*/
 
 
     }
