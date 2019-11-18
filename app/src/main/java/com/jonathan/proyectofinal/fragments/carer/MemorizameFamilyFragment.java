@@ -412,6 +412,7 @@ public class MemorizameFamilyFragment extends Fragment {
                                     if(uriImage == null){
                                         uriImage = Uri.parse(memorizame.getUriImg());
                                     }
+                                    storageReference = FirebaseStorage.getInstance().getReference();
                                     StorageReference deleteImg = storageReference.child(categoria+"/"+memorizame.getUuidGenerated()+".jpg");
                                     deleteImg.delete();
                                     final StorageReference imgRef= storageReference.child(categoria+"/"+memorizame.getUuidGenerated()+".jpg");
