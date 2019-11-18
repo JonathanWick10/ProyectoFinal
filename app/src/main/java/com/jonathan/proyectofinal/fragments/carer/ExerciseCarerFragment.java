@@ -20,9 +20,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -143,6 +145,12 @@ public class ExerciseCarerFragment extends Fragment {
                 tvNameExercise.setText(nameExercise);
                 TextView tvInformation = dialogView.findViewById(R.id.textView);
                 tvInformation.setText(descriptionExercise);
+
+                ImageView gifStretching= dialogView.findViewById(R.id.gif_stretching);
+
+                Glide.with(getActivity()).load(stretchingM.getUriGif()).fitCenter().into(gifStretching);
+
+
                 alertDialog.show();
 
 
@@ -161,6 +169,8 @@ public class ExerciseCarerFragment extends Fragment {
 
     private void initRecyclerView() {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));//cambiar numero de columnas
+
         recyclerView.setHasFixedSize(true);
         db.collection(Constants.Stretching)
                 .orderBy("nameExercise")
