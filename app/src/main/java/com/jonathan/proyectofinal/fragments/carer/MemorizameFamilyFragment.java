@@ -365,7 +365,7 @@ public class MemorizameFamilyFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),3));//cambiar numero de columnas
 
-        String uid = user.getUid();
+
         //FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         CollectionReference collectionReferenceMemorizame = db.collection(Constants.Memorizame);

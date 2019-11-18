@@ -15,13 +15,13 @@
         android:layout_columnWeight="1">
         <ImageView
             android:layout_width="match_parent"
-            android:id="@+id/img_memorizame"
+            android:id="@+id/img_stretching"
             android:layout_height="@dimen/oneHundredNinetyFour"
             android:src="@drawable/img_selfcarer"
             android:scaleType="centerCrop"/>
 
         <TextView
-            android:id="@+id/text_number"
+            android:id="@+id/text_name_exercise"
             style="@style/StyleSubsCardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -16,6 +16,9 @@ public class Constants {
     //Constants for Patients
     public static final String Memorizame = "Memorizame";
 
+
+    public static final String Stretching = "Stretching";
+
     //variables static for one signal
     public static final String app_id = "dd9a93af-d41e-4d08-a75a-c6154744060e";
     public static final String template_id = "";
