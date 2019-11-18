@@ -73,8 +73,12 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
 
     //region Variables Slider
     private ImageSwitcher imageSwitcher;
-    private int[] galeria = { R.drawable.motivational_1, R.drawable.img_family, R.drawable.img_home,
-    R.drawable.img_pets, R.drawable.img_places};
+    private int[] galeria = {R.drawable.motivational_1, R.drawable.motivational_2, R.drawable.motivational_3,
+            R.drawable.motivational_4, R.drawable.motivational_5, R.drawable.motivational_6, R.drawable.motivational_7,
+            R.drawable.motivational_8, R.drawable.motivational_9, R.drawable.motivational_10, R.drawable.motivational_11,
+            R.drawable.motivational_12, R.drawable.motivational_13, R.drawable.motivational_14, R.drawable.motivational_15,
+            R.drawable.motivational_16, R.drawable.motivational_17, R.drawable.motivational_18, R.drawable.motivational_19,
+            R.drawable.motivational_20, R.drawable.motivational_21, R.drawable.motivational_22, R.drawable.motivational_23};
     private int posicion;
     private static final int DURACION = 5000;
     private Timer timer = null;
@@ -120,14 +124,14 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        if (documentSnapshot.exists()){
+                        if (documentSnapshot.exists()) {
                             patient = documentSnapshot.toObject(Patient.class);
-                            name_user.setText(patient.getUserName()+" "+patient.getLastName());
+                            name_user.setText(patient.getUserName() + " " + patient.getLastName());
                             Glide.with(MainPatient.this).load(patient.getUriImg()).fitCenter().into(image_user);
                         }
                     }
                 });
-        if (name_user!=null && email_user!=null) {
+        if (name_user != null && email_user != null) {
             email_user.setText(firebaseUser.getEmail());
         }
         drawerToggle.syncState();
@@ -146,10 +150,8 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         //region Section Slider
-        imgSlider.setFactory(new ViewSwitcher.ViewFactory()
-        {
-            public View makeView()
-            {
+        imgSlider.setFactory(new ViewSwitcher.ViewFactory() {
+            public View makeView() {
                 ImageView imageView = new ImageView(MainPatient.this);
                 imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
@@ -168,14 +170,10 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
 
     private void startSlider() {
         timer = new Timer();
-        timer.scheduleAtFixedRate(new TimerTask()
-        {
-            public void run()
-            {
-                runOnUiThread(new Runnable()
-                {
-                    public void run()
-                    {
+        timer.scheduleAtFixedRate(new TimerTask() {
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    public void run() {
                         imgSlider.setImageResource(galeria[posicion]);
                         posicion++;
                         if (posicion == galeria.length)
@@ -189,14 +187,14 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
     @Override
     public void inicarJuego() {
         Intent pasar = new Intent(MainPatient.this, Games.class);
-        pasar.putExtra("Game","Memorama");
+        pasar.putExtra("Game", "Memorama");
         startActivity(pasar);
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         closeDrawer();
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case (R.id.btn_profile):
                 Intent navigation = new Intent(MainPatient.this, NavigationOptions.class);
                 navigation.putExtra("option", "profile");
@@ -225,7 +223,7 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
 
     @Override
     public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             closeDrawer();
         }
         super.onBackPressed();
@@ -235,16 +233,16 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
     public void alert(String option, final PhysicalExerciseEntity listExerciseget) {
 
         final AlertDialog alertDialog;
-        final AlertDialog.Builder builder = new AlertDialog.Builder(this,R.style.BackgroundRounded);
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.BackgroundRounded);
 
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             // only for Lollipop and newer versions
             try {
                 View dialogView = this.getLayoutInflater().inflate(R.layout.plantilla_physicalexersice_info, null);
                 builder.setView(dialogView);
-                alertDialog=builder.create();
+                alertDialog = builder.create();
 
-                Button btn1= dialogView.findViewById(R.id.btn1);
+                Button btn1 = dialogView.findViewById(R.id.btn1);
                 btn1.setText("Atras");
                 btn1.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -252,7 +250,7 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
                         alertDialog.dismiss();
                     }
                 });
-                Button btn2= dialogView.findViewById(R.id.btn2);
+                Button btn2 = dialogView.findViewById(R.id.btn2);
                 btn2.setText("practicar");
                 btn2.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -262,8 +260,8 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
                         final int img = listExerciseget.getImage();
 
                         Intent pasar = new Intent(MainPatient.this, Games.class);
-                        pasar.putExtra("Game","Physical");
-                        pasar.putExtra("Time",time);
+                        pasar.putExtra("Game", "Physical");
+                        pasar.putExtra("Time", time);
                         pasar.putExtra("Image", img);
 
                         startActivity(pasar);
@@ -282,13 +280,11 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
             } catch (Resources.NotFoundException e) {
                 e.printStackTrace();
             }
-        }
-
-        else{
+        } else {
             LayoutInflater inflater = this.getLayoutInflater();
             View dialogView = inflater.inflate(R.layout.plantilla_physicalexersice_info, null);
             builder.setView(dialogView);
-            alertDialog=builder.create();
+            alertDialog = builder.create();
 
             builder.setNeutralButton("atras", new DialogInterface.OnClickListener() {
                 @Override
@@ -304,7 +300,7 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
 
                     alertDialog.dismiss();
                     Intent pasar = new Intent(MainPatient.this, Games.class);
-                    pasar.putExtra("Game","Physical");
+                    pasar.putExtra("Game", "Physical");
                     startActivity(pasar);
                 }
             });
@@ -313,8 +309,9 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
 
         }
 
-        switch (option){
-            case "eliminar": break;
+        switch (option) {
+            case "eliminar":
+                break;
         }
 
     }
@@ -322,7 +319,7 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
     private static class PatientFragmentPageAdapter extends FragmentPagerAdapter {
 
 
-        PhysicalExecise.PhysicalExeciseI physicalExeciseI ;
+        PhysicalExecise.PhysicalExeciseI physicalExeciseI;
 
         public void setPhysicalExeciseI(PhysicalExecise.PhysicalExeciseI physicalExeciseI) {
             this.physicalExeciseI = physicalExeciseI;

@@ -30,7 +30,7 @@
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:layout_gravity="center"
-            android:layout_marginBottom="@dimen/sixty"
+            android:layout_marginBottom="@dimen/fifty"
             android:src="@drawable/ic_imagotipo_white" />
 
         <!-- Username text box -->
@@ -138,7 +138,6 @@
             style="@style/StyleTextButton"/>
 
     </LinearLayout>
-
 
     <!--
     </ScrollView>

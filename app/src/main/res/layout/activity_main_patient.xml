@@ -37,7 +37,7 @@
                 <ImageSwitcher
                     android:id="@+id/iv_motivational"
                     android:layout_width="match_parent"
-                    android:layout_height="256dp"
+                    android:layout_height="260dp"
                     android:fitsSystemWindows="true"
                     android:scaleType="centerCrop"
                     android:src="@drawable/motivational_1"
