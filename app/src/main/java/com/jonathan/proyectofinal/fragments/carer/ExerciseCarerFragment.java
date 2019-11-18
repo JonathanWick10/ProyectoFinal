@@ -3,9 +3,13 @@ package com.jonathan.proyectofinal.fragments.carer;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -15,16 +19,24 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.adapters.StretchingAdapter;
 import com.jonathan.proyectofinal.data.Carer;
@@ -94,10 +106,57 @@ public class ExerciseCarerFragment extends Fragment {
         iSelectionStretching = new StretchingAdapter.ISelectionStretching() {
             @Override
             public void clickItem(StretchingExercise stretchingExercise) {
-                Toast.makeText(getActivity(), "mira carolina "+stretchingExercise.getNameExercise(), Toast.LENGTH_LONG).show();
+                String nameExercise=stretchingExercise.getNameExercise();
+                String descriptionExercise=stretchingExercise.getDescriptionExercise();
+                dialogStretching(nameExercise,descriptionExercise);
+              //  Toast.makeText(getActivity(), "mira carolina "+stretchingExercise.getNameExercise(), Toast.LENGTH_LONG).show();
             }
         };
     }
+
+    public void dialogStretching(String nameExercise, String descriptionExercise){
+
+        final AlertDialog alertDialog;
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.BackgroundRounded);
+
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            // only for Lollipop and newer versions
+            try {
+                LayoutInflater inflater = getActivity().getLayoutInflater();
+                View dialogView = inflater.inflate(R.layout.dialog_one_textview_one_button_one_image, null);
+                builder.setView(dialogView);
+                alertDialog = builder.create();
+
+                Button btn1 = (Button) dialogView.findViewById(R.id.btn1);
+                btn1.setText("Cancelar");
+                btn1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+
+                        alertDialog.dismiss();
+                    }
+                });
+
+                TextView tvNameExercise = dialogView.findViewById(R.id.textViewBold);
+                tvNameExercise.setText(nameExercise);
+                TextView tvInformation = dialogView.findViewById(R.id.textView);
+                tvInformation.setText(descriptionExercise);
+                alertDialog.show();
+
+
+            } catch (Resources.NotFoundException e) {
+                e.printStackTrace();
+            }
+        } else {
+
+            builder.setTitle(getString(R.string.alert));
+            builder.setMessage(nameExercise+" "+descriptionExercise);
+            builder.show();
+        }
+    }
+
 
 
     private void initRecyclerView() {
