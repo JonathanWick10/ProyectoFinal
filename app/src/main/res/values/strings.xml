@@ -152,6 +152,8 @@
     <string name="add_event_carer">Agregar evento</string>
     <string name="view_event_carer">Ver eventos</string>
     <string name="cancel_event_carer">Cancelar evento</string>
+    <string name="exit">Salir</string>
+    <string name="select_option">Seleccione una opción</string>
 
     <!-- Information general and Specific -->
 
