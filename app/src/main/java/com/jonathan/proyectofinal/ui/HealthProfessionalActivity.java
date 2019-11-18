@@ -192,25 +192,25 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
             change = new MemorizameFamilyFragment();
             change.setArguments(args);
             setFlag(1);
-            transaction.replace(R.id.fragmentHomeHP,change).commit();
+            transaction.replace(R.id.fragmentHomeHP,change).addToBackStack(null).commit();
         }
         else if(fragmentTag.equals(getString(R.string.tab_pets_questions))){
             change = new MemorizameFamilyFragment();
             change.setArguments(args);
             setFlag(2);
-            transaction.replace(R.id.fragmentHomeHP,change).commit();
+            transaction.replace(R.id.fragmentHomeHP,change).addToBackStack(null).commit();
         }
         else if(fragmentTag.equals(getString(R.string.tab_home_questions))){
             change = new MemorizameFamilyFragment();
             change.setArguments(args);
             setFlag(3);
-            transaction.replace(R.id.fragmentHomeHP,change).commit();
+            transaction.replace(R.id.fragmentHomeHP,change).addToBackStack(null).commit();
         }
         else if(fragmentTag.equals(getString(R.string.tab_places_questions))){
             change = new MemorizameFamilyFragment();
             change.setArguments(args);
             setFlag(4);
-            transaction.replace(R.id.containerPageTherapyPS,change).commit();
+            transaction.replace(R.id.containerPageTherapyPS,change).addToBackStack(null).commit();
         }
         else if(fragmentTag.equals(getString(R.string.family_questions_img))){
             change = new NewCardMemorizame();
