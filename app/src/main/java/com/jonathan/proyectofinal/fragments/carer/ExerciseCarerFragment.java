@@ -108,15 +108,15 @@ public class ExerciseCarerFragment extends Fragment {
         iSelectionStretching = new StretchingAdapter.ISelectionStretching() {
             @Override
             public void clickItem(StretchingExercise stretchingExercise) {
-                String nameExercise=stretchingExercise.getNameExercise();
-                String descriptionExercise=stretchingExercise.getDescriptionExercise();
-                dialogStretching(nameExercise,descriptionExercise);
-              //  Toast.makeText(getActivity(), "mira carolina "+stretchingExercise.getNameExercise(), Toast.LENGTH_LONG).show();
+                dialogStretching(stretchingExercise);
             }
         };
     }
 
-    public void dialogStretching(String nameExercise, String descriptionExercise){
+    public void dialogStretching(final StretchingExercise stretchingExercise ){
+
+        String nameExercise = stretchingExercise.getNameExercise();
+        String descriptionExercise = stretchingExercise.getDescriptionExercise();
 
         final AlertDialog alertDialog;
 
@@ -142,13 +142,13 @@ public class ExerciseCarerFragment extends Fragment {
                 });
 
                 TextView tvNameExercise = dialogView.findViewById(R.id.textViewBold);
-                tvNameExercise.setText(nameExercise);
+                tvNameExercise.setText(stretchingExercise.getNameExercise());
                 TextView tvInformation = dialogView.findViewById(R.id.textView);
-                tvInformation.setText(descriptionExercise);
+                tvInformation.setText(stretchingExercise.getDescriptionExercise());
 
                 ImageView gifStretching= dialogView.findViewById(R.id.gif_stretching);
 
-                Glide.with(getActivity()).load(stretchingM.getUriGif()).fitCenter().into(gifStretching);
+                Glide.with(getActivity()).load(stretchingExercise.getUriGif()).fitCenter().into(gifStretching);
 
 
                 alertDialog.show();
