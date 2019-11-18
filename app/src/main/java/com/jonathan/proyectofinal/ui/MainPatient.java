@@ -19,8 +19,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageSwitcher;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ViewSwitcher;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -40,6 +45,9 @@ import com.jonathan.proyectofinal.fragments.patient.MemorizamePFragment;
 import com.jonathan.proyectofinal.fragments.patient.NotificationsPFragment;
 import com.jonathan.proyectofinal.interfaces.IComunicateFragment;
 import com.jonathan.proyectofinal.tools.Constants;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -62,6 +70,17 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
     FirebaseFirestore db;
     Patient patient = new Patient();
     // endregion
+
+    //region Variables Slider
+    private ImageSwitcher imageSwitcher;
+    private int[] galeria = { R.drawable.motivational_1, R.drawable.img_family, R.drawable.img_home,
+    R.drawable.img_pets, R.drawable.img_places};
+    private int posicion;
+    private static final int DURACION = 5000;
+    private Timer timer = null;
+    @BindView(R.id.iv_motivational)
+    ImageSwitcher imgSlider;
+    //endregion
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -125,7 +144,48 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
         viewPager.setOffscreenPageLimit(adapter.getCount() - 1);
         navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        //region Section Slider
+        imgSlider.setFactory(new ViewSwitcher.ViewFactory()
+        {
+            public View makeView()
+            {
+                ImageView imageView = new ImageView(MainPatient.this);
+                imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+
+                return imageView;
+            }
+        });
+
+        Animation fadeIn = AnimationUtils.loadAnimation(MainPatient.this, R.anim.fade_in);
+        Animation fadeOut = AnimationUtils.loadAnimation(MainPatient.this, R.anim.fade_out);
+        imgSlider.setInAnimation(fadeIn);
+        imgSlider.setOutAnimation(fadeOut);
+
+        startSlider();
+        //endregion
     }
+
+    private void startSlider() {
+        timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask()
+        {
+            public void run()
+            {
+                runOnUiThread(new Runnable()
+                {
+                    public void run()
+                    {
+                        imgSlider.setImageResource(galeria[posicion]);
+                        posicion++;
+                        if (posicion == galeria.length)
+                            posicion = 0;
+                    }
+                });
+            }
+        }, 0, DURACION);
+    }
+
     @Override
     public void inicarJuego() {
         Intent pasar = new Intent(MainPatient.this, Games.class);
