@@ -1,9 +1,12 @@
 package com.jonathan.proyectofinal.data;
 
 public class MemoramaEntity {
-    private int position, imgGroup;
+    private int position;
+    private int  imgGroup;
     private int imageId;
-    private boolean show, finded, click;
+    private boolean show;
+    private boolean finded;
+    private boolean click;
 
 
 

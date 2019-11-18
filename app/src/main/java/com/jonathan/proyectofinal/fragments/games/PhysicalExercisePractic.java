@@ -27,9 +27,9 @@ public class PhysicalExercisePractic extends Fragment {
     @BindView(R.id.text_view_countdown)
     public TextView countDown;
 
-    private View view;
     private Memorama.Memoramai memoramai;
-    private Integer img, time;
+    private Integer img;
+    private Integer time;
 
     public PhysicalExercisePractic(Memorama.Memoramai memoramai, Integer img, Integer time) {
 
@@ -41,7 +41,7 @@ public class PhysicalExercisePractic extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_physical_exercise_practic, container, false);
+        View view = inflater.inflate(R.layout.fragment_physical_exercise_practic, container, false);
         ButterKnife.bind(this, view);
 
         GifImageView asd = view.findViewById(R.id.fragment_pep_gif);
