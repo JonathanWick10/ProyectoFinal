@@ -25,20 +25,17 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.jonathan.proyectofinal.R;
-<<<<<<< HEAD
 import com.jonathan.proyectofinal.adapters.StretchingAdapter;
 import com.jonathan.proyectofinal.data.Carer;
 import com.jonathan.proyectofinal.data.HealthcareProfessional;
 import com.jonathan.proyectofinal.data.Patient;
 import com.jonathan.proyectofinal.data.StretchingExercise;
 import com.jonathan.proyectofinal.interfaces.IMainCarer;
-=======
 import com.jonathan.proyectofinal.adapters.MemorizameFamilyGridAdapter;
 import com.jonathan.proyectofinal.adapters.PhysicalExerciseAdapter;
 import com.jonathan.proyectofinal.data.Memorizame;
 import com.jonathan.proyectofinal.data.PhysicalExerciseEntity;
 import com.jonathan.proyectofinal.fragments.games.PhysicalExecise;
->>>>>>> f9257c984ae3c28273a9124bc7b8f32a66f44917
 import com.jonathan.proyectofinal.tools.Constants;
 
 import java.util.ArrayList;
@@ -56,7 +53,6 @@ public class ExerciseCarerFragment extends Fragment {
     RecyclerView recyclerView;
     private View view;
 
-<<<<<<< HEAD
     private StretchingAdapter adapter;
     private StretchingAdapter.ISelectionStretching iSelectionStretching;
     private StretchingAdapter.IDeleteStretching iDeleteStretching;
@@ -76,9 +72,7 @@ public class ExerciseCarerFragment extends Fragment {
     String categoria="Stretching";
     IMainCarer iMainCarer;
 
-=======
     private PhysicalExecise.PhysicalExeciseI physicalExeciseI;
->>>>>>> f9257c984ae3c28273a9124bc7b8f32a66f44917
 
     public ExerciseCarerFragment(PhysicalExecise.PhysicalExeciseI physicalExeciseI ) {
         this.physicalExeciseI = physicalExeciseI;
@@ -91,7 +85,6 @@ public class ExerciseCarerFragment extends Fragment {
         // Inflate the layout for this fragment
         view= inflater.inflate(R.layout.fragment_exercise_carer, container, false);
         ButterKnife.bind(this, view);
-<<<<<<< HEAD
 
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -103,16 +96,15 @@ public class ExerciseCarerFragment extends Fragment {
 
        // initRecyclerView();
 
-=======
         initRecyclerView();
->>>>>>> f9257c984ae3c28273a9124bc7b8f32a66f44917
         return view;
     }
 
 
     private void initRecyclerView() {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-<<<<<<< HEAD
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setAdapter(new PhysicalExerciseAdapter(entities(),physicalExeciseI));
 
 
         //FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -153,10 +145,8 @@ public class ExerciseCarerFragment extends Fragment {
 
 
 
-=======
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(new PhysicalExerciseAdapter(entities(),physicalExeciseI));
-}
+
+
 
     private List<PhysicalExerciseEntity> entities(){
 
@@ -242,5 +232,4 @@ public class ExerciseCarerFragment extends Fragment {
 
         return  lista;
     }
->>>>>>> f9257c984ae3c28273a9124bc7b8f32a66f44917
 }
