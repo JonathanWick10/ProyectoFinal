@@ -7,6 +7,15 @@
         android:id="@+id/lv_carer_events"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/fifteen"
         ></ListView>
+
+    <TextView
+        android:id="@+id/tv_event_carer_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/twenty"
+        android:gravity="center"
+        ></TextView>
 
 </FrameLayout>

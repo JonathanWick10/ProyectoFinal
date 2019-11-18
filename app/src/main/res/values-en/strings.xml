@@ -142,6 +142,8 @@
     <string name="add_event_carer">Add event</string>
     <string name="view_event_carer">View event</string>
     <string name="cancel_event_carer">Cancel event</string>
+    <string name="exit">Exit</string>
+    <string name="select_option">Select an option</string>
 
     <!-- Information general and Specific -->
 
