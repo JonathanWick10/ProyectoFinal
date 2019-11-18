@@ -26,6 +26,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -36,6 +37,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
@@ -84,7 +86,7 @@ public class MemorizameFamilyFragment extends Fragment {
     FirebaseAuth firebaseAuth;
     FirebaseUser user;
     List<Memorizame> memorizameList = new ArrayList<>();
-    String userHPoCarer = "";
+    String userHPoCarer = "", uidGenerate;
     Memorizame memorizameM = new Memorizame();
     HealthcareProfessional hp = new HealthcareProfessional();
     Carer carer = new Carer();
@@ -165,6 +167,24 @@ public class MemorizameFamilyFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        //reference();
+        adapter.startListening();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        adapter.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        adapter.stopListening();
+    }
 
     private void eventDeleteItem() {
         iDeleteMemorizame = new MemorizameFamilyGridAdapter.IDeleteMemorizame() {
@@ -225,81 +245,31 @@ public class MemorizameFamilyFragment extends Fragment {
                             public void onClick(View view) {
                                 final ProgressDialog progressDialog = ProgressDialog.show(getActivity(),
                                         "Brainmher", "Eliminando registro en línea");
-
-                                firebaseAuth.signInWithEmailAndPassword(patient.getEmail(), patient.getPassword())
-                                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                                if (task.isSuccessful()) {
-                                                    AuthResult itask = task.getResult();
-                                                    FirebaseUser ures = itask.getUser();
                                                     StorageReference storageReference = FirebaseStorage.getInstance().getReference();
                                                     StorageReference deleteImage = storageReference.child(categoria2+"/" + memorizame.getUuidGenerated() + ".jpg");
                                                     deleteImage.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                                                         @Override
                                                         public void onSuccess(Void aVoid) {
 
+                                                            db.collection(Constants.Memorizame).document(patient.getPatientUID()).collection(categoria2)
+                                                                    .document(memorizame.getUuidGenerated()).delete()
+                                                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                        @Override
+                                                                        public void onSuccess(Void aVoid) {
+                                                                            progressDialog.dismiss();
+                                                                            db.collection(Constants.Memorizame).document(patient.getPatientUID()).delete();
+                                                                            Toast.makeText(getActivity(), "memorizame eliminado", Toast.LENGTH_SHORT).show();
+                                                                        }
+                                                                    })
+                                                                    .addOnFailureListener(new OnFailureListener() {
+                                                                        @Override
+                                                                        public void onFailure(@NonNull Exception e) {
+
+                                                                        }
+                                                                    });
+
                                                         }
                                                     });
-                                                    db.collection(Constants.Memorizame).document(memorizame.getUuidGenerated()).delete()
-                                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                                @Override
-                                                                public void onSuccess(Void aVoid) {
-                                                                    Toast.makeText(getActivity(), "memorizame eliminado", Toast.LENGTH_SHORT).show();
-                                                                }
-                                                            })
-                                                            .addOnFailureListener(new OnFailureListener() {
-                                                                @Override
-                                                                public void onFailure(@NonNull Exception e) {
-
-                                                                }
-                                                            });
-                                                    ures.delete()
-                                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                                @Override
-                                                                public void onComplete(@NonNull Task<Void> task) {
-                                                                    Toast.makeText(getActivity(), "se elimino", Toast.LENGTH_SHORT).show();
-                                                                }
-                                                            });
-                                                }
-                                            }
-                                        });
-
-                                db.collection(Constants.HealthcareProfesional).document(userHPoCarer).get()
-                                        .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                                            @Override
-                                            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                                if (documentSnapshot.exists()) {
-                                                    hp = documentSnapshot.toObject(HealthcareProfessional.class);
-                                                    firebaseAuth.signInWithEmailAndPassword(hp.getEmail(), hp.getPassword())
-                                                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                                                @Override
-                                                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                                                    initRecyclerView();
-                                                                    progressDialog.dismiss();
-                                                                }
-                                                            });
-                                                }
-                                            }
-                                        });
-
-                                db.collection(Constants.Carers).document(userHPoCarer).get()
-                                        .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                                            @Override
-                                            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                                if (documentSnapshot.exists()) {
-                                                    carer = documentSnapshot.toObject(Carer.class);
-                                                    firebaseAuth.signInWithEmailAndPassword(carer.getEmail(), carer.getPassword())
-                                                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                                                @Override
-                                                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                                                    initRecyclerView();
-                                                                    progressDialog.dismiss();
-                                                                }
-                                                            });
-                                                }
-                                            }
-                                        });
 
                                 alertDialog.dismiss();
                             }
@@ -352,19 +322,10 @@ public class MemorizameFamilyFragment extends Fragment {
 
 
 //region region for fragment grid
-    private void initAdapter() {
-
-        if (adapter == null){
-            //   adapter = new MemorizameFamilyFragmentGrid(getActivity().getApplicationContext(), this);
-        }
-
-
-    }
 
     private void initRecyclerView() {
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),3));//cambiar numero de columnas
 
+<<<<<<< HEAD
 
         //FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -393,6 +354,23 @@ public class MemorizameFamilyFragment extends Fragment {
                 });
 
 
+=======
+        String uid = user.getUid();
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),3));//cambiar numero de columnas
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        //Query creation
+        Query query = db.collection(Constants.Memorizame).document(patient.getPatientUID()).collection(categoria);
+        //Crea las opciones del FirestoreRecyclerOptions
+        FirestoreRecyclerOptions<Memorizame> firestoreRecyclerOptions = new FirestoreRecyclerOptions.Builder<Memorizame>()
+                .setQuery(query, Memorizame.class).build();
+
+        //Passing parameters to the adapter
+        adapter = new MemorizameFamilyGridAdapter(firestoreRecyclerOptions, getActivity(),iSelectionMemorizame,iDeleteMemorizame);
+        adapter.notifyDataSetChanged();
+        recyclerView.setAdapter(adapter);
+>>>>>>> f9257c984ae3c28273a9124bc7b8f32a66f44917
     }
 //endregion
 }
