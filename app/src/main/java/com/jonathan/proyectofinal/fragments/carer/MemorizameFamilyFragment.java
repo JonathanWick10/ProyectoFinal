@@ -3,15 +3,21 @@ package com.jonathan.proyectofinal.fragments.carer;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Resources;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,11 +32,14 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -42,6 +51,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.adapters.MemorizameFamilyGridAdapter;
 import com.jonathan.proyectofinal.adapters.PatientsAdapter;
@@ -59,6 +69,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MemorizameFamilyFragment extends Fragment {
 
@@ -94,6 +105,10 @@ public class MemorizameFamilyFragment extends Fragment {
     Patient patient = new Patient();
     String categoria="";
     IMainCarer iMainCarer;
+    public static final int REQUEST_CODE2 = 10;
+    CircleImageView imageUpdate;
+    Uri uriImage;
+    StorageReference storageReference;
     //endregion
 
 
@@ -151,7 +166,7 @@ public class MemorizameFamilyFragment extends Fragment {
         user = firebaseAuth.getCurrentUser();
         userHPoCarer = user.getUid();
         db = FirebaseFirestore.getInstance();
-
+        storageReference = FirebaseStorage.getInstance().getReference();
         progressDialog = new ProgressDialog(getActivity());
 
 
@@ -307,10 +322,144 @@ public class MemorizameFamilyFragment extends Fragment {
     private void logicEventSelecItem() {
         iSelectionMemorizame = new MemorizameFamilyGridAdapter.ISelectionMemorizame() {
             @Override
-            public void clickItem(Memorizame memorizame) {
-                iMainCarer.inflateFragment("memorizamee");
+            public void clickItem(final Memorizame memorizame) {
+                //region AlertDialog
+                final AlertDialog alertDialog;
+                final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.BackgroundRounded);
+
+                if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    // only for Lollipop and newer versions
+                    try {
+                        LayoutInflater inflater = getActivity().getLayoutInflater();
+                        View dialogView = inflater.inflate(R.layout.new_card_memorizame, null);
+                        builder.setView(dialogView);
+                        alertDialog=builder.create();
+
+                        TextView txtTitle = dialogView.findViewById(R.id.tv_title_question);
+                        imageUpdate = dialogView.findViewById(R.id.profile_image);
+                        final TextInputEditText editQuestion = dialogView.findViewById(R.id.edit_question);
+                        final TextInputEditText editAnswer1 = dialogView.findViewById(R.id.edit_answer1);
+                        final TextInputEditText editAnswer2 = dialogView.findViewById(R.id.edit_answer2);
+                        final TextInputEditText editAnswer3 = dialogView.findViewById(R.id.edit_answer3);
+                        final TextInputEditText editAnswer4 = dialogView.findViewById(R.id.edit_answer4);
+                        final AutoCompleteTextView rtaAut = dialogView.findViewById(R.id.edit_correct_answer);
+                        MaterialButton btnactualizar = dialogView.findViewById(R.id.button_create_memorizame);
+
+                        txtTitle.setText("Actualizar Pregunta");
+                        Glide.with(getActivity()).load(memorizame.getUriImg()).fitCenter().into(imageUpdate);
+                        editQuestion.setText(memorizame.getQuestion());
+                        editAnswer1.setText(memorizame.getAnswer1());
+                        editAnswer2.setText(memorizame.getAnswer2());
+                        editAnswer3.setText(memorizame.getAnswer3());
+                        editAnswer4.setText(memorizame.getAnswer4());
+
+                        String correctRTA = memorizame.getCorrectAnswer();
+                        if (correctRTA.equals(memorizame.getAnswer1())){
+                            rtaAut.setText("1");
+                        }else if (correctRTA.equals(memorizame.getAnswer2())){
+                            rtaAut.setText("2");
+                        }else if (correctRTA.equals(memorizame.getAnswer3())){
+                            rtaAut.setText("3");
+                        }else if (correctRTA.equals(memorizame.getAnswer4())){
+                            rtaAut.setText("4");
+                        }
+
+                        imageUpdate.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                // Intent to tour the gallery
+                                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                                // Accept all kinds of images
+                                intent.setType("image/*");
+                                //If you have several types of viewers, it will ask which one to start with
+                                startActivityForResult(intent.createChooser(intent,getResources().getString(R.string.select_photo)),REQUEST_CODE2);
+                            }
+                        });
+
+                        btnactualizar.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                final ProgressDialog progressDialog = ProgressDialog.show(getActivity(),
+                                        "Brainmher", "Actualizando Pregunta");
+                                String rtaCorrect, question,answer1,answer2,answer3,answer4;
+                                question = editQuestion.getText().toString();
+                                answer1 = editAnswer1.getText().toString();
+                                answer2 = editAnswer2.getText().toString();
+                                answer3 = editAnswer3.getText().toString();
+                                answer4 = editAnswer4.getText().toString();
+                                rtaCorrect = rtaAut.getText().toString();
+                                if (!question.isEmpty() && !answer1.isEmpty() && !answer2.isEmpty()
+                                && !answer3.isEmpty() && !answer4.isEmpty() && !rtaCorrect.isEmpty()){
+                                    memorizame.setQuestion(question);
+                                    memorizame.setAnswer1(answer1);
+                                    memorizame.setAnswer2(answer2);
+                                    memorizame.setAnswer3(answer3);
+                                    memorizame.setAnswer4(answer4);
+                                    switch (rtaCorrect){
+                                        case "1":
+                                            memorizame.setCorrectAnswer(answer1);
+                                            break;
+                                        case "2":
+                                            memorizame.setCorrectAnswer(answer2);
+                                            break;
+                                        case "3":
+                                            memorizame.setCorrectAnswer(answer3);
+                                            break;
+                                        case "4":
+                                            memorizame.setCorrectAnswer(answer4);
+                                            break;
+                                    }
+                                    if(uriImage == null){
+                                        uriImage = Uri.parse(memorizame.getUriImg());
+                                    }
+                                    StorageReference deleteImg = storageReference.child(categoria+"/"+memorizame.getUuidGenerated()+".jpg");
+                                    deleteImg.delete();
+                                    final StorageReference imgRef= storageReference.child(categoria+"/"+memorizame.getUuidGenerated()+".jpg");
+                                    imgRef.putFile(uriImage)
+                                            .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                                @Override
+                                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                                    Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
+                                                    while (!uri.isComplete());
+                                                    Uri url= uri.getResult();
+                                                    memorizame.setUriImg(url.toString());
+                                                    db.collection(Constants.Memorizame).document(patient.getPatientUID())
+                                                            .collection(categoria).document(memorizame.getUuidGenerated()).set(memorizame)
+                                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                @Override
+                                                                public void onSuccess(Void aVoid) {
+                                                                    progressDialog.dismiss();
+                                                                }
+                                                            });
+                                                }
+                                            });
+                                }
+                            }
+                        });
+
+
+                        alertDialog.show();
+                    } catch (Resources.NotFoundException e) {
+                        e.printStackTrace();
+                    }
+                }else{
+
+                }
+
+                //endregion
             }
         };
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE2 && resultCode == getActivity().RESULT_OK) {
+            uriImage = data.getData();
+            if (uriImage != null) {
+                Glide.with(getActivity()).load(uriImage).fitCenter().into(imageUpdate);
+            }
+        }
     }
 
     @Override
@@ -325,36 +474,6 @@ public class MemorizameFamilyFragment extends Fragment {
 
     private void initRecyclerView() {
 
-<<<<<<< HEAD
-
-        //FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-        CollectionReference collectionReferenceMemorizame = db.collection(Constants.Memorizame);
-
-        collectionReferenceMemorizame.document(patient.getPatientUID()).collection(categoria).get()
-                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        memorizameList = new ArrayList<Memorizame>();
-                        for (QueryDocumentSnapshot documentSnapshopt :
-                                queryDocumentSnapshots) {
-                            memorizameM = documentSnapshopt.toObject(Memorizame.class);
-                            memorizameList.add(memorizameM);
-                        }
-                        adapter = new MemorizameFamilyGridAdapter(memorizameList,getActivity(),iSelectionMemorizame,iDeleteMemorizame);
-                        recyclerView.setAdapter(adapter);
-                        recyclerView.setHasFixedSize(true);
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.d("Message", e.toString());
-                    }
-                });
-
-
-=======
         String uid = user.getUid();
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),3));//cambiar numero de columnas
@@ -370,7 +489,6 @@ public class MemorizameFamilyFragment extends Fragment {
         adapter = new MemorizameFamilyGridAdapter(firestoreRecyclerOptions, getActivity(),iSelectionMemorizame,iDeleteMemorizame);
         adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
->>>>>>> f9257c984ae3c28273a9124bc7b8f32a66f44917
     }
 //endregion
 }
