@@ -77,6 +77,7 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
     FirebaseFirestore db;
     HealthcareProfessional hp = new HealthcareProfessional();
     Carer carer = new Carer();
+    boolean sesion;
 
     public void setFlag(int flag){
         flagActivity=flag;
@@ -117,6 +118,7 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
                             hp = documentSnapshot.toObject(HealthcareProfessional.class);
                             name_user.setText(hp.getFirstName()+" "+hp.getLastName());
                             email_user.setText(hp.getEmail());
+                            sesion = false;
                             Glide.with(HealthProfessionalActivity.this).load(hp.getUriImg()).fitCenter().into(image_user);
                         }
                     }
@@ -129,6 +131,7 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
                             carer = documentSnapshot.toObject(Carer.class);
                             name_user.setText(carer.getFirstName()+" "+carer.getLastName());
                             email_user.setText(carer.getEmail());
+                            sesion = true;
                             Glide.with(HealthProfessionalActivity.this).load(carer.getUriImg()).fitCenter().into(image_user);
                         }
                     }
@@ -189,25 +192,25 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
             change = new MemorizameFamilyFragment();
             change.setArguments(args);
             setFlag(1);
-            transaction.replace(R.id.fragmentHomeHP,change).addToBackStack(null).commit();
+            transaction.remove(change).replace(R.id.fragmentHomeHP,change).addToBackStack(null).commit();
         }
         else if(fragmentTag.equals(getString(R.string.tab_pets_questions))){
             change = new MemorizameFamilyFragment();
             change.setArguments(args);
             setFlag(2);
-            transaction.replace(R.id.fragmentHomeHP,change).addToBackStack(null).commit();
+            transaction.remove(change).replace(R.id.fragmentHomeHP,change).addToBackStack(null).commit();
         }
         else if(fragmentTag.equals(getString(R.string.tab_home_questions))){
             change = new MemorizameFamilyFragment();
             change.setArguments(args);
             setFlag(3);
-            transaction.replace(R.id.fragmentHomeHP,change).addToBackStack(null).commit();
+            transaction.remove(change).replace(R.id.fragmentHomeHP,change).addToBackStack(null).commit();
         }
         else if(fragmentTag.equals(getString(R.string.tab_places_questions))){
             change = new MemorizameFamilyFragment();
             change.setArguments(args);
             setFlag(4);
-            transaction.replace(R.id.fragmentHomeHP,change).addToBackStack(null).commit();
+            transaction.remove(change).replace(R.id.fragmentHomeHP,change).addToBackStack(null).commit();
         }
         else if(fragmentTag.equals(getString(R.string.family_questions_img))){
             change = new NewCardMemorizame();
@@ -237,6 +240,10 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
                 navigation.putExtra("option", "profile");
                 navigation.putExtra("user_uid", hp.getHpUID());
                 navigation.putExtra("user_role", hp.getRole());
+                if (sesion == true) {
+                    navigation.putExtra("user_uid", carer.getCarerUId());
+                    navigation.putExtra("user_role", carer.getRole());
+                }
                 navigation.putExtra("profile_type", "personal");
                 startActivity(navigation);
                 break;
