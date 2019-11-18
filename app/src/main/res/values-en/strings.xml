@@ -36,8 +36,9 @@
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
     <string name="admin_user_name">Name user</string>
-    <string name="admin_enter">Enter</string>
     <string name="admin_pass">Password</string>
+    <string name="login">Login</string>
+    <string name="register">To register</string>
 
     //Strings for notifications
     <string name="notification_hour">Hour</string>
@@ -131,7 +132,7 @@
     <string name="add_pet_question">Add Pet Question</string>
 
     // Registration Carer
-    <string name="add_Carer">Add Carer</string>
+    <string name="add_Carer">Register Caregiver</string>
 
     <!-- Strings for module patient -->
     <string name="menu_memorizame">Memorizame</string>
@@ -141,6 +142,8 @@
     <string name="add_event_carer">Add event</string>
     <string name="view_event_carer">View event</string>
     <string name="cancel_event_carer">Cancel event</string>
+    <string name="exit">Exit</string>
+    <string name="select_option">Select an option</string>
 
     <!-- Information general and Specific -->
 
