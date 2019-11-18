@@ -203,7 +203,6 @@ public class AdminAddHealthProfessional extends Fragment {
         if (flag2) {
             final ProgressDialog progressDialog = ProgressDialog.show(getActivity(),
                     "Brainmher","Realizando registro en línea");
-            firebaseAuth.signOut();
             //_____________________________________________________________________________________________________
             firebaseAuth.createUserWithEmailAndPassword(hp.getEmail(), hp.getPassword())
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
