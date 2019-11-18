@@ -23,22 +23,20 @@ public class StretchingAdapter extends RecyclerView.Adapter<StretchingAdapter.St
     List<StretchingExercise> stretchingList;
     Context context;
     StretchingAdapter.ISelectionStretching iSelectionStretching;
-    StretchingAdapter.IDeleteStretching iDeleteStretching;
     //endregion
 
 
-    public StretchingAdapter(List<StretchingExercise> stretchingList, Context context, ISelectionStretching iSelectionStretching, IDeleteStretching iDeleteStretching) {
+    public StretchingAdapter(List<StretchingExercise> stretchingList, Context context, ISelectionStretching iSelectionStretching) {
         this.stretchingList = stretchingList;
         this.context = context;
         this.iSelectionStretching = iSelectionStretching;
-        this.iDeleteStretching = iDeleteStretching;
     }
 
     //region Overwritten methods of RecyclerView
     @NonNull
     @Override
     public StretchingViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_exercise_carer, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.listview_exercise_carer, parent, false);
         return new StretchingViewHolder(view);
     }
 
@@ -53,16 +51,6 @@ public class StretchingAdapter extends RecyclerView.Adapter<StretchingAdapter.St
                 iSelectionStretching.clickItem(stretchingList.get(position));
             }
         });
-
-     /*   holder.imageDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                iDeleteStretching.clickdelete(stretchingList.get(position));
-            }
-        });
-
-      */
-
 
     }
 
@@ -103,10 +91,6 @@ public class StretchingAdapter extends RecyclerView.Adapter<StretchingAdapter.St
     //region Interfaces
     public interface ISelectionStretching {
         void clickItem(StretchingExercise stretchingExercise);
-    }
-
-    public interface IDeleteStretching {
-        void clickdelete(StretchingExercise stretchingExercise);
     }
     //endregion
 

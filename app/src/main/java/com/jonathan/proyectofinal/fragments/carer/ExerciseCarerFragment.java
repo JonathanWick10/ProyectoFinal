@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -49,16 +50,12 @@ import butterknife.ButterKnife;
  */
 public class ExerciseCarerFragment extends Fragment {
 
+    //region Variables
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
     private View view;
-
     private StretchingAdapter adapter;
     private StretchingAdapter.ISelectionStretching iSelectionStretching;
-    private StretchingAdapter.IDeleteStretching iDeleteStretching;
-
-    private IMainCarer mIMainCarer;
-
     FirebaseFirestore db;
     FirebaseAuth firebaseAuth;
     FirebaseUser user;
@@ -67,12 +64,8 @@ public class ExerciseCarerFragment extends Fragment {
     StretchingExercise stretchingM = new StretchingExercise();
     HealthcareProfessional hp = new HealthcareProfessional();
     Carer carer = new Carer();
-    ProgressDialog progressDialog;
-    Patient patient = new Patient();
-    String categoria="Stretching";
-    IMainCarer iMainCarer;
-
     private PhysicalExecise.PhysicalExeciseI physicalExeciseI;
+    //endregion
 
     public ExerciseCarerFragment(PhysicalExecise.PhysicalExeciseI physicalExeciseI ) {
         this.physicalExeciseI = physicalExeciseI;
@@ -92,26 +85,27 @@ public class ExerciseCarerFragment extends Fragment {
         userHPoCarer = user.getUid();
         db = FirebaseFirestore.getInstance();
 
-        progressDialog = new ProgressDialog(getActivity());
-
-       // initRecyclerView();
-
+        eventLogicSelectItem();
         initRecyclerView();
         return view;
+    }
+
+    private void eventLogicSelectItem() {
+        iSelectionStretching = new StretchingAdapter.ISelectionStretching() {
+            @Override
+            public void clickItem(StretchingExercise stretchingExercise) {
+                Toast.makeText(getActivity(), "mira carolina "+stretchingExercise.getNameExercise(), Toast.LENGTH_LONG).show();
+            }
+        };
     }
 
 
     private void initRecyclerView() {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(new PhysicalExerciseAdapter(entities(),physicalExeciseI));
-
-
-        //FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-        CollectionReference collectionReferenceStretching = db.collection(Constants.Stretching);
-
-        collectionReferenceStretching.document(carer.getCarerUId()).collection(categoria).get()
+        db.collection(Constants.Stretching)
+                .orderBy("nameExercise")
+                .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -121,7 +115,7 @@ public class ExerciseCarerFragment extends Fragment {
                             stretchingM = documentSnapshopt.toObject(StretchingExercise.class);
                             stretchingList.add(stretchingM);
                         }
-                        adapter = new StretchingAdapter(stretchingList,getActivity(),iSelectionStretching,iDeleteStretching);
+                        adapter = new StretchingAdapter(stretchingList,getActivity(),iSelectionStretching);
                         recyclerView.setAdapter(adapter);
                         recyclerView.setHasFixedSize(true);
                     }
@@ -134,102 +128,5 @@ public class ExerciseCarerFragment extends Fragment {
                 });
 
 
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        iMainCarer = (IMainCarer) getActivity();
-        mIMainCarer = (IMainCarer) getActivity();
-    }
-
-
-
-
-
-
-    private List<PhysicalExerciseEntity> entities(){
-
-        List<PhysicalExerciseEntity> lista = new ArrayList<>();
-        PhysicalExerciseEntity entity1 = new PhysicalExerciseEntity();
-        entity1.setNameExercise(getString(R.string.physical_nameExercise_resistence));
-        entity1.setDescripcion(getString(R.string.description_resistance_exercice));
-        entity1.setImage(R.drawable.exercise1);
-        entity1.setTime(300000);
-        lista.add(entity1);
-
-        // dos
-        PhysicalExerciseEntity entity2 = new PhysicalExerciseEntity();
-        entity2.setNameExercise(getString(R.string.physical_nameexercise_bodybuilding));
-        entity2.setDescripcion(getString(R.string.description_nameexercise_bodybuilding));
-        entity2.setImage(R.drawable.exercise2);
-        entity2.setTime(30000);
-        lista.add(entity2);
-
-        // dos
-        PhysicalExerciseEntity entity3 = new PhysicalExerciseEntity();
-        entity3.setNameExercise(getString(R.string.physical_nameexercise_bodybuilding));
-        entity3.setDescripcion(getString(R.string.description_nameexercise_bodybuilding));
-        entity3.setImage(R.drawable.exercise3);
-        entity3.setTime(30000);
-        lista.add(entity3);
-
-        // dos
-        PhysicalExerciseEntity entity4 = new PhysicalExerciseEntity();
-        entity4.setNameExercise(getString(R.string.physical_nameexercise_bodybuilding));
-        entity4.setDescripcion(getString(R.string.description_nameexercise_bodybuilding));
-        entity4.setImage(R.drawable.exercise4);
-        entity4.setTime(30000);
-        lista.add(entity4);
-
-        // dos
-        PhysicalExerciseEntity entity5 = new PhysicalExerciseEntity();
-        entity5.setNameExercise(getString(R.string.physical_nameexercise_bodybuilding));
-        entity5.setDescripcion(getString(R.string.description_nameexercise_bodybuilding));
-        entity5.setImage(R.drawable.exercise5);
-        entity5.setTime(30000);
-        lista.add(entity5);
-
-        // dos
-        PhysicalExerciseEntity entity6 = new PhysicalExerciseEntity();
-        entity6.setNameExercise(getString(R.string.physical_nameexercise_bodybuilding));
-        entity6.setDescripcion(getString(R.string.description_nameexercise_bodybuilding));
-        entity6.setImage(R.drawable.exercise6);
-        entity6.setTime(30000);
-        lista.add(entity6);
-
-        // dos
-        PhysicalExerciseEntity entity7 = new PhysicalExerciseEntity();
-        entity7.setNameExercise(getString(R.string.physical_nameexercise_bodybuilding));
-        entity7.setDescripcion(getString(R.string.description_nameexercise_bodybuilding));
-        entity7.setImage(R.drawable.exercise7);
-        entity7.setTime(30000);
-        lista.add(entity7);
-
-        // dos
-        PhysicalExerciseEntity entity8 = new PhysicalExerciseEntity();
-        entity8.setNameExercise(getString(R.string.physical_nameexercise_bodybuilding));
-        entity8.setDescripcion(getString(R.string.description_nameexercise_bodybuilding));
-        entity8.setImage(R.drawable.exercise8);
-        entity8.setTime(30000);
-        lista.add(entity8);
-
-        // dos
-        PhysicalExerciseEntity entity9 = new PhysicalExerciseEntity();
-        entity9.setNameExercise(getString(R.string.physical_nameexercise_bodybuilding));
-        entity9.setDescripcion(getString(R.string.description_nameexercise_bodybuilding));
-        entity9.setImage(R.drawable.exercise9);
-        entity9.setTime(30000);
-        lista.add(entity9);
-
-        // dos
-        PhysicalExerciseEntity entity10 = new PhysicalExerciseEntity();
-        entity10.setNameExercise(getString(R.string.physical_nameexercise_bodybuilding));
-        entity10.setDescripcion(getString(R.string.description_nameexercise_bodybuilding));
-        entity10.setImage(R.drawable.exercise10);
-        entity10.setTime(30000);
-        lista.add(entity10);
-
-        return  lista;
     }
 }

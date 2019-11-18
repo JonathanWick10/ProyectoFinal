@@ -1,7 +1,5 @@
 package com.jonathan.proyectofinal.tools;
 
-import com.jonathan.proyectofinal.R;
-
 public class Constants {
 
     //Constants for collections
@@ -17,7 +15,7 @@ public class Constants {
     public static final String Memorizame = "Memorizame";
 
 
-    public static final String Stretching = "Stretching";
+    public static final String Stretching = "Stretching_Exercises";
 
     //variables static for one signal
     public static final String app_id = "dd9a93af-d41e-4d08-a75a-c6154744060e";

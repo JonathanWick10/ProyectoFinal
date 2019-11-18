@@ -9,7 +9,6 @@ public class StretchingExercise {
     public StretchingExercise() {
     }
 
-
     public StretchingExercise(String nameExercise, String descriptionExercise, String uriGif) {
         this.nameExercise = nameExercise;
         this.descriptionExercise = descriptionExercise;
