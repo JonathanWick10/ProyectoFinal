@@ -87,23 +87,25 @@ public class Login extends AppCompatActivity {
     MaterialButton btnLoginEmailPass;
     @BindView(R.id.link_registrar)
     TextView register;
+    /*
     @BindView(R.id.btn_login_google)
     MaterialButton btnLoginGoogle;
     @BindView(R.id.btn_login_facebook)
     Button btnLoginFacebook;
+    */
 
-    private GoogleSignInClient googleSignInClient;
+    //private GoogleSignInClient googleSignInClient;
     private int GOOGLE_SIGN_IN=1;
     private FirebaseAuth.AuthStateListener firebaseAuthListener;
 
-    List<AuthUI.IdpConfig> providers;
+    //List<AuthUI.IdpConfig> providers;
     private FirebaseAuth firebaseAuth;
     FirebaseUser user;
 
-    HealthcareProfessional hp = new HealthcareProfessional();
+    //HealthcareProfessional hp = new HealthcareProfessional();
 
     CallbackManager callbackManager;
-    private static final String TAG="MainActivity";
+    //private static final String TAG="MainActivity";
 
     FirebaseFirestore db;
 
@@ -210,6 +212,7 @@ public class Login extends AppCompatActivity {
 
     }
 
+    /*
     private void googleLogin(){
         Intent intent = loginInstance().googleClientSettings(this).getSignInIntent();
         startActivityForResult(intent, GOOGLE_SIGN_IN);
@@ -240,6 +243,7 @@ public class Login extends AppCompatActivity {
         });
 
     }
+    */
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -285,7 +289,7 @@ public class Login extends AppCompatActivity {
         return data;
     }
 
-    @OnClick({R.id.login_admin_btn_enter, R.id.link_registrar, R.id.btn_login_google, R.id.btn_login_facebook})
+    @OnClick({R.id.login_admin_btn_enter, R.id.link_registrar/*, R.id.btn_login_google, R.id.btn_login_facebook*/})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.login_admin_btn_enter:
@@ -294,12 +298,14 @@ public class Login extends AppCompatActivity {
             case R.id.link_registrar:
                 register();
                 break;
+                /*
             case R.id.btn_login_google:
                 googleLogin();
                 break;
             case R.id.btn_login_facebook:
                 facebookLogin();
                 break;
+                */
         }
     }
 

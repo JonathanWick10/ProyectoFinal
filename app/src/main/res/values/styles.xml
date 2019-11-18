@@ -72,9 +72,9 @@
     <style name="StyleLoginButtons" parent="Widget.MaterialComponents.Button">
         <!--<item name="colorButtonNormal">@color/colorPrimaryDark</item>
         <item name="colorControlHighlight">@color/colorPrimary</item>-->
-        <item name="rippleColor">@color/colorAccent</item>
+        <item name="android:layout_margin">@dimen/sixteen</item>
         <item name="android:textStyle">bold</item>
-        <item name="iconPadding">15dp</item>
+        <item name="rippleColor">@color/colorAccent</item>
         <item name="cornerRadius">@dimen/twenty</item>
     </style>
 
@@ -111,7 +111,9 @@
         <item name="boxStrokeWidth">0.5dp</item>
         <item name="errorIconTint">@color/white</item>
         <item name="errorTextColor">@color/white</item>
-        <item name="android:layout_margin">@dimen/three</item>
+        <!--<item name="android:layout_margin">@dimen/three</item>-->
+        <item name="android:layout_marginLeft">@dimen/sixteen</item>
+        <item name="android:layout_marginRight">@dimen/sixteen</item>
     </style>
 
     <!--

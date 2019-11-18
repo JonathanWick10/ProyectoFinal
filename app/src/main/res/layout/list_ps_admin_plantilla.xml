@@ -56,7 +56,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/admin_enter"
                     android:textAlignment="center"/>
             </LinearLayout>
             <LinearLayout
@@ -75,7 +74,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/admin_enter"
                     android:textAlignment="center"/>
             </LinearLayout>
             <LinearLayout
@@ -94,7 +92,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/admin_enter"
                     android:textAlignment="center"/>
             </LinearLayout>
 

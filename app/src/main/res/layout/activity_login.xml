@@ -8,131 +8,140 @@
     android:focusableInTouchMode="true"
     tools:context=".ui.Login">
 
+    <!--
     <ScrollView
         android:layout_centerInParent="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:windowSoftInputMode="adjustResize"
-        android:fillViewport="true"
-        >
-        <LinearLayout
-            android:isScrollContainer="true"
+        android:fillViewport="true">
+        -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:isScrollContainer="true"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/sixty"
+            android:src="@drawable/ic_imagotipo_white" />
+
+        <!-- Username text box -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtinput_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="@dimen/ten">
+            android:layout_marginBottom="@dimen/eight"
+            android:hint="@string/email"
+            app:endIconMode="clear_text"
+            app:errorEnabled="true"
+            style="@style/StyleTextInputLayotTextBoxLogin">
 
-            <ImageView
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/sixteen"
-                android:layout_marginBottom="@dimen/twenty"
-                android:src="@drawable/ic_imagotipo_white" />
-
-            <!-- caja de texto para nombre de usuario -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/txtinput_name"
-                style="@style/StyleTextInputLayotTextBoxLogin"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/login_admin_edt_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/ten"
-                android:hint="@string/email"
-                app:endIconMode="clear_text"
-                app:errorEnabled="true">
+                style="@style/StyleTextInputEditTextLoginEmail"/>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/login_admin_edt_name"
-                    style="@style/StyleTextInputEditTextLoginEmail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-            </com.google.android.material.textfield.TextInputLayout>
+        <!-- Text box for user password -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtinput_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/admin_pass"
+            app:endIconMode="password_toggle"
+            app:errorEnabled="true"
+            style="@style/StyleTextInputLayotTextBoxLogin">
 
-            <!-- caja de texto para contraseña de usuario -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/txtinput_password"
-                style="@style/StyleTextInputLayotTextBoxLogin"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/login_admin_edt_pass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/admin_pass"
-                app:endIconMode="password_toggle"
-                android:focusable="true"
-                app:errorEnabled="true">
+                android:inputType="textPassword"
+                style="@style/StyleTextInputEditTextLogin"/>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/login_admin_edt_pass"
-                    style="@style/StyleTextInputEditTextLogin"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPassword"
-                    android:focusable="true"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-            </com.google.android.material.textfield.TextInputLayout>
+        <!-- Login button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/login_admin_btn_enter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="@dimen/ten"
+            android:text="@string/login"
+            style="@style/StyleLoginButtons"/>
 
-            <!-- botón para inicio de sesión -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/login_admin_btn_enter"
-                style="@style/StyleLoginButtons"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/five"
-                android:text="@string/admin_enter" />
+    </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/whiteDark"
-                android:layout_margin="@dimen/ten"/>
+    <!--
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/whiteDark"
+        android:layout_margin="@dimen/ten"/>
 
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_login_google"
-                style="@style/StyleLoginButtons"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/sign_in_with_google"
-                app:icon="@drawable/ic_google"
-                app:iconGravity="start"
-                app:iconSize="@dimen/twentyFive" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_login_google"
+        style="@style/StyleLoginButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sign_in_with_google"
+        app:icon="@drawable/ic_google"
+        app:iconGravity="start"
+        app:iconSize="@dimen/twentyFive" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_login_facebook"
-                style="@style/StyleLoginButtons"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/sign_in_with_facebook"
-                app:icon="@drawable/ic_facebook"
-                app:iconGravity="start"
-                app:iconSize="@dimen/twentyFive" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_login_facebook"
+        style="@style/StyleLoginButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sign_in_with_facebook"
+        app:icon="@drawable/ic_facebook"
+        app:iconGravity="start"
+        app:iconSize="@dimen/twentyFive" />
+        -->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/sixteen"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:orientation="horizontal">
 
-                <TextView
-                    style="@style/StyleTextLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/twenty"
-                    android:layout_marginVertical="@dimen/five"
-                    android:paddingVertical="@dimen/ten"
-                    android:text="@string/label_register_account" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/twenty"
+            android:layout_marginVertical="@dimen/five"
+            android:paddingVertical="@dimen/ten"
+            android:text="@string/label_register_account"
+            style="@style/StyleTextLabel"/>
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/link_registrar"
-                    style="@style/StyleTextButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="@dimen/five"
-                    android:paddingVertical="@dimen/ten"
-                    android:text="Registrar" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/link_registrar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/five"
+            android:paddingVertical="@dimen/ten"
+            android:text="@string/register"
+            style="@style/StyleTextButton"/>
 
-            </LinearLayout>
-        </LinearLayout>
+    </LinearLayout>
+
+
+    <!--
     </ScrollView>
+    -->
+
 </RelativeLayout>

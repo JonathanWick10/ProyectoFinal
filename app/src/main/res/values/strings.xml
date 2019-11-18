@@ -38,8 +38,10 @@
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
     <string name="admin_user_name">Nombre de usuario</string>
-    <string name="admin_enter">Ingresar</string>
     <string name="admin_pass">Contraseña</string>
+    <string name="login">Iniciar sesión</string>
+    <string name="register">Registrar</string>
+
 
     //Strings for notifications
     <string name="notification_hour">Hora alarma</string>
@@ -142,7 +144,7 @@
     <string name="add_pet_question">Agregar Pregunta de Mascota</string>
 
     // Registration Carer
-    <string name="add_Carer">Agregar Cuidador</string>
+    <string name="add_Carer">Registrar Cuidador</string>
 
     <!-- Strings for module patient -->
     <string name="menu_memorizame">Memorizame</string>
