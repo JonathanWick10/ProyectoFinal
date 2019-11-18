@@ -210,7 +210,7 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
             change = new MemorizameFamilyFragment();
             change.setArguments(args);
             setFlag(4);
-            transaction.replace(R.id.containerPageTherapyPS,change).addToBackStack(null).commit();
+            transaction.replace(R.id.fragmentHomeHP,change).addToBackStack(null).commit();
         }
         else if(fragmentTag.equals(getString(R.string.family_questions_img))){
             change = new NewCardMemorizame();
