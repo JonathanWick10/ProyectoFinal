@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    style="@style/StyleCardView"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:clickable="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="2dp"
+        android:layout_gravity="center_vertical">
+        <TextView
+            style="@style/StyleMiniCardViewTitles"
+            android:id="@+id/txt_full_name2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/full_name"
+            android:singleLine="true"
+            android:maxLength="70"
+            android:ellipsize="marquee"
+            android:layout_marginTop="17dp"
+            android:paddingLeft="@dimen/twenty"/>
+
+        <TextView
+            style="@style/StyleMiniCardViewSubTitles"
+            android:id="@+id/txt_number_emergency2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-1dp"
+            android:layout_below="@+id/txt_full_name2"
+            android:text="@string/emergency_numbers"
+            android:paddingLeft="@dimen/twenty" />
+
+        <ImageView
+            android:id="@+id/img_contacts_call"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="12dp"
+            android:src="@drawable/ic_phone_black"
+            android:layout_gravity="center"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            />
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>

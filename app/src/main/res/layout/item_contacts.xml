@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    style="@style/StyleCardView"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:clickable="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="2dp"
+        android:layout_gravity="center_vertical">
+        <TextView
+            style="@style/StyleMiniCardViewTitles"
+            android:id="@+id/txt_full_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/full_name"
+            android:singleLine="true"
+            android:maxLength="70"
+            android:ellipsize="marquee"
+            android:paddingLeft="@dimen/twenty"
+            android:layout_marginTop="17dp"/>
+
+        <TextView
+            style="@style/StyleMiniCardViewSubTitles"
+            android:id="@+id/txt_number_emergency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-1dp"
+            android:paddingLeft="@dimen/twenty"
+            android:layout_below="@+id/txt_full_name"
+            android:text="@string/emergency_numbers"
+            />
+
+        <ImageView
+            android:id="@+id/img_contacts_update"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="12dp"
+            android:src="@drawable/ic_edit_black"
+            android:layout_gravity="center"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/img_contacts_delete"
+            />
+
+        <ImageView
+            android:id="@+id/img_contacts_delete"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="12dp"
+            android:src="@drawable/ic_delete"
+            android:layout_gravity="center"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            />
+    </RelativeLayout>
+
+
+
+
+</com.google.android.material.card.MaterialCardView>

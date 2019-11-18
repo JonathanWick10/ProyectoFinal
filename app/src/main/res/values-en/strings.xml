@@ -854,4 +854,19 @@
     <string name="physical_nameexercise_bodybuilding">Strengthening or bodybuilding exercise</string>
     <string name="description_nameexercise_bodybuilding">Strengthening exercises strengthen and strengthen the muscles, and therefore contribute to maintaining or strengthening autonomy and delaying dependence. They improve the metabolism, helping to maintain the weight and levels of glucose (sugar) and cholesterol in the blood. They prevent osteoporosis, polyarthrosis and falls. </string>
     <string name="title_activity_notification_manager">NotificationManager</string>
+
+
+    <!--Contacts emergency-->
+    <string name="full_name">Full name</string>
+    <string name="emergency_numbers">Emergency numbers</string>
+    <string name="contacts">Contacts</string>
+    <string name="add_contact">Add Contact</string>
+    <string name="disaster_atentiont">Disaster Atention</string>
+    <string name="ambulance">Ambulance</string>
+    <string name="firefighters">Firefighters</string>
+    <string name="red_cross">Red Cross</string>
+    <string name="cai_national_police">CAI-National Police</string>
+    <string name="civil_defense">Civil Defense</string>
+    <string name="police">Police</string>
+    <string name="unique_emergency_number">Unique Emergency Number</string>
 </resources>

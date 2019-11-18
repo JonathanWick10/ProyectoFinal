@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/layout_update_contact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/sixteen">
+    <TextView
+        android:id="@+id/tv_title_update_contact"
+        style="@style/StyleTextViewTitles"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/update"></TextView>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/StyleTextInputLayotTextBoxForms"
+        android:id="@+id/til_carer_name_contact_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/full_name"
+        app:endIconMode="clear_text"
+        app:startIconDrawable="@drawable/ic_face_black"
+        app:errorEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_name_contact_update"
+            style="@style/StyleTextInputEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/StyleTextInputLayotTextBoxForms"
+        android:id="@+id/til_ident_carer_number_contact_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/phone_number"
+        app:endIconMode="clear_text"
+        app:startIconDrawable="@drawable/ic_phone_black"
+        app:errorEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_number_contact_update"
+            style="@style/StyleTextInputEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    </LinearLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimaryDark"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:id="@+id/cl_button_update"
+        android:layout_below="@id/layout_update_contact">
+
+        <Button
+            android:id="@+id/btn_cancelar_contact"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@android:color/transparent"
+            android:text="@string/cancel"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/separator"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            android:textAllCaps="false"/>
+
+        <TextView
+            android:id="@+id/separator"
+            android:layout_width="1dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginBottom="0dp"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"  />
+
+        <Button android:id="@+id/btn_save_contact"
+            android:text="@string/save"
+            android:textSize="13sp"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:background="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/separator"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textAllCaps="false"/>
+    </androidx.constraintlayout.widget.ConstraintLayout >
+
+
+
+</RelativeLayout>

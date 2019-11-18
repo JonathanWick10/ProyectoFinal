@@ -20,4 +20,8 @@ public class Constants {
     //variables static for one signal
     public static final String app_id = "dd9a93af-d41e-4d08-a75a-c6154744060e";
     public static final String template_id = "";
+
+    //Constants for Carer
+    public static final String Contacts = "Contacts";
+    public static final String Numbers = "Numbers";
 }
