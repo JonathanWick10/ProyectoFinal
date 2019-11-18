@@ -392,7 +392,6 @@ public class CallEmergencyFragment extends Fragment {
     }
 
     public void alertUpdate(final Contacts contacts){
-        final ProgressDialog progressDialog = ProgressDialog.show(getActivity(),"Brainmher","Actualizando en línea");
         final AlertDialog alertDialog;
         final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.BackgroundRounded);
 
@@ -421,6 +420,8 @@ public class CallEmergencyFragment extends Fragment {
                 btn2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        final ProgressDialog progressDialog = ProgressDialog.show(getActivity(),"Brainmher","Actualizando en línea");
+
                         name = editFullName.getText().toString();
                         number = editNumber.getText().toString();
                         if (!name.isEmpty() && !number.isEmpty()){
