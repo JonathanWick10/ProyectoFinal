@@ -1,10 +1,14 @@
 package com.jonathan.proyectofinal.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
@@ -27,6 +31,12 @@ public class LoadBrainmher extends AppCompatActivity  {
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
 
+    //region Variables for permissions
+    final int MY_PERMISSIONS_REQUEST_CALL_PHONE = 10;
+    final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 11;
+    final int MY_PERMISSIONS_REQUEST_CWRITE_EXTERNAL_STORAGE = 12;
+    //endregion
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +57,15 @@ public class LoadBrainmher extends AppCompatActivity  {
         firebaseUser = firebaseAuth.getCurrentUser();
         //Método para definir parametros y funcionalidad al ejecutar el splash screen
 
-        redirect();
+        //region Permission before in to redirect by role
+        if(ActivityCompat.checkSelfPermission(LoadBrainmher.this, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED){
+            // Aquí ya está concedido, procede a realizar lo que tienes que hacer
+            redirect();
+        }else{
+            // Aquí lanzamos un dialog para que el usuario confirme si permite o no el realizar llamadas
+            ActivityCompat.requestPermissions(LoadBrainmher.this, new String[]{ Manifest.permission.CALL_PHONE}, MY_PERMISSIONS_REQUEST_CALL_PHONE);
+        }
+        //endregion
     }
 
     public void iniciarOneSignal() {
@@ -94,6 +112,25 @@ public class LoadBrainmher extends AppCompatActivity  {
             };
         }, DURATION_SPLAH);
     }
+
+    // Y finalmente recibimos la respuesta del usuario en un método de tipo `@Override` así:
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_CALL_PHONE : {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // PERMISO CONCEDIDO, procede a realizar lo que tienes que hacerred
+                    redirect();
+                } else {
+                    // PERMISO DENEGADO
+                    redirect();
+                }
+                return;
+            }
+        }
+    }
+
 
     @Override
     protected void onStop() {
