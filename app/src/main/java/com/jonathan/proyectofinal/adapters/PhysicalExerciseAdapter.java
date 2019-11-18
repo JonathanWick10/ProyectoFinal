@@ -46,8 +46,6 @@ public class PhysicalExerciseAdapter extends RecyclerView.Adapter<PhysicalExerci
         //setear datos
         holder.nameE.setText(listExerciseget.getNameExercise());
         holder.image.setImageResource(listExerciseget.getImage());
-        //holder.description.setText(listExerciseget.getDescripcion());
-
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,23 +57,18 @@ public class PhysicalExerciseAdapter extends RecyclerView.Adapter<PhysicalExerci
             public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
                 switch ((int) ratingBar.getRating()) {
                     case 1:
-                        //ratingTxt.setText("Very bad");
                         holder.ratingTxt.setText("1");
                         break;
                     case 2:
-                        //ratingTxt.setText("Need some improvement");
                         holder.ratingTxt.setText("2");
                         break;
                     case 3:
-                        //ratingTxt.setText("Good");
                         holder.ratingTxt.setText("3");
                         break;
                     case 4:
-                        //ratingTxt.setText("Great");
                         holder.ratingTxt.setText("4");
                         break;
                     case 5:
-                        //ratingTxt.setText("Awesome. I love it");
                         holder.ratingTxt.setText("5");
                         break;
                     default:
@@ -99,14 +92,9 @@ public class PhysicalExerciseAdapter extends RecyclerView.Adapter<PhysicalExerci
             }
         });
 
-
     }
-
     @Override
-    public int getItemCount() {
-        return listExercise.size();
-    }
-
+    public int getItemCount() { return listExercise.size(); }
 
     public class holder extends RecyclerView.ViewHolder {
         //region reference
@@ -126,11 +114,7 @@ public class PhysicalExerciseAdapter extends RecyclerView.Adapter<PhysicalExerci
         TextView ratingTxt;
         // endregion
 
-
-        public holder(@NonNull View itemView) {
-            super(itemView);
-            ButterKnife.bind(this, itemView);
-        }
+        public holder(@NonNull View itemView) { super(itemView); ButterKnife.bind(this, itemView); }
     }
 }
 

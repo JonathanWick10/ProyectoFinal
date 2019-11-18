@@ -93,8 +93,6 @@ public class Memorama extends Fragment {
     private boolean clickAllElemets = true;
     private Memoramai memoramai;
     private long tInicio;
-    private long fJuego;
-    private long diferencia;
     // 12.5 por pareja encontrada
     // 100 al responder todas las preguntas sin equivocarse
     private double calificacion = 0;
@@ -346,8 +344,8 @@ public class Memorama extends Fragment {
                 memoramai.reloadGame("Memorama");
             }
         });
-        fJuego = System.currentTimeMillis();
-        diferencia = tInicio - fJuego;
+        long fJuego = System.currentTimeMillis();
+        final String diferencia = Long.toString((fJuego - tInicio) / 1000);
 
         final String score = (Double.parseDouble(puntuacion.toString()) <= 0) ? "0" : puntuacion.toString();
 
@@ -362,15 +360,18 @@ public class Memorama extends Fragment {
                     if (patiet.getGameMemoramaScore() == null) {
                         //esta vacia crea una nueva lista.
                         List<String> list = new ArrayList<>();
+                        list.add(diferencia);
                         list.add(score);
                         //agrega puntiacion
                         patiet.setGameMemoramaScore(list);
                     } else {
                         //ya existe lista, obtiene la actual y agrega nuevo
                         List<String> list = patiet.getGameMemoramaScore();
+                        list.add(diferencia);
                         list.add(score);
                         patiet.setGameMemoramaScore(list);
                     }
+
 
                     //guardar nuevos datos
                     db.collection(Constants.Patients).document(firebaseAuth.getUid()).set(patiet);

@@ -30,7 +30,6 @@ public class Games extends AppCompatActivity  implements Memorama.Memoramai{
     public LinearLayout progresCont;
     @BindView(R.id.progressBar_init)
     public ProgressBar progressBar;
-
     //endregion
     @Override
     protected void onCreate(Bundle savedInstanceState) {
