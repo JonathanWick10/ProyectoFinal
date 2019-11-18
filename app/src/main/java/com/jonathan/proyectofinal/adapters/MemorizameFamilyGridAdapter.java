@@ -11,12 +11,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.data.Memorizame;
 
 import java.util.List;
 
-public class MemorizameFamilyGridAdapter extends RecyclerView.Adapter<MemorizameFamilyGridAdapter.MemorizameFamilyGridViewHolder> {
+public class MemorizameFamilyGridAdapter extends FirestoreRecyclerAdapter<Memorizame,MemorizameFamilyGridAdapter.MemorizameFamilyGridViewHolder> {
 
     //region Variables
     List<Memorizame> memorizameList;
@@ -26,8 +29,8 @@ public class MemorizameFamilyGridAdapter extends RecyclerView.Adapter<Memorizame
     //endregion
 
 
-    public MemorizameFamilyGridAdapter(List<Memorizame> memorizameList, Context context, ISelectionMemorizame iSelectionMemorizame, IDeleteMemorizame iDeleteMemorizame) {
-        this.memorizameList = memorizameList;
+    public MemorizameFamilyGridAdapter(@NonNull FirestoreRecyclerOptions<Memorizame> options, Context context, ISelectionMemorizame iSelectionMemorizame, IDeleteMemorizame iDeleteMemorizame) {
+        super(options);
         this.context = context;
         this.iSelectionMemorizame = iSelectionMemorizame;
         this.iDeleteMemorizame = iDeleteMemorizame;
@@ -42,31 +45,30 @@ public class MemorizameFamilyGridAdapter extends RecyclerView.Adapter<Memorizame
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MemorizameFamilyGridViewHolder holder, final int position) {
+    protected void onBindViewHolder(@NonNull MemorizameFamilyGridViewHolder holder, int position, @NonNull Memorizame model) {
         //set data
-        holder.setData(memorizameList.get(position));
+
+        //Get the position of the professional inside the adapter
+        final DocumentSnapshot memorizameDocument = getSnapshots().getSnapshot(holder.getAdapterPosition());
+
+
+        holder.setData(memorizameDocument.toObject(Memorizame.class));
         //events onclick
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                iSelectionMemorizame.clickItem(memorizameList.get(position));
+                iSelectionMemorizame.clickItem(memorizameDocument.toObject(Memorizame.class));
             }
         });
 
         holder.imageDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                iDeleteMemorizame.clickdelete(memorizameList.get(position));
+                iDeleteMemorizame.clickdelete(memorizameDocument.toObject(Memorizame.class));
             }
         });
-
-
     }
 
-    @Override
-    public int getItemCount() {
-        return memorizameList.size();
-    }
     //endregion
 
 

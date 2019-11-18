@@ -14,12 +14,14 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.jonathan.proyectofinal.R;
@@ -69,56 +71,26 @@ public class MemorizameFamilyFragmentGrid extends Fragment {
 
         progressDialog = new ProgressDialog(getActivity());
 
-
-        initAdapter();
         initRecyclerView();
 
         return view;
     }
-    private void initAdapter() {
-
-        if (adapter == null){
-         //   adapter = new MemorizameFamilyFragmentGrid(getActivity().getApplicationContext(), this);
-        }
-
-
-    }
 
     private void initRecyclerView() {
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        /*recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),3));//cambiar numero de columnas
-
-        String uid = user.getUid();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        CollectionReference collectionReferenceMemorizame = db.collection(Constants.Memorizame);
+        //Query creation
+        Query query = db.collection(Constants.Memorizame).document(patient.getPatientUID()).collection(categoria);
+        //Crea las opciones del FirestoreRecyclerOptions
+        FirestoreRecyclerOptions<Memorizame> firestoreRecyclerOptions = new FirestoreRecyclerOptions.Builder<Memorizame>()
+                .setQuery(query, Memorizame.class).build();
 
-        collectionReferenceMemorizame
-                .whereArrayContains("assigns", uid)
-                .orderBy("firstName")
-                .get()
-                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        memorizameList = new ArrayList<Memorizame>();
-                        for (QueryDocumentSnapshot documentSnapshopt :
-                                queryDocumentSnapshots) {
-                            memorizameM = documentSnapshopt.toObject(Memorizame.class);
-                            memorizameList.add(memorizameM);
-                        }
-                        adapter = new MemorizameFamilyGridAdapter(memorizameList,getActivity(),iSelectionMemorizame,iDeleteMemorizame);
-                        recyclerView.setAdapter(adapter);
-                        recyclerView.setHasFixedSize(true);
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.d("Message", e.toString());
-                    }
-                });
-
-
+        //Passing parameters to the adapter
+        adapter = new MemorizameFamilyGridAdapter(firestoreRecyclerOptions, getActivity(),iSelectionMemorizame,iDeleteMemorizame);
+        adapter.notifyDataSetChanged();
+        recyclerView.setAdapter(adapter);*/
     }
 
 

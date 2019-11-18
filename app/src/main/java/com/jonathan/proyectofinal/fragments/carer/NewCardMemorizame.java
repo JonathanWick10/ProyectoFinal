@@ -79,7 +79,8 @@ public class NewCardMemorizame extends Fragment {
 
     Context context;
 
-
+    @BindView(R.id.tv_title_question)
+    TextView txtTitle;
     @BindView(R.id.edit_question)
     TextInputEditText questionPatient;
     @BindView(R.id.edit_answer1)
@@ -95,6 +96,8 @@ public class NewCardMemorizame extends Fragment {
     @BindView(R.id.profile_image)
     CircleImageView addImage;
     Bundle args = new Bundle();
+
+    String categoria="";
 
 
 
@@ -123,6 +126,32 @@ public class NewCardMemorizame extends Fragment {
         //verifiFieds();
         ButterKnife.bind(this, view);
         dropdownMenu(view);
+
+        //region for flags
+        HealthProfessionalActivity healthProfessionalActivity = new HealthProfessionalActivity();
+
+        healthProfessionalActivity=(HealthProfessionalActivity)getActivity();
+        int h=healthProfessionalActivity.flagActivity;
+        switch (h){
+            case 1:
+                categoria="Family";
+                txtTitle.setText("Agregar pregunta de familia");
+                break;
+            case 2:
+                categoria="Pets";
+                txtTitle.setText("Agregar pregunta de mascotas");
+                break;
+            case 3:
+                categoria="Home";
+                txtTitle.setText("Agregar pregunta de hogar");
+                break;
+            case 4:
+                categoria="Places";
+                txtTitle.setText("Agregar pregunta de lugar");
+                break;
+
+        }
+        //endregion
 
 
         btnSave.setOnClickListener(new View.OnClickListener() {
@@ -190,7 +219,6 @@ public class NewCardMemorizame extends Fragment {
         healthProfessionalActivity=(HealthProfessionalActivity)getActivity();
         int h=healthProfessionalActivity.flagActivity;
         Toast.makeText(getActivity(), "Memorizame"+h, Toast.LENGTH_SHORT).show();
-        String categoria="";
         switch (h){
             case 1:
                 categoria="Family";
@@ -209,6 +237,8 @@ public class NewCardMemorizame extends Fragment {
         //endregion
 
         //region for logic save
+
+
 
         final String categoria2= categoria;
 
@@ -230,13 +260,11 @@ public class NewCardMemorizame extends Fragment {
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
-                                            Toast.makeText(getActivity(), "Tarjeta Memorizame guardada exitosamente", Toast.LENGTH_SHORT).show();
                                         }
                                     });
                         }
                     });
-
-
+            Toast.makeText(getActivity(), "Tarjeta Memorizame guardada exitosamente", Toast.LENGTH_SHORT).show();
 
         }
         //endregion
@@ -293,6 +321,7 @@ public class NewCardMemorizame extends Fragment {
             builder.setNeutralButton(R.string.no, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
+                    translation();
                     dialog.dismiss();
                 }
             });
@@ -300,6 +329,7 @@ public class NewCardMemorizame extends Fragment {
             builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
+
                     dialog.dismiss();
                 }
             });
@@ -337,10 +367,21 @@ public class NewCardMemorizame extends Fragment {
             memorizame.setAnswer2(answer2);
             memorizame.setAnswer3(answer3);
             memorizame.setAnswer4(answer4);
-            memorizame.setCorrectAnswer(correct);
             memorizame.setPatientUID(patientUID);
-
-
+            switch (correct){
+                case "1":
+                    memorizame.setCorrectAnswer(answer1);
+                    break;
+                case "2":
+                    memorizame.setCorrectAnswer(answer2);
+                    break;
+                case "3":
+                    memorizame.setCorrectAnswer(answer3);
+                    break;
+                case "4":
+                    memorizame.setCorrectAnswer(answer4);
+                    break;
+            }
 
              return flag = true;
         } else {

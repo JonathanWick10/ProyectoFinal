@@ -138,6 +138,9 @@
     <string name="menu_notifications">Notifications</string>
     <string name="menu_profile">Profile</string>
     <string name="btn_logout">Logout</string>
+    <string name="add_event_carer">Add event</string>
+    <string name="view_event_carer">View event</string>
+    <string name="cancel_event_carer">Cancel event</string>
 
     <!-- Information general and Specific -->
 

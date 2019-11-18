@@ -100,16 +100,13 @@ public class TherapyPSFragment extends Fragment {
             switch (position){
                 case 0:
                     text1 = getString(R.string.cognitive);
-                    iMainHealthProfessional.inflateFragment(getString(R.string.cognitive));
                     return text1;
                 case 1:
                     text2 = getString(R.string.motor);
-                    iMainHealthProfessional.inflateFragment(getString(R.string.motor));
                     return text2;
 
                 case 2:
                     text3=getString(R.string.menu_memorizame);
-                    iMainHealthProfessional.inflateFragment(getString(R.string.menu_memorizame));
                     return text3;
 
             }
