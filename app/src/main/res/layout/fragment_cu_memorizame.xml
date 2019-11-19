@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragmentHomeHP"
     android:layout_width="match_parent"
@@ -7,111 +8,114 @@
     android:orientation="vertical"
     tools:context=".fragments.carer.MemorizameFragment">
 
-    <LinearLayout
+    <ScrollView
+        android:id="@+id/contanedor_cartas_m"
+        android:layout_centerInParent="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:visibility="visible"
+        android:layout_height="wrap_content">
 
-        <GridLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:alignmentMode="alignMargins"
-            android:columnCount="2"
-            android:columnOrderPreserved="false"
-            android:rowCount="2">
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cv_family"
-                style="@style/StyleCardView"
-                android:layout_width="0dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <GridLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_rowWeight="1"
-                android:layout_columnWeight="1">
+                android:alignmentMode="alignMargins"
+                android:columnCount="2"
+                android:columnOrderPreserved="false"
+                android:rowCount="2">
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/oneHundredNinetyFour"
-                    android:src="@drawable/img_family"
-                    android:scaleType="centerCrop"/>
-
-                <TextView
-                    style="@style/StyleSubsCardView"
-                    android:layout_width="match_parent"
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cv_family"
+                    style="@style/StyleCardView"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/tab_family_questions"/>
-            </com.google.android.material.card.MaterialCardView>
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/oneHundredNinetyFour"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/img_family" />
+
+                    <TextView
+                        style="@style/StyleSubsCardView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tab_family_questions" />
+                </com.google.android.material.card.MaterialCardView>
 
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cv_home"
-                style="@style/StyleCardView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_rowWeight="1"
-                android:layout_columnWeight="1">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/oneHundredNinetyFour"
-                    android:src="@drawable/img_home"
-                    android:scaleType="centerCrop"/>
-
-                <TextView
-                    style="@style/StyleSubsCardView"
-                    android:layout_width="match_parent"
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cv_home"
+                    style="@style/StyleCardView"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/tab_home_questions"/>
-            </com.google.android.material.card.MaterialCardView>
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1">
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cv_places"
-                style="@style/StyleCardView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_rowWeight="1"
-                android:layout_columnWeight="1">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/oneHundredNinetyFour"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/img_home" />
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/oneHundredNinetyFour"
-                    android:src="@drawable/img_places"
-                    android:scaleType="centerCrop"/>
+                    <TextView
+                        style="@style/StyleSubsCardView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tab_home_questions" />
+                </com.google.android.material.card.MaterialCardView>
 
-                <TextView
-                    style="@style/StyleSubsCardView"
-                    android:layout_width="match_parent"
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cv_places"
+                    style="@style/StyleCardView"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/tab_places_questions"/>
-            </com.google.android.material.card.MaterialCardView>
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1">
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cv_pets"
-                style="@style/StyleCardView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_rowWeight="1"
-                android:layout_columnWeight="1">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/oneHundredNinetyFour"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/img_places" />
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/oneHundredNinetyFour"
-                    android:src="@drawable/img_pets"
-                    android:scaleType="centerCrop"/>
+                    <TextView
+                        style="@style/StyleSubsCardView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tab_places_questions" />
+                </com.google.android.material.card.MaterialCardView>
 
-                <TextView
-                    style="@style/StyleSubsCardView"
-                    android:layout_width="match_parent"
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cv_pets"
+                    style="@style/StyleCardView"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/tab_pets_questions"/>
-            </com.google.android.material.card.MaterialCardView>
-        </GridLayout>
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1">
 
-    </LinearLayout>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/oneHundredNinetyFour"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/img_pets" />
 
-    <FrameLayout
-        android:id="@+id/containerMemorizame"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:elevation="30dp"></FrameLayout>
+                    <TextView
+                        style="@style/StyleSubsCardView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tab_pets_questions" />
+                </com.google.android.material.card.MaterialCardView>
+            </GridLayout>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

@@ -61,7 +61,6 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
     Fragment change = null;
     Fragment contentLayout = null;
     FragmentTransaction transaction;
-    public int flagActivity=0;
     //  String patientUID = "";
     String patientIdentification = "", patientUID = "";
     @BindView(R.id.second_drawer_layout_hp)
@@ -77,11 +76,8 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
     FirebaseFirestore db;
     HealthcareProfessional hp = new HealthcareProfessional();
     Carer carer = new Carer();
-    boolean session;
+    boolean sesion;
 
-    public void setFlag(int flag){
-        flagActivity=flag;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,7 +114,7 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
                             hp = documentSnapshot.toObject(HealthcareProfessional.class);
                             name_user.setText(hp.getFirstName()+" "+hp.getLastName());
                             email_user.setText(hp.getEmail());
-                            session = false;
+                            sesion = false;
                             Glide.with(HealthProfessionalActivity.this).load(hp.getUriImg()).fitCenter().into(image_user);
                         }
                     }
@@ -131,7 +127,7 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
                             carer = documentSnapshot.toObject(Carer.class);
                             name_user.setText(carer.getFirstName()+" "+carer.getLastName());
                             email_user.setText(carer.getEmail());
-                            session = true;
+                            sesion = true;
                             Glide.with(HealthProfessionalActivity.this).load(carer.getUriImg()).fitCenter().into(image_user);
                         }
                     }
@@ -188,47 +184,6 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
             change.setArguments(args);
             transaction.replace(R.id.info_patient,change).commit();
         }
-        else if(fragmentTag.equals(getString(R.string.tab_family_questions))){
-            change = new MemorizameFamilyFragment();
-            change.setArguments(args);
-            setFlag(1);
-            transaction.replace(R.id.fragmentHomeHP,change).addToBackStack(null).commit();
-        }
-        else if(fragmentTag.equals(getString(R.string.tab_pets_questions))){
-            change = new MemorizameFamilyFragment();
-            change.setArguments(args);
-            setFlag(2);
-            transaction.replace(R.id.fragmentHomeHP,change).addToBackStack(null).commit();
-        }
-        else if(fragmentTag.equals(getString(R.string.tab_home_questions))){
-            change = new MemorizameFamilyFragment();
-            change.setArguments(args);
-            setFlag(3);
-            transaction.replace(R.id.fragmentHomeHP,change).addToBackStack(null).commit();
-        }
-        else if(fragmentTag.equals(getString(R.string.tab_places_questions))){
-            change = new MemorizameFamilyFragment();
-            change.setArguments(args);
-            setFlag(4);
-            transaction.replace(R.id.fragmentHomeHP,change).addToBackStack(null).commit();
-        }
-        else if(fragmentTag.equals(getString(R.string.family_questions_img))){
-            change = new NewCardMemorizame();
-            change.setArguments(args);
-            transaction.replace(R.id.containerMemorizame,change).addToBackStack(null).commit();
-        }
-        else if(fragmentTag.equals("memorizamepru")){
-            change = new MemorizameFragment();
-            transaction.replace(R.id.containerPageTherapyPS,change).commit();
-        }
-        else if(fragmentTag.equals("memorizamee")){
-            change = new NewCardMemorizame();
-            transaction.replace(R.id.containerMemorizame,change).addToBackStack(null).commit();
-        }
-        else if(fragmentTag.equals("notification")){
-            change = new NotificationPSFragment();
-            change.setArguments(args);
-        }
     }
 
     @Override
@@ -240,7 +195,7 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
                 navigation.putExtra("option", "profile");
                 navigation.putExtra("user_uid", hp.getHpUID());
                 navigation.putExtra("user_role", hp.getRole());
-                if (session == true) {
+                if (sesion == true) {
                     navigation.putExtra("user_uid", carer.getCarerUId());
                     navigation.putExtra("user_role", carer.getRole());
                 }

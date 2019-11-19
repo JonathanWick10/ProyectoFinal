@@ -25,15 +25,13 @@ public class MemorizameFamilyGridAdapter extends FirestoreRecyclerAdapter<Memori
     List<Memorizame> memorizameList;
     Context context;
     MemorizameFamilyGridAdapter.ISelectionMemorizame iSelectionMemorizame;
-    MemorizameFamilyGridAdapter.IDeleteMemorizame iDeleteMemorizame;
     //endregion
 
 
-    public MemorizameFamilyGridAdapter(@NonNull FirestoreRecyclerOptions<Memorizame> options, Context context, ISelectionMemorizame iSelectionMemorizame, IDeleteMemorizame iDeleteMemorizame) {
+    public MemorizameFamilyGridAdapter(@NonNull FirestoreRecyclerOptions<Memorizame> options, Context context, ISelectionMemorizame iSelectionMemorizame) {
         super(options);
         this.context = context;
         this.iSelectionMemorizame = iSelectionMemorizame;
-        this.iDeleteMemorizame = iDeleteMemorizame;
     }
 
     //region Overwritten methods of RecyclerView
@@ -64,7 +62,7 @@ public class MemorizameFamilyGridAdapter extends FirestoreRecyclerAdapter<Memori
         holder.imageDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                iDeleteMemorizame.clickdelete(memorizameDocument.toObject(Memorizame.class));
+                iSelectionMemorizame.clickdelete(memorizameDocument.toObject(Memorizame.class));
             }
         });
     }
@@ -104,9 +102,6 @@ public class MemorizameFamilyGridAdapter extends FirestoreRecyclerAdapter<Memori
     //region Interfaces
     public interface ISelectionMemorizame {
         void clickItem(Memorizame memorizame);
-    }
-
-    public interface IDeleteMemorizame {
         void clickdelete(Memorizame memorizame);
     }
     //endregion

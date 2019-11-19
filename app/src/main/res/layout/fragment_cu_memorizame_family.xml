@@ -26,6 +26,7 @@
             android:drawSelectorOnTop="false"
             tools:context=".fragments.carer.MemorizameFamilyFragmentGrid"
             android:background="@color/white"
+            android:layout_above="@id/cv_add_image"
             tools:listitem="@layout/listview_memorizame"
             />
         <com.google.android.material.card.MaterialCardView

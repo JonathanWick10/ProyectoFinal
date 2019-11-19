@@ -9,16 +9,12 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -57,12 +53,17 @@ import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class NewCardMemorizame extends Fragment {
-    public NewCardMemorizame(){}
+
+    private int flagInt;
+
+    public NewCardMemorizame(int flagInt) {
+        this.flagInt = flagInt;
+    }
 
 
-    String patientUID, patientUID_2, question,answer1,answer2,answer3,answer4;
+    String patientUID, patientUID_2, question, answer1, answer2, answer3, answer4;
     int correctAnswer;
-    Memorizame memorizame= new Memorizame();
+    Memorizame memorizame = new Memorizame();
     boolean flag = false;
 
     FirebaseAuth firebaseAuth;
@@ -97,8 +98,7 @@ public class NewCardMemorizame extends Fragment {
     CircleImageView addImage;
     Bundle args = new Bundle();
 
-    String categoria="";
-
+    String categoria = "";
 
 
     @BindView(R.id.button_create_memorizame)
@@ -107,15 +107,15 @@ public class NewCardMemorizame extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view= inflater.inflate(R.layout.new_card_memorizame,container,false);
+        View view = inflater.inflate(R.layout.new_card_memorizame, container, false);
 
         Bundle bundle = getArguments();
-        if (bundle!=null){
+        if (bundle != null) {
             patient = (Patient) bundle.getSerializable("patient");
         }
 
 
-        context=container.getContext();
+        context = container.getContext();
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
@@ -128,25 +128,22 @@ public class NewCardMemorizame extends Fragment {
         dropdownMenu(view);
 
         //region for flags
-        HealthProfessionalActivity healthProfessionalActivity = new HealthProfessionalActivity();
 
-        healthProfessionalActivity=(HealthProfessionalActivity)getActivity();
-        int h=healthProfessionalActivity.flagActivity;
-        switch (h){
+        switch (flagInt) {
             case 1:
-                categoria="Family";
+                categoria = "Family";
                 txtTitle.setText("Agregar pregunta de familia");
                 break;
             case 2:
-                categoria="Pets";
+                categoria = "Pets";
                 txtTitle.setText("Agregar pregunta de mascotas");
                 break;
             case 3:
-                categoria="Home";
+                categoria = "Home";
                 txtTitle.setText("Agregar pregunta de hogar");
                 break;
             case 4:
-                categoria="Places";
+                categoria = "Places";
                 txtTitle.setText("Agregar pregunta de lugar");
                 break;
 
@@ -160,15 +157,14 @@ public class NewCardMemorizame extends Fragment {
                 boolean flag2 = setPojoMemorizame();
 
                 //Log.d("Save Memorizame","flag:"+flag2);
-                if (flag2){
+                if (flag2) {
 
-                    String option= "option";
+                    String option = "option";
                     saveMemorizame();
                     Alert(option);
-                }
-                else {
+                } else {
 
-                     }
+                }
             }
         });
 
@@ -177,9 +173,9 @@ public class NewCardMemorizame extends Fragment {
     }
 
     private void dropdownMenu(View view) {
-        String[] correctAnswerArray ={"1","2","3","4"};
-        ArrayAdapter<String> arrayAdapter= new ArrayAdapter<>(getActivity(),
-                R.layout.dropdown_menu_popup_item,correctAnswerArray);
+        String[] correctAnswerArray = {"1", "2", "3", "4"};
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getActivity(),
+                R.layout.dropdown_menu_popup_item, correctAnswerArray);
         correctAnswerPatient.setAdapter(arrayAdapter);
 
     }
@@ -187,13 +183,13 @@ public class NewCardMemorizame extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-     if (requestCode == REQUEST_CODE2 && resultCode == Activity.RESULT_OK){
-        uriImage = data.getData();
-        if (uriImage != null ){
-            Glide.with(getActivity()).load(uriImage).fitCenter().into(addImage);
+        if (requestCode == REQUEST_CODE2 && resultCode == Activity.RESULT_OK) {
+            uriImage = data.getData();
+            if (uriImage != null) {
+                Glide.with(getActivity()).load(uriImage).fitCenter().into(addImage);
+            }
+            //profileImage.setImageURI(uriImage);
         }
-        //profileImage.setImageURI(uriImage);
-    }
     }
 
     private void logicImageProfile() {
@@ -205,32 +201,25 @@ public class NewCardMemorizame extends Fragment {
                 // Accept all kinds of images
                 intent.setType("image/*");
                 //If you have several types of viewers, it will ask which one to start with
-                startActivityForResult(intent.createChooser(intent,getResources().getString(R.string.select_photo)),REQUEST_CODE2);
+                startActivityForResult(intent.createChooser(intent, getResources().getString(R.string.select_photo)), REQUEST_CODE2);
             }
         });
     }
 
-    public void saveMemorizame(){
+    public void saveMemorizame() {
 
-
-//region for flags
-        HealthProfessionalActivity healthProfessionalActivity = new HealthProfessionalActivity();
-
-        healthProfessionalActivity=(HealthProfessionalActivity)getActivity();
-        int h=healthProfessionalActivity.flagActivity;
-        Toast.makeText(getActivity(), "Memorizame"+h, Toast.LENGTH_SHORT).show();
-        switch (h){
+        switch (flagInt) {
             case 1:
-                categoria="Family";
+                categoria = "Family";
                 break;
             case 2:
-                categoria="Pets";
+                categoria = "Pets";
                 break;
             case 3:
-                categoria="Home";
+                categoria = "Home";
                 break;
             case 4:
-                categoria="Places";
+                categoria = "Places";
                 break;
 
         }
@@ -239,21 +228,20 @@ public class NewCardMemorizame extends Fragment {
         //region for logic save
 
 
+        final String categoria2 = categoria;
 
-        final String categoria2= categoria;
-
-        if (uriImage!= null){
+        if (uriImage != null) {
             final String uuidGenerated = createTransactionID();
             memorizame.setUuidGenerated(uuidGenerated);
 
-            final StorageReference imgRef= storageReference.child(categoria+"/"+uuidGenerated+".jpg");
+            final StorageReference imgRef = storageReference.child(categoria + "/" + uuidGenerated + ".jpg");
             imgRef.putFile(uriImage)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
-                            while (!uri.isComplete());
-                            Uri url= uri.getResult();
+                            while (!uri.isComplete()) ;
+                            Uri url = uri.getResult();
                             memorizame.setUriImg(url.toString());
                             db.collection(Constants.Memorizame).document(patient.getPatientUID())
                                     .collection(categoria2).document(uuidGenerated).set(memorizame)
@@ -269,14 +257,15 @@ public class NewCardMemorizame extends Fragment {
         }
         //endregion
     }
-    public String createTransactionID(){
+
+    public String createTransactionID() {
         return UUID.randomUUID().toString().replaceAll("-", "").toUpperCase();
     }
 
     public void Alert(String option) {
 
         final AlertDialog alertDialog;
-        final AlertDialog.Builder builder = new AlertDialog.Builder(context,R.style.BackgroundRounded);
+        final AlertDialog.Builder builder = new AlertDialog.Builder(context, R.style.BackgroundRounded);
 
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             // only for Lollipop and newer versions
@@ -284,9 +273,9 @@ public class NewCardMemorizame extends Fragment {
                 LayoutInflater inflater = this.getLayoutInflater();
                 View dialogView = inflater.inflate(R.layout.dialog_one_textview_two_buttons, null);
                 builder.setView(dialogView);
-                alertDialog=builder.create();
+                alertDialog = builder.create();
 
-                Button btn1=(Button)dialogView.findViewById(R.id.btn1);
+                Button btn1 = (Button) dialogView.findViewById(R.id.btn1);
                 btn1.setText(R.string.no);
                 btn1.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -296,7 +285,7 @@ public class NewCardMemorizame extends Fragment {
                         alertDialog.dismiss();
                     }
                 });
-                Button btn2=(Button)dialogView.findViewById(R.id.btn2);
+                Button btn2 = (Button) dialogView.findViewById(R.id.btn2);
                 btn2.setText(R.string.yes);
                 btn2.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -305,19 +294,15 @@ public class NewCardMemorizame extends Fragment {
                         alertDialog.dismiss();
                     }
                 });
-                TextView tvInformation=dialogView.findViewById(R.id.textView);
+                TextView tvInformation = dialogView.findViewById(R.id.textView);
                 tvInformation.setText(R.string.ask_dialog_memorizame);
                 alertDialog.show();
-
-
 
 
             } catch (Resources.NotFoundException e) {
                 e.printStackTrace();
             }
-        }
-
-        else{
+        } else {
             builder.setNeutralButton(R.string.no, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
@@ -338,10 +323,10 @@ public class NewCardMemorizame extends Fragment {
 
         }
 
-        switch (option){
-            case "eliminar": break;
+        switch (option) {
+            case "eliminar":
+                break;
         }
-
 
 
     }
@@ -350,17 +335,17 @@ public class NewCardMemorizame extends Fragment {
         iMainHealthProfessional.inflateFragment("memorizamepru");
     }
 
-    private boolean setPojoMemorizame(){
+    private boolean setPojoMemorizame() {
         //   patientUID_2=patientUID.get;
         question = questionPatient.getText().toString();
         answer1 = answer1Patient.getText().toString();
         answer2 = answer2Patient.getText().toString();
         answer3 = answer3Patient.getText().toString();
-        answer4=answer4Patient.getText().toString();
+        answer4 = answer4Patient.getText().toString();
         String correct = correctAnswerPatient.getText().toString();
 
         if (!question.isEmpty() && !answer1.isEmpty() && !answer2.isEmpty() && !answer3.isEmpty() &&
-                !answer4.isEmpty() && !correct.isEmpty() && uriImage!=null) {
+                !answer4.isEmpty() && !correct.isEmpty() && uriImage != null) {
 
             memorizame.setQuestion(question);
             memorizame.setAnswer1(answer1);
@@ -368,7 +353,7 @@ public class NewCardMemorizame extends Fragment {
             memorizame.setAnswer3(answer3);
             memorizame.setAnswer4(answer4);
             memorizame.setPatientUID(patientUID);
-            switch (correct){
+            switch (correct) {
                 case "1":
                     memorizame.setCorrectAnswer(answer1);
                     break;
@@ -383,17 +368,16 @@ public class NewCardMemorizame extends Fragment {
                     break;
             }
 
-             return flag = true;
+            return flag = true;
         } else {
-            if (uriImage==null){
+            if (uriImage == null) {
                 Toast.makeText(getActivity(), "Agregue imagen", Toast.LENGTH_SHORT).show();
 
-            }
-            else {
+            } else {
                 Toast.makeText(context, getResources().getString(R.string.complete_field_please), Toast.LENGTH_SHORT).show();
 
             }
-             return flag = false;
+            return flag = false;
 
 
         }

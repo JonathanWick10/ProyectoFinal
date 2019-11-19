@@ -69,17 +69,13 @@ public class MemorizamePFragment extends Fragment {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    FamilyChildFragment familyChildFragment = new FamilyChildFragment();
-                    return familyChildFragment;
+                    return new FamilyChildFragment();
                 case 1:
-                    HomeChildFragment homeChildFragment = new HomeChildFragment();
-                    return homeChildFragment;
+                    return new HomeChildFragment();
                 case 2:
-                    PlacesChildFragment placesChildFragment = new PlacesChildFragment();
-                    return placesChildFragment;
+                    return new PlacesChildFragment();
                 case 3:
-                    PetsChildFragment petsChildFragment = new PetsChildFragment();
-                    return petsChildFragment;
+                    return new PetsChildFragment();
             }
             return null;
         }
@@ -94,17 +90,13 @@ public class MemorizamePFragment extends Fragment {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    String tab1 = getString(R.string.tab_family_questions);
-                    return tab1;
+                    return getString(R.string.tab_family_questions);
                 case 1:
-                    String tab2 = getString(R.string.tab_home_questions);
-                    return tab2;
+                    return getString(R.string.tab_home_questions);
                 case 2:
-                    String tab3 = getString(R.string.tab_places_questions);
-                    return tab3;
+                    return getString(R.string.tab_places_questions);
                 case 3:
-                    String tab4 = getString(R.string.tab_pets_questions);
-                    return tab4;
+                    return getString(R.string.tab_pets_questions);
             }
             return null;
         }

@@ -46,7 +46,6 @@ public class MemorizameFamilyFragmentGrid extends Fragment {
 
     private MemorizameFamilyGridAdapter adapter;
     private MemorizameFamilyGridAdapter.ISelectionMemorizame iSelectionMemorizame;
-    private MemorizameFamilyGridAdapter.IDeleteMemorizame iDeleteMemorizame;
 
     FirebaseFirestore db;
     FirebaseAuth firebaseAuth;

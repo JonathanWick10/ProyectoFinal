@@ -50,6 +50,7 @@ public class TherapyPSFragment extends Fragment {
         tabs = view.findViewById(R.id.ps_tabs_therapy);
         viewPager = view.findViewById(R.id.containerPageTherapyPS);
         TherapyPSFragment fragment = new TherapyPSFragment();
+        fragment.setArguments(args);
         SetUpViewPager(viewPager, tabs, fragment);
         return view;
     }
@@ -58,6 +59,7 @@ public class TherapyPSFragment extends Fragment {
 
         if (fragment != null) {
             adapter = new Adapter(getChildFragmentManager());
+            adapter.setArgs(args);
             tabs.setupWithViewPager(viewPager);
             viewPager.setAdapter(adapter);
             tabs.getTabAt(0).setIcon(R.drawable.ic_lightbulb_outline_black);
@@ -69,26 +71,28 @@ public class TherapyPSFragment extends Fragment {
 
     public class Adapter extends FragmentPagerAdapter {
 
+        private Bundle args;
+
         public Adapter(FragmentManager fm) {
             super(fm);
         }
-
+        public void setArgs(Bundle args){
+            this.args = args;
+        }
 
         @Override
         public Fragment getItem(int position) {
 
             switch (position) {
                 case 0:
-                    CognitiveTherapyPSFragment cognitiveTherapyPSFragment = new CognitiveTherapyPSFragment();
-                    return cognitiveTherapyPSFragment;
+                    return new CognitiveTherapyPSFragment();
                 case 1:
-                    MotorTherapyPSFragment motorTherapyPSFragment = new MotorTherapyPSFragment();
-                    return motorTherapyPSFragment;
+                    return new MotorTherapyPSFragment();
 
                 case 2:
-                    MemorizameFragment memorizameFragment = new MemorizameFragment();
-                    memorizameFragment.setArguments(args);
-                    return memorizameFragment;
+                    MemorizameParent memorizameParent = new MemorizameParent();
+                    memorizameParent.setArguments(this.args);
+                    return memorizameParent;
 
             }
             return null;

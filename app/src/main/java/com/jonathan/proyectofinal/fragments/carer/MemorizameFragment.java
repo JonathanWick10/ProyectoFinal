@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -20,16 +22,14 @@ import com.jonathan.proyectofinal.interfaces.IMainCarer;
 
 public class MemorizameFragment extends Fragment {
     CardView family, pets, home, places;
+    FrameLayout containerMemorizame;
     Patient patientSendFragment = new Patient();
     Bundle args = new Bundle();
 
     private IMainCarer mIMainCarer;
 
-    public MemorizameFragment() {
-    }
-
-    public MemorizameFragment(int contentLayoutId) {
-        super(contentLayoutId);
+    public MemorizameFragment(IMainCarer iMainCarer) {
+        this.mIMainCarer = iMainCarer;
     }
 
     @Nullable
@@ -44,7 +44,6 @@ public class MemorizameFragment extends Fragment {
             Toast.makeText(getActivity(), patientSendFragment.getFirstName(), Toast.LENGTH_SHORT).show();
         }
 
-
         family = view.findViewById(R.id.cv_family);
         pets = view.findViewById(R.id.cv_pets);
         home = view.findViewById(R.id.cv_home);
@@ -53,15 +52,6 @@ public class MemorizameFragment extends Fragment {
         family.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*FragmentManager manager = getChildFragmentManager();
-                final FragmentTransaction transaction = manager.beginTransaction();
-                Fragment change;
-                change = new InformationCarerFragment();
-                //change.setArguments(args);
-                //setFlag(1);
-                transaction.add(R.id.containerMemorizame,change);
-                transaction.addToBackStack(null).commit();*/
-
                 mIMainCarer.inflateFragment(getString(R.string.tab_family_questions));
             }
         });
@@ -87,11 +77,5 @@ public class MemorizameFragment extends Fragment {
         });
 
         return view;
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        mIMainCarer = (IMainCarer) getActivity();
     }
 }

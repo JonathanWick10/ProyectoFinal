@@ -33,7 +33,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:endIconMode="clear_text"
-                app:startIconDrawable="@drawable/ic_face_black"
+                app:startIconDrawable="@drawable/ic_face"
+                app:startIconTint="@color/blue"
                 app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
