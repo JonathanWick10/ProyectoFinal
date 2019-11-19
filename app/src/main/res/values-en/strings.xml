@@ -378,7 +378,7 @@
     <string name="tab_medicaments">Medicaments</string>
     <string name="tab_therapies">Therapies</string>
     <string name="lbl_level">Level:</string>
-    <string name="lbl_progress">Progress:</string>
+    <string name="lbl_best_score">Best score:</string>
     <string name="lbl_statement">Statement:</string>
     <string name="lbl_description">Description:</string>
     <string name="lbl_instructions">Instructions:</string>
@@ -850,6 +850,7 @@
     <string name="no_healthcarer_pro">there are no health carer professionals</string>
     <string name="description_resistance_exercice">They are regular exercises maintained in the intensity time Likewise regular As for example, walking, cycling or swimming, its performance is recommended at least 5 times per week with a duration of about 20 to 60 minutes per session Beginning the exercise progressively</string>
     <string name="no_notifications">There are not notifications</string>
+    <string name="no_cognitive_excercises">There are no cognitive exercises</string>
     <string name="physical_nameExercise_resistence">Resistence or aerobic exercise</string>
     <string name="physical_nameexercise_bodybuilding">Strengthening or bodybuilding exercise</string>
     <string name="description_nameexercise_bodybuilding">Strengthening exercises strengthen and strengthen the muscles, and therefore contribute to maintaining or strengthening autonomy and delaying dependence. They improve the metabolism, helping to maintain the weight and levels of glucose (sugar) and cholesterol in the blood. They prevent osteoporosis, polyarthrosis and falls. </string>

@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
@@ -22,11 +24,20 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.api.Distribution;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.jonathan.proyectofinal.R;
+import com.jonathan.proyectofinal.adapters.CognitiveExcercisesAdapter;
+import com.jonathan.proyectofinal.data.CognitiveExcercisesAssignment;
+import com.jonathan.proyectofinal.data.MedicationAssignment;
 import com.jonathan.proyectofinal.fragments.games.Memorama;
 import com.jonathan.proyectofinal.interfaces.IComunicateFragment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -36,6 +47,7 @@ import butterknife.ButterKnife;
  */
 public class CognitiveChildFragment extends Fragment {
 
+    /*
     @BindView(R.id.expandableView)
     LinearLayout expandableView;
     @BindView(R.id.btnExpand)
@@ -46,10 +58,19 @@ public class CognitiveChildFragment extends Fragment {
     RatingBar ratingBar;
     @BindView(R.id.data_rating)
     TextView ratingTxt;
+    */
+
+    List<CognitiveExcercisesAssignment> list;
+    CognitiveExcercisesAdapter cognitiveExcercisesAdapter;
+
+    @BindView(R.id.list_cognitive_excercises)
+    RecyclerView listCognitiveExcercises;
 
     IComunicateFragment interfaceComunicateFragments;
     View vista;
     Activity activity;
+
+    CognitiveExcercisesAdapter.ISelectionItem iSelectionItem;
 
     /*
     private static final String ARGUMENT_POSITION = "argument_position";
@@ -69,73 +90,59 @@ public class CognitiveChildFragment extends Fragment {
         // Inflate the layout for this fragment
         vista = inflater.inflate(R.layout.fragment_cognitive_child, container, false);
         ButterKnife.bind(this, vista);
+        eventLogicSelectItem();
+        fillRecycler();
         return vista;
-        //return inflater.inflate(R.layout.fragment_cognitive_child, container, false);
 
     }
 
-    private RatingBar.OnRatingBarChangeListener mOnRatingChangeListener = new RatingBar.OnRatingBarChangeListener() {
-        @Override
-        public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
-            switch ((int) ratingBar.getRating()) {
-                case 1:
-                    //ratingTxt.setText("Very bad");
-                    ratingTxt.setText("1");
-                    break;
-                case 2:
-                    //ratingTxt.setText("Need some improvement");
-                    ratingTxt.setText("2");
-                    break;
-                case 3:
-                    //ratingTxt.setText("Good");
-                    ratingTxt.setText("3");
-                    break;
-                case 4:
-                    //ratingTxt.setText("Great");
-                    ratingTxt.setText("4");
-                    break;
-                case 5:
-                    //ratingTxt.setText("Awesome. I love it");
-                    ratingTxt.setText("5");
-                    break;
-                default:
-                    ratingTxt.setText("");
+    private void eventLogicSelectItem() {
+        iSelectionItem = new CognitiveExcercisesAdapter.ISelectionItem() {
+            @Override
+            public void clickSelect() {
+                interfaceComunicateFragments.inicarJuego();
             }
-        }
-    };
+        };
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        cognitiveExcercisesAdapter.startListening();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        cognitiveExcercisesAdapter.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        cognitiveExcercisesAdapter.stopListening();
+    }
 
     @Override
     public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        /*
-        TextView textView = view.findViewById(R.id.tv_dashboard);
-        int position =getArguments().getInt(ARGUMENT_POSITION, -1);
-        textView.setText(position == 0 ? R.string.do_not_stop_believing : R.string.a8);
-        */
-        ratingBar.setOnRatingBarChangeListener(mOnRatingChangeListener);
+    }
 
-        btnExpand.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (expandableView.getVisibility() == View.GONE){
-                    TransitionManager.beginDelayedTransition(cardActivity, new AutoTransition());
-                    expandableView.setVisibility(View.VISIBLE);
-                    btnExpand.setBackgroundResource(R.drawable.ic_keyboard_arrow_up_black);
-                } else {
-                    TransitionManager.beginDelayedTransition(cardActivity, new AutoTransition());
-                    expandableView.setVisibility(View.GONE);
-                    btnExpand.setBackgroundResource(R.drawable.ic_keyboard_arrow_down_black);
-                }
-            }
-        });
+    private void fillRecycler(){
+        listCognitiveExcercises.setLayoutManager(new LinearLayoutManager(getContext()));
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+        //Query creation
+        Query query = db.collection("CognitiveExcercisesAssignments")
+                .whereEqualTo("uidPatient", "nzRl9DrDlTSjxfySnLhWTJgeNEi1");
 
-        cardActivity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                interfaceComunicateFragments.inicarJuego();
-            }
-        });
+        FirestoreRecyclerOptions<CognitiveExcercisesAssignment> firestoreRecyclerOptions = new FirestoreRecyclerOptions.Builder<CognitiveExcercisesAssignment>()
+                .setQuery(query, CognitiveExcercisesAssignment.class).build();
+
+        //Passing parameters to the adapter
+        cognitiveExcercisesAdapter = new CognitiveExcercisesAdapter(firestoreRecyclerOptions, getActivity(), iSelectionItem);
+        cognitiveExcercisesAdapter.notifyDataSetChanged();
+        listCognitiveExcercises.setAdapter(cognitiveExcercisesAdapter);
     }
 
     @Override
