@@ -75,7 +75,9 @@ public class Games extends AppCompatActivity  implements Memorama.Memoramai{
                     ft.commit();
                 }else {
                     int time =  getIntent().getExtras().getInt("Time");
-                    int img = getIntent().getExtras().getInt("Image");
+                    //int img = getIntent().getExtras().getInt("Image");
+                    String img = getIntent().getExtras().getString("Image");
+                    //ft.replace(R.id.contanedor_games, new PhysicalExercisePractic(Games.this, img, time));
                     ft.replace(R.id.contanedor_games, new PhysicalExercisePractic(Games.this, img, time));
                     ft.commit();
                 }

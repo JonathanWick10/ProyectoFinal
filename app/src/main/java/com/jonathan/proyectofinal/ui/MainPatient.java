@@ -37,11 +37,11 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.jonathan.proyectofinal.R;
+import com.jonathan.proyectofinal.data.MotorExcercisesAssignment;
 import com.jonathan.proyectofinal.data.Patient;
-import com.jonathan.proyectofinal.data.PhysicalExerciseEntity;
-import com.jonathan.proyectofinal.fragments.games.PhysicalExecise;
 import com.jonathan.proyectofinal.fragments.patient.HomePFragment;
 import com.jonathan.proyectofinal.fragments.patient.MemorizamePFragment;
+import com.jonathan.proyectofinal.fragments.patient.MotorChildFragment;
 import com.jonathan.proyectofinal.fragments.patient.NotificationsPFragment;
 import com.jonathan.proyectofinal.interfaces.IComunicateFragment;
 import com.jonathan.proyectofinal.tools.Constants;
@@ -54,7 +54,7 @@ import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 import pl.droidsonroids.gif.GifImageView;
 
-public class MainPatient extends AppCompatActivity implements IComunicateFragment, NavigationView.OnNavigationItemSelectedListener, PhysicalExecise.PhysicalExeciseI {
+public class MainPatient extends AppCompatActivity implements IComunicateFragment, NavigationView.OnNavigationItemSelectedListener, /*PhysicalExecise.PhysicalExeciseI*/MotorChildFragment.MotorChildFragmentI {
 
     //region reference
     @BindView(R.id.toolbarPatient)
@@ -143,7 +143,8 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
 
         viewPager = findViewById(R.id.view_pager);
         PatientFragmentPageAdapter adapter = new PatientFragmentPageAdapter(getSupportFragmentManager());
-        adapter.setPhysicalExeciseI(this);
+        //adapter.setPhysicalExeciseI(this);
+        adapter.setMotorChildFragmentI(this);
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(adapter.getCount() - 1);
         navigation = findViewById(R.id.navigation);
@@ -229,6 +230,7 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
         super.onBackPressed();
     }
 
+    /*
     @Override
     public void alert(String option, final PhysicalExerciseEntity listExerciseget) {
 
@@ -315,14 +317,113 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
         }
 
     }
+    */
+
+    @Override
+    public void alert(String option, final MotorExcercisesAssignment listExcercises) {
+        final AlertDialog alertDialog;
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.BackgroundRounded);
+
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            // only for Lollipop and newer versions
+            try {
+                View dialogView = this.getLayoutInflater().inflate(R.layout.plantilla_physicalexersice_info, null);
+                builder.setView(dialogView);
+                alertDialog = builder.create();
+
+                Button btn1 = dialogView.findViewById(R.id.btn1);
+                btn1.setText("Atras");
+                btn1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        alertDialog.dismiss();
+                    }
+                });
+                Button btn2 = dialogView.findViewById(R.id.btn2);
+                btn2.setText("practicar");
+                btn2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        alertDialog.dismiss();
+                        final int time = listExcercises.getTimeExcercise();
+                        final String img = listExcercises.getUriGifExcercise();
+
+                        Intent pasar = new Intent(MainPatient.this, Games.class);
+                        pasar.putExtra("Game", "Physical");
+                        pasar.putExtra("Time", time);
+                        pasar.putExtra("Image", img);
+
+                        startActivity(pasar);
+                    }
+                });
+                // reference
+                TextView tvInformation = dialogView.findViewById(R.id.text_information);
+                GifImageView gift = dialogView.findViewById(R.id.gift);
+
+                // Body alert dialog
+                //gift.setImageResource(listExcercises.getTimeExcercise());
+                Glide.with(this).load(listExcercises.getUriGifExcercise()).fitCenter().into(gift);
+                tvInformation.setText(listExcercises.getLongDescriptionExcercise());
+                //
+                alertDialog.show();
+
+            } catch (Resources.NotFoundException e) {
+                e.printStackTrace();
+            }
+        } else {
+            LayoutInflater inflater = this.getLayoutInflater();
+            View dialogView = inflater.inflate(R.layout.plantilla_physicalexersice_info, null);
+            builder.setView(dialogView);
+            alertDialog = builder.create();
+
+            builder.setNeutralButton("atras", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+
+                }
+            });
+
+            builder.setPositiveButton("Jugar", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                    alertDialog.dismiss();
+                    Intent pasar = new Intent(MainPatient.this, Games.class);
+                    pasar.putExtra("Game", "Physical");
+                    startActivity(pasar);
+                }
+            });
+            builder.setCancelable(false);
+            builder.show();
+
+        }
+
+        switch (option) {
+            case "eliminar":
+                break;
+        }
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
+    }
 
     private static class PatientFragmentPageAdapter extends FragmentPagerAdapter {
 
+        //PhysicalExecise.PhysicalExeciseI physicalExeciseI;
+        MotorChildFragment.MotorChildFragmentI motorChildFragmentI;
 
-        PhysicalExecise.PhysicalExeciseI physicalExeciseI;
-
+        /*
         public void setPhysicalExeciseI(PhysicalExecise.PhysicalExeciseI physicalExeciseI) {
-            this.physicalExeciseI = physicalExeciseI;
+            //this.physicalExeciseI = physicalExeciseI;
+            this.motorChildFragmentI = motorChildFragmentI;
+        }
+        */
+
+        public void setMotorChildFragmentI(MotorChildFragment.MotorChildFragmentI motorChildFragmentI) {
+            this.motorChildFragmentI = motorChildFragmentI;
         }
 
         public PatientFragmentPageAdapter(FragmentManager fm) {
@@ -333,7 +434,7 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return HomePFragment.newInstance(physicalExeciseI);
+                    return HomePFragment.newInstance(motorChildFragmentI);
                 case 1:
                     return MemorizamePFragment.newInstance();
                 case 2:

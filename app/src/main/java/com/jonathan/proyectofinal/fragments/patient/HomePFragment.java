@@ -19,21 +19,28 @@ import com.google.android.material.tabs.TabLayout;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.fragments.carer.GeneralInformationFragment;
 import com.jonathan.proyectofinal.fragments.carer.PhasesEAFragment;
-import com.jonathan.proyectofinal.fragments.games.PhysicalExecise;
+//import com.jonathan.proyectofinal.fragments.games.PhysicalExecise;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class HomePFragment extends Fragment {
 
+    /*
     private PhysicalExecise.PhysicalExeciseI physicalExeciseI ;
     public static HomePFragment newInstance(PhysicalExecise.PhysicalExeciseI physicalExeciseI){
         return new HomePFragment(physicalExeciseI);
     }
+    */
+    private MotorChildFragment.MotorChildFragmentI motorChildFragmentI;
+    public static HomePFragment newInstance(MotorChildFragment.MotorChildFragmentI motorChildFragmentI){
+        return new HomePFragment(motorChildFragmentI);
+    }
 
 
-    public HomePFragment(PhysicalExecise.PhysicalExeciseI physicalExeciseI) {
-        this.physicalExeciseI = physicalExeciseI;
+    public HomePFragment(/*PhysicalExecise.PhysicalExeciseI physicalExeciseI*/MotorChildFragment.MotorChildFragmentI motorChildFragmentI) {
+        //this.physicalExeciseI = physicalExeciseI;
+        this.motorChildFragmentI = motorChildFragmentI;
     }
 
 
@@ -74,7 +81,8 @@ public class HomePFragment extends Fragment {
                 case 0:
                     return new CognitiveChildFragment();
                 case 1:
-                    return new PhysicalExecise(physicalExeciseI);
+                    //return new PhysicalExecise(physicalExeciseI);
+                    return new MotorChildFragment(motorChildFragmentI);
             }
             return null;
         }

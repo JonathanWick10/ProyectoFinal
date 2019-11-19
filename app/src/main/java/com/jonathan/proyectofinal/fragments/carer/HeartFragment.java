@@ -15,8 +15,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.jonathan.proyectofinal.R;
-import com.jonathan.proyectofinal.data.PhysicalExerciseEntity;
-import com.jonathan.proyectofinal.fragments.games.PhysicalExecise;
+import com.jonathan.proyectofinal.fragments.patient.MotorChildFragment;
 import com.jonathan.proyectofinal.interfaces.IMainCarer;
 
 public class HeartFragment extends Fragment  {
@@ -25,11 +24,17 @@ public class HeartFragment extends Fragment  {
     private ViewPager viewPag;
     private Adapter adapt;
     private String text1, text2, text3;
-    private PhysicalExecise.PhysicalExeciseI physicalExeciseI;
+    //private PhysicalExecise.PhysicalExeciseI physicalExeciseI;
+    private MotorChildFragment.MotorChildFragmentI motorChildFragmentI;
     private IMainCarer mIMainCarer;
 
+    /*
     public HeartFragment(PhysicalExecise.PhysicalExeciseI physicalExeciseI) {
         this.physicalExeciseI = physicalExeciseI;
+    }
+    */
+    public HeartFragment(MotorChildFragment.MotorChildFragmentI motorChildFragmentI){
+        this.motorChildFragmentI = motorChildFragmentI;
     }
 
     public HeartFragment(int contentLayoutId) {
@@ -67,7 +72,7 @@ public class HeartFragment extends Fragment  {
 
             switch (position) {
                 case 0:
-                    ExerciseCarerFragment exerciseCarerFragment = new ExerciseCarerFragment(physicalExeciseI);
+                    ExerciseCarerFragment exerciseCarerFragment = new ExerciseCarerFragment(/*physicalExeciseI*/ motorChildFragmentI);
                     return exerciseCarerFragment;
 
                 case 1:

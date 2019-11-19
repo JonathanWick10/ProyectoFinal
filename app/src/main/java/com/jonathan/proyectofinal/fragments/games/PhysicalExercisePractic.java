@@ -13,6 +13,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
 import com.jonathan.proyectofinal.R;
 import java.time.LocalTime;
 import butterknife.BindView;
@@ -26,12 +27,15 @@ public class PhysicalExercisePractic extends Fragment {
 
     @BindView(R.id.text_view_countdown)
     public TextView countDown;
+    @BindView(R.id.fragment_pep_gif)
+    GifImageView gifImageView;
 
     private Memorama.Memoramai memoramai;
-    private Integer img;
+    //private Integer img;
+    private String img;
     private Integer time;
 
-    public PhysicalExercisePractic(Memorama.Memoramai memoramai, Integer img, Integer time) {
+    public PhysicalExercisePractic(Memorama.Memoramai memoramai, /*Integer img*/String img, Integer time) {
 
         this.memoramai = memoramai;
         this.time = time;
@@ -44,8 +48,11 @@ public class PhysicalExercisePractic extends Fragment {
         View view = inflater.inflate(R.layout.fragment_physical_exercise_practic, container, false);
         ButterKnife.bind(this, view);
 
+        /*
         GifImageView asd = view.findViewById(R.id.fragment_pep_gif);
         asd.setImageResource(img);
+        */
+        Glide.with(this).load(img).fitCenter().into(gifImageView);
 
         new CountDownTimer(time, 1000) {
             @RequiresApi(api = Build.VERSION_CODES.O)

@@ -32,7 +32,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.data.Carer;
-import com.jonathan.proyectofinal.data.PhysicalExerciseEntity;
+import com.jonathan.proyectofinal.data.MotorExcercisesAssignment;
 import com.jonathan.proyectofinal.fragments.carer.CallEmergencyFragment;
 import com.jonathan.proyectofinal.fragments.carer.DiaryFragment;
 import com.jonathan.proyectofinal.fragments.carer.ExerciseCarerFragment;
@@ -43,7 +43,7 @@ import com.jonathan.proyectofinal.fragments.carer.NearbyHospitalFragment;
 import com.jonathan.proyectofinal.fragments.carer.PhasesEAFragment;
 import com.jonathan.proyectofinal.fragments.carer.TestFragment;
 import com.jonathan.proyectofinal.fragments.carer.WarningCarerFragment;
-import com.jonathan.proyectofinal.fragments.games.PhysicalExecise;
+import com.jonathan.proyectofinal.fragments.patient.MotorChildFragment;
 import com.jonathan.proyectofinal.interfaces.IMainCarer;
 import com.jonathan.proyectofinal.tools.Constants;
 
@@ -52,7 +52,7 @@ import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 import pl.droidsonroids.gif.GifImageView;
 
-public class MainCarer extends AppCompatActivity implements IMainCarer, NavigationView.OnNavigationItemSelectedListener, PhysicalExecise.PhysicalExeciseI {
+public class MainCarer extends AppCompatActivity implements IMainCarer, NavigationView.OnNavigationItemSelectedListener, /*PhysicalExecise.PhysicalExeciseI*/ MotorChildFragment.MotorChildFragmentI {
 
     @BindView(R.id.drawer_layout_career)
     DrawerLayout drawerLayout;
@@ -205,8 +205,9 @@ public class MainCarer extends AppCompatActivity implements IMainCarer, Navigati
         }
     }
 
+    /*
     @Override
-    public void alert(String option, PhysicalExerciseEntity listExerciseget) {
+    public void alert(String option, PhysicalExcercisePhysicalExerciseEntity listExerciseget) {
         View dialogView = this.getLayoutInflater().inflate(R.layout.plantilla_physicalexersice_info, null);
         AlertDialog.Builder builder  = new AlertDialog.Builder(this);
         final AlertDialog alertDialog;
@@ -249,5 +250,57 @@ public class MainCarer extends AppCompatActivity implements IMainCarer, Navigati
         tvInformation.setText(listExerciseget.getDescripcion());
         //
         alertDialog.show();
+    }
+    */
+
+    @Override
+    public void alert(String option, MotorExcercisesAssignment listExcercises) {
+        View dialogView = this.getLayoutInflater().inflate(R.layout.plantilla_physicalexersice_info, null);
+        AlertDialog.Builder builder  = new AlertDialog.Builder(this);
+        final AlertDialog alertDialog;
+        final int time =  listExcercises.getTimeExcercise();
+        final String image = listExcercises.getUriGifExcercise();
+
+
+        builder.setView(dialogView);
+        alertDialog=builder.create();
+
+        Button btn1= dialogView.findViewById(R.id.btn1);
+        btn1.setText("Atras");
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialog.dismiss();
+            }
+        });
+        Button btn2= dialogView.findViewById(R.id.btn2);
+        btn2.setText("practicar");
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialog.dismiss();
+
+                Intent pasar = new Intent(MainCarer.this, Games.class);
+                pasar.putExtra("Game","Physical");
+                pasar.putExtra("Time", time);
+                pasar.putExtra("Image", image);
+                startActivity(pasar);
+            }
+        });
+
+        // reference
+        TextView tvInformation = dialogView.findViewById(R.id.text_information);
+        GifImageView gift = dialogView.findViewById(R.id.gift);
+
+        // Body alert dialog
+        Glide.with(this).load(listExcercises.getUriGifExcercise()).fitCenter().into(gift);
+        tvInformation.setText(listExcercises.getLongDescriptionExcercise());
+        //
+        alertDialog.show();
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
     }
 }

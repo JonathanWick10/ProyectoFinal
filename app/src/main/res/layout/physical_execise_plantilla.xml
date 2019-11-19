@@ -7,7 +7,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:strokeColor="@color/colorPrimaryLight"
-    app:strokeWidth="@dimen/two">
+    app:strokeWidth="@dimen/two"
+    android:clickable="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -38,7 +39,7 @@
                     android:text="@string/physical_execise_title"
                     style="@style/StyleCardViewTitles"/>
 
-                <!--TextView
+                <TextView
                     android:id="@+id/physical_exercise_txtv_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -47,9 +48,9 @@
 
                 <TextView
                     android:id="@+id/physical_exercise_txtv_resume"
-                    style="@style/StyleCardViewDescriptions"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/twentyFive" /-->
+                    android:layout_height="@dimen/twentyFive"
+                    style="@style/StyleCardViewDescriptions"/>
             </LinearLayout>
 
         </LinearLayout>
@@ -67,20 +68,6 @@
                 android:backgroundTint="@color/colorPrimary" />
         </LinearLayout>
 
-        <!--
-        <LinearLayout
-            android:layout_width="@dimen/twoHundred"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            >
-
-            <ImageView
-                android:id="@+id/admin_imgv_delete"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/oneHundred"
-                android:src="@drawable/ic_play" />
-        </LinearLayout>
-        -->
         <LinearLayout
             android:id="@+id/expandableViewMotor"
             android:layout_width="wrap_content"
@@ -95,7 +82,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:background="@android:color/darker_gray" />
-
+<!--
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/twentyFive"
@@ -138,10 +125,11 @@
                     android:text="05-11-2019" />
 
             </LinearLayout>
-
+-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/twentyFive"
+                android:layout_marginTop="@dimen/ten"
                 android:orientation="horizontal">
 
                 <TextView

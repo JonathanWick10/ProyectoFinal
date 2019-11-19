@@ -1,9 +1,6 @@
 package com.jonathan.proyectofinal.fragments.carer;
 
 
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
@@ -22,35 +19,21 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.adapters.StretchingAdapter;
 import com.jonathan.proyectofinal.data.Carer;
 import com.jonathan.proyectofinal.data.HealthcareProfessional;
-import com.jonathan.proyectofinal.data.Patient;
 import com.jonathan.proyectofinal.data.StretchingExercise;
-import com.jonathan.proyectofinal.interfaces.IMainCarer;
-import com.jonathan.proyectofinal.adapters.MemorizameFamilyGridAdapter;
-import com.jonathan.proyectofinal.adapters.PhysicalExerciseAdapter;
-import com.jonathan.proyectofinal.data.Memorizame;
-import com.jonathan.proyectofinal.data.PhysicalExerciseEntity;
-import com.jonathan.proyectofinal.fragments.games.PhysicalExecise;
+import com.jonathan.proyectofinal.fragments.patient.MotorChildFragment;
 import com.jonathan.proyectofinal.tools.Constants;
 
 import java.util.ArrayList;
@@ -78,11 +61,16 @@ public class ExerciseCarerFragment extends Fragment {
     StretchingExercise stretchingM = new StretchingExercise();
     HealthcareProfessional hp = new HealthcareProfessional();
     Carer carer = new Carer();
-    private PhysicalExecise.PhysicalExeciseI physicalExeciseI;
+    //private PhysicalExecise.PhysicalExeciseI physicalExeciseI;
+    private MotorChildFragment.MotorChildFragmentI motorChildFragmentI;
     //endregion
 
+    /*
     public ExerciseCarerFragment(PhysicalExecise.PhysicalExeciseI physicalExeciseI ) {
         this.physicalExeciseI = physicalExeciseI;
+    }*/
+    public ExerciseCarerFragment(MotorChildFragment.MotorChildFragmentI motorChildFragmentI){
+        this.motorChildFragmentI = motorChildFragmentI;
     }
 
 
