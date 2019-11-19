@@ -151,6 +151,7 @@ public class MemorizameFamilyFragment extends Fragment {
         storageReference = FirebaseStorage.getInstance().getReference();
         progressDialog = new ProgressDialog(getActivity());
 
+        logicEventSelecItem();
 
         initRecyclerView();
 

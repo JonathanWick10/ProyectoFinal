@@ -1,6 +1,7 @@
 package com.jonathan.proyectofinal.fragments.hp;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
+import com.google.gson.Gson;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.data.Patient;
 import com.jonathan.proyectofinal.fragments.carer.MemorizameFragment;
@@ -39,10 +41,17 @@ public class TherapyPSFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_ps_therapy, container, false);
-        args = getArguments();
+        args = getActivity().getIntent().getExtras();
         if (args!= null){
             patientSendFragment = (Patient) args.getSerializable("patient");
             args.putSerializable("patient",patientSendFragment);
+
+            SharedPreferences preferences = getActivity().getPreferences(0);
+            SharedPreferences.Editor editor = preferences.edit();
+            Gson gson = new Gson();
+            String json = gson.toJson(patientSendFragment);
+            editor.putString("serialipatient",json);
+            editor.commit();
         }
         tabPatientInfo = view.findViewById(R.id.ps_tab_therapy_cognitive);
         nearbyhospital = view.findViewById(R.id.ps_tab_therapy_motor);

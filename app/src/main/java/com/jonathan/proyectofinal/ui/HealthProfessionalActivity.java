@@ -37,18 +37,8 @@ import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.data.Carer;
 import com.jonathan.proyectofinal.data.HealthcareProfessional;
 import com.jonathan.proyectofinal.data.Patient;
-import com.jonathan.proyectofinal.fragments.carer.MemorizameFamilyFragment;
-import com.jonathan.proyectofinal.fragments.carer.MemorizameFragment;
-import com.jonathan.proyectofinal.fragments.carer.MemorizameHomeFragment;
-import com.jonathan.proyectofinal.fragments.carer.MemorizamePetsFragment;
-import com.jonathan.proyectofinal.fragments.carer.MemorizamePlacesFragment;
 import com.jonathan.proyectofinal.fragments.carer.NewCardMemorizame;
-import com.jonathan.proyectofinal.fragments.hp.CognitiveTherapyPSFragment;
-import com.jonathan.proyectofinal.fragments.hp.InformationCarerPSFragment;
-import com.jonathan.proyectofinal.fragments.hp.InformationPSFragment;
 import com.jonathan.proyectofinal.fragments.hp.InformationPatientPSFragment;
-import com.jonathan.proyectofinal.fragments.hp.MotorTherapyPSFragment;
-import com.jonathan.proyectofinal.fragments.hp.NotificationPSFragment;
 import com.jonathan.proyectofinal.interfaces.IMainCarer;
 import com.jonathan.proyectofinal.tools.Constants;
 
@@ -183,8 +173,13 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
             change = new InformationPatientPSFragment();
             change.setArguments(args);
             transaction.replace(R.id.info_patient,change).commit();
-        }
+        } else if (fragmentTag.equals(getString(R.string.family_questions_img))) {
+        change = new NewCardMemorizame(1);
+        change.setArguments(args);
+        transaction.replace(R.id.container_memorizame_parent, change).addToBackStack(null).commit();
+
     }
+}
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
