@@ -345,12 +345,25 @@ public class Memorama extends Fragment {
             }
         });
         long fJuego = System.currentTimeMillis();
-        final String diferencia = Long.toString((fJuego - tInicio) / 1000);
+        long diferencia = (fJuego - tInicio) / 1000;
+        if(puntuacion <= 0){
+            puntuacion  = 0d;
+        }else {
 
-        final String score = (Double.parseDouble(puntuacion.toString()) <= 0) ? "0" : puntuacion.toString();
+            double scorePorcentaje = 0.7;
+            double timePorcentaje = 0.3;
+            double scoreTime = 100 * (23 / diferencia);
 
+            if(scoreTime >= 100){
+                scoreTime = 100d;
+                puntuacion = (scoreTime * timePorcentaje) + (puntuacion * scorePorcentaje);
+            }else {
+                puntuacion = (scoreTime * timePorcentaje) + (puntuacion * scorePorcentaje);
+            }
+        }
 
         DocumentReference docRefAd = db.collection(Constants.Patients).document(firebaseUser.getUid());
+        final Double finalPuntuacion = puntuacion;
         docRefAd.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
@@ -360,15 +373,13 @@ public class Memorama extends Fragment {
                     if (patiet.getGameMemoramaScore() == null) {
                         //esta vacia crea una nueva lista.
                         List<String> list = new ArrayList<>();
-                        list.add(diferencia);
-                        list.add(score);
+                        list.add(String.valueOf(finalPuntuacion));
                         //agrega puntiacion
                         patiet.setGameMemoramaScore(list);
                     } else {
                         //ya existe lista, obtiene la actual y agrega nuevo
                         List<String> list = patiet.getGameMemoramaScore();
-                        list.add(diferencia);
-                        list.add(score);
+                        list.add(String.valueOf(finalPuntuacion));
                         patiet.setGameMemoramaScore(list);
                     }
 
@@ -385,12 +396,11 @@ public class Memorama extends Fragment {
                 Toast.makeText(getActivity(), "Error. " + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-        txtPuntuacion.setText(score);
+        txtPuntuacion.setText(String.valueOf(finalPuntuacion));
     }
 
     public interface Memoramai {
         void reloadGame(String reloadGame);
-
         void callOnbackPressed();
     }
 }
