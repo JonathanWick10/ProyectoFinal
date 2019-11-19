@@ -56,8 +56,11 @@ public class NewCardMemorizame extends Fragment {
 
     private int flagInt;
 
-    public NewCardMemorizame(int flagInt) {
+    private IMainCarer mIMainCarer;
+
+    public NewCardMemorizame(int flagInt, IMainCarer iMainCarer) {
         this.flagInt = flagInt;
+        this.mIMainCarer = iMainCarer;
     }
 
 
@@ -74,8 +77,6 @@ public class NewCardMemorizame extends Fragment {
     Patient patient = new Patient();
 
     public static final int REQUEST_CODE2 = 10;
-
-    private IMainCarer iMainHealthProfessional;
 
 
     Context context;
@@ -332,7 +333,7 @@ public class NewCardMemorizame extends Fragment {
     }
 
     private void translation() {
-        iMainHealthProfessional.inflateFragment("memorizamepru");
+        mIMainCarer.inflateFragment("memorizamepru");
     }
 
     private boolean setPojoMemorizame() {
@@ -383,12 +384,5 @@ public class NewCardMemorizame extends Fragment {
         }
 
     }
-
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        iMainHealthProfessional = (IMainCarer) getActivity();
-    }// No adapter attached; skipping layout
 
 }

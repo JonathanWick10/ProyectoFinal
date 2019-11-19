@@ -41,12 +41,17 @@ public class MemorizameParent extends Fragment implements IMainCarer {
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
 
         Fragment change;
-        if (fragmentTag.equals("memorizame")) {
-            change = new MemorizameFragment(this);
-            change.setArguments(args);
-            transaction.replace(R.id.container_memorizame_parent, change).commit();
+            if (fragmentTag.equals("memorizame")) {
+                change = new MemorizameFragment(this);
+                change.setArguments(args);
+                transaction.replace(R.id.container_memorizame_parent, change).commit();
 
-        } else if (fragmentTag.equals(getString(R.string.tab_family_questions))) {
+        } else if (fragmentTag.equals("memorizamepru")) {
+                change = new MemorizameFragment(this);
+                change.setArguments(args);
+                transaction.replace(R.id.container_memorizame_parent, change).commit();
+            }
+            else if (fragmentTag.equals(getString(R.string.tab_family_questions))) {
             change = new MemorizameFamilyFragment(1,this);
             change.setArguments(args);
             transaction.replace(R.id.container_memorizame_parent, change).addToBackStack(null).commit();
@@ -67,12 +72,12 @@ public class MemorizameParent extends Fragment implements IMainCarer {
             transaction.replace(R.id.container_memorizame_parent, change).addToBackStack(null).commit();
 
         } else if (fragmentTag.equals(getString(R.string.family_questions_img))) {
-            change = new NewCardMemorizame(1);
+            change = new NewCardMemorizame(1,this);
             change.setArguments(args);
             transaction.replace(R.id.container_memorizame_parent, change).addToBackStack(null).commit();
 
         } else if (fragmentTag.equals("memorizamee")) {
-            change = new NewCardMemorizame(2);
+            change = new NewCardMemorizame(2,this);
             change.setArguments(args);
             transaction.replace(R.id.container_memorizame_parent, change).addToBackStack(null).commit();
         }
