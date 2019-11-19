@@ -1,12 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/title_memorizame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Resultados memorizame"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="15dp"
+        android:textStyle="bold"/>
+
     <com.github.mikephil.charting.charts.LineChart
+
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:id="@+id/graph1"
+        android:layout_below="@id/title_memorizame"
         ></com.github.mikephil.charting.charts.LineChart>
+
+        <TextView
+            android:id="@+id/title_cognitive"
+            android:layout_below="@id/graph1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Resultados ejercicios cognitivos"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:textStyle="bold"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/recyclerView"
+            android:scrollbars="vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="2dp"
+            android:drawSelectorOnTop="false"
+            tools:context=".fragments.carer.GraphPSFragment"
+            android:background="@color/white"
+            android:layout_below="@id/title_cognitive"
+            tools:listitem="@layout/listview_graphs"
+            />
+
+
+
+    </RelativeLayout>
+
+    </ScrollView>
+
 
 </FrameLayout>

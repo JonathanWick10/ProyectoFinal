@@ -131,7 +131,7 @@ public class ExerciseCarerFragment extends Fragment {
                 alertDialog = builder.create();
 
                 Button btn1 = (Button) dialogView.findViewById(R.id.btn1);
-                btn1.setText("Cancelar");
+                btn1.setText("Cerrar");
                 btn1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
