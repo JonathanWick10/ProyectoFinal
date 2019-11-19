@@ -62,13 +62,10 @@ public class MemorizameFamilyFragment extends Fragment {
     CardView addquestion;
     private int flag;
     private IMainCarer mIMainCarer;
+    private MemorizameFamilyGridAdapter adapter;
+    private MemorizameFamilyGridAdapter.ISelectionMemorizame iSelectionMemorizame;
 
-    public MemorizameFamilyFragment(int flag) {
-        this.flag = flag;
-    }
-
-
-//region for fragment grid
+    //region for fragment grid
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
@@ -77,26 +74,22 @@ public class MemorizameFamilyFragment extends Fragment {
     @BindView(R.id.iv_question)
     ImageView ivQuestion;
 
-    private MemorizameFamilyGridAdapter adapter;
-    private MemorizameFamilyGridAdapter.ISelectionMemorizame iSelectionMemorizame;
+    private FirebaseFirestore db;
+    private FirebaseAuth firebaseAuth;
+    private FirebaseUser user;
 
-    FirebaseFirestore db;
-    FirebaseAuth firebaseAuth;
-    FirebaseUser user;
-    List<Memorizame> memorizameList = new ArrayList<>();
-    String userHPoCarer = "", uidGenerate;
-    Memorizame memorizameM = new Memorizame();
-    HealthcareProfessional hp = new HealthcareProfessional();
-    Carer carer = new Carer();
-    ProgressDialog progressDialog;
-    Patient patient = new Patient();
-    String categoria = "";
+    private String userHPoCarer = "";
+    private Carer carer = new Carer();
+    private ProgressDialog progressDialog;
+    private Patient patient;
+    private String categoria = "";
     public static final int REQUEST_CODE2 = 10;
-    CircleImageView imageUpdate;
-    Uri uriImage;
-    StorageReference storageReference;
+    private CircleImageView imageUpdate;
+    private Uri uriImage;
+    private StorageReference storageReference;
     //endregion
 
+    public MemorizameFamilyFragment(int flag) { this.flag = flag; }
 
     @Nullable
     @Override
@@ -431,9 +424,9 @@ public class MemorizameFamilyFragment extends Fragment {
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        mIMainCarer = (IMainCarer) getActivity();
+        mIMainCarer = (IMainCarer) context;
     }
 
 
