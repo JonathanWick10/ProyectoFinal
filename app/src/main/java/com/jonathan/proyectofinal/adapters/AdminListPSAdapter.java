@@ -1,7 +1,5 @@
 package com.jonathan.proyectofinal.adapters;
 
-import android.content.Context;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,13 +15,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.data.HealthcareProfessional;
 
-import java.util.List;
-
 public class AdminListPSAdapter extends FirestoreRecyclerAdapter<HealthcareProfessional, AdminListPSAdapter.ViewHolder> {
 
-    //private List<HealthcareProfessional> healthList;
-    Context context;
-    //private AdminListPSAdapter.AdminListPSAdapterI adapterI;
     ISelectionHealth iSelectionHealth;
     IDeleteHealth iDeleteHealth;
 

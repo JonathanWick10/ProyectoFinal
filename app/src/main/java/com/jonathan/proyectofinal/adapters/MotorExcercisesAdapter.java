@@ -82,6 +82,7 @@ public class MotorExcercisesAdapter extends FirestoreRecyclerAdapter<MotorExcerc
         holder.descE.setText(model.getDescriptionExcercise());
         holder.finishE.setText(model.getFinished());
         holder.ratingTxt.setText(String.valueOf(model.getRating()));
+        holder.ratingBar.setRating(model.getRating());holder.ratingBar.setRating(model.getRating());
         holder.btnExpand.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

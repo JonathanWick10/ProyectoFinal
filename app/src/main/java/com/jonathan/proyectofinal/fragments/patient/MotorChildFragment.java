@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.jonathan.proyectofinal.R;
@@ -26,6 +28,8 @@ import butterknife.ButterKnife;
  */
 public class MotorChildFragment extends Fragment {
 
+    FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
     @BindView(R.id.rvMotorExercises)
     RecyclerView recyclerMotorExcercises;
 
@@ -46,6 +50,8 @@ public class MotorChildFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_motor_child, container, false);
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
         ButterKnife.bind(this, view);
         fillRecycler();
         return view;
@@ -74,7 +80,7 @@ public class MotorChildFragment extends Fragment {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         Query query = db.collection("MotorExcercisesAssignments")
-                .whereEqualTo("uidPatient", "nzRl9DrDlTSjxfySnLhWTJgeNEi1");
+                .whereEqualTo("uidPatient", firebaseUser.getUid());
 
         FirestoreRecyclerOptions<MotorExcercisesAssignment> firestoreRecyclerOptions = new FirestoreRecyclerOptions.Builder<MotorExcercisesAssignment>()
                 .setQuery(query, MotorExcercisesAssignment.class).build();
