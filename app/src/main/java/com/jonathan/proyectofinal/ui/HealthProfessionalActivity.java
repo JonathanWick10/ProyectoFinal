@@ -173,12 +173,7 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
             change = new InformationPatientPSFragment();
             change.setArguments(args);
             transaction.replace(R.id.info_patient,change).commit();
-        } else if (fragmentTag.equals(getString(R.string.family_questions_img))) {
-        change = new NewCardMemorizame(1);
-        change.setArguments(args);
-        transaction.replace(R.id.container_memorizame_parent, change).addToBackStack(null).commit();
-
-    }
+        }
 }
 
     @Override

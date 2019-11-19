@@ -33,8 +33,7 @@
             android:id="@+id/cv_add_image"
             style="@style/StyleCardView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/recyclerView">
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/iv_question"
