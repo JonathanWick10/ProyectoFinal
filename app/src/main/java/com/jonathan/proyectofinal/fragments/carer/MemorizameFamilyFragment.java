@@ -276,31 +276,46 @@ public class MemorizameFamilyFragment extends Fragment {
                                             memorizame.setCorrectAnswer(answer4);
                                             break;
                                     }
+                                    if (uriImage != null) {
+                                    /*
                                     if (uriImage == null) {
                                         uriImage = Uri.parse(memorizame.getUriImg());
+                                    }*/
+                                        storageReference = FirebaseStorage.getInstance().getReference();
+                                        StorageReference deleteImg = storageReference.child(categoria + "/" + memorizame.getUuidGenerated() + ".jpg");
+                                        deleteImg.delete();
+                                        final StorageReference imgRef = storageReference.child(categoria + "/" + memorizame.getUuidGenerated() + ".jpg");
+                                        imgRef.putFile(uriImage)
+                                                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                                    @Override
+                                                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                                        Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
+                                                        while (!uri.isComplete()) ;
+                                                        Uri url = uri.getResult();
+                                                        memorizame.setUriImg(url.toString());
+                                                        db.collection(Constants.Memorizame).document(patient.getPatientUID())
+                                                                .collection(categoria).document(memorizame.getUuidGenerated()).set(memorizame)
+                                                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                    @Override
+                                                                    public void onSuccess(Void aVoid) {
+                                                                        Toast.makeText(getActivity(), getResources().getString(R.string.was_saved_succesfully), Toast.LENGTH_SHORT).show();
+                                                                        progressDialog.dismiss();
+                                                                    }
+                                                                });
+                                                    }
+                                                });
+                                    }else {
+                                        db.collection(Constants.Memorizame).document(patient.getPatientUID())
+                                                .collection(categoria).document(memorizame.getUuidGenerated()).set(memorizame)
+                                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                    @Override
+                                                    public void onSuccess(Void aVoid) {
+                                                        Toast.makeText(getActivity(), getResources().getString(R.string.was_saved_succesfully), Toast.LENGTH_SHORT).show();
+
+                                                        progressDialog.dismiss();
+                                                    }
+                                                });
                                     }
-                                    storageReference = FirebaseStorage.getInstance().getReference();
-                                    StorageReference deleteImg = storageReference.child(categoria + "/" + memorizame.getUuidGenerated() + ".jpg");
-                                    deleteImg.delete();
-                                    final StorageReference imgRef = storageReference.child(categoria + "/" + memorizame.getUuidGenerated() + ".jpg");
-                                    imgRef.putFile(uriImage)
-                                            .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                                @Override
-                                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                                    Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
-                                                    while (!uri.isComplete()) ;
-                                                    Uri url = uri.getResult();
-                                                    memorizame.setUriImg(url.toString());
-                                                    db.collection(Constants.Memorizame).document(patient.getPatientUID())
-                                                            .collection(categoria).document(memorizame.getUuidGenerated()).set(memorizame)
-                                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                                @Override
-                                                                public void onSuccess(Void aVoid) {
-                                                                    progressDialog.dismiss();
-                                                                }
-                                                            });
-                                                }
-                                            });
                                 }
                             }
                         });
