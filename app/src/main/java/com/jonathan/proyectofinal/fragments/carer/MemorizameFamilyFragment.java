@@ -62,6 +62,7 @@ public class MemorizameFamilyFragment extends Fragment {
     CardView addquestion;
     private int flag;
     private IMainCarer mIMainCarer;
+
     private MemorizameFamilyGridAdapter adapter;
     private MemorizameFamilyGridAdapter.ISelectionMemorizame iSelectionMemorizame;
 
@@ -89,7 +90,8 @@ public class MemorizameFamilyFragment extends Fragment {
     private StorageReference storageReference;
     //endregion
 
-    public MemorizameFamilyFragment(int flag) { this.flag = flag; }
+    public MemorizameFamilyFragment(int flag, IMainCarer iMainCarer) { this.flag = flag;
+        this.mIMainCarer = iMainCarer; }
 
     @Nullable
     @Override
@@ -424,11 +426,11 @@ public class MemorizameFamilyFragment extends Fragment {
         }
     }
 
-    @Override
+    /*@Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         mIMainCarer = (IMainCarer) context;
-    }
+    }*/
 
 
 //region region for fragment grid

@@ -44,25 +44,25 @@ public class MemorizameParent extends Fragment implements IMainCarer {
         if (fragmentTag.equals("memorizame")) {
             change = new MemorizameFragment(this);
             change.setArguments(args);
-            transaction.replace(R.id.container_memorizame_parent, change).addToBackStack(null).commit();
+            transaction.replace(R.id.container_memorizame_parent, change).commit();
 
         } else if (fragmentTag.equals(getString(R.string.tab_family_questions))) {
-            change = new MemorizameFamilyFragment(1);
+            change = new MemorizameFamilyFragment(1,this);
             change.setArguments(args);
             transaction.replace(R.id.container_memorizame_parent, change).addToBackStack(null).commit();
 
         } else if (fragmentTag.equals(getString(R.string.tab_pets_questions))) {
-            change = new MemorizameFamilyFragment(2);
+            change = new MemorizameFamilyFragment(2,this);
             change.setArguments(args);
             transaction.replace(R.id.container_memorizame_parent, change).addToBackStack(null).commit();
 
         } else if (fragmentTag.equals(getString(R.string.tab_home_questions))) {
-            change = new MemorizameFamilyFragment(3);
+            change = new MemorizameFamilyFragment(3,this);
             change.setArguments(args);
             transaction.replace(R.id.container_memorizame_parent, change).addToBackStack(null).commit();
 
         } else if (fragmentTag.equals(getString(R.string.tab_places_questions))) {
-            change = new MemorizameFamilyFragment(4);
+            change = new MemorizameFamilyFragment(4,this);
             change.setArguments(args);
             transaction.replace(R.id.container_memorizame_parent, change).addToBackStack(null).commit();
 
