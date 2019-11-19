@@ -1,5 +1,6 @@
 package com.jonathan.proyectofinal.fragments.hp;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
+import com.google.gson.Gson;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.data.Patient;
 
@@ -26,9 +28,17 @@ public class TherapyPSFragment extends Fragment {
         super.onCreate(savedInstanceState);
         args = getArguments();
         Patient patientSendFragment;
-        if (args != null) {
+        args = getActivity().getIntent().getExtras();
+        if (args!= null){
             patientSendFragment = (Patient) args.getSerializable("patient");
-            args.putSerializable("patient", patientSendFragment);
+            args.putSerializable("patient",patientSendFragment);
+
+            SharedPreferences preferences = getActivity().getPreferences(0);
+            SharedPreferences.Editor editor = preferences.edit();
+            Gson gson = new Gson();
+            String json = gson.toJson(patientSendFragment);
+            editor.putString("serialipatient",json);
+            editor.commit();
         }
     }
 
