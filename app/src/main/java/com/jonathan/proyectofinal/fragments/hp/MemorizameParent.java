@@ -19,23 +19,17 @@ import com.jonathan.proyectofinal.interfaces.IMainCarer;
 
 public class MemorizameParent extends Fragment implements IMainCarer {
 
-    private View view;
     private Bundle args;
-    private Fragment change;
-    private FragmentTransaction transaction;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Bundle bundle = getArguments();
-
-            args = bundle;
-
+        args = getArguments();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_memorizame_parent, container, false);
+        View view = inflater.inflate(R.layout.fragment_memorizame_parent, container, false);
 
         //incie el de cartas
         inflateFragment("memorizame");
@@ -46,8 +40,9 @@ public class MemorizameParent extends Fragment implements IMainCarer {
 
     @Override
     public void inflateFragment(String fragmentTag) {
-        transaction = getChildFragmentManager().beginTransaction();
+        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
 
+        Fragment change;
         if (fragmentTag.equals("memorizame")) {
             change = new MemorizameFragment(this);
             change.setArguments(args);
