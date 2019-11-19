@@ -64,7 +64,7 @@ public class InformationPSFragment extends Fragment {
         Fragment change;
         change = new InformationPatientPSFragment();
         change.setArguments(args);
-        //setFlag(1);
+        setFlag(1);
         transaction.replace(R.id.info_patient,change).commit();*/
         iMainHealthProfessional.inflateFragment("patient2");
 

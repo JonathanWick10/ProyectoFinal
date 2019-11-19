@@ -76,10 +76,18 @@ public class MemorizameParent extends Fragment implements IMainCarer {
             change.setArguments(args);
             transaction.replace(R.id.container_memorizame_parent, change).addToBackStack(null).commit();
 
-        } else if (fragmentTag.equals("memorizamee")) {
+        } else if (fragmentTag.equals("memorizame2")) {
             change = new NewCardMemorizame(2,this);
             change.setArguments(args);
             transaction.replace(R.id.container_memorizame_parent, change).addToBackStack(null).commit();
-        }
+        } else if (fragmentTag.equals("memorizame3")) {
+                change = new NewCardMemorizame(3,this);
+                change.setArguments(args);
+                transaction.replace(R.id.container_memorizame_parent, change).addToBackStack(null).commit();
+            } else if (fragmentTag.equals("memorizame4")) {
+                change = new NewCardMemorizame(4,this);
+                change.setArguments(args);
+                transaction.replace(R.id.container_memorizame_parent, change).addToBackStack(null).commit();
+            }
     }
 }

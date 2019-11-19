@@ -134,7 +134,18 @@ public class MemorizameFamilyFragment extends Fragment {
         addquestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mIMainCarer.inflateFragment(getString(R.string.family_questions_img));
+                if (flag == 1){
+                    mIMainCarer.inflateFragment(getString(R.string.family_questions_img));
+                }
+                else if (flag == 2){
+                    mIMainCarer.inflateFragment("memorizame2");
+                }
+                if (flag == 3){
+                    mIMainCarer.inflateFragment("memorizame3");
+                }
+                else if (flag == 4){
+                    mIMainCarer.inflateFragment("memorizame4");
+                }
             }
         });
 
