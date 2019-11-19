@@ -7,28 +7,16 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         >
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:paddingTop="20dp"
         android:paddingBottom="40dp">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/recyclerView"
-            android:scrollbars="vertical"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="2dp"
-            android:drawSelectorOnTop="false"
-            tools:context=".fragments.carer.MemorizameFamilyFragmentGrid"
-            android:background="@color/white"
-            android:layout_above="@id/cv_add_image"
-            tools:listitem="@layout/listview_memorizame"
-            />
+
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cv_add_image"
             style="@style/StyleCardView"
@@ -50,6 +38,20 @@
                 android:layout_height="wrap_content"
                 android:text="@string/add_family_question"/>
         </com.google.android.material.card.MaterialCardView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cv_add_image"
+            android:id="@+id/recyclerView"
+            android:scrollbars="vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="2dp"
+            android:drawSelectorOnTop="false"
+            tools:context=".fragments.carer.MemorizameFamilyFragmentGrid"
+            android:background="@color/white"
+            tools:listitem="@layout/listview_memorizame"
+            />
 
 
     </RelativeLayout>
