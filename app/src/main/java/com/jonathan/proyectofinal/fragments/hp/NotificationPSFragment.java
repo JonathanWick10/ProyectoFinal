@@ -87,10 +87,6 @@ import static androidx.core.content.ContextCompat.getSystemService;
 public class NotificationPSFragment extends Fragment {
 
     //region codigo de ella
-    public final Calendar calendarInstance = Calendar.getInstance();
-    int hourCalendar, minuteCalendar;
-    private Switch simpleSwitchBtn;
-    private TextView switchBtn_txtView;
     private String[] arrayUnitTime;
     private ArrayAdapter adapter;
 
@@ -99,6 +95,7 @@ public class NotificationPSFragment extends Fragment {
 
     //endregion
 
+    //region Variables
     private Patient patient;
     //Views
     @BindView(R.id.floating_medicine_add)
@@ -124,6 +121,10 @@ public class NotificationPSFragment extends Fragment {
     MedicinesAdapter adapterMedicine;
     MedicinesAdapter.IMedicinesClick iMedicinesClick;
     AutoCompleteTextView editFrequencyMedicine;
+    // integer
+    int hourCalendar, minuteCalendar;
+    public final Calendar calendarInstance = Calendar.getInstance();
+    //endregion
 
     //region Build
     public NotificationPSFragment() {
