@@ -1,12 +1,14 @@
 package com.jonathan.proyectofinal.fragments.hp;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,12 +30,19 @@ import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavType;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.data.Patient;
 import com.jonathan.proyectofinal.fragments.AddPatients;
@@ -41,8 +51,10 @@ import com.jonathan.proyectofinal.fragments.general.DatePickerFragmentDateOfBirt
 import com.jonathan.proyectofinal.interfaces.IMainCarer;
 import com.jonathan.proyectofinal.tools.Constants;
 
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -167,8 +179,18 @@ public class InformationPatientPSFragment extends Fragment {
     public  static final int REQUEST_CODE1 = 12;
     String selectedDate;
 
+    String nameSring,lastNameString,typeIDString, idString, birthDayString, departmentString, nativeCityString,
+            actualCityString, addressString, emailString, userString, passwordString, confirmPasswordString,
+            diagnosticString, dateDiagnosticString,observationString, seleccionRG, phoneString;
+
     Patient patient = new Patient();
+    boolean flag = true;
+    FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
+
+    Uri uriImage;
     FirebaseFirestore db;
+    private StorageReference storageReference;
     //endregion
 
     //endregion
@@ -192,8 +214,138 @@ public class InformationPatientPSFragment extends Fragment {
         logicButtonDateDiagnosis(view);
         dropdownMenu(view);
         verifiFieds();
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean flag2 = setPojoPatients();
+                if (flag2) {
+                    final ProgressDialog progressDialog = ProgressDialog.show(getActivity(),
+                            "Brainmher","Realizando registro en línea");
+                    if (uriImage!=null) {
+                        storageReference = FirebaseStorage.getInstance().getReference();
+                        StorageReference deleteImg = storageReference.child("Users/Patients/"+patient.getPatientUID()+".jpg");
+                        deleteImg.delete();
+                        final StorageReference imgRef = storageReference.child("Users/Patients/"+patient.getPatientUID()+".jpg");
+                        imgRef.putFile(uriImage)
+                                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                    @Override
+                                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                        Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
+                                        while (!uri.isComplete()) ;
+                                        Uri url = uri.getResult();
+                                        patient.setUriImg(url.toString());
+                                        db.collection(Constants.Patients).document(patient.getPatientUID()).set(patient)
+                                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                    @Override
+                                                    public void onSuccess(Void aVoid) {
+                                                        Toast.makeText(getActivity(), getResources().getString(R.string.was_saved_succesfully), Toast.LENGTH_SHORT).show();
+                                                        initDatas();
+                                                        progressDialog.dismiss();
+                                                        logicBtnEditCancel();
+                                                    }
+                                                })
+                                                .addOnFailureListener(new OnFailureListener() {
+                                                    @Override
+                                                    public void onFailure(@NonNull Exception e) {
+                                                        Log.d("message: ", e.toString());
+                                                    }
+                                                });
+
+
+                                    }
+                                });
+                    } else{
+                        db.collection(Constants.Patients).document(patient.getPatientUID()).set(patient)
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        Toast.makeText(getActivity(), getResources().getString(R.string.was_saved_succesfully), Toast.LENGTH_SHORT).show();
+                                        initDatas();
+                                        progressDialog.dismiss();
+                                        logicBtnEditCancel();
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Log.d("message: ", e.toString());
+                                    }
+                                });
+                    }
+                }else{
+                    Toast.makeText(getActivity(), getResources().getString(R.string.complete_field_please), Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
         return view;
     }
+
+
+    private boolean setPojoPatients() {
+        //region get text of form
+        nameSring = txtNamePatient.getText().toString();
+        lastNameString = txtLastNamePatient.getText().toString();
+        typeIDString = txtIdTypePatient.getText().toString();
+        idString = txtIdentificationPatient.getText().toString();
+        //region Get the selection of RadioGroup
+        if (rgGenderPatient.getCheckedRadioButtonId() != -1) {
+            int radioButtonId = rgGenderPatient.getCheckedRadioButtonId();
+            View radioButton = rgGenderPatient.findViewById(radioButtonId);
+            int indice = rgGenderPatient.indexOfChild(radioButton);
+            RadioButton rb = (RadioButton)  rgGenderPatient.getChildAt(indice);
+            seleccionRG = rb.getText().toString();
+        }
+        //endregion
+        birthDayString = txtDateBirthPatient.getText().toString();
+        phoneString = txtPhonePatient.getText().toString();
+        departmentString = txtDepartmentPatient.getText().toString();
+        nativeCityString = txtNativeCityPatient.getText().toString();
+        actualCityString = txtActualCityPatient.getText().toString();
+        addressString = txtAddressPatient.getText().toString();
+        emailString = txtEmailPatient.getText().toString();
+        userString = txtUserPatient.getText().toString();
+        passwordString = txtPasswordPatient.getText().toString();
+        diagnosticString = txtDiagnosisPatient.getText().toString();
+        dateDiagnosticString = txtDateDiagnosisPatient.getText().toString();
+        observationString = txtObservationsPatient.getText().toString();
+        //endregion
+
+        //region conditional for fields is empty
+        if (!nameSring.isEmpty()&&!lastNameString.isEmpty()&&!typeIDString.isEmpty()&&!idString.isEmpty()&&
+                !seleccionRG.isEmpty()&&!birthDayString.isEmpty()&&!phoneString.isEmpty()&&!departmentString.isEmpty()
+                &&!nativeCityString.isEmpty()&&!actualCityString.isEmpty()&&!addressString.isEmpty()&&!emailString.isEmpty()
+                &&!userString.isEmpty()&&!passwordString.isEmpty()&&!diagnosticString.isEmpty()
+                &&!dateDiagnosticString.isEmpty()&&!observationString.isEmpty()&&emailString.length()>=7) {
+            //region Set data to Pojo Patients
+            patient.setFirstName(nameSring);
+            patient.setLastName(lastNameString);
+            patient.setIdentificationType(typeIDString);
+            patient.setIdentification(idString);
+            patient.setGender(seleccionRG);
+            patient.setBirthday(birthDayString);
+            patient.setPhoneNumber(Long.parseLong(phoneString));
+            patient.setDepartment(departmentString);
+            patient.setNativeCity(nativeCityString);
+            patient.setActualCity(actualCityString);
+            patient.setAddress(addressString);
+            patient.setEmail(emailString);
+            patient.setUserName(userString);
+            patient.setPassword(passwordString);
+            patient.setDiagnostic(diagnosticString);
+            patient.setDateDiagnostic(dateDiagnosticString);
+            patient.setObservations(observationString);
+            patient.setRole(Constants.Patients);
+
+            //endregion
+        }else{
+            flag = false;
+        }
+        //endregion
+
+        return flag;
+    }
+
 
     private void verifiFieds() {
         txtPasswordPatient.addTextChangedListener(new TextWatcher() {
@@ -295,6 +447,7 @@ public class InformationPatientPSFragment extends Fragment {
     public void onStart() {
         super.onStart();
         db = FirebaseFirestore.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
 
     }
 
