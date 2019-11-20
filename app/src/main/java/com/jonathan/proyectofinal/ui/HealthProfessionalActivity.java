@@ -5,8 +5,6 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
@@ -43,11 +41,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class HealthProfessionalActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    Fragment change = null;
-    Fragment contentLayout = null;
-    FragmentTransaction transaction;
     //  String patientUID = "";
-    String patientIdentification = "", patientUID = "";
     @BindView(R.id.second_drawer_layout_hp)
     DrawerLayout drawerLayout;
     @BindView(R.id.second_navigation_view_hp)
