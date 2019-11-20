@@ -85,9 +85,7 @@ public class TherapyPSFragment extends Fragment {
                     return new MotorTherapyPSFragment();
 
                 case 2:
-                    MemorizameParent memorizameParent = new MemorizameParent();
-                    //memorizameParent.setArguments(this.argsx);
-                    return memorizameParent;
+                    return new MemorizameParent();
 
                 default: return null;
             }
