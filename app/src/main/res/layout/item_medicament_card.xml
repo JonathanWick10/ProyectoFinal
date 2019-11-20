@@ -183,7 +183,7 @@
             android:layout_height="2dp"
             android:background="@android:color/darker_gray" />
 
-        <LinearLayout
+        <RelativeLayout
             style="@style/StyleLayoutButtonActionCardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -195,6 +195,26 @@
                 android:layout_height="wrap_content"
                 android:text="@string/btn_show_info"/>
 
-        </LinearLayout>
+            <TextView
+                android:id="@+id/txt_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/alarm_off"
+                android:textColor="@color/blueDark"
+                android:layout_marginLeft="@dimen/seventy"
+                android:paddingTop="@dimen/ten"
+                android:layout_toRightOf="@+id/btn_show_hide_medicament"
+                android:textSize="@dimen/twenty"/>
+
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/switch_desactivate"
+                android:paddingLeft="@dimen/sixteen"
+                android:layout_marginTop="@dimen/ten"
+                android:textSize="12dp"
+                android:layout_toRightOf="@id/txt_switch"/>
+
+        </RelativeLayout>
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

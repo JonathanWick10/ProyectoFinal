@@ -1,7 +1,10 @@
 package com.jonathan.proyectofinal.data;
 
+import com.google.common.base.Strings;
+
 public class MedicationAssignment {
 
+    private String medicamentUID;
     private String medicamentName;
     private String medicamentDescription;
     private String recipeDate;
@@ -9,11 +12,14 @@ public class MedicationAssignment {
     private String frequency;
     private String dose;
     private String statement;
+    private String uriImg;
 
     public MedicationAssignment() {
     }
 
-    public MedicationAssignment(String medicamentName, String medicamentDescription, String recipeDate, String hours, String frequency, String dose, String statement) {
+    public MedicationAssignment(String medicamentUID, String medicamentName, String medicamentDescription, String recipeDate,
+                                String hours, String frequency, String dose, String statement, String uriImg) {
+        this.medicamentUID = medicamentUID;
         this.medicamentName = medicamentName;
         this.medicamentDescription = medicamentDescription;
         this.recipeDate = recipeDate;
@@ -21,6 +27,15 @@ public class MedicationAssignment {
         this.frequency = frequency;
         this.dose = dose;
         this.statement = statement;
+        this.uriImg = uriImg;
+    }
+
+    public String getMedicamentUID() {
+        return medicamentUID;
+    }
+
+    public void setMedicamentUID(String medicamentUID) {
+        this.medicamentUID = medicamentUID;
     }
 
     public String getMedicamentName() {
@@ -77,5 +92,13 @@ public class MedicationAssignment {
 
     public void setStatement(String statement) {
         this.statement = statement;
+    }
+
+    public String getUriImg() {
+        return uriImg;
+    }
+
+    public void setUriImg(String uriImg) {
+        this.uriImg = uriImg;
     }
 }

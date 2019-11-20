@@ -2,46 +2,24 @@ package com.jonathan.proyectofinal.fragments.patient;
 
 
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.transition.AutoTransition;
-import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-
-import com.google.android.material.button.MaterialButton;
-import com.google.android.material.card.MaterialCardView;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.adapters.MedicamentsAdapter;
 import com.jonathan.proyectofinal.data.MedicationAssignment;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class MedicamentsChildFragment extends Fragment {
 
-    /*
-    @BindView(R.id.btn_show_hide_medicament)
-    MaterialButton btn_show_hide;
-    @BindView(R.id.expandableMedicamentView)
-    LinearLayout expandableView;
-    @BindView(R.id.cardActivityMedicaments)
-    MaterialCardView cardMedicament;
-    */
     List<MedicationAssignment> list;
     MedicamentsAdapter medicamentsAdapter;
 
@@ -63,8 +41,14 @@ public class MedicamentsChildFragment extends Fragment {
 
     private void fillRecycler() {
         list = new ArrayList<>();
-        list.add(new MedicationAssignment("Donepezil","Evita la descomposición de la acetilcolina en el cerebro.", "10-09-2019", "9:00am, 1:00pm", "Diariamente", "1 Píldora", "Sin terminar"));
-        list.add(new MedicationAssignment("Rivastigmina", "Etapa temprana y moderada de la enfermedad de Alzheimer.", "11-11-2019", "7:00am, 2:00pm", "Diariamente", "1 Píldora", "Sin terminar"));
+        list.add(new MedicationAssignment("","Donepezil",
+                "Evita la descomposición de la acetilcolina en el cerebro.",
+                "10-09-2019", "9:00am, 1:00pm", "Diariamente",
+                "1 Píldora", "Sin terminar",""));
+        list.add(new MedicationAssignment("","Rivastigmina",
+                "Etapa temprana y moderada de la enfermedad de Alzheimer.",
+                "11-11-2019", "7:00am, 2:00pm", "Diariamente",
+                "1 Píldora", "Sin terminar",""));
     }
 
     @Override
@@ -78,27 +62,4 @@ public class MedicamentsChildFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         listMdicaments.setLayoutManager(linearLayoutManager);
     }
-
-    /*
-    @OnClick(R.id.btn_show_hide_medicament)
-    public void btnShowCollapseNotification(){
-
-        if (expandableView.getVisibility() == View.GONE){
-            TransitionManager.beginDelayedTransition(cardMedicament, new AutoTransition());
-            expandableView.setVisibility(View.VISIBLE);
-            btn_show_hide.setText(R.string.btn_hide_info);
-            //btn_show_hide.setLayoutParams(new LinearLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            //LinearLayout.LayoutParams params  = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1.0f);
-            //btn_show_hide.setLayoutParams(params);
-            btn_show_hide.setWidth(240);
-        } else {
-            TransitionManager.beginDelayedTransition(cardMedicament, new AutoTransition());
-            expandableView.setVisibility(View.GONE);
-            btn_show_hide.setText(R.string.btn_show_info);
-            //LinearLayout.LayoutParams params  = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            //btn_show_hide.setLayoutParams(params);
-            //btn_show_hide.setWidth(350);
-        }
-
-    }*/
 }

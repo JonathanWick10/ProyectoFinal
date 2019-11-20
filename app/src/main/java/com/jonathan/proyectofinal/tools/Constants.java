@@ -9,6 +9,8 @@ public class Constants {
     public static final String Patients = "Patients";
     public static final String Terapies = "Terapies";
     public static final String Notifications = "Notifications";
+    public static final String Medicines = "Medicines";
+    public static final String Medicine = "Medicine";
     public static final String Example = "Example";
 
     //Constants for Patients
