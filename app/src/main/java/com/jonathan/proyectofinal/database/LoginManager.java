@@ -95,7 +95,7 @@ public class LoginManager {
             @Override
             public void idsAvailable(final String userId, String registrationId) {
 
-                final ProgressDialog progressDialog = ProgressDialog.show(context, "Brainmher", "ingresando");
+                final ProgressDialog progressDialog = ProgressDialog.show(context, "Brainmher", "Ingresando");
                 // INICIO
                 if (useruID != null) {
 

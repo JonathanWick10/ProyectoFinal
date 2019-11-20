@@ -400,8 +400,8 @@
     <string name="lbl_description">Descripción:</string>
     <string name="lbl_instructions">Instrucciones:</string>
     <string name="lbl_date_of_assignment">Fecha de asignación:</string>
-    <string name="lbl_frequency">Frecuencia:</string>
-    <string name="lbl_hours">Horas:</string>
+    <string name="lbl_frequency">Tomar cada:</string>
+    <string name="lbl_hours">Hora de inicio:</string>
     <string name="lbl_start_date">Fecha de inicio:</string>
     <string name="lbl_end_date">Fecha de finalización:</string>
     <string name="lbl_finished">Finalizado:</string>
