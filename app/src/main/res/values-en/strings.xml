@@ -855,6 +855,8 @@
     <string name="physical_nameexercise_bodybuilding">Strengthening or bodybuilding exercise</string>
     <string name="description_nameexercise_bodybuilding">Strengthening exercises strengthen and strengthen the muscles, and therefore contribute to maintaining or strengthening autonomy and delaying dependence. They improve the metabolism, helping to maintain the weight and levels of glucose (sugar) and cholesterol in the blood. They prevent osteoporosis, polyarthrosis and falls. </string>
     <string name="title_activity_notification_manager">NotificationManager</string>
+    <string name="rate_saved">Rating saved.</string>
+    <string name="rate_no_saved">Error while qualifying.</string>
 
 
     <!--Contacts emergency-->

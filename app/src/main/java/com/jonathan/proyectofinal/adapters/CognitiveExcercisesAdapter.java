@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,7 +19,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.card.MaterialCardView;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.data.CognitiveExcercisesAssignment;
 
@@ -27,8 +34,10 @@ import butterknife.ButterKnife;
 
 public class CognitiveExcercisesAdapter extends FirestoreRecyclerAdapter<CognitiveExcercisesAssignment, CognitiveExcercisesAdapter.ViewHolder> {
 
+    FirebaseFirestore db;
     CognitiveExcercisesAdapter.ISelectionItem iSelectionItem;
     Context context;
+    Integer newRating;
 
     /**
      * Create a new RecyclerView adapter that listens to a Firestore Query.  See {@link
@@ -77,8 +86,10 @@ public class CognitiveExcercisesAdapter extends FirestoreRecyclerAdapter<Cogniti
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull final CognitiveExcercisesAdapter.ViewHolder holder, int position, @NonNull CognitiveExcercisesAssignment model) {
-        //final DocumentSnapshot cognitiveDocument = getSnapshots().getSnapshot(holder.getAdapterPosition());
+    protected void onBindViewHolder(@NonNull final CognitiveExcercisesAdapter.ViewHolder holder, final int position, @NonNull CognitiveExcercisesAssignment model) {
+        db = FirebaseFirestore.getInstance();
+        final DocumentSnapshot cognitiveDocument = getSnapshots().getSnapshot(holder.getAdapterPosition());
+        final String idDoc = cognitiveDocument.getId();
 
         //put the data in the views
         Glide.with(context).load(model.getUriImageExcercise()).fitCenter().into(holder.ivImage);
@@ -94,22 +105,34 @@ public class CognitiveExcercisesAdapter extends FirestoreRecyclerAdapter<Cogniti
             public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
                 switch ((int) ratingBar.getRating()) {
                     case 1:
-                        holder.tvRating.setText("1");
+                        newRating = 1;
+                        holder.tvRating.setText(String.valueOf(newRating));
+                        updateRating(idDoc, newRating);
                         break;
                     case 2:
-                        holder.tvRating.setText("2");
+                        newRating = 2;
+                        holder.tvRating.setText(String.valueOf(newRating));
+                        updateRating(idDoc, newRating);
                         break;
                     case 3:
-                        holder.tvRating.setText("3");
+                        newRating = 3;
+                        holder.tvRating.setText(String.valueOf(newRating));
+                        updateRating(idDoc, newRating);
                         break;
                     case 4:
-                        holder.tvRating.setText("4");
+                        newRating = 4;
+                        holder.tvRating.setText(String.valueOf(newRating));
+                        updateRating(idDoc, newRating);
                         break;
                     case 5:
-                        holder.tvRating.setText("5");
+                        newRating = 5;
+                        holder.tvRating.setText(String.valueOf(newRating));
+                        updateRating(idDoc, newRating);
                         break;
                     default:
-                        holder.tvRating.setText("");
+                        newRating = 0;
+                        holder.tvRating.setText(String.valueOf(newRating));
+                        updateRating(idDoc, newRating);
                 }
             }
         });
@@ -133,6 +156,21 @@ public class CognitiveExcercisesAdapter extends FirestoreRecyclerAdapter<Cogniti
                     holder.expandableView.setVisibility(View.GONE);
                     holder.btnExpand.setBackgroundResource(R.drawable.ic_keyboard_arrow_down_black);
                 }
+            }
+        });
+    }
+
+    private void updateRating(String idDoc, Integer newRating) {
+        DocumentReference documentReference = db.collection("CognitiveExcercisesAssignments").document(idDoc);
+        documentReference.update("rating", newRating).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Toast.makeText(context, "Calificación guardada.", Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(context, "Error al guardar calificación.", Toast.LENGTH_SHORT).show();
             }
         });
     }

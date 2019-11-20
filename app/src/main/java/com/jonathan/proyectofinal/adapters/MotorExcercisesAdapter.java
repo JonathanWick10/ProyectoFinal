@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -18,7 +19,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.data.MotorExcercisesAssignment;
 import com.jonathan.proyectofinal.fragments.patient.MotorChildFragment;
@@ -29,8 +34,10 @@ import pl.droidsonroids.gif.GifImageView;
 
 public class MotorExcercisesAdapter extends FirestoreRecyclerAdapter<MotorExcercisesAssignment, MotorExcercisesAdapter.ViewHolder> {
 
+    FirebaseFirestore db;
     private MotorChildFragment.MotorChildFragmentI motorChildFragmentI;
     Context context;
+    Integer newRating;
 
     /**
      * Create a new RecyclerView adapter that listens to a Firestore Query.  See {@link
@@ -74,8 +81,12 @@ public class MotorExcercisesAdapter extends FirestoreRecyclerAdapter<MotorExcerc
 
     @Override
     protected void onBindViewHolder(@NonNull final MotorExcercisesAdapter.ViewHolder holder, final int position, @NonNull final MotorExcercisesAssignment model) {
-        //final DocumentSnapshot healthDocument = getSnapshots().getSnapshot(holder.getAdapterPosition());
+        db = FirebaseFirestore.getInstance();
+
         final DocumentSnapshot excerciseDocument = getSnapshots().getSnapshot(holder.getAdapterPosition());
+        //final String idDoc = excerciseDocument.getId();
+        //final String idDoc = getSnapshots().getSnapshot(position).getReference().getId();
+        final String idDoc = getSnapshots().getSnapshot(holder.getAdapterPosition()).getId();
 
         Glide.with(context).load(model.getUriGifExcercise()).fitCenter().into(holder.image);
         holder.nameE.setText(model.getNameExcercise());
@@ -103,22 +114,34 @@ public class MotorExcercisesAdapter extends FirestoreRecyclerAdapter<MotorExcerc
             public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
                 switch ((int) ratingBar.getRating()) {
                     case 1:
-                        holder.ratingTxt.setText("1");
+                        newRating = 1;
+                        holder.ratingTxt.setText(String.valueOf(newRating));
+                        updateRating(idDoc, newRating);
                         break;
                     case 2:
-                        holder.ratingTxt.setText("2");
+                        newRating = 2;
+                        holder.ratingTxt.setText(String.valueOf(newRating));
+                        updateRating(idDoc, newRating);
                         break;
                     case 3:
-                        holder.ratingTxt.setText("3");
+                        newRating = 3;
+                        holder.ratingTxt.setText(String.valueOf(newRating));
+                        updateRating(idDoc, newRating);
                         break;
                     case 4:
-                        holder.ratingTxt.setText("4");
+                        newRating = 4;
+                        holder.ratingTxt.setText(String.valueOf(newRating));
+                        updateRating(idDoc, newRating);
                         break;
                     case 5:
-                        holder.ratingTxt.setText("5");
+                        newRating = 5;
+                        holder.ratingTxt.setText(String.valueOf(newRating));
+                        updateRating(idDoc, newRating);
                         break;
                     default:
-                        holder.ratingTxt.setText("");
+                        newRating = 0;
+                        holder.ratingTxt.setText(String.valueOf(newRating));
+                        updateRating(idDoc, newRating);
                 }
             }
         });
@@ -127,6 +150,21 @@ public class MotorExcercisesAdapter extends FirestoreRecyclerAdapter<MotorExcerc
             @Override
             public void onClick(View view) {
                 motorChildFragmentI.alert("eliminar", excerciseDocument.toObject(MotorExcercisesAssignment.class));
+            }
+        });
+    }
+
+    private void updateRating(String idDoc, Integer rating) {
+        DocumentReference documentReference = db.collection("MotorExcercisesAssignments").document(idDoc);
+        documentReference.update("rating", rating).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Toast.makeText(context, R.string.rate_saved, Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(context, R.string.rate_no_saved, Toast.LENGTH_SHORT).show();
             }
         });
     }
