@@ -3,7 +3,6 @@ package com.jonathan.proyectofinal.ui;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -21,7 +20,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -37,16 +35,13 @@ import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.data.Carer;
 import com.jonathan.proyectofinal.data.HealthcareProfessional;
 import com.jonathan.proyectofinal.data.Patient;
-import com.jonathan.proyectofinal.fragments.carer.NewCardMemorizame;
-import com.jonathan.proyectofinal.fragments.hp.InformationPatientPSFragment;
-import com.jonathan.proyectofinal.interfaces.IMainCarer;
 import com.jonathan.proyectofinal.tools.Constants;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class HealthProfessionalActivity extends AppCompatActivity implements IMainCarer, NavigationView.OnNavigationItemSelectedListener {
+public class HealthProfessionalActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     Fragment change = null;
     Fragment contentLayout = null;
@@ -164,17 +159,6 @@ public class HealthProfessionalActivity extends AppCompatActivity implements IMa
     private void startSettings() {
         startActivity(new Intent(HealthProfessionalActivity.this, PatientsList.class));
     }
-
-    @Override
-    public void inflateFragment(String fragmentTag) {
-        transaction = getSupportFragmentManager().beginTransaction();
-        // Listen to the Button Call for other Fragments in different Views
-        if(fragmentTag.equals("patient2")){
-            change = new InformationPatientPSFragment();
-            change.setArguments(args);
-            transaction.replace(R.id.info_patient,change).commit();
-        }
-}
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
