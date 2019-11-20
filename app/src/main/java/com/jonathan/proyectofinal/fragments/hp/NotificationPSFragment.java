@@ -1,12 +1,8 @@
 package com.jonathan.proyectofinal.fragments.hp;
 
 import android.app.Activity;
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
@@ -14,20 +10,15 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -37,7 +28,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -46,10 +36,8 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.common.base.Strings;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.storage.FirebaseStorage;
@@ -58,13 +46,11 @@ import com.google.firebase.storage.UploadTask;
 import com.google.gson.Gson;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.adapters.MedicinesAdapter;
-import com.jonathan.proyectofinal.data.AlertReceiver;
 import com.jonathan.proyectofinal.data.MedicationAssignment;
 import com.jonathan.proyectofinal.data.Mensage;
 import com.jonathan.proyectofinal.data.MensagesContent;
 import com.jonathan.proyectofinal.data.NotificationData;
 import com.jonathan.proyectofinal.data.Patient;
-import com.jonathan.proyectofinal.interfaces.IMainCarer;
 import com.jonathan.proyectofinal.tools.Constants;
 import com.onesignal.OneSignal;
 
@@ -81,19 +67,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-import static android.content.Context.ALARM_SERVICE;
-import static androidx.core.content.ContextCompat.getSystemService;
-
 public class NotificationPSFragment extends Fragment {
 
-    //region codigo de ella
-    private String[] arrayUnitTime;
-    private ArrayAdapter adapter;
-
     private NotificationData notificationData;
-    private AlarmManager alarmManager;
-
-    //endregion
 
     //region Variables
     private Patient patient;
@@ -147,15 +123,7 @@ public class NotificationPSFragment extends Fragment {
 
         eventLogicClick();
         initRecycler();
-        //region Alarm
         notificationData = new NotificationData();
-        alarmManager = (AlarmManager) getContext().getSystemService(Context.ALARM_SERVICE);
-
-        arrayUnitTime = getResources().getStringArray(R.array.unit_time);
-        adapter = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, arrayUnitTime);
-        // spinnerUnitTime.setAdapter(adapter);
-
-        //endregion
 
         return view;
     }
@@ -180,7 +148,7 @@ public class NotificationPSFragment extends Fragment {
     }
 
     private void dropdownMenu() {
-        String[] correctAnswerArray = {"2 Minutos", "30 Minutos", "6 Horas", "8 Horas", "12 Horas", "48 Horas"};
+        String[] correctAnswerArray = {"2 Minutos","5 Minutos", "30 Minutos", "6 Horas", "8 Horas", "12 Horas", "48 Horas"};
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getActivity(),
                 R.layout.dropdown_menu_popup_item, correctAnswerArray);
         editFrequencyMedicine.setAdapter(arrayAdapter);
@@ -390,6 +358,7 @@ public class NotificationPSFragment extends Fragment {
                             }
                         }
                     });
+                    dropdownMenu();
                 }
 
                 btnSave.setText(getString(R.string.save));
@@ -418,31 +387,7 @@ public class NotificationPSFragment extends Fragment {
                                 if(uriImage != null) {
 
                                     medicationAssignment.setStatement("Activada");
-                    /*
-                    switch (i)
-                {
-                    case 0:
-                        //horas
-                        //milisegundos, segundos, minutos, horas, días
-                        notificationData.setUnitOfTime(1000*60*60*1);
-                        break;
-                    case 1:
-                        //días
-                        notificationData.setUnitOfTime(1000*60*60*24);
-                        break;
-                    case 2:
-                        //semanas
-                        notificationData.setUnitOfTime(1000*60*60*24*7);
-                        break;
-                    case 3:
-                        //meses
-                        notificationData.setUnitOfTime(1000*60*60*24*7*4);
-                        break;
-                    case 4:
-                        //minutos
-                        notificationData.setUnitOfTime(1000*60*1);
-                        break;
-                }*/
+
                                     final ProgressDialog progressDialog = ProgressDialog.show(getActivity(), "Brainmher", "Registrando en línea");
 
                                     final String uuidGenerated = createTransactionID();
@@ -595,24 +540,6 @@ public class NotificationPSFragment extends Fragment {
         });
     }
 
-    //region codigo de ella
-
-   /*     spinnerUnitTime = view.findViewById(R.id.sppiner_unit);
-        etIntTime = view.findViewById(R.id.et_int_time);
-        etNameMedicine=view.findViewById(R.id.et_medicine_name);
-
-        if(!etIntTime.getText().toString().isEmpty()) {
-            notificationData.setFrequency(Long.parseLong(etIntTime.getText().toString()));
-        }
-
-        if(!etNameMedicine.getText().toString().isEmpty()) {
-            notificationData.setMessageNotification(etNameMedicine.getText().toString());
-        }
-       /* else
-        {
-            notificationData.setFrequency(1000);
-        }*/
-
     private TimePickerDialog setStartHour() {
 
         //simpleSwitchBtn.setChecked(false);
@@ -651,33 +578,6 @@ public class NotificationPSFragment extends Fragment {
         return startHour;
     }
 
-    private void startAlarm() {
-
-        //   Toast.makeText(this, "init startAlarm()" + notificationData.getStatus(), Toast.LENGTH_SHORT).show();
-
-        //    simpleSwitchBtn.setChecked(true);
-        Intent dialogIntent = new Intent(getContext(), AlertReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), 12345, dialogIntent, PendingIntent.FLAG_CANCEL_CURRENT);
-
-        if (calendarInstance.before(Calendar.getInstance())) {
-            calendarInstance.add(Calendar.DATE, 1);
-        }
-
-        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, notificationData.getStartTime(), 1000 * 60 * 10, pendingIntent);
-        //   cal.setText(notificationData.getStartTime()+""+notificationData.getStatus());
-    }
-
-    private void cancelAlarm() {
-
-        Intent dialogIntent = new Intent(getContext(), AlertReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), 12345, dialogIntent, PendingIntent.FLAG_CANCEL_CURRENT);
-        alarmManager.cancel(pendingIntent);
-        //    textShowHour.setText(getString(R.string.hour_format));
-        //   cal.setText(notificationData.getStartTime() + "" + notificationData.getStatus());
-        Toast.makeText(getContext(), "cancel:" + notificationData.getStatus(), Toast.LENGTH_SHORT).show();
-
-    }
-
     private void updateTimeText(Calendar c) {
         String timeText = "Inicio:  ";
         timeText += DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime());
@@ -689,7 +589,6 @@ public class NotificationPSFragment extends Fragment {
     public String createTransactionID() {
         return UUID.randomUUID().toString().replaceAll("-", "").toUpperCase();
     }
-    //endregion
 
 
 }

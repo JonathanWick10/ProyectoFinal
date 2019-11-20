@@ -1,6 +1,10 @@
 package com.jonathan.proyectofinal.fragments.patient;
 
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,10 +23,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.adapters.MedicamentsAdapter;
+import com.jonathan.proyectofinal.data.AlertReceiver;
 import com.jonathan.proyectofinal.data.MedicationAssignment;
+import com.jonathan.proyectofinal.data.NotificationData;
 import com.jonathan.proyectofinal.tools.Constants;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -40,6 +47,10 @@ public class MedicamentsChildFragment extends Fragment {
     FirebaseFirestore db;
     FirebaseAuth auth;
     FirebaseUser user;
+    //Alarm
+    private NotificationData notificationData;
+    private AlarmManager alarmManager;
+    public final Calendar calendarInstance = Calendar.getInstance();
     //endregion
 
     public MedicamentsChildFragment() {
@@ -58,6 +69,10 @@ public class MedicamentsChildFragment extends Fragment {
         user = auth.getCurrentUser();
         eventLogicSelectItem();
         initRecycler();
+        //region Alarm
+        notificationData = new NotificationData();
+        alarmManager = (AlarmManager) getContext().getSystemService(Context.ALARM_SERVICE);
+        //endregion
         return view;
     }
 
@@ -103,6 +118,61 @@ public class MedicamentsChildFragment extends Fragment {
         medicamentsAdapter = new MedicamentsAdapter(firestoreRecyclerOptions,getActivity(), iSelectItemMedicaments);
         medicamentsAdapter.notifyDataSetChanged();
         rcMedicaments.setAdapter(medicamentsAdapter);
+
+    }
+
+    public void alarmsPatient(){
+        /* "2 Minutos", "30 Minutos", "6 Horas", "8 Horas", "12 Horas", "48 Horas"
+                    switch (i)
+                {
+                    case 0:
+                        //horas
+                        //milisegundos, segundos, minutos, horas, días
+                        notificationData.setUnitOfTime(1000*60*60*1);
+                        break;
+                    case 1:
+                        //días
+                        notificationData.setUnitOfTime(1000*60*60*24);
+                        break;
+                    case 2:
+                        //semanas
+                        notificationData.setUnitOfTime(1000*60*60*24*7);
+                        break;
+                    case 3:
+                        //meses
+                        notificationData.setUnitOfTime(1000*60*60*24*7*4);
+                        break;
+                    case 4:
+                        //minutos
+                        notificationData.setUnitOfTime(1000*60*1);
+                        break;
+                }*/
+    }
+
+    private void startAlarm() {
+
+        //   Toast.makeText(this, "init startAlarm()" + notificationData.getStatus(), Toast.LENGTH_SHORT).show();
+
+        //    simpleSwitchBtn.setChecked(true);
+        Intent dialogIntent = new Intent(getContext(), AlertReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), 12345, dialogIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+
+        if (calendarInstance.before(Calendar.getInstance())) {
+            calendarInstance.add(Calendar.DATE, 1);
+        }
+
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, notificationData.getStartTime(), 1000 * 60 * 10, pendingIntent);
+        //   cal.setText(notificationData.getStartTime()+""+notificationData.getStatus());
+    }
+
+    private void cancelAlarm() {
+
+        Intent dialogIntent = new Intent(getContext(), AlertReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), 12345, dialogIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+        alarmManager.cancel(pendingIntent);
+        //    textShowHour.setText(getString(R.string.hour_format));
+        //   cal.setText(notificationData.getStartTime() + "" + notificationData.getStatus());
+        Toast.makeText(getContext(), "cancel:" + notificationData.getStatus(), Toast.LENGTH_SHORT).show();
 
     }
 
