@@ -567,8 +567,6 @@ public class NotificationPSFragment extends Fragment {
                     notificationData.setStatus(true);
                     //simpleSwitchBtn.setChecked(true);
                 }
-
-                //   calendarInst.setText(notificationData.getStartTime()+"" + notificationData.getStatus());
             }
 
         }, hourCalendar, minuteCalendar, false);
