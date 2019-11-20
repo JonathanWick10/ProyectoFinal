@@ -80,7 +80,7 @@ public class MainPatient extends AppCompatActivity implements IComunicateFragmen
             R.drawable.motivational_16, R.drawable.motivational_17, R.drawable.motivational_18, R.drawable.motivational_19,
             R.drawable.motivational_20, R.drawable.motivational_21, R.drawable.motivational_22, R.drawable.motivational_23};
     private int posicion;
-    private static final int DURACION = 5000;
+    private static final int DURACION = 9000;
     private Timer timer = null;
     @BindView(R.id.iv_motivational)
     ImageSwitcher imgSlider;

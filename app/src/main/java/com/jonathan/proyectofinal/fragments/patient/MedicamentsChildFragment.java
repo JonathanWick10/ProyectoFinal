@@ -109,6 +109,10 @@ public class MedicamentsChildFragment extends Fragment {
             public void clickSelect(MedicationAssignment medicationAssignment) {
                 Toast.makeText(getActivity(), "selecciono " + medicationAssignment.getMedicamentName(), Toast.LENGTH_SHORT).show();
             }
+            @Override
+            public void check(MedicationAssignment medicationAssignment) {
+                Toast.makeText(getActivity(), "selecciono " + medicationAssignment.getMedicamentName(), Toast.LENGTH_SHORT).show();
+            }
         };
     }
 
