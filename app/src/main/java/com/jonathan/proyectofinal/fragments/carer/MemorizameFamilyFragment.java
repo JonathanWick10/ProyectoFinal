@@ -23,6 +23,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -61,7 +63,6 @@ public class MemorizameFamilyFragment extends Fragment {
 
     CardView addquestion;
     private int flag;
-    private IMainCarer mIMainCarer;
 
     private MemorizameFamilyGridAdapter adapter;
     private MemorizameFamilyGridAdapter.ISelectionMemorizame iSelectionMemorizame;
@@ -90,8 +91,7 @@ public class MemorizameFamilyFragment extends Fragment {
     private StorageReference storageReference;
     //endregion
 
-    public MemorizameFamilyFragment(int flag, IMainCarer iMainCarer) { this.flag = flag;
-        this.mIMainCarer = iMainCarer; }
+    public MemorizameFamilyFragment(int flag) { this.flag = flag;}
 
     @Nullable
     @Override
@@ -99,7 +99,7 @@ public class MemorizameFamilyFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_cu_memorizame_family, container, false);
         ButterKnife.bind(this, view);
 
-        Bundle bundle = getArguments();
+        final Bundle bundle = getArguments();
         if (bundle != null) {
             patient = (Patient) bundle.getSerializable("patient");
         }
@@ -134,18 +134,12 @@ public class MemorizameFamilyFragment extends Fragment {
         addquestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (flag == 1){
-                    mIMainCarer.inflateFragment(getString(R.string.family_questions_img));
-                }
-                else if (flag == 2){
-                    mIMainCarer.inflateFragment("memorizame2");
-                }
-                if (flag == 3){
-                    mIMainCarer.inflateFragment("memorizame3");
-                }
-                else if (flag == 4){
-                    mIMainCarer.inflateFragment("memorizame4");
-                }
+                FragmentManager manager = getActivity().getSupportFragmentManager();
+                final FragmentTransaction transaction = manager.beginTransaction();
+                Fragment change;
+                change = new NewCardMemorizame(flag);
+                change.setArguments(bundle);
+                transaction.replace(R.id.container_memorizame_parent,change).addToBackStack(null).commit();
             }
         });
 
@@ -451,13 +445,6 @@ public class MemorizameFamilyFragment extends Fragment {
             }
         }
     }
-
-    /*@Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        mIMainCarer = (IMainCarer) context;
-    }*/
-
 
 //region region for fragment grid
 

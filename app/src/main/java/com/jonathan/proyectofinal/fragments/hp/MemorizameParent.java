@@ -1,15 +1,19 @@
 package com.jonathan.proyectofinal.fragments.hp;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.gson.Gson;
 import com.jonathan.proyectofinal.R;
+import com.jonathan.proyectofinal.data.Patient;
 import com.jonathan.proyectofinal.fragments.carer.MemorizameFamilyFragment;
 import com.jonathan.proyectofinal.fragments.carer.MemorizameFragment;
 import com.jonathan.proyectofinal.fragments.carer.NewCardMemorizame;
@@ -23,6 +27,19 @@ public class MemorizameParent extends Fragment implements IMainCarer {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         args = getArguments();
+        Patient patientSendFragment;
+        args = getActivity().getIntent().getExtras();
+        if (args!= null){
+            patientSendFragment = (Patient) args.getSerializable("patient");
+            args.putSerializable("patient",patientSendFragment);
+
+            SharedPreferences preferences = getActivity().getPreferences(0);
+            SharedPreferences.Editor editor = preferences.edit();
+            Gson gson = new Gson();
+            String json = gson.toJson(patientSendFragment);
+            editor.putString("serialipatient",json);
+            editor.commit();
+        }
     }
 
     @Override
@@ -30,7 +47,13 @@ public class MemorizameParent extends Fragment implements IMainCarer {
         View view = inflater.inflate(R.layout.fragment_memorizame_parent, container, false);
 
         //incie el de cartas
-        inflateFragment("memorizame");
+        FragmentManager manager = getChildFragmentManager();
+        final FragmentTransaction transaction = manager.beginTransaction();
+        Fragment change;
+        change = new MemorizameFragment(args);
+        change.setArguments(args);
+        transaction.replace(R.id.container_memorizame_parent,change).commit();
+        //inflateFragment("memorizame");
 
         return view;
     }
@@ -41,53 +64,9 @@ public class MemorizameParent extends Fragment implements IMainCarer {
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
 
         Fragment change;
-            if (fragmentTag.equals("memorizame")) {
-                change = new MemorizameFragment(this);
-                change.setArguments(args);
-                transaction.replace(R.id.container_memorizame_parent, change).commit();
-
-        } else if (fragmentTag.equals("memorizamepru")) {
-                change = new MemorizameFragment(this);
-                change.setArguments(args);
-                transaction.replace(R.id.container_memorizame_parent, change).commit();
-            }
-            else if (fragmentTag.equals(getString(R.string.tab_family_questions))) {
-            change = new MemorizameFamilyFragment(1,this);
-            change.setArguments(args);
-            transaction.replace(R.id.container_memorizame_parent, change).addToBackStack(null).commit();
-
-        } else if (fragmentTag.equals(getString(R.string.tab_pets_questions))) {
-            change = new MemorizameFamilyFragment(2,this);
-            change.setArguments(args);
-            transaction.replace(R.id.container_memorizame_parent, change).addToBackStack(null).commit();
-
-        } else if (fragmentTag.equals(getString(R.string.tab_home_questions))) {
-            change = new MemorizameFamilyFragment(3,this);
-            change.setArguments(args);
-            transaction.replace(R.id.container_memorizame_parent, change).addToBackStack(null).commit();
-
-        } else if (fragmentTag.equals(getString(R.string.tab_places_questions))) {
-            change = new MemorizameFamilyFragment(4,this);
-            change.setArguments(args);
-            transaction.replace(R.id.container_memorizame_parent, change).addToBackStack(null).commit();
-
-        } else if (fragmentTag.equals(getString(R.string.family_questions_img))) {
-            change = new NewCardMemorizame(1,this);
-            change.setArguments(args);
-            transaction.replace(R.id.container_memorizame_parent, change).addToBackStack(null).commit();
-
-        } else if (fragmentTag.equals("memorizame2")) {
-            change = new NewCardMemorizame(2,this);
-            change.setArguments(args);
-            transaction.replace(R.id.container_memorizame_parent, change).addToBackStack(null).commit();
-        } else if (fragmentTag.equals("memorizame3")) {
-                change = new NewCardMemorizame(3,this);
-                change.setArguments(args);
-                transaction.replace(R.id.container_memorizame_parent, change).addToBackStack(null).commit();
-            } else if (fragmentTag.equals("memorizame4")) {
-                change = new NewCardMemorizame(4,this);
-                change.setArguments(args);
-                transaction.replace(R.id.container_memorizame_parent, change).addToBackStack(null).commit();
-            }
+        if (fragmentTag.equals("memorizamepru")) {
+            change = new MemorizameFragment(args);
+            transaction.replace(R.id.container_memorizame_parent, change).commit();
+        }
     }
 }

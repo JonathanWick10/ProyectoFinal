@@ -1,13 +1,8 @@
 package com.jonathan.proyectofinal.fragments.carer;
-
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.ScrollView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,18 +13,14 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.data.Patient;
-import com.jonathan.proyectofinal.interfaces.IMainCarer;
 
 public class MemorizameFragment extends Fragment {
     CardView family, pets, home, places;
-    FrameLayout containerMemorizame;
     Patient patientSendFragment = new Patient();
-    Bundle args = new Bundle();
+    Bundle args;
 
-    private IMainCarer mIMainCarer;
-
-    public MemorizameFragment(IMainCarer iMainCarer) {
-        this.mIMainCarer = iMainCarer;
+    public MemorizameFragment(Bundle args) {
+        this.args = args;
     }
 
     @Nullable
@@ -37,11 +28,10 @@ public class MemorizameFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_cu_memorizame,container,false);
 
+
         args = getArguments();
-        if (args!= null){
+        if (args != null) {
             patientSendFragment = (Patient) args.getSerializable("patient");
-            args.putSerializable("patient",patientSendFragment);
-            Toast.makeText(getActivity(), patientSendFragment.getFirstName(), Toast.LENGTH_SHORT).show();
         }
 
         family = view.findViewById(R.id.cv_family);
@@ -52,27 +42,47 @@ public class MemorizameFragment extends Fragment {
         family.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mIMainCarer.inflateFragment(getString(R.string.tab_family_questions));
+                FragmentManager manager = getActivity().getSupportFragmentManager();
+                final FragmentTransaction transaction = manager.beginTransaction();
+                Fragment change;
+                change = new MemorizameFamilyFragment(1);
+                change.setArguments(args);
+                transaction.replace(R.id.container_memorizame_parent,change).addToBackStack(null).commit();
             }
         });
 
         pets.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mIMainCarer.inflateFragment(getString(R.string.tab_pets_questions));
+                FragmentManager manager = getActivity().getSupportFragmentManager();
+                final FragmentTransaction transaction = manager.beginTransaction();
+                Fragment change;
+                change = new MemorizameFamilyFragment(2);
+                change.setArguments(args);
+                transaction.replace(R.id.container_memorizame_parent,change).addToBackStack(null).commit();
             }
         });
 
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mIMainCarer.inflateFragment(getString(R.string.tab_home_questions));
+                FragmentManager manager = getActivity().getSupportFragmentManager();
+                final FragmentTransaction transaction = manager.beginTransaction();
+                Fragment change;
+                change = new MemorizameFamilyFragment(3);
+                change.setArguments(args);
+                transaction.replace(R.id.container_memorizame_parent,change).addToBackStack(null).commit();
             }
         });
         places.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mIMainCarer.inflateFragment(getString(R.string.tab_places_questions));
+                FragmentManager manager = getActivity().getSupportFragmentManager();
+                final FragmentTransaction transaction = manager.beginTransaction();
+                Fragment change;
+                change = new MemorizameFamilyFragment(4);
+                change.setArguments(args);
+                transaction.replace(R.id.container_memorizame_parent,change).addToBackStack(null).commit();
             }
         });
 

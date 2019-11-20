@@ -22,6 +22,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -41,6 +43,7 @@ import com.jonathan.proyectofinal.data.Memorizame;
 import com.jonathan.proyectofinal.data.Patient;
 import com.jonathan.proyectofinal.database.LoginManager;
 import com.jonathan.proyectofinal.fragments.admin.AdminAddHealthProfessional;
+import com.jonathan.proyectofinal.fragments.hp.MemorizameParent;
 import com.jonathan.proyectofinal.interfaces.IMainCarer;
 import com.jonathan.proyectofinal.tools.Constants;
 import com.jonathan.proyectofinal.ui.HealthProfessionalActivity;
@@ -56,11 +59,8 @@ public class NewCardMemorizame extends Fragment {
 
     private int flagInt;
 
-    private IMainCarer mIMainCarer;
-
-    public NewCardMemorizame(int flagInt, IMainCarer iMainCarer) {
+    public NewCardMemorizame(int flagInt) {
         this.flagInt = flagInt;
-        this.mIMainCarer = iMainCarer;
     }
 
 
@@ -333,7 +333,12 @@ public class NewCardMemorizame extends Fragment {
     }
 
     private void translation() {
-        mIMainCarer.inflateFragment("memorizamepru");
+        Toast.makeText(getActivity(), getResources().getString(R.string.was_saved_succesfully), Toast.LENGTH_SHORT).show();
+        FragmentManager manager = getActivity().getSupportFragmentManager();
+        final FragmentTransaction transaction = manager.beginTransaction();
+        Fragment change;
+        change = new MemorizameParent();
+        transaction.replace(R.id.container_memorizame_parent,change).commit();
     }
 
     private boolean setPojoMemorizame() {
