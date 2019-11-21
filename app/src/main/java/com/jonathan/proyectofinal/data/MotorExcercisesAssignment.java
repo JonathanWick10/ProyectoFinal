@@ -4,13 +4,13 @@ public class MotorExcercisesAssignment {
 
     private String uidPatient;
     private String uriGifExcercise;
-    private Integer idExcercise;
+    private int idExcercise;
     private String nameExcercise;
     private String descriptionExcercise;
     private String longDescriptionExcercise;
-    private Integer timeExcercise;
+    private int timeExcercise;
     private String finished;
-    private Integer rating;
+    private int rating;
 
     public MotorExcercisesAssignment() {
     }

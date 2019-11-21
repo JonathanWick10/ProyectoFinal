@@ -4,18 +4,18 @@ public class CognitiveExcercisesAssignment {
 
     private String uidPatient;
     private String uriImageExcercise;
-    private String idExcercise;
+    private int idExcercise;
     private String nameExcercise;
     private String descriptionExcercise;
-    private Integer level;
-    private Integer bestScore;
+    private int level;
+    private int bestScore;
     private String statement;
-    private Integer rating;
+    private int rating;
 
     public CognitiveExcercisesAssignment() {
     }
 
-    public CognitiveExcercisesAssignment(String uidPatient, String uriImageExcercise, String idExcercise, String nameExcercise, String descriptionExcercise, Integer level, Integer bestScore, String statement, Integer rating) {
+    public CognitiveExcercisesAssignment(String uidPatient, String uriImageExcercise, int idExcercise, String nameExcercise, String descriptionExcercise, int level, int bestScore, String statement, int rating) {
         this.uidPatient = uidPatient;
         this.uriImageExcercise = uriImageExcercise;
         this.idExcercise = idExcercise;
@@ -43,11 +43,11 @@ public class CognitiveExcercisesAssignment {
         this.uriImageExcercise = uriImageExcercise;
     }
 
-    public String getIdExcercise() {
+    public int getIdExcercise() {
         return idExcercise;
     }
 
-    public void setIdExcercise(String idExcercise) {
+    public void setIdExcercise(int idExcercise) {
         this.idExcercise = idExcercise;
     }
 
@@ -67,19 +67,19 @@ public class CognitiveExcercisesAssignment {
         this.descriptionExcercise = descriptionExcercise;
     }
 
-    public Integer getLevel() {
+    public int getLevel() {
         return level;
     }
 
-    public void setLevel(Integer level) {
+    public void setLevel(int level) {
         this.level = level;
     }
 
-    public Integer getBestScore() {
+    public int getBestScore() {
         return bestScore;
     }
 
-    public void setBestScore(Integer bestScore) {
+    public void setBestScore(int bestScore) {
         this.bestScore = bestScore;
     }
 
@@ -91,11 +91,11 @@ public class CognitiveExcercisesAssignment {
         this.statement = statement;
     }
 
-    public Integer getRating() {
+    public int getRating() {
         return rating;
     }
 
-    public void setRating(Integer rating) {
+    public void setRating(int rating) {
         this.rating = rating;
     }
 }

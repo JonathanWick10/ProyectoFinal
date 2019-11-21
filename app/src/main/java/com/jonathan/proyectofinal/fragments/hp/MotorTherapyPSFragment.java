@@ -32,8 +32,10 @@ public class MotorTherapyPSFragment extends Fragment {
     RecyclerView list_motor;
     String uID;
     Patient patient = new Patient();
+    Bundle bundle;
 
-    public MotorTherapyPSFragment() {
+    public MotorTherapyPSFragment(Bundle bundle) {
+        this.bundle = bundle;
     }
 
     @Nullable
@@ -41,12 +43,12 @@ public class MotorTherapyPSFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_ps_therapy_motor, container, false);
         ButterKnife.bind(this, view);
-        Bundle bundle = getArguments();
+        bundle = getArguments();
         if (bundle != null) {
             patient = (Patient) bundle.getSerializable("patient");
             uID = patient.getPatientUID();
         }
-        //Toast.makeText(getContext(), "Velo: "+uID, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "Velo: "+uID, Toast.LENGTH_SHORT).show();
         fillRecycler();
         return view;
     }

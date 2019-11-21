@@ -2,7 +2,7 @@ package com.jonathan.proyectofinal.data;
 
 public class CognitivesExcercises {
 
-    private Integer idExcercise;
+    private int idExcercise;
     private String uriImageExcercise;
     private String nameExcercise;
     private String descriptionExcercise;
@@ -10,18 +10,18 @@ public class CognitivesExcercises {
     public CognitivesExcercises() {
     }
 
-    public CognitivesExcercises(Integer idExcercise, String uriImageExcercise, String nameExcercise, String descriptionExcercise) {
+    public CognitivesExcercises(int idExcercise, String uriImageExcercise, String nameExcercise, String descriptionExcercise) {
         this.idExcercise = idExcercise;
         this.uriImageExcercise = uriImageExcercise;
         this.nameExcercise = nameExcercise;
         this.descriptionExcercise = descriptionExcercise;
     }
 
-    public Integer getIdExcercise() {
+    public int getIdExcercise() {
         return idExcercise;
     }
 
-    public void setIdExcercise(Integer idExcercise) {
+    public void setIdExcercise(int idExcercise) {
         this.idExcercise = idExcercise;
     }
 

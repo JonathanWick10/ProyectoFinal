@@ -26,7 +26,6 @@ public class TherapyPSFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        args = getArguments();
         Patient patientSendFragment;
         args = getActivity().getIntent().getExtras();
         if (args!= null){
@@ -80,9 +79,9 @@ public class TherapyPSFragment extends Fragment {
 
             switch (position) {
                 case 0:
-                    return new CognitiveTherapyPSFragment();
+                    return new CognitiveTherapyPSFragment(args);
                 case 1:
-                    return new MotorTherapyPSFragment();
+                    return new MotorTherapyPSFragment(args);
 
                 case 2:
                     return new MemorizameParent();

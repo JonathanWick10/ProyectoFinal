@@ -27,8 +27,10 @@ public class CognitiveTherapyPSFragment extends Fragment {
     CognitivesAdapter cognitivesAdapter;
     @BindView(R.id.list_cognitives)
     RecyclerView list_cognitives;
+    Bundle bundle;
 
-    public CognitiveTherapyPSFragment() {
+    public CognitiveTherapyPSFragment(Bundle bundle) {
+        this.bundle = bundle;
     }
 
 
@@ -37,7 +39,7 @@ public class CognitiveTherapyPSFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_ps_therapy_cognitive, container, false);
         ButterKnife.bind(this, view);
-        Bundle bundle = getArguments();
+        bundle = getArguments();
         if (bundle!=null){
             String uID = bundle.getString("patientUID");
         }

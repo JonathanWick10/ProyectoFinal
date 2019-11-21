@@ -108,9 +108,9 @@ public class MotorAdapter extends FirestoreRecyclerAdapter<MotorExcercises, Moto
             @Override
             public void onCheckedChanged(MaterialCardView card, boolean isChecked) {
                 if (isChecked) {
-                    Toast.makeText(context, "Asignado", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Asignado "+ uid, Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(context, "Sin asignar", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Sin asignar"+ uid, Toast.LENGTH_SHORT).show();
                 }
             }
         });

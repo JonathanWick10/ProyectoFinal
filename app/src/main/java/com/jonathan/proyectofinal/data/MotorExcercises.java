@@ -2,17 +2,17 @@ package com.jonathan.proyectofinal.data;
 
 public class MotorExcercises  {
 
-    private Integer idExcercise;
+    private int idExcercise;
     private String uriGifExcercise;
     private String nameExcercise;
     private String descriptionExcercise;
     private String longDescriptionExcercise;
-    private Integer timeExcercise;
+    private int timeExcercise;
 
     public MotorExcercises() {
     }
 
-    public MotorExcercises(Integer idExcercise, String uriGifExcercise, String nameExcercise, String descriptionExcercise, String longDescriptionExcercise, Integer timeExcercise) {
+    public MotorExcercises(int idExcercise, String uriGifExcercise, String nameExcercise, String descriptionExcercise, String longDescriptionExcercise, int timeExcercise) {
         this.idExcercise = idExcercise;
         this.uriGifExcercise = uriGifExcercise;
         this.nameExcercise = nameExcercise;
@@ -21,11 +21,11 @@ public class MotorExcercises  {
         this.timeExcercise = timeExcercise;
     }
 
-    public Integer getIdExcercise() {
+    public int getIdExcercise() {
         return idExcercise;
     }
 
-    public void setIdExcercise(Integer idExcercise) {
+    public void setIdExcercise(int idExcercise) {
         this.idExcercise = idExcercise;
     }
 
@@ -61,11 +61,11 @@ public class MotorExcercises  {
         this.longDescriptionExcercise = longDescriptionExcercise;
     }
 
-    public Integer getTimeExcercise() {
+    public int getTimeExcercise() {
         return timeExcercise;
     }
 
-    public void setTimeExcercise(Integer timeExcercise) {
+    public void setTimeExcercise(int timeExcercise) {
         this.timeExcercise = timeExcercise;
     }
 }
