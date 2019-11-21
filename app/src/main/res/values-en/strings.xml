@@ -381,6 +381,7 @@
     <string name="lbl_best_score">Best score:</string>
     <string name="lbl_statement">Statement:</string>
     <string name="lbl_description">Description:</string>
+    <string name="lbl_long_description">Complete description:</string>
     <string name="lbl_instructions">Instructions:</string>
     <string name="lbl_date_of_assignment">Date of assignment:</string>
     <string name="lbl_frequency">Frequency:</string>

@@ -1,46 +1,24 @@
 package com.jonathan.proyectofinal.data;
 
-public class MotorExcercisesAssignment {
+public class MotorExcercises  {
 
-    private String uidPatient;
-    private String uriGifExcercise;
     private Integer idExcercise;
+    private String uriGifExcercise;
     private String nameExcercise;
     private String descriptionExcercise;
     private String longDescriptionExcercise;
     private Integer timeExcercise;
-    private String finished;
-    private Integer rating;
 
-    public MotorExcercisesAssignment() {
+    public MotorExcercises() {
     }
 
-    public MotorExcercisesAssignment(String uidPatient, String uriGifExcercise, Integer idExcercise, String nameExcercise, String descriptionExcercise, String longDescriptionExcercise, Integer timeExcercise, String finished, Integer rating) {
-        this.uidPatient = uidPatient;
-        this.uriGifExcercise = uriGifExcercise;
+    public MotorExcercises(Integer idExcercise, String uriGifExcercise, String nameExcercise, String descriptionExcercise, String longDescriptionExcercise, Integer timeExcercise) {
         this.idExcercise = idExcercise;
+        this.uriGifExcercise = uriGifExcercise;
         this.nameExcercise = nameExcercise;
         this.descriptionExcercise = descriptionExcercise;
         this.longDescriptionExcercise = longDescriptionExcercise;
         this.timeExcercise = timeExcercise;
-        this.finished = finished;
-        this.rating = rating;
-    }
-
-    public String getUidPatient() {
-        return uidPatient;
-    }
-
-    public void setUidPatient(String uidPatient) {
-        this.uidPatient = uidPatient;
-    }
-
-    public String getUriGifExcercise() {
-        return uriGifExcercise;
-    }
-
-    public void setUriGifExcercise(String uriGifExcercise) {
-        this.uriGifExcercise = uriGifExcercise;
     }
 
     public Integer getIdExcercise() {
@@ -49,6 +27,14 @@ public class MotorExcercisesAssignment {
 
     public void setIdExcercise(Integer idExcercise) {
         this.idExcercise = idExcercise;
+    }
+
+    public String getUriGifExcercise() {
+        return uriGifExcercise;
+    }
+
+    public void setUriGifExcercise(String uriGifExcercise) {
+        this.uriGifExcercise = uriGifExcercise;
     }
 
     public String getNameExcercise() {
@@ -81,21 +67,5 @@ public class MotorExcercisesAssignment {
 
     public void setTimeExcercise(Integer timeExcercise) {
         this.timeExcercise = timeExcercise;
-    }
-
-    public String getFinished() {
-        return finished;
-    }
-
-    public void setFinished(String finished) {
-        this.finished = finished;
-    }
-
-    public Integer getRating() {
-        return rating;
-    }
-
-    public void setRating(Integer rating) {
-        this.rating = rating;
     }
 }

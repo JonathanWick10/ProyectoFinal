@@ -106,26 +106,6 @@
                         style="@style/StyleCardViewSubTitles"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="@string/lbl_frequency"/>
-
-                    <TextView
-                        style="@style/StyleCardViewDescriptions"
-                        android:id="@+id/data_therapy_progress"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="Todos los días"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/twentyFive"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        style="@style/StyleCardViewSubTitles"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
                         android:text="@string/lbl_statement"/>
 
                     <TextView

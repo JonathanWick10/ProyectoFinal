@@ -398,6 +398,7 @@
     <string name="lbl_best_score">Mejor puntuación:</string>
     <string name="lbl_statement">Estado:</string>
     <string name="lbl_description">Descripción:</string>
+    <string name="lbl_long_description">Descripción completa:</string>
     <string name="lbl_instructions">Instrucciones:</string>
     <string name="lbl_date_of_assignment">Fecha de asignación:</string>
     <string name="lbl_frequency">Tomar cada:</string>

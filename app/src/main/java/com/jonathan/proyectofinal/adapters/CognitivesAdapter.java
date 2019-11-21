@@ -18,8 +18,6 @@ import com.google.android.material.card.MaterialCardView;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.data.CognitivesExcercises;
 
-import org.w3c.dom.Text;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 

@@ -150,70 +150,70 @@ public class MedicamentsChildFragment extends Fragment {
                                 long intervalMillis = 1000 * 60 * 2;
                                 int requestCode = 12;
                                 if (medicationAssignment.getStatement().equals("Activada")){
-                                    //initNotify(medicationAssignment.getHours());
-                                    //startAlarm(requestCode,intervalMillis);
+                                    initNotify(medicationAssignment.getHours());
+                                    startAlarm(requestCode,intervalMillis);
                                 }else {
-                                    //cancelAlarm(requestCode);
+                                    cancelAlarm(requestCode);
                                 }
                                 break;
                             case "5 Minutos":
                                 long intervalMillis1 = 1000 * 60 * 5;
                                 int requestCode1 = 123;
                                 if (medicationAssignment.getStatement().equals("Activada")){
-                                    //initNotify(medicationAssignment.getHours());
-                                    //startAlarm(requestCode1,intervalMillis1);
+                                    initNotify(medicationAssignment.getHours());
+                                    startAlarm(requestCode1,intervalMillis1);
                                 }else {
-                                    //cancelAlarm(requestCode1);
+                                    cancelAlarm(requestCode1);
                                 }
                                 break;
                             case "30 Minutos":
                                 long intervalMillis2 = 1000 * 60 * 30;
                                 int requestCode2 = 124;
                                 if (medicationAssignment.getStatement().equals("Activada")){
-                                    //initNotify(medicationAssignment.getHours());
-                                    //startAlarm(requestCode2,intervalMillis2);
+                                    initNotify(medicationAssignment.getHours());
+                                    startAlarm(requestCode2,intervalMillis2);
                                 }else {
-                                    //cancelAlarm(requestCode2);
+                                    cancelAlarm(requestCode2);
                                 }
                                 break;
                             case "6 Horas":
                                 long intervalMillis3 = 1000 * 60 * 60 * 6;
                                 int requestCode3 = 125;
                                 if (medicationAssignment.getStatement().equals("Activada")){
-                                    //initNotify(medicationAssignment.getHours());
-                                    //startAlarm(requestCode3,intervalMillis3);
+                                    initNotify(medicationAssignment.getHours());
+                                    startAlarm(requestCode3,intervalMillis3);
                                 }else {
-                                    //cancelAlarm(requestCode3);
+                                    cancelAlarm(requestCode3);
                                 }
                                 break;
                             case "8 Horas":
                                 long intervalMillis4 = 1000 * 60 * 60 * 8;
                                 int requestCode4 = 126;
                                 if (medicationAssignment.getStatement().equals("Activada")){
-                                    //initNotify(medicationAssignment.getHours());
-                                    //startAlarm(requestCode4,intervalMillis4);
+                                    initNotify(medicationAssignment.getHours());
+                                    startAlarm(requestCode4,intervalMillis4);
                                 }else {
-                                    //cancelAlarm(requestCode4);
+                                    cancelAlarm(requestCode4);
                                 }
                                 break;
                             case "12 Horas":
                                 long intervalMillis5 = 1000 * 60 * 60 * 12;
                                 int requestCode5 = 127;
                                 if (medicationAssignment.getStatement().equals("Activada")){
-                                    //initNotify(medicationAssignment.getHours());
-                                    //startAlarm(requestCode5,intervalMillis5);
+                                    initNotify(medicationAssignment.getHours());
+                                    startAlarm(requestCode5,intervalMillis5);
                                 }else {
-                                    //cancelAlarm(requestCode5);
+                                    cancelAlarm(requestCode5);
                                 }
                                 break;
                             case "48 Horas":
                                 long intervalMillis6 = 1000 * 60 * 60 * 48;
                                 int requestCode6 = 128;
                                 if (medicationAssignment.getStatement().equals("Activada")){
-                                    //initNotify(medicationAssignment.getHours());
-                                    //startAlarm(requestCode6,intervalMillis6);
+                                    initNotify(medicationAssignment.getHours());
+                                    startAlarm(requestCode6,intervalMillis6);
                                 }else {
-                                    //cancelAlarm(requestCode6);
+                                    cancelAlarm(requestCode6);
                                 }
                                 break;
                             //region Ejemplo

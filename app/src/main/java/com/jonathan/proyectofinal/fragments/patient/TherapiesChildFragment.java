@@ -14,8 +14,10 @@ import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 import com.jonathan.proyectofinal.R;
@@ -35,6 +37,8 @@ public class TherapiesChildFragment extends Fragment {
     LinearLayout expandableView;
     @BindView(R.id.cardActivityTherapy)
     MaterialCardView cardTherapy;
+    @BindView(R.id.iv_therapy_miniature)
+    ImageView imageView;
 
     public TherapiesChildFragment() {
         // Required empty public constructor
@@ -45,13 +49,17 @@ public class TherapiesChildFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_therapies_child, container, false);
+
+        View view =  inflater.inflate(R.layout.fragment_therapies_child, container, false);
+        ButterKnife.bind(this, view);
+        Glide.with(this).load("https://firebasestorage.googleapis.com/v0/b/brainmher-51968.appspot.com/o/Excercises%2FCognitive%2Fmemorama.png?alt=media&token=33b03bda-1c0c-4430-8934-5c1515fe03bc").fitCenter().into(imageView);
+        return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ButterKnife.bind(this, view);
+
     }
 
     @OnClick(R.id.btn_show_hide_therapy)
