@@ -1,5 +1,7 @@
 package com.jonathan.proyectofinal.data;
 
+import java.util.List;
+
 public class CognitiveExcercisesAssignment {
 
     private String uidPatient;
@@ -8,6 +10,7 @@ public class CognitiveExcercisesAssignment {
     private String nameExcercise;
     private String descriptionExcercise;
     private int level;
+    List<String> listScores;
     private int bestScore;
     private String statement;
     private int rating;
@@ -15,13 +18,14 @@ public class CognitiveExcercisesAssignment {
     public CognitiveExcercisesAssignment() {
     }
 
-    public CognitiveExcercisesAssignment(String uidPatient, String uriImageExcercise, int idExcercise, String nameExcercise, String descriptionExcercise, int level, int bestScore, String statement, int rating) {
+    public CognitiveExcercisesAssignment(String uidPatient, String uriImageExcercise, int idExcercise, String nameExcercise, String descriptionExcercise, int level, List<String> listScores, int bestScore, String statement, int rating) {
         this.uidPatient = uidPatient;
         this.uriImageExcercise = uriImageExcercise;
         this.idExcercise = idExcercise;
         this.nameExcercise = nameExcercise;
         this.descriptionExcercise = descriptionExcercise;
         this.level = level;
+        this.listScores = listScores;
         this.bestScore = bestScore;
         this.statement = statement;
         this.rating = rating;
@@ -73,6 +77,14 @@ public class CognitiveExcercisesAssignment {
 
     public void setLevel(int level) {
         this.level = level;
+    }
+
+    public List<String> getListScores() {
+        return listScores;
+    }
+
+    public void setListScores(List<String> listScores) {
+        this.listScores = listScores;
     }
 
     public int getBestScore() {
