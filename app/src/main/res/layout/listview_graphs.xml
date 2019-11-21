@@ -52,15 +52,17 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
+                android:visibility="gone"
                 android:layout_below="@id/text_name_exercise"/>
 
             <com.github.mikephil.charting.charts.LineChart
 
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="250dp"
                 android:layout_centerHorizontal="true"
                 android:id="@+id/graph1"
-                android:layout_below="@id/text_name_exercise"
+                android:layout_below="@id/separator"
+                android:layout_marginTop="@dimen/fifteen"
                 ></com.github.mikephil.charting.charts.LineChart>
         </RelativeLayout>
 
