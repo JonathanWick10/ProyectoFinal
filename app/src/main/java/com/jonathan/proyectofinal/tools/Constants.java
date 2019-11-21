@@ -12,6 +12,10 @@ public class Constants {
     public static final String Medicines = "Medicines";
     public static final String Medicine = "Medicine";
     public static final String Example = "Example";
+    public static final String CognitiveExcercises = "CognitiveExcercises";
+    public static final String CognitiveExcercisesAssignments = "CognitiveExcercisesAssignments";
+    public static final String MotorExcercises = "MotorExcercises";
+    public static final String MotorExcercisesAssignments = "MotorExcercisesAssignments";
 
     //Constants for Patients
     public static final String Memorizame = "Memorizame";
