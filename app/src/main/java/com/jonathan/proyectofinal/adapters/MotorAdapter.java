@@ -21,15 +21,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.data.MedicationAssignment;
 import com.jonathan.proyectofinal.data.MotorExcercises;
+import com.jonathan.proyectofinal.data.MotorExcercisesAssignment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -108,9 +114,10 @@ public class MotorAdapter extends FirestoreRecyclerAdapter<MotorExcercises, Moto
             @Override
             public void onCheckedChanged(MaterialCardView card, boolean isChecked) {
                 if (isChecked) {
-                    Toast.makeText(context, "Asignado "+ uid, Toast.LENGTH_SHORT).show();
+                    manageAssignment(uid, idDoc);
+                    //Toast.makeText(context, "Asignado: "+ uid, Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(context, "Sin asignar"+ uid, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Sin asignar: "+ uid, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -133,6 +140,63 @@ public class MotorAdapter extends FirestoreRecyclerAdapter<MotorExcercises, Moto
             }
         });
         */
+    }
+
+    private void manageAssignment(final String uid, String idDoc) {
+
+        DocumentReference documentReference = db.collection("MotorExcercises").document(idDoc);
+        documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()){
+                    DocumentSnapshot documentExcercise = task.getResult();
+                    if (documentExcercise.exists()){
+                        MotorExcercises motorExcercises = documentExcercise.toObject(MotorExcercises.class);
+                        int idExcercise = motorExcercises.getIdExcercise();
+                        String nameExcercise = motorExcercises.getNameExcercise();
+                        String descriptionExcercise = motorExcercises.getDescriptionExcercise();
+                        String longDescriptionExcercise = motorExcercises.getLongDescriptionExcercise();
+                        int timeExcercise = motorExcercises.getTimeExcercise();
+                        String uriGifExcercise = motorExcercises.getUriGifExcercise();
+
+                        setAssignment(uid, idExcercise, nameExcercise, descriptionExcercise, longDescriptionExcercise, timeExcercise, uriGifExcercise);
+                    }
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(context, "Gestión fallida", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void setAssignment(String uid, int idExcercise, String nameExcercise, String descriptionExcercise, String longDescriptionExcercise, int timeExcercise, String uriGifExcercise) {
+        MotorExcercisesAssignment motorExcercisesAssignment = new MotorExcercisesAssignment();
+
+        //Set data in pojo
+        motorExcercisesAssignment.setUidPatient(uid);
+        motorExcercisesAssignment.setIdExcercise(idExcercise);
+        motorExcercisesAssignment.setNameExcercise(nameExcercise);
+        motorExcercisesAssignment.setDescriptionExcercise(descriptionExcercise);
+        motorExcercisesAssignment.setLongDescriptionExcercise(longDescriptionExcercise);
+        motorExcercisesAssignment.setTimeExcercise(timeExcercise);
+        motorExcercisesAssignment.setUriGifExcercise(uriGifExcercise);
+        motorExcercisesAssignment.setFinished("No");
+        motorExcercisesAssignment.setRating(0);
+
+        db.collection("MotorExcercisesAssignments").document().set(motorExcercisesAssignment)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(context, "Asignado con exito", Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(context, "Asignacion fallida", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @NonNull
