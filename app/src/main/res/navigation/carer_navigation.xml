@@ -16,7 +16,7 @@
         tools:layout="@layout/fragment_cu_test" />
     <fragment
         android:id="@+id/emergency"
-        android:name="com.jonathan.proyectofinal.fragments.carer.EmergencyFragment"
+        android:name="com.jonathan.proyectofinal.fragments.carer.CallEmergencyFragment"
         android:label="fragment_cu_emergency"
         tools:layout="@layout/fragment_cu_emergency" />
     <fragment
