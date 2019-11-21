@@ -1,5 +1,6 @@
 package com.jonathan.proyectofinal.fragments.hp;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,10 +15,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.gson.Gson;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.adapters.CognitivesAdapter;
 import com.jonathan.proyectofinal.data.CognitiveExcercisesAssignment;
 import com.jonathan.proyectofinal.data.CognitivesExcercises;
+import com.jonathan.proyectofinal.data.Patient;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,6 +31,7 @@ public class CognitiveTherapyPSFragment extends Fragment {
     @BindView(R.id.list_cognitives)
     RecyclerView list_cognitives;
     Bundle bundle;
+    Patient patient = new Patient();
 
     public CognitiveTherapyPSFragment(Bundle bundle) {
         this.bundle = bundle;
@@ -39,10 +43,16 @@ public class CognitiveTherapyPSFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_ps_therapy_cognitive, container, false);
         ButterKnife.bind(this, view);
-        bundle = getArguments();
+        /*bundle = getArguments();
         if (bundle!=null){
             String uID = bundle.getString("patientUID");
-        }
+        }*/
+        SharedPreferences preferences = getActivity().getPreferences(0);
+        Gson gson = new Gson();
+        String json = preferences.getString("serialipatient", "");
+        patient = gson.fromJson(json, Patient.class);
+        String uiD = patient.getPatientUID();
+
         fillRecycler();
         return view;
     }
