@@ -18,7 +18,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-        <TextView
+
+
+
+            <TextView
             android:id="@+id/text_name_exercise"
             style="@style/StyleSubsCardView"
             android:layout_width="match_parent"
@@ -26,16 +29,18 @@
             android:background="@color/white"
             android:textColor="@color/blueDark"
             android:layout_marginLeft="15dp"
-            android:text="@string/number"/>
+            android:text="@string/name_ps"/>
 
-                <Button
-                    android:id="@+id/btnExpandMotor"
-                    android:layout_width="@dimen/fifty"
-                    android:layout_height="@dimen/fifty"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="10dp"
-                    android:background="@drawable/ic_keyboard_arrow_down_black"
-                    android:backgroundTint="@color/colorPrimary" />
+            <ImageView
+                android:id="@+id/btnExpandCard"
+                android:layout_width="@dimen/fifty"
+                android:layout_height="@dimen/fifty"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:tint="@color/blueDark"
+                android:src="@drawable/ic_keyboard_arrow_up_black"
+                />
+
 
 
             <TextView

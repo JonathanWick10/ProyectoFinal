@@ -15,7 +15,7 @@ public class MotorExcercisesAssignment {
     public MotorExcercisesAssignment() {
     }
 
-    public MotorExcercisesAssignment(String uidPatient, String uriGifExcercise, Integer idExcercise, String nameExcercise, String descriptionExcercise, String longDescriptionExcercise, Integer timeExcercise, String finished, Integer rating) {
+    public MotorExcercisesAssignment(String uidPatient, String uriGifExcercise, int idExcercise, String nameExcercise, String descriptionExcercise, String longDescriptionExcercise, Integer timeExcercise, String finished, Integer rating) {
         this.uidPatient = uidPatient;
         this.uriGifExcercise = uriGifExcercise;
         this.idExcercise = idExcercise;
@@ -43,11 +43,11 @@ public class MotorExcercisesAssignment {
         this.uriGifExcercise = uriGifExcercise;
     }
 
-    public Integer getIdExcercise() {
+    public int getIdExcercise() {
         return idExcercise;
     }
 
-    public void setIdExcercise(Integer idExcercise) {
+    public void setIdExcercise(int idExcercise) {
         this.idExcercise = idExcercise;
     }
 
@@ -75,11 +75,11 @@ public class MotorExcercisesAssignment {
         this.longDescriptionExcercise = longDescriptionExcercise;
     }
 
-    public Integer getTimeExcercise() {
+    public int getTimeExcercise() {
         return timeExcercise;
     }
 
-    public void setTimeExcercise(Integer timeExcercise) {
+    public void setTimeExcercise(int timeExcercise) {
         this.timeExcercise = timeExcercise;
     }
 
@@ -91,11 +91,11 @@ public class MotorExcercisesAssignment {
         this.finished = finished;
     }
 
-    public Integer getRating() {
+    public int getRating() {
         return rating;
     }
 
-    public void setRating(Integer rating) {
+    public void setRating(int rating) {
         this.rating = rating;
     }
 }

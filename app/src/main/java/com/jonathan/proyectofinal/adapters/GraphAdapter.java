@@ -1,6 +1,8 @@
 package com.jonathan.proyectofinal.adapters;
 
 import android.content.Context;
+import android.transition.AutoTransition;
+import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,86 +14,109 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.github.mikephil.charting.charts.LineChart;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.jonathan.proyectofinal.R;
-import com.jonathan.proyectofinal.data.StretchingExercise;
+import com.jonathan.proyectofinal.data.CognitiveExcercisesAssignment;
 
 import java.util.List;
 
-public class GraphAdapter extends RecyclerView.Adapter<GraphAdapter.GraphViewHolder> {
+public class GraphAdapter extends FirestoreRecyclerAdapter<CognitiveExcercisesAssignment, GraphAdapter.GraphViewHolder> {
 
     //region Variables
-    List<StretchingExercise> stretchingList;
     Context context;
-    GraphAdapter.ISelectionGraph iSelectionGraph;
+    GraphAdapter.ISelectItem iSelectItem;
     //endregion
 
-
-    public GraphAdapter(List<StretchingExercise> stretchingList, Context context, ISelectionGraph iSelectionGraph) {
-        this.stretchingList = stretchingList;
+    //region Build
+    public GraphAdapter(@NonNull FirestoreRecyclerOptions options, Context context, ISelectItem iSelectItem) {
+        super(options);
         this.context = context;
-        this.iSelectionGraph = iSelectionGraph;
+        this.iSelectItem = iSelectItem;
     }
+    //endregion
 
-    //region Overwritten methods of RecyclerView
+    //region Override
     @NonNull
     @Override
     public GraphViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.listview_graphs, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.listview_graphs,parent,false);
+
         return new GraphViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull GraphViewHolder holder, final int position) {
-        //set data
-        holder.setData(stretchingList.get(position));
-        //events onclick
-        holder.layout.setOnClickListener(new View.OnClickListener() {
+    protected void onBindViewHolder(@NonNull final GraphViewHolder holder, int position, @NonNull CognitiveExcercisesAssignment model) {
+
+        //Get the position of the professional inside the adapter
+        final DocumentSnapshot exerciseCognitiveDocument = getSnapshots().getSnapshot(holder.getAdapterPosition());
+
+
+
+        holder.setData(exerciseCognitiveDocument.toObject(CognitiveExcercisesAssignment.class));
+        holder.nameExercise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                iSelectionGraph.clickItem(stretchingList.get(position));
+                if (holder.graphRecycler.getVisibility() == View.GONE){
+                    holder.graphRecycler.setVisibility(View.VISIBLE);
+                    holder.separator.setVisibility(View.VISIBLE);
+
+                    holder.seeMore.setImageResource(R.drawable.ic_keyboard_arrow_down_black);
+                    //btn_show_hide.setText(R.string.btn_hide_info);
+                    //btn_show_hide.setWidth(240);
+                } else {
+                    holder.graphRecycler.setVisibility(View.GONE);
+                    holder.separator.setVisibility(View.GONE);
+
+                    holder.seeMore.setImageResource(R.drawable.ic_keyboard_arrow_up_black);
+                    //btn_show_hide.setText(R.string.btn_show_info);
+                }
             }
         });
 
-    }
+        holder.layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                iSelectItem.clickSelectItem(exerciseCognitiveDocument.toObject(CognitiveExcercisesAssignment.class));
 
-    @Override
-    public int getItemCount() {
-        return stretchingList.size();
+            }
+        });
     }
     //endregion
 
-
-
-    //region ViewHolder of Recycler
-    public class GraphViewHolder  extends RecyclerView.ViewHolder {
-
-        Button arrow;
-        TextView number;
-        StretchingExercise item;
+    //region View Holder
+    public class GraphViewHolder extends RecyclerView.ViewHolder{
+        ImageView seeMore;
+        TextView nameExercise;
+        TextView separator;
+        CognitiveExcercisesAssignment item;
         View layout;
+        LineChart graphRecycler;
 
-        //Reference to views
-        public GraphViewHolder (@NonNull View itemView) {
+        public GraphViewHolder(@NonNull View itemView) {
             super(itemView);
-            layout = itemView;
-            arrow = itemView.findViewById(R.id.btnExpandMotor);
-            number = itemView.findViewById(R.id.text_name_exercise);
+            seeMore=itemView.findViewById(R.id.btnExpandCard);
+            nameExercise=itemView.findViewById(R.id.text_name_exercise);
+            separator=itemView.findViewById(R.id.separator);
+            graphRecycler=itemView.findViewById(R.id.graph1);
+            layout=itemView;
         }
 
         //Set data to views
-        public void setData(StretchingExercise item) {
+        public void setData(CognitiveExcercisesAssignment item) {
             this.item = item;
-            number.setText(item.getNameExercise());
+            nameExercise.setText(item.getNameExcercise());
+            graphRecycler.setVisibility(View.GONE);
         }
     }
     //endregion
 
-
-    //region Interfaces
-    public interface ISelectionGraph {
-        void clickItem(StretchingExercise stretchingExercise);
+    //region Interface
+    public interface ISelectItem{
+        void clickSelectItem(CognitiveExcercisesAssignment cognitiveExcercisesAssignment);
     }
     //endregion
-
 
 }
