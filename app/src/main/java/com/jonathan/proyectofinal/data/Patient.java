@@ -34,7 +34,7 @@ public class Patient implements Serializable {
     List<String> assigns;
     private String uriImg;
     private String playerId;
-    List<String> gameMemoramaScore;
+
     //endregion
 
     //region Builders
@@ -260,14 +260,6 @@ public class Patient implements Serializable {
 
     public void setPlayerId(String playerId) {
         this.playerId = playerId;
-    }
-
-    public List<String> getGameMemoramaScore() {
-        return gameMemoramaScore;
-    }
-
-    public void setGameMemoramaScore(List<String> gameMemoramaScore) {
-        this.gameMemoramaScore = gameMemoramaScore;
     }
 
     //endregion

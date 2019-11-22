@@ -11,11 +11,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,19 +23,17 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.data.MemoramaEntity;
-import com.jonathan.proyectofinal.data.Patient;
+import com.jonathan.proyectofinal.data.ScoreGame;
 import com.jonathan.proyectofinal.tools.Constants;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class Memorama extends Fragment {
 
-    //region imagesViews
+    //region reference images Views
     @BindView(R.id.item_uno)
     public ImageView itemUno;
 
@@ -346,49 +342,55 @@ public class Memorama extends Fragment {
         });
         long fJuego = System.currentTimeMillis();
         long diferencia = (fJuego - tInicio) / 1000;
-        if(puntuacion <= 0){
-            puntuacion  = 0d;
-        }else {
+        if (puntuacion <= 0) {
+            puntuacion = 0d;
+        } else {
 
             double scorePorcentaje = 0.7;
             double timePorcentaje = 0.3;
             double scoreTime = 100 * (23 / diferencia);
 
-            if(scoreTime >= 100){
+            if (scoreTime >= 100) {
                 scoreTime = 100d;
                 puntuacion = (scoreTime * timePorcentaje) + (puntuacion * scorePorcentaje);
-            }else {
+            } else {
                 puntuacion = (scoreTime * timePorcentaje) + (puntuacion * scorePorcentaje);
             }
         }
 
-        DocumentReference docRefAd = db.collection(Constants.Patients).document(firebaseUser.getUid());
+        DocumentReference docRefAd = db.collection(Constants.scoreGames).document(firebaseUser.getUid());
         final Double finalPuntuacion = puntuacion;
         docRefAd.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                if (documentSnapshot.exists()) {
-                    Patient patiet = documentSnapshot.toObject(Patient.class);
+                ScoreGame scoreGame = documentSnapshot.toObject(ScoreGame.class);
 
-                    if (patiet.getGameMemoramaScore() == null) {
+                if(scoreGame != null){
+                    if (scoreGame.getGameMemoramaScore() == null) {
                         //esta vacia crea una nueva lista.
                         List<String> list = new ArrayList<>();
                         list.add(String.valueOf(finalPuntuacion));
                         //agrega puntiacion
-                        patiet.setGameMemoramaScore(list);
+                        scoreGame.setGameMemoramaScore(list);
                     } else {
                         //ya existe lista, obtiene la actual y agrega nuevo
-                        List<String> list = patiet.getGameMemoramaScore();
+                        List<String> list = scoreGame.getGameMemoramaScore();
                         list.add(String.valueOf(finalPuntuacion));
-                        patiet.setGameMemoramaScore(list);
+                        scoreGame.setGameMemoramaScore(list);
                     }
+                }else{
+                    scoreGame = new ScoreGame();
 
-
-                    //guardar nuevos datos
-                    db.collection(Constants.Patients).document(firebaseAuth.getUid()).set(patiet);
-                } else {
-                    Toast.makeText(getActivity(), "Sin usuario encontrado. error", Toast.LENGTH_SHORT).show();
+                    //esta vacia crea una nueva lista.
+                    List<String> list = new ArrayList<>();
+                    list.add(String.valueOf(finalPuntuacion));
+                    //agrega puntiacion
+                    scoreGame.setGameMemoramaScore(list);
                 }
+
+                //guardar nuevos datos
+                db.collection(Constants.scoreGames).document(firebaseAuth.getUid()).set(scoreGame);
+
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -401,6 +403,7 @@ public class Memorama extends Fragment {
 
     public interface Memoramai {
         void reloadGame(String reloadGame);
+
         void callOnbackPressed();
     }
 }
