@@ -411,6 +411,7 @@ public class AddPatients extends Fragment {
             patient.setAge(age);
             */
             //endregion
+            flag = true;
         }else{
             flag = false;
         }
