@@ -11,11 +11,13 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+/*
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.login.LoginResult;
+*/
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -59,7 +61,7 @@ public class LoginManager {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FirebaseUser user = firebaseAuth.getCurrentUser();
     private GoogleSignInClient googleSignInClient;
-    private CallbackManager callbackManager = CallbackManager.Factory.create();
+    //private CallbackManager callbackManager = CallbackManager.Factory.create();
 
     //Instance Managers
     AdminManager adminManager = new AdminManager();
@@ -273,7 +275,7 @@ public class LoginManager {
             }
         });
     }
-
+/*
     public void handleFacebookAccessToken(AccessToken token, final Context context) {
         Log.d("fb", "handleFacebookAccessToken:" + token);
 
@@ -311,4 +313,5 @@ public class LoginManager {
                     }
                 });
     }
+ */
 }

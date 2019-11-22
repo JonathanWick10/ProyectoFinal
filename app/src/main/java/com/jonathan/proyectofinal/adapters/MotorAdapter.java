@@ -47,6 +47,7 @@ public class MotorAdapter extends FirestoreRecyclerAdapter<MotorExcercises, Moto
     Context context;
     String uid;
     ProgressDialog progressDialog;
+    MotorExcercisesAssignment motorExcercisesAssignment = new MotorExcercisesAssignment();
 
     /**
      * Create a new RecyclerView adapter that listens to a Firestore Query.  See {@link
@@ -95,19 +96,29 @@ public class MotorAdapter extends FirestoreRecyclerAdapter<MotorExcercises, Moto
 
         List<String> listAssignments = new ArrayList<>();
         if (motorExcercises.getAssignments() != null){
-            listAssignments = motorExcercises.getAssignments();
-            for (String item:
-                 listAssignments) {
-                if (item == uid){
-                    cardMotor.setChecked(true);
+            if (motorExcercises.getAssignments().size() != 0){
+                listAssignments = motorExcercises.getAssignments();
+                for (String item:
+                        listAssignments) {
+                    if (item == uid){
+                        cardMotor.setChecked(true);
+                    } else {
+                        cardMotor.setChecked(false);
+                    }
                 }
+            } else {
+                cardMotor.setChecked(false);
             }
         }
 
         cardMotor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cardMotor.toggle();
+                if (cardMotor.isChecked()){
+                    cardMotor.setChecked(false);
+                } else {
+                    cardMotor.toggle();
+                }
             }
         });
 
@@ -167,13 +178,40 @@ public class MotorAdapter extends FirestoreRecyclerAdapter<MotorExcercises, Moto
                 else {
                     progressDialog = ProgressDialog.show(context,
                             "Brainmher","Realizando desasignación.");
-
                     //Get the data from the assignment document
                     int idExcercise = motorExcercises.getIdExcercise();
                     db.collection("MotorExcercisesAssignments")
                             .whereEqualTo("uidPatient", uid)
                             .whereEqualTo("idExcercise", idExcercise)
-                            .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                        @Override
+                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                            if (!queryDocumentSnapshots.isEmpty()){
+                                for (QueryDocumentSnapshot documentSnapshot:
+                                     queryDocumentSnapshots) {
+                                    String idDocAssignment = documentSnapshot.getId();
+
+                                    //The patient's uId is deleted in the MotorExcercises document
+                                    documentExcerciseReference.update("assignments", FieldValue.arrayRemove(uid));
+
+                                    //The assignment document is deleted
+                                    DocumentReference documentAssignmentReference = db.collection("MotorExcercisesAssignments").document(idDocAssignment);
+                                    documentAssignmentReference.delete();
+                                    progressDialog.dismiss();
+                                    Toast.makeText(context, "Ejercicio desasignado.", Toast.LENGTH_SHORT).show();
+                                }
+                            } else {
+                                progressDialog.dismiss();
+                            }
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+
+                        }
+                    });
+
+                            /*addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             if (task.isSuccessful()) {
@@ -195,6 +233,7 @@ public class MotorAdapter extends FirestoreRecyclerAdapter<MotorExcercises, Moto
                             }
                         }
                     });
+                    */
                 }
             }
         });

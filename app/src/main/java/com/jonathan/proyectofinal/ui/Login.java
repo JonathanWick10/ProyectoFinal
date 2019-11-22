@@ -22,12 +22,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+/*
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+*/
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -104,7 +106,7 @@ public class Login extends AppCompatActivity {
 
     //HealthcareProfessional hp = new HealthcareProfessional();
 
-    CallbackManager callbackManager;
+    //CallbackManager callbackManager;
     //private static final String TAG="MainActivity";
 
     FirebaseFirestore db;
@@ -131,7 +133,7 @@ public class Login extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
         loginInstance().googleClientSettings(this);
-        callbackManager=CallbackManager.Factory.create();
+        //callbackManager=CallbackManager.Factory.create();
 
         pass.addTextChangedListener(new TextWatcher() {
             @Override
@@ -249,7 +251,7 @@ public class Login extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        callbackManager.onActivityResult(requestCode, resultCode, data);
+        //callbackManager.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == GOOGLE_SIGN_IN){
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);

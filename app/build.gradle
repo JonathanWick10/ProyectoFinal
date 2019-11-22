@@ -77,7 +77,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-auth:17.0.0'
 
     //dependencie for Login with Facebook
-    implementation 'com.facebook.android:facebook-login:[5,6)'
+    //implementation 'com.facebook.android:facebook-login:[5,6)'
 
     // dependence for create of Gif
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.19'
