@@ -1,5 +1,7 @@
 package com.jonathan.proyectofinal.data;
 
+import java.util.List;
+
 public class MotorExcercises  {
 
     private int idExcercise;
@@ -8,17 +10,19 @@ public class MotorExcercises  {
     private String descriptionExcercise;
     private String longDescriptionExcercise;
     private int timeExcercise;
+    private List<String> assignments;
 
     public MotorExcercises() {
     }
 
-    public MotorExcercises(int idExcercise, String uriGifExcercise, String nameExcercise, String descriptionExcercise, String longDescriptionExcercise, int timeExcercise) {
+    public MotorExcercises(int idExcercise, String uriGifExcercise, String nameExcercise, String descriptionExcercise, String longDescriptionExcercise, int timeExcercise, List<String> assignments) {
         this.idExcercise = idExcercise;
         this.uriGifExcercise = uriGifExcercise;
         this.nameExcercise = nameExcercise;
         this.descriptionExcercise = descriptionExcercise;
         this.longDescriptionExcercise = longDescriptionExcercise;
         this.timeExcercise = timeExcercise;
+        this.assignments = assignments;
     }
 
     public int getIdExcercise() {
@@ -67,5 +71,13 @@ public class MotorExcercises  {
 
     public void setTimeExcercise(int timeExcercise) {
         this.timeExcercise = timeExcercise;
+    }
+
+    public List<String> getAssignments() {
+        return assignments;
+    }
+
+    public void setAssignments(List<String> assignments) {
+        this.assignments = assignments;
     }
 }
