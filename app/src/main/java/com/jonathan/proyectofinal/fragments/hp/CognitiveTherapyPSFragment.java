@@ -31,6 +31,7 @@ public class CognitiveTherapyPSFragment extends Fragment {
     @BindView(R.id.list_cognitives)
     RecyclerView list_cognitives;
     Bundle bundle;
+    String uID;
     Patient patient = new Patient();
 
     public CognitiveTherapyPSFragment(Bundle bundle) {
@@ -51,7 +52,7 @@ public class CognitiveTherapyPSFragment extends Fragment {
         Gson gson = new Gson();
         String json = preferences.getString("serialipatient", "");
         patient = gson.fromJson(json, Patient.class);
-        String uiD = patient.getPatientUID();
+        uID = patient.getPatientUID();
 
         fillRecycler();
         return view;
@@ -84,7 +85,7 @@ public class CognitiveTherapyPSFragment extends Fragment {
         FirestoreRecyclerOptions<CognitivesExcercises> firestoreRecyclerOptions = new FirestoreRecyclerOptions.Builder<CognitivesExcercises>()
                 .setQuery(query, CognitivesExcercises.class).build();
 
-        cognitivesAdapter = new CognitivesAdapter(firestoreRecyclerOptions, getActivity());
+        cognitivesAdapter = new CognitivesAdapter(firestoreRecyclerOptions, getActivity(), uID);
         cognitivesAdapter.notifyDataSetChanged();
         list_cognitives.setAdapter(cognitivesAdapter);
     }

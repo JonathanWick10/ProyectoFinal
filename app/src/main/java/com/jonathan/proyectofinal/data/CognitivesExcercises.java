@@ -1,20 +1,24 @@
 package com.jonathan.proyectofinal.data;
 
+import java.util.List;
+
 public class CognitivesExcercises {
 
     private int idExcercise;
     private String uriImageExcercise;
     private String nameExcercise;
     private String descriptionExcercise;
+    private List<String> assignments;
 
     public CognitivesExcercises() {
     }
 
-    public CognitivesExcercises(int idExcercise, String uriImageExcercise, String nameExcercise, String descriptionExcercise) {
+    public CognitivesExcercises(int idExcercise, String uriImageExcercise, String nameExcercise, String descriptionExcercise, List<String> assignments) {
         this.idExcercise = idExcercise;
         this.uriImageExcercise = uriImageExcercise;
         this.nameExcercise = nameExcercise;
         this.descriptionExcercise = descriptionExcercise;
+        this.assignments = assignments;
     }
 
     public int getIdExcercise() {
@@ -47,5 +51,13 @@ public class CognitivesExcercises {
 
     public void setDescriptionExcercise(String descriptionExcercise) {
         this.descriptionExcercise = descriptionExcercise;
+    }
+
+    public List<String> getAssignments() {
+        return assignments;
+    }
+
+    public void setAssignments(List<String> assignments) {
+        this.assignments = assignments;
     }
 }

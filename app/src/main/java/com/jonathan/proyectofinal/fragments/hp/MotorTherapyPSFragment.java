@@ -56,7 +56,6 @@ public class MotorTherapyPSFragment extends Fragment {
         String json = preferences.getString("serialipatient", "");
         patient = gson.fromJson(json, Patient.class);
         uID = patient.getPatientUID();
-        Toast.makeText(getContext(), "Velo: "+uID, Toast.LENGTH_SHORT).show();
         fillRecycler();
         return view;
     }

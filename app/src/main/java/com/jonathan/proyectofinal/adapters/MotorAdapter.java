@@ -31,6 +31,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.data.MotorExcercises;
 import com.jonathan.proyectofinal.data.MotorExcercisesAssignment;
+import com.jonathan.proyectofinal.tools.Constants;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -46,8 +47,7 @@ public class MotorAdapter extends FirestoreRecyclerAdapter<MotorExcercises, Moto
     FirebaseUser firebaseUser;
     Context context;
     String uid;
-    ProgressDialog progressDialog;
-    MotorExcercisesAssignment motorExcercisesAssignment = new MotorExcercisesAssignment();
+    //ProgressDialog progressDialog;
 
     /**
      * Create a new RecyclerView adapter that listens to a Firestore Query.  See {@link
@@ -74,6 +74,7 @@ public class MotorAdapter extends FirestoreRecyclerAdapter<MotorExcercises, Moto
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            layout = itemView;
             ButterKnife.bind(this, itemView);
         }
     }
@@ -114,11 +115,7 @@ public class MotorAdapter extends FirestoreRecyclerAdapter<MotorExcercises, Moto
         cardMotor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (cardMotor.isChecked()){
-                    cardMotor.setChecked(false);
-                } else {
                     cardMotor.toggle();
-                }
             }
         });
 
@@ -126,12 +123,14 @@ public class MotorAdapter extends FirestoreRecyclerAdapter<MotorExcercises, Moto
         cardMotor.setOnCheckedChangeListener(new MaterialCardView.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(MaterialCardView card, boolean isChecked) {
-                final DocumentReference documentExcerciseReference = db.collection("MotorExcercises").document(idDoc);
+                final DocumentReference documentExcerciseReference = db.collection(Constants.MotorExcercises).document(idDoc);
 
                 //If checked, the assignment is made
                 if (isChecked) {
+                    /*
                     progressDialog = ProgressDialog.show(context,
                             "Brainmher","Realizando asignación");
+                     */
 
                     String[] assignArray = {uid};
                     List<String> assigns = Arrays.asList(assignArray);
@@ -161,7 +160,7 @@ public class MotorAdapter extends FirestoreRecyclerAdapter<MotorExcercises, Moto
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    progressDialog.dismiss();
+                                    //progressDialog.dismiss();
                                     Toast.makeText(context, "Gestión fallida", Toast.LENGTH_SHORT).show();
                                 }
                             });
@@ -169,18 +168,20 @@ public class MotorAdapter extends FirestoreRecyclerAdapter<MotorExcercises, Moto
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            progressDialog.dismiss();
+                            //progressDialog.dismiss();
                             Toast.makeText(context, "Gestión fallida", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
                 //If unchecked, the assignment is removed
                 else {
-                    progressDialog = ProgressDialog.show(context,
+                    /*progressDialog = ProgressDialog.show(context,
                             "Brainmher","Realizando desasignación.");
+                     */
+
                     //Get the data from the assignment document
                     int idExcercise = motorExcercises.getIdExcercise();
-                    db.collection("MotorExcercisesAssignments")
+                    db.collection(Constants.MotorExcercisesAssignments)
                             .whereEqualTo("uidPatient", uid)
                             .whereEqualTo("idExcercise", idExcercise)
                             .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -195,13 +196,13 @@ public class MotorAdapter extends FirestoreRecyclerAdapter<MotorExcercises, Moto
                                     documentExcerciseReference.update("assignments", FieldValue.arrayRemove(uid));
 
                                     //The assignment document is deleted
-                                    DocumentReference documentAssignmentReference = db.collection("MotorExcercisesAssignments").document(idDocAssignment);
+                                    DocumentReference documentAssignmentReference = db.collection(Constants.MotorExcercisesAssignments).document(idDocAssignment);
                                     documentAssignmentReference.delete();
-                                    progressDialog.dismiss();
+                                    //progressDialog.dismiss();
                                     Toast.makeText(context, "Ejercicio desasignado.", Toast.LENGTH_SHORT).show();
                                 }
                             } else {
-                                progressDialog.dismiss();
+                                //progressDialog.dismiss();
                             }
                         }
                     }).addOnFailureListener(new OnFailureListener() {
@@ -210,30 +211,6 @@ public class MotorAdapter extends FirestoreRecyclerAdapter<MotorExcercises, Moto
 
                         }
                     });
-
-                            /*addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                            if (task.isSuccessful()) {
-                                for (QueryDocumentSnapshot document : task.getResult()) {
-                                    String idDocAssignment = document.getId();
-
-                                    //The patient's uId is deleted in the MotorExcercises document
-                                    documentExcerciseReference.update("assignments", FieldValue.arrayRemove(uid));
-
-                                    //The assignment document is deleted
-                                    DocumentReference documentAssignmentReference = db.collection("MotorExcercisesAssignments").document(idDocAssignment);
-                                    documentAssignmentReference.delete();
-                                    progressDialog.dismiss();
-                                    Toast.makeText(context, "Ejercicio desasignado.", Toast.LENGTH_SHORT).show();
-                                }
-                            } else {
-                                progressDialog.dismiss();
-                                Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
-                    */
                 }
             }
         });
@@ -253,17 +230,17 @@ public class MotorAdapter extends FirestoreRecyclerAdapter<MotorExcercises, Moto
         motorExcercisesAssignment.setFinished("No");
         motorExcercisesAssignment.setRating(0);
 
-        db.collection("MotorExcercisesAssignments").document().set(motorExcercisesAssignment)
+        db.collection(Constants.MotorExcercisesAssignments).document("Motor").set(motorExcercisesAssignment)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        progressDialog.dismiss();
+                        //progressDialog.dismiss();
                         Toast.makeText(context, "Ejercicio asignado.", Toast.LENGTH_SHORT).show();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                progressDialog.dismiss();
+                //progressDialog.dismiss();
                 Toast.makeText(context, "Asignacion fallida.", Toast.LENGTH_SHORT).show();
             }
         });
