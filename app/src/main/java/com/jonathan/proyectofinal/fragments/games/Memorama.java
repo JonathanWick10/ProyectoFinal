@@ -359,7 +359,7 @@ public class Memorama extends Fragment {
         }
 
         DocumentReference docRefAd = db.collection(Constants.scoreGames).document(firebaseUser.getUid());
-        final Double finalPuntuacion = puntuacion;
+        final double finalPuntuacion = puntuacion;
         docRefAd.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
@@ -368,22 +368,22 @@ public class Memorama extends Fragment {
                 if(scoreGame != null){
                     if (scoreGame.getGameMemoramaScore() == null) {
                         //esta vacia crea una nueva lista.
-                        List<String> list = new ArrayList<>();
-                        list.add(String.valueOf(finalPuntuacion));
+                        List<Integer> list = new ArrayList<>();
+                        list.add((int)finalPuntuacion);
                         //agrega puntiacion
                         scoreGame.setGameMemoramaScore(list);
                     } else {
                         //ya existe lista, obtiene la actual y agrega nuevo
-                        List<String> list = scoreGame.getGameMemoramaScore();
-                        list.add(String.valueOf(finalPuntuacion));
+                        List<Integer> list = scoreGame.getGameMemoramaScore();
+                        list.add((int)finalPuntuacion);
                         scoreGame.setGameMemoramaScore(list);
                     }
                 }else{
                     scoreGame = new ScoreGame();
 
                     //esta vacia crea una nueva lista.
-                    List<String> list = new ArrayList<>();
-                    list.add(String.valueOf(finalPuntuacion));
+                    List<Integer> list = new ArrayList<>();
+                    list.add((int)finalPuntuacion);
                     //agrega puntiacion
                     scoreGame.setGameMemoramaScore(list);
                 }

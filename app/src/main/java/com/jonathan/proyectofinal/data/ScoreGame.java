@@ -5,11 +5,11 @@ import java.util.List;
 public class ScoreGame {
 
 
-    private List<String> gameMemoramaScore;
+    private List<Integer> gameMemoramaScore;
 
     public ScoreGame() { }
 
-    public List<String> getGameMemoramaScore() { return gameMemoramaScore; }
-    public void setGameMemoramaScore(List<String> gameMemoramaScore) { this.gameMemoramaScore = gameMemoramaScore; }
+    public List<Integer> getGameMemoramaScore() { return gameMemoramaScore; }
+    public void setGameMemoramaScore(List<Integer> gameMemoramaScore) { this.gameMemoramaScore = gameMemoramaScore; }
 
 }

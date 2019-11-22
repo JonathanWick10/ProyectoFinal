@@ -28,10 +28,14 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.google.android.gms.common.util.ArrayUtils;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.common.primitives.Ints;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.jonathan.proyectofinal.R;
 import com.jonathan.proyectofinal.data.CognitiveExcercisesAssignment;
+import com.jonathan.proyectofinal.data.ScoreGame;
+import com.jonathan.proyectofinal.tools.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,10 +46,11 @@ public class GraphAdapter extends FirestoreRecyclerAdapter<CognitiveExcercisesAs
     //region Variables
     Context context;
     GraphAdapter.ISelectItem iSelectItem;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
     //endregion
 
     List<Integer> scoresGraph;
-
+    ScoreGame scoreGame = new ScoreGame();
 
 
     ArrayList<String> intentos = new ArrayList<>();
@@ -87,10 +92,18 @@ public class GraphAdapter extends FirestoreRecyclerAdapter<CognitiveExcercisesAs
 
         //Get the position of the professional inside the adapter
         final DocumentSnapshot exerciseCognitiveDocument = getSnapshots().getSnapshot(holder.getAdapterPosition());
-        scoresGraph =model.getListScores();
-        createCharts();
 
-
+        db.collection(Constants.scoreGames).document(model.getUidPatient())
+                .get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if (documentSnapshot.exists()){
+                    scoreGame = documentSnapshot.toObject(ScoreGame.class);
+                    scoresGraph = scoreGame.getGameMemoramaScore();
+                    createCharts();
+                }
+            }
+        });
 
         holder.setData(exerciseCognitiveDocument.toObject(CognitiveExcercisesAssignment.class));
         holder.nameExercise.setOnClickListener(new View.OnClickListener() {
