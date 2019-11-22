@@ -352,7 +352,7 @@ public class NotificationPSFragment extends Fragment {
                         @Override
                         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                             if (isChecked) {
-                                medicationAssignment.setStatement("Activida");
+                                medicationAssignment.setStatement("Activada");
                             } else {
                                 medicationAssignment.setStatement("Desactivada");
                             }
