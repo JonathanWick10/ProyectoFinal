@@ -31,7 +31,6 @@ android:layout_height="match_parent"
             android:gravity="center"
             android:visibility="invisible"
             android:textStyle="bold"
-            android:fontFamily="sans-serif-smallcaps"
             ></TextView>
 
 <androidx.recyclerview.widget.RecyclerView

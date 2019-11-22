@@ -36,7 +36,7 @@
                     android:id="@+id/txt_medicine_name"
                     style="@style/StyleCardViewTitles"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/thirty"
+                    android:layout_height="wrap_content"
                     android:text="Medicament Name" />
 
                 <TextView
@@ -57,7 +57,9 @@
                 android:id="@+id/img_delete_medicine"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_delete"></ImageView>
+                android:src="@drawable/ic_delete"
+                android:layout_marginRight="@dimen/five"
+                android:layout_gravity="center"></ImageView>
         </LinearLayout>
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

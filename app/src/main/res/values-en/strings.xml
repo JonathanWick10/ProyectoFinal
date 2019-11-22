@@ -858,7 +858,11 @@
     <string name="title_activity_notification_manager">NotificationManager</string>
     <string name="rate_saved">Rating saved.</string>
     <string name="rate_no_saved">Error while qualifying.</string>
-
+    <string name="assigned_excercise">Assigned Exercise.</string>
+    <string name="no_assigned_excercise">Assignment failed.</string>
+    <string name="unassigned_exercise">Unassigned exercise.</string>
+    <string name="error_to_deallocate">Error to deallocate.</string>
+    <string name="failed_management">Failed management</string>
 
     <!--Contacts emergency-->
     <string name="full_name">Full name</string>

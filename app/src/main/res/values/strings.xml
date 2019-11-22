@@ -871,6 +871,11 @@
     <string name="title_activity_notification_manager">NotificationManager</string>
     <string name="rate_saved">Calificación guardada.</string>
     <string name="rate_no_saved">Error al calificar.</string>
+    <string name="assigned_excercise">Ejercicio asignado.</string>
+    <string name="no_assigned_excercise">Asignacion fallida.</string>
+    <string name="unassigned_exercise">Ejercicio desasignado.</string>
+    <string name="error_to_deallocate">Error al desasignar.</string>
+    <string name="failed_management">Gestión fallida</string>
 
     <!--Contacts emergency-->
     <string name="full_name">Nombre Completo</string>

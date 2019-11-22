@@ -162,7 +162,7 @@ public class CognitivesAdapter extends FirestoreRecyclerAdapter<CognitivesExcerc
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
                                     //progressDialog.dismiss();
-                                    Toast.makeText(context, "Gestión fallida", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(context, R.string.failed_management, Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }
@@ -170,7 +170,7 @@ public class CognitivesAdapter extends FirestoreRecyclerAdapter<CognitivesExcerc
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             //progressDialog.dismiss();
-                            Toast.makeText(context, "Gestión fallida", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, R.string.failed_management, Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
@@ -201,10 +201,10 @@ public class CognitivesAdapter extends FirestoreRecyclerAdapter<CognitivesExcerc
                                     DocumentReference documentAssignmentReference = db.collection(Constants.CognitiveExcercisesAssignments).document(idDocAssignment);
                                     documentAssignmentReference.delete();
                                     //progressDialog.dismiss();
-                                    Toast.makeText(context, "Ejercicio desasignado.", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(context, R.string.unassigned_exercise, Toast.LENGTH_SHORT).show();
                                 }
                             } else {
-                                //progressDialog.dismiss();
+                                Toast.makeText(context, R.string.error_to_deallocate, Toast.LENGTH_SHORT).show();
                             }
                         }
                     }).addOnFailureListener(new OnFailureListener() {
@@ -237,13 +237,13 @@ public class CognitivesAdapter extends FirestoreRecyclerAdapter<CognitivesExcerc
                     @Override
                     public void onSuccess(Void aVoid) {
                         //progressDialog.dismiss();
-                        Toast.makeText(context, "Ejercicio asignado.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, R.string.assigned_excercise, Toast.LENGTH_SHORT).show();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
                 //progressDialog.dismiss();
-                Toast.makeText(context, "Asignacion fallida.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, R.string.no_assigned_excercise, Toast.LENGTH_SHORT).show();
             }
         });
     }

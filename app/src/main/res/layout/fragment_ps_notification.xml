@@ -24,7 +24,6 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:textStyle="bold"
-        android:fontFamily="sans-serif-smallcaps"
         android:visibility="invisible"></TextView>
 
 
@@ -36,7 +35,7 @@
         android:clickable="true"
         android:layout_marginBottom="@dimen/seventy"
         android:layout_marginRight="@dimen/sixteen"
-        android:src="@drawable/ic_add">
+        android:src="@drawable/ic_add_alert_white">
 
     </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
@@ -56,7 +55,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/twenty"
-            android:fontFamily="sans-serif-smallcaps"
             android:text="@string/medicine_notification"></TextView>
 
         <ImageView

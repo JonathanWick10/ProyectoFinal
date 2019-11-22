@@ -13,7 +13,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:fontFamily="sans-serif-smallcaps"
             android:gravity="center"
             android:text="COGNITIVA"
             android:textSize="35dp"
