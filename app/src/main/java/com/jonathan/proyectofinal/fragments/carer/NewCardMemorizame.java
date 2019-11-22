@@ -283,6 +283,7 @@ public class NewCardMemorizame extends Fragment {
                     public void onClick(View view) {
 
                         translation();
+                        setClearForm();
                         alertDialog.dismiss();
                     }
                 });
@@ -291,7 +292,7 @@ public class NewCardMemorizame extends Fragment {
                 btn2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
+                        setClearForm();
                         alertDialog.dismiss();
                     }
                 });
@@ -329,6 +330,17 @@ public class NewCardMemorizame extends Fragment {
                 break;
         }
 
+
+    }
+
+    private void setClearForm() {
+        Glide.with(context).load(getResources().getDrawable(R.drawable.img_add_image)).fitCenter().into(addImage);
+        questionPatient.setText("");
+        answer1Patient.setText("");
+        answer2Patient.setText("");
+        answer3Patient.setText("");
+        answer4Patient.setText("");
+        correctAnswerPatient.setText("");
 
     }
 

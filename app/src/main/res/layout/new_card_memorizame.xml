@@ -138,6 +138,7 @@
                     android:id="@+id/edit_correct_answer"
                     style="@style/StyleTextInputEditText"
                     android:inputType="number"
+                    android:enabled="false"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>

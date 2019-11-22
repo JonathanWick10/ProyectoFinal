@@ -12,6 +12,7 @@ import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -63,6 +64,7 @@ public class MemorizameFamilyFragment extends Fragment {
 
     CardView addquestion;
     private int flag;
+    AutoCompleteTextView rtaAut;
 
     private MemorizameFamilyGridAdapter adapter;
     private MemorizameFamilyGridAdapter.ISelectionMemorizame iSelectionMemorizame;
@@ -203,7 +205,7 @@ public class MemorizameFamilyFragment extends Fragment {
                         final TextInputEditText editAnswer2 = dialogView.findViewById(R.id.edit_answer2);
                         final TextInputEditText editAnswer3 = dialogView.findViewById(R.id.edit_answer3);
                         final TextInputEditText editAnswer4 = dialogView.findViewById(R.id.edit_answer4);
-                        final AutoCompleteTextView rtaAut = dialogView.findViewById(R.id.edit_correct_answer);
+                        rtaAut = dialogView.findViewById(R.id.edit_correct_answer);
                         MaterialButton btnactualizar = dialogView.findViewById(R.id.button_create_memorizame);
 
                         txtTitle.setText("Actualizar Pregunta");
@@ -224,6 +226,9 @@ public class MemorizameFamilyFragment extends Fragment {
                         } else if (correctRTA.equals(memorizame.getAnswer4())) {
                             rtaAut.setText("4");
                         }
+
+
+                        dropdownMenu();
 
                         imageUpdate.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -433,6 +438,14 @@ public class MemorizameFamilyFragment extends Fragment {
                 }
             }
         };
+    }
+
+    private void dropdownMenu() {
+        String[] correctAnswerArray = {"1", "2", "3", "4"};
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getActivity(),
+                R.layout.dropdown_menu_popup_item, correctAnswerArray);
+        rtaAut.setAdapter(arrayAdapter);
+
     }
 
     @Override
