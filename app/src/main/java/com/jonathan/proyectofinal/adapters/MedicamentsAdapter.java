@@ -74,18 +74,6 @@ public class MedicamentsAdapter extends FirestoreRecyclerAdapter<MedicationAssig
                 }
             }
         });
-
-        holder.aSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean isCheck) {
-                iSelectItemMedicaments.check(medicamentDocument.toObject(MedicationAssignment.class));
-                if (isCheck){
-                    txtSwit.setText("Activada");
-                }else{
-                    txtSwit.setText("Desactivada");
-                }
-            }
-        });
     }
 
     @NonNull
@@ -136,7 +124,7 @@ public class MedicamentsAdapter extends FirestoreRecyclerAdapter<MedicationAssig
             tvHours = itemView.findViewById(R.id.data_hours);
             tvStatement = itemView.findViewById(R.id.data_statement_medicament);
             imgMedicaments = itemView.findViewById(R.id.iv_medicament_miniature);
-            aSwitch = (Switch) itemView.findViewById(R.id.switch_desactivate);
+            //aSwitch = (Switch) itemView.findViewById(R.id.switch_desactivate);
             txtSwitch = itemView.findViewById(R.id.txt_switch_list);
             //endregion
         }
@@ -156,10 +144,8 @@ public class MedicamentsAdapter extends FirestoreRecyclerAdapter<MedicationAssig
             Glide.with(context).load(item.getUriImg()).centerCrop().into(imgMedicaments);
 
             if (item.getStatement().equals("Activada")){
-                aSwitch.setChecked(true);
                 txtSwitch.setText("Activada");
             }else{
-                aSwitch.setChecked(false);
                 txtSwitch.setText("Desactivada");
             }
         }
