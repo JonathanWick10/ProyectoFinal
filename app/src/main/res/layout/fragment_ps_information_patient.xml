@@ -736,6 +736,7 @@
                             android:id="@+id/edit_txt_email_patient"
                             style="@style/StyleTextInputEditText"
                             android:layout_width="match_parent"
+                            android:enabled="false"
                             android:layout_height="match_parent"
                             android:inputType="textEmailAddress" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -772,6 +773,7 @@
                             android:id="@+id/edit_txt_password_patient"
                             style="@style/StyleTextInputEditText"
                             android:layout_width="match_parent"
+                            android:enabled="false"
                             android:layout_height="match_parent"
                             android:inputType="textPassword" />
                     </com.google.android.material.textfield.TextInputLayout>
