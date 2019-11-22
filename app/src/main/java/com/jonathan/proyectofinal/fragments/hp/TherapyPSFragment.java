@@ -59,7 +59,6 @@ public class TherapyPSFragment extends Fragment {
 
     private void SetUpViewPager(ViewPager viewPager, TabLayout tabs) {
         Adapter adapter = new Adapter(getChildFragmentManager());
-        adapter.setArgs(args);
 
         tabs.setupWithViewPager(viewPager);
         viewPager.setAdapter(adapter);
@@ -70,8 +69,6 @@ public class TherapyPSFragment extends Fragment {
 
     public class Adapter extends FragmentPagerAdapter {
 
-        private Bundle argsx;
-        public void setArgs(Bundle argsx) { this.argsx = argsx; }
         public Adapter(FragmentManager fm) { super(fm);}
 
         @Override
